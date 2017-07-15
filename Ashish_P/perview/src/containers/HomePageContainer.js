@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import HomePage from "HomePage";
+import HomePage from "../render_components/HomePage";
 
 const mapStateToProps = ({ session }, ownProps) => {
   return {
