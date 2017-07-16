@@ -5,7 +5,7 @@ const NavBar = ({ pageTitle = "Perviews", canCreatePerviews = true }) => {
   const renderCreateButton = () => {
     if (canCreatePerviews) {
       return (
-        <button className="nav-bar__create-btn">Create perviews</button>
+        <button className="nav-bar__create-btn">Create a Perview</button>
       )
     }
   }
