@@ -7,7 +7,7 @@ import HomePageContainer from './HomePageContainer';
 
 const Root = ({ store }) => {
   const _ensureLoggedIn = (nextState, replace) => {
-    if(false){
+    if(true){
       replace('/home');
     }
   }
@@ -17,7 +17,7 @@ const Root = ({ store }) => {
       replace('/home');
     }
   };
-  console.log(window)
+
   return (
     <Provider store={ store }>
       <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
