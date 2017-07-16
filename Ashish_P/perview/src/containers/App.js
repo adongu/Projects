@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
+import SignInContainer from "./SignInContainer";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <h2>HELLO to React</h2>
-        </div>
-      </div>
-    );
-  }
+const App = ({ children }) => {
+  return(
+    <div className="App">
+      <SignInContainer />
+      { children }
+    </div>
+  );
 }
+
 
 export default App;
