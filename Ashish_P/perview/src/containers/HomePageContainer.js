@@ -1,15 +1,15 @@
 import { connect } from 'react-redux';
-import HomePage from "../render_components/HomePage";
+import HomePage from "../render_components/Homepage/HomePage";
 
 const mapStateToProps = ({ session }, ownProps) => {
   return {
-    currentUser: session.currentUser
+    // currentUser: session.currentUser
   }
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    logout: () => dispatch(logout())
+    // logout: () => dispatch(logout())
   }
 }
 

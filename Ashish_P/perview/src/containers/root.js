@@ -3,20 +3,27 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import App from './App';
 import SignInContainer from './SignInContainer';
-// import SignIn from '../render_components/Sign_in/SignIn';
+import HomePageContainer from './HomePageContainer';
 
 const Root = ({ store }) => {
-  const _ensureLoggedIn = () => {
+  const _ensureLoggedIn = (nextState, replace) => {
+    if(false){
+      replace('/home');
+    }
   }
 
-  const _redirectIfLoggedIn = () => {
-  }
-  console.log(store);
+  const _redirectIfLoggedIn = (nextState, replace) => {
+    if(true){
+      replace('/home');
+    }
+  };
+  console.log(window)
   return (
     <Provider store={ store }>
       <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
         <Switch>
-          <Route exact path="/" component={ SignInContainer } />
+          <Route path="/" component={ App }
+          onEnter={_ensureLoggedIn}/>
         </Switch>
       </BrowserRouter>
     </Provider>

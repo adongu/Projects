@@ -11,13 +11,12 @@ document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(<Root store={ store }/>, root);
 });
 
-// if(module.hot) {
-//   module.hot.accept('./containers/App', () => {
-//     const NextApp = require('./containers/App').default
-//     ReactDOM.render(
-//       <NextApp />,
-//       document.getElementById('root')
-//     )
-//   })
-// }
+if(module.hot) {
+  module.hot.accept('./containers/Root', () => {
+    const root = document.getElementById('root');
+    const NextRoot = require('./containers/Root').default
+    ReactDOM.render(
+      <NextRoot />, root);
+  })
+}
 registerServiceWorker();
