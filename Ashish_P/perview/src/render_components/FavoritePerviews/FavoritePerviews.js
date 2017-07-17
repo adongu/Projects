@@ -10,7 +10,7 @@ class FavoritePerviews extends React.Component {
 
   getPerviews () {
     let perviews = [];
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 1; i++) {
       let product = {
         left: {
           img: './photo.jpg',
