@@ -7,7 +7,7 @@ const HomePage = () => {
   for (let i = 0; i < 3; i++) {
     let product = {
       left: {
-        img: 'url',
+        img: '../src/assets/photo.jpg',
         title: 'title',
         price: 'price',
         perviews: 'perviews'
@@ -15,6 +15,7 @@ const HomePage = () => {
       right: {
         icon: 'url',
         name: 'name',
+        time: "Tuesday at 3:00 pm",
         rating: 3,
         tags: '#amazing #wow @almostlikeapet',
         perview: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
