@@ -5,7 +5,7 @@ import App from './App';
 import HomePage from '../render_components/Homepage/HomePage';
 import MyPerviews from '../render_components/MyPerviews/MyPerviews';
 import FavoritePerviews from '../render_components/FavoritePerviews/FavoritePerviews';
-// import HomePageContainer from './HomePageContainer';
+import HomePageContainer from './HomePageContainer';
 
 const Root = ({ store }) => {
   const _ensureLoggedIn = (nextState, replace) => {
@@ -24,9 +24,10 @@ const Root = ({ store }) => {
     <Provider store={ store }>
       <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
         <div>
-          <Route path="/" component={App}
+          <Route path="/" render={App}
           onEnter={_ensureLoggedIn}/>
-          <Route exact path="/" component={HomePage}/>
+
+        <Route exact path="/" component={HomePageContainer}/>
           <Route path="/myperviews" component={MyPerviews}/>
           <Route path="/favorites" component={FavoritePerviews}/>
         </div>
@@ -34,5 +35,9 @@ const Root = ({ store }) => {
     </Provider>
   )
 };
+//Testing for passing props down
+// <Route path="/" render={(props) => (
+//   <App {...props}/>
+// )} />
 
 export default Root;

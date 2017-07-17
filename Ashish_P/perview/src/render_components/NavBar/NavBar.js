@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 const NavBar = ({ pageTitle = "Perviews", canCreatePerviews = true }) => {
+
   const renderCreateButton = () => {
     if (canCreatePerviews) {
       return (
