@@ -2,16 +2,14 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import WidePerview from "../PerviewsLayouts/WidePerview";
 
-// class HomePage extends React.Component {
-  // constructor (props) {
-  //   super(props);
-  //   console.log("HomePage", props);
-  //   this.getPerviews = this.getPerviews.bind(this);
-  // }
-  const HomePage = (props) => {
+class HomePage extends React.Component {
+  constructor (props) {
+    super(props);
+    console.log("HomePage", props);
+    this.getPerviews = this.getPerviews.bind(this);
+  }
 
-  // getPerviews () {
-  console.log(props);
+  getPerviews () {
     let perviews = [];
     for (let i = 0; i < 3; i++) {
       let product = {
@@ -33,17 +31,16 @@ import WidePerview from "../PerviewsLayouts/WidePerview";
       };
       perviews.push(product);
     }
-    // return perviews;
-  // }
-  // render() {
+    return perviews;
+  }
 
+  render () {
     return (
       <WidePerview
-        perviews={perviews}
+        perviews={this.getPerviews()}
         />
     )
-  // }
+  }
 }
 
-// perviews={this.getPerviews()}
 export default withRouter(HomePage);
