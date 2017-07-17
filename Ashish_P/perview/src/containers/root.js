@@ -22,8 +22,9 @@ const Root = ({ store }) => {
     <Provider store={ store }>
       <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
         <Switch>
-          <Route path="/" component={ App }
+          <Route exact path="/" component={ App }
           onEnter={_ensureLoggedIn}/>
+          <Route />
         </Switch>
       </BrowserRouter>
     </Provider>

@@ -1,12 +1,34 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import WidePerview from "../PerviewsLayouts/WidePerview";
 
 const HomePage = () => {
+  let perviews = [];
+  for (let i = 0; i < 3; i++) {
+    let product = {
+      left: {
+        img: 'url',
+        title: 'title',
+        price: 'price',
+        perviews: 'perviews'
+      },
+      right: {
+        icon: 'url',
+        name: 'name',
+        rating: 3,
+        tags: '#amazing #wow @almostlikeapet',
+        perview: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+        comments: 9
+      }
+    };
+    perviews.push(product);
+  }
+
   return (
-    <div>
-      
-    </div>
+    <WidePerview
+      perviews={perviews}
+    />
   )
 }
 
-export default HomePage;
+export default withRouter(HomePage);

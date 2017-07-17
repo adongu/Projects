@@ -2,6 +2,7 @@ import React from 'react';
 import SignInContainer from './SignInContainer';
 import HeaderContainer from './HeaderContainer';
 import NavBar from '../render_components/NavBar/NavBar';
+import HomePageContainer from './HomePageContainer';
 
 const App = ({ children }) => {
   let toRender = null;
@@ -10,6 +11,7 @@ const App = ({ children }) => {
       <div>
         <HeaderContainer />
         <NavBar />
+        <HomePageContainer />
       </div>
     );
   } else {
