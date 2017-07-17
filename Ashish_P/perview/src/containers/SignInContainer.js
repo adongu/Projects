@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import SignIn from '../render_components/Sign_in/SignIn';
+import SignIn from '../render_components/SignIn/SignIn';
 
 const mapStateToProps = () => {
   return {
@@ -8,7 +8,6 @@ const mapStateToProps = () => {
 
 const mapDispatchToProps = () => {
   return {
-
   }
 };
 

@@ -30,10 +30,10 @@ const WidePerview = ({ perviews }) => {
               </div>
               <div className="results__review-social">
                 <div className="results__review-social--save">
-                  <i class="fa fa-bookmark" aria-hidden="true"></i>
+                  <i className="fa fa-bookmark" aria-hidden="true"></i>
                 </div>
                 <div className="results__review-social--share">
-                  <i class="fa fa-share" aria-hidden="true"></i>
+                  <i className="fa fa-share" aria-hidden="true"></i>
                 </div>
               </div>
             </div>

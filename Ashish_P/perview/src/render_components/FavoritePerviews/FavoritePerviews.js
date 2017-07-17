@@ -2,13 +2,13 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import WidePerview from "../PerviewsLayouts/WidePerview";
 
-const HomePage = () => {
+const FavoritePerviews = () => {
   let perviews = [];
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 1; i++) {
     let product = {
       left: {
         img: './photo.jpg',
-        title: 'Home Page',
+        title: 'Favorites',
         price: 'price',
         perviews: 'perviews'
       },
@@ -32,4 +32,4 @@ const HomePage = () => {
   )
 }
 
-export default withRouter(HomePage);
+export default withRouter(FavoritePerviews);
