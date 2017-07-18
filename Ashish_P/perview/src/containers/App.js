@@ -6,7 +6,8 @@ import NavBar from '../render_components/NavBar/NavBar';
 
 const App = (props) => {
   let toRender = null;
-  if(!this.props){
+  console.log(props);
+  if(false){
     toRender = (
       <div>
         <HeaderContainer />
@@ -14,17 +15,12 @@ const App = (props) => {
       </div>
     );
   } else {
-    toRender = (
-      <div>
-        <SignInContainer />
-      </div>
-    )
+    toRender = null;
   }
 
   return(
     <div className="App">
       { toRender }
-      { props.children }
     </div>
   );
 }
