@@ -22,7 +22,7 @@
     position: absolute;
     border: 1px blue solid;
     margin: auto;
-    background-color: gray;
+    background-color: #777777;
     border-radius: 50%;
     left: 195px;
     top: -60px;
@@ -41,8 +41,41 @@
 
   /* Welcome Message */
   &body {
+    width:85%;
     margin: auto;
+    border: 2px yellow solid;
   }
+
+  &bodywelcome {
+    margin: auto;
+    padding: 0 0 10px 0;
+    font-size: 30px;
+    color: gray;
+  }
+
+  &bodymessage {
+    margin: auto;
+    font-size: 18px;
+    color: gray;
+    padding: 0 15px 10px 17px;
+  }
+  /* auth button*/
+  &form {
+    margin: auto;
+    padding: 20px 0;
+    width: 100%;
+  }
+
+  &form-facebook {
+    // width: 50%;
+    margin: auto;
+    padding: 15px 32px;
+    border-radius: 3px;
+    text-decoration: none;
+    text-align: center;
+  }
+
+
 
 }
 
