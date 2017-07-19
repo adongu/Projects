@@ -14,13 +14,13 @@ class HomePage extends React.Component {
     for (let i = 0; i < 3; i++) {
       let product = {
         left: {
-          img: './photo.jpg',
+          img: 'http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png',
           title: 'Home Page',
           price: 'price',
           perviews: 'perviews'
         },
         right: {
-          icon: 'url',
+          icon: 'https://www.juicedb.com/img/user/temp-user-128.jpg',
           name: 'name',
           time: "Tuesday at 3:00 pm",
           rating: 3,
