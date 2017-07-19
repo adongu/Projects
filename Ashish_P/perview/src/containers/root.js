@@ -9,9 +9,6 @@ import HomePageContainer from './HomePageContainer';
 import SignInContainer from './SignInContainer';
 import HeaderContainer from './HeaderContainer';
 import NavBar from '../render_components/NavBar/NavBar';
-import '../styles/stylesheets/reset.css';
-
-
 
 const Root = ({ store }) => {
   const _ensureLoggedIn = (nextState) => {

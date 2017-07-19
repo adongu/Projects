@@ -14,6 +14,8 @@ const Header = ({currentUser = "Susan"}) => {
       <div className="header__greetings">
         Hello, { currentUser }!
       </div>
+      <div >
+      </div>
     </div>
   )
 }

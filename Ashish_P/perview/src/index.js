@@ -2,7 +2,7 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 //stylesheets
-import '../styles/stylesheets/reset.css';
+import './styles/stylesheets/reset.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './containers/Root';
