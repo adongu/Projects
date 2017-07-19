@@ -1,0 +1,1 @@
+All .scss files are converted to .css with **build-css**. Just save the file and see updates. Import files as 'filename.css' as files need to be .css extension to work with Creact-React-App configurations.

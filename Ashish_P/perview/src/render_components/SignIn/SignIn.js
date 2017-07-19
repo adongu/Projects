@@ -23,7 +23,7 @@ class SignIn extends React.Component {
           </div>
         </div>
         <div className="signin__terms">
-          Creating an account means you're OK with Perview's <Link to="">Terms of Service</Link> and <Link className to="">Privacy Policy</Link>
+          Creating an account means you're OK with Perview's <Link className="signin__terms-urls" to="">Terms of Service</Link> and <Link className="signin__terms-urls" to="">Privacy Policy</Link>
         </div>
       </div>
     )
