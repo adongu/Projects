@@ -14,7 +14,7 @@ const Header = ({currentUser = "Susan"}) => {
         <div className="header__search">
           <SearchBar />
         </div>
-        <div className="header__usernav">
+        <div className="row header__usernav">
           <div className="header__greetings">
             Hello, { currentUser }!
           </div>

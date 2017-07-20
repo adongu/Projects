@@ -19,15 +19,25 @@
 
   &logoimg {
     border-radius: 50%;
+    width: 60px;
     border: 1px lightgray solid;
     overflow: hidden;
-    width: 60px;
     height: 60px;
   }
 
   &search {
     display: flex;
     justify-content: center;
-    width: 60%;
+    width: 50%;
   }
+
+  &usernav{
+    display: flex;
+    padding-left: 30px;
+    justify-content: space-around;
+    align-items: center;
+    width: 25%;
+
+  }
+
 }
