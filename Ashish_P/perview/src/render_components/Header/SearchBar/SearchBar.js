@@ -37,7 +37,7 @@ class SearchBar extends React.Component {
     this.setState({
       keywords: e.target.value
     });
-    console.log(this.state.keywords.length);
+    console.log(this.state.keywords);
     return (
       <div className="search__suggestions">
         { this.renderSuggestions }
@@ -50,7 +50,7 @@ class SearchBar extends React.Component {
       <div className="search__container">
         <div className="search__box">
           <form className="search__bar">
-            <input onInput={ this.updateKeywords } className="search__input"></input>
+            <input onInput={ this.updateKeywords } className="search__input" placeholder="Search on amazon"></input>
             <button className="search__btn">
               <i className="fa fa-search search__btn-icon" aria-hidden="true"></i></button>
           </form>
