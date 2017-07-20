@@ -1,1 +1,29 @@
-@import url("./header/header.css");
+.header__ {
+  &container {
+    width: 100%;
+  }
+
+  &box {
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0 7px 0;
+    margin: auto;
+    width: 980px;
+    border-bottom: 1px lightgray solid;
+  }
+
+  /* logo */
+  &logo {
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px lightgray solid;
+    overflow: hidden;
+    width: 60px;
+    height: 60px;
+  }
+
+  &search {
+    width: 42%;
+  }
+}

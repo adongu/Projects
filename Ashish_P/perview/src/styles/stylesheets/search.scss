@@ -1,0 +1,28 @@
+.search__{
+  &container {
+    width: 100%;
+  }
+
+  &box {
+    width: 100%;
+  }
+
+  &bar {
+    width: 100%;
+  }
+
+  &input {
+    width: 90%;
+    overflow: hidden;
+  }
+
+  &btn {
+    width: 40px;
+    background: gray;
+
+  }
+
+  &btn-icon {
+    color: white;
+  }
+}
