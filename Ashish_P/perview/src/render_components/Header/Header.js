@@ -1,7 +1,8 @@
+import "../../styles/stylesheets/header.css";
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import SearchBar from './SearchBar/SearchBar'
-import "../../styles/stylesheets/header.css";
+import UserNav from './UserNav'
 
 const Header = ({currentUser = "Susan"}) => {
   return (
@@ -18,6 +19,7 @@ const Header = ({currentUser = "Susan"}) => {
             Hello, { currentUser }!
           </div>
           <div className="header__usernavphoto">
+            <UserNav />
           </div>
         </div>
       </div>
