@@ -1,7 +1,7 @@
 .search__{
   &container {
     border: 1px gray solid;
-    width: 100%;
+    width: 412px;
     padding: 0px;
     border-radius: 3px;
   }
@@ -21,6 +21,7 @@
   }
 
   &btn {
+    margin: auto;
     width: 28px;
     padding: 3px 0;
     background: gray;

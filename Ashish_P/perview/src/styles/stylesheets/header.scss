@@ -14,8 +14,10 @@
 
   /* logo */
   &logo {
-    display: flex;
-    justify-content: center;
+    width: 15%;
+  }
+
+  &logoimg {
     border-radius: 50%;
     border: 1px lightgray solid;
     overflow: hidden;
@@ -24,6 +26,8 @@
   }
 
   &search {
-    width: 412px;
+    display: flex;
+    justify-content: center;
+    width: 60%;
   }
 }
