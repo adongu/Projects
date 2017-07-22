@@ -1,8 +1,10 @@
 import "../../styles/stylesheets/WidePerviews.css"
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { Button, ButtonToolbar } from 'react-bootstrap';
 
 const WidePerview = ({ perviews }) => {
+
   const renderPerviews = () => {
     return perviews.map((perview, i) => {
       return (
@@ -10,12 +12,15 @@ const WidePerview = ({ perviews }) => {
           <div className="row wideresults__perview-left">
             <div className="wideresults__productimg"><img className="wideresults__productimg-photo" src={perview.left.img}/>
             </div>
-            <div className="column widerresults__perview-left-info">
+            <div className="column wideresults__perview-left-info">
               <div className="wideresults__product-title">{perview.left.title}</div>
               <div className="row wideresults__product-info">
-                <div className="wideresults__product-price">{perview.left.price}</div>
+                <div className="wideresults__product-price">$ {perview.left.price}</div>
                 <div className="wideresults__product-numperviews">{perview.left.perviews} perviews</div>
               </div>
+              <ButtonToolbar>
+                 <Button className="wideresults__product-buybtn" href="http://google.com">BUY AT AMAZON</Button>
+               </ButtonToolbar>
             </div>
           </div>
           <div className="column wideresults__perview-right">

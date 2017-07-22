@@ -1,6 +1,7 @@
 .wideresults__ {
   &container {
     width: 980px;
+    min-width: 980px;
     margin: auto;
   }
 
@@ -32,14 +33,35 @@
   }
   // left perview - right side
   &perview-left-info {
-    width: 60%;
+    width: 100%;
+    padding: 20px 10px 50px 10px;
   }
 
+  &product-title {
+    width: 100%;
+    // height: 130px;
+    // line-height: 130px;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
+    padding-bottom: 10px;
+  }
 
   &product-info {
+    display: flex;
+    justify-content: space-between;
     width: 100%;
   }
 
+  &product-price {
+  }
+
+  &product-buybtn {
+    font-size: 10px;
+    font-family: arial;
+    margin-top: 10px;
+    color: white;
+    background: gray;
+  }
 
   /* user review - right perview*/
   &perview-right {
