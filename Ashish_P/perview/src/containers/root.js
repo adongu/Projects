@@ -28,7 +28,7 @@ const Root = ({ store }) => {
   return (
     <Provider store={ store }>
       <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
-        <div>
+        <div className="root">
           <Route component={App}/>
           <Switch>
             <Route exact path="/" component={HomePageContainer} render={_ensureLoggedIn}/>

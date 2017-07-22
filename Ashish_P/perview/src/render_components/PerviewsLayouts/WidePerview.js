@@ -1,3 +1,4 @@
+import "../../styles/stylesheets/WidePerviews.css"
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
@@ -5,35 +6,40 @@ const WidePerview = ({ perviews }) => {
   const renderPerviews = () => {
     return perviews.map((perview, i) => {
       return (
-        <div key={`results__${i}`} className="results__product-Item">
-          <div className="results__product">
-            <div className=""><img src={perview.left.img}/></div>
-            <div className="">
-              <div className="">{perview.left.title}</div>
-              <div className="">{perview.left.price}</div>
-              <div className="">{perview.left.perviews} perviews</div>
+        <div key={`perviewindex__${i}`} className="row wideresults__box">
+          <div className="row wideresults__perview-left">
+            <div className="wideresults__productimg"><img className="wideresults__productimg-photo" src={perview.left.img}/>
+            </div>
+            <div className="column widerresults__perview-left-info">
+              <div className="wideresults__product-title">{perview.left.title}</div>
+              <div className="row wideresults__product-info">
+                <div className="wideresults__product-price">{perview.left.price}</div>
+                <div className="wideresults__product-numperviews">{perview.left.perviews} perviews</div>
+              </div>
             </div>
           </div>
-          <div className="results__review">
-            <div className="results__review-user">
+          <div className="column wideresults__perview-right">
+            <div className="wideresults__review-time">{perview.right.time}</div>
+            <div className="row wideresults__review-user">
               <div className=""><img src={perview.right.icon}/></div>
               <div className="">{perview.right.name}</div>
-              <div className="">{perview.right.time}</div>
             </div>
-            <div className="results__review-stars">{perview.right.rating}</div>
-            <div className="results__review-tags">{perview.right.tags}</div>
-            <div className="results__review-text">{perview.right.perview}</div>
-            <div className="results__review-social-box">
-              <div className="results__review-social-comments">
+            <div className="wideresults__review-stars">{perview.right.rating}</div>
+            <div className="wideresults__review-tags">{perview.right.tags}</div>
+            <div className="wideresults__review-text">{perview.right.perview}</div>
+            <div className="row wideresults__review-social-box">
+              <div className="wideresults__review-social-comments">
                 <i className="fa fa-comments" aria-hidden="true"></i>
                 {perview.right.comments} comments
               </div>
-              <div className="results__review-social">
-                <div className="results__review-social--save">
+              <div className="row wideresults__review-social">
+                <div className="wideresults__review-social--save">
                   <i className="fa fa-bookmark" aria-hidden="true"></i>
+                  <div className="wideresults__review-save">Save</div>
                 </div>
-                <div className="results__review-social--share">
+                <div className="wideresults__review-social--share">
                   <i className="fa fa-share" aria-hidden="true"></i>
+                  <div className="wideresults__review-share">Share</div>
                 </div>
               </div>
             </div>
@@ -45,7 +51,7 @@ const WidePerview = ({ perviews }) => {
   }
 
   return (
-    <div className="">
+    <div className="wideresults__container">
       { renderPerviews() }
     </div>
   )

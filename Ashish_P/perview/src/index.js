@@ -4,7 +4,7 @@ import './styles/stylesheets/reset.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 import 'react-select/dist/react-select.css';
-import './styles/stylesheets/index.css';
+import './styles/stylesheets/Index.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './containers/Root';
