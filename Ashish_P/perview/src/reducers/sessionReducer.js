@@ -9,6 +9,8 @@ const _nullUser = Object.freeze({
 const sessionReducer = (oldState = _nullUser, action) => {
   Object.freeze(oldState);
   switch(action.type) {
+    case: SIGNIN
+
     default:
       return merge(oldState, { errors: []})
   }
