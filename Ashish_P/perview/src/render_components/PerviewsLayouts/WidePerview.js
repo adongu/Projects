@@ -15,7 +15,7 @@ const WidePerview = ({ perviews }) => {
             <div className="column wideresults__perview-left-info">
               <div className="wideresults__product-title">{perview.left.title}</div>
               <div className="row wideresults__product-info">
-                <div className="wideresults__product-price">$ {perview.left.price}</div>
+                <div className="wideresults__product-price">${perview.left.price}</div>
                 <div className="wideresults__product-numperviews">{perview.left.perviews} perviews</div>
               </div>
               <ButtonToolbar>
