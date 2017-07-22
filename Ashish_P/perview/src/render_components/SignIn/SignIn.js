@@ -5,8 +5,32 @@ import { Link, withRouter } from 'react-router-dom';
 class SignIn extends React.Component {
   constructor(props) {
     super(props)
+
+    this.state =  {
+
+    }
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.redirectIfLoggedIn = this.redirectIfLoggedIn.bind(this);
   }
 
+  componentDidUpdate(newProps) {
+    () => this.redirectIfLoggedIn();
+  }
+
+  redirectIfLoggedIn() {
+    if (this.props.loggedIn) {
+      this.props.router.goBack();
+    } else {
+      this.props.login();
+    }
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    console.log(this.props);
+    const user = Object.assign({},)
+    this.redirectIfLoggedIn();
+  }
 
   render() {
     return (
@@ -23,7 +47,7 @@ class SignIn extends React.Component {
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip exe ea commodo consequat.
             </div>
             <form className="signin__form">
-              <button onClick={null} className="signin__form-facebook">SIGN IN WITH FACEBOOK</button>
+              <button onClick={this.handleSubmit} className="signin__form-facebook">SIGN IN WITH FACEBOOK</button>
             </form>
           </div>
         </div>

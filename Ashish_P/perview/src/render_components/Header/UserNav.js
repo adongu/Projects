@@ -11,7 +11,7 @@ import { Dropdown, DropdownButton, MenuItem, ButtonToolbar, Glyphicon } from 're
 
   return (
     <ButtonToolbar>
-      <DropdownButton bsStyle="default" title={<img src="https://www.juicedb.com/img/user/temp-user-128.jpg" className="usernav__img"/>} noCaret pullRight arrowOffsetTop id="dropdown-pull-right" className="usernav__dropdown">
+      <DropdownButton bsStyle="default" title={<img src="https://www.juicedb.com/img/user/temp-user-128.jpg" className="usernav__img"/>} noCaret pullRight id="dropdown-pull-right" className="usernav__dropdown">
         <MenuItem eventKey="1"><Link to="/myperviews">My Perviews</Link></MenuItem>
         <MenuItem eventKey="2"><Link to="/myperviews">Favorite Perviews</Link></MenuItem>
         <MenuItem eventKey="3">Settings</MenuItem>

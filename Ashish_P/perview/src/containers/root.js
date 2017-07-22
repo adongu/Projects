@@ -41,11 +41,11 @@ const Root = ({ store }) => {
     </Provider>
   )
 };
+
+export default Root;
 // <Route component={SignInContainer}/>
 
 //Testing for passing props down
 // <Route path="/" render={(props) => (
 //   <App {...props}/>
 // )} />
-
-export default Root;
