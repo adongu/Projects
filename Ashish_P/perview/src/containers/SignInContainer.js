@@ -2,10 +2,11 @@ import { connect } from 'react-redux';
 import {login, logout, signup, clearErrors } from '../actions/session_actions';
 import SignIn from '../render_components/SignIn/SignIn';
 
-const mapStateToProps = ({ session }) => {
+const mapStateToProps = (props) => {
+  console.log(props);
   return {
-    loggedIn: Boolean(session.currentUser),
-    errors: session.errors
+    loggedIn: Boolean(props.session.currentUser),
+    errors: props.session.errors
   }
 };
 

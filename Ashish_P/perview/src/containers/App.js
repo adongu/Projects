@@ -7,7 +7,7 @@ import NavBar from '../render_components/NavBar/NavBar';
 const App = (props) => {
   let toRender = null;
   console.log(props);
-  if(true){
+  if(false){
     toRender = (
       <div>
         <HeaderContainer />

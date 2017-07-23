@@ -1,20 +1,21 @@
 import axios from 'axios';
 
-// const auth_url = ""
-const auth_url = "/connect/facebook"
+// const auth_url = "/amazon/item?keywords=imperial%20pomade";
+//
+// export const login = () => {
+//   return axios.get(`${auth_url}`);
 
 
-export const login = (user) => {
-  return axios({
-    method: 'post',
-    url: `${auth_url}`,
-    data: {
-      // type: "hidden",
-      // name: "scope",
-      value: "user_friends"
-    }
-  })
+const auth_url = `/auth/facebook`;
+export const login = () => {
+  return axios.post(`${auth_url}`)
 }
+    // data: {
+    //   type: "hidden",
+    //   name: "scope",
+    //   value: "user_friends"
+    // }
+
 //
 // export const logout = () => {
 //   return $.ajax({
