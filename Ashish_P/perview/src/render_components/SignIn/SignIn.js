@@ -14,15 +14,7 @@ class SignIn extends React.Component {
   }
 
   ComponentDidMount () {
-    return (
-      function(d, s, id) {
-      let js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk')
-  );
+
   }
 
   componentDidUpdate(newProps) {
@@ -67,9 +59,6 @@ class SignIn extends React.Component {
           <div className="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
         </div>
         <div className="signin__terms">
-          <div id="fb-root">
-          <button id="fb-root">Login</button>
-          </div>
           Creating an account means you're OK with Perview's <Link className="signin__terms-urls" to="">Terms of Service</Link> and <Link className="signin__terms-urls" to="">Privacy Policy</Link>
         </div>
       </div>

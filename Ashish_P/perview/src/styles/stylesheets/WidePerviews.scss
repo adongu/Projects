@@ -16,7 +16,7 @@
   &perview-left {
     display: flex;
     justify-content: space-between;
-    width: 50%;
+    width: 60%;
     background: #FFF;
   }
 
@@ -67,8 +67,8 @@
   }
 
   &product-numperviews {
-    // width: 50%;
     margin-left: auto;
+    // width: 50%;
   }
 
   &product-buybtn {
@@ -81,7 +81,7 @@
 
   /* user review - right perview*/
   &perview-right {
-    width: 50%;
+    width: 40%;
     background: #E9E9E9;
   }
 
