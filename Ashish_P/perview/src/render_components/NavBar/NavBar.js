@@ -12,7 +12,7 @@ const NavBar = ({ pageTitle = "Perviews", canCreatePerviews = true }) => {
   }
 
   return (
-    <div className="nav-bar__container">
+    <div className="flexrow nav-bar__container">
       <div className="nav-bar__title">
         {pageTitle}
       </div>

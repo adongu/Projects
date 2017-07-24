@@ -8,13 +8,13 @@ const WidePerview = ({ perviews }) => {
   const renderPerviews = () => {
     return perviews.map((perview, i) => {
       return (
-        <div key={`perviewindex__${i}`} className="row narrowperviews__box">
-          <div className="row narrowperviews__perview-left">
+        <div key={`perviewindex__${i}`} className="flexrow narrowperviews__box">
+          <div className="flexrow narrowperviews__perview-left">
             <div className="narrowperviews__productimg"><img className="narrowperviews__productimg-photo" src={perview.left.img}/>
             </div>
-            <div className="column narrowperviews__perview-left-info">
+            <div className="flexcolumn narrowperviews__perview-left-info">
               <div className="narrowperviews__product-title">{perview.left.title}</div>
-              <div className="row narrowperviews__product-info">
+              <div className="flexrow narrowperviews__product-info">
                 <div className="narrowperviews__product-price">${perview.left.price}</div>
                 <div className="narrowperviews__product-numperviews">{perview.left.perviews} perviews</div>
               </div>
@@ -23,21 +23,21 @@ const WidePerview = ({ perviews }) => {
                </ButtonToolbar>
             </div>
           </div>
-          <div className="column narrowperviews__perview-right">
+          <div className="flexcolumn narrowperviews__perview-right">
             <div className="narrowperviews__review-time">{perview.right.time}</div>
-            <div className="row narrowperviews__review-user">
+            <div className="flexrow narrowperviews__review-user">
               <div className=""><img src={perview.right.icon}/></div>
               <div className="">{perview.right.name}</div>
             </div>
             <div className="narrowperviews__review-stars">{perview.right.rating}</div>
             <div className="narrowperviews__review-tags">{perview.right.tags}</div>
             <div className="narrowperviews__review-text">{perview.right.perview}</div>
-            <div className="row narrowperviews__review-social-box">
+            <div className="flexrow narrowperviews__review-social-box">
               <div className="narrowperviews__review-social-comments">
                 <i className="fa fa-comments" aria-hidden="true"></i>
                 {perview.right.comments} comments
               </div>
-              <div className="row narrowperviews__review-social">
+              <div className="flexrow narrowperviews__review-social">
                 <div className="narrowperviews__review-social--save">
                   <i className="fa fa-bookmark" aria-hidden="true"></i>
                   <div className="narrowperviews__review-save">Save</div>

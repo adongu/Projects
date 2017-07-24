@@ -31,7 +31,7 @@ const Root = ({ store }) => {
         <div className="root">
           <Route component={App}/>
           <Switch>
-            <Route exact path="/" component={HomePageContainer} render={_ensureLoggedIn}/>
+            <Route exact path="/" component={HomePageContainer}/>
             <Route path="/signin" component={SignInContainer}/>
             <Route path="/myperviews" component={MyPerviews}/>
             <Route path="/favorites" component={FavoritePerviews}/>
