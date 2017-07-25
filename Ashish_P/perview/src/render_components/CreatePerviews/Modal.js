@@ -1,3 +1,5 @@
+import "../../styles/stylesheets/CreatePerviewModal.css";
+import product from "../../styles/assets/product.jpg";
 import React from 'react';
 import { ButtonToolbar, Modal, Button} from 'react-bootstrap';
 import SearchBar from "../Header/SearchBar/SearchBar";
@@ -7,11 +9,14 @@ class CreatePerview extends React.Component {
     super(props);
 
     this.state = {
-      show: false
+      show: false,
+      chosen: true
     }
 
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
+    this.showReviewBox = this.showReviewBox.bind(this);
+    this.renderStars = this.renderStars.bind(this);
   }
 
   showModal() {
@@ -22,10 +27,72 @@ class CreatePerview extends React.Component {
     this.setState({show: false});
   }
 
+  renderStars (ratings) {
+    let stars = [1, 2, 3, 4, 5];
+    return stars.map((ele)=>{
+      return (
+        <span key={ele} className={ele <= ratings ? 'active_star' : 'no_star'} >
+          <i className="fa fa-star createperview__rating-star" aria-hidden="true"></i>
+        </span>
+      )
+    })
+  }
+
+  showReviewBox() {
+    if(this.state.chosen) {
+      return (
+        <div className="flexcolumn createperview__product-container">
+          <div className="flexrow createperview__product">
+            <div className="createperview__product-left">
+              <img className="createperview__product-img" src={product} />
+            </div>
+            <div className="createperview__product-right">
+              <div className="flextcolumn createperview__product-info">
+                <div className="createperview__product-title">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </div>
+                <div className="flexrow createperview__product-details">
+                  <div className="createperview__product-price">
+                    $ 145
+                  </div>
+                  <div className="createperview__product-perviews">
+                    8 perviews
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="createperview__review-container">
+            <form className="flexcolumn createperview__review-box" action>
+              <div className="flexrow createperview__review-rating">
+                <div className="createperview__review-rating-msg">
+                  Perview this Product!
+                </div>
+                <div className="createperview__review-rating-stars">
+                  {this.renderStars(3)}
+                </div>
+              </div>
+
+              <div className="createperview__review-msg">
+                Tag it, comment or both!
+              </div>
+              <textarea className="createperview__review-input" placeholder="#amazing #wow #almostlikeapet">
+              </textarea>
+              <button className="createperview__review-submit">
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      )
+    }
+  }
+
   render() {
     return (
       <ButtonToolbar>
-        <button className="navbar__creatererview-btn" onClick={this.showModal}>
+        <button className="createperview__btn" onClick={this.showModal}>
           Create a Perview
         </button>
 
@@ -33,17 +100,24 @@ class CreatePerview extends React.Component {
           {...this.props}
           show={this.state.show}
           onHide={this.hideModal}
-          dialogClassName="CreatePerview__Modal"
+          dialogClassName="createperview__modal"
         >
-          <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-lg">Create a PerView</Modal.Title>
-          <div className="CreatePerview__search-msg">
-            Search a product to perview it
+          <Modal.Header className="createperview__modalhead" closeButton>
+
+          <div className="createperview__title">Create a PerView</div>
+          <div className="flexcolumn createperview__search-container">
+            <div className="createperview__search-msg">Search a product to perview it</div>
+            <div className="createperview__search-background">
+              <div className="createperview__search-box">
+                <SearchBar />
+              </div>
+            </div>
+          </div>
+
+          <div>
+            { this.showReviewBox() }
           </div>
           </Modal.Header>
-          <Modal.Body>
-            <SearchBar />
-          </Modal.Body>
         </Modal>
       </ButtonToolbar>
     );

@@ -17,10 +17,10 @@ import { LinkContainer } from 'react-router-bootstrap';
     return (
       <ButtonToolbar>
         <DropdownButton bsStyle="default" title={<img src="https://www.juicedb.com/img/user/temp-user-128.jpg" className="usernav__img"/>} noCaret pullRight id="dropdown-pull-right" className="usernav__dropdown">
-          <MenuItem active componentClass="span" eventKey="1"><Link to="/myperviews" activeClassName="active">My Perviews</Link></MenuItem>
-          <MenuItem active componentClass="span" eventKey="2"><Link to="/favorites" activeClassName="active">Favorite Perviews</Link></MenuItem>
-          <MenuItem eventKey="3" activeClassName="active">Settings</MenuItem>
-          <MenuItem eventKey="4" activeClassName="active">Sign Out</MenuItem>
+          <MenuItem active componentClass="span" eventKey="1"><Link to="/myperviews" className="active">My Perviews</Link></MenuItem>
+          <MenuItem active componentClass="span" eventKey="2"><Link to="/favorites" className="active">Favorite Perviews</Link></MenuItem>
+          <MenuItem eventKey="3" className="">Settings</MenuItem>
+          <MenuItem eventKey="4" className="">Sign Out</MenuItem>
         </DropdownButton>
       </ButtonToolbar>
     );
