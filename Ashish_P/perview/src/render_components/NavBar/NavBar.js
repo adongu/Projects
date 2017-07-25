@@ -1,23 +1,26 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import "../../styles/stylesheets/navbar.css";
 
-const NavBar = ({ pageTitle = "Perviews", canCreatePerviews = true }) => {
+const NavBar = ({ pageTitle = "Check the Perviews of your friends!", canCreatePerviews = true }) => {
 
   const renderCreateButton = () => {
     if (canCreatePerviews) {
       return (
-        <button className="nav-bar__create-btn">Create a Perview</button>
+        <button className="navbar__creatererview-btn">Create a Perview</button>
       )
     }
   }
 
   return (
-    <div className="flexrow nav-bar__container">
-      <div className="nav-bar__title">
-        {pageTitle}
-      </div>
-      { renderCreateButton() }
+    <div className="navbar__container">
+      <div className="flexrow navbar__box">
+        <div className="navbar__title">
+          {pageTitle}
+        </div>
+        { renderCreateButton() }
     </div>
+  </div>
   )
 }
 

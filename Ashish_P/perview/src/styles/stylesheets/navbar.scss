@@ -1,0 +1,21 @@
+.navbar__ {
+  &container {
+    width: 100%;
+  }
+
+  &box {
+    margin: auto;
+    justify-content: space-between;
+    width: 980px;
+  }
+
+  &title {
+    padding: 16px 0;
+    font-size: 22px;
+  }
+
+  &creatererview-btn {
+    padding: 16px 0;
+    font-size: 18px;
+  }
+}

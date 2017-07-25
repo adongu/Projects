@@ -34,17 +34,21 @@ const WidePerview = ({ perviews }) => {
               <div className="wideresults__review-tags">{perview.right.tags}</div>
               <div className="wideresults__review-text">{perview.right.perview}</div>
               <div className="flexrow wideresults__review-social-box">
-                <div className="wideresults__review-social-comments">
-                  <i className="fa fa-comments" aria-hidden="true"></i>
-                  {perview.right.comments} comments
+                <div className="flexrow wideresults__review-comments-box">
+                  <i className="fa fa-comments wideresults__review-comments-icon" aria-hidden="true"></i>
+                  <div className="wideresults__review-comments"> {perview.right.comments} comments</div>
                 </div>
                 <div className="flexrow wideresults__review-social">
-                  <div className="wideresults__review-social--save">
-                    <i className="fa fa-bookmark" aria-hidden="true"></i>
+                  <div className="wideresults__review-social-save">
+                    <i className="fa fa-bookmark wideresults__review-icon-save" aria-hidden="true"></i>
                     <div className="wideresults__review-save">Save</div>
                   </div>
-                  <div className="wideresults__review-social--share">
-                    <i className="fa fa-share" aria-hidden="true"></i>
+                  <div className="wideresults__review-social-like">
+                    <i className="fa fa-heart wideresults__review-icon-like" aria-hidden="true"></i>
+                    <div className="wideresults__review-like">Like</div>
+                  </div>
+                  <div className="wideresults__review-social-share">
+                    <i className="fa fa-share wideresults__review-icon-share" aria-hidden="true"></i>
                     <div className="wideresults__review-share">Share</div>
                   </div>
                 </div>
