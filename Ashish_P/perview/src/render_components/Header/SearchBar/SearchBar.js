@@ -1,15 +1,23 @@
+import "../../../styles/stylesheets/search.css";
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import "../../../styles/stylesheets/search.css";
+import Select from 'react-select';
 
 class SearchBar extends React.Component {
   constructor(props){
     super(props);
-    this.state = { keywords: "" };
+    this.state = {
+      keywords: "",
+      options: [
+        { value: 'one', label: 'One' },
+        { value: 'two', label: 'Two' }
+      ]
+     };
 
     this.renderResults = this.renderResults.bind(this);
     this.renderSuggestions = this.renderSuggestions.bind(this);
     this.updateKeywords = this.updateKeywords.bind(this);
+    this.logChange = this.logChange.bind(this);
   }
 
   renderResults({img, title, price, perviews}) {
@@ -21,6 +29,10 @@ class SearchBar extends React.Component {
         <div>`${perviews}`</div>
       </div>
     )
+  }
+
+  logChange(val) {
+    console.log("Selected: " + JSON.stringify(val));
   }
 
   renderSuggestions(searchResults = [{img: "img", title: "title", price: 149, perviews: 2}]) {
@@ -47,6 +59,7 @@ class SearchBar extends React.Component {
 
   render() {
     return (
+      <div>
       <div className="search__container">
         <div className="search__box">
           <form className="flexrow search__bar">
@@ -56,6 +69,12 @@ class SearchBar extends React.Component {
           </form>
         </div>
       </div>
+      <Select
+        name="form-field-name"
+        value="Search on Amazon"
+        options={this.state.options}
+      />
+    </div>
     )
   }
 }

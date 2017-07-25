@@ -35,7 +35,8 @@ class SignIn extends React.Component {
 
     // console.log(this.props);
     // const user = Object.assign({},)
-    this.redirectIfLoggedIn();
+    // this.redirectIfLoggedIn();
+    <Link to="/" />
   }
 
   render() {
@@ -50,10 +51,15 @@ class SignIn extends React.Component {
               Welcome to Perview
             </div>
             <div className="signin__bodymessage">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip exe ea commodo consequat.
+              Purchase your favorite products with the trust of your friends
             </div>
             <form className="signin__form">
-              <button onClick={this.handleSubmit} className="signin__form-facebook">SIGN IN WITH FACEBOOK</button>
+              <Link
+               className="btn signin__form-facebook"
+               role="button"
+               to="/">
+               SIGN IN WITH FACEBOOK
+             </Link>
             </form>
           </div>
           <div className="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
@@ -67,3 +73,8 @@ class SignIn extends React.Component {
 }
 
 export default withRouter(SignIn);
+
+
+
+
+// <button onClick={this.handleSubmit} className="signin__form-facebook">SIGN IN WITH FACEBOOK</button>

@@ -46,6 +46,9 @@
   }
 
   &bodywelcome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: auto;
     padding: 20px 0 15px 0;
     font-size: 25px;
@@ -60,7 +63,10 @@
   }
   /* auth button*/
   &form {
-    margin: auto;
+    // margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 60px 0 0 0;
   }
 
@@ -68,9 +74,9 @@
     // width: 50%;
     margin: auto;
     padding: 8px 23px;
-    border-radius: 5px;
+    border-radius: 18px;
     font-size: 14px;
-    background: gray;
+    background: #6E96C8;
     color: white;
     text-decoration: none;
     text-align: center;
