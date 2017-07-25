@@ -1,13 +1,14 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import "../../styles/stylesheets/navbar.css";
+import CreatePerview from "../CreatePerviews/Modal";
 
 const NavBar = ({ pageTitle = "Check the Perviews of your friends!", canCreatePerviews = true }) => {
 
   const renderCreateButton = () => {
     if (canCreatePerviews) {
       return (
-        <button className="navbar__creatererview-btn">Create a Perview</button>
+        <CreatePerview />
       )
     }
   }
@@ -18,7 +19,6 @@ const NavBar = ({ pageTitle = "Check the Perviews of your friends!", canCreatePe
         <div className="navbar__title">
           {pageTitle}
         </div>
-
         { renderCreateButton() }
     </div>
   </div>

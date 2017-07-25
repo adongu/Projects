@@ -40,4 +40,9 @@
   &btn-icon {
     color: gray;
   }
+
+  &input:focus,
+  &btn:focus {
+    outline: none;
+  }
 }
