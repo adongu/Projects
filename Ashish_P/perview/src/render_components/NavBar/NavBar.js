@@ -18,6 +18,7 @@ const NavBar = ({ pageTitle = "Check the Perviews of your friends!", canCreatePe
         <div className="navbar__title">
           {pageTitle}
         </div>
+
         { renderCreateButton() }
     </div>
   </div>

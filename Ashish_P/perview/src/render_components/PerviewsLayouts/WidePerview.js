@@ -1,16 +1,28 @@
 import "../../styles/stylesheets/WidePerviews.css"
+import product from "../../styles/assets/product.jpg"
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Button, ButtonToolbar } from 'react-bootstrap';
 
 const WidePerview = ({ perviews }) => {
 
+  const renderStars = (ratings) => {
+    let stars = [1, 2, 3, 4, 5];
+    return stars.map((ele)=>{
+      return (
+        <span key={ele} className={ele <= ratings ? 'active_star' : 'no_star'} >
+          <i className="fa fa-star" aria-hidden="true"></i>
+        </span>
+      )
+    })
+  }
+
   const renderPerviews = () => {
     return perviews.map((perview, i) => {
       return (
         <div key={`perviewindex__${i}`} className="flexrow wideresults__box">
           <div className="flexrow wideresults__perview-left">
-            <div className="wideresults__productimg"><img className="wideresults__productimg-photo" src={perview.left.img}/>
+            <div className="wideresults__productimg"><img className="wideresults__productimg-photo" src={product}/>
             </div>
             <div className="flexcolumn wideresults__perview-left-info">
               <div className="wideresults__product-title">{perview.left.title}</div>
@@ -30,7 +42,9 @@ const WidePerview = ({ perviews }) => {
                 <div className="wideresults__review-user-icon"><img className="wideresults__review-user-img" src={perview.right.icon}/></div>
                 <div className="wideresults__review-username">{perview.right.name}</div>
               </div>
-              <div className="wideresults__review-stars">{perview.right.rating}</div>
+              <div className="wideresults__review-stars">
+                {renderStars(perview.right.rating)}
+              </div>
               <div className="wideresults__review-tags">{perview.right.tags}</div>
               <div className="wideresults__review-text">{perview.right.perview}</div>
               <div className="flexrow wideresults__review-social-box">

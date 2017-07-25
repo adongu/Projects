@@ -14,8 +14,16 @@
     font-size: 22px;
   }
 
+  // &creatererview {
+  //   width: 100px;
+  // }
+  //
   &creatererview-btn {
-    padding: 16px 0;
+    width: 200px;
+    margin: 16px 0;
     font-size: 18px;
+    border-radius: 18px;
+    color: white;
+    background: #B8A98D;
   }
 }

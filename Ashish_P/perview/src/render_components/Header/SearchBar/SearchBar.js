@@ -49,7 +49,7 @@ class SearchBar extends React.Component {
     return (
       <div className="search__container">
         <div className="search__box">
-          <form className="search__bar">
+          <form className="flexrow search__bar">
             <input onInput={ this.updateKeywords } className="search__input" placeholder="Search on amazon"></input>
             <button className="search__btn">
               <i className="fa fa-search search__btn-icon" aria-hidden="true"></i></button>

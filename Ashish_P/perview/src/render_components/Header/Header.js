@@ -3,6 +3,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import SearchBar from './SearchBar/SearchBar'
 import UserNavContainer from '../../containers/UserNavContainer';
+import logo from "../../styles/assets/logo.jpg";
 
 const Header = ({currentUser = "Susan"}) => {
   return (
@@ -10,7 +11,7 @@ const Header = ({currentUser = "Susan"}) => {
       <div className="flexrow header__box">
         <div className="header__logo">
           <Link to="/">
-            <img className="header__logoimg" width="40px" src="https://s-media-cache-ak0.pinimg.com/originals/0d/a4/83/0da483f1a56d7c5ba8df57d156c4a371.jpg"/>
+            <img className="header__logoimg" width="40px" src={logo}/>
           </Link>
         </div>
         <div className="header__search">

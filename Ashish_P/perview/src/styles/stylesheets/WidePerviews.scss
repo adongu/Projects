@@ -1,6 +1,6 @@
-$font-size: 12px;
-$line-height: 1.4;
-$lines-to-show: 3;
+$font-size: 15px;
+$line-height: 1.2;
+$lines-to-show: 5;
 
 .wideresults__ {
   &container {
@@ -16,6 +16,8 @@ $lines-to-show: 3;
     box-shadow: 1px 1px 1px #888;
     margin-bottom: 10px;
     margin-bottom: 20px;
+    border: 1px #D6D6D6 solid;
+    box-shadow: 0px 2px 2px 0px #EAEAEA;
     // padding: 10px 0 30px 0;
   }
   /* product info - left perview*/
@@ -34,10 +36,10 @@ $lines-to-show: 3;
   }
 
   &productimg-photo {
-    width: 100%;
-    height: 80%;
+    width: 210px;
+    height: 210px;
     border-radius: 2px;
-    box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.2);
+    border: 1px #D6D6D6 solid;
   }
   // left perview - right side
   &perview-left-info {
@@ -72,7 +74,9 @@ $lines-to-show: 3;
   &product-price {
     align-self: flex-start;
     white-space: normal;
-    padding-left: 15px;
+    font-weight: bold;
+    font-size: 18px;
+    // padding-left: 15px;
     // width: 50%;
   }
 
@@ -82,11 +86,13 @@ $lines-to-show: 3;
   }
 
   &product-buybtn {
+    width: 150px;
     font-size: 10px;
     font-family: arial;
     margin-top: 10px;
     color: white;
-    background: gray;
+    background: #919ECB;
+    border-radius: 18px;
   }
 }
 
@@ -105,7 +111,7 @@ $lines-to-show: 3;
 
   &review-time {
     align-self: flex-end;
-    color: gray;
+    color: #3A3A3A;
     font-size: 12px;
     padding-bottom: 10px;
   }
@@ -129,7 +135,7 @@ $lines-to-show: 3;
   }
 
   &review-username {
-    color: black;
+    color: #3E3E3E;
     font-weight: bold;
     // width: 80%;
   }
@@ -141,7 +147,7 @@ $lines-to-show: 3;
 
   &review-tags {
     margin-bottom: 10px;
-    color: black;
+    color: #3E3E3E;
   }
 
   &review-text {
@@ -149,15 +155,15 @@ $lines-to-show: 3;
     padding-bottom: 10px;
     // height: 140px;
     // line-height: 140px;
-    color: gray;
-    // font-size: 12px;
+    color: #3F3F3F;
     display: block; /* Fallback for non-webkit */
     display: -webkit-box;
     min-width: 352px;
-    height: 50px;
-    // height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
+    // height: 50px;
+    height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
     margin: 0 auto;
     font-size: $font-size;
+    font-weight: 300;
     line-height: $line-height;
     -webkit-line-clamp: $lines-to-show;
     -webkit-box-orient: vertical;
@@ -175,7 +181,7 @@ $lines-to-show: 3;
   }
 
   &review-comments-icon{
-    color: #919ECB;
+    color: #6E96C8;
     padding-right: 7px;
   }
 
@@ -208,7 +214,7 @@ $lines-to-show: 3;
     &-save,
     &-like,
     &-share {
-      color: #919ECB;
+      color: #6E96C8;
     }
   }
 
