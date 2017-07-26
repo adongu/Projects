@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import SignInContainer from './SignInContainer';
 import HeaderContainer from './HeaderContainer';
-import NavBar from '../render_components/NavBar/NavBar';
+import NavBarContainer from './NavBarContainer';
 
 const App = (props) => {
   let toRender = null;
@@ -11,7 +11,7 @@ const App = (props) => {
     toRender = (
       <div>
         <HeaderContainer />
-        <NavBar />
+        <NavBarContainer />
       </div>
     );
   } else {

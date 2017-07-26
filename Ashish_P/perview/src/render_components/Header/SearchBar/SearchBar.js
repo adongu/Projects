@@ -146,5 +146,5 @@ class SearchBar extends React.Component {
     )
   }
 }
-
+// https://codepen.io/moroshko/pen/PZWbzK for
 export default withRouter(SearchBar);

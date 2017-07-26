@@ -3,26 +3,51 @@ import { withRouter } from 'react-router-dom';
 import "../../styles/stylesheets/navbar.css";
 import CreatePerview from "../CreatePerviews/Modal";
 
-const NavBar = ({ pageTitle = "Check the Perviews of your friends!", canCreatePerviews = true }) => {
+class NavBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      pageTitle: "Check the Perviews of your friends!",
+      canCreatePerviews: true
+    }
 
-  const renderCreateButton = () => {
-    if (canCreatePerviews) {
+    this.renderCreateButton = this.renderCreateButton.bind(this);
+  }
+
+
+  componentDidMount() {
+    console.log("NavBar", this.props)
+  }
+
+  shouldComponentUpdate () {
+
+  }
+
+  renderNavOption () {
+    // console.log(this.props);
+  }
+
+  renderCreateButton () {
+    if (this.state.canCreatePerviews) {
       return (
         <CreatePerview />
       )
     }
   }
 
-  return (
-    <div className="navbar__container">
-      <div className="flexrow navbar__box">
-        <div className="navbar__title">
-          {pageTitle}
+  render () {
+    return (
+      <div className="navbar__container">
+        <div className="flexrow navbar__box">
+          <div className="navbar__title">
+            {this.state.pageTitle}
+          </div>
+          { this.renderCreateButton() }
         </div>
-        { renderCreateButton() }
-    </div>
-  </div>
-  )
+      </div>
+
+    )
+  }
 }
 
 export default withRouter(NavBar);
