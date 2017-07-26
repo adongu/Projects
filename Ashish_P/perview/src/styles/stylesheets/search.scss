@@ -46,3 +46,23 @@
     outline: none;
   }
 }
+
+.search__{
+  &autosuggest {
+    // border-radius: 18px;
+  }
+
+  &options-one {
+    // margin-top: 20px;
+  }
+}
+
+.Select-{
+  &control {
+    border-radius: 18px;
+  }
+
+  &multi-value-wrapper {
+    // margin-top: 10px;
+  }
+}

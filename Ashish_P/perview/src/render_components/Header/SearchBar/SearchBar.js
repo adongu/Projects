@@ -8,10 +8,7 @@ class SearchBar extends React.Component {
     super(props);
     this.state = {
       keywords: "",
-      options: [
-        { value: 'one', label: 'One' },
-        { value: 'two', label: 'Two' }
-      ]
+      value: ""
      };
 
     this.renderResults = this.renderResults.bind(this);
@@ -57,7 +54,23 @@ class SearchBar extends React.Component {
     )
   }
 
+  logChange(val) {
+    console.log("Selected: " + val.value);
+    this.setState({value: val.value});
+  }
+
+  arrowRenderer () {
+  	return (
+  		<i className="fa fa-search search__btn-icon" aria-hidden="true"></i>
+  	);
+  }
+
   render() {
+    let options = [
+      { value: 'one', label: 'One', className: 'search__options-one'},
+      { value: 'two', label: 'Two',  className: 'search__options-two'}
+    ]
+
     return (
       <div>
       <div className="search__container">
@@ -70,9 +83,13 @@ class SearchBar extends React.Component {
         </div>
       </div>
       <Select
+        className="search__autosuggest"
         name="form-field-name"
-        value="Search on Amazon"
-        options={this.state.options}
+        placeholder="Search on Amazon"
+        arrowRenderer={ this.arrowRenderer}
+        value={this.state.value}
+        menuBuffer={4}
+        options={options}
       />
     </div>
     )
