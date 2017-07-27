@@ -16,7 +16,6 @@ class NavBar extends React.Component {
 
 
   componentDidMount() {
-    console.log("NavBar", this.props)
   }
 
   shouldComponentUpdate () {
@@ -24,7 +23,6 @@ class NavBar extends React.Component {
   }
 
   renderNavOption () {
-    // console.log(this.props);
   }
 
   renderCreateButton () {

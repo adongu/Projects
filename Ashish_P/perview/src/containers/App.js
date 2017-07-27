@@ -6,7 +6,6 @@ import NavBarContainer from './NavBarContainer';
 
 const App = (props) => {
   let toRender = null;
-  console.log(props);
   if(props.location.pathname !== '/signin'){
     toRender = (
       <div>

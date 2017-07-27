@@ -3,7 +3,7 @@ import {login, logout, signup, clearErrors } from '../actions/session_actions';
 import SignIn from '../render_components/SignIn/SignIn';
 
 const mapStateToProps = (props) => {
-  console.log(props);
+  console.log('Signin Container', props);
   return {
     loggedIn: Boolean(props.session.currentUser),
     errors: props.session.errors

@@ -6,7 +6,6 @@ import WidePerview from "../PerviewsLayouts/WidePerview";
 class HomePage extends React.Component {
   constructor (props) {
     super(props);
-    console.log("HomePage", props);
     this.getPerviews = this.getPerviews.bind(this);
   }
 

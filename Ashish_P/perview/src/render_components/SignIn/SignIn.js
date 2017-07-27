@@ -17,26 +17,29 @@ class SignIn extends React.Component {
 
   }
 
-  componentDidUpdate(newProps) {
-    () => this.redirectIfLoggedIn();
-  }
+  // componentDidUpdate(newProps) {
+  //   () => this.redirectIfLoggedIn();
+  // }
 
   redirectIfLoggedIn() {
-    if (this.props.loggedIn) {
-      this.props.router.goBack();
-    } else {
-      this.props.login();
-    }
+    // if (this.props.loggedIn) {
+    //   console.log("this.props.loggedIn", this.props);
+    //   this.props.router.goBack();
+    // } else {
+      // console.log("! this.props.loggedIn", this.props);
+      return this.props.login()
+
+    // }
   }
 
   handleSubmit(e) {
     e.preventDefault();
     // this.props.login();
 
-    // console.log(this.props);
+    console.log("handlesubmit", this.props);
     // const user = Object.assign({},)
-    // this.redirectIfLoggedIn();
-    <Link to="/" />
+    this.redirectIfLoggedIn();
+    // <Link to="/" />
   }
 
   render() {
@@ -53,13 +56,8 @@ class SignIn extends React.Component {
             <div className="signin__bodymessage">
               Purchase your favorite products with the trust of your friends
             </div>
-            <form className="signin__form">
-              <Link
-               className="btn signin__form-facebook"
-               role="button"
-               to="/">
-               SIGN IN WITH FACEBOOK
-             </Link>
+            <form className="signin__form" onSubmit={this.handleSubmit}>
+             <button className="signin__form-facebook">SIGN IN WITH FACEBOOK</button>
             </form>
           </div>
           <div className="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
@@ -71,7 +69,13 @@ class SignIn extends React.Component {
     )
   }
 }
-
+//
+// <Link
+//  className="btn signin__form-facebook"
+//  role="button"
+//  to="/">
+//  SIGN IN WITH FACEBOOK
+// </Link>
 export default withRouter(SignIn);
 
 

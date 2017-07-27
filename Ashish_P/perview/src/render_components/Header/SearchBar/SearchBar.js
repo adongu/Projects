@@ -65,7 +65,7 @@ class SearchBar extends React.Component {
   }
 
   logChange(val) {
-    console.log("Selected: " + JSON.stringify(val));
+    // console.log("Selected: " + JSON.stringify(val));
   }
 
   // Use your imagination to render suggestions.
@@ -102,7 +102,6 @@ class SearchBar extends React.Component {
     this.setState({
       keywords: e.target.value
     });
-    console.log(this.state.keywords);
     return (
       <div className="search__suggestions">
         { this.renderSuggestions }
@@ -111,7 +110,6 @@ class SearchBar extends React.Component {
   }
 
   logChange(val) {
-    console.log("Selected: " + val.value);
     this.setState({value: val.value});
   }
 

@@ -8,7 +8,10 @@ import axios from 'axios';
 
 const auth_url = `/auth/facebook`;
 export const login = () => {
-  return axios.post(`${auth_url}`)
+  return axios.get(`${auth_url}`)
+  // .then((response) => {
+  //   console.log(response);
+  // })
 }
     // data: {
     //   type: "hidden",
