@@ -6,12 +6,10 @@ import axios from 'axios';
 //   return axios.get(`${auth_url}`);
 
 
-const auth_url = `/auth/facebook`;
-export const login = () => {
-  return axios.get(`${auth_url}`)
-  // .then((response) => {
-  //   console.log(response);
-  // })
+const auth_url = `/connect/facebok`;
+export const login = (data) => {
+  console.log("hit session util", data);
+  return axios.post(`${auth_url}`, { data })
 }
     // data: {
     //   type: "hidden",

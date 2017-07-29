@@ -9,3 +9,5 @@ node_modules/
 bundle.js
 bundler.js.map
 npm-debug.log
+
+/perview_backend

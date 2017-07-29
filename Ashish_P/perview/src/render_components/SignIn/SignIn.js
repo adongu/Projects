@@ -26,19 +26,19 @@ class SignIn extends React.Component {
     //   console.log("this.props.loggedIn", this.props);
     //   this.props.router.goBack();
     // } else {
-      // console.log("! this.props.loggedIn", this.props);
-      return this.props.login()
+      console.log("this.props.loggedIn", this.props);
+      this.props.login()
 
     // }
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    // this.props.login();
+    this.props.login(e.target.value);
 
-    console.log("handlesubmit", this.props);
+    // console.log("handlesubmit", this.props);
     // const user = Object.assign({},)
-    this.redirectIfLoggedIn();
+    // this.redirectIfLoggedIn();
     // <Link to="/" />
   }
 
@@ -57,7 +57,9 @@ class SignIn extends React.Component {
               Purchase your favorite products with the trust of your friends
             </div>
             <form className="signin__form" onSubmit={this.handleSubmit}>
-             <button className="signin__form-facebook">SIGN IN WITH FACEBOOK</button>
+              <input type="hidden" name="scope" value="user_friends" />
+              <a href="http://localhost:8080/connect/facebook">Connect to facebook</a>
+              <button className="signin__form-facebook">SIGN IN WITH FACEBOOK</button>
             </form>
           </div>
           <div className="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
