@@ -64,7 +64,7 @@ define('NONCE_SALT',       'put your unique phrase here');
  * a unique prefix. Only numbers, letters, and underscores please!
  */
 $table_prefix  = 'wp_';
-
+define('WP_MEMORY_LIMIT', '64MB');
 /**
  * For developers: WordPress debugging mode.
  *
