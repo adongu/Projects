@@ -34,7 +34,7 @@ class SignIn extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.login(e.target.value);
+    this.props.login();
 
     // console.log("handlesubmit", this.props);
     // const user = Object.assign({},)
