@@ -10,4 +10,4 @@ bundle.js
 bundler.js.map
 npm-debug.log
 
-/perview_backend
+**/perview_backend
