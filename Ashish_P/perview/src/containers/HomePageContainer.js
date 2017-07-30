@@ -3,7 +3,7 @@ import HomePage from "../render_components/Homepage/HomePage";
 
 const mapStateToProps = ({ session }, ownProps) => {
   return {
-    // currentUser: session.currentUser
+    currentUser: session.currentUser
   }
 };
 

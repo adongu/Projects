@@ -22,11 +22,9 @@ export const clearErrors = () => ({
 export const login = user => dispatch => {
   return APIUtil.login(user)
     .then(response => {
-      console.log('login response', response);
       return dispatch(receiveCurrentUser(response))
       },
       err => {
-        console.log("login error", err.responseJSON);
         return dispatch(receiveErrors(err.responseJSON))
       }
     )
