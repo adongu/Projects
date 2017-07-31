@@ -14,11 +14,10 @@ class SignIn extends React.Component {
   }
 
   ComponentDidMount () {
-
   }
 
   componentDidUpdate(newProps) {
-    if (newProps.session.currentUser) {
+    if (newProps.session) {
       this.redirectIfLoggedIn();
     }
   }
@@ -38,7 +37,7 @@ class SignIn extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // this.props.login();
+    this.props.login();
 
     // console.log("handlesubmit", this.props);
     // const user = Object.assign({},)
@@ -47,6 +46,8 @@ class SignIn extends React.Component {
   }
 
   render() {
+    console.log(this.props);
+
     const auth_url = "http://localhost:8080/connect/facebook"
     return (
       <div className="signin__container">

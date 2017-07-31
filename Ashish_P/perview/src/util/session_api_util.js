@@ -33,11 +33,11 @@ export const login = () => {
 
   return axios.post(`${auth_url}`, { "scope": "user_friends" })
   .then((response) => {
-    if (response.redirected) {
-      console.log(response);
-      window.location = response.redirect;
-    }
     console.log(response);
+    return response.data;
+    if (response.redirected) {
+      // window.location = response.redirect;
+    }
   })
   .catch( (error) => {
     console.log("hit error", error);
