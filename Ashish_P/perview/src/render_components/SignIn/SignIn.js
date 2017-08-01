@@ -6,17 +6,22 @@ class SignIn extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state =  {
-
+    this.state = {
+      name: ""
     }
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.redirectIfLoggedIn = this.redirectIfLoggedIn.bind(this);
   }
 
   ComponentDidMount () {
+    fetch('/connect/facebook', {credentials: 'same-origin'})
+            .then(res => res.json())
+            .then(session => this.setState({name: session.name}));
   }
 
   componentDidUpdate(newProps) {
+    console.log(newProps);
     if (newProps.session) {
       this.redirectIfLoggedIn();
     }
@@ -48,7 +53,7 @@ class SignIn extends React.Component {
   render() {
     console.log(this.props);
 
-    const auth_url = "http://localhost:8080/connect/facebook"
+    const auth_url = "/connect/facebook";
     return (
       <div className="signin__container">
         <div className="column signin__box">
@@ -62,7 +67,7 @@ class SignIn extends React.Component {
             <div className="signin__bodymessage">
               Purchase your favorite products with the trust of your friends
             </div>
-            <form className="signin__form" action={auth_url} method="post">
+            <form className="signin__form" action={auth_url} method="get">
               <input type="hidden" name="scope" value="user_friends" />
               <button type="submit" className="signin__form-facebook">SIGN IN WITH FACEBOOK</button>
             </form>
@@ -73,14 +78,14 @@ class SignIn extends React.Component {
           Creating an account means you're OK with Perview's <Link className="signin__terms-urls" to="">Terms of Service</Link> and <Link className="signin__terms-urls" to="">Privacy Policy</Link>
         </div>
       </div>
-    )
+    );
   }
 }
 
 export default withRouter(SignIn);
 
 
-// <form className="signin__form" onSubmit={this.handleSubmit}>
+// <form className="signin__form" action={auth_url} method="post">
 
 
 // <button onClick={this.handleSubmit} className="signin__form-facebook">SIGN IN WITH FACEBOOK</button>
