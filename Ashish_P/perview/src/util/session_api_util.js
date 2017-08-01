@@ -31,8 +31,8 @@ export const login = () => {
 // };
 
 
-  return axios.post(`${auth_url}`, { "scope": "user_friends" })
-  .then((response) => {
+  return axios.get(`${auth_url}`)
+  .Promose.resolve((response) => {
     console.log(response);
     return response.data;
     if (response.redirected) {

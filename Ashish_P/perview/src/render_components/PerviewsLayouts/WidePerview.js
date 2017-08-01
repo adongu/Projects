@@ -1,4 +1,4 @@
-import "../../styles/stylesheets/WidePerviews.css"
+import "../../styles/stylesheets/wideperviews.css"
 import product from "../../styles/assets/product.jpg"
 import React from 'react';
 import { withRouter } from 'react-router-dom';
