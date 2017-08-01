@@ -1,4 +1,4 @@
-import "../../styles/stylesheets/CreatePerviewModal.css";
+import "../../styles/stylesheets/createperviewmodal.css";
 import product from "../../styles/assets/product.jpg";
 import React from 'react';
 import { ButtonToolbar, Modal, Button} from 'react-bootstrap';
