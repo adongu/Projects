@@ -33,6 +33,10 @@ export const login = () => {
   })
 };
 
+export const fetchUser = () => {
+  console.log();
+}
+
 //   return axios.request(`${auth_url}`)
 //   .then((response) => {
 //     console.log(response);

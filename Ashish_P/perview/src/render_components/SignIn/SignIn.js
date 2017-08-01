@@ -15,19 +15,22 @@ class SignIn extends React.Component {
   }
 
   ComponentDidMount () {
-    fetch('/connect/facebook', {credentials: 'same-origin'})
-            .then(res => res.json())
-            .then(session => this.setState({name: session.name}));
+    console.log(this.props);
+    // fetch('/connect/facebook', {credentials: 'same-origin'})
+    //         .then(res => {
+    //           console.log(res);
+    //         })
+            // .then(session => this.setState({name: session.name}));
   }
 
   componentDidUpdate(newProps) {
-    console.log(newProps);
     if (newProps.session) {
-      this.redirectIfLoggedIn();
+      console.log(newProps.session);
+      // this.redirectIfLoggedIn(newProps.session);
     }
   }
 
-  redirectIfLoggedIn() {
+  redirectIfLoggedIn(session) {
     // if (this.props.loggedIn) {
     //   console.log("this.props.loggedIn", this.props);
     //   this.props.router.goBack();
@@ -35,14 +38,17 @@ class SignIn extends React.Component {
       // console.log("this.props.loggedIn", this.props);
       // this.props.login()
     return (
-      <Redirect to={"/"}/>
+      <Redirect to={"/"} props={session}/>
     )
     // }
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.login();
+    this.props.login()
+    // .then(() => {
+    //   this.props.getUser()
+    // })
 
     // console.log("handlesubmit", this.props);
     // const user = Object.assign({},)
@@ -67,8 +73,8 @@ class SignIn extends React.Component {
             <div className="signin__bodymessage">
               Purchase your favorite products with the trust of your friends
             </div>
-            <form className="signin__form" action={auth_url} method="get">
-              <input type="hidden" name="scope" value="user_friends" />
+            <form className="signin__form" action={auth_url} method="post">
+              <input type="hidden" className="scope" value="user_friends" />
               <button type="submit" className="signin__form-facebook">SIGN IN WITH FACEBOOK</button>
             </form>
           </div>

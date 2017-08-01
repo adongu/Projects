@@ -6,7 +6,15 @@ import WidePerview from "../PerviewsLayouts/WidePerview";
 class HomePage extends React.Component {
   constructor (props) {
     super(props);
+
     this.getPerviews = this.getPerviews.bind(this);
+  }
+
+  componentDidMount () {
+    // fetch('/connect/facebook', {credentials: 'same-origin'})
+    //         .then(res => {
+    //           console.log(res);
+    //         })
   }
 
   getPerviews () {
@@ -35,7 +43,8 @@ class HomePage extends React.Component {
   }
 
   render () {
-    console.log(this.props.currentUser);
+    console.log('render', this.props);
+
     return (
       <div className="homepage__perviews">
         <WidePerview
