@@ -1,4 +1,4 @@
-import "../../styles/stylesheets/WidePerviews.css"
+import "../../styles/stylesheets/narrowperview.css"
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Button, ButtonToolbar } from 'react-bootstrap';

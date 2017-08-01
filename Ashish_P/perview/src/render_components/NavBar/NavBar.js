@@ -7,19 +7,31 @@ class NavBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageTitle: "Check the Perviews of your friends!",
+      pageTitle: "",
       canCreatePerviews: true
     }
 
     this.renderCreateButton = this.renderCreateButton.bind(this);
+    this.updatePageTitle = this.updatePageTitle.bind(this);
   }
 
 
   componentDidMount() {
+    this.updatePageTitle(this.props)
   }
 
-  shouldComponentUpdate () {
+  shouldComponentUpdate (nextProps, nextState) {
+    this.updatePageTitle(nextProps);
+  }
 
+  updatePageTitle(props) {
+    if (props.location === '/myperviews') {
+      this.setState({pageTitle: "My Perviews", canCreatePerviews: false})
+    } else if(props.location === '/favorites') {
+      this.setState({pageTitle: "Saved Perviews", canCreatePerviews: false})
+    } else {
+      this.setState({pageTitle: "Check the Perviews of your friends!"})
+    }
   }
 
   renderNavOption () {
@@ -34,6 +46,7 @@ class NavBar extends React.Component {
   }
 
   render () {
+    console.log(this.state.pageTitle);
     return (
       <div className="navbar__container">
         <div className="flexrow navbar__box">
