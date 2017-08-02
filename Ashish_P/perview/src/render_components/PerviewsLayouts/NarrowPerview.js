@@ -10,21 +10,21 @@ const NarrowPerview = ({ perviews }) => {
       return (
         <div key={`perviewindex__${i}`} className="flexcolumn narrowperviews__box">
           <div className="flexcolumn narrowperviews__productbox">
-            <div className="narrowperviews__time">{perview.left.time}</div>
-            <div className="narrowperviews__img"><img className="narrowperviews__productimg-photo" src={perview.left.img}/></div>
-            <div className="narrowperviews__name">{perview.left.title}</div>
-            <div className="narrowperviews__price">${perview.left.price}</div>
-            <div className="flexrow">
+            <div className="narrowperviews__time">{perview.top.time}</div>
+            <div className="narrowperviews__img"><img className="narrowperviews__productimg-photo" src={perview.top.img}/></div>
+            <div className="narrowperviews__name">{perview.top.title}</div>
+            <div className="narrowperviews__price">${perview.top.price}</div>
+            <div className="flexrow narrowperviews__buybox">
               <ButtonToolbar>
-                 <Button className="narrowperviews__product-buybtn" href="http://google.com">BUY AT AMAZON</Button>
+                 <Button className="narrowperviews__buy-btn" href="http://google.com">BUY AT AMAZON</Button>
               </ButtonToolbar>
-              <div className="narrowperviews__product-numperviews">{perview.left.perviews} perviews</div>
+              <div className="narrowperviews__numperviews">{perview.top.perviews} perviews</div>
             </div>
           </div>
 
           <div className="flexcolumn narrowperviews__review-box">
             <div className="flexrow narrowperviews__review-nav">
-              <div className="narrowperviews__review-stars">{perview.right.rating}</div>
+              <div className="narrowperviews__review-stars">{perview.bottom.rating}</div>
               <div className="flexrow narrowperviews__editbox">
                 <div className="narrowperviews__review-edit">
                   <i className="fa fa-pencil" aria-hidden="true"></i>
@@ -36,8 +36,8 @@ const NarrowPerview = ({ perviews }) => {
                 </div>
               </div>
             </div>
-            <div className="narrowperviews__review-tags">{perview.right.tags}</div>
-            <div className="narrowperviews__review-text">{perview.right.perview}</div>
+            <div className="narrowperviews__review-tags">{perview.bottom.tags}</div>
+            <div className="narrowperviews__review-text">{perview.bottom.perview}</div>
           </div>
         </div>
       )

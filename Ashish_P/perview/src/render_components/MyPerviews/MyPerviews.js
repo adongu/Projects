@@ -15,20 +15,17 @@ class MyPerviews extends React.Component {
     let perviews = [];
     for (let i = 0; i < 6; i++) {
       let product = {
-        left: {
+        top: {
+          time: "Tuesday at 3:00 pm",
           img: 'http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png',
           title: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
           price: 145,
           perviews: 8
         },
-        right: {
-          icon: 'https://www.juicedb.com/img/user/temp-user-128.jpg',
-          name: 'Sam White',
-          time: "Tuesday at 3:00 pm",
+        bottom: {
           rating: 3,
           tags: '#amazing #wow @almostlikeapet',
           perview: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-          comments: 9
         }
       };
       perviews.push(product);
