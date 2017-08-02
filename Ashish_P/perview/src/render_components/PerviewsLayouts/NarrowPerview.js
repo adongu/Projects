@@ -5,6 +5,17 @@ import { Button, ButtonToolbar } from 'react-bootstrap';
 
 const NarrowPerview = ({ perviews }) => {
 
+  const renderStars = (ratings) => {
+    let stars = [1, 2, 3, 4, 5];
+    return stars.map((ele)=>{
+      return (
+        <span key={ele} className={ele <= ratings ? 'active_star' : 'no_star'} >
+          <i className="fa fa-star" aria-hidden="true"></i>
+        </span>
+      )
+    })
+  }
+
   const renderPerviews = () => {
     return perviews.map((perview, i) => {
       return (
@@ -24,7 +35,7 @@ const NarrowPerview = ({ perviews }) => {
 
           <div className="flexcolumn narrowperviews__review-box">
             <div className="flexrow narrowperviews__review-nav">
-              <div className="narrowperviews__review-stars">{perview.bottom.rating}</div>
+              <div className="narrowperviews__review-stars">{renderStars(perview.bottom.rating)}</div>
               <div className="flexrow narrowperviews__editbox">
                 <div className="narrowperviews__review-edit">
                   <i className="fa fa-pencil" aria-hidden="true"></i>
