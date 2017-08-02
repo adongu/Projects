@@ -1,14 +1,19 @@
 .narrowperviews__{
   &container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     width: 980px;
-    min-width: 980px;
+    min-width: 326px;
     margin: auto;
   }
 
   &box {
-    width: 30%;
-    // height: 300px;
-    margin-left: auto;
+    -webkit-flex: 326px 1;
+    width: 326px;
+    height: 400px;
+    // margin-left: auto;
+    overflow:inherit;
     box-shadow: 1px 1px 1px #888;
     margin-bottom: 10px;
     margin-bottom: 20px;

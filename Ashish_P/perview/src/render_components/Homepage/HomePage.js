@@ -1,4 +1,4 @@
-import "../../styles/stylesheets/homeperview.css"
+import "../../styles/stylesheets/homeperview.css";
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import WidePerview from "../PerviewsLayouts/WidePerview";

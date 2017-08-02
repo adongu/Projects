@@ -1,3 +1,4 @@
+import "../../styles/stylesheets/myperview.css"
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 // import WidePerview from "../PerviewsLayouts/WidePerview";
@@ -12,7 +13,7 @@ class MyPerviews extends React.Component {
 
   getPerviews () {
     let perviews = [];
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 6; i++) {
       let product = {
         left: {
           img: 'http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png',
@@ -37,9 +38,11 @@ class MyPerviews extends React.Component {
 
   render () {
     return (
-      <NarrowPerview
-        perviews={this.getPerviews()}
-        />
+      <div className="myperviews__container">
+        <NarrowPerview
+          perviews={this.getPerviews()}
+          />
+      </div>
     )
   }
 }
