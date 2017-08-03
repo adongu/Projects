@@ -1,10 +1,18 @@
+$title-font-size: 15px;
+$title-line-height: 1.4;
+$title-lines-to-show: 5;
+
+$review-font-size: 13px;
+$review-line-height: 1.4;
+$review-lines-to-show: 6;
+
 .narrowperviews__{
   &container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     // align-items: space-around;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 980px;
     margin: auto;
     min-width: 320px;
@@ -31,39 +39,60 @@
 .narrowperviews__{
   &productbox {
     display: flex;
-    width: 90%;
+    width: 94%;
     // padding: 10px;
-    margin: auto 10px auto 10px;
+    padding: 0 3px;
   }
 
   &time {
     margin-left: auto;
+    color: #3F3F3F;
+    padding: 6px 0;
   }
 
   &img{
+    display: flex;
     align-items: center;
     width: 100%;
+    height: 166px;
+    border: 1px #D6D6D6 solid;
+    border-radius: 7px;
   }
 
   &productimg-photo {
     margin: auto;
-    width: 100%;
-    // padding: 10px;
+    width: 284px;
+    max-height: 97%;
+    border-radius: 7px;
   }
 
   &name {
-
+    width: 100%;
+    color: #3F3F3F;
+    display: block; /* Fallback for non-webkit */
+    display: -webkit-box;
+    // height: 50px;
+    height: $title-font-size*$title-line-height*$title-lines-to-show;
+    margin: 10px auto;
+    font-size: $title-font-size;
+    font-weight: 300;
+    line-height: $title-line-height;
+    /* Fallback for non-webkit */
+    -webkit-line-clamp: $title-lines-to-show;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   &price {
-
+    padding: 10px 0;
   }
 
   &buybox {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 15px;
+    padding-bottom: 15px;
   }
 
   &buy-btn {
@@ -84,16 +113,74 @@
 
 // perview tags and info
 .narrowperviews__{
-  &review-box {
-    // height: auto;
-    // display: flex;
+  &reviewbox {
+    height: 220px;
+    width: 94%;
     margin: auto 10px 15px 10px;
-    // margin-right: 10px;
-    // margin-bottom: 15px;
-    // margin-left: 10px;
-    width: 90%;
     padding: 10px;
     background: #F7F7F7;
     border-radius: 5px;
+    display: flex;
+    padding: 0 10px;
+
+  }
+
+  &reviewnav {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+  }
+
+  &stars {
+    text-indent: 4px;
+  }
+
+  &review-editbox {
+
+  }
+
+  &edit-btn {
+    width: 20px;
+    background: #F7F7F7;
+    margin-right: 10px;
+  }
+
+  &edit-icon {
+    color: #6E96C8;
+
+  }
+
+  &delete-btn {
+    // margin: 0 10px;
+    text-shadow: 0;
+    width: 15px;
+    background: #F7F7F7;
+  }
+
+  &delete-icon {
+    color: #6E96C8;
+  }
+
+  &review-tags {
+    padding-bottom: 15px;
+  }
+
+  &review-text {
+    width: 100%;
+    padding-bottom: 10px;
+    color: #3F3F3F;
+    display: block; /* Fallback for non-webkit */
+    display: -webkit-box;
+    // height: 50px;
+    height: $review-font-size*$review-line-height*$review-lines-to-show;
+    margin: 0 auto;
+    font-size: $review-font-size;
+    font-weight: 300;
+    line-height: $review-line-height;
+    /* Fallback for non-webkit */
+    -webkit-line-clamp: $review-lines-to-show;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
