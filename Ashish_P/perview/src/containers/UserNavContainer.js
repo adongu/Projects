@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
 import UserNav from '../render_components/Header/UserNav'
 
-const mapStateToProps = () => {
+const mapStateToProps = (props) => {
   return {
+    location: props.location
   }
 }
 

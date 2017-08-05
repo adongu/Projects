@@ -1,7 +1,7 @@
 import "../../styles/stylesheets/createperviewmodal.css";
 import product from "../../styles/assets/product.jpg";
 import React from 'react';
-import { ButtonToolbar, Modal, Button} from 'react-bootstrap';
+import { ButtonToolbar, Modal } from 'react-bootstrap';
 import SearchBar from "../Header/SearchBar/SearchBar";
 
 class CreatePerview extends React.Component {

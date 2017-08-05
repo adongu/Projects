@@ -22,7 +22,7 @@ const WidePerview = ({ perviews }) => {
       return (
         <div key={`perviewindex__${i}`} className="flexrow wideresults__box">
           <div className="flexrow wideresults__perview-left">
-            <div className="wideresults__productimg"><img className="wideresults__productimg-photo" src={product}/>
+            <div className="wideresults__productimg"><img className="wideresults__productimg-photo" src={product} alt="Product"/>
             </div>
             <div className="flexcolumn wideresults__perview-left-info">
               <div className="wideresults__product-title">{perview.left.title}</div>
@@ -39,7 +39,7 @@ const WidePerview = ({ perviews }) => {
             <div className="flexcolumn wideresults__perview-rightbox">
               <div className="wideresults__review-time">{perview.right.time}</div>
               <div className="flexrow wideresults__review-user">
-                <div className="wideresults__review-user-icon"><img className="wideresults__review-user-img" src={perview.right.icon}/></div>
+                <div className="wideresults__review-user-icon"><img className="wideresults__review-user-img" src={perview.right.icon} alt="User"/></div>
                 <div className="wideresults__review-username">{perview.right.name}</div>
               </div>
               <div className="wideresults__review-stars">

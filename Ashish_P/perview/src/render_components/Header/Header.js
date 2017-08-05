@@ -11,7 +11,7 @@ const Header = ({currentUser = "Susan"}) => {
       <div className="flexrow header__box">
         <div className="header__logo">
           <Link to="/">
-            <img className="header__logoimg" width="40px" src={logo}/>
+            <img className="header__logoimg" width="40px" src={logo} alt="Header logo"/>
           </Link>
         </div>
         <div className="header__search">

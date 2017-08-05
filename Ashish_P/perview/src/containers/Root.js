@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import App from './App';
 import MyPerviews from '../render_components/MyPerviews/MyPerviews';
 import FavoritePerviews from '../render_components/FavoritePerviews/FavoritePerviews';
@@ -24,14 +24,17 @@ const Root = ({ store }) => {
 
   return (
     <Provider store={ store }>
-      <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
-        <div className="root">
-          <Route component={App}/>
+       <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
+          <div className="root">
+          <App/>
           <Switch>
             <Route exact path="/" component={HomePageContainer}/>
-            <Route path="/signin" component={SignInContainer}/>
-            <Route path="/myperviews" component={MyPerviews}/>
+            <Route eact path="/signin" component={SignInContainer}/>
+            <Route eact path="/myperviews" component={MyPerviews}/>
             <Route path="/favorites" component={FavoritePerviews}/>
+            <Route render={() => (
+              <p>404 Page Not Found</p>
+            )}/>
           </Switch>
         </div>
       </BrowserRouter>

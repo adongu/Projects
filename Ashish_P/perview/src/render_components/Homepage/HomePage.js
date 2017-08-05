@@ -17,6 +17,10 @@ class HomePage extends React.Component {
     //         })
   }
 
+  shouldComponentUpdate (nextProps, nextState) {
+      console.log("homepage", nextProps);
+  }
+
   getPerviews () {
     let perviews = [];
     for (let i = 0; i < 3; i++) {

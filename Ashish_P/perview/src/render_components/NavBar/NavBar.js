@@ -8,7 +8,7 @@ class NavBar extends React.Component {
     super(props);
     this.state = {
       pageTitle: "",
-      canCreatePerviews: true
+      canCreatePerviews: false
     }
 
     this.renderCreateButton = this.renderCreateButton.bind(this);
@@ -20,17 +20,22 @@ class NavBar extends React.Component {
     this.updatePageTitle(this.props)
   }
 
-  shouldComponentUpdate (nextProps, nextState) {
+  componentWillReceiveProps (nextProps) {
+    console.log("new props", nextProps.locaiton.pathname);
     this.updatePageTitle(nextProps);
   }
 
   updatePageTitle(props) {
-    if (props.location === '/myperviews') {
-      this.setState({pageTitle: "My Perviews", canCreatePerviews: false})
-    } else if(props.location === '/favorites') {
-      this.setState({pageTitle: "Saved Perviews", canCreatePerviews: false})
-    } else {
-      this.setState({pageTitle: "Check the Perviews of your friends!"})
+    switch (props.location.pathname) {
+      case '/myperviews':
+        this.setState({pageTitle: "My Perviews"})
+        break;
+      case '/favorites':
+        this.setState({pageTitle: "Saved Perviews"})
+        break;
+      default:
+        this.setState({pageTitle: "Check the Perviews of your friends!", canCreatePerviews: true})
+        break;
     }
   }
 

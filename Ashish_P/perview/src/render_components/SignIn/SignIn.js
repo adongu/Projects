@@ -64,7 +64,7 @@ class SignIn extends React.Component {
       <div className="signin__container">
         <div className="column signin__box">
           <div className="signin__logo">
-            <img className="signin__logoimg" src="https://pmcdeadline2.files.wordpress.com/2016/07/logo-tv-logo.png"/>
+            <img className="signin__logoimg" src="https://pmcdeadline2.files.wordpress.com/2016/07/logo-tv-logo.png" alt="logo"/>
           </div>
           <div className="column signin__body">
             <div className="signin__bodywelcome">

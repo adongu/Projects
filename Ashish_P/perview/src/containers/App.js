@@ -1,6 +1,5 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import SignInContainer from './SignInContainer';
 import HeaderContainer from './HeaderContainer';
 import NavBarContainer from './NavBarContainer';
 
@@ -25,4 +24,4 @@ const App = (props) => {
 }
 
 
-export default App;
+export default withRouter(App);

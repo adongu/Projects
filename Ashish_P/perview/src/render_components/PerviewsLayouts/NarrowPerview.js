@@ -23,7 +23,7 @@ const NarrowPerview = ({ perviews }) => {
         <div key={`perviewindex__${i}`} className="flexcolumn narrowperviews__box">
           <div className="flexcolumn narrowperviews__productbox">
             <div className="narrowperviews__time">{perview.top.time}</div>
-            <div className="narrowperviews__img"><img className="narrowperviews__productimg-photo" src={product}/></div>
+            <div className="narrowperviews__img"><img className="narrowperviews__productimg-photo" src={product} alt="product"/></div>
             <div className="narrowperviews__name">{perview.top.title}</div>
             <div className="narrowperviews__price">${perview.top.price}</div>
             <div className="flexrow narrowperviews__buybox">

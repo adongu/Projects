@@ -14,12 +14,12 @@
     width: 100%;
   }
 }
-
 .dropdown-menu-right {
   margin-top: 20px;
   border-radius: 0;
   -webkit-box-shadow:0 3px 12px rgba(0, 0, 0, .175);
   box-shadow: 0 3px 12px rgba(0, 0, 0, .175);
+  background: #7AA1CD;
 
   &:after, &:before {
   	bottom: 100%;
@@ -32,9 +32,10 @@
   	pointer-events: none;
   }
 
+  /* CSS Triangle*/
   &:after {
   	border-color: rgba(170, 181, 181, 0);
-  	border-bottom-color: white;
+  	border-bottom-color: #7AA1CD;
     width: 0;
     height: 0;
     border-style: solid;

@@ -56,7 +56,7 @@ class SearchBar extends React.Component {
   renderResults({img, title, price, perviews}) {
     return (
       <div className="search__suggestions-item">
-        <div><img /></div>
+        <div><img alt="search product"/></div>
         <div>`${title}`</div>
         <div>`${price}`</div>
         <div>`${perviews}`</div>

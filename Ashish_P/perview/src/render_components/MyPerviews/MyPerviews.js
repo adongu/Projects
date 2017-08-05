@@ -11,6 +11,10 @@ class MyPerviews extends React.Component {
     this.getPerviews = this.getPerviews.bind(this);
   }
 
+  componentWillReceiveProps (nextProps, nextState) {
+      console.log("myperviews", nextProps);
+  }
+
   getPerviews () {
     let perviews = [];
     for (let i = 0; i < 6; i++) {
