@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import HomePage from "../render_components/Homepage/HomePage";
+import { fetchUser } from '../actions/session_actions';
 
 const mapStateToProps = ({ session }, ownProps) => {
   return {
@@ -9,7 +10,7 @@ const mapStateToProps = ({ session }, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    // logout: () => dispatch(logout())
+    fetchUser: () => dispatch(fetchUser())
   }
 }
 

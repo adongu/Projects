@@ -1,15 +1,16 @@
 import { connect } from 'react-redux';
 import Header from '../render_components/Header/Header'
+import { fetchUser } from '../actions/session_actions';
 
-const mapStateToProps = () => {
+const mapStateToProps = ({session}) => {
   return {
-
+    currentUser: session.currentUser
   }
 }
 
-const mapDispatchToProps = () => {
+const mapDispatchToProps = (dispatch) => {
   return {
-
+    fetchUser: () => dispatch(fetchUser())
   }
 }
 

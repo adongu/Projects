@@ -18,16 +18,27 @@ export const clearErrors = () => ({
   type: CLEAR_ERRORS
 });
 
+//
+// export const login = user => dispatch => {
+//   return APIUtil.login(user)
+//     .then(response => {
+//       return dispatch(receiveCurrentUser(response))
+//       },
+//       err => {
+//         return dispatch(receiveErrors(err.responseJSON))
+//       }
+//     )
+// }
 
-export const login = user => dispatch => {
-  return APIUtil.login(user)
-    .then(response => {
-      return dispatch(receiveCurrentUser(response))
-      },
-      err => {
-        return dispatch(receiveErrors(err.responseJSON))
-      }
-    )
+export const fetchUser = () => dispatch => {
+  return APIUtil.fetchUser()
+    .then( response => {
+      console.log(response.data);
+      return dispatch(receiveCurrentUser(response.data))
+    },
+    err => {
+      return dispatch(receiveErrors(err.responseJSON))
+    })
 }
 
 // export const logout = () => {
