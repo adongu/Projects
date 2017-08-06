@@ -21,7 +21,6 @@ class NavBar extends React.Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    console.log("new props", nextProps.locaiton.pathname);
     this.updatePageTitle(nextProps);
   }
 

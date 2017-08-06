@@ -44,7 +44,7 @@ class SearchBar extends React.Component {
       keywords: "",
       value: '',
       suggestions: []
-     };
+    };
 
     this.renderResults = this.renderResults.bind(this);
     // this.updateKeywords = this.updateKeywords.bind(this);
@@ -63,11 +63,6 @@ class SearchBar extends React.Component {
       </div>
     )
   }
-
-  logChange(val) {
-    // console.log("Selected: " + JSON.stringify(val));
-  }
-
   // Use your imagination to render suggestions.
   renderSuggestions(suggestion) {
     return (
@@ -131,7 +126,6 @@ class SearchBar extends React.Component {
           <Autosuggest
             id="header__suggest"
             suggestions={suggestions}
-            renderInputComponent
             onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
             onSuggestionsClearRequested={this.onSuggestionsClearRequested}
             getSuggestionValue={getSuggestionValue}

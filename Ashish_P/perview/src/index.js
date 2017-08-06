@@ -22,9 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
 if(module.hot) {
   module.hot.accept('./containers/Root', () => {
     const root = document.getElementById('root');
+    let store;
+    store = ConfigureStore();
     const NextRoot = require('./containers/Root').default
     ReactDOM.render(
-      <NextRoot />, root);
+      <NextRoot store={ store }/>, root);
   })
 }
 registerServiceWorker();

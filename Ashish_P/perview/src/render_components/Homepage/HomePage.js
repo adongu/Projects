@@ -12,14 +12,14 @@ class HomePage extends React.Component {
     this.getPerviews = this.getPerviews.bind(this);
   }
 
-  componentDidMount () {
-    let user = this.props.fetchUser();
-    console.log(user);
+  componentWillMount () {
+    this.props.fetchuser();
   }
 
-  shouldComponentUpdate (nextProps, nextState) {
-    let user = this.props.fetchUser();
-    console.log(user);
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.match.params.id !== this.props.match.params.id) {
+      this.props.fetchuser();
+    }
   }
 
   getPerviews () {
@@ -48,8 +48,6 @@ class HomePage extends React.Component {
   }
 
   render () {
-    console.log('render', this.props);
-
     return (
       <div className="homepage__perviews">
         <WidePerview

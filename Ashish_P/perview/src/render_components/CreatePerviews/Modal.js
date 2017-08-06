@@ -44,7 +44,7 @@ class CreatePerview extends React.Component {
         <div className="flexcolumn createperview__product-container">
           <div className="flexrow createperview__product">
             <div className="createperview__product-left">
-              <img className="createperview__product-img" src={product} />
+              <img className="createperview__product-img" src={product} alt="product"/>
             </div>
             <div className="createperview__product-right">
               <div className="flextcolumn createperview__product-info">

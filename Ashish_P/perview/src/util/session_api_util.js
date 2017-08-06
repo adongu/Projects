@@ -32,11 +32,12 @@ import axios from 'axios';
 // };
 
 export const fetchUser = () => {
-  return axios('perview/user')
-  .then(function (response) {
-    console.log(response);
+  console.log('hit util');
+  return axios('/perview/user')
+  .then((response) => {
+    return response.data;
   })
-  .catch(function (error) {
-    console.log(error);
-  });
+  .catch( (error) => {
+    return error;
+  })
 }

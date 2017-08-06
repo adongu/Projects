@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Header from '../render_components/Header/Header'
-import { fetchUser } from '../actions/session_actions';
+import { fetchuser } from '../actions/session_actions';
 
 const mapStateToProps = ({session}) => {
   return {
@@ -10,7 +10,7 @@ const mapStateToProps = ({session}) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchUser: () => dispatch(fetchUser())
+    fetchuser: () => dispatch(fetchuser())
   }
 }
 

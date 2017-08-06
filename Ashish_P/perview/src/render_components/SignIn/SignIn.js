@@ -14,16 +14,12 @@ class SignIn extends React.Component {
     this.redirectIfLoggedIn = this.redirectIfLoggedIn.bind(this);
   }
 
-  ComponentDidMount () {
-    console.log(this.props);
-    // fetch('/connect/facebook', {credentials: 'same-origin'})
-    //         .then(res => {
-    //           console.log(res);
-    //         })
-            // .then(session => this.setState({name: session.name}));
+  componentDidMount () {
   }
 
   componentDidUpdate(newProps) {
+    console.log('user', this.props.fetchUser());
+
     if (newProps.session) {
       console.log(newProps.session);
       // this.redirectIfLoggedIn(newProps.session);
@@ -59,7 +55,7 @@ class SignIn extends React.Component {
   render() {
     console.log(this.props);
 
-    const auth_url = "/connect/facebook";
+    const auth_url = "http://localhost:8080/connect/facebook";
     return (
       <div className="signin__container">
         <div className="column signin__box">
