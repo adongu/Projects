@@ -34,11 +34,11 @@ export const fetchuser = () => dispatch => {
   console.log('hit action');
   APIUtil.fetchUser()
     .then( response => {
-      console.log('hit response');
+      console.log('hit action response', response);
       return dispatch(receiveCurrentUser(response))
     },
     err => {
-      console.log('hit error');
+      console.log('hit action error');
       return dispatch(receiveErrors(err.responseJSON))
     })
 }

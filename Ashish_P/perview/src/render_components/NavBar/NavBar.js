@@ -39,6 +39,11 @@ class NavBar extends React.Component {
   }
 
   renderNavOption () {
+    if (this.props.location.pathname === "/") {
+      renderCreateButton();
+    } else {
+
+    }
   }
 
   renderCreateButton () {
@@ -48,6 +53,29 @@ class NavBar extends React.Component {
       )
     }
   }
+
+  renderFilterBar() {
+    <label className="navbar__filter">
+      Filter by
+      <select className="navbar__dropdown-filter" value={this.state.value} onChange={this.handleChange}>
+        <option selected=true value="all">All Catagories</option>
+        <option value="lime"></option>
+        <option value="coconut">Coconut</option>
+        <option value="mango">Mango</option>
+      </select>
+    </label>
+
+    <label className="navbar__sort">
+      Sort by
+      <select className="navbar__dropdown-sort" value={this.state.value} onChange={this.handleChange}>
+        <option value="grapefruit">Grapefruit</option>
+        <option value="lime">Lime</option>
+        <option value="coconut">Coconut</option>
+        <option value="mango">Mango</option>
+      </select>
+    </label>
+  }
+
 
   render () {
     console.log(this.state.pageTitle);
