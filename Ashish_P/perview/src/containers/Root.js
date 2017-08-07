@@ -7,6 +7,7 @@ import FavoritePerviews from '../render_components/FavoritePerviews/FavoritePerv
 import HomePageContainer from './HomePageContainer';
 import SignInContainer from './SignInContainer';
 // import RestrictedContainer from './RestrictedContainer';
+import Restricted from '../render_components/Restricted';
 
 const Root = ({ store }) => {
   // const Auth = {

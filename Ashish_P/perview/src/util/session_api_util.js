@@ -33,4 +33,10 @@ import axios from 'axios';
 
 export const fetchUser = () => {
   return axios('/perview/user')
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      return error;
+    });
 }

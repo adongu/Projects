@@ -2,9 +2,10 @@ import { connect } from 'react-redux';
 import HomePage from "../render_components/Homepage/HomePage";
 import { fetchuser } from '../actions/session_actions';
 
-const mapStateToProps = (props, ownProps) => {
+const mapStateToProps = ({ session }, ownProps) => {
   return {
-    currentUser: props.session.currentUser
+    currentUser: session.currentUser,
+    isFetching: session.isFetching
   }
 };
 

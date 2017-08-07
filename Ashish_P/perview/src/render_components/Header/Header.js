@@ -5,7 +5,7 @@ import SearchBar from './SearchBar/SearchBar'
 import UserNavContainer from '../../containers/UserNavContainer';
 import logo from "../../styles/assets/logo.jpg";
 
-const Header = ({currentUser = "Susan"}) => {
+const Header = ({currentUser}) => {
   return (
     <div className="header__container">
       <div className="flexrow header__box">
@@ -19,7 +19,7 @@ const Header = ({currentUser = "Susan"}) => {
         </div>
         <div className="flexrow header__usernav">
           <div className="header__greetings">
-            Hello, { currentUser }!
+            Hello, Susan!
           </div>
           <div className="header__usernavphoto">
             <UserNavContainer />

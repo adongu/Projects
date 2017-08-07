@@ -10,7 +10,6 @@ class SignIn extends React.Component {
       name: ""
     }
 
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.redirectIfLoggedIn = this.redirectIfLoggedIn.bind(this);
   }
 
@@ -25,29 +24,6 @@ class SignIn extends React.Component {
   }
 
   redirectIfLoggedIn(session) {
-    // if (this.props.loggedIn) {
-    //   console.log("this.props.loggedIn", this.props);
-    //   this.props.router.goBack();
-    // } else {
-      // console.log("this.props.loggedIn", this.props);
-      // this.props.login()
-    return (
-      <Redirect to={"/"} props={session}/>
-    )
-    // }
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    this.props.login()
-    // .then(() => {
-    //   this.props.getUser()
-    // })
-
-    // console.log("handlesubmit", this.props);
-    // const user = Object.assign({},)
-    // this.redirectIfLoggedIn();
-    // <Link to="/" />
   }
 
   render() {

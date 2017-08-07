@@ -1,7 +1,8 @@
 import { merge } from 'lodash';
-import { RECEIVE_CURRENT_USER, RECEIVE_ERRORS } from '../actions/session_actions';
+import { REQUEST_USER, RECEIVE_CURRENT_USER, RECEIVE_ERRORS } from '../actions/session_actions';
 
 const _nullUser = Object.freeze({
+  isFetching: false,
   currentUser: null,
   errors: []
 })
@@ -9,12 +10,22 @@ const _nullUser = Object.freeze({
 const sessionReducer = (oldState = _nullUser, action) => {
   Object.freeze(oldState);
   switch (action.type) {
+    case REQUEST_USER:
+      return Object.assign({}, oldState, {
+        isFetching: true
+      })
     case RECEIVE_CURRENT_USER:
       let currentUser = action.currentUser;
-      return merge({}, oldState, { currentUser: currentUser });
+      return Object.assign({}, oldState, {
+        isFetching: false,
+        currentUser: currentUser,
+        errors: []
+      });
     case RECEIVE_ERRORS:
       let errors = action.errors;
-      return Object.assign({}, oldState, { errors: errors })
+      return Object.assign({}, oldState, {
+        errors: errors
+      })
     default:
       return merge(oldState, { errors: []})
   }
