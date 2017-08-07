@@ -13,12 +13,17 @@ class HomePage extends React.Component {
   }
 
   componentWillMount () {
+    console.log("before", this.props);
     this.props.fetchuser();
+    console.log("after", this.props);
+  }
+
+  componentDidMount() {
+    console.log(this.props.session);
   }
 
   componentWillReceiveProps (nextProps) {
     if (nextProps.match.params.id !== this.props.match.params.id) {
-      this.props.fetchuser();
     }
   }
 
@@ -47,7 +52,7 @@ class HomePage extends React.Component {
     return perviews;
   }
 
-  render () {
+  render() {
     return (
       <div className="homepage__perviews">
         <WidePerview

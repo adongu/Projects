@@ -13,15 +13,17 @@ class NavBar extends React.Component {
 
     this.renderCreateButton = this.renderCreateButton.bind(this);
     this.updatePageTitle = this.updatePageTitle.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
 
   componentDidMount() {
-    this.updatePageTitle(this.props)
+    this.updatePageTitle(this.props);
+    console.log(this.props);
   }
 
   componentWillReceiveProps (nextProps) {
-    this.updatePageTitle(nextProps);
+    console.log(this.props.location.pathname === nextProps.location.pathname)
   }
 
   updatePageTitle(props) {
@@ -40,7 +42,7 @@ class NavBar extends React.Component {
 
   renderNavOption () {
     if (this.props.location.pathname === "/") {
-      renderCreateButton();
+      this.renderCreateButton();
     } else {
 
     }
@@ -54,31 +56,43 @@ class NavBar extends React.Component {
     }
   }
 
-  renderFilterBar() {
-    <label className="navbar__filter">
-      Filter by
-      <select className="navbar__dropdown-filter" value={this.state.value} onChange={this.handleChange}>
-        <option selected=true value="all">All Catagories</option>
-        <option value="lime"></option>
-        <option value="coconut">Coconut</option>
-        <option value="mango">Mango</option>
-      </select>
-    </label>
+  handleFilterChange() {
 
-    <label className="navbar__sort">
-      Sort by
-      <select className="navbar__dropdown-sort" value={this.state.value} onChange={this.handleChange}>
-        <option value="grapefruit">Grapefruit</option>
-        <option value="lime">Lime</option>
-        <option value="coconut">Coconut</option>
-        <option value="mango">Mango</option>
-      </select>
-    </label>
+  }
+
+  handleChange() {
+
+  }
+
+  renderFilterBar() {
+    return (
+      <div>
+        <label className="navbar__filter">
+          Filter by
+          <select className="navbar__dropdown-filter" value={this.state.value} onChange={this.handleChange}>
+            <option selected value="all">All Catagories</option>
+            <option value="lime"></option>
+            <option value="coconut">Coconut</option>
+            <option value="mango">Mango</option>
+          </select>
+        </label>
+
+        <label className="navbar__sort">
+          Sort by
+          <select className="navbar__dropdown-sort" value="Sort by" onChange={this.handleChange}>
+            <option value="grapefruit">Grapefruit</option>
+            <option value="lime">Lime</option>
+            <option value="coconut">Coconut</option>
+            <option value="mango">Mango</option>
+          </select>
+        </label>
+      </div>
+    )
   }
 
 
-  render () {
-    console.log(this.state.pageTitle);
+  render() {
+    console.log(this.state.pageTitle)
     return (
       <div className="navbar__container">
         <div className="flexrow navbar__box">

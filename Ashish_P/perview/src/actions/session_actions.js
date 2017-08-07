@@ -31,14 +31,11 @@ export const clearErrors = () => ({
 // }
 
 export const fetchuser = () => dispatch => {
-  console.log('hit action');
   APIUtil.fetchUser()
     .then( response => {
-      console.log('hit action response', response);
-      return dispatch(receiveCurrentUser(response))
+      return dispatch(receiveCurrentUser(response.data))
     },
     err => {
-      console.log('hit action error');
       return dispatch(receiveErrors(err.responseJSON))
     })
 }

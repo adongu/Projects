@@ -18,8 +18,6 @@ class SignIn extends React.Component {
   }
 
   componentDidUpdate(newProps) {
-    console.log('user', this.props.fetchUser());
-
     if (newProps.session) {
       console.log(newProps.session);
       // this.redirectIfLoggedIn(newProps.session);
