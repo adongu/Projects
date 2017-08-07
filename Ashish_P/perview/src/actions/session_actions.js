@@ -19,7 +19,7 @@ export const clearErrors = () => ({
   type: CLEAR_ERRORS
 });
 
-export const requestPosts = () => ({
+export const requestUser = () => ({
   type: REQUEST_USER
 })
 
@@ -36,20 +36,21 @@ export const requestPosts = () => ({
 // }
 
 export const fetchuser = () => dispatch => {
+  dispatch(requestUser());
   return APIUtil.fetchUser()
     .then( response => {
-      return dispatch(receiveCurrentUser(response))
+      return dispatch(receiveCurrentUser(response.data))
     },
     err => {
       return dispatch(receiveErrors(err.responseJSON))
     })
 }
 
-// export const logout = () => {
-//   return (dispatch) => {
-//     return APIUtil.logout()
-//     .then( () => {
-//       return dispatch(receiveCurrentUser(null));
-//     });
-//   };
-// };
+export const logout = () => {
+  return (dispatch) => {
+    return APIUtil.logOut()
+    .then( () => {
+      return dispatch(receiveCurrentUser(null));
+    });
+  };
+};

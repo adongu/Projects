@@ -7,24 +7,28 @@ class HomePage extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      firstName: ""
+      user: "",
+      isFetching: true
     }
     this.getPerviews = this.getPerviews.bind(this);
+    this.validateRedirect = this.validateRedirect.bind(this);
   }
 
   componentWillMount () {
-    console.log("before", this.props);
-    this.props.fetchuser();
-    console.log("after", this.props);
+    // this.validateRedirect();
   }
 
   componentDidMount() {
-    console.log(this.props.session);
   }
 
   componentWillReceiveProps (nextProps) {
-    if (nextProps.match.params.id !== this.props.match.params.id) {
-    }
+    // this.validateRedirect();
+  }
+
+  validateRedirect() {
+    this.props.fetchuser()
+      .then(() => { console.log("after fetchuser", this.props);})
+      .catch(e => this.props.history.replace({ pathname: '/signin' }));
   }
 
   getPerviews () {
@@ -52,11 +56,22 @@ class HomePage extends React.Component {
     return perviews;
   }
 
+  renderComponents() {
+    if (this.props.isFetching) {
+      return (
+        <div>spinner</div>
+      )
+    } else {
+      return (
+        <WidePerview perviews={this.getPerviews()}/>
+      )
+    }
+  }
+
   render() {
     return (
       <div className="homepage__perviews">
-        <WidePerview
-          perviews={this.getPerviews()}/>
+        {this.renderComponents()}
       </div>
     )
   }
