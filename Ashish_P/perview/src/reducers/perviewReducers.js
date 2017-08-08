@@ -6,7 +6,7 @@ const _nullResults = Object.freeze({
   allPerviews: [],
   myPerviews: [],
   favoritePerviews: [],
-  userPerviews: [],
+  friendPerviews: [],
   errors: []
 })
 
@@ -19,7 +19,7 @@ const searchReducer = (oldState = _nullResults, action) => {
       return Object.assign({}, oldState, {
         requestLoading: true
       });
-    case CREATE_PERVIEW:
+    case RECEIVE_MY_PERVIEW:
       let perview = action.perview;
       newState.allPerviews.unshift(perview);
       newState.myPerviews.unshift(perview);

@@ -72,7 +72,6 @@ class CreatePerviewModal extends React.Component {
   }
 
   update (field) {
-    console.log(this.state.tags);
     return (e) => this.setState({ [field]: e.target.value });
   }
 
@@ -80,13 +79,15 @@ class CreatePerviewModal extends React.Component {
     e.preventDefault();
     if(this.props.currentUser){
       let formData = new FormData();
-      formData.append("perview[itemID]", this.state.itemId);
-      formData.append("perview[tags]", this.state.tags);
-      formData.append("perview[rating]", this.state.rating);
+      formData.append("itemId", this.state.itemId);
+      formData.append("tags", this.state.tags);
+      formData.append("rating", this.state.rating);
+      debugger
       // when submit fails prevent review lost
-      if(!this.props.createPeview(formData)) {
+      console.log(formData);
+      if(!this.props.createPerview(formData)) {
         this.setState({
-          itemID: this.state.itemID,
+          itemId: this.state.itemID,
           tags: this.state.tags,
           rating: this.state.rating
         })

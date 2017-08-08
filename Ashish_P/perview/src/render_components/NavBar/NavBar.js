@@ -19,11 +19,9 @@ class NavBar extends React.Component {
 
   componentDidMount() {
     this.updatePageTitle(this.props);
-    console.log(this.props);
   }
 
   componentWillReceiveProps (nextProps) {
-    console.log(this.props.location.pathname === nextProps.location.pathname)
   }
 
   updatePageTitle(props) {
@@ -92,7 +90,6 @@ class NavBar extends React.Component {
 
 
   render() {
-    console.log(this.state.pageTitle)
     return (
       <div className="navbar__container">
         <div className="flexrow navbar__box">

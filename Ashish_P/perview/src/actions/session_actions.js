@@ -39,7 +39,6 @@ export const fetchuser = () => dispatch => {
   dispatch(requestUser());
   return APIUtil.fetchUser()
     .then( response => {
-      console.log(response.data);
       return dispatch(receiveCurrentUser(response.data))
     },
     err => {

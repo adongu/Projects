@@ -4,7 +4,6 @@ import { fetchuser } from '../actions/session_actions';
 import SignIn from '../render_components/SignIn/SignIn';
 
 const mapStateToProps = (props) => {
-  console.log('Signin Container', props);
   return {
  // Boolean(props.session.currentUser),
     errors: props.session.errors

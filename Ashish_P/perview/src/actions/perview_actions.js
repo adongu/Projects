@@ -1,7 +1,7 @@
 import * as APIUtil from '../util/perview_api_util';
 
 export const REQUEST_LOADING = 'REQUEST_LOADING';
-export const CREATE_PERVIEW = 'CREATE_PERVIEW';
+export const RECEIVE_MY_PERVIEW = 'RECEIVE_MY_PERVIEW';
 export const EDIT_PERVIEW = 'EDIT_PERVIEW';
 export const DELETE_PERVIEW = 'DELETE_PERVIEW';
 export const LIKE_PERVIEW = 'LIKE_PERVIEW';
@@ -16,8 +16,8 @@ export const requestLoading = () => ({
   type: REQUEST_LOADING
 })
 
-const createPerview = (perview) => ({
-  type: RECEIVE_RESULTS,
+export const receiveMyPerview = (perview) => ({
+  type: RECEIVE_MY_PERVIEW,
   perview
 });
 
@@ -26,7 +26,7 @@ export const editPerview = () => ({
 })
 
 export const deletePerview = (perview) => ({
-  type: DELETE_PERVIEW
+  type: DELETE_PERVIEW,
   perview
 })
 
@@ -56,11 +56,11 @@ export const clearErrors = () => ({
   type: CLEAR_ERRORS
 });
 
-export const createperview = (formData) => dispatch => {
+export const createPerview = (formData) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.createPerview(formData)
     .then( response => {
-      return dispatch(createPerview(response.data))
+      return dispatch(receiveMyPerview(response.data))
     },
     err => {
       return dispatch(receiveErrors(err.responseJSON))
