@@ -92,7 +92,8 @@ class CreatePerviewModal extends React.Component {
         })
       }
     } else {
-      
+      // make user go back to signin
+      this.props.history.replace({ pathname: '/signin' })
     }
   }
 

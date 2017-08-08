@@ -51,7 +51,7 @@ class NavBar extends React.Component {
   renderCreateButton () {
     if (this.state.canCreatePerviews) {
       return (
-        <CreatePerviewContainer currentUser={this.props.currentUser} />
+        <CreatePerviewContainer />
       )
     }
   }

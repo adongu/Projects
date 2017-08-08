@@ -1,63 +1,28 @@
 import axios from 'axios';
 
-export const createReview = (keywords) => {
-  console.log("keywords", keywords);
-  return axios('/perview/search', {
-    params: {
-      keywords: keywords
-    }
-  })
+export const createPerview = (formData) => {
+  return axios('/perview/add', formData)
+};
+
+export const editPerview = (keywords) => {
+
 }
 
-export const editReview = (keywords) => {
-  console.log("keywords", keywords);
-  return axios('/perview/search', {
-    params: {
-      keywords: keywords
-    }
-  })
+export const deletePerview = (keywords) => {
+
 }
 
-export const deleteReview = (keywords) => {
-  console.log("keywords", keywords);
-  return axios('/perview/search', {
-    params: {
-      keywords: keywords
-    }
-  })
+export const unlikePerview = (keywords) => {
+
+}
+export const unlikePerview = (keywords) => {
+
 }
 
-export const unlikeReview = (keywords) => {
-  console.log("keywords", keywords);
-  return axios('/perview/search', {
-    params: {
-      keywords: keywords
-    }
-  })
-}
-export const unlikeReview = (keywords) => {
-  console.log("keywords", keywords);
-  return axios('/perview/search', {
-    params: {
-      keywords: keywords
-    }
-  })
+export const bookmarkPerview = (keywords) => {
+
 }
 
-export const saveReview = (keywords) => {
-  console.log("keywords", keywords);
-  return axios('/perview/search', {
-    params: {
-      keywords: keywords
-    }
-  })
-}
+export const unbookmarkPerview = (keywords) => {
 
-export const unsaveReview = (keywords) => {
-  console.log("keywords", keywords);
-  return axios('/perview/search', {
-    params: {
-      keywords: keywords
-    }
-  })
 }
