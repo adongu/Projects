@@ -29,3 +29,10 @@ color: #D1D1D1;
 border-radius: 1px;
 indent: 5px;
 }
+
+/* Take out bootstrap component text shadow blur */
+.btn-default, .btn-primary, .btn-success, .btn-info, .btn-warning, .btn-danger {
+  color: white;
+  -webkit-text-shadow: none;
+  text-shadow: none;
+}

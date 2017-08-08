@@ -5,6 +5,9 @@ import { DropdownButton, MenuItem, ButtonToolbar } from 'react-bootstrap';
 // import { LinkContainer } from 'react-router-bootstrap';
 
 class UserNav extends React.Component {
+  constructor(props) {
+    super(props)
+  }
 
   render () {
     console.log("userNav", this.props);
@@ -14,7 +17,7 @@ class UserNav extends React.Component {
           <MenuItem active componentClass="span" eventKey="1"><NavLink to="/myperviews" className="usernav__menuitem">My Perviews</NavLink></MenuItem>
           <MenuItem active componentClass="span" eventKey="2"><NavLink to="/favorites" className="usernav__menuitem">Favorite Perviews</NavLink></MenuItem>
           <MenuItem eventKey="3" className="">Settings</MenuItem>
-          <MenuItem eventKey="4" className="" onClick={this.props.logout()}>Sign Out</MenuItem>
+          <MenuItem onSelect={this.props.logout} eventKey="4" className="" >Sign Out</MenuItem>
         </DropdownButton>
       </ButtonToolbar>
     );

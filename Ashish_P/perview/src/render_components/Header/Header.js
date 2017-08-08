@@ -8,6 +8,11 @@ import logo from "../../styles/assets/logo.jpg";
 class Header extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      fName: "",
+      userId: null,
+      imgUrl: "",
+    }
 
     this.validateRedirect = this.validateRedirect.bind(this);
   }
@@ -16,10 +21,30 @@ class Header extends React.Component {
     this.validateRedirect();
   }
 
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.currentUser) {
+      let user = nextProps.currentUser;
+      this.setState({
+        fName: user.firstName,
+        img:  user.facebookProfilePictureUrl,
+        isFetching: false
+      })
+    }
+  }
+
   validateRedirect() {
     this.props.fetchuser()
-    // .then(() => { console.log("after fetchuser", this.props);})
-    .catch(e => this.props.history.replace({ pathname: '/signin' }));
+    .then(() => {
+      if (this.props.currentUser === null) {
+        this.props.history.replace({ pathname: '/signin' });
+      } else {
+        let user = this.props.currentUser;
+        this.setState({
+          fName: user.firstName,
+          imgUrl: user.facebookProfilePictureUrl
+        })
+      }
+    })
   }
 
 
@@ -37,7 +62,7 @@ class Header extends React.Component {
           </div>
           <div className="flexrow header__usernav">
             <div className="header__greetings">
-              Hello, Susan!
+              Hello, {this.state.fName}!
             </div>
             <div className="header__usernavphoto">
               <UserNavContainer logout={this.props.logout}/>

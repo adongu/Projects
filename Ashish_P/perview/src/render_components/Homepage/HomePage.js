@@ -7,7 +7,10 @@ class HomePage extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      user: "",
+      fName: "",
+      lName: "",
+      id: "",
+      img: "",
       isFetching: true
     }
     this.getPerviews = this.getPerviews.bind(this);
@@ -22,13 +25,20 @@ class HomePage extends React.Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    // this.validateRedirect();
+    if (nextProps.currentUser) {
+      let user = nextProps.currentUser;
+      this.setState({
+        fName: user.firstName,
+        img:  user.facebookProfilePictureUrl,
+        isFetching: false
+      })
+    }
   }
 
   validateRedirect() {
     this.props.fetchuser()
       .then(() => { console.log("after fetchuser", this.props);})
-      .catch(e => this.props.history.replace({ pathname: '/signin' }));
+      .catch(() => this.props.history.replace({ pathname: '/signin' }));
   }
 
   getPerviews () {
@@ -57,7 +67,7 @@ class HomePage extends React.Component {
   }
 
   renderComponents() {
-    if (this.props.isFetching) {
+    if (this.state.isFetching) {
       return (
         <div>spinner</div>
       )
