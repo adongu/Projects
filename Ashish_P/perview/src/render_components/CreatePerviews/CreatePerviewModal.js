@@ -15,9 +15,11 @@ class CreatePerviewModal extends React.Component {
       imgUrl: '',
       name: '',
       price: '',
-      asin: '',
-      perviewers: [],
-      rating: 0
+      itemId: null,
+      tags: '',
+      rating: 0,
+      // asin: '',
+      perviewers: []
     }
 
     this.showModal = this.showModal.bind(this);
@@ -25,11 +27,12 @@ class CreatePerviewModal extends React.Component {
     this.showReviewBox = this.showReviewBox.bind(this);
     this.renderReviewStars = this.renderReviewStars.bind(this);
     this.selectItem = this.selectItem.bind(this);
+    this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.asin !== this.state.asin) {
+    if (prevProps.id !== this.state.id) {
 
     }
   }
@@ -55,21 +58,42 @@ class CreatePerviewModal extends React.Component {
     })
   }
 
-  selectItem( imgUrl, name, price, asin ) {
-    if (asin) {
+  selectItem( imgUrl, name, price, itemId ) {
+    if (itemId) {
       this.setState({
         imgUrl: imgUrl,
         name: name,
         price: price,
-        asin: asin,
+        itemId: itemId,
+        // asin: asin,
         chosen: true
       })
     }
   }
 
+  update (field) {
+    console.log(this.state.tags);
+    return (e) => this.setState({ [field]: e.target.value });
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.props);
+    if(this.props.currentUser){
+      let formData = new FormData();
+      formData.append("perview[itemID]", this.state.itemId);
+      formData.append("perview[tags]", this.state.tags);
+      formData.append("perview[rating]", this.state.rating);
+      // when submit fails prevent review lost
+      if(!this.props.createPeview(formData)) {
+        this.setState({
+          itemID: this.state.itemID,
+          tags: this.state.tags,
+          rating: this.state.rating
+        })
+      }
+    } else {
+      
+    }
   }
 
   showReviewBox() {
@@ -111,7 +135,7 @@ class CreatePerviewModal extends React.Component {
               <div className="createperview__review-msg">
                 Tag it, comment or both!
               </div>
-              <textarea className="createperview__review-input" placeholder="#amazing #wow #almostlikeapet">
+              <textarea className="createperview__review-input" value={this.state.tags} onChange={this.update("tags")} placeholder="#amazing #wow #almostlikeapet">
               </textarea>
               <button className="createperview__review-submit" onClick={this.handleSubmit}>
                 Submit

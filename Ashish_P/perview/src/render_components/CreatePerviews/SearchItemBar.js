@@ -66,7 +66,8 @@ class SearchBar extends React.Component {
       suggestion.data.imageUrls.large.url,
       suggestion.name,
       suggestion.data.lowestNewPrice.formattedAmount,
-      suggestion.data.asin
+      suggestion.id
+      // suggestion.data.asin
     );
     return suggestion.name;
   }

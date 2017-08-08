@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
 import NavBar from '../render_components/NavBar/NavBar'
 
-const mapStateToProps = () => {
+const mapStateToProps = ({session}) => {
   return {
+    currentUser: session.currentUser
   }
 }
 
