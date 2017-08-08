@@ -45,22 +45,22 @@ class SearchBar extends React.Component {
     this.state = {
       keywords: "",
       value: '',
-      suggestions: []
+      suggestions: [],
+      isFetching: false
     };
 
     this.renderResults = this.renderResults.bind(this);
     // this.updateKeywords = this.updateKeywords.bind(this);
     this.logChange = this.logChange.bind(this);
     this.renderSuggestions = this.renderSuggestions.bind(this);
+    this.getSuggestions = this.getSuggestions.bind(this);
     this.onChange = this.onChange.bind(this);
   }
 
   componentWillReceiveProps (nextProps) {
-    if (nextProps.currentUser) {
-      let user = nextProps.currentUser;
+    if (nextProps.results) {
       this.setState({
-        fName: user.firstName,
-        img:  user.facebookProfilePictureUrl,
+        suggestions: nextProps.results,
         isFetching: false
       })
     }
