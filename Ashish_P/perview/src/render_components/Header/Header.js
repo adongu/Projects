@@ -11,7 +11,7 @@ class Header extends React.Component {
     this.state = {
       fName: "",
       userId: null,
-      imgUrl: "",
+      imgUrl: "https://www.juicedb.com/img/user/temp-user-128.jpg",
     }
 
     this.validateRedirect = this.validateRedirect.bind(this);
@@ -26,7 +26,7 @@ class Header extends React.Component {
       let user = nextProps.currentUser;
       this.setState({
         fName: user.firstName,
-        img:  user.facebookProfilePictureUrl,
+        imgUrl:  user.facebookProfilePictureUrl.replace(/\/picture$/, ""),
         isFetching: false
       })
     }
@@ -41,7 +41,7 @@ class Header extends React.Component {
         let user = this.props.currentUser;
         this.setState({
           fName: user.firstName,
-          imgUrl: user.facebookProfilePictureUrl
+          imgUrl: user.facebookProfilePictureUrl.replace(/\/picture$/, "")
         })
       }
     })
@@ -65,7 +65,7 @@ class Header extends React.Component {
               Hello, {this.state.fName}!
             </div>
             <div className="header__usernavphoto">
-              <UserNavContainer logout={this.props.logout}/>
+              <UserNavContainer imgUrl={this.state.imgUrl} logout={this.props.logout} />
             </div>
           </div>
         </div>

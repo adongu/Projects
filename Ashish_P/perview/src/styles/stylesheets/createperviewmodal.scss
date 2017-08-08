@@ -10,6 +10,9 @@ $lines-to-show: 4;
   opacity: 1;
 }
 
+.modal-header {
+  border-bottom: none;
+}
 .createperview__{
   &modal {
     width: 980px;
@@ -66,8 +69,10 @@ $lines-to-show: 4;
 
 .createperview__ {
 
+  &section,
   &product-container {
     width: 100%;
+    min-height: 401px;
   }
 
   &product {
@@ -84,7 +89,7 @@ $lines-to-show: 4;
   &product-img {
     width: 80%;
     height: 80%;
-    border: 1px #D6D6D6 solid;
+    // border: 1px #D6D6D6 solid;
   }
 
   &product-right {

@@ -55,6 +55,17 @@ class SearchBar extends React.Component {
     this.onChange = this.onChange.bind(this);
   }
 
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.currentUser) {
+      let user = nextProps.currentUser;
+      this.setState({
+        fName: user.firstName,
+        img:  user.facebookProfilePictureUrl,
+        isFetching: false
+      })
+    }
+  }
+
   // Teach Autosuggest how to calculate suggestions for any given input value.
   getSuggestions (value) {
     const inputValue = value.trim().toLowerCase();
@@ -87,7 +98,7 @@ class SearchBar extends React.Component {
   onChange (event, { newValue }) {
     this.setState({
       value: newValue
-    });;
+    });
     if (newValue.length > 0) {
       this.props.fetchresults(newValue);
     }

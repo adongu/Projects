@@ -10,15 +10,13 @@ class CreatePerview extends React.Component {
 
     this.state = {
       show: false,
-      chosen: true,
+      chosen: false,
       keywords: '',
-      selectedItem: false,
       imgUrl: '',
       name: '',
       price: '',
       perviewers: [],
-      rating: 0,
-
+      rating: 0
     }
 
     this.showModal = this.showModal.bind(this);
@@ -48,7 +46,7 @@ class CreatePerview extends React.Component {
 
   selectItem(imgUrl, name, price, perviews, selectedItem) {
     this.setState({
-      
+
     })
   }
 
@@ -128,7 +126,7 @@ class CreatePerview extends React.Component {
             </div>
           </div>
 
-          <div>
+          <div className="createperview__section">
             { this.showReviewBox() }
           </div>
           </Modal.Header>
