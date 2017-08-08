@@ -18,7 +18,7 @@ class HomePage extends React.Component {
   }
 
   componentWillMount () {
-    // this.validateRedirect();
+    this.validateRedirect();
   }
 
   componentDidMount() {

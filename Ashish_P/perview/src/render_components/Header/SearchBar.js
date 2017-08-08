@@ -1,4 +1,4 @@
-import "../../../styles/stylesheets/search.css";
+import "../../styles/stylesheets/search.css";
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Autosuggest from 'react-autosuggest';
@@ -53,6 +53,15 @@ class SearchBar extends React.Component {
     this.onChange = this.onChange.bind(this);
   }
 
+  getSuggestions (value) {
+    const inputValue = value.trim().toLowerCase();
+    const inputLength = inputValue.length;
+
+    return inputLength === 0 ? [] : languages.filter(lang =>
+      lang.name.toLowerCase().slice(0, inputLength) === inputValue
+    );
+  };
+
   renderResults({img, title, price, perviews}) {
     return (
       <div className="search__suggestions-item">
@@ -73,6 +82,11 @@ class SearchBar extends React.Component {
   };
 
   onChange (event, { newValue }) {
+    let keywords = event.target.value;
+    if (keywords.length > 0) {
+      this.props.fetchresults(event.target.value);
+    }
+    console.log(this.props);
     this.setState({
       value: newValue
     });
