@@ -4,7 +4,7 @@ import React from 'react';
 import { ButtonToolbar, Modal } from 'react-bootstrap';
 import ItemSearchBarContainer from "../../containers/ItemSearchBarContainer.js";
 
-class CreatePerview extends React.Component {
+class CreatePerviewModal extends React.Component {
   constructor(props) {
     super(props);
 
@@ -23,8 +23,9 @@ class CreatePerview extends React.Component {
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
     this.showReviewBox = this.showReviewBox.bind(this);
-    this.renderStars = this.renderStars.bind(this);
+    this.renderReviewStars = this.renderReviewStars.bind(this);
     this.selectItem = this.selectItem.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -41,12 +42,14 @@ class CreatePerview extends React.Component {
     this.setState({show: false});
   }
 
-  renderStars (ratings) {
+  renderReviewStars (ratings) {
     let stars = [1, 2, 3, 4, 5];
     return stars.map((ele)=>{
       return (
-        <span key={ele} className={ele <= ratings ? 'active_star' : 'no_star'} >
-          <i className="fa fa-star createperview__rating-star" aria-hidden="true"></i>
+        <span key={ele} className={ele <= ratings ? 'active_star' : 'no_star'} onClick={() => {this.setState({ rating: ele })}}
+        onMouseMove={()=>{ this.setState({ rating: ele }) }}
+        onMouseLeave={()=>{ this.setState({ rating: this.state.rating })}}>
+        <i className="fa fa-star createperview__rating-star" aria-hidden="true"></i>
         </span>
       )
     })
@@ -62,6 +65,11 @@ class CreatePerview extends React.Component {
         chosen: true
       })
     }
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    console.log(this.props);
   }
 
   showReviewBox() {
@@ -96,7 +104,7 @@ class CreatePerview extends React.Component {
                   Perview this Product!
                 </div>
                 <div className="createperview__review-rating-stars">
-                  {this.renderStars(3)}
+                  {this.renderReviewStars(this.state.rating)}
                 </div>
               </div>
 
@@ -105,7 +113,7 @@ class CreatePerview extends React.Component {
               </div>
               <textarea className="createperview__review-input" placeholder="#amazing #wow #almostlikeapet">
               </textarea>
-              <button className="createperview__review-submit">
+              <button className="createperview__review-submit" onClick={this.handleSubmit}>
                 Submit
               </button>
             </form>
@@ -150,4 +158,4 @@ class CreatePerview extends React.Component {
   }
 };
 
-export default CreatePerview;
+export default CreatePerviewModal;
