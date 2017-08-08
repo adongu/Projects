@@ -36,3 +36,14 @@ indent: 5px;
   -webkit-text-shadow: none;
   text-shadow: none;
 }
+
+/* autosuggest */
+.react-autosuggest__suggestions-container {
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+.react-autosuggest__input {
+  max-width: 92%;
+  overflow: auto;
+}
