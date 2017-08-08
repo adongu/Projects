@@ -7,28 +7,19 @@ const languages = [{ name: 'C', year: 1972 },
 { name: 'Elm', year: 2014 },
 { name: 'Elm', year: 2012 }];
 
-// Teach Autosuggest how to calculate suggestions for any given input value.
-const getSuggestions = value => {
-  const inputValue = value.trim().toLowerCase();
-  const inputLength = inputValue.length;
-
-  return inputLength === 0 ? [] : languages.filter(lang =>
-    lang.name.toLowerCase().slice(0, inputLength) === inputValue
-  );
-};
-
+//// Teach Autosuggest how to calculate suggestions for any given input value.
+// const getSuggestions = value => {
+//   const inputValue = value.trim().toLowerCase();
+//   const inputLength = inputValue.length;
+//
+//   return inputLength === 0 ? [] : languages.filter(lang =>
+//     lang.name.toLowerCase().slice(0, inputLength) === inputValue
+//   );
+// };
 
 // When suggestion is clicked, Autosuggest needs to populate the input
 // based on the clicked suggestion. Teach Autosuggest how to calculate the
 // input value for every given suggestion.
-const getSuggestionValue = suggestion => suggestion.name;
-
-// Use your imagination to render suggestions.
-const renderSuggestion = suggestion => (
-  <div>
-    {suggestion.name}
-  </div>
-);
 
 const renderInputComponent = inputProps => (
   <div className="search__inputContainer">
@@ -49,11 +40,13 @@ class SearchBar extends React.Component {
       isFetching: false
     };
 
-    this.renderResults = this.renderResults.bind(this);
     // this.updateKeywords = this.updateKeywords.bind(this);
     this.logChange = this.logChange.bind(this);
     this.renderSuggestions = this.renderSuggestions.bind(this);
+    this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this);
+    this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(this);
     this.getSuggestions = this.getSuggestions.bind(this);
+    this.getSuggestionValue = this.getSuggestionValue.bind(this);
     this.onChange = this.onChange.bind(this);
   }
 
@@ -62,35 +55,49 @@ class SearchBar extends React.Component {
       this.setState({
         suggestions: nextProps.results,
         isFetching: false
-      })
+      });
+      console.log(nextProps.results);
     }
+  }
+
+  getSuggestionValue(suggestion) {
+    // pass item to modal
+    this.props.selectItem(
+      suggestion.data.imageUrls.large.url,
+      suggestion.name,
+      suggestion.data.lowestNewPrice.formattedAmount,
+      suggestion.data.asin
+    );
+    return suggestion.name;
+  }
+  // Use your imagination to render suggestions.
+  renderSuggestion(suggestion){
+    return (
+      <div className="search__suggestions-item">
+        <div><img src={suggestion.imgUrl} alt="product"/></div>
+        <div>{suggestion.price}</div>
+        <div>{suggestion.name}</div>
+      </div>
+    );
   }
 
   // Teach Autosuggest how to calculate suggestions for any given input value.
   getSuggestions (value) {
-    const inputValue = value.trim().toLowerCase();
-    const inputLength = inputValue.length;
-
-    return inputLength === 0 ? [] : languages.filter(lang =>
-      lang.name.toLowerCase().slice(0, inputLength) === inputValue
-    );
+    return this.state.suggestions;
+    // const inputValue = value.trim().toLowerCase();
+    // const inputLength = inputValue.length;
+    //
+    // return inputLength === 0 ? [] : languages.filter(lang =>
+    //   lang.name.toLowerCase().slice(0, inputLength) === inputValue
+    // );
   };
 
-  renderResults({img, title, price, perviews}) {
-    return (
-      <div className="search__suggestions-item">
-        <div><img alt="search product"/></div>
-        <div>`${title}`</div>
-        <div>`${price}`</div>
-        <div>`${perviews}`</div>
-      </div>
-    )
-  }
   // Use your imagination to render suggestions.
   renderSuggestions(suggestion) {
     return (
       <div>
         {suggestion.name}
+        {suggestion.price}
       </div>
     )
   };
@@ -99,22 +106,22 @@ class SearchBar extends React.Component {
     this.setState({
       value: newValue
     });
+
     if (newValue.length > 0) {
       this.props.fetchresults(newValue);
     }
-    console.log(this.props);
   };
 
   // Autosuggest will call this function every time you need to update suggestions.
   // You already implemented this logic above, so just use it.
-  onSuggestionsFetchRequested = ({ value }) => {
+  onSuggestionsFetchRequested({ value }) {
     this.setState({
-      suggestions: getSuggestions(value)
+      suggestions: this.getSuggestions(value)
     });
   };
 
   // Autosuggest will call this function every time you need to clear suggestions.
-  onSuggestionsClearRequested = () => {
+  onSuggestionsClearRequested() {
     this.setState({
       suggestions: []
     });
@@ -126,7 +133,7 @@ class SearchBar extends React.Component {
     });
     return (
       <div className="search__suggestions">
-        { this.renderSuggestions }
+        { this.renderSuggestion }
       </div>
     )
   }
@@ -155,8 +162,8 @@ class SearchBar extends React.Component {
             suggestions={suggestions}
             onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
             onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-            getSuggestionValue={getSuggestionValue}
-            renderSuggestion={renderSuggestion}
+            getSuggestionValue={this.getSuggestionValue}
+            renderSuggestion={this.renderSuggestion}
             renderInputComponent={renderInputComponent}
             inputProps={inputProps}
           />

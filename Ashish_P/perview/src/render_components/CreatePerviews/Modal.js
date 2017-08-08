@@ -15,6 +15,7 @@ class CreatePerview extends React.Component {
       imgUrl: '',
       name: '',
       price: '',
+      asin: '',
       perviewers: [],
       rating: 0
     }
@@ -23,6 +24,13 @@ class CreatePerview extends React.Component {
     this.hideModal = this.hideModal.bind(this);
     this.showReviewBox = this.showReviewBox.bind(this);
     this.renderStars = this.renderStars.bind(this);
+    this.selectItem = this.selectItem.bind(this);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.asin !== this.state.asin) {
+
+    }
   }
 
   showModal() {
@@ -44,10 +52,16 @@ class CreatePerview extends React.Component {
     })
   }
 
-  selectItem(imgUrl, name, price, perviews, selectedItem) {
-    this.setState({
-
-    })
+  selectItem( imgUrl, name, price, asin ) {
+    if (asin) {
+      this.setState({
+        imgUrl: imgUrl,
+        name: name,
+        price: price,
+        asin: asin,
+        chosen: true
+      })
+    }
   }
 
   showReviewBox() {
@@ -56,16 +70,16 @@ class CreatePerview extends React.Component {
         <div className="flexcolumn createperview__product-container">
           <div className="flexrow createperview__product">
             <div className="createperview__product-left">
-              <img className="createperview__product-img" src={product} alt="product"/>
+              <img className="createperview__product-img" src={this.state.imgUrl} alt="product"/>
             </div>
             <div className="createperview__product-right">
               <div className="flextcolumn createperview__product-info">
                 <div className="createperview__product-title">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  {this.state.name}
                 </div>
                 <div className="flexrow createperview__product-details">
                   <div className="createperview__product-price">
-                    $ 145
+                    {this.state.price}
                   </div>
                   <div className="createperview__product-perviews">
                     8 perviews
@@ -121,7 +135,7 @@ class CreatePerview extends React.Component {
             <div className="createperview__search-msg">Search a product to perview it</div>
             <div className="createperview__search-background">
               <div className="createperview__search-box">
-                <ItemSearchBarContainer />
+                <ItemSearchBarContainer selectItem={this.selectItem}/>
               </div>
             </div>
           </div>
