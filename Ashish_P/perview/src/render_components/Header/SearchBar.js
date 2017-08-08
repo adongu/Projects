@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import Autosuggest from 'react-autosuggest';
 
 const languages = [{ name: 'C', year: 1972 },
+{ name: 'Elm', year: 2014 },
 { name: 'Elm', year: 2012 }];
 
 // Teach Autosuggest how to calculate suggestions for any given input value.
@@ -15,6 +16,7 @@ const getSuggestions = value => {
     lang.name.toLowerCase().slice(0, inputLength) === inputValue
   );
 };
+
 
 // When suggestion is clicked, Autosuggest needs to populate the input
 // based on the clicked suggestion. Teach Autosuggest how to calculate the
@@ -53,6 +55,7 @@ class SearchBar extends React.Component {
     this.onChange = this.onChange.bind(this);
   }
 
+  // Teach Autosuggest how to calculate suggestions for any given input value.
   getSuggestions (value) {
     const inputValue = value.trim().toLowerCase();
     const inputLength = inputValue.length;

@@ -7,6 +7,12 @@ import { DropdownButton, MenuItem, ButtonToolbar } from 'react-bootstrap';
 class UserNav extends React.Component {
   constructor(props) {
     super(props)
+    this.handleLogout = this.handleLogout.bind(this)
+  }
+
+  handleLogout() {
+    this.props.history.replace({ pathname: '/signin' });
+    this.props.logout();
   }
 
   render () {
@@ -17,7 +23,8 @@ class UserNav extends React.Component {
           <MenuItem active componentClass="span" eventKey="1"><NavLink to="/myperviews" className="usernav__menuitem">My Perviews</NavLink></MenuItem>
           <MenuItem active componentClass="span" eventKey="2"><NavLink to="/favorites" className="usernav__menuitem">Favorite Perviews</NavLink></MenuItem>
           <MenuItem eventKey="3" className="">Settings</MenuItem>
-          <MenuItem onSelect={this.props.logout} eventKey="4" className="" >Sign Out</MenuItem>
+          <MenuItem eventKey="4" className="" ><button className="userNav__signout" onClick={this.handleLogout}>Sign Out</button></MenuItem>
+
         </DropdownButton>
       </ButtonToolbar>
     );
