@@ -1,5 +1,5 @@
 import { merge } from 'lodash';
-import { REQUEST_RESULTS, RECEIVE_RESULTS, RECEIVE_ERRORS, CLEAR_ERRORS } from '../actions/search_actions';
+import { REQUEST_RESULTS, RECEIVE_RESULTS, RECEIVE_ERRORS, CLEAR_ERRORS } from '../actions/search_perview_actions';
 
 const _nullResults = Object.freeze({
   isFetching: false,

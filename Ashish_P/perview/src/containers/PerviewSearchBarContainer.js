@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import SearchBar from '../render_components/Header/SearchBar'
-import { fetchresults } from '../actions/search_actions';
+import { fetchresults } from '../actions/search_perview_actions';
 
-const mapStateToProps = ({ find }, ownProps) => {
+const mapStateToProps = ({ findPerview }, ownProps) => {
   let results = [];
   // if (find.results) {
   //   results = find.results.map((item) => {
@@ -16,7 +16,7 @@ const mapStateToProps = ({ find }, ownProps) => {
   // }
 
   return {
-    results: find.results
+    results: findPerview.results
   }
 }
 

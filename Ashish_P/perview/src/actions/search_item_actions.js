@@ -1,4 +1,4 @@
-import * as APIUtil from '../util/search_api_util';
+import * as APIUtil from '../util/search_item_api_util';
 
 export const REQUEST_RESULTS = 'REQUEST_RESULTS';
 export const RECEIVE_RESULTS = 'RECEIVE_RESULTS';

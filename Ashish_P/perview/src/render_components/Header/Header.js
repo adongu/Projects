@@ -1,7 +1,7 @@
 import "../../styles/stylesheets/header.css";
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import SearchBarContainer from '../../containers/SearchBarContainer';
+import PerviewSearchBarContainer from '../../containers/PerviewSearchBarContainer';
 import UserNavContainer from '../../containers/UserNavContainer';
 import logo from "../../styles/assets/logo.jpg";
 
@@ -58,7 +58,7 @@ class Header extends React.Component {
             </Link>
           </div>
           <div className="header__search">
-            <SearchBarContainer />
+            <PerviewSearchBarContainer />
           </div>
           <div className="flexrow header__usernav">
             <div className="header__greetings">
