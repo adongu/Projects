@@ -10,7 +10,15 @@ class CreatePerview extends React.Component {
 
     this.state = {
       show: false,
-      chosen: true
+      chosen: true,
+      keywords: '',
+      selectedItem: false,
+      imgUrl: '',
+      name: '',
+      price: '',
+      perviewers: [],
+      rating: 0,
+
     }
 
     this.showModal = this.showModal.bind(this);
@@ -35,6 +43,12 @@ class CreatePerview extends React.Component {
           <i className="fa fa-star createperview__rating-star" aria-hidden="true"></i>
         </span>
       )
+    })
+  }
+
+  selectItem(imgUrl, name, price, perviews, selectedItem) {
+    this.setState({
+      
     })
   }
 

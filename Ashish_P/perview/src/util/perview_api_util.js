@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const addReview = (keywords) => {
+export const createReview = (keywords) => {
   console.log("keywords", keywords);
   return axios('/perview/search', {
     params: {
@@ -27,6 +27,14 @@ export const deleteReview = (keywords) => {
   })
 }
 
+export const unlikeReview = (keywords) => {
+  console.log("keywords", keywords);
+  return axios('/perview/search', {
+    params: {
+      keywords: keywords
+    }
+  })
+}
 export const unlikeReview = (keywords) => {
   console.log("keywords", keywords);
   return axios('/perview/search', {

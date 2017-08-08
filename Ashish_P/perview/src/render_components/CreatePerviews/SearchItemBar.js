@@ -85,14 +85,13 @@ class SearchBar extends React.Component {
   };
 
   onChange (event, { newValue }) {
-    let keywords = event.target.value;
-    if (keywords.length > 0) {
-      this.props.fetchresults(event.target.value);
-    }
-    console.log(this.props);
     this.setState({
       value: newValue
-    });
+    });;
+    if (newValue.length > 0) {
+      this.props.fetchresults(newValue);
+    }
+    console.log(this.props);
   };
 
   // Autosuggest will call this function every time you need to update suggestions.

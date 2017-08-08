@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import SearchBar from '../render_components/Header/SearchBar'
+import SearchPerviewBar from '../render_components/Header/SearchPerviewBar'
 import { fetchresults } from '../actions/search_perview_actions';
 
 const mapStateToProps = ({ findPerview }, ownProps) => {
@@ -29,4 +29,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default connect (
   mapStateToProps,
   mapDispatchToProps
-)(SearchBar);
+)(SearchPerviewBar);

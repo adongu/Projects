@@ -116,7 +116,7 @@ class SearchBar extends React.Component {
     });
     return (
       <div className="search__suggestions">
-        { this.renderSuggestions }
+        { this.renderSuggestions() }
       </div>
     )
   }
