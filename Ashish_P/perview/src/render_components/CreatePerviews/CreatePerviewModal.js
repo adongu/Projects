@@ -82,9 +82,7 @@ class CreatePerviewModal extends React.Component {
       formData.append("itemId", this.state.itemId);
       formData.append("tags", this.state.tags);
       formData.append("rating", this.state.rating);
-      debugger
       // when submit fails prevent review lost
-      console.log(formData);
       if(!this.props.createPerview(formData)) {
         this.setState({
           itemId: this.state.itemID,
