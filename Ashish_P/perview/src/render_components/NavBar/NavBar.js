@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import "../../styles/stylesheets/navbar.css";
-import CreatePerviewContainer from "../../containers/CreatePerviewContainer.js";
+import CreatePerviewModal from "../CreatePerviews/CreatePerviewModal";
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -49,7 +49,7 @@ class NavBar extends React.Component {
   renderCreateButton () {
     if (this.state.canCreatePerviews) {
       return (
-        <CreatePerviewContainer />
+        <CreatePerviewModal currentUser={this.props.currentUser} />
       )
     }
   }

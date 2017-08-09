@@ -31,11 +31,11 @@ class CreatePerviewModal extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.id !== this.state.id) {
-
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevProps.id !== this.state.id) {
+  //
+  //   }
+  // }
 
   showModal() {
     this.setState({show: true});
