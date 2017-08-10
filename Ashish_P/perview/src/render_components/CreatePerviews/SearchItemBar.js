@@ -76,10 +76,14 @@ class SearchBar extends React.Component {
     let imgUrl = suggestion.data.imageUrls.large.url;
     let price = suggestion.data.lowestNewPrice.formattedAmount;
     return (
-      <div className="search__suggestions-item">
-        <div><img src={imgUrl} alt="product"/></div>
-        <div>{suggestion.name}</div>
-        <div>{price}</div>
+      <div className="flexrow autosuggest__product">
+        <div className="autosuggest__product-left">
+          <img className="autosuggest__img" src={imgUrl} alt="product"/>
+        </div>
+        <div className="flexcolumn autosuggest__product-right">
+          <div className="autosuggest__name">{suggestion.name}</div>
+          <div className="autosuggest__price">{price}</div>
+        </div>
       </div>
     );
   }

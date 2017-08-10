@@ -16,7 +16,7 @@ $lines-to-show: 4;
 
 .createperview__{
   &modal {
-    width: 980px;
+    width: 850px;
   }
 
   &modalhead {
@@ -73,7 +73,7 @@ $lines-to-show: 4;
   &section,
   &product-container {
     width: 100%;
-    min-height: 401px;
+    min-height: 501px;
   }
 
   &product {
@@ -87,8 +87,8 @@ $lines-to-show: 4;
     display: flex;
     justify-content: center;
     width: 30%;
-    position:relative;
-    overflow:hidden;
+    position: relative;
+    overflow: hidden;
   }
 
   &product-img {
@@ -160,7 +160,7 @@ $lines-to-show: 4;
   }
 
   &review-box {
-    width: 60%;
+    width: 70%;
   }
 
   &review-rating {
@@ -192,6 +192,7 @@ $lines-to-show: 4;
 
   &review-input {
     max-width: 100%;
+    min-height: 80px;
     border: 1px #D4D4D4 solid;
     border-radius: 5px;
     margin-bottom: 15px;
