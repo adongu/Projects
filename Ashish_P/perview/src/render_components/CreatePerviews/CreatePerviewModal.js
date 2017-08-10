@@ -15,7 +15,7 @@ class CreatePerviewModal extends React.Component {
       imgUrl: '',
       name: '',
       price: '',
-      itemId: 0,
+      itemId: null,
       tags: '',
       rating: 0,
       // asin: '',
@@ -43,7 +43,19 @@ class CreatePerviewModal extends React.Component {
   }
 
   hideModal() {
-    this.setState({show: false});
+    this.setState({
+      show: false,
+      chosen: false,
+      keywords: '',
+      imgUrl: '',
+      name: '',
+      price: '',
+      itemId: null,
+      tags: '',
+      rating: 0,
+      // asin: '',
+      perviewers: []
+    });
   }
 
   renderReviewStars (ratings) {
@@ -92,6 +104,13 @@ class CreatePerviewModal extends React.Component {
           tags: this.state.tags,
           rating: this.state.rating
         })
+      } else {
+        this.setState({
+          itemId: null,
+          tags: '',
+          rating: 0
+        })
+        this.hideModal();
       }
     } else {
       // make user go back to signin
