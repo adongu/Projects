@@ -42,7 +42,7 @@ class SearchBar extends React.Component {
 
     // this.updateKeywords = this.updateKeywords.bind(this);
     this.logChange = this.logChange.bind(this);
-    this.renderSuggestions = this.renderSuggestions.bind(this);
+    this.renderSuggestion = this.renderSuggestion.bind(this);
     this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this);
     this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(this);
     this.getSuggestions = this.getSuggestions.bind(this);
@@ -73,11 +73,13 @@ class SearchBar extends React.Component {
   }
   // Use your imagination to render suggestions.
   renderSuggestion(suggestion){
+    let imgUrl = suggestion.data.imageUrls.large.url;
+    let price = suggestion.data.lowestNewPrice.formattedAmount;
     return (
       <div className="search__suggestions-item">
-        <div><img src={suggestion.imgUrl} alt="product"/></div>
-        <div>{suggestion.price}</div>
+        <div><img src={imgUrl} alt="product"/></div>
         <div>{suggestion.name}</div>
+        <div>{price}</div>
       </div>
     );
   }
@@ -85,22 +87,6 @@ class SearchBar extends React.Component {
   // Teach Autosuggest how to calculate suggestions for any given input value.
   getSuggestions (value) {
     return this.state.suggestions;
-    // const inputValue = value.trim().toLowerCase();
-    // const inputLength = inputValue.length;
-    //
-    // return inputLength === 0 ? [] : languages.filter(lang =>
-    //   lang.name.toLowerCase().slice(0, inputLength) === inputValue
-    // );
-  };
-
-  // Use your imagination to render suggestions.
-  renderSuggestions(suggestion) {
-    return (
-      <div>
-        {suggestion.name}
-        {suggestion.price}
-      </div>
-    )
   };
 
   onChange (event, { newValue }) {

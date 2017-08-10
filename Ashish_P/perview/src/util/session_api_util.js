@@ -9,7 +9,7 @@ import axios from 'axios';
 // };
 
 export const fetchUser = () => {
-  return axios('/perview/user')
+  return axios('/api/user')
 }
 
 export const logOut = () => {

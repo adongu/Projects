@@ -13,10 +13,10 @@ export const createPerview = (formData) => {
   for (var key of formData.entries()) {
     console.log(key[0] + ', ' + key[1]);
   }
-  return axios.post('/perview/add', formData, config)
+  return axios.post('/api/add', formData, config)
   // return axios({
   //     method: 'post',
-  //     url: '/perview/add',
+  //     url: '/api/add',
   //     config,
   //     data: formData
   //     // data: {itemId: 1, tags: "hello", rating: 3}
@@ -33,19 +33,19 @@ export const createPerview = (formData) => {
 
 
 export const fetchAllPerviews = (keywords) => {
-  return axios('/perview')
+  return axios('/api')
 }
 
 export const fetchMyPerviews = (keywords) => {
-  return axios('/perview/self')
+  return axios('/api/self')
 }
 
 export const fetchFavoritePerview = (keywords) => {
-  return axios('/perview/bookmarks')
+  return axios('/api/bookmarks')
 }
 
 export const fetchFriendPerview = (friendUserId) => {
-  return axios(`/perview/friend/${friendUserId}`)
+  return axios(`/api/friend/${friendUserId}`)
 }
 
 export const editPerview = (keywords) => {
