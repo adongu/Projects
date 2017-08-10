@@ -15,13 +15,14 @@ class CreatePerviewModal extends React.Component {
       imgUrl: '',
       name: '',
       price: '',
-      itemId: null,
+      itemId: 0,
       tags: '',
       rating: 0,
       // asin: '',
       perviewers: []
     }
 
+    this.validateRedirect = this.validateRedirect.bind(this);
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
     this.showReviewBox = this.showReviewBox.bind(this);
@@ -31,11 +32,11 @@ class CreatePerviewModal extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevProps.id !== this.state.id) {
-  //
-  //   }
-  // }
+  validateRedirect() {
+    this.props.fetchuser()
+      .then(() => { console.log("after fetchuser", this.props);})
+      .catch(() => this.props.history.replace({ pathname: '/signin' }));
+  }
 
   showModal() {
     this.setState({show: true});
@@ -77,6 +78,8 @@ class CreatePerviewModal extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.validateRedirect();
+
     if(this.props.currentUser){
       let formData = new FormData();
       formData.append("itemId", this.state.itemId);
