@@ -1,5 +1,5 @@
 import { merge } from 'lodash';
-import { REQUEST_LOADING, CREATE_PERVIEW, EDIT_PERVIEW, DELETE_PERVIEW, LIKE_PERVIEW, UNLIKE_PERVIEW, BOOKMARK_PERVIEW, UNBOOKMARK_PERVIEW } from '../actions/search_item_actions';
+import { REQUEST_LOADING, RECEIVE_ALL_PERVIEWS, RECEIVE_MY_PERVIEWS, RECEIVE_FAVORITE_PERVIEWS, RECEIVE_FRIEND_PERVIEWS, EDIT_PERVIEW, DELETE_PERVIEW, RECEIVE_ERRORS } from '../actions/search_item_actions';
 
 const _nullResults = Object.freeze({
   requestLoading: false,
@@ -10,7 +10,7 @@ const _nullResults = Object.freeze({
   errors: []
 })
 
-const searchReducer = (oldState = _nullResults, action) => {
+const perviewReducer = (oldState = _nullResults, action) => {
   Object.freeze(oldState);
   let newState = merge({}, oldState)
 
@@ -21,7 +21,6 @@ const searchReducer = (oldState = _nullResults, action) => {
       });
     case RECEIVE_MY_PERVIEW:
       let perview = action.perview;
-      newState.allPerviews.unshift(perview);
       newState.myPerviews.unshift(perview);
       return Object.assign({}, newState, { errors: []});
     case RECEIVE_ERRORS:
@@ -34,4 +33,4 @@ const searchReducer = (oldState = _nullResults, action) => {
   }
 }
 
-export default searchReducer;
+export default perviewReducer;

@@ -7,10 +7,6 @@ export const RECEIVE_FAVORITE_PERVIEWS = 'RECEIVE_FAVORITE_PERVIEWS';
 export const RECEIVE_FRIEND_PERVIEWS = 'RECEIVE_FRIEND_PERVIEWS';
 export const EDIT_PERVIEW = 'EDIT_PERVIEW';
 export const DELETE_PERVIEW = 'DELETE_PERVIEW';
-export const LIKE_PERVIEW = 'LIKE_PERVIEW';
-export const UNLIKE_PERVIEW = 'UNLIKE_PERVIEW';
-export const BOOKMARK_PERVIEW = 'BOOKMARK_PERVIEW';
-export const UNBOOKMARK_PERVIEW = 'UNBOOKMARK_REVIEW';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
@@ -19,9 +15,24 @@ export const requestLoading = () => ({
   type: REQUEST_LOADING
 })
 
-export const receiveMyPerview = (perview) => ({
-  type: RECEIVE_MY_PERVIEW,
-  perview
+export const receiveAllPerviews = (perviews) => ({
+  type: RECEIVE_MY_PERVIEWS,
+  perviews
+});
+
+export const receiveMyPerviews = (perviews) => ({
+  type: RECEIVE_MY_PERVIEWS,
+  perviews
+});
+
+export const receiveFavoritePerviews = (perviews) => ({
+  type: RECEIVE_MY_PERVIEWS,
+  perviews
+});
+
+export const receiveFriendPerviews = (perviews) => ({
+  type: RECEIVE_MY_PERVIEWS,
+  perviews
 });
 
 export const editPerview = () => ({
@@ -29,26 +40,9 @@ export const editPerview = () => ({
 })
 
 export const deletePerview = (perview) => ({
-  type: DELETE_PERVIEW,
+  type: DELETE_PERVIEWS,
   perview
 })
-
-export const likePerview = () => ({
-  type: LIKE_PERVIEW
-})
-
-export const unlikePerview = () => ({
-  type: UNLIKE_PERVIEW
-})
-
-export const bookmarkPerview = () => ({
-  type: BOOKMARK_PERVIEW
-})
-
-export const unbookmarkPerview = () => ({
-  type: UNBOOKMARK_PERVIEW
-})
-
 
 const receiveErrors = (errors) => ({
   type: RECEIVE_ERRORS,

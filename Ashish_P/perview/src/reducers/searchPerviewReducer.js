@@ -7,7 +7,7 @@ const _nullResults = Object.freeze({
   errors: []
 })
 
-const searchReducer = (oldState = _nullResults, action) => {
+const searchPerviewReducer = (oldState = _nullResults, action) => {
   Object.freeze(oldState);
   switch (action.type) {
     case REQUEST_RESULTS:
@@ -30,4 +30,4 @@ const searchReducer = (oldState = _nullResults, action) => {
   }
 }
 
-export default searchReducer;
+export default searchPerviewReducer;
