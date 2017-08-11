@@ -32,20 +32,20 @@ export const createPerview = (formData) => {
 };
 
 
-export const fetchAllPerviews = (keywords) => {
-  return axios('/api')
+export const fetchAllPerviews = (categoryId = null) => {
+  return axios('/api', categoryId)
 }
 
-export const fetchMyPerviews = (keywords) => {
-  return axios('/api/self')
+export const fetchMyPerviews = (categoryId = null) => {
+  return axios('/api/self', categoryId)
 }
 
-export const fetchFavoritePerview = (keywords) => {
-  return axios('/api/bookmarks')
+export const fetchFavoritePerview = (categoryId = null) => {
+  return axios('/api/bookmarks', categoryId)
 }
 
-export const fetchFriendPerview = (friendUserId) => {
-  return axios(`/api/friend/${friendUserId}`)
+export const fetchFriendPerview = (friendUserId, categoryId = null) => {
+  return axios(`/api/friend/${friendUserId}`, categoryId)
 }
 
 export const editPerview = (keywords) => {

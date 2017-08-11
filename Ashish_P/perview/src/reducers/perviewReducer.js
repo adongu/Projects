@@ -19,7 +19,7 @@ const perviewReducer = (oldState = _nullResults, action) => {
       return Object.assign({}, oldState, {
         requestLoading: true
       });
-    case RECEIVE_MY_PERVIEW:
+    case RECEIVE_MY_PERVIEWS:
       let perview = action.perview;
       newState.myPerviews.unshift(perview);
       return Object.assign({}, newState, { errors: []});

@@ -26,12 +26,12 @@ export const receiveMyPerviews = (perviews) => ({
 });
 
 export const receiveFavoritePerviews = (perviews) => ({
-  type: RECEIVE_MY_PERVIEWS,
+  type: RECEIVE_FAVORITE_PERVIEWS,
   perviews
 });
 
 export const receiveFriendPerviews = (perviews) => ({
-  type: RECEIVE_MY_PERVIEWS,
+  type: RECEIVE_FRIEND_PERVIEWS,
   perviews
 });
 
@@ -57,8 +57,8 @@ export const createPerview = (formData) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.createPerview(formData)
     .then( response => {
-      return dispatch(receiveMyPerview(response.data))
-            .then( () => receiveAllPerview(response.data))
+      return dispatch(receiveMyPerviews(response.data))
+            .then( () => receiveAllPerviews(response.data))
     })
     .catch( err => {
       return dispatch(receiveErrors(err.responseJSON))
