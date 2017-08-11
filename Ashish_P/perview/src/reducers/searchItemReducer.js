@@ -3,7 +3,7 @@ import { REQUEST_RESULTS, RECEIVE_RESULTS, RECEIVE_ERRORS, CLEAR_ERRORS } from '
 
 const _nullResults = Object.freeze({
   isFetching: false,
-  results: null,
+  itemResults: [],
   errors: []
 })
 
@@ -17,7 +17,7 @@ const searchItemReducer = (oldState = _nullResults, action) => {
     case RECEIVE_RESULTS:
       let results = action.results;
       return Object.assign({}, oldState, {
-        results: results,
+        itemResults: results,
         errors: []
       });
     case RECEIVE_ERRORS:

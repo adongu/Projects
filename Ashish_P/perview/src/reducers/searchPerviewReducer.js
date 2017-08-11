@@ -3,7 +3,7 @@ import { REQUEST_RESULTS, RECEIVE_RESULTS, RECEIVE_ERRORS, CLEAR_ERRORS } from '
 
 const _nullResults = Object.freeze({
   isFetching: false,
-  results: null,
+  perviewResults: [],
   errors: []
 })
 
@@ -16,8 +16,9 @@ const searchPerviewReducer = (oldState = _nullResults, action) => {
       });
     case RECEIVE_RESULTS:
       let results = action.results;
+      console.log(results);
       return Object.assign({}, oldState, {
-        results: results,
+        perviewResults: results,
         errors: []
       });
     case RECEIVE_ERRORS:

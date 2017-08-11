@@ -22,7 +22,6 @@ const WidePerview = ({ perviews }) => {
   const renderPerviews = () => {
     if (perviews) {
       return perviews.map((perview, i) => {
-        console.log(perview);
         var item = perview.itemDto;
         var user = perview.userDto;
         return (

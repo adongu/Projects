@@ -7,7 +7,7 @@ import { fetchResults } from '../actions/search_perview_actions';
 const mapStateToProps = ({session, findPerview}) => {
   return {
     currentUser: session.currentUser,
-    results: findPerview.results
+    results: findPerview.perviewResults
   }
 }
 

@@ -3,7 +3,22 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Autosuggest from 'react-autosuggest';
 
-class SearchPerviewBar extends React.Component {
+//// Teach Autosuggest how to calculate suggestions for any given input value.
+// const getSuggestions = value => {
+//   const inputValue = value.trim().toLowerCase();
+//   const inputLength = inputValue.length;
+//
+//   return inputLength === 0 ? [] : languages.filter(lang =>
+//     lang.name.toLowerCase().slice(0, inputLength) === inputValue
+//   );
+// };
+
+// When suggestion is clicked, Autosuggest needs to populate the input
+// based on the clicked suggestion. Teach Autosuggest how to calculate the
+// input value for every given suggestion.
+
+
+class SearchItemBar extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -26,6 +41,7 @@ class SearchPerviewBar extends React.Component {
 
   componentWillReceiveProps (nextProps) {
     if (nextProps.results) {
+      console.log('nextprop results', nextProps.results);
       this.setState({
         suggestions: nextProps.results,
         isFetching: false
@@ -135,7 +151,7 @@ class SearchPerviewBar extends React.Component {
         <div className="search__box">
           <Autosuggest
             id="header__suggest"
-            suggestions={suggestions}
+            suggestions={this.state.suggestions}
             onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
             onSuggestionsClearRequested={this.onSuggestionsClearRequested}
             getSuggestionValue={this.getSuggestionValue}
@@ -149,4 +165,4 @@ class SearchPerviewBar extends React.Component {
   }
 }
 // https://codepen.io/moroshko/pen/PZWbzK for
-export default withRouter(SearchPerviewBar);
+export default withRouter(SearchItemBar);
