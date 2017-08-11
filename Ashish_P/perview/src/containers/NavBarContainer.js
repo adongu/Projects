@@ -5,7 +5,6 @@
 // import { createPerview, clearErrors } from '../actions/perview_actions';
 //
 // const mapStateToProps = ({session, findItem}, ownProps) => {
-//   console.log('containers', findItem);
 //   return {
 //     currentUser: session.currentUser,
 //     results: findItem.results

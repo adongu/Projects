@@ -12,7 +12,6 @@ class MyPerviews extends React.Component {
   }
 
   componentWillReceiveProps (nextProps, nextState) {
-      console.log("myperviews", nextProps);
   }
 
   getPerviews () {

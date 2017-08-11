@@ -24,12 +24,10 @@ class HomePage extends React.Component {
   }
 
   componentDidMount() {
-    console.log('this.props.location.pathname', this.props.location.pathname);
   }
 
   componentDidReceiveProps (nextProps) {
     if (nextProps.requestLoading === false) {
-      console.log('new props ', nextProps.allPerviews);
       this.setState({
         requestLoading: false
       })

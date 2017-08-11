@@ -8,24 +8,26 @@ class FavoritePerviews extends React.Component {
     super(props);
 
     this.state = {
-      requestLoading: false
+      requestLoading: false,
+      categoryIds: []
     }
 
     this.validateRedirect = this.validateRedirect.bind(this);
+    this.filterPerviews = this.filterPerviews.bind(this);
   }
 
   componentWillMount () {
     this.validateRedirect();
     this.props.fetchFavoritePerviews();
+    this.props.fetchCategoryIds()
+    .then(() => this.setState({ categoryIds: this.props.categoryIds}))
   }
 
   componentDidMount() {
-    console.log('this.props.location.pathname', this.props.location.pathname);
   }
 
   componentDidReceiveProps (nextProps) {
     if (nextProps.requestLoading === false) {
-      console.log('new props ', nextProps.favoritePerviews);
       this.setState({
         requestLoading: false
       })
@@ -36,6 +38,10 @@ class FavoritePerviews extends React.Component {
     this.props.fetchUser()
       .then(() => { console.log("after fetchUser", this.props);})
       .catch(() => this.props.history.replace({ pathname: '/signin' }));
+  }
+
+  filterPerviews(categoryId) {
+    return (e) => this.props.fetchResults(categoryId);
   }
 
   renderComponents() {
@@ -51,6 +57,7 @@ class FavoritePerviews extends React.Component {
   }
 
   render() {
+    console.log('favorites', this.props.categoryIds);
     return (
     <div>
       <NavBar
@@ -60,6 +67,8 @@ class FavoritePerviews extends React.Component {
         fetchResults={this.props.fetchResults}
         fetchPerviews={this.props.fetchFavoritePerviews}
         createPerview={this.props.createPerview}
+        categoryIds={this.props.categoryIds}
+        filterPerviews={this.props.filterPerviews}
         clearErrors={this.props.clearErrors} />
 
       <div className="homepage__perviews">

@@ -41,12 +41,10 @@ class SearchItemBar extends React.Component {
 
   componentWillReceiveProps (nextProps) {
     if (nextProps.results) {
-      console.log('nextprop results', nextProps.results);
       this.setState({
         suggestions: nextProps.results,
         isFetching: false
       });
-      console.log(nextProps.results);
     }
   }
 
@@ -87,7 +85,6 @@ class SearchItemBar extends React.Component {
     this.setState({
       value: newValue
     });
-    console.log(this.props);
     if (newValue.length > 0) {
       this.props.fetchResults(newValue);
     }

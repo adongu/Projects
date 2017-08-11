@@ -8,7 +8,8 @@ class NavBar extends React.Component {
     super(props);
     this.state = {
       pageTitle: "",
-      canCreatePerviews: false
+      canCreatePerviews: false,
+      canCreateFilters: false
     }
 
     this.renderCreateButton = this.renderCreateButton.bind(this);
@@ -21,26 +22,25 @@ class NavBar extends React.Component {
     this.updatePageTitle(this.props);
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidReceiveProps(prevProps, prevState) {
     if (prevProps.location !== this.props.location) {
-      console.log(this.props.location);
+      this.updatePageTitle(this.props);
     }
   }
 
   updatePageTitle(props) {
-    console.log("update page title");
     switch (props.location.pathname) {
       case '/':
-        this.setState({pageTitle: "Check the Perviews of your friends!", canCreatePerviews: true})
+        this.setState({pageTitle: "Check the Perviews of your friends!", canCreatePerviews: true, canCreateFilters: false})
         break;
       case '/myperviews':
-        this.setState({pageTitle: "My Perviews"})
+        this.setState({pageTitle: "My Perviews", canCreatePerviews: false, canCreateFilters: true })
         break;
       case '/favorites':
-        this.setState({pageTitle: "Saved Perviews"})
+        this.setState({pageTitle: "Saved Perviews", canCreatePerviews: false, canCreateFilters: true })
         break;
       default:
-        this.setState({pageTitle: ''})
+        this.setState({pageTitle: 'Settings', canCreateFilters: true})
         break;
     }
   }
@@ -74,30 +74,34 @@ class NavBar extends React.Component {
 
   }
 
-  renderFilterBar() {
-    return (
-      <div>
-        <label className="navbar__filter">
-          Filter by
-          <select className="navbar__dropdown-filter" value={this.state.value} onChange={this.handleChange}>
-            <option selected value="all">All Catagories</option>
-            <option value="lime"></option>
-            <option value="coconut">Coconut</option>
-            <option value="mango">Mango</option>
-          </select>
-        </label>
+  renderFilters() {
+    if (this.state.canCreateFilters) {
+      return (
+        <div>
+          <label className="navbar__filter">
+            Filter by
+            <select className="navbar__dropdown-filter" value={this.state.value} onChange={this.handleChange}>
+              <option onClick={this.props.filterPerviews} selected value="all">All Catagories</option>
+              {this.props.categoryIds.map((category, id) => {
+                return (
+                  <option onClick={this.props.filterPerviews(category.id)} selected value="all">{category.displayName}</option>
+                )
+              })}
+            </select>
+          </label>
 
-        <label className="navbar__sort">
-          Sort by
-          <select className="navbar__dropdown-sort" value="Sort by" onChange={this.handleChange}>
-            <option value="grapefruit">Grapefruit</option>
-            <option value="lime">Lime</option>
-            <option value="coconut">Coconut</option>
-            <option value="mango">Mango</option>
-          </select>
-        </label>
-      </div>
-    )
+          <label className="navbar__sort">
+            Sort by
+            <select className="navbar__dropdown-sort" value="Sort by" onChange={this.handleChange}>
+              <option value="grapefruit">Grapefruit</option>
+              <option value="lime">Lime</option>
+              <option value="coconut">Coconut</option>
+              <option value="mango">Mango</option>
+            </select>
+          </label>
+        </div>
+      )
+    }
   }
 
 
@@ -109,6 +113,7 @@ class NavBar extends React.Component {
             {this.state.pageTitle}
           </div>
           { this.renderCreateButton() }
+          { this.renderFilters() }
         </div>
       </div>
 

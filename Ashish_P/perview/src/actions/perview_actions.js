@@ -70,7 +70,6 @@ export const createPerview = (formData) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.createPerview(formData)
     .then( response => {
-      console.log(response.data);
       return dispatch(receiveMyPerviews(response.data))
     })
     .catch( err => {

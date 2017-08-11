@@ -16,7 +16,6 @@ const searchPerviewReducer = (oldState = _nullResults, action) => {
       });
     case RECEIVE_RESULTS:
       let results = action.results;
-      console.log(results);
       return Object.assign({}, oldState, {
         perviewResults: results,
         errors: []
