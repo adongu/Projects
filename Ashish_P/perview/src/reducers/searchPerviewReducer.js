@@ -15,7 +15,10 @@ const searchPerviewReducer = (oldState = _nullResults, action) => {
         isFetching: true
       });
     case RECEIVE_RESULTS:
-      let results = action.results;
+      console.log(results);
+      let results  = Object.keys(action.results).map(function(key) {
+        return action.results[key][0];
+      });
       return Object.assign({}, oldState, {
         perviewResults: results,
         errors: []

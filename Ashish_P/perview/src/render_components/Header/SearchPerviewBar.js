@@ -3,28 +3,13 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Autosuggest from 'react-autosuggest';
 
-//// Teach Autosuggest how to calculate suggestions for any given input value.
-// const getSuggestions = value => {
-//   const inputValue = value.trim().toLowerCase();
-//   const inputLength = inputValue.length;
-//
-//   return inputLength === 0 ? [] : languages.filter(lang =>
-//     lang.name.toLowerCase().slice(0, inputLength) === inputValue
-//   );
-// };
-
-// When suggestion is clicked, Autosuggest needs to populate the input
-// based on the clicked suggestion. Teach Autosuggest how to calculate the
-// input value for every given suggestion.
-
-
 class SearchItemBar extends React.Component {
   constructor(props){
     super(props);
     this.state = {
       keywords: "",
       value: '',
-      suggestions: [],
+      suggestions: {},
       isFetching: false
     };
 
@@ -51,25 +36,25 @@ class SearchItemBar extends React.Component {
   getSuggestionValue(suggestion) {
     // pass item to modal
     this.props.selectItem(
-      suggestion.data.imageUrls.large.url,
-      suggestion.name,
-      suggestion.data.lowestNewPrice.formattedAmount,
+      suggestion.itemDto.data.imageUrls.large.url,
+      suggestion.itemDto.dataname,
+      suggestion.itemDto.data.lowestNewPrice.formattedAmount,
       suggestion.id
       // suggestion.data.asin
     );
-    return suggestion.name;
+    return suggestion.itemDto.name;
   }
   // Use your imagination to render suggestions.
   renderSuggestion(suggestion){
-    let imgUrl = suggestion.data.imageUrls.large.url;
-    let price = suggestion.data.lowestNewPrice.formattedAmount;
+    let imgUrl = suggestion.itemDto.data.imageUrls.large.url;
+    let price = suggestion.itemDto.data.lowestNewPrice.formattedAmount;
     return (
       <div className="flexrow autosuggest__product">
         <div className="autosuggest__product-left">
           <img className="autosuggest__img" src={imgUrl} alt="product"/>
         </div>
         <div className="flexcolumn autosuggest__product-right">
-          <div className="autosuggest__name">{suggestion.name}</div>
+          <div className="autosuggest__name">{suggestion.itemDto.name}</div>
           <div className="autosuggest__price">{price}</div>
         </div>
       </div>
@@ -101,7 +86,7 @@ class SearchItemBar extends React.Component {
   // Autosuggest will call this function every time you need to clear suggestions.
   onSuggestionsClearRequested() {
     this.setState({
-      suggestions: []
+      suggestions: {}
     });
   };
 
@@ -122,7 +107,7 @@ class SearchItemBar extends React.Component {
     });
     return (
       <div className="search__suggestions">
-        { this.renderSuggestion }
+        { this.renderSuggestion() }
       </div>
     )
   }
@@ -148,7 +133,7 @@ class SearchItemBar extends React.Component {
         <div className="search__box">
           <Autosuggest
             id="header__suggest"
-            suggestions={this.state.suggestions}
+            suggestions={suggestions}
             onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
             onSuggestionsClearRequested={this.onSuggestionsClearRequested}
             getSuggestionValue={this.getSuggestionValue}

@@ -83,10 +83,11 @@ class NavBar extends React.Component {
             <select className="navbar__dropdown-filter" value={this.state.value} onChange={this.handleChange}>
               <option onClick={this.props.filterPerviews} selected value="all">All Catagories</option>
               {this.props.categoryIds.map((category, id) => {
-                return (
-                  <option onClick={this.props.filterPerviews(category.id)} selected value="all">{category.displayName}</option>
-                )
-              })}
+                  return (
+                    <option onClick={this.props.filterPerviews(category.id)} selected value="all">{category.displayName}</option>
+                  )
+                })}
+              }
             </select>
           </label>
 
@@ -103,7 +104,6 @@ class NavBar extends React.Component {
       )
     }
   }
-
 
   render() {
     return (
