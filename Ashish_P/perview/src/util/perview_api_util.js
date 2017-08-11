@@ -40,11 +40,11 @@ export const fetchMyPerviews = (categoryId = null) => {
   return axios('/api/self', categoryId)
 }
 
-export const fetchFavoritePerview = (categoryId = null) => {
+export const fetchFavoritePerviews = (categoryId = null) => {
   return axios('/api/bookmarks', categoryId)
 }
 
-export const fetchFriendPerview = (friendUserId, categoryId = null) => {
+export const fetchFriendPerviews = (friendUserId, categoryId = null) => {
   return axios(`/api/friend/${friendUserId}`, categoryId)
 }
 
@@ -53,20 +53,5 @@ export const editPerview = (keywords) => {
 }
 
 export const deletePerview = (keywords) => {
-
-}
-
-export const likePerview = (keywords) => {
-
-}
-export const unlikePerview = (keywords) => {
-
-}
-
-export const bookmarkPerview = (keywords) => {
-
-}
-
-export const unbookmarkPerview = (keywords) => {
 
 }
