@@ -3,10 +3,6 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Autosuggest from 'react-autosuggest';
 
-const languages = [{ name: 'C', year: 1972 },
-{ name: 'Elm', year: 2014 },
-{ name: 'Elm', year: 2012 }];
-
 //// Teach Autosuggest how to calculate suggestions for any given input value.
 // const getSuggestions = value => {
 //   const inputValue = value.trim().toLowerCase();
@@ -21,14 +17,6 @@ const languages = [{ name: 'C', year: 1972 },
 // based on the clicked suggestion. Teach Autosuggest how to calculate the
 // input value for every given suggestion.
 
-const renderInputComponent = inputProps => (
-  <div className="search__inputContainer">
-    <input {...inputProps} />
-    <button className="search__btn">
-      <i className="fa fa-search search__btn-icon" aria-hidden="true"></i>
-    </button>
-  </div>
-);
 
 class SearchBar extends React.Component {
   constructor(props){
@@ -47,6 +35,7 @@ class SearchBar extends React.Component {
     this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(this);
     this.getSuggestions = this.getSuggestions.bind(this);
     this.getSuggestionValue = this.getSuggestionValue.bind(this);
+    this.renderInputComponent = this.renderInputComponent.bind(this);
     this.onChange = this.onChange.bind(this);
   }
 
@@ -118,6 +107,17 @@ class SearchBar extends React.Component {
     });
   };
 
+  renderInputComponent (inputProps) {
+    return (
+      <div className="search__inputContainer">
+        <input {...inputProps} />
+        <button className="search__btn">
+          <i className="fa fa-search search__btn-icon" aria-hidden="true"></i>
+        </button>
+      </div>
+    )
+  };
+
   updateKeywords(e) {
     this.setState({
       keywords: e.target.value
@@ -155,7 +155,7 @@ class SearchBar extends React.Component {
             onSuggestionsClearRequested={this.onSuggestionsClearRequested}
             getSuggestionValue={this.getSuggestionValue}
             renderSuggestion={this.renderSuggestion}
-            renderInputComponent={renderInputComponent}
+            renderInputComponent={this.renderInputComponent}
             inputProps={inputProps}
           />
         </div>

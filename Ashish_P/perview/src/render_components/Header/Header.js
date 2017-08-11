@@ -82,7 +82,7 @@ class Header extends React.Component {
               Hello, {this.state.fName}!
             </div>
             <div className="header__usernavphoto">
-              <UserNavContainer imgUrl={this.state.imgUrl} logout={this.props.logout} />
+              <UserNavContainer imgUrl={this.state.imgUrl} logOut={this.props.logOut} />
             </div>
           </div>
         </div>

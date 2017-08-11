@@ -12,7 +12,7 @@ class UserNav extends React.Component {
 
   handleLogout() {
     this.props.history.replace({ pathname: '/signin' });
-    this.props.logout();
+    this.props.logOut();
   }
 
   render () {
