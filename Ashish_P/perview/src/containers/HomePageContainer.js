@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import HomePage from "../render_components/Homepage/HomePage";
 import { fetchUser } from '../actions/session_actions';
-import { createPerview, clearErrors } from '../actions/perview_actions';
+import { createPerview, fetchAllPerviews, clearErrors } from '../actions/perview_actions';
 
 const mapStateToProps = ({ session }, ownProps) => {
   return {

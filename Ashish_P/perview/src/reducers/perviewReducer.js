@@ -19,9 +19,17 @@ const perviewReducer = (oldState = _nullResults, action) => {
       return Object.assign({}, oldState, {
         requestLoading: true
       });
+    case RECEIVE_ALL_PERVIEWS:
+      newState.allPerviews.unshift(action.perview);
+      return Object.assign({}, newState, { errors: []});
     case RECEIVE_MY_PERVIEWS:
-      let perview = action.perview;
-      newState.myPerviews.unshift(perview);
+      newState.favoritePerviews.unshift(action.perview);
+      return Object.assign({}, newState, { errors: []});
+    case RECEIVE_FAVORITE_PERVIEWS:
+      newState.friendPerviews.unshift(action.perview);
+      return Object.assign({}, newState, { errors: []});
+    case RECEIVE_FRIEND_PERVIEWS:
+      newState.Perviews.unshift(action.perview);
       return Object.assign({}, newState, { errors: []});
     case RECEIVE_ERRORS:
       let errors = action.errors;
