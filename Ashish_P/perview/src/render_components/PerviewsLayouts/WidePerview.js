@@ -3,54 +3,59 @@ import product from "../../styles/assets/product.jpg"
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Button, ButtonToolbar } from 'react-bootstrap';
+import moment from 'moment';
 
 const WidePerview = ({ perviews }) => {
 
-  const renderStars = (ratings) => {
+  const renderStars = (rating) => {
     let stars = [1, 2, 3, 4, 5];
     return stars.map((ele)=>{
       return (
-        <span key={ele} className={ele <= ratings ? 'active_star' : 'no_star'} >
+        <span key={ele} className={ele <= rating ? 'active_star' : 'no_star'} >
           <i className="fa fa-star" aria-hidden="true"></i>
         </span>
       )
     })
   }
 
+
   const renderPerviews = () => {
     return perviews.map((perview, i) => {
+      console.log(perview);
+      var item = perview.itemDto;
+      var user = perview.userDto;
       return (
         <div key={`perviewindex__${i}`} className="flexrow wideresults__box">
           <div className="flexrow wideresults__perview-left">
-            <div className="wideresults__productimg"><img className="wideresults__productimg-photo" src={product} alt="Product"/>
+            <div className="wideresults__productimg"><img className="wideresults__productimg-photo" src={item.data.imageUrls.large.url} alt="Product"/>
             </div>
             <div className="flexcolumn wideresults__perview-left-info">
-              <div className="wideresults__product-title">{perview.left.title}</div>
+              <div className="wideresults__product-title">{item.data.title}</div>
               <div className="flexrow wideresults__product-info">
-                <div className="wideresults__product-price">${perview.left.price}</div>
-                <div className="wideresults__product-numperviews">{perview.left.perviews} perviews</div>
+                <div className="wideresults__product-price">{item.data.lowestNewPrice.formattedAmount}</div>
+                <div className="wideresults__product-numperviews">{perview.likes ? perview.likes : 0} perviews</div>
               </div>
               <ButtonToolbar>
-                 <Button className="wideresults__product-buybtn" href="http://google.com">BUY AT AMAZON</Button>
+                 <Button className="wideresults__product-buybtn" href={item.data.detailPageUrl}>BUY AT AMAZON</Button>
                </ButtonToolbar>
             </div>
           </div>
           <div className="wideresults__perview-right">
             <div className="flexcolumn wideresults__perview-rightbox">
-              <div className="wideresults__review-time">{perview.right.time}</div>
+              <div className="wideresults__review-time">{moment(perview.ts).calendar()}</div>
               <div className="flexrow wideresults__review-user">
-                <div className="wideresults__review-user-icon"><img className="wideresults__review-user-img" src={perview.right.icon} alt="User"/></div>
-                <div className="wideresults__review-username">{perview.right.name}</div>
+                <div className="wideresults__review-user-icon"><img className="wideresults__review-user-img" src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/></div>
+                <div className="wideresults__review-username">{user.fullName}</div>
               </div>
               <div className="wideresults__review-stars">
-                {renderStars(perview.right.rating)}
+                {renderStars(perview.rating)}
               </div>
-              <div className="wideresults__review-tags">{perview.right.tags}</div>
-              <div className="wideresults__review-text">{perview.right.perview}</div>
+              <div className="wideresults__review-tags">{perview.tags}</div>
+              <div className="wideresults__review-text">{perview.tags}</div>
               <div className="flexrow wideresults__review-social-box">
                 <div className="flexrow wideresults__review-comments-box">
                   <i className="fa fa-comments wideresults__review-comments-icon" aria-hidden="true"></i>
-                  <div className="wideresults__review-comments"> {perview.right.comments} comments</div>
+                  <div className="wideresults__review-comments"> {perview.likes ? perview.likes : 0} comments</div>
                 </div>
                 <div className="flexrow wideresults__review-social">
                   <div className="wideresults__review-social-save">
@@ -81,4 +86,80 @@ const WidePerview = ({ perviews }) => {
   )
 }
 
+//
+// Array[{}]
+//   img: itemDto.data.imageUrls.large.url
+//   title: itemDto.data.title
+//   price: itemDto.data.lowestNewPrice.formattedAmount
+//   numPerviews: itemDto.data.
+//   categoryId: itemDto.categoryDto.id
+//   buyUrl: itemDto.data.detailPageUrl
+//
+// import moment from 'moment';
+//
+//   time: moment(ts).calendar();
+//   icon: userDto.facebookProfilePictureUrl.replace(/\/picture$/, "")
+//   username: userDto.fullName
+//   userId: userDto.id
+//   rating: rating
+//   tags: tags??
+//   comment: comments?? need to parse tags from comments
+//   numComments:?
+//   likes: ? need to send in as array likers.length
+//   perviewId: id
+//   save(favorite/cart): function:
+//   like: function
+//   sharing:?
+
 export default withRouter(WidePerview);
+
+// <div key={`perviewindex__${i}`} className="flexrow wideresults__box">
+//   <div className="flexrow wideresults__perview-left">
+//     <div className="wideresults__productimg"><img className="wideresults__productimg-photo" src={item.imageUrls.large.url} alt="Product"/>
+//     </div>
+//     <div className="flexcolumn wideresults__perview-left-info">
+//       <div className="wideresults__product-title">{item.data.title}</div>
+//       <div className="flexrow wideresults__product-info">
+//         <div className="wideresults__product-price">${item.data.lowestNewPrice.formattedAmount}</div>
+//         <div className="wideresults__product-numperviews">{perview.likes ? perview.likes : 0} perviews</div>
+//       </div>
+//       <ButtonToolbar>
+//          <Button className="wideresults__product-buybtn" href={item.data.detailPageUrl}>BUY AT AMAZON</Button>
+//        </ButtonToolbar>
+//     </div>
+//   </div>
+//   <div className="wideresults__perview-right">
+//     <div className="flexcolumn wideresults__perview-rightbox">
+//       <div className="wideresults__review-time">{moment(perview.ts).calendar()}</div>
+//       <div className="flexrow wideresults__review-user">
+//         <div className="wideresults__review-user-icon"><img className="wideresults__review-user-img" src={perview.user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/></div>
+//         <div className="wideresults__review-username">{user.fullName}</div>
+//       </div>
+//       <div className="wideresults__review-stars">
+//         {renderStars(perview.rating)}
+//       </div>
+//       <div className="wideresults__review-tags">{perview.tags}</div>
+//       <div className="wideresults__review-text">{perview.tags}</div>
+//       <div className="flexrow wideresults__review-social-box">
+//         <div className="flexrow wideresults__review-comments-box">
+//           <i className="fa fa-comments wideresults__review-comments-icon" aria-hidden="true"></i>
+//           <div className="wideresults__review-comments"> {perview.likes ? perview.likes : 0} comments</div>
+//         </div>
+//         <div className="flexrow wideresults__review-social">
+//           <div className="wideresults__review-social-save">
+//             <i className="fa fa-bookmark wideresults__review-icon-save" aria-hidden="true"></i>
+//             <div className="wideresults__review-save">Save</div>
+//           </div>
+//           <div className="wideresults__review-social-like">
+//             <i className="fa fa-heart wideresults__review-icon-like" aria-hidden="true"></i>
+//             <div className="wideresults__review-like">Like</div>
+//           </div>
+//           <div className="wideresults__review-social-share">
+//             <i className="fa fa-share wideresults__review-icon-share" aria-hidden="true"></i>
+//             <div className="wideresults__review-share">Share</div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   </div>
+// </div>

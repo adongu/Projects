@@ -12,9 +12,9 @@ class HomePage extends React.Component {
       lName: "",
       id: "",
       img: "",
-      isFetching: true
+      requestLoading: false
     }
-    this.getPerviews = this.getPerviews.bind(this);
+    // this.getPerviews = this.getPerviews.bind(this);
     this.validateRedirect = this.validateRedirect.bind(this);
   }
 
@@ -27,15 +27,23 @@ class HomePage extends React.Component {
     console.log(this.props.allPerviews);
   }
 
-  componentWillReceiveProps (nextProps) {
-    if (nextProps.currentUser) {
-      let user = nextProps.currentUser;
+  componentDidReceiveProps (nextProps) {
+    // if (nextProps.currentUser) {
+    //   let user = nextProps.currentUser;
+    //   this.setState({
+    //     fName: user.firstName,
+    //     img:  user.facebookProfilePictureUrl,
+    //     requestLoading: false
+    //   })
+    // } else
+    if (nextProps.requestLoading === false) {
+      console.log('new props ', nextProps.allPerviews);
       this.setState({
-        fName: user.firstName,
-        img:  user.facebookProfilePictureUrl,
-        isFetching: false
+        requestLoading: false
       })
     }
+
+
   }
 
   validateRedirect() {
@@ -44,40 +52,40 @@ class HomePage extends React.Component {
       .catch(() => this.props.history.replace({ pathname: '/signin' }));
   }
 
-  getPerviews () {
-    let all = this.props.allPerviews;
-    let perviews = [];
-    for (let i = 0; i < 3; i++) {
-      let product = {
-        left: {
-          img: 'http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png',
-          title: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-          price: 145,
-          perviews: 8
-        },
-        right: {
-          icon: 'https://www.juicedb.com/img/user/temp-user-128.jpg',
-          name: 'Sam White',
-          time: "Tuesday at 3:00 pm",
-          rating: 3,
-          tags: '#amazing #wow @almostlikeapet',
-          perview: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-          comments: 9
-        }
-      };
-      perviews.push(product);
-    }
-    return perviews;
-  }
+  // getPerviews () {
+  //   let all = this.props.allPerviews;
+  //   let perviews = [];
+  //   for (let i = 0; i < 3; i++) {
+  //     let product = {
+  //       left: {
+  //         img: 'http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png',
+  //         title: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+  //         price: 145,
+  //         perviews: 8
+  //       },
+  //       right: {
+  //         icon: 'https://www.juicedb.com/img/user/temp-user-128.jpg',
+  //         name: 'Sam White',
+  //         time: "Tuesday at 3:00 pm",
+  //         rating: 3,
+  //         tags: '#amazing #wow @almostlikeapet',
+  //         perview: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+  //         comments: 9
+  //       }
+  //     };
+  //     perviews.push(product);
+  //   }
+  //   return perviews;
+  // }
 
   renderComponents() {
-    if (this.state.isFetching) {
+    if (this.state.requestLoading) {
       return (
         <div>spinner</div>
       )
     } else {
       return (
-        <WidePerview perviews={this.getPerviews()}/>
+        <WidePerview perviews={this.props.allPerviews}/>
       )
     }
   }

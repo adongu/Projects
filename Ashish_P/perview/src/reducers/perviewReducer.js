@@ -29,6 +29,7 @@ const perviewReducer = (oldState = _nullResults, action) => {
       newState.allPerviews.unshift(action.myPerview);
       newState.myPerviews.unshift(action.myPerview);
       return Object.assign({}, newState, {
+        requestLoading: false,
         errors: []
       });
     case RECEIVE_FAVORITE_PERVIEWS:

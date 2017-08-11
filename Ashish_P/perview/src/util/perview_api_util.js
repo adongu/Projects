@@ -32,19 +32,19 @@ export const createPerview = (formData) => {
 };
 
 
-export const fetchAllPerviews = (categoryId = null) => {
+export const fetchAllPerviews = (categoryId) => {
   return axios('/api', categoryId)
 }
 
-export const fetchMyPerviews = (categoryId = null) => {
+export const fetchMyPerviews = (categoryId) => {
   return axios('/api/self', categoryId)
 }
 
-export const fetchFavoritePerviews = (categoryId = null) => {
+export const fetchFavoritePerviews = (categoryId) => {
   return axios('/api/bookmarks', categoryId)
 }
 
-export const fetchFriendPerviews = (friendUserId, categoryId = null) => {
+export const fetchFriendPerviews = (friendUserId, categoryId) => {
   return axios(`/api/friend/${friendUserId}`, categoryId)
 }
 
