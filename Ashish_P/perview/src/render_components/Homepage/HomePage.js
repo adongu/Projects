@@ -24,26 +24,16 @@ class HomePage extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.allPerviews);
+    console.log('this.props.location.pathname', this.props.location.pathname);
   }
 
   componentDidReceiveProps (nextProps) {
-    // if (nextProps.currentUser) {
-    //   let user = nextProps.currentUser;
-    //   this.setState({
-    //     fName: user.firstName,
-    //     img:  user.facebookProfilePictureUrl,
-    //     requestLoading: false
-    //   })
-    // } else
     if (nextProps.requestLoading === false) {
       console.log('new props ', nextProps.allPerviews);
       this.setState({
         requestLoading: false
       })
     }
-
-
   }
 
   validateRedirect() {

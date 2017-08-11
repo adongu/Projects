@@ -36,6 +36,10 @@ export const fetchAllPerviews = (categoryId) => {
   return axios('/api', categoryId)
 }
 
+export const fetchItemPerviews = (itemId) => {
+  return axios('/api/item', itemId)
+}
+
 export const fetchMyPerviews = (categoryId) => {
   return axios('/api/self', categoryId)
 }

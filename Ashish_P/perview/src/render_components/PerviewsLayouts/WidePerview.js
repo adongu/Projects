@@ -20,14 +20,15 @@ const WidePerview = ({ perviews }) => {
 
 
   const renderPerviews = () => {
-    return perviews.map((perview, i) => {
-      console.log(perview);
-      var item = perview.itemDto;
-      var user = perview.userDto;
-      return (
-        <div key={`perviewindex__${i}`} className="flexrow wideresults__box">
-          <div className="flexrow wideresults__perview-left">
-            <div className="wideresults__productimg"><img className="wideresults__productimg-photo" src={item.data.imageUrls.large.url} alt="Product"/>
+    if (perviews) {
+      return perviews.map((perview, i) => {
+        console.log(perview);
+        var item = perview.itemDto;
+        var user = perview.userDto;
+        return (
+          <div key={`perviewindex__${i}`} className="flexrow wideresults__box">
+            <div className="flexrow wideresults__perview-left">
+              <div className="wideresults__productimg"><img className="wideresults__productimg-photo" src={item.data.imageUrls.large.url} alt="Product"/>
             </div>
             <div className="flexcolumn wideresults__perview-left-info">
               <div className="wideresults__product-title">{item.data.title}</div>
@@ -36,8 +37,8 @@ const WidePerview = ({ perviews }) => {
                 <div className="wideresults__product-numperviews">{perview.likes ? perview.likes : 0} perviews</div>
               </div>
               <ButtonToolbar>
-                 <Button className="wideresults__product-buybtn" href={item.data.detailPageUrl}>BUY AT AMAZON</Button>
-               </ButtonToolbar>
+                <Button className="wideresults__product-buybtn" href={item.data.detailPageUrl}>BUY AT AMAZON</Button>
+              </ButtonToolbar>
             </div>
           </div>
           <div className="wideresults__perview-right">
@@ -75,8 +76,15 @@ const WidePerview = ({ perviews }) => {
             </div>
           </div>
         </div>
+        )
+      });
+    } else {
+      return (
+        <div>
+          No favorite perviews yet :)
+        </div>
       )
-    });
+    }
   }
 
   return (
