@@ -58,7 +58,6 @@ export const createPerview = (formData) => dispatch => {
   return APIUtil.createPerview(formData)
     .then( response => {
       return dispatch(receiveMyPerviews(response.data))
-            .then( () => receiveAllPerviews(response.data))
     })
     .catch( err => {
       return dispatch(receiveErrors(err.responseJSON))
