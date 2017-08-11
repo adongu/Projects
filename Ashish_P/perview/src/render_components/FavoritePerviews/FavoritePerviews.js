@@ -20,7 +20,7 @@ class FavoritePerviews extends React.Component {
     this.validateRedirect();
     this.props.fetchFavoritePerviews();
     this.props.fetchCategoryIds()
-    .then(() => this.setState({ categoryIds: this.props.categoryIds}))
+    // .then(() => this.setState({ categoryIds: this.props.categoryIds}))
   }
 
   componentDidMount() {
@@ -57,7 +57,6 @@ class FavoritePerviews extends React.Component {
   }
 
   render() {
-    console.log('favorites', this.props.categoryIds);
     return (
     <div>
       <NavBar

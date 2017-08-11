@@ -7,7 +7,10 @@ const _nullResults = Object.freeze({
   allPerviews: [],
   itemPerviews: [],
   myPerviews: [],
-  favoritePerviews: [],
+  favoritePerviews: {
+    categories: [],
+    perviews: []
+  },
   friendPerviews: [],
   errors: []
 })
@@ -41,6 +44,7 @@ const perviewReducer = (oldState = _nullResults, action) => {
         errors: []
       });
     case RECEIVE_FAVORITE_PERVIEWS:
+    console.log(action.favoritePerviews);
       return Object.assign({}, newState, {
         favoritePerviews: action.favoritePerviews,
         requestLoading: false,
