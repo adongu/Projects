@@ -20,24 +20,39 @@ const perviewReducer = (oldState = _nullResults, action) => {
         requestLoading: true
       });
     case RECEIVE_ALL_PERVIEWS:
-      return Object.assign({}, newState, { allPerviews: action.allPerviews, errors: [] });
+      return Object.assign({}, newState, {
+        allPerviews: action.allPerviews,
+        requestLoading: false,
+        errors: []
+      });
     case RECEIVE_MY_PERVIEWS:
       newState.allPerviews.unshift(action.myPerview);
       newState.myPerviews.unshift(action.myPerview);
-      return Object.assign({}, newState, { errors: []});
-    return Object.assign({}, newState, { favoritePerviews: action.favoritePerviews, errors: [] });
+      return Object.assign({}, newState, {
+        errors: []
+      });
     case RECEIVE_FAVORITE_PERVIEWS:
-      return Object.assign({}, newState, { favoritePerviews: action.favoritePerviews, errors: [] });
+      return Object.assign({}, newState, {
+        favoritePerviews: action.favoritePerviews,
+        requestLoading: false,
+        errors: []
+      });
     case RECEIVE_FRIEND_PERVIEWS:
       newState.Perviews.unshift(action.perview);
-      return Object.assign({}, newState, { friendPerviews: action.friendPerviews, errors: [] });
+      return Object.assign({}, newState, {
+        friendPerviews: action.friendPerviews,
+        requestLoading: false,
+        errors: []
+      });
     case RECEIVE_ERRORS:
       let errors = action.errors;
       return Object.assign({}, oldState, {
         errors: errors
       });
     default:
-      return merge(oldState, { errors: []});
+      return merge(oldState, {
+        errors: []
+      });
   }
 }
 

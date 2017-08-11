@@ -20,9 +20,11 @@ class HomePage extends React.Component {
 
   componentWillMount () {
     this.validateRedirect();
+    this.props.fetchAllPerviews();
   }
 
   componentDidMount() {
+    console.log(this.props.allPerviews);
   }
 
   componentWillReceiveProps (nextProps) {
@@ -43,12 +45,13 @@ class HomePage extends React.Component {
   }
 
   getPerviews () {
+    let all = this.props.allPerviews;
     let perviews = [];
     for (let i = 0; i < 3; i++) {
       let product = {
         left: {
           img: 'http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png',
-          title: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          title: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
           price: 145,
           perviews: 8
         },
@@ -58,7 +61,7 @@ class HomePage extends React.Component {
           time: "Tuesday at 3:00 pm",
           rating: 3,
           tags: '#amazing #wow @almostlikeapet',
-          perview: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+          perview: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
           comments: 9
         }
       };

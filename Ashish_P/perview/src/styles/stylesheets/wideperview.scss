@@ -49,20 +49,18 @@ $lines-to-show: 5;
 
   &product-title {
     width: 100%;
-    height: 130px;
     padding-bottom: 10px;
     color: darkgray;
-    // height: 130px;
-    // line-height: 130px;
-    // overflow: hidden;
-    // text-overflow: ellipsis;
-
-    // white-space: nowrap;
-    // overflow: hidden;
-    // max-width: 300px;
-    // border-left: 0 solid transparent;
-    // border-right: 1em solid transparent;
-    // text-overflow: ellipsis;
+    height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
+    margin: 0 auto;
+    margin-bottom: 20px;
+    font-size: $font-size;
+    font-weight: 300;
+    line-height: $line-height;
+    -webkit-line-clamp: $lines-to-show;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   &product-info {

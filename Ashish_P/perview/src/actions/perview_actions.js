@@ -57,6 +57,7 @@ export const createPerview = (formData) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.createPerview(formData)
     .then( response => {
+      console.log(response.data);
       return dispatch(receiveMyPerviews(response.data))
     })
     .catch( err => {
@@ -68,6 +69,7 @@ export const fetchAllPerviews = (categoryId) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.fetchAllPerviews(categoryId)
     .then( response => {
+      console.log(response.data);
       return dispatch(receiveAllPerviews(response.data))
     })
     .catch( err => {
