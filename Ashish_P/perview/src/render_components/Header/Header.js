@@ -12,13 +12,19 @@ class Header extends React.Component {
       fName: "",
       userId: null,
       imgUrl: "https://www.juicedb.com/img/user/temp-user-128.jpg",
+      scrolled: ''
     }
 
     this.validateRedirect = this.validateRedirect.bind(this);
+    this.handleScroll = this.handleScroll.bind(this);
   }
 
   componentWillMount() {
     this.validateRedirect();
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll, false);
   }
 
   componentWillReceiveProps (nextProps) {
@@ -30,6 +36,10 @@ class Header extends React.Component {
         isFetching: false
       })
     }
+  }
+
+  componentWillUnmount(){
+    window.removeEventListener('scroll', this.handleScroll);
   }
 
   validateRedirect() {
@@ -47,10 +57,17 @@ class Header extends React.Component {
     })
   }
 
+  handleScroll() {
+    if (window.scrollY > 100) {
+      this.setState({scrolled: 'scrolled'})
+    } else {
+      this.setState({scrolled: ''})
+    }
+  }
 
   render() {
     return (
-      <div className="header__container">
+      <div className={`header__container ${this.state ? this.state.scrolled : '' }`}>
         <div className="flexrow header__box">
           <div className="header__logo">
             <Link to="/">
