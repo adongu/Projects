@@ -3,6 +3,7 @@ import { REQUEST_LOADING, RECEIVE_ALL_PERVIEWS, RECEIVE_ITEM_PERVIEWS, RECEIVE_M
 
 const _nullResults = Object.freeze({
   requestLoading: false,
+  categoryIds: [],
   allPerviews: [],
   itemPerviews: [],
   myPerviews: [],
@@ -49,6 +50,12 @@ const perviewReducer = (oldState = _nullResults, action) => {
       newState.Perviews.unshift(action.perview);
       return Object.assign({}, newState, {
         friendPerviews: action.friendPerviews,
+        requestLoading: false,
+        errors: []
+      });
+    case RECEIVE_CATEGORY_IDS:
+      return Object.assign({}, newState, {
+        categoryIds: action.categoryIds,
         requestLoading: false,
         errors: []
       });

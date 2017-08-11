@@ -30,6 +30,9 @@ class NavBar extends React.Component {
   updatePageTitle(props) {
     console.log("update page title");
     switch (props.location.pathname) {
+      case '/':
+        this.setState({pageTitle: "Check the Perviews of your friends!", canCreatePerviews: true})
+        break;
       case '/myperviews':
         this.setState({pageTitle: "My Perviews"})
         break;
@@ -37,7 +40,7 @@ class NavBar extends React.Component {
         this.setState({pageTitle: "Saved Perviews"})
         break;
       default:
-        this.setState({pageTitle: "Check the Perviews of your friends!", canCreatePerviews: true})
+        this.setState({pageTitle: ''})
         break;
     }
   }

@@ -6,6 +6,7 @@ export const RECEIVE_ITEM_PERVIEWS = 'RECEIVE_ITEM_PERVIEWS';
 export const RECEIVE_MY_PERVIEWS = 'RECEIVE_MY_PERVIEWS';
 export const RECEIVE_FAVORITE_PERVIEWS = 'RECEIVE_FAVORITE_PERVIEWS';
 export const RECEIVE_FRIEND_PERVIEWS = 'RECEIVE_FRIEND_PERVIEWS';
+export const RECEIVE_CATEGORY_IDS = 'RECEIVE_CATEGORY_IDS';
 export const EDIT_PERVIEW = 'EDIT_PERVIEW';
 export const DELETE_PERVIEW = 'DELETE_PERVIEW';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
@@ -40,6 +41,15 @@ export const receiveFriendPerviews = (friendPerviews) => ({
   type: RECEIVE_FRIEND_PERVIEWS,
   friendPerviews
 });
+
+export const receiveCategoryIds = (categoryIds) => ({
+  type: RECEIVE_FRIEND_PERVIEWS,
+  categoryIds
+});
+
+export const editPerview = () => ({
+  type: RECEIVE_CATEGORY_IDS
+})
 
 export const editPerview = () => ({
   type: EDIT_PERVIEW
@@ -120,6 +130,17 @@ export const fetchFriendPerviews = (categoryId=null) => dispatch => {
   return APIUtil.fetchFriendPerviews(categoryId)
     .then( response => {
       return dispatch(receiveFavoritePerviews(response.data))
+    })
+    .catch( err => {
+      return dispatch(receiveErrors(err.responseJSON))
+    })
+};
+
+export const fetchCategoryIds = () => dispatch => {
+  dispatch(requestLoading());
+  return APIUtil.fetchCategoryIds(categoryId)
+    .then( response => {
+      return dispatch(receiveCategoryIds(response.data))
     })
     .catch( err => {
       return dispatch(receiveErrors(err.responseJSON))
