@@ -1,17 +1,21 @@
 import { connect } from 'react-redux';
 import Header from '../render_components/Header/Header'
 import { fetchUser, logOut } from '../actions/session_actions';
+import { fetchResults } from '../actions/search_perview_actions';
 
-const mapStateToProps = ({session}) => {
+
+const mapStateToProps = ({session, findPerview}) => {
   return {
-    currentUser: session.currentUser
+    currentUser: session.currentUser,
+    results: findPerview.results
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchUser: () => dispatch(fetchUser()),
-    logOut: () => dispatch(logOut())
+    fetchResults: (keywords) => dispatch(fetchResults(keywords)),
+    logOut: () => dispatch(logOut()),
   }
 }
 

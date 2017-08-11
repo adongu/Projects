@@ -94,9 +94,11 @@ class HomePage extends React.Component {
     return (
     <div>
       <NavBar
-        createPerview={this.props.createPerview}
         currentUser={this.props.currentUser}
+        results={this.props.results}
         fetchUser={this.props.fetchUser}
+        fetchResults={this.props.fetchResults}
+        createPerview={this.props.createPerview}
         clearErrors={this.props.clearErrors} />
 
       <div className="homepage__perviews">

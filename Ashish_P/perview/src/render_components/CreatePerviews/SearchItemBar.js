@@ -18,7 +18,7 @@ import Autosuggest from 'react-autosuggest';
 // input value for every given suggestion.
 
 
-class SearchBar extends React.Component {
+class SearchItemBar extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -86,9 +86,9 @@ class SearchBar extends React.Component {
     this.setState({
       value: newValue
     });
-
+    console.log(this.props);
     if (newValue.length > 0) {
-      this.props.fetchresults(newValue);
+      this.props.fetchResults(newValue);
     }
   };
 
@@ -164,4 +164,4 @@ class SearchBar extends React.Component {
   }
 }
 // https://codepen.io/moroshko/pen/PZWbzK for
-export default withRouter(SearchBar);
+export default withRouter(SearchItemBar);

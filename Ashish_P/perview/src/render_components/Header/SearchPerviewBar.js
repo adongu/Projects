@@ -39,7 +39,7 @@ const renderInputComponent = inputProps => (
   </div>
 );
 
-class SearchBar extends React.Component {
+class SearchPerviewBar extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -156,4 +156,4 @@ class SearchBar extends React.Component {
   }
 }
 // https://codepen.io/moroshko/pen/PZWbzK for
-export default withRouter(SearchBar);
+export default withRouter(SearchPerviewBar);

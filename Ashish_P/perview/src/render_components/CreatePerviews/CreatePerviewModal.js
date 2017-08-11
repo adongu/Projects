@@ -2,7 +2,7 @@ import "../../styles/stylesheets/createperviewmodal.css";
 import product from "../../styles/assets/product.jpg";
 import React from 'react';
 import { ButtonToolbar, Modal } from 'react-bootstrap';
-import ItemSearchBarContainer from "../../containers/ItemSearchBarContainer.js";
+import SearchItemBar from "./SearchItemBar";
 
 class CreatePerviewModal extends React.Component {
   constructor(props) {
@@ -170,6 +170,7 @@ class CreatePerviewModal extends React.Component {
   }
 
   render() {
+    console.log('modal', this.props);
     return (
       <ButtonToolbar>
         <button className="createperview__btn" onClick={this.showModal}>
@@ -189,7 +190,11 @@ class CreatePerviewModal extends React.Component {
             <div className="createperview__search-msg">Search a product to perview it</div>
             <div className="createperview__search-background">
               <div className="createperview__search-box">
-                <ItemSearchBarContainer selectItem={this.selectItem}/>
+                <SearchItemBar
+                  selectItem={this.selectItem}
+                  results={this.props.results}
+                  fetchResults={this.props.fetchResults}
+                  />
               </div>
             </div>
           </div>

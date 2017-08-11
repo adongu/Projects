@@ -55,8 +55,10 @@ class NavBar extends React.Component {
       return (
         <CreatePerviewModal
           currentUser={this.props.currentUser}
-          createPerview={this.props.createPerview}
-          fetchUser={this.props.fetchUser} />
+          results={this.props.results}
+          fetchUser={this.props.fetchUser}
+          fetchResults={this.props.fetchResults}
+          createPerview={this.props.createPerview}/>
       )
     }
   }

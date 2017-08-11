@@ -23,7 +23,7 @@ export const clearErrors = () => ({
   type: CLEAR_ERRORS
 });
 
-export const fetchresults = (keywords) => dispatch => {
+export const fetchResults = (keywords) => dispatch => {
   dispatch(requestResults());
   return APIUtil.fetchResults(keywords)
     .then( response => {
