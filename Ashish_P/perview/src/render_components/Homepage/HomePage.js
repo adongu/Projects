@@ -1,6 +1,7 @@
 import "../../styles/stylesheets/homeperview.css";
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import NavBar from '../NavBar/NavBar'
 import WidePerview from "../PerviewsLayouts/WidePerview";
 
 class HomePage extends React.Component {
@@ -36,8 +37,8 @@ class HomePage extends React.Component {
   }
 
   validateRedirect() {
-    this.props.fetchuser()
-      .then(() => { console.log("after fetchuser", this.props);})
+    this.props.fetchUser()
+      .then(() => { console.log("after fetchUser", this.props);})
       .catch(() => this.props.history.replace({ pathname: '/signin' }));
   }
 
@@ -80,9 +81,17 @@ class HomePage extends React.Component {
 
   render() {
     return (
+    <div>
+      <NavBar
+        createPerview={this.props.createPerview}
+        currentUser={this.props.currentUser}
+        fetchUser={this.props.fetchUser}
+        clearErrors={this.props.clearErrors} />
+
       <div className="homepage__perviews">
         {this.renderComponents()}
       </div>
+    </div>
     )
   }
 }

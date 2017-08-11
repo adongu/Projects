@@ -21,7 +21,14 @@ class NavBar extends React.Component {
     this.updatePageTitle(this.props);
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.location !== this.props.location) {
+      console.log(this.props.location);
+    }
+  }
+
   updatePageTitle(props) {
+    console.log("update page title");
     switch (props.location.pathname) {
       case '/myperviews':
         this.setState({pageTitle: "My Perviews"})
@@ -49,7 +56,7 @@ class NavBar extends React.Component {
         <CreatePerviewModal
           currentUser={this.props.currentUser}
           createPerview={this.props.createPerview}
-          fetchuser={this.props.fetchuser} />
+          fetchUser={this.props.fetchUser} />
       )
     }
   }

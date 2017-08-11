@@ -1,7 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import HeaderContainer from './HeaderContainer';
-import NavBarContainer from './NavBarContainer';
 
 const App = (props) => {
   let toRender = null;
@@ -9,7 +8,6 @@ const App = (props) => {
     toRender = (
       <div>
         <HeaderContainer />
-        <NavBarContainer />
       </div>
     );
   } else {
@@ -19,6 +17,7 @@ const App = (props) => {
   return(
     <div className="App">
       { toRender }
+      {props.children}
     </div>
   );
 }

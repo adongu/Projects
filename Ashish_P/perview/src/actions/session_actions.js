@@ -35,7 +35,7 @@ export const requestUser = () => ({
 //     )
 // }
 
-export const fetchuser = () => dispatch => {
+export const fetchUser = () => dispatch => {
   dispatch(requestUser());
   return APIUtil.fetchUser()
     .then( response => {
@@ -46,7 +46,7 @@ export const fetchuser = () => dispatch => {
     })
 }
 
-export const logout = () => {
+export const logOut = () => {
   return (dispatch) => {
     return APIUtil.logOut()
     .then( () => {

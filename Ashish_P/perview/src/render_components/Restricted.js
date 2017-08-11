@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { fetchuser } from '../actions/session_actions.js';
+import { fetchUser } from '../actions/session_actions.js';
 /**
  * Higher-order component (HOC) to wrap restricted pages
  */
@@ -21,7 +21,7 @@ function Restricted(BaseComponent) {
       checkAuthentication(params) {
         console.log("check authentication");
         const { history } = params;
-        // fetchuser()
+        // fetchUser()
         //   .catch(e => history.replace({ pathname: '/singin' }));
       }
       render() {

@@ -8,11 +8,11 @@ class FavoritePerviews extends React.Component {
     this.getPerviews = this.getPerviews.bind(this);
   }
 
-  shouldComponentUpdate (nextProps, nextState) {
-    if (this.props.location.path !== nextProps.location.path) {
-      console.log('favorites', nextProps.location.path);
-    }
-  }
+  // shouldComponentUpdate (nextProps, nextState) {
+  //   if (this.props.location.path !== nextProps.location.path) {
+  //     console.log('favorites', nextProps.location.path);
+  //   }
+  // }
 
   getPerviews () {
     let perviews = [];

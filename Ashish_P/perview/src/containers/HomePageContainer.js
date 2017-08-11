@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import HomePage from "../render_components/Homepage/HomePage";
-import { fetchuser } from '../actions/session_actions';
+import { fetchUser } from '../actions/session_actions';
+import { createPerview, clearErrors } from '../actions/perview_actions';
 
 const mapStateToProps = ({ session }, ownProps) => {
   return {
@@ -11,7 +12,9 @@ const mapStateToProps = ({ session }, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    fetchuser: () => dispatch(fetchuser())
+    fetchUser: () => dispatch(fetchUser()),
+    createPerview: (formData) => dispatch(createPerview(formData)),
+    clearErrors: () => dispatch(clearErrors())
   }
 }
 

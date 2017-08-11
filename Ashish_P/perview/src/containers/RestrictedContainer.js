@@ -1,6 +1,6 @@
 // import { connect } from 'react-redux';
 // import Restricted from "../render_components/Restricted";
-// import { fetchuser } from '../actions/session_actions';
+// import { fetchUser } from '../actions/session_actions';
 //
 // const mapStateToProps = (props, ownProps) => {
 //   return {
@@ -10,7 +10,7 @@
 //
 // const mapDispatchToProps = (dispatch, ownProps) => {
 //   return {
-//     fetchuser: () => dispatch(fetchuser())
+//     fetchUser: () => dispatch(fetchUser())
 //   }
 // }
 //

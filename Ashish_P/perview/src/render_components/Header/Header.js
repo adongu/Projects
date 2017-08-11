@@ -43,7 +43,7 @@ class Header extends React.Component {
   }
 
   validateRedirect() {
-    this.props.fetchuser()
+    this.props.fetchUser()
     .then(() => {
       if (this.props.currentUser === null) {
         this.props.history.replace({ pathname: '/signin' });
@@ -58,7 +58,7 @@ class Header extends React.Component {
   }
 
   handleScroll() {
-    if (window.scrollY > 100) {
+    if (window.scrollY > 50) {
       this.setState({scrolled: 'scrolled'})
     } else {
       this.setState({scrolled: ''})

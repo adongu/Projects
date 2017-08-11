@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchuser } from '../actions/session_actions';
+import { fetchUser } from '../actions/session_actions';
 // import {login, logout, signup, clearErrors } from '../actions/session_actions';
 import SignIn from '../render_components/SignIn/SignIn';
 
@@ -12,7 +12,7 @@ const mapStateToProps = (props) => {
 
 const mapDispatchToProps = ( dispatch, newProps) => {
   return ({
-    fetchuser: () => dispatch(fetchuser())
+    fetchUser: () => dispatch(fetchUser())
     // clearErrors: () => dispatch(clearErrors())
   });
 };
