@@ -1,7 +1,10 @@
 import * as APIUtil from '../util/perview_api_util';
 
 export const REQUEST_LOADING = 'REQUEST_LOADING';
-export const RECEIVE_MY_PERVIEW = 'RECEIVE_MY_PERVIEW';
+export const RECEIVE_ALL_PERVIEWS = 'RECEIVE_ALL_PERVIEWS';
+export const RECEIVE_MY_PERVIEWS = 'RECEIVE_MY_PERVIEWS';
+export const RECEIVE_FAVORITE_PERVIEWS = 'RECEIVE_FAVORITE_PERVIEWS';
+export const RECEIVE_FRIEND_PERVIEWS = 'RECEIVE_FRIEND_PERVIEWS';
 export const EDIT_PERVIEW = 'EDIT_PERVIEW';
 export const DELETE_PERVIEW = 'DELETE_PERVIEW';
 export const LIKE_PERVIEW = 'LIKE_PERVIEW';
@@ -61,8 +64,20 @@ export const createPerview = (formData) => dispatch => {
   return APIUtil.createPerview(formData)
     .then( response => {
       return dispatch(receiveMyPerview(response.data))
-    },
-    err => {
+            .then( () => receiveAllPerview(response.data))
+    })
+    .catch( err => {
+      return dispatch(receiveErrors(err.responseJSON))
+    })
+}
+
+export const fetchAllPerviews = (formData) => dispatch => {
+  dispatch(requestLoading());
+  return APIUtil.createPerview(formData)
+    .then( response => {
+      return dispatch(receiveMyPerview(response.data))
+    })
+    .catch( err => {
       return dispatch(receiveErrors(err.responseJSON))
     })
 }
