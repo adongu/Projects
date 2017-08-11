@@ -49,11 +49,8 @@ export const receiveCategoryIds = (categoryIds) => ({
 
 export const editPerview = () => ({
   type: RECEIVE_CATEGORY_IDS
-})
+});
 
-export const editPerview = () => ({
-  type: EDIT_PERVIEW
-})
 
 export const deletePerview = (perview) => ({
   type: DELETE_PERVIEW,
@@ -138,7 +135,7 @@ export const fetchFriendPerviews = (categoryId=null) => dispatch => {
 
 export const fetchCategoryIds = () => dispatch => {
   dispatch(requestLoading());
-  return APIUtil.fetchCategoryIds(categoryId)
+  return APIUtil.fetchCategoryIds()
     .then( response => {
       return dispatch(receiveCategoryIds(response.data))
     })
