@@ -3,8 +3,8 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import App from './App';
 import HomePageContainer from './HomePageContainer';
-import MyPerviews from '../render_components/MyPerviews/MyPerviews';
 import FavoritePerviewsContainer from './FavoritePerviewsContainer';
+import MyPerviewsContainer from './MyPerviewsContainer';
 import SignInContainer from './SignInContainer';
 // import RestrictedContainer from './RestrictedContainer';
 import Restricted from '../render_components/Restricted';
@@ -30,7 +30,7 @@ const Root = ({ store }) => {
             <Switch>
               <Route exact path="/" component={HomePageContainer} />
               <Route path="/signin" component={SignInContainer}/>
-              <Route path="/myperviews" component={MyPerviews}/>
+              <Route path="/myperviews" component={MyPerviewsContainer}/>
               <Route path="/favorites" component={FavoritePerviewsContainer}/>
               <Route path="/item/:item_id" component={HomePageContainer}/>
               <Route render={() => (

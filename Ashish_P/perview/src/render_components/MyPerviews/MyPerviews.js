@@ -1,17 +1,39 @@
 import "../../styles/stylesheets/myperview.css"
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-// import WidePerview from "../PerviewsLayouts/WidePerview";
 // switch to PersonalPerview when the component is finish building
+import NavBar from '../NavBar/NavBar'
 import NarrowPerview from "../PerviewsLayouts/NarrowPerview";
 
 class MyPerviews extends React.Component {
   constructor (props) {
     super(props);
+
     this.getPerviews = this.getPerviews.bind(this);
+    this.validateRedirect = this.validateRedirect.bind(this);
   }
 
-  componentWillReceiveProps (nextProps, nextState) {
+  componentWillMount () {
+    // this.validateRedirect();
+    this.props.fetchMyPerviews();
+  }
+
+  componentDidMount() {
+    console.log('results', this.props.perviews);
+  }
+
+  componentDidReceiveProps (nextProps) {
+    if (nextProps.requestLoading === false) {
+      this.setState({
+        requestLoading: false
+      })
+    }
+  }
+
+  validateRedirect() {
+    this.props.fetchUser()
+      .then(() => { console.log("after fetchUser", this.props);})
+      .catch(() => this.props.history.replace({ pathname: '/signin' }));
   }
 
   getPerviews () {
@@ -38,10 +60,21 @@ class MyPerviews extends React.Component {
 
   render () {
     return (
-      <div className="myperviews__container">
-        <NarrowPerview
-          perviews={this.getPerviews()}
-          />
+      <div>
+        <NavBar
+          currentUser={this.props.currentUser}
+          results={this.props.results}
+          fetchUser={this.props.fetchUser}
+          fetchResults={this.props.fetchResults}
+          createPerview={this.props.createPerview}
+          categories={this.props.perviews.categories}
+          clearErrors={this.props.clearErrors} />
+
+        <div className="myperviews__container">
+          <NarrowPerview
+            perviews={this.props.perviews}
+            />
+        </div>
       </div>
     )
   }

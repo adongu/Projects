@@ -9,7 +9,7 @@ class SearchItemBar extends React.Component {
     this.state = {
       keywords: "",
       value: '',
-      suggestions: {},
+      suggestions: [],
       isFetching: false
     };
 
@@ -86,7 +86,7 @@ class SearchItemBar extends React.Component {
   // Autosuggest will call this function every time you need to clear suggestions.
   onSuggestionsClearRequested() {
     this.setState({
-      suggestions: {}
+      suggestions: []
     });
   };
 
@@ -117,7 +117,6 @@ class SearchItemBar extends React.Component {
   }
 
   render() {
-
     const { value, suggestions } = this.state;
 
     // Autosuggest will pass through all these props to the input.

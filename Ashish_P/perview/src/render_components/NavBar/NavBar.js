@@ -75,7 +75,7 @@ class NavBar extends React.Component {
   }
 
   renderFilters() {
-    if (this.state.canCreateFilters) {
+    if (this.state.canCreateFilters && this.props.categoryIds) {
       return (
         <div>
           <label className="navbar__filter">

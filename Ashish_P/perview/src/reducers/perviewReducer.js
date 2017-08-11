@@ -6,7 +6,10 @@ const _nullResults = Object.freeze({
   categoryIds: [],
   allPerviews: [],
   itemPerviews: [],
-  myPerviews: [],
+  myPerviews: {
+    categories: [],
+    perviews: []
+  },
   favoritePerviews: {
     categories: [],
     perviews: []
@@ -26,7 +29,7 @@ const perviewReducer = (oldState = _nullResults, action) => {
       });
     case RECEIVE_ALL_PERVIEWS:
       return Object.assign({}, newState, {
-        allPerviews: action.allPerviews,
+        allPerviews: action.allPerviews.reverse(),
         requestLoading: false,
         errors: []
       });
@@ -37,9 +40,12 @@ const perviewReducer = (oldState = _nullResults, action) => {
         errors: []
       });
     case RECEIVE_MY_PERVIEWS:
-      newState.allPerviews.unshift(action.myPerview);
-      newState.myPerviews.unshift(action.myPerview);
+    // console.log('Reducer', action);
+    //   newState.allPerviews.unshift(action.myPerviews);
+    //   newState.myPerviews.perviews.unshift(action.myPerviews);
+    //   newState.myPerviews.categories.unshift(action.myPerviews.categories);
       return Object.assign({}, newState, {
+        myPerviews: action.myPerviews,
         requestLoading: false,
         errors: []
       });
