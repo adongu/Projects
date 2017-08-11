@@ -16,6 +16,7 @@ class Header extends React.Component {
     }
 
     this.validateRedirect = this.validateRedirect.bind(this);
+    this.selectItem = this.selectItem.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
   }
 
@@ -57,6 +58,12 @@ class Header extends React.Component {
     })
   }
 
+  selectItem( imgUrl, name, price, itemId ) {
+    if (itemId) {
+      this.props.history.replace({ pathname: `/item/${itemId}`});
+    }
+  }
+
   handleScroll() {
     if (window.scrollY > 50) {
       this.setState({scrolled: 'scrolled'})
@@ -76,6 +83,7 @@ class Header extends React.Component {
           </div>
           <div className="header__search">
             <SearchPerviewBar
+              selectItem={this.selectItem}
               results={this.props.results}
               fetchResults={this.props.fetchResults} />
           </div>
