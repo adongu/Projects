@@ -77,7 +77,7 @@ export const createPerview = (formData) => dispatch => {
     })
 };
 
-export const fetchAllPerviews = (categoryId=null) => dispatch => {
+export const fetchAllPerviews = (categoryId = null) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.fetchAllPerviews(categoryId)
     .then( response => {
@@ -88,7 +88,7 @@ export const fetchAllPerviews = (categoryId=null) => dispatch => {
     })
 };
 
-export const fetchItemPerviews = (itemId=null) => dispatch => {
+export const fetchItemPerviews = (itemId = null) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.fetchItemPerviews(itemId)
     .then( response => {
@@ -99,8 +99,9 @@ export const fetchItemPerviews = (itemId=null) => dispatch => {
     })
 };
 
-export const fetchMyPerviews = (categoryId=null) => dispatch => {
+export const fetchMyPerviews = (categoryId = null) => dispatch => {
   dispatch(requestLoading());
+  console.log(categoryId);
   return APIUtil.fetchMyPerviews(categoryId)
     .then( response => {
       return dispatch(receiveMyPerviews(response.data))
@@ -110,7 +111,7 @@ export const fetchMyPerviews = (categoryId=null) => dispatch => {
     })
 };
 
-export const fetchFavoritePerviews = (categoryId=null) => dispatch => {
+export const fetchFavoritePerviews = (categoryId = null) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.fetchFavoritePerviews(categoryId)
     .then( response => {
@@ -121,7 +122,7 @@ export const fetchFavoritePerviews = (categoryId=null) => dispatch => {
     })
 };
 
-export const fetchFriendPerviews = (categoryId=null) => dispatch => {
+export const fetchFriendPerviews = (categoryId = null) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.fetchFriendPerviews(categoryId)
     .then( response => {

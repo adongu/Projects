@@ -25,7 +25,6 @@ class MyPerviews extends React.Component {
   }
 
   componentDidMount() {
-    console.log('results', this.props.perviews);
   }
 
   componentDidReceiveProps (nextProps) {
@@ -42,8 +41,8 @@ class MyPerviews extends React.Component {
       .catch(() => this.props.history.replace({ pathname: '/signin' }));
   }
 
-  handleFilterChange(event) {
-    this.props.fetchMyPerviews(event.target.value);
+  handleFilterChange(e) {
+    this.props.fetchMyPerviews(e.target.value);
   }
 
   handleSortChange(event) {
@@ -61,9 +60,8 @@ class MyPerviews extends React.Component {
           fetchResults={this.props.fetchResults}
           createPerview={this.props.createPerview}
           allCategoryIds={this.props.allCategoryIds}
-          filterPerviews={this.props.filterPerviews}
-          handleFilterChange={this.props.handleFilterChange}
-          handleSortChange={this.props.handleSortChange}
+          handleFilterChange={this.handleFilterChange}
+          handleSortChange={this.handleSortChange}
           clearErrors={this.props.clearErrors} />
 
         <div className="myperviews__container">

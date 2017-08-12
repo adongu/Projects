@@ -69,17 +69,16 @@ class NavBar extends React.Component {
   }
 
   renderFilters() {
-    console.log('allCategoryIds', this.props.allCategoryIds);
     if (this.state.canCreateFilters && this.props.allCategoryIds) {
       return (
         <div>
           <label className="navbar__filter">
             Filter by
-            <select className="navbar__dropdown-filter" defaultValue={null} onChange={this.handleFilterChange}>
+            <select className="navbar__dropdown-filter" defaultValue={null} onChange={this.props.handleFilterChange}>
               <option className='filter__option' value={null}>All Catagories</option>
               {this.props.allCategoryIds.map((category, id) => {
                   return (
-                    <option className='filter__option' key={`category_${category.id}`} onClick={this.props.handleFilterChange} value={category.id}>{category.displayName}</option>
+                    <option className='filter__option' key={`category_${category.id}`}  value={category.id}>{category.displayName}</option>
                   )
                 })}
               }
