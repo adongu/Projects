@@ -1,13 +1,13 @@
 import { merge } from 'lodash';
 import { REQUEST_RESULTS, RECEIVE_RESULTS, RECEIVE_ERRORS, CLEAR_ERRORS } from '../actions/search_item_actions';
 
-const _nullResults = Object.freeze({
+const _nullSearchItem = Object.freeze({
   isFetching: false,
   itemResults: [],
   errors: []
 })
 
-const searchItemReducer = (oldState = _nullResults, action) => {
+const searchItemReducer = (oldState = _nullSearchItem, action) => {
   Object.freeze(oldState);
   switch (action.type) {
     case REQUEST_RESULTS:

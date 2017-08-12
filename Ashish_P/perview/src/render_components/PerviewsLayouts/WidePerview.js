@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { Button, ButtonToolbar } from 'react-bootstrap';
 import moment from 'moment';
 
-const WidePerview = ({ perviews }) => {
+const WidePerview = ({ perviews, bookmarkPerview }) => {
 
   const renderStars = (rating) => {
     let stars = [1, 2, 3, 4, 5];
@@ -18,14 +18,25 @@ const WidePerview = ({ perviews }) => {
     })
   }
 
-  const handleClick = (e) => {
+
+  const handleSaveClick = (perviewId) => {
+    return e => {
+      if (e.currentTarget.className === 'wideresults__review-social-icon') {
+        e.currentTarget.className = 'wideresults__review-social-icon active';
+      } else {
+        e.currentTarget.className = 'wideresults__review-social-icon';
+      }
+      bookmarkPerview(e);
+    }
+  }
+
+  const handleLikeClick = (e) => {
     if (e.currentTarget.className === 'wideresults__review-social-icon') {
       e.currentTarget.className = 'wideresults__review-social-icon active';
     } else {
       e.currentTarget.className = 'wideresults__review-social-icon';
     }
   }
-
 
   const renderPerviews = () => {
     if (perviews) {
@@ -66,10 +77,10 @@ const WidePerview = ({ perviews }) => {
                   <div className="wideresults__review-comments"> {perview.likes ? perview.likes : 0} comments</div>
                 </div>
                 <div className="flexrow wideresults__review-social">
-                  <div className="wideresults__review-social-icon" onClick={handleClick}>
+                  <div className="wideresults__review-social-icon" onClick={handleSaveClick(perview.id)}>
                     <i className="fa fa-bookmark wideresults__review-icon-save" aria-hidden="true"></i>
                   </div>
-                  <div className="wideresults__review-social-icon" onClick={handleClick}>
+                  <div className="wideresults__review-social-icon" onClick={handleLikeClick}>
                     <i className="fa fa-heart wideresults__review-icon-like" aria-hidden="true"></i>
                   </div>
                   <div className="wideresults__review-social-share">

@@ -1,13 +1,13 @@
 import { merge } from 'lodash';
 import { REQUEST_USER, RECEIVE_CURRENT_USER, RECEIVE_ERRORS } from '../actions/session_actions';
 
-const _nullUser = Object.freeze({
+const _nullSession = Object.freeze({
   isFetching: false,
   currentUser: null,
   errors: []
 })
 
-const sessionReducer = (oldState = _nullUser, action) => {
+const sessionReducer = (oldState = _nullSession, action) => {
   Object.freeze(oldState);
   switch (action.type) {
     case REQUEST_USER:

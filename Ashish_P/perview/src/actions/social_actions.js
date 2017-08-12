@@ -1,3 +1,5 @@
+import * as APIUtil from '../util/social_api_util';
+
 export const LIKE_PERVIEW = 'LIKE_PERVIEW';
 export const UNLIKE_PERVIEW = 'UNLIKE_PERVIEW';
 export const BOOKMARK_PERVIEW = 'BOOKMARK_PERVIEW';
@@ -5,17 +7,11 @@ export const UNBOOKMARK_PERVIEW = 'UNBOOKMARK_REVIEW';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
-export const likePerview = () => ({
-  type: LIKE_PERVIEW
-})
 
 export const unlikePerview = () => ({
   type: UNLIKE_PERVIEW
 })
 
-export const bookmarkPerview = () => ({
-  type: BOOKMARK_PERVIEW
-})
 
 export const unbookmarkPerview = () => ({
   type: UNBOOKMARK_PERVIEW
@@ -29,3 +25,26 @@ const receiveErrors = (errors) => ({
 export const clearErrors = () => ({
   type: CLEAR_ERRORS
 });
+
+
+export const likePerview = () => dispatch => {
+  return APIUtil.likePerview()
+    .then(response => {
+      console.log('success liking', response.data);
+    })
+    .catch(error => {
+      console.log('Error', error.responseJSON);
+      return dispatch(receiveErrors(error.responseJSON));
+    })
+}
+
+export const bookmarkPerview = () => dispatch => {
+  return APIUtil.bookmarkPerview()
+    .then(response => {
+      console.log('success liking', response.data);
+    })
+    .catch(error => {
+      console.log('Error', error.responseJSON);
+      return dispatch(receiveErrors(error.responseJSON));
+    })
+}

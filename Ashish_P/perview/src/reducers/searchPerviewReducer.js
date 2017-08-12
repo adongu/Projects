@@ -1,13 +1,13 @@
 import { merge } from 'lodash';
 import { REQUEST_RESULTS, RECEIVE_RESULTS, RECEIVE_ERRORS, CLEAR_ERRORS } from '../actions/search_perview_actions';
 
-const _nullResults = Object.freeze({
+const _nullSearchPerview = Object.freeze({
   isFetching: false,
   perviewResults: [],
   errors: []
 })
 
-const searchPerviewReducer = (oldState = _nullResults, action) => {
+const searchPerviewReducer = (oldState = _nullSearchPerview, action) => {
   Object.freeze(oldState);
   switch (action.type) {
     case REQUEST_RESULTS:

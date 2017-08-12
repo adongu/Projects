@@ -1,7 +1,7 @@
 import { merge } from 'lodash';
 import { REQUEST_LOADING, RECEIVE_ALL_PERVIEWS, RECEIVE_ITEM_PERVIEWS, RECEIVE_MY_PERVIEWS, RECEIVE_FAVORITE_PERVIEWS, RECEIVE_FRIEND_PERVIEWS, RECEIVE_CATEGORY_IDS, EDIT_PERVIEW, DELETE_PERVIEW, RECEIVE_ERRORS } from '../actions/perview_actions';
 
-const _nullResults = Object.freeze({
+const _nullPerviews = Object.freeze({
   requestLoading: false,
   categoryIds: [],
   allPerviews: [],
@@ -21,7 +21,7 @@ const _nullResults = Object.freeze({
   errors: []
 })
 
-const perviewReducer = (oldState = _nullResults, action) => {
+const perviewReducer = (oldState = _nullPerviews, action) => {
   Object.freeze(oldState);
   let newState = merge({}, oldState)
 

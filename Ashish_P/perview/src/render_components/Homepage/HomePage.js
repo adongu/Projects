@@ -47,7 +47,11 @@ class HomePage extends React.Component {
       )
     } else {
       return (
-        <WidePerview perviews={this.props.allPerviews}/>
+        <WidePerview
+          perviews={this.props.allPerviews}
+          bookmarkPerview={this.props.bookmarkPerview}
+          likePerview={this.props.likePerview}
+        />
       )
     }
   }
