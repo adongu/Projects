@@ -17,7 +17,6 @@ class ItemPerviews extends React.Component {
   }
 
   componentWillMount () {
-    console.log('props', this.props);
     this.validateRedirect();
     this.props.fetchItemPerviews(Number(this.props.match.params.item_id));
     this.props.fetchCategoryIds()
@@ -27,11 +26,15 @@ class ItemPerviews extends React.Component {
   componentDidMount() {
   }
 
-  componentDidReceiveProps (nextProps) {
-    if (nextProps.requestLoading === false) {
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.requestLoading !== this.props.requestLoading) {
       this.setState({
-        requestLoading: false
+        requestLoading: nextProps.requestLoading
       })
+    }
+
+    if (this.props.match.params.item_id !== nextProps.match.params.item_id) {
+      this.props.fetchItemPerviews(Number(nextProps.match.params.item_id));
     }
   }
 
@@ -46,6 +49,7 @@ class ItemPerviews extends React.Component {
   }
 
   renderComponents() {
+    console.log('render item props', this.props.item);
     if (this.state.requestLoading) {
       return (
         <div>spinner</div>

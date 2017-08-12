@@ -6,7 +6,6 @@ import { createPerview, fetchAllPerviews, fetchCategoryIds, clearErrors } from '
 import {  } from '../actions/social_actions';
 
 const mapStateToProps = ({ session, perview, findItem }, ownProps) => {
-  console.log(perview.allPerviews);
   return {
     currentUser: session.currentUser,
     isFetching: session.isFetching,

@@ -26,10 +26,10 @@ class FavoritePerviews extends React.Component {
   componentDidMount() {
   }
 
-  componentDidReceiveProps (nextProps) {
-    if (nextProps.requestLoading === false) {
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.requestLoading !== this.props.requestLoading) {
       this.setState({
-        requestLoading: false
+        requestLoading: nextProps.requestLoading
       })
     }
   }

@@ -3,20 +3,8 @@ import SearchPerviewBar from '../render_components/Header/SearchPerviewBar'
 import { fetchresults } from '../actions/search_perview_actions';
 
 const mapStateToProps = ({ findPerview }, ownProps) => {
-  let results = [];
-  // if (find.results) {
-  //   results = find.results.map((item) => {
-  //     return {
-  //       imgUrl: item.data.imageUrls.large,
-  //       name: item.name,
-  //       amount: item.data.lowestNewPrice.formattedAmount
-  //
-  //     }
-  //   })
-  // }
-
   return {
-    results: findPerview.results
+    results: findPerview.perviewResults
   }
 }
 
