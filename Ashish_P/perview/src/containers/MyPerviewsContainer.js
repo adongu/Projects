@@ -5,7 +5,6 @@ import { fetchResults } from '../actions/search_item_actions';
 import { createPerview, fetchMyPerviews, fetchCategoryIds, clearErrors } from '../actions/perview_actions';
 
 const mapStateToProps = ({ session, perview, findItem }, ownProps) => {
-  console.log('container', perview.myPerviews);
   return {
     currentUser: session.currentUser,
     isFetching: session.isFetching,

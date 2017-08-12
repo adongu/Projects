@@ -4,8 +4,8 @@ import { fetchUser, logOut } from '../actions/session_actions';
 import { fetchResults } from '../actions/search_perview_actions';
 
 
-const mapStateToProps = ({session, findPerview}) => {
-  console.log(findPerview.perviewResults);
+const mapStateToProps = ({ session, findPerview }) => {
+  console.log('header container', findPerview.perviewResults);
   return {
     currentUser: session.currentUser,
     results: findPerview.perviewResults

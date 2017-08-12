@@ -92,7 +92,6 @@ export const fetchItemPerviews = (itemId = null) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.fetchItemPerviews(itemId)
     .then( response => {
-      console.log('action', response.data);
       return dispatch(receiveItemPerviews(response.data))
     })
     .catch( err => {
@@ -102,7 +101,6 @@ export const fetchItemPerviews = (itemId = null) => dispatch => {
 
 export const fetchMyPerviews = (categoryId = null) => dispatch => {
   dispatch(requestLoading());
-  console.log(categoryId);
   return APIUtil.fetchMyPerviews(categoryId)
     .then( response => {
       return dispatch(receiveMyPerviews(response.data))
@@ -138,7 +136,6 @@ export const fetchCategoryIds = () => dispatch => {
   dispatch(requestLoading());
   return APIUtil.fetchCategoryIds()
     .then( response => {
-      console.log('category ids', response.data);
       return dispatch(receiveCategoryIds(response.data))
     })
     .catch( err => {

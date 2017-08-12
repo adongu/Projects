@@ -34,7 +34,7 @@ class CreatePerviewModal extends React.Component {
 
   validateRedirect() {
     this.props.fetchUser()
-      .then(() => { console.log("after fetchUser", this.props);})
+      // .then(() => { console.log("after fetchUser", this.props);})
       .catch(() => this.props.history.replace({ pathname: '/signin' }));
   }
 

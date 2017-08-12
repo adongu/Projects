@@ -32,15 +32,15 @@ class ItemPerviews extends React.Component {
         requestLoading: nextProps.requestLoading
       })
     }
-
-    if (this.props.match.params.item_id !== nextProps.match.params.item_id) {
+    console.log('itemid', Number(nextProps.match.params.item_id));
+    if ('itemid', this.props.match.params.item_id !== nextProps.match.params.item_id) {
       this.props.fetchItemPerviews(Number(nextProps.match.params.item_id));
     }
   }
 
   validateRedirect() {
     this.props.fetchUser()
-      .then(() => { console.log("after fetchUser", this.props);})
+      // .then(() => { console.log("after fetchUser", this.props);})
       .catch(() => this.props.history.replace({ pathname: '/signin' }));
   }
 
@@ -49,7 +49,6 @@ class ItemPerviews extends React.Component {
   }
 
   renderComponents() {
-    console.log('render item props', this.props.item);
     if (this.state.requestLoading) {
       return (
         <div>spinner</div>

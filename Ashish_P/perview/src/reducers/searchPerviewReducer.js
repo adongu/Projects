@@ -18,7 +18,6 @@ const searchPerviewReducer = (oldState = _nullResults, action) => {
       let results  = Object.keys(action.results).map(function(key) {
         return action.results[key][0];
       });
-      console.log('REDUCER', results);
       return Object.assign({}, oldState, {
         perviewResults: results,
         errors: []
