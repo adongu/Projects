@@ -43,12 +43,12 @@ export const receiveFriendPerviews = (friendPerviews) => ({
 });
 
 export const receiveCategoryIds = (categoryIds) => ({
-  type: RECEIVE_FRIEND_PERVIEWS,
+  type: RECEIVE_CATEGORY_IDS,
   categoryIds
 });
 
 export const editPerview = () => ({
-  type: RECEIVE_CATEGORY_IDS
+  type: EDIT_PERVIEW
 });
 
 
@@ -136,6 +136,7 @@ export const fetchCategoryIds = () => dispatch => {
   dispatch(requestLoading());
   return APIUtil.fetchCategoryIds()
     .then( response => {
+      console.log('category ids', response.data);
       return dispatch(receiveCategoryIds(response.data))
     })
     .catch( err => {

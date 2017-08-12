@@ -61,7 +61,7 @@ $review-lines-to-show: 6;
 
   &productimg-photo {
     margin: auto;
-    width: 284px;
+    max-width: 284px;
     max-height: 97%;
     border-radius: 7px;
   }

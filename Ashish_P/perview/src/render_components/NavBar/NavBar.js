@@ -18,8 +18,11 @@ class NavBar extends React.Component {
   }
 
 
-  componentDidMount() {
+  componentWillMount() {
     this.updatePageTitle(this.props);
+  }
+  componentDidMount() {
+    // this.updatePageTitle(this.props);
   }
 
   componentDidReceiveProps(prevProps, prevState) {
@@ -40,7 +43,7 @@ class NavBar extends React.Component {
         this.setState({pageTitle: "Saved Perviews", canCreatePerviews: false, canCreateFilters: true })
         break;
       default:
-        this.setState({pageTitle: 'Settings', canCreateFilters: true})
+        this.setState({pageTitle: 'Settings', canCreateFilters: false})
         break;
     }
   }
@@ -75,16 +78,17 @@ class NavBar extends React.Component {
   }
 
   renderFilters() {
-    if (this.state.canCreateFilters && this.props.categoryIds) {
+    console.log('allCategoryIds', this.props.allCategoryIds);
+    if (this.state.canCreateFilters && this.props.allCategoryIds) {
       return (
         <div>
           <label className="navbar__filter">
             Filter by
-            <select className="navbar__dropdown-filter" value={this.state.value} onChange={this.handleChange}>
-              <option onClick={this.props.filterPerviews} selected value="all">All Catagories</option>
-              {this.props.categoryIds.map((category, id) => {
+            <select className="navbar__dropdown-filter" defaultValue={`${null}`} onChange={this.handleChange}>
+              <option selected defaultValue="all">All Catagories</option>
+              {this.props.allCategoryIds.map((category, id) => {
                   return (
-                    <option onClick={this.props.filterPerviews(category.id)} selected value="all">{category.displayName}</option>
+                    <option key={`category_${id}`} onClick={this.props.handleFilterChange} value={id}>{category.displayName}</option>
                   )
                 })}
               }

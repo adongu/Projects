@@ -12,6 +12,7 @@ const mapStateToProps = ({ session, perview, findItem }, ownProps) => {
     requestLoading: perview.requestLoading,
     results: findItem.itemResults,
     perviews: perview.myPerviews.perviews,
+    allCategoryIds: perview.categoryIds,
     categoryIds: perview.myPerviews.categories.map((obj)=> {obj.id})
   }
 };

@@ -36,9 +36,11 @@ $lines-to-show: 5;
   }
 
   &productimg-photo {
-    width: 210px;
-    height: 210px;
+    max-width: 210px;
+    max-height: 210px;
     border-radius: 2px;
+    display: block;
+    margin: auto;
     // border: 1px #D6D6D6 solid;
   }
   // left perview - right side
