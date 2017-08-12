@@ -19,10 +19,10 @@ const WidePerview = ({ perviews }) => {
   }
 
   const handleClick = (e) => {
-    if (e.target.className = 'nonactive') {
-      e.target.className = 'active';
+    if (e.currentTarget.className === 'wideresults__review-social-icon') {
+      e.currentTarget.className = 'wideresults__review-social-icon active';
     } else {
-      e.target.className = 'nonactive';
+      e.currentTarget.className = 'wideresults__review-social-icon';
     }
   }
 
@@ -66,17 +66,14 @@ const WidePerview = ({ perviews }) => {
                   <div className="wideresults__review-comments"> {perview.likes ? perview.likes : 0} comments</div>
                 </div>
                 <div className="flexrow wideresults__review-social">
-                  <div className="wideresults__review-social-save" onClick={handleClick}>
+                  <div className="wideresults__review-social-icon" onClick={handleClick}>
                     <i className="fa fa-bookmark wideresults__review-icon-save" aria-hidden="true"></i>
-                    <div className="wideresults__review-save">Save</div>
                   </div>
-                  <div className="wideresults__review-social-like" onClick={handleClick}>
+                  <div className="wideresults__review-social-icon" onClick={handleClick}>
                     <i className="fa fa-heart wideresults__review-icon-like" aria-hidden="true"></i>
-                    <div className="wideresults__review-like">Like</div>
                   </div>
                   <div className="wideresults__review-social-share">
                     <i className="fa fa-share wideresults__review-icon-share" aria-hidden="true"></i>
-                    <div className="wideresults__review-share">Share</div>
                   </div>
                 </div>
               </div>

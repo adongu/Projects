@@ -173,8 +173,9 @@ $lines-to-show: 5;
   /* right bottom */
   &review-social-box {
     margin-top: auto;
+    padding: 5px 0;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
   }
 
   &review-comments-box{
@@ -190,33 +191,35 @@ $lines-to-show: 5;
     font-size: 11px;
   }
 
-  &review-social-save {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  &review-social {
+    // margin: 10px 0;
   }
 
-  &review-social-like {
-    display: flex;
-    padding-left: 10px;
-    flex-direction: column;
-    align-items: center;
+  &review-social-icon {
+    color: black;
+    padding: 0 5px;
+  }
+  &review-social-icon:hover {
+    cursor: pointer;
+  }
+
+  &review-social-icon.active {
+    color: #6E96C8;
+    transition: ease .2s;
   }
 
   &review-social-share {
-    display: flex;
-    padding-left: 10px;
-    flex-direction: column;
-    align-items: center;
+    padding: 0 5px;
   }
 
   &review-icon {
-    &-save,
-    &-like,
+    // &-save,
+    // &-like,
     &-share {
       color: #6E96C8;
     }
   }
+
 
   &review {
     &-save,
