@@ -3,8 +3,10 @@ import HomePage from "../render_components/Homepage/HomePage";
 import { fetchUser } from '../actions/session_actions';
 import { fetchResults } from '../actions/search_item_actions';
 import { createPerview, fetchAllPerviews, fetchCategoryIds, clearErrors } from '../actions/perview_actions';
+import {  } from '../actions/social_actions';
 
 const mapStateToProps = ({ session, perview, findItem }, ownProps) => {
+  console.log(perview.allPerviews);
   return {
     currentUser: session.currentUser,
     isFetching: session.isFetching,

@@ -18,6 +18,14 @@ const WidePerview = ({ perviews }) => {
     })
   }
 
+  const handleClick = (e) => {
+    if (e.target.className = 'nonactive') {
+      e.target.className = 'active';
+    } else {
+      e.target.className = 'nonactive';
+    }
+  }
+
 
   const renderPerviews = () => {
     if (perviews) {
@@ -58,11 +66,11 @@ const WidePerview = ({ perviews }) => {
                   <div className="wideresults__review-comments"> {perview.likes ? perview.likes : 0} comments</div>
                 </div>
                 <div className="flexrow wideresults__review-social">
-                  <div className="wideresults__review-social-save">
+                  <div className="wideresults__review-social-save" onClick={handleClick}>
                     <i className="fa fa-bookmark wideresults__review-icon-save" aria-hidden="true"></i>
                     <div className="wideresults__review-save">Save</div>
                   </div>
-                  <div className="wideresults__review-social-like">
+                  <div className="wideresults__review-social-like" onClick={handleClick}>
                     <i className="fa fa-heart wideresults__review-icon-like" aria-hidden="true"></i>
                     <div className="wideresults__review-like">Like</div>
                   </div>
