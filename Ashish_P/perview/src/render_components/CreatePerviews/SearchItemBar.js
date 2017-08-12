@@ -51,25 +51,25 @@ class SearchItemBar extends React.Component {
   getSuggestionValue(suggestion) {
     // pass item to modal
     this.props.selectItem(
-      suggestion.data.imageUrls.large.url,
-      suggestion.name,
-      suggestion.data.lowestNewPrice.formattedAmount,
-      suggestion.id
+      suggestion.imageUrls.large.url,
+      suggestion.title,
+      suggestion.lowestNewPrice.formattedAmount,
+      suggestion.asin
       // suggestion.data.asin
     );
-    return suggestion.name;
+    return suggestion.title;
   }
   // Use your imagination to render suggestions.
   renderSuggestion(suggestion){
-    let imgUrl = suggestion.data.imageUrls.large.url;
-    let price = suggestion.data.lowestNewPrice.formattedAmount;
+    let imgUrl = suggestion.imageUrls.large.url;
+    let price = suggestion.lowestNewPrice.formattedAmount;
     return (
       <div className="flexrow autosuggest__product">
         <div className="autosuggest__product-left">
           <img className="autosuggest__img" src={imgUrl} alt="product"/>
         </div>
         <div className="flexcolumn autosuggest__product-right">
-          <div className="autosuggest__name">{suggestion.name}</div>
+          <div className="autosuggest__name">{suggestion.title}</div>
           <div className="autosuggest__price">{price}</div>
         </div>
       </div>

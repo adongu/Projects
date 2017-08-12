@@ -2,9 +2,9 @@ import axios from 'axios';
 
 export const fetchResults = (keywords) => {
   console.log("keywords", keywords);
-  return axios('/api/item', {
+  return axios('/amazon/item', {
     params: {
-      itemName: keywords
+      keywords: keywords
     }
   })
 }
