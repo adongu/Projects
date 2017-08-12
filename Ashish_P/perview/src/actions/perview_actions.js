@@ -92,6 +92,7 @@ export const fetchItemPerviews = (itemId = null) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.fetchItemPerviews(itemId)
     .then( response => {
+      console.log('action', response.data);
       return dispatch(receiveItemPerviews(response.data))
     })
     .catch( err => {

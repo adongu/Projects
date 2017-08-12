@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import App from './App';
 import HomePageContainer from './HomePageContainer';
 import FavoritePerviewsContainer from './FavoritePerviewsContainer';
+import ItemPerviewsContainer from './ItemPerviewsContainer';
 import MyPerviewsContainer from './MyPerviewsContainer';
 import SignInContainer from './SignInContainer';
 // import RestrictedContainer from './RestrictedContainer';
@@ -32,7 +33,7 @@ const Root = ({ store }) => {
               <Route path="/signin" component={SignInContainer}/>
               <Route path="/myperviews" component={MyPerviewsContainer}/>
               <Route path="/favorites" component={FavoritePerviewsContainer}/>
-              <Route path="/item/:item_id" component={HomePageContainer}/>
+              <Route path="/item/:item_id" component={ItemPerviewsContainer}/>
               <Route render={() => (
                 <p>404 Page Not Found</p>
               )}/>

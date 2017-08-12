@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar'
 import WidePerview from "../PerviewsLayouts/WidePerview";
 
-class FavoritePerviews extends React.Component {
+class ItemPerviews extends React.Component {
   constructor (props) {
     super(props);
 
@@ -17,8 +17,9 @@ class FavoritePerviews extends React.Component {
   }
 
   componentWillMount () {
+    console.log('props', this.props);
     this.validateRedirect();
-    this.props.fetchFavoritePerviews();
+    this.props.fetchItemPerviews(Number(this.props.match.params.item_id));
     this.props.fetchCategoryIds()
     // .then(() => this.setState({ categoryIds: this.props.categoryIds}))
   }
@@ -77,4 +78,4 @@ class FavoritePerviews extends React.Component {
   }
 }
 
-export default withRouter(FavoritePerviews);
+export default withRouter(ItemPerviews);

@@ -5,7 +5,10 @@ const _nullResults = Object.freeze({
   requestLoading: false,
   categoryIds: [],
   allPerviews: [],
-  itemPerviews: [],
+  itemPerviews: {
+    item: {},
+    perviews: []
+  },
   myPerviews: {
     categories: [],
     perviews: []
@@ -34,8 +37,9 @@ const perviewReducer = (oldState = _nullResults, action) => {
         errors: []
       });
     case RECEIVE_ITEM_PERVIEWS:
+    console.log('reducer', action.itemPerviews);
       return Object.assign({}, newState, {
-        allPerviews: action.itemPerviews,
+        itemPerviews: action.itemPerviews,
         requestLoading: false,
         errors: []
       });

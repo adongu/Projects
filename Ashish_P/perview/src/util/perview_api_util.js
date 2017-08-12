@@ -37,7 +37,7 @@ export const fetchAllPerviews = (categoryId) => {
 }
 
 export const fetchItemPerviews = (itemId) => {
-  return axios('/api/item', itemId)
+  return axios(`/api/item/${itemId}`)
 }
 
 export const fetchMyPerviews = (categoryId) => {
