@@ -27,9 +27,9 @@ class HomePage extends React.Component {
   }
 
   componentDidReceiveProps (nextProps) {
-    if (nextProps.requestLoading === false) {
+    if (nextProps.requestLoading !== this.props.requestLoading) {
       this.setState({
-        requestLoading: false
+        requestLoading: nextProps.requestLoading
       })
     }
   }

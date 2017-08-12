@@ -9,7 +9,13 @@ class MyPerviews extends React.Component {
   constructor (props) {
     super(props);
 
+    this.state = {
+      requestLoading: false
+    }
+
     this.validateRedirect = this.validateRedirect.bind(this);
+    this.handleFilterChange = this.handleFilterChange.bind(this);
+    this.handleSortChange = this.handleSortChange.bind(this);
   }
 
   componentWillMount () {
@@ -23,9 +29,9 @@ class MyPerviews extends React.Component {
   }
 
   componentDidReceiveProps (nextProps) {
-    if (nextProps.requestLoading === false) {
+    if (nextProps.requestLoading !== this.props.requestLoading) {
       this.setState({
-        requestLoading: false
+        requestLoading: nextProps.requestLoading
       })
     }
   }
@@ -34,6 +40,14 @@ class MyPerviews extends React.Component {
     this.props.fetchUser()
       .then(() => { console.log("after fetchUser", this.props);})
       .catch(() => this.props.history.replace({ pathname: '/signin' }));
+  }
+
+  handleFilterChange(event) {
+    this.props.fetchMyPerviews(event.target.value);
+  }
+
+  handleSortChange(event) {
+
   }
 
   render () {
@@ -48,6 +62,8 @@ class MyPerviews extends React.Component {
           createPerview={this.props.createPerview}
           allCategoryIds={this.props.allCategoryIds}
           filterPerviews={this.props.filterPerviews}
+          handleFilterChange={this.props.handleFilterChange}
+          handleSortChange={this.props.handleSortChange}
           clearErrors={this.props.clearErrors} />
 
         <div className="myperviews__container">

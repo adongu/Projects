@@ -14,7 +14,6 @@ class NavBar extends React.Component {
 
     this.renderCreateButton = this.renderCreateButton.bind(this);
     this.updatePageTitle = this.updatePageTitle.bind(this);
-    this.handleChange = this.handleChange.bind(this);
   }
 
 
@@ -25,11 +24,11 @@ class NavBar extends React.Component {
     // this.updatePageTitle(this.props);
   }
 
-  componentDidReceiveProps(prevProps, prevState) {
-    if (prevProps.location !== this.props.location) {
-      this.updatePageTitle(this.props);
-    }
-  }
+  // componentDidReceiveProps(prevProps, prevState) {
+  //   if (prevProps.location !== this.props.location) {
+  //     this.updatePageTitle(this.props);
+  //   }
+  // }
 
   updatePageTitle(props) {
     switch (props.location.pathname) {
@@ -69,14 +68,6 @@ class NavBar extends React.Component {
     }
   }
 
-  handleFilterChange() {
-
-  }
-
-  handleChange() {
-
-  }
-
   renderFilters() {
     console.log('allCategoryIds', this.props.allCategoryIds);
     if (this.state.canCreateFilters && this.props.allCategoryIds) {
@@ -84,11 +75,11 @@ class NavBar extends React.Component {
         <div>
           <label className="navbar__filter">
             Filter by
-            <select className="navbar__dropdown-filter" defaultValue={`${null}`} onChange={this.handleChange}>
-              <option selected defaultValue="all">All Catagories</option>
+            <select className="navbar__dropdown-filter" defaultValue={null} onChange={this.handleFilterChange}>
+              <option className='filter__option' value={null}>All Catagories</option>
               {this.props.allCategoryIds.map((category, id) => {
                   return (
-                    <option key={`category_${id}`} onClick={this.props.handleFilterChange} value={id}>{category.displayName}</option>
+                    <option className='filter__option' key={`category_${category.id}`} onClick={this.props.handleFilterChange} value={category.id}>{category.displayName}</option>
                   )
                 })}
               }
@@ -97,11 +88,8 @@ class NavBar extends React.Component {
 
           <label className="navbar__sort">
             Sort by
-            <select className="navbar__dropdown-sort" value="Sort by" onChange={this.handleChange}>
-              <option value="grapefruit">Grapefruit</option>
-              <option value="lime">Lime</option>
-              <option value="coconut">Coconut</option>
-              <option value="mango">Mango</option>
+            <select className="navbar__dropdown-sort" defaultValue={null} onChange={this.handleSortChange}>
+              <option key={null} className='sort__option'  value={null}>None</option>
             </select>
           </label>
         </div>
