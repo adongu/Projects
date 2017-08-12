@@ -101,6 +101,8 @@ class SearchItemBar extends React.Component {
   // Autosuggest will call this function every time you need to clear suggestions.
   onSuggestionsClearRequested() {
     this.setState({
+      keywords: '',
+      value: '',
       suggestions: []
     });
   };
