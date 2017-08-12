@@ -41,12 +41,13 @@ class MyPerviews extends React.Component {
       <div>
         <NavBar
           currentUser={this.props.currentUser}
+          categories={this.props.perviews.categories}
           results={this.props.results}
           fetchUser={this.props.fetchUser}
           fetchResults={this.props.fetchResults}
           createPerview={this.props.createPerview}
           allCategoryIds={this.props.allCategoryIds}
-          categories={this.props.perviews.categories}
+          filterPerviews={this.props.filterPerviews}
           clearErrors={this.props.clearErrors} />
 
         <div className="myperviews__container">

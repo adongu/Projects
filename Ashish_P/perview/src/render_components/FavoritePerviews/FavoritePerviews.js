@@ -51,7 +51,7 @@ class FavoritePerviews extends React.Component {
       )
     } else {
       return (
-        <WidePerview perviews={this.props.allPerviews}/>
+        <WidePerview perviews={this.props.perviews}/>
       )
     }
   }
@@ -61,14 +61,14 @@ class FavoritePerviews extends React.Component {
     <div>
       <NavBar
         currentUser={this.props.currentUser}
+        categories={this.props.perviews.categories}
         results={this.props.results}
         fetchUser={this.props.fetchUser}
         fetchResults={this.props.fetchResults}
-        fetchPerviews={this.props.fetchFavoritePerviews}
         createPerview={this.props.createPerview}
-        categoryIds={this.props.categoryIds}
+        allCategoryIds={this.props.allCategoryIds}
         filterPerviews={this.props.filterPerviews}
-        clearErrors={this.props.clearErrors} />
+        clearErrors={this.props.clearErrors}  />
 
       <div className="homepage__perviews">
         {this.renderComponents()}
