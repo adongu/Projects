@@ -31,6 +31,22 @@ export const createPerview = (formData) => {
   });
 };
 
+export const createItem = (itemData) => {
+  return axios({
+      method: 'post',
+      url: '/api/item/add',
+      body: JSON.stringify(itemData)
+  })
+  .then(response => {
+    console.log('response', response);
+    return response
+  })
+  .catch(error => {
+    return error
+    console.log('error', error);
+  });
+};
+
 
 export const fetchAllPerviews = (categoryId) => {
   return axios('/api', categoryId)

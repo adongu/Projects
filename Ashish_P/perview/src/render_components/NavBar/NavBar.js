@@ -31,8 +31,9 @@ class NavBar extends React.Component {
   // }
 
   updatePageTitle(props) {
-    switch (props.location.pathname) {
+    switch (props.match.path) {
       case '/':
+      case '/item/:item_id':
         this.setState({pageTitle: "Check the Perviews of your friends!", canCreatePerviews: true, canCreateFilters: false})
         break;
       case '/myperviews':
