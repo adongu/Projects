@@ -64,14 +64,16 @@ class ItemPerviews extends React.Component {
     return (
     <div>
       <NavBar
+        allCategoryIds={this.props.allCategoryIds}
+        clearErrors={this.props.clearErrors}
+        createItem={this.props.createItem}
+        createPerview={this.props.createPerview}
         currentUser={this.props.currentUser}
         results={this.props.results}
+        filterPerviews={this.props.filterPerviews}
         fetchUser={this.props.fetchUser}
         fetchResults={this.props.fetchResults}
-        createPerview={this.props.createPerview}
-        allCategoryIds={this.props.allCategoryIds}
-        filterPerviews={this.props.filterPerviews}
-        clearErrors={this.props.clearErrors}  />
+        selectedItem={this.props.selectedItem}/>
 
       <div className="homepage__perviews">
         {this.renderComponents()}

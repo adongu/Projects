@@ -33,6 +33,9 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
       });
       case RECEIVE_PERVIEW:
       newState.allPerviews.unshift(action.perview);
+      if (action.perview.id === newState.itemPerviews.item.id) {
+        newState.itemPerviews.perviews.unshift(action.perview);
+      }
       return Object.assign({}, newState, {
         requestLoading: false,
         errors: []
