@@ -2,7 +2,7 @@ import axios from 'axios';
 
 var config = {
   headers: {
-    'Accept': 'application/json',
+    // 'Accept': 'application/json',
     // 'Content-Type': 'application/json'
     'Content-Type': 'multipart/form-data'
     // 'Content-Type': undefined
@@ -10,9 +10,6 @@ var config = {
 }
 
 export const createPerview = (formData) => {
-  for (var key of formData.entries()) {
-    console.log(key[0] + ', ' + key[1]);
-  }
   return axios.post('/api/add', formData, config)
   // return axios({
   //     method: 'post',
@@ -31,20 +28,8 @@ export const createPerview = (formData) => {
   });
 };
 
-export const createItem = (itemData) => {
-  return axios({
-      method: 'post',
-      url: '/api/item/add',
-      body: JSON.stringify(itemData)
-  })
-  .then(response => {
-    console.log('response', response);
-    return response
-  })
-  .catch(error => {
-    return error
-    console.log('error', error);
-  });
+export const createItem = (item) => {
+  return axios.post('/api/item/add', item)
 };
 
 

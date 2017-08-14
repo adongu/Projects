@@ -1,8 +1,9 @@
 import { merge } from 'lodash';
-import { REQUEST_LOADING, RECEIVE_ALL_PERVIEWS, RECEIVE_ITEM_PERVIEWS, RECEIVE_MY_PERVIEWS, RECEIVE_FAVORITE_PERVIEWS, RECEIVE_FRIEND_PERVIEWS, RECEIVE_CATEGORY_IDS, EDIT_PERVIEW, DELETE_PERVIEW, RECEIVE_ERRORS } from '../actions/perview_actions';
+import { REQUEST_LOADING, RECEIVE_ITEM, RECEIVE_PERVIEW, RECEIVE_ALL_PERVIEWS, RECEIVE_ITEM_PERVIEWS, RECEIVE_MY_PERVIEWS, RECEIVE_FAVORITE_PERVIEWS, RECEIVE_FRIEND_PERVIEWS, RECEIVE_CATEGORY_IDS, EDIT_PERVIEW, DELETE_PERVIEW, RECEIVE_ERRORS } from '../actions/perview_actions';
 
 const _nullPerviews = Object.freeze({
   requestLoading: false,
+  selectedItem: {},
   categoryIds: [],
   allPerviews: [],
   itemPerviews: {
@@ -30,9 +31,21 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
       return Object.assign({}, oldState, {
         requestLoading: true
       });
+      case RECEIVE_PERVIEW:
+      newState.allPerviews.unshift(action.perview);
+      return Object.assign({}, newState, {
+        requestLoading: false,
+        errors: []
+      });
     case RECEIVE_ALL_PERVIEWS:
       return Object.assign({}, newState, {
         allPerviews: action.allPerviews.reverse(),
+        requestLoading: false,
+        errors: []
+      });
+    case RECEIVE_ITEM:
+      return Object.assign({}, newState, {
+        selectedItem: action.item,
         requestLoading: false,
         errors: []
       });
@@ -44,9 +57,7 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
         errors: []
       });
     case RECEIVE_MY_PERVIEWS:
-    //   newState.allPerviews.unshift(action.myPerviews);
-    //   newState.myPerviews.perviews.unshift(action.myPerviews);
-    //   newState.myPerviews.categories.unshift(action.myPerviews.categories);
+      // newState.myPerviews.categories.unshift(action.myPerviews.categories);
       return Object.assign({}, newState, {
         myPerviews: action.myPerviews,
         requestLoading: false,

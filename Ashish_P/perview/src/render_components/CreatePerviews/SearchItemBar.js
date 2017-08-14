@@ -50,13 +50,7 @@ class SearchItemBar extends React.Component {
 
   getSuggestionValue(suggestion) {
     // pass item to modal
-    this.props.selectItem(
-      suggestion.imageUrls.large.url,
-      suggestion.title,
-      suggestion.lowestNewPrice.formattedAmount,
-      suggestion.asin
-      // suggestion.data.asin
-    );
+    this.props.selectItem(suggestion);
     return suggestion.title;
   }
   // Use your imagination to render suggestions.
@@ -101,7 +95,7 @@ class SearchItemBar extends React.Component {
   // Autosuggest will call this function every time you need to clear suggestions.
   onSuggestionsClearRequested() {
     this.setState({
-      keywords: '',
+      // keywords: '',
       value: '',
       suggestions: []
     });

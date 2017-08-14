@@ -18,7 +18,8 @@ class CreatePerviewModal extends React.Component {
       itemId: null,
       tags: '',
       rating: 0,
-      // asin: '',
+      asin: null,
+      item: {},
       perviewers: []
     }
 
@@ -71,17 +72,18 @@ class CreatePerviewModal extends React.Component {
     })
   }
 
-  selectItem( imgUrl, name, price, itemId ) {
-    if (itemId) {
+  selectItem(item) {
+    this.props.createItem(item)
+    .then(() => {
+      let item = this.props.selectedItem;
       this.setState({
-        imgUrl: imgUrl,
-        name: name,
-        price: price,
-        itemId: itemId,
-        // asin: asin,
+        imgUrl: item.data.imageUrls.large.url,
+        name: item.data.title,
+        price: item.data.lowestNewPrice.formattedAmount,
+        itemId: item.id,
         chosen: true
       })
-    }
+    })
   }
 
   update (field) {
@@ -91,7 +93,6 @@ class CreatePerviewModal extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.validateRedirect();
-
     if(this.props.currentUser){
       let formData = new FormData();
       formData.append("itemId", this.state.itemId);

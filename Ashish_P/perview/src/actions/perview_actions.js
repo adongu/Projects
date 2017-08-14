@@ -1,6 +1,8 @@
 import * as APIUtil from '../util/perview_api_util';
 
 export const REQUEST_LOADING = 'REQUEST_LOADING';
+export const RECEIVE_ITEM = 'RECEIVE_ITEM';
+export const RECEIVE_PERVIEW = 'RECEIVE_PERVIEW';
 export const RECEIVE_ALL_PERVIEWS = 'RECEIVE_ALL_PERVIEWS';
 export const RECEIVE_ITEM_PERVIEWS = 'RECEIVE_ITEM_PERVIEWS';
 export const RECEIVE_MY_PERVIEWS = 'RECEIVE_MY_PERVIEWS';
@@ -16,6 +18,16 @@ export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const requestLoading = () => ({
   type: REQUEST_LOADING
 })
+
+export const receiveItem = (item) => ({
+  type: RECEIVE_ITEM,
+  item
+});
+
+export const receivePerview = (perview) => ({
+  type: RECEIVE_PERVIEW,
+  perview
+});
 
 export const receiveAllPerviews = (allPerviews) => ({
   type: RECEIVE_ALL_PERVIEWS,
@@ -70,7 +82,18 @@ export const createPerview = (formData) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.createPerview(formData)
     .then( response => {
-      return dispatch(receiveMyPerviews(response.data))
+      return dispatch(receivePerview(response.data))
+    })
+    .catch( err => {
+      return dispatch(receiveErrors(err.responseJSON))
+    })
+};
+
+export const createItem = (item) => dispatch => {
+  dispatch(requestLoading());
+  return APIUtil.createItem(item)
+    .then( response => {
+      return dispatch(receiveItem(response.data))
     })
     .catch( err => {
       return dispatch(receiveErrors(err.responseJSON))

@@ -16,7 +16,6 @@ class NavBar extends React.Component {
     this.updatePageTitle = this.updatePageTitle.bind(this);
   }
 
-
   componentWillMount() {
     this.updatePageTitle(this.props);
   }
@@ -64,7 +63,9 @@ class NavBar extends React.Component {
           results={this.props.results}
           fetchUser={this.props.fetchUser}
           fetchResults={this.props.fetchResults}
-          createPerview={this.props.createPerview}/>
+          createItem={this.props.createItem}
+          createPerview={this.props.createPerview}
+          selectedItem={this.props.selectedItem}/>
       )
     }
   }
