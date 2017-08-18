@@ -173,3 +173,53 @@ body {
 
 
 /* For Header autosuggestion */
+.search__container.search__perview {
+  .react-autosuggest__suggestions-container--open {
+    //
+    width: 150%;
+    left: -25%;
+  }
+
+  .autosuggest__ {
+    &item {
+      width: 100%
+      height: 150px;
+      padding: 15px 0;
+
+      border-bottom: 1px #D6D6D6 solid;
+    }
+
+    &product {
+      width: 70%;
+      // height: 150px;
+      // padding: 15px 0;
+    }
+  /* product display left side */
+    &product-left {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 33.33%;
+    }
+
+    &img {
+      max-width: 150px;
+      max-height: 100px;
+      position:absolute;
+      -webkit-backface-visibility: hidden;
+    }
+    /* product display right side */
+    &product-right {
+      width: 66.66%;
+      justify-content: space-between;
+    }
+
+    &name {
+
+    }
+
+    &price {
+
+    }
+  }
+}

@@ -36,7 +36,7 @@ class SearchItemBar extends React.Component {
 
   getSuggestionValue(suggestion) {
     // pass item to modal
-    console.log('suggestionid', suggestion.id);
+    // console.log('suggestionid', suggestion.id);
     this.props.selectItem(
       suggestion.itemDto.data.imageUrls.large.url,
       suggestion.itemDto.dataname,
@@ -105,7 +105,7 @@ class SearchItemBar extends React.Component {
   }
 
   renderFriends(suggestion) {
-    console.log('hit', suggestion);
+    // console.log('hit', suggestion);
     return(
       <div>
         friend
@@ -118,7 +118,7 @@ class SearchItemBar extends React.Component {
       let imgUrl = suggestion.itemDto.data.imageUrls.large.url;
       let price = suggestion.itemDto.data.lowestNewPrice.formattedAmount;
       return (
-        <div className="flexrow">
+        <div className="flexrow autosuggest__item">
           <div className="flexrow autosuggest__product">
             <div className="autosuggest__product-left">
               <img className="autosuggest__img" src={imgUrl} alt="product"/>
@@ -150,7 +150,7 @@ class SearchItemBar extends React.Component {
     };
 
     return (
-      <div className="search__container">
+      <div className="search__container search__perview">
         <div className="search__box">
           <Autosuggest
             id="header__suggest"
