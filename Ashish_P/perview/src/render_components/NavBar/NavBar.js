@@ -41,6 +41,9 @@ class NavBar extends React.Component {
       case '/favorites':
         this.setState({pageTitle: "Saved Perviews", canCreatePerviews: false, canCreateFilters: true })
         break;
+      case '/friend/:friend_id':
+        this.setState({pageTitle: `Friend Perviews`, canCreatePerviews: false, canCreateFilters: true })
+        break;
       default:
         this.setState({pageTitle: 'Settings', canCreateFilters: false})
         break;

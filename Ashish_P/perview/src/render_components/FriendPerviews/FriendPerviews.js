@@ -2,7 +2,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar'
-import WidePerview from "../PerviewsLayouts/WidePerview";
+import NarrowPerview from "../PerviewsLayouts/NarrowPerview";
 
 class FriendPerviews extends React.Component {
   constructor (props) {
@@ -15,11 +15,12 @@ class FriendPerviews extends React.Component {
 
   componentWillMount () {
     // this.validateRedirect();
-    this.props.fetchFriendPerviews();
+    // this.props.fetchFriendPerviews(Number(this.props.match.params.friend_id));
     this.props.fetchCategoryIds();
   }
 
   componentDidMount() {
+    console.log(this.props.match.params);
   }
 
   componentDidReceiveProps (nextProps) {

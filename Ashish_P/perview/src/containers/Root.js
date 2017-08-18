@@ -6,6 +6,7 @@ import HomePageContainer from './HomePageContainer';
 import FavoritePerviewsContainer from './FavoritePerviewsContainer';
 import ItemPerviewsContainer from './ItemPerviewsContainer';
 import MyPerviewsContainer from './MyPerviewsContainer';
+import FriendPerviewsContainer from './FriendPerviewsContainer';
 import SignInContainer from './SignInContainer';
 // import RestrictedContainer from './RestrictedContainer';
 import Restricted from '../render_components/Restricted';
@@ -34,6 +35,7 @@ const Root = ({ store }) => {
               <Route path="/myperviews" component={MyPerviewsContainer}/>
               <Route path="/favorites" component={FavoritePerviewsContainer}/>
               <Route path="/item/:item_id" component={ItemPerviewsContainer}/>
+              <Route path="/friend/:friend_id" component={FriendPerviewsContainer}/>
               <Route render={() => (
                 <p>404 Page Not Found</p>
               )}/>
