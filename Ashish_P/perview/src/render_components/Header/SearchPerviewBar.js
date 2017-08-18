@@ -14,14 +14,15 @@ class SearchItemBar extends React.Component {
     };
 
     // this.updateKeywords = this.updateKeywords.bind(this);
+    this.onChange = this.onChange.bind(this);
     this.logChange = this.logChange.bind(this);
-    this.renderSuggestion = this.renderSuggestion.bind(this);
-    this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this);
-    this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(this);
     this.getSuggestions = this.getSuggestions.bind(this);
     this.getSuggestionValue = this.getSuggestionValue.bind(this);
+    this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this);
+    this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(this);
     this.renderInputComponent = this.renderInputComponent.bind(this);
-    this.onChange = this.onChange.bind(this);
+    this.renderSuggestion = this.renderSuggestion.bind(this);
+    this.renderFriends = this.renderFriends.bind(this);
   }
 
   componentWillReceiveProps (nextProps) {
@@ -44,24 +45,6 @@ class SearchItemBar extends React.Component {
       // suggestion.data.asin
     );
     return suggestion.itemDto.name;
-  }
-  // Use your imagination to render suggestions.
-  renderSuggestion(suggestion){
-    if (suggestion) {
-      let imgUrl = suggestion.itemDto.data.imageUrls.large.url;
-      let price = suggestion.itemDto.data.lowestNewPrice.formattedAmount;
-      return (
-        <div className="flexrow autosuggest__product">
-          <div className="autosuggest__product-left">
-            <img className="autosuggest__img" src={imgUrl} alt="product"/>
-          </div>
-          <div className="flexcolumn autosuggest__product-right">
-            <div className="autosuggest__name">{suggestion.itemDto.name}</div>
-            <div className="autosuggest__price">{price}</div>
-          </div>
-        </div>
-      );
-    }
   }
 
   // Teach Autosuggest how to calculate suggestions for any given input value.
@@ -119,6 +102,40 @@ class SearchItemBar extends React.Component {
 
   logChange(val) {
     this.setState({value: val.value});
+  }
+
+  renderFriends(suggestion) {
+    console.log('hit', suggestion);
+    return(
+      <div>
+        friend
+      </div>
+    )
+  }
+
+  renderSuggestion(suggestion){
+    if (suggestion) {
+      let imgUrl = suggestion.itemDto.data.imageUrls.large.url;
+      let price = suggestion.itemDto.data.lowestNewPrice.formattedAmount;
+      return (
+        <div className="flexrow">
+          <div className="flexrow autosuggest__product">
+            <div className="autosuggest__product-left">
+              <img className="autosuggest__img" src={imgUrl} alt="product"/>
+            </div>
+            <div className="flexcolumn autosuggest__product-right">
+              <div className="autosuggest__name">{suggestion.itemDto.name}</div>
+              <div className="autosuggest__price">{price}</div>
+            </div>
+          </div>
+
+          <div className="flexcolumn autosuggest__friends">
+            <div>Perview by</div>
+            {this.renderFriends(suggestion)}
+          </div>
+        </div>
+      );
+    }
   }
 
   render() {
