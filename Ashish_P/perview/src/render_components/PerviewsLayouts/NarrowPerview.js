@@ -52,7 +52,6 @@ const NarrowPerview = ({ perviews }) => {
                   </button>
                 </div>
               </div>
-              <div className="narrowperviews__review-tags">{perview.tags}</div>
               <div className="narrowperviews__review-text">{perview.tags}</div>
             </div>
           </div>

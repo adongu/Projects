@@ -76,7 +76,6 @@ const WidePerview = ({ perviews, bookmarkPerview, history }) => {
               <div className="wideresults__review-stars">
                 {renderStars(perview.rating)}
               </div>
-              <div className="wideresults__review-tags">{perview.tags}</div>
               <div className="wideresults__review-text">{perview.tags}</div>
               <div className="flexrow wideresults__review-social-box">
                 <div className="flexrow wideresults__review-comments-box">
