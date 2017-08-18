@@ -14,8 +14,8 @@ class FriendPerviews extends React.Component {
   }
 
   componentWillMount () {
-    // this.validateRedirect();
-    // this.props.fetchFriendPerviews(Number(this.props.match.params.friend_id));
+    this.validateRedirect();
+    this.props.fetchFriendPerviews(Number(this.props.match.params.friend_id));
     this.props.fetchCategoryIds();
   }
 
@@ -38,7 +38,7 @@ class FriendPerviews extends React.Component {
   }
 
   handleFilterChange(e) {
-    this.props.fetchMyPerviews(e.target.value);
+    this.props.fetchFriendPerviews(Number(this.props.match.params.friend_id), e.target.value);
   }
 
   handleSortChange(event) {

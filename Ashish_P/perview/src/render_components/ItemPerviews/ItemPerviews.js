@@ -55,7 +55,7 @@ class ItemPerviews extends React.Component {
       )
     } else {
       return (
-        <WidePerview perviews={this.props.perviews}/>
+        <WidePerview perviews={this.props.perviews} match={this.props.history}/>
       )
     }
   }

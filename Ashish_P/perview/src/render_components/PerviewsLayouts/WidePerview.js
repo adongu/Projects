@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { Button, ButtonToolbar } from 'react-bootstrap';
 import moment from 'moment';
 
-const WidePerview = ({ perviews, bookmarkPerview }) => {
+const WidePerview = ({ perviews, bookmarkPerview, history }) => {
 
   const renderStars = (rating) => {
     let stars = [1, 2, 3, 4, 5];
@@ -18,6 +18,13 @@ const WidePerview = ({ perviews, bookmarkPerview }) => {
     })
   }
 
+  const handleFriendClick = (friendId) => {
+    return (e) => {
+      console.log(friendId);
+      // console.log(this.props);
+      history.replace({ pathname: `/friend/${friendId}` });
+    }
+  }
 
   const handleSaveClick = (perviewId) => {
     return e => {
@@ -63,7 +70,7 @@ const WidePerview = ({ perviews, bookmarkPerview }) => {
             <div className="flexcolumn wideresults__perview-rightbox">
               <div className="wideresults__review-time">{moment(perview.ts).calendar()}</div>
               <div className="flexrow wideresults__review-user">
-                <div className="wideresults__review-user-icon"><img className="wideresults__review-user-img" src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/></div>
+                <div className="wideresults__review-user-icon" onClick={handleFriendClick(user.id)}><img className="wideresults__review-user-img" src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/></div>
                 <div className="wideresults__review-username">{user.fullName}</div>
               </div>
               <div className="wideresults__review-stars">
