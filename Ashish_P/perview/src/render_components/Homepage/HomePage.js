@@ -5,7 +5,7 @@ import NavBar from '../NavBar/NavBar'
 import WidePerview from "../PerviewsLayouts/WidePerview";
 
 class HomePage extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       fName: "",
@@ -18,7 +18,7 @@ class HomePage extends React.Component {
     this.validateRedirect = this.validateRedirect.bind(this);
   }
 
-  componentWillMount () {
+  componentWillMount() {
     this.validateRedirect();
     this.props.fetchAllPerviews();
   }
@@ -26,7 +26,7 @@ class HomePage extends React.Component {
   componentDidMount() {
   }
 
-  componentDidReceiveProps (nextProps) {
+  componentDidReceiveProps(nextProps) {
     if (nextProps.requestLoading !== this.props.requestLoading) {
       this.setState({
         requestLoading: nextProps.requestLoading

@@ -144,9 +144,9 @@ export const fetchFavoritePerviews = (categoryId = null) => dispatch => {
     })
 };
 
-export const fetchFriendPerviews = (categoryId = null) => dispatch => {
+export const fetchFriendPerviews = (friendUserId, categoryId = null) => dispatch => {
   dispatch(requestLoading());
-  return APIUtil.fetchFriendPerviews(categoryId)
+  return APIUtil.fetchFriendPerviews(friendUserId, categoryId)
     .then( response => {
       return dispatch(receiveFavoritePerviews(response.data))
     })

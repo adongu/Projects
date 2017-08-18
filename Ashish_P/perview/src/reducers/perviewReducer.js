@@ -18,7 +18,10 @@ const _nullPerviews = Object.freeze({
     categories: [],
     perviews: []
   },
-  friendPerviews: [],
+  friendPerviews: {
+    categories: [],
+    perviews: []
+  },
   errors: []
 })
 
