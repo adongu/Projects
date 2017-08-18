@@ -20,7 +20,7 @@ const WidePerview = ({ perviews, bookmarkPerview, history }) => {
 
   const handleFriendClick = (friendId) => {
     return (e) => {
-      console.log(friendId);
+      // console.log(friendId);
       // console.log(this.props);
       history.replace({ pathname: `/friend/${friendId}` });
     }
