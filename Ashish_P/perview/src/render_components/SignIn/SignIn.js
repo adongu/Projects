@@ -13,6 +13,10 @@ class SignIn extends React.Component {
     this.redirectIfLoggedIn = this.redirectIfLoggedIn.bind(this);
   }
 
+  componentWillMount() {
+    this.props.fetchToken();
+  }
+
   componentDidMount () {
   }
 
@@ -44,7 +48,7 @@ class SignIn extends React.Component {
               Purchase your favorite products with the trust of your friends
             </div>
             <form className="signin__form" action={auth_url} method="post">
-              <input type="hidden" className="scope" value="user_friends" />
+              <input type="hidden" name="scope" value="user_friends" />
               <button type="submit" className="signin__form-facebook">SIGN IN WITH FACEBOOK</button>
             </form>
           </div>

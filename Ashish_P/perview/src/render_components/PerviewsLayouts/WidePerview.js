@@ -33,6 +33,7 @@ const WidePerview = ({ perviews, bookmarkPerview, history }) => {
       } else {
         e.currentTarget.className = 'wideresults__review-social-icon';
       }
+      console.log('bookmark', perviewId);
       bookmarkPerview(e);
     }
   }

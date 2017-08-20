@@ -27,8 +27,8 @@ export const clearErrors = () => ({
 });
 
 
-export const likePerview = () => dispatch => {
-  return APIUtil.likePerview()
+export const likePerview = (perviewId = null) => dispatch => {
+  return APIUtil.likePerview(perviewId)
     .then(response => {
       console.log('success liking', response.data);
     })
@@ -38,8 +38,8 @@ export const likePerview = () => dispatch => {
     })
 }
 
-export const bookmarkPerview = () => dispatch => {
-  return APIUtil.bookmarkPerview()
+export const bookmarkPerview = (perviewId) => dispatch => {
+  return APIUtil.bookmarkPerview(perviewId)
     .then(response => {
       console.log('success liking', response.data);
     })

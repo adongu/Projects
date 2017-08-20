@@ -5,6 +5,7 @@ export const likePerview = (perviewId) => {
 }
 
 export const bookmarkPerview = (perviewId) => {
+  console.log(perviewId);
   return axios.post(`api/${perviewId}/bookmark`)
 }
 

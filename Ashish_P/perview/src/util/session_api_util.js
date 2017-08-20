@@ -12,6 +12,10 @@ export const fetchUser = () => {
   return axios('/api/user')
 }
 
+export const fetchToken = () => {
+  return axios('/')
+}
+
 export const logOut = () => {
-  return axios.get('/logout')
+  return axios.post('/logout')
 }

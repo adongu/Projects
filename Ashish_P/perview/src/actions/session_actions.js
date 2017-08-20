@@ -34,6 +34,12 @@ export const requestUser = () => ({
 //       }
 //     )
 // }
+export const fetchToken = () => dispatch => {
+  return APIUtil.fetchToken()
+    .then( response => {
+      console.log('fetchtoken', response.data);
+    })
+}
 
 export const fetchUser = () => dispatch => {
   dispatch(requestUser());

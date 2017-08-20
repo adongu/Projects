@@ -33,8 +33,8 @@ export const createItem = (item) => {
 };
 
 
-export const fetchAllPerviews = (categoryId) => {
-  return axios('/api', categoryId)
+export const fetchAllPerviews = () => {
+  return axios('/api')
 }
 
 export const fetchItemPerviews = (itemId) => {
