@@ -32,7 +32,6 @@ class ItemPerviews extends React.Component {
         requestLoading: nextProps.requestLoading
       })
     }
-    console.log('itemid', Number(nextProps.match.params.item_id));
     if ('itemid', this.props.match.params.item_id !== nextProps.match.params.item_id) {
       this.props.fetchItemPerviews(Number(nextProps.match.params.item_id));
     }
@@ -55,7 +54,10 @@ class ItemPerviews extends React.Component {
       )
     } else {
       return (
-        <WidePerview perviews={this.props.perviews} match={this.props.history}/>
+        <WidePerview
+          perviews={this.props.perviews}
+          bookmarkPerview={this.props.bookmarkPerview}
+          match={this.props.history}/>
       )
     }
   }

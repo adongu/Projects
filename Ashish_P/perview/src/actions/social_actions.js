@@ -39,6 +39,7 @@ export const likePerview = (perviewId = null) => dispatch => {
 }
 
 export const bookmarkPerview = (perviewId) => dispatch => {
+  console.log('bookmark action', perviewId);
   return APIUtil.bookmarkPerview(perviewId)
     .then(response => {
       console.log('success liking', response.data);
