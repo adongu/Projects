@@ -101,17 +101,6 @@ class SearchItemBar extends React.Component {
     });
   };
 
-  renderInputComponent (inputProps) {
-    return (
-      <div className="search__inputContainer">
-        <input {...inputProps} />
-        <button className="search__btn">
-          <i className="fa fa-search search__btn-icon" aria-hidden="true"></i>
-        </button>
-      </div>
-    )
-  };
-
   updateKeywords(e) {
     this.setState({
       keywords: e.target.value
@@ -127,10 +116,19 @@ class SearchItemBar extends React.Component {
     this.setState({value: val.value});
   }
 
+  renderInputComponent (inputProps) {
+    return (
+      <div className="search__inputContainer">
+        <input {...inputProps} />
+        <button className="search__btn">
+          <i className="fa fa-search search__btn-icon" aria-hidden="true"></i>
+        </button>
+      </div>
+    )
+  };
+
   render() {
-
     const { value, suggestions } = this.state;
-
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
       placeholder: 'Search on Amazon',
