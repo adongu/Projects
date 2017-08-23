@@ -1,4 +1,5 @@
 import "../../styles/stylesheets/search.css";
+import { debounce } from 'lodash';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Autosuggest from 'react-autosuggest';
@@ -16,7 +17,6 @@ import Autosuggest from 'react-autosuggest';
 // When suggestion is clicked, Autosuggest needs to populate the input
 // based on the clicked suggestion. Teach Autosuggest how to calculate the
 // input value for every given suggestion.
-
 
 class SearchItemBar extends React.Component {
   constructor(props){
@@ -71,17 +71,26 @@ class SearchItemBar extends React.Component {
   }
 
   // Teach Autosuggest how to calculate suggestions for any given input value.
+  fetchResults = debounce((newValue) => {
+    this.props.fetchResults(newValue);
+
+    this.setState({
+      isFetching: false
+    })
+  }, 250);
+
   getSuggestions (value) {
     return this.state.suggestions;
   };
 
   onChange (event, { newValue }) {
     this.setState({
-      value: newValue
+      value: newValue,
+      isFetching: true
     });
-    if (newValue.length > 0) {
-      this.props.fetchResults(newValue);
-    }
+    // if (newValue.length > 2) {
+    this.fetchResults(newValue);
+    // }
   };
 
   // Autosuggest will call this function every time you need to update suggestions.

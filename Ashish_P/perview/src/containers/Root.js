@@ -12,23 +12,11 @@ import SignInContainer from './SignInContainer';
 import Restricted from '../render_components/Restricted';
 
 const Root = ({ store }) => {
-  // const Auth = {
-  //   isAuthenticated: false,
-  //   authenticate(cb) {
-  //     this.isAuthenticated = true
-  //     setTimeout(cb, 100) // fake async
-  //   },
-  //   signout(cb) {
-  //     this.isAuthenticated = false
-  //     setTimeout(cb, 100)
-  //   }
-  // }
-
   return (
     <Provider store={ store }>
        <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
           <div className="root">
-            <App {...store.session}/>
+            <App/>
             <Switch>
               <Route exact path="/" component={HomePageContainer} />
               <Route path="/signin" component={SignInContainer}/>
