@@ -73,10 +73,6 @@ class SearchItemBar extends React.Component {
   // Teach Autosuggest how to calculate suggestions for any given input value.
   fetchResults = debounce((newValue) => {
     this.props.fetchResults(newValue);
-
-    this.setState({
-      isFetching: false
-    })
   }, 250);
 
   getSuggestions (value) {
@@ -126,11 +122,18 @@ class SearchItemBar extends React.Component {
   }
 
   renderInputComponent (inputProps) {
+    let renderSearchOrLoading;
+    if (this.state.isFetching) {
+      renderSearchOrLoading = (<i class="fa fa-spinner" aria-hidden="true"></i>)
+    } else {
+      renderSearchOrLoading = (<i className="fa fa-search search__btn-icon" aria-hidden="true"></i>)
+    }
+
     return (
       <div className="search__inputContainer">
         <input {...inputProps} />
         <button className="search__btn">
-          <i className="fa fa-search search__btn-icon" aria-hidden="true"></i>
+          {renderSearchOrLoading}
         </button>
       </div>
     )
