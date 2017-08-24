@@ -124,7 +124,7 @@ class SearchItemBar extends React.Component {
   renderInputComponent (inputProps) {
     let renderSearchOrLoading;
     if (this.state.isFetching) {
-      renderSearchOrLoading = (<i class="fa fa-spinner" aria-hidden="true"></i>)
+      renderSearchOrLoading = (<i className="fa fa-spinner" aria-hidden="true"></i>)
     } else {
       renderSearchOrLoading = (<i className="fa fa-search search__btn-icon" aria-hidden="true"></i>)
     }

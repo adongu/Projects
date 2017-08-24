@@ -93,10 +93,11 @@ export const createItem = (item) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.createItem(item)
     .then( response => {
-      console.log('action receive item', response.data);
+      console.log('successfully created item');
       return dispatch(receiveItem(response.data))
     })
     .catch( err => {
+      console.log('error creating item');
       return dispatch(receiveErrors(err.responseJSON))
     })
 };

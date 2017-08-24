@@ -27,7 +27,8 @@ class SignIn extends React.Component {
     }
   }
 
-  redirectIfLoggedIn(session) {
+  redirectIfLoggedIn() {
+    // this.props.fetchUser();
   }
 
   render() {
