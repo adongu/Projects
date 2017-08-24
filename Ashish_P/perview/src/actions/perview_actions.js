@@ -101,9 +101,9 @@ export const createItem = (item) => dispatch => {
     })
 };
 
-export const fetchAllPerviews = (categoryId = null) => dispatch => {
+export const fetchAllPerviews = () => dispatch => {
   dispatch(requestLoading());
-  return APIUtil.fetchAllPerviews(categoryId)
+  return APIUtil.fetchAllPerviews()
     .then( response => {
       return dispatch(receiveAllPerviews(response.data))
     })

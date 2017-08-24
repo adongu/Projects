@@ -20,7 +20,6 @@ class HomePage extends React.Component {
 
   componentWillMount() {
     this.validateRedirect();
-    console.log('before error');
     this.props.fetchAllPerviews()
     .then((response) => {
       console.log('no error', response);
@@ -40,7 +39,7 @@ class HomePage extends React.Component {
 
   validateRedirect() {
     this.props.fetchUser()
-      .then(() => { console.log("after fetchUser", this.props);})
+      .then(() => { console.log("fetchUser No Errors", this.props);})
       .catch(() => this.props.history.replace({ pathname: '/signin' }));
   }
 
