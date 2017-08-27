@@ -6,4 +6,33 @@
     margin: auto;
     color: red;
   }
+
+  &row-top,
+  &row-bottom {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  &user,
+  &invite,
+  &networks,
+  &perviews {
+    width: 50%;
+    margin: auto;
+  }
+
+  &portrait {
+    // width: 30%;
+  }
+
+  &name {
+    // width: 70%;
+  }
+
+  &userimg {
+    width: 30%;
+    border-radius: 50%;
+    max-height: 50px;
+    overflow: hidden;
+  }
 }
