@@ -84,6 +84,7 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
         errors: []
       });
     case RECEIVE_NUM_PERVIEWS:
+    console.log(action.numPerviews);
       return Object.assign({}, newState, {
         numPerviews: action.numPerviews,
         requestLoading: false,
