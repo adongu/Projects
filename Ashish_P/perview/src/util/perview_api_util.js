@@ -52,9 +52,14 @@ export const fetchFriendPerviews = (friendUserId, categoryId) => {
   return axios(`/api/friend/${friendUserId}`, categoryId)
 }
 
+export const fetchNumPerviews = () => {
+  return axios('api/user/num-perviews')
+}
+
 export const fetchCategoryIds = () => {
   return axios('/api/item/category')
 }
+
 
 export const editPerview = (keywords) => {
 

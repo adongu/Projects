@@ -4,21 +4,35 @@ import { withRouter } from 'react-router-dom';
 
 
 class Settings extends React.Component{
-  constructor(props) {
-    super(props);
+
+  componentWillMount() {
+    this.props.fetchUser()
+    .then(() => {
+      this.props.fetchNumPerviews();
+    });
   }
-  //
-  // componentWillMount() {
-  //   this.props.fetchUser()
-  // }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.currentUser.id !== this.props.currentUser.id) {
+      this.props.fetchUser()
+      .then(() => {
+        this.props.fetchNumPerviews();
+      });
+    }
+  }
 
   render() {
+    let currentUser;
+    if (this.props.currentUser) {
+      currentUser = this.props.currentUser;
+    }
+
     return(
       <div className="settings__container">
           <section className="settings__row-top">
             <div className="settings__user">
-              <span>Picture</span>
-              <span>Name</span>
+              <span>`${currentUser.facebookProfilePictureUrl.replace(/\/picture$/, "")}`</span>
+              <span>`${currentUser.firstName} ${currentUser.lastName}`</span>
             </div>
             <span className="settings__invite">
               <p>Invite URL</p>

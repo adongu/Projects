@@ -1,5 +1,5 @@
 import { merge } from 'lodash';
-import { REQUEST_LOADING, RECEIVE_ITEM, RECEIVE_PERVIEW, RECEIVE_ALL_PERVIEWS, RECEIVE_ITEM_PERVIEWS, RECEIVE_MY_PERVIEWS, RECEIVE_FAVORITE_PERVIEWS, RECEIVE_FRIEND_PERVIEWS, RECEIVE_CATEGORY_IDS, EDIT_PERVIEW, DELETE_PERVIEW, RECEIVE_ERRORS } from '../actions/perview_actions';
+import { REQUEST_LOADING, RECEIVE_ITEM, RECEIVE_PERVIEW, RECEIVE_ALL_PERVIEWS, RECEIVE_ITEM_PERVIEWS, RECEIVE_MY_PERVIEWS, RECEIVE_FAVORITE_PERVIEWS, RECEIVE_FRIEND_PERVIEWS, RECEIVE_CATEGORY_IDS, RECEIVE_NUM_PERVIEWS, EDIT_PERVIEW, DELETE_PERVIEW, RECEIVE_ERRORS } from '../actions/perview_actions';
 
 const _nullPerviews = Object.freeze({
   requestLoading: false,
@@ -22,6 +22,7 @@ const _nullPerviews = Object.freeze({
     categories: [],
     perviews: []
   },
+  numPerviews: null,
   errors: []
 })
 
@@ -79,6 +80,12 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
       newState.Perviews.unshift(action.perview);
       return Object.assign({}, newState, {
         friendPerviews: action.friendPerviews,
+        requestLoading: false,
+        errors: []
+      });
+    case RECEIVE_NUM_PERVIEWS:
+      return Object.assign({}, newState, {
+        numPerviews: action.numPerviews,
         requestLoading: false,
         errors: []
       });
