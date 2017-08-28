@@ -10,9 +10,11 @@ import FriendPerviewsContainer from './FriendPerviewsContainer';
 import SettingsContainer from './SettingsContainer';
 import SignInContainer from './SignInContainer';
 // import RestrictedContainer from './RestrictedContainer';
-import Restricted from '../render_components/Restricted';
+import PrivateRouteContainer from '../render_components/PrivateRouteContainer';
 
 const Root = ({ store }) => {
+  console.log('root', this);
+
   return (
     <Provider store={ store }>
        <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
