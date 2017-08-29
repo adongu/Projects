@@ -20,7 +20,7 @@ const Root = ({ store }) => {
        <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
           <div className="root">
             <Switch>
-              <PrivateRouteContainer exact path="/" component={HomePageContainer} />
+              <Route exact path="/" component={HomePageContainer} />
               <Route path="/signin" component={SignInContainer}/>
               <Route path="/myperviews" component={MyPerviewsContainer}/>
               <Route path="/favorites" component={FavoritePerviewsContainer}/>

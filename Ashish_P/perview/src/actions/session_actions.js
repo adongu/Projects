@@ -41,6 +41,17 @@ export const fetchToken = () => dispatch => {
     })
 }
 
+export const logIn = () => dispatch => {
+  dispatch(requestUser());
+  return APIUtil.logIn()
+    .then( response => {
+      return dispatch(receiveCurrentUser(response.data))
+    })
+    .catch((error) => {
+      return dispatch(receiveErrors(err.responseJSON))
+    })
+}
+
 export const fetchUser = () => dispatch => {
   dispatch(requestUser());
   return APIUtil.fetchUser()
