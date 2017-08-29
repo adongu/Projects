@@ -10,7 +10,7 @@ import FriendPerviewsContainer from './FriendPerviewsContainer';
 import SettingsContainer from './SettingsContainer';
 import SignInContainer from './SignInContainer';
 // import RestrictedContainer from './RestrictedContainer';
-import PrivateRouteContainer from '../render_components/PrivateRouteContainer';
+import PrivateRouteContainer from './PrivateRouteContainer';
 
 const Root = ({ store }) => {
   console.log('root', this);
@@ -19,9 +19,8 @@ const Root = ({ store }) => {
     <Provider store={ store }>
        <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
           <div className="root">
-            <App {...store.session}/>
             <Switch>
-              <Route exact path="/" component={HomePageContainer} />
+              <PrivateRouteContainer exact path="/" component={HomePageContainer} />
               <Route path="/signin" component={SignInContainer}/>
               <Route path="/myperviews" component={MyPerviewsContainer}/>
               <Route path="/favorites" component={FavoritePerviewsContainer}/>
@@ -39,9 +38,4 @@ const Root = ({ store }) => {
 };
 
 export default Root;
-// <Route component={SignInContainer}/>
-
-//Testing for passing props down
-// <Route path="/" render={(props) => (
-//   <App {...props}/>
-// )} />
+// <App {...store.session}/>

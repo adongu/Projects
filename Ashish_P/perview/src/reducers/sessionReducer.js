@@ -16,11 +16,12 @@ const sessionReducer = (oldState = _nullSession, action) => {
       })
     case RECEIVE_CURRENT_USER:
       let currentUser = action.currentUser;
-      return Object.assign({}, oldState, {
+      let newState = Object.assign({}, oldState, {
         isFetching: false,
         currentUser: currentUser,
         errors: []
       });
+      return newState;
     case RECEIVE_ERRORS:
       let errors = action.errors;
       return Object.assign({}, oldState, {

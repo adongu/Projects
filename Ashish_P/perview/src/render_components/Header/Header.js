@@ -21,7 +21,7 @@ class Header extends React.Component {
   }
 
   componentWillMount() {
-    this.validateRedirect();
+    // this.validateRedirect();
   }
 
   componentDidMount() {
