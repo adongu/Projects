@@ -55,6 +55,7 @@ class SignIn extends React.Component {
               Purchase your favorite products with the trust of your friends
             </div>
             <form className="signin__form" onSubmit={this.handleSubmit}>
+              <a href="http://localhost:8080/connect/facebook">LOGIN</a>
               <button type="submit" className="signin__form-facebook">SIGN IN WITH FACEBOOK</button>
             </form>
           </div>
