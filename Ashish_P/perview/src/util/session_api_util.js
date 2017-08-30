@@ -32,24 +32,37 @@ var config = {
 export const logIn = () => {
   let token = getCsrfToken();
 
-  return axios.post('/connect/facebook', {body: {
-    scope: 'user_friends',
-    { config }
+  return axios.post('/connect/facebook', {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      // 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+      'Accept': 'application/json',
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'X-Requested-With': 'XMLHttpRequest',
+      // 'Origin': '*'
+    },
+    data: {
+      scope: 'user_friends',
+    },
+    origin: '*',
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN'
   })
 
-  // return fetch('/connect/facebook', {
+  // return fetch('http://localhost:8080/connect/facebook', {
   //   method: 'POST',
   //   headers: {
   //     'X-Requested-With': 'XMLHttpRequest',
+  //     'Access-Control-Allow-Origin': '*',
+  //     'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
   //     'X-XSRF-Token': token,
   //     'Content-Type': 'application/x-www-form-urlencoded',
-  //     // 'Accept': 'application/json',
-  //     // 'Origin': '*'
+  //     'Accept': 'application/json',
+  //     'Origin': '*'
   //   },
   //   body: {
   //     scope: "user_friends"
-  //   },
-  //   credentials: 'same-origin',
+  //   }
   // })
 }
 

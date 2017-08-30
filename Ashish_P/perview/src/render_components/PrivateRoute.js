@@ -11,6 +11,7 @@ const PrivateRoute = ({ component: Component, ...props }) => {
   console.log('props', props);
 
   const validated = () =>{
+    props.fetchToken();
     props.fetchUser();
     // .then((response) => {
     return true;

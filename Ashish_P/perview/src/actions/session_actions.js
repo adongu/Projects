@@ -37,6 +37,7 @@ export const logIn = () => dispatch => {
       // return dispatch(receiveCurrentUser(response.data))
     },
     err => {
+
       console.log('error', err);
       // return dispatch(receiveErrors(err.responseJSON))
     })
