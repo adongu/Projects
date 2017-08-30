@@ -47,9 +47,8 @@ export const logIn = () => {
     data: {
       scope: 'user_friends',
     },
-    // origin: '*',
-    // xsrfCookieName: 'XSRF-TOKEN',
-    // xsrfHeaderName: 'X-XSRF-TOKEN'
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN'
   })
 
   // return fetch('http://localhost:8080/connect/facebook', {
