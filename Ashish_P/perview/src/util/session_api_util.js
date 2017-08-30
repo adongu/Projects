@@ -31,7 +31,7 @@ var config = {
 
 export const logIn = () => {
   let token = getCsrfToken();
-  return Promise(axios.post('/connect/facebook', config))
+  return axios.post('/connect/facebook', config)
 
   // return fetch('/connect/facebook', {
   //   method: 'POST',
