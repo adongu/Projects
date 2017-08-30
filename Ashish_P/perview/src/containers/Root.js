@@ -21,12 +21,12 @@ const Root = ({ store }) => {
           <div className="root">
             <Switch>
               <PrivateRouteContainer exact path="/" component={HomePageContainer} />
-              <Route path="/signin" component={SignInContainer}/>
-              <Route path="/myperviews" component={MyPerviewsContainer}/>
-              <Route path="/favorites" component={FavoritePerviewsContainer}/>
-              <Route path="/settings" component={SettingsContainer}/>
-              <Route path="/item/:item_id" component={ItemPerviewsContainer}/>
-              <Route path="/friend/:friend_id" component={FriendPerviewsContainer}/>
+              <Route exact path="/signin" component={SignInContainer}/>
+              <PrivateRouteContainer exact path="/myperviews" component={MyPerviewsContainer}/>
+              <PrivateRouteContainer exact path="/favorites" component={FavoritePerviewsContainer}/>
+              <PrivateRouteContainer exact path="/settings" component={SettingsContainer}/>
+              <PrivateRouteContainer exact path="/item/:item_id" component={ItemPerviewsContainer}/>
+              <PrivateRouteContainer exact path="/friend/:friend_id" component={FriendPerviewsContainer}/>
               <Route render={() => (
                 <p>404 Page Not Found</p>
               )}/>
