@@ -28,6 +28,8 @@ const searchPerviewReducer = (oldState = _nullSearchPerview, action) => {
       return Object.assign({}, oldState, {
         errors: errors
       });
+    case CLEAR_ERRORS:
+      return Object.assign({}, oldState, errors:[]);
     default:
       return merge(oldState, { errors: []});
   }

@@ -1,11 +1,10 @@
 import '../../styles/stylesheets/signin.css';
 import React from 'react';
-import { Link, withRouter, Redirect } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class SignIn extends React.Component {
   constructor(props) {
-    super(props)
-
+    super(props);
     this.state = {
       name: ""
     }
@@ -15,7 +14,7 @@ class SignIn extends React.Component {
   }
 
   componentWillMount() {
-    this.props.fetchToken();
+    this.props.fetchUser();
   }
 
   componentDidMount () {
@@ -40,7 +39,7 @@ class SignIn extends React.Component {
   render() {
     console.log(this.props);
 
-    const auth_url = "http://localhost:8080/connect/facebook";
+    // const auth_url = "http://localhost:8080/connect/facebook";
     return (
       <div className="signin__container">
         <div className="column signin__box">

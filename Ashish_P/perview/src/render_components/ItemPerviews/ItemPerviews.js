@@ -32,7 +32,7 @@ class ItemPerviews extends React.Component {
         requestLoading: nextProps.requestLoading
       })
     }
-    if ('itemid', this.props.match.params.item_id !== nextProps.match.params.item_id) {
+    if (this.props.match.params.item_id !== nextProps.match.params.item_id) {
       this.props.fetchItemPerviews(Number(nextProps.match.params.item_id));
     }
   }

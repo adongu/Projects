@@ -1,6 +1,6 @@
 // LIKE_PERVIEW, UNLIKE_PERVIEW, BOOKMARK_PERVIEW, UNBOOKMARK_PERVIEW,
 import { merge } from 'lodash';
-import { REQUEST_USER, RECEIVE_CURRENT_USER, RECEIVE_ERRORS } from '../actions/session_actions';
+import { RECEIVE_ERRORS } from '../actions/session_actions';
 
 const _nullSocial = Object.freeze({
   errors: []

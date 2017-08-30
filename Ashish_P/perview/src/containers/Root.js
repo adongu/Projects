@@ -1,7 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import App from './App';
 import HomePageContainer from './HomePageContainer';
 import FavoritePerviewsContainer from './FavoritePerviewsContainer';
 import ItemPerviewsContainer from './ItemPerviewsContainer';
@@ -13,8 +12,6 @@ import SignInContainer from './SignInContainer';
 import PrivateRouteContainer from './PrivateRouteContainer';
 
 const Root = ({ store }) => {
-  console.log('root', this);
-
   return (
     <Provider store={ store }>
        <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
@@ -38,4 +35,3 @@ const Root = ({ store }) => {
 };
 
 export default Root;
-// <App {...store.session}/>

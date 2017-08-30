@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchUser } from '../actions/session_actions';
+import { fetchUser, fetchToken } from '../actions/session_actions';
 import PrivateRoute from '../render_components/PrivateRoute';
 
 const mapStateToProps = ({ session }) => {
@@ -11,7 +11,8 @@ const mapStateToProps = ({ session }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchUser: () => dispatch(fetchUser())
+    fetchUser: () => dispatch(fetchUser()),
+    fetchToken: () => dispatch(fetchToken())
   }
 }
 

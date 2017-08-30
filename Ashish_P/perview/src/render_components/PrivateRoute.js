@@ -9,10 +9,11 @@ import HeaderContainer from '../containers/HeaderContainer';
 
 const PrivateRoute = ({ component: Component, ...props }) => {
   console.log('props', props);
+
   const validated = () =>{
-    return true;
-    // props.fetchUser()
+    props.fetchUser();
     // .then((response) => {
+    return true;
     //
     // })
     // .then(() => {
