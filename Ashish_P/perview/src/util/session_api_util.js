@@ -21,8 +21,8 @@ var config = {
   headers: {
   // 'Access-Control-Allow-Origin': '*',
   // 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
-    'Content-Type': 'application/x-www-form-urlencoded',
-    'X-Requested-With': 'XMLHttpRequest'
+    // 'Content-Type': 'application/x-www-form-urlencoded',
+    // 'X-Requested-With': 'XMLHttpRequest'
   },
 
   xsrfCookieName: 'XSRF-TOKEN',
@@ -33,20 +33,20 @@ export const logIn = () => {
   let token = getCsrfToken();
   return axios.post('/connect/facebook', config)
 
-  // return fetch('/connect/facebook', {
-  //   method: 'POST',
-  //   headers: {
-  //     'X-Requested-With': 'XMLHttpRequest',
-  //     'X-CSRF-Token': token,
-  //     'Content-Type': 'application/x-www-form-urlencoded',
-  //     // 'Accept': 'application/json',
-  //     // 'Origin': '*'
-  //   },
-  //   body: {
-  //     scope: "user_friends"
-  //   },
-  //   credentials: 'same-origin',
-  // })
+  return fetch('/connect/facebook', {
+    method: 'POST',
+    headers: {
+      'X-Requested-With': 'XMLHttpRequest',
+      'X-XSRF-Token': token,
+      'Content-Type': 'application/x-www-form-urlencoded',
+      // 'Accept': 'application/json',
+      // 'Origin': '*'
+    },
+    body: {
+      scope: "user_friends"
+    },
+    credentials: 'same-origin',
+  })
 }
 
 export const fetchUser = () => {
