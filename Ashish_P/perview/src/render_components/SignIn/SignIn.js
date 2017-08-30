@@ -11,6 +11,7 @@ class SignIn extends React.Component {
     }
 
     this.redirectIfLoggedIn = this.redirectIfLoggedIn.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentWillMount() {
@@ -27,27 +28,12 @@ class SignIn extends React.Component {
     }
   }
 
-  getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-  }
-
   redirectIfLoggedIn() {
     // this.props.fetchUser();
   }
 
-  handleSubmit () {
+  handleSubmit (e) {
+    e.preventDefault();
     this.props.logIn();
   }
 
@@ -68,9 +54,7 @@ class SignIn extends React.Component {
             <div className="signin__bodymessage">
               Purchase your favorite products with the trust of your friends
             </div>
-            <form className="signin__form" action={auth_url} method="post">
-              <meta></meta>
-              <input type="hidden" name="scope" value="user_friends" />
+            <form className="signin__form" onSubmit={this.handleSubmit}>
               <button type="submit" className="signin__form-facebook">SIGN IN WITH FACEBOOK</button>
             </form>
           </div>

@@ -23,33 +23,32 @@ export const requestUser = () => ({
   type: REQUEST_USER
 })
 
-//
-// export const login = user => dispatch => {
-//   return APIUtil.login(user)
-//     .then(response => {
-//       return dispatch(receiveCurrentUser(response))
-//       },
-//       err => {
-//         return dispatch(receiveErrors(err.responseJSON))
-//       }
-//     )
-// }
 export const fetchToken = () => dispatch => {
   return APIUtil.fetchToken()
     .then( response => {
-      console.log('fetchtoken', response.data);
     })
 }
 
 export const logIn = () => dispatch => {
   dispatch(requestUser());
-  return APIUtil.logIn()
+  return Promise.resolve(APIUtil.logIn())
     .then( response => {
-      return dispatch(receiveCurrentUser(response.data))
+      console.log('1st login action response', response);
+      // return dispatch(receiveCurrentUser(response.data))
+    },
+    err => {
+      console.log('error', err);
+      // return dispatch(receiveErrors(err.responseJSON))
     })
-    .catch((error) => {
-      return dispatch(receiveErrors(err.responseJSON))
-    })
+    // .catch((error) => {
+    //   if (error.response) {
+    //     console.log('data', error.response.data);
+    //     console.log('status', error.response.status);
+    //     console.log('headers', error.response.headers);
+    //   } else {
+    //    console.log(error);
+    //   }
+    // })
 }
 
 export const fetchUser = () => dispatch => {
