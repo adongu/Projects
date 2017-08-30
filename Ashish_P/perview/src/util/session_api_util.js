@@ -49,7 +49,7 @@ export const logIn = () => {
     xsrfHeaderName: 'X-XSRF-TOKEN'
   })
 
-  // return fetch('http://localhost:8080/connect/facebook', {
+  // return fetch('/connect/facebook', {
   //   method: 'POST',
   //   headers: {
   //     'X-Requested-With': 'XMLHttpRequest',
