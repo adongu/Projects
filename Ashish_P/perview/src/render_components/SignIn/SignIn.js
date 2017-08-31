@@ -22,25 +22,42 @@ class SignIn extends React.Component {
   }
 
   componentDidUpdate(newProps) {
-    if (newProps.session) {
-      console.log(newProps.session);
+    // if (newProps.session) {
+      // console.log(newProps.session);
       // this.redirectIfLoggedIn(newProps.session);
-    }
+    // }
   }
 
   redirectIfLoggedIn() {
     // this.props.fetchUser();
   }
 
+  getCsrfToken() {
+    var name = 'XSRF-TOKEN=';
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+  }
+
   handleSubmit (e) {
     e.preventDefault();
+
     this.props.logIn();
   }
 
   render() {
     console.log(this.props);
+    const auth_url = "http://localhost:8080/connect/facebook";
+    let token = this.getCsrfToken();
 
-    // const auth_url = "http://localhost:8080/connect/facebook";
     return (
       <div className="signin__container">
         <div className="column signin__box">
@@ -54,8 +71,9 @@ class SignIn extends React.Component {
             <div className="signin__bodymessage">
               Purchase your favorite products with the trust of your friends
             </div>
-            <form className="signin__form" onSubmit={this.handleSubmit}>
-              <a href="http://localhost:8080/connect/facebook">LOGIN</a>
+            <form className="signin__form" action={auth_url} method="post">
+              <input type="hidden" name="scope" value="user_friends"/>
+              <input type="hidden" name="_csrf" value={token}/>
               <button type="submit" className="signin__form-facebook">SIGN IN WITH FACEBOOK</button>
             </form>
           </div>
@@ -71,7 +89,7 @@ class SignIn extends React.Component {
 
 export default withRouter(SignIn);
 
-
+// <form className="signin__form" onSubmit={this.handleSubmit}>
 // <form className="signin__form" action={auth_url} method="post">
 
 

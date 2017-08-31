@@ -31,7 +31,7 @@ export const fetchToken = () => dispatch => {
 
 export const logIn = () => dispatch => {
   dispatch(requestUser());
-  return Promise.resolve(APIUtil.logIn())
+  return APIUtil.logIn()
     .then( response => {
       console.log('1st login action response', response);
       // return dispatch(receiveCurrentUser(response.data))

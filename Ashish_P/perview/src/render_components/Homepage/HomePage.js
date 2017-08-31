@@ -15,7 +15,6 @@ class HomePage extends React.Component {
       requestLoading: false
     }
     // this.getPerviews = this.getPerviews.bind(this);
-    this.validateRedirect = this.validateRedirect.bind(this);
   }
 
   componentWillMount() {
@@ -30,17 +29,11 @@ class HomePage extends React.Component {
   }
 
   componentDidReceiveProps(nextProps) {
-    if (nextProps.requestLoading !== this.props.requestLoading) {
-      this.setState({
-        requestLoading: nextProps.requestLoading
-      })
-    }
-  }
-
-  validateRedirect() {
-    this.props.fetchUser()
-      .then(() => { console.log("fetchUser No Errors", this.props);})
-      .catch(() => this.props.history.replace({ pathname: '/signin' }));
+    // if (nextProps.requestLoading !== this.props.requestLoading) {
+    //   this.setState({
+    //     requestLoading: nextProps.requestLoading
+    //   })
+    // }
   }
 
   renderComponents() {

@@ -17,17 +17,17 @@ function getCsrfToken() {
     return "";
 }
 //
-// var config = {
-//   headers: {
-//   'Access-Control-Allow-Origin': '*',
-//   // 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
-//     'Content-Type': 'application/x-www-form-urlencoded',
-//     'X-Requested-With': 'XMLHttpRequest'
-//   },
-//
-//   xsrfCookieName: 'XSRF-TOKEN',
-//   xsrfHeaderName: 'X-XSRF-TOKEN'
-// };
+var config = {
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+  // 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+    'Content-Type': 'application/x-www-form-urlencoded',
+    'X-Requested-With': 'XMLHttpRequest'
+  },
+
+  xsrfCookieName: 'XSRF-TOKEN',
+  xsrfHeaderName: 'X-XSRF-TOKEN'
+};
 
 export const logIn = () => {
   let token = getCsrfToken();
@@ -49,6 +49,17 @@ export const logIn = () => {
     },
     xsrfCookieName: 'XSRF-TOKEN',
     xsrfHeaderName: 'X-XSRF-TOKEN'
+  })
+  .then((response) => {
+    if (response.status === 200) {
+      axios.post('login/finish/facebook', config)
+      .then(() => {
+
+      })
+      .catch(() => {
+
+      })
+    }
   })
 
   // return fetch('http://localhost:8080/connect/facebook', {

@@ -11,18 +11,16 @@ const PrivateRoute = ({ component: Component, ...props }) => {
   console.log('props', props);
 
   const validated = () =>{
-    props.fetchToken();
-    props.fetchUser();
-    // .then((response) => {
-    return true;
-    //
-    // })
-    // .then(() => {
-    //   console.log('props.currentUser', props.currentUser);
-    //   // debugger
-    //   return !!props.currentUser;
-    // });
-    // .catch(() => this.props.history.replace({ pathname: '/signin' }));
+    return props.fetchUser()
+    .then((response) => {
+      console.log('props.currentUser', props.currentUser);
+      // debugger
+      return !!props.currentUser;
+    })
+    .catch((error) => {
+        return this.props.history.replace({ pathname: '/signin' })
+      }
+    );
   }
 
   return (
