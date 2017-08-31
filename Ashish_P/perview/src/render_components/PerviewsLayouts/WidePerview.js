@@ -62,7 +62,6 @@ const WidePerview = ({ perviews, bookmarkPerview, history }) => {
               <div className="wideresults__product-title">{item.data.title}</div>
               <div className="flexrow wideresults__product-info">
                 <div className="wideresults__product-price">{item.data.lowestNewPrice.formattedAmount}</div>
-                <div className="wideresults__product-numperviews">{perview.likes ? perview.likes : 0} perviews</div>
               </div>
               <ButtonToolbar>
                 <Button className="wideresults__product-buybtn" href={item.data.detailPageUrl}>BUY AT AMAZON</Button>
@@ -81,19 +80,12 @@ const WidePerview = ({ perviews, bookmarkPerview, history }) => {
               </div>
               <div className="wideresults__review-text">{perview.tags}</div>
               <div className="flexrow wideresults__review-social-box">
-                <div className="flexrow wideresults__review-comments-box">
-                  <i className="fa fa-comments wideresults__review-comments-icon" aria-hidden="true"></i>
-                  <div className="wideresults__review-comments"> {perview.likes ? perview.likes : 0} comments</div>
-                </div>
                 <div className="flexrow wideresults__review-social">
                   <div className="wideresults__review-social-icon" onClick={handleSaveClick(perview.id)}>
                     <i className="fa fa-bookmark wideresults__review-icon-save" aria-hidden="true"></i>
                   </div>
                   <div className="wideresults__review-social-icon" onClick={handleLikeClick}>
                     <i className="fa fa-heart wideresults__review-icon-like" aria-hidden="true"></i>
-                  </div>
-                  <div className="wideresults__review-social-share">
-                    <i className="fa fa-share wideresults__review-icon-share" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
