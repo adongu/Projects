@@ -19,14 +19,14 @@ class HomePage extends React.Component {
 
   componentWillMount() {
     // this.validateRedirect();
+
+  }
+
+  componentDidMount() {
     this.props.fetchAllPerviews()
     .then((response) => {
       // console.log('no error', response);
     });
-  }
-
-  componentDidMount() {
-
   }
 
   componentDidReceiveProps(nextProps) {

@@ -21,6 +21,7 @@ const sessionReducer = (oldState = _nullSession, action) => {
         currentUser: currentUser,
         errors: []
       });
+      console.log('reducer', currentUser);
       return newState;
     case RECEIVE_ERRORS:
       let errors = action.errors;

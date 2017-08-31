@@ -10,34 +10,49 @@ class SignIn extends React.Component {
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.redirectIfLoggedIn = this.redirectIfLoggedIn.bind(this);
   }
 
   componentWillMount() {
-    this.props.fetchToken();
-    this.props.fetchUser();
+
   }
 
   componentDidMount () {
+    this.props.fetchToken();
+    this.props.fetchUser();
+    // .then(() => {
+    //   this.redirectIfLoggedIn();
+    // })
+    // .catch(() => this.props.history.replace({ pathname: '/' }));
   }
 
-  // componentDidUpdate(newProps) {
+  componentDidUpdate(newProps) {
     // if (newProps.session) {
-      // console.log(newProps.session);
-      // this.redirectIfLoggedIn(newProps.session);
+      // this.props.fetchUser()
+      // .then(() => {
+      //   this.redirectIfLoggedIn();
+      // })
     // }
-  // }
+  }
 
-  getCsrfToken() {
+  redirectIfLoggedIn () {
+    if (this.props.currentUser) {
+      console.log('Hit response currentUser', this.props.currentUser);
+      this.props.history.replace({ pathname: '/' });
+    }
+  }
+
+  getCsrfToken () {
     var name = 'XSRF-TOKEN=';
     var ca = document.cookie.split(';');
     for(var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+      }
     }
     return "";
   }

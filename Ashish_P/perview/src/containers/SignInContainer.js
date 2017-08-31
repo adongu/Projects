@@ -3,10 +3,11 @@ import { logIn, fetchUser, fetchToken } from '../actions/session_actions';
 // import {login, logout, signup, clearErrors } from '../actions/session_actions';
 import SignIn from '../render_components/SignIn/SignIn';
 
-const mapStateToProps = (props) => {
+const mapStateToProps = ({ session }) => {
   return {
  // Boolean(props.session.currentUser),
-    errors: props.session.errors
+    currentUser: session.currentUser,
+    errors: session.errors
   }
 };
 

@@ -57,17 +57,21 @@ export const fetchUser = () => dispatch => {
   return APIUtil.fetchUser()
     .then( response => {
       return dispatch(receiveCurrentUser(response.data))
-    },
-    err => {
-      return dispatch(receiveErrors(err.responseJSON))
     })
+    .catch((error) => {
+      return dispatch(receiveErrors(error.responseJSON))
+    });
 }
 
 export const logOut = () => {
   return (dispatch) => {
     return APIUtil.logOut()
-    .then( () => {
+    .then((response) => {
+      console.log('passed logout');
       return dispatch(receiveCurrentUser(null));
-    });
+    })
+    .catch((error) => {
+      console.log('failed logout', error);
+    })
   };
 };

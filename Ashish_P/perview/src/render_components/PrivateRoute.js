@@ -11,17 +11,18 @@ import HeaderContainer from '../containers/HeaderContainer';
 const PrivateRoute = ({ component: Component, ...props }) => {
 
   const validated = () => {
-    console.log('run validated');
     return () => {
-      props.fetchUser()
+      return props.fetchUser()
       .then((response) => {
-        // console.log('props.currentUser', props.currentUser);
+        debugger
+        console.log('response.currentUser', !!response.currentUser);
         return !!response.currentUser;
       })
       .catch((error) => {
-          return this.props.history.replace({ pathname: '/signin' })
-        }
-      );
+        debugger
+        console.log('hits error');
+        return this.props.history.replace({ pathname: '/signin' })
+      });
     }
   }
 
@@ -34,8 +35,8 @@ const PrivateRoute = ({ component: Component, ...props }) => {
         </div>
       ) : (
         <Redirect to={{
-        pathname: '/signin',
-        state: { from: props.location }
+          pathname: '/signin',
+          state: { from: props.location }
         }}/>
       )
     )}/>

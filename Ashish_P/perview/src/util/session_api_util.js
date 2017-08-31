@@ -18,12 +18,12 @@ function getCsrfToken() {
 }
 //
 var config = {
-  // headers: {
+  headers: {
     // 'Access-Control-Allow-Origin': '*',
     // 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
-    // 'Content-Type': 'application/x-www-form-urlencoded',
-    // 'X-Requested-With': 'XMLHttpRequest'
-  // },
+    'Content-Type': 'application/x-www-form-urlencoded',
+    'X-Requested-With': 'XMLHttpRequest'
+  },
 
   xsrfCookieName: 'XSRF-TOKEN',
   xsrfHeaderName: 'X-XSRF-TOKEN'
@@ -36,7 +36,7 @@ export const logIn = () => {
     method: 'POST',
     url: '/connect/facebook',
     headers: {
-      'Access-Control-Allow-Origin': 'http://localhost:8080',
+      // 'Access-Control-Allow-Origin': 'http://localhost:3000',
       // 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
       'Accept': 'application/json',
       'Content-Type': 'application/x-www-form-urlencoded',
