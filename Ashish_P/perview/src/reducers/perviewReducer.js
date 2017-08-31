@@ -77,7 +77,8 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
         errors: []
       });
     case RECEIVE_FRIEND_PERVIEWS:
-      newState.Perviews.unshift(action.perview);
+      // newState.Perviews.unshift(action.perview);
+      console.log('friendperviews', action.friendPerviews);
       return Object.assign({}, newState, {
         friendPerviews: action.friendPerviews,
         requestLoading: false,
