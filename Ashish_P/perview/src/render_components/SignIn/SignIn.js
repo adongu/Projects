@@ -14,12 +14,15 @@ class SignIn extends React.Component {
   }
 
   componentWillMount() {
-
+    this.props.fetchToken();
+    this.props.fetchUser()
+    .then(() => {
+      this.redirectIfLoggedIn();
+    })
   }
 
   componentDidMount () {
-    this.props.fetchToken();
-    this.props.fetchUser();
+
     // .then(() => {
     //   this.redirectIfLoggedIn();
     // })
@@ -27,12 +30,12 @@ class SignIn extends React.Component {
   }
 
   componentDidUpdate(newProps) {
-    // if (newProps.session) {
-      // this.props.fetchUser()
-      // .then(() => {
-      //   this.redirectIfLoggedIn();
-      // })
-    // }
+    if (newProps.session) {
+      newProps.fetchUser()
+      .then(() => {
+        this.redirectIfLoggedIn();
+      })
+    }
   }
 
   redirectIfLoggedIn () {
