@@ -9,28 +9,23 @@ class SignIn extends React.Component {
       name: ""
     }
 
-    this.redirectIfLoggedIn = this.redirectIfLoggedIn.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentWillMount() {
-    // this.props.fetchToken();
+    this.props.fetchToken();
     this.props.fetchUser();
   }
 
   componentDidMount () {
   }
 
-  componentDidUpdate(newProps) {
+  // componentDidUpdate(newProps) {
     // if (newProps.session) {
       // console.log(newProps.session);
       // this.redirectIfLoggedIn(newProps.session);
     // }
-  }
-
-  redirectIfLoggedIn() {
-    // this.props.fetchUser();
-  }
+  // }
 
   getCsrfToken() {
     var name = 'XSRF-TOKEN=';

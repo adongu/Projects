@@ -18,12 +18,12 @@ function getCsrfToken() {
 }
 //
 var config = {
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-  // 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
-    'Content-Type': 'application/x-www-form-urlencoded',
-    'X-Requested-With': 'XMLHttpRequest'
-  },
+  // headers: {
+    // 'Access-Control-Allow-Origin': '*',
+    // 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+    // 'Content-Type': 'application/x-www-form-urlencoded',
+    // 'X-Requested-With': 'XMLHttpRequest'
+  // },
 
   xsrfCookieName: 'XSRF-TOKEN',
   xsrfHeaderName: 'X-XSRF-TOKEN'
@@ -89,5 +89,5 @@ export const fetchToken = () => {
 }
 
 export const logOut = () => {
-  return axios.post('/logout')
+  return axios.post('/logout', config)
 }

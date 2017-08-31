@@ -19,21 +19,22 @@ class HomePage extends React.Component {
 
   componentWillMount() {
     // this.validateRedirect();
-    // this.props.fetchAllPerviews()
-    // .then((response) => {
-    //   console.log('no error', response);
-    // });
+    this.props.fetchAllPerviews()
+    .then((response) => {
+      // console.log('no error', response);
+    });
   }
 
   componentDidMount() {
+
   }
 
   componentDidReceiveProps(nextProps) {
-    // if (nextProps.requestLoading !== this.props.requestLoading) {
-    //   this.setState({
-    //     requestLoading: nextProps.requestLoading
-    //   })
-    // }
+    if (nextProps.requestLoading !== this.props.requestLoading) {
+      this.setState({
+        requestLoading: nextProps.requestLoading
+      })
+    }
   }
 
   renderComponents() {

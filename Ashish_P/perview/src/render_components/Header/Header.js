@@ -25,6 +25,7 @@ class Header extends React.Component {
   }
 
   componentDidMount() {
+    this.props.fetchUser();
     window.addEventListener('scroll', this.handleScroll, false);
   }
 
