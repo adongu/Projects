@@ -1,16 +1,16 @@
 import * as APIUtil from '../util/search_item_api_util';
 
-export const REQUEST_RESULTS = 'REQUEST_RESULTS';
-export const RECEIVE_RESULTS = 'RECEIVE_RESULTS';
+export const REQUEST_ITEM_RESULTS = 'REQUEST_ITEM_RESULTS';
+export const RECEIVE_ITEM_RESULTS = 'RECEIVE_ITEM_RESULTS';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 export const requestResults = () => ({
-  type: REQUEST_RESULTS
+  type: REQUEST_ITEM_RESULTS
 })
 
 const receiveItemResults = (results) => ({
-  type: RECEIVE_RESULTS,
+  type: RECEIVE_ITEM_RESULTS,
   results
 });
 

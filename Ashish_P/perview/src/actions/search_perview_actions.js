@@ -1,16 +1,16 @@
 import * as APIUtil from '../util/search_perview_api_util';
 
-export const REQUEST_RESULTS = 'REQUEST_RESULTS';
-export const RECEIVE_RESULTS = 'RECEIVE_RESULTS';
+export const REQUEST_PERVIEW_RESULTS = 'REQUEST_PERVIEW_RESULTS';
+export const RECEIVE_PERVIEW_RESULTS = 'RECEIVE_PERVIEW_RESULTS';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 export const requestResults = () => ({
-  type: REQUEST_RESULTS
+  type: REQUEST_PERVIEW_RESULTS
 })
 
 const receivePerviewResults = (results) => ({
-  type: RECEIVE_RESULTS,
+  type: RECEIVE_PERVIEW_RESULTS,
   results
 });
 

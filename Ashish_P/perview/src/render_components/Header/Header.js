@@ -16,7 +16,7 @@ class Header extends React.Component {
       scrolled: ''
     }
 
-    this.validateRedirect = this.validateRedirect.bind(this);
+    // this.validateRedirect = this.validateRedirect.bind(this);
     this.selectItem = this.selectItem.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
     this.renderCreateButton = this.renderCreateButton.bind(this);
@@ -46,20 +46,20 @@ class Header extends React.Component {
     window.removeEventListener('scroll', this.handleScroll);
   }
 
-  validateRedirect() {
-    this.props.fetchUser()
-    .then(() => {
-      if (this.props.currentUser === null) {
-        this.props.history.replace({ pathname: '/signin' });
-      } else {
-        let user = this.props.currentUser;
-        this.setState({
-          fName: user.firstName,
-          imgUrl: user.facebookProfilePictureUrl.replace(/\/picture$/, "")
-        })
-      }
-    })
-  }
+  // validateRedirect() {
+  //   this.props.fetchUser()
+  //   .then(() => {
+  //     if (this.props.currentUser === null) {
+  //       this.props.history.replace({ pathname: '/signin' });
+  //     } else {
+  //       let user = this.props.currentUser;
+  //       this.setState({
+  //         fName: user.firstName,
+  //         imgUrl: user.facebookProfilePictureUrl.replace(/\/picture$/, "")
+  //       })
+  //     }
+  //   })
+  // }
 
   selectItem( imgUrl, name, price, itemId ) {
     if (itemId) {
@@ -77,15 +77,17 @@ class Header extends React.Component {
 
   renderNavOptions () {
     return (
-      <div>
+      <div className="flexrow">
         <span>
-          <Link to="/myperviews" className="headers__menuitem">
-            My Perviews
+          <Link to="/myperviews" className="flexrow headers__menuitem">
+            <i className="fa fa-star" aria-hidden="true"></i>
+            <span> Personal</span>
           </Link>
         </span>
         <span>
-          <Link to="/favorites" className="headers__menuitem">
-            Favorites
+          <Link to="/favorites" className="flexrow headers__menuitem">
+            <i className="fa fa-bookmark" aria-hidden="true"></i>
+            <span> Wishlist</span>
           </Link>
         </span>
 
@@ -116,7 +118,6 @@ class Header extends React.Component {
               <img className="header__logoimg" width="40px" src={logo} alt="Header logo"/>
             </Link>
           </div>
-
           {this.renderNavOptions()}
           <div className="header__search">
             <SearchPerviewBar

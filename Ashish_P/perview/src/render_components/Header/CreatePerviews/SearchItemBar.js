@@ -73,7 +73,7 @@ class SearchItemBar extends React.Component {
   // Teach Autosuggest how to calculate suggestions for any given input value.
   fetchResults = debounce((newValue) => {
     this.props.fetchResults(newValue);
-  }, 250);
+  }, 300);
 
   getSuggestions (value) {
     return this.state.suggestions;

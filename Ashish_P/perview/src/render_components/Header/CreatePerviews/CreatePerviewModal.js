@@ -75,7 +75,6 @@ class CreatePerviewModal extends React.Component {
   selectItem(item) {
     this.props.createItem(item)
     .then((result) => {
-      // console.log('selectItem', this.props.selectedItem);
       console.log('select item', result);
       let item = this.props.selectedItem;
       this.setState({

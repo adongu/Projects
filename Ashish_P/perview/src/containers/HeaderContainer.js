@@ -13,7 +13,7 @@ const mapStateToProps = ({ session, perview, findPerview, findItem }) => {
     requestLoading: perview.requestLoading,
     selectedItem: perview.selectedItem,
     perviewResults: findPerview.perviewResults,
-    itemResults: findItem.perviewResults
+    itemResults: findItem.itemResults
   }
 }
 
