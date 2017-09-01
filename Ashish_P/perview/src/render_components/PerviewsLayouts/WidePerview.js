@@ -62,7 +62,7 @@ const WidePerview = ({ perviews, bookmarkPerview, likePerview, history }) => {
         var item = perview.itemDto;
         var user = perview.userDto;
         return (
-          <div key={`perviewindex__${i}`} className="flexrow wideresults__box">
+          <div key={`perviewindex__${perview.id}`} className="flexrow wideresults__box">
             <div className="flexrow wideresults__perview-left">
               <div className="wideresults__productimg"><img className="wideresults__productimg-photo" src={item.data.imageUrls.large.url} alt="Product"/>
             </div>
