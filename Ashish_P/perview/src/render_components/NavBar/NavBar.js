@@ -1,18 +1,15 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import "../../styles/stylesheets/navbar.css";
-import CreatePerviewModal from "../CreatePerviews/CreatePerviewModal";
 
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       pageTitle: "",
-      canCreatePerviews: false,
       canCreateFilters: false
     }
 
-    this.renderCreateButton = this.renderCreateButton.bind(this);
     this.updatePageTitle = this.updatePageTitle.bind(this);
   }
 
@@ -33,16 +30,16 @@ class NavBar extends React.Component {
     switch (props.match.path) {
       case '/':
       case '/item/:item_id':
-        this.setState({pageTitle: "Check the Perviews of your friends!", canCreatePerviews: true, canCreateFilters: false})
+        this.setState({pageTitle: "Check the Perviews of your friends!", canCreateFilters: false})
         break;
       case '/myperviews':
-        this.setState({pageTitle: "My Perviews", canCreatePerviews: false, canCreateFilters: true })
+        this.setState({pageTitle: "My Perviews", canCreateFilters: true })
         break;
       case '/favorites':
-        this.setState({pageTitle: "Saved Perviews", canCreatePerviews: false, canCreateFilters: true })
+        this.setState({pageTitle: "Saved Perviews", canCreateFilters: true })
         break;
       case '/friend/:friend_id':
-        this.setState({pageTitle: `Friend Perviews`, canCreatePerviews: false, canCreateFilters: true })
+        this.setState({pageTitle: `Friend Perviews`, canCreateFilters: true })
         break;
       default:
         this.setState({pageTitle: 'Settings', canCreateFilters: false})
@@ -52,24 +49,7 @@ class NavBar extends React.Component {
 
   renderNavOption () {
     if (this.props.location.pathname === "/") {
-      this.renderCreateButton();
     } else {
-
-    }
-  }
-
-  renderCreateButton () {
-    if (this.state.canCreatePerviews) {
-      return (
-        <CreatePerviewModal
-          currentUser={this.props.currentUser}
-          results={this.props.results}
-          fetchUser={this.props.fetchUser}
-          fetchResults={this.props.fetchResults}
-          createItem={this.props.createItem}
-          createPerview={this.props.createPerview}
-          selectedItem={this.props.selectedItem}/>
-      )
     }
   }
 
