@@ -88,13 +88,18 @@ const WidePerview = ({ perviews, bookmarkPerview, likePerview, history }) => {
               </div>
               <div className="wideresults__review-text">{perview.tags}</div>
               <div className="flexrow wideresults__review-social-box">
+                <div className="wideresults__likes-box">
+                  <i className="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                  <span className="wideresults__likes">{perview.likedByLoggedInUser ? perview.likedByLoggedInUser : ''} Likes</span>
+                </div>
+
                 <div className="flexrow wideresults__review-social">
-                  <div className="wideresults__review-social-icon" onClick={handleSaveClick(perview.id)}>
-                    <i className="fa fa-bookmark wideresults__review-icon-save" aria-hidden="true"></i>
-                  </div>
-                  <div className="wideresults__review-social-icon" onClick={handleLikeClick(perview.id)}>
-                    <i className="fa fa-heart wideresults__review-icon-like" aria-hidden="true"></i>
-                  </div>
+                  <span className="wideresults__review-social-icon" onClick={handleSaveClick(perview.id)}>
+                    <i className="fa fa-bookmark-o wideresults__review-icon-save" aria-hidden="true"></i>
+                  </span>
+                  <span className="wideresults__review-social-icon" onClick={handleLikeClick(perview.id)}>
+                    <i className="fa fa-heart-o wideresults__review-icon-like" aria-hidden="true"></i>
+                  </span>
                 </div>
               </div>
             </div>
