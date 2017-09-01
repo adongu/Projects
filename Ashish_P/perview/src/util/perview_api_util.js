@@ -1,23 +1,29 @@
 import axios from 'axios';
 
 var config = {
-  headers: {
+  // headers: {
     // 'Accept': 'application/json',
     // 'Content-Type': 'application/json'
-    'Content-Type': 'multipart/form-data'
+    // 'Content-Type': 'multipart/form-data'
     // 'Content-Type': undefined
-  }
+  // }
+  // xsrfCookieName: 'XSRF-TOKEN',
+  // xsrfHeaderName: 'X-XSRF-TOKEN'
+
 }
 
 export const createPerview = (formData) => {
   return axios.post('/api/add', formData, config)
-  // return axios({
-  //     method: 'post',
-  //     url: '/api/add',
-  //     config,
-  //     data: formData
-  //     // data: {itemId: 1, tags: "hello", rating: 3}
-  // })
+
+  return axios({
+    method: 'POST',
+    url: '/api/add',
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+    data: formData,
+    config
+  })
   .then(response => {
     console.log('response', response);
     return response
@@ -29,7 +35,12 @@ export const createPerview = (formData) => {
 };
 
 export const createItem = (item) => {
-  return axios.post('/api/item/add', item)
+  return axios({
+    method: 'POST',
+    url: '/api/item/add',
+    data: item,
+    config
+  })
 };
 
 export const fetchAllPerviews = () => {

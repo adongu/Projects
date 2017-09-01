@@ -42,7 +42,7 @@ export const bookmarkPerview = (perviewId) => dispatch => {
   console.log('bookmark action', perviewId);
   return APIUtil.bookmarkPerview(perviewId)
     .then(response => {
-      console.log('success liking', response.data);
+      console.log('success bookmarking', response);
     })
     .catch(error => {
       console.log('Error', error.responseJSON);

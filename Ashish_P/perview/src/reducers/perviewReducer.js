@@ -71,6 +71,7 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
         errors: []
       });
     case RECEIVE_FAVORITE_PERVIEWS:
+      console.log('favorite perviews', action.favoritePerviews);
       return Object.assign({}, newState, {
         favoritePerviews: action.favoritePerviews,
         requestLoading: false,

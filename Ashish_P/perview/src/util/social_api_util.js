@@ -1,12 +1,24 @@
 import axios from 'axios';
 
+var config = {
+  xsrfCookieName: 'XSRF-TOKEN',
+  xsrfHeaderName: 'X-XSRF-TOKEN'
+};
+
 export const likePerview = (perviewId) => {
-  return axios.post(`api/${perviewId}/like`)
+  return axios({
+    method: 'POST',
+    url: `api/${perviewId}/like`,
+    config
+  })
 }
 
 export const bookmarkPerview = (perviewId) => {
-  console.log('util', perviewId);
-  return axios.post(`api/${perviewId}/bookmark`)
+  return axios({
+    method: 'POST',
+    url: `api/${perviewId}/bookmark`,
+    config
+  })
 }
 
 // export const unlikePerview = (perviewId) => {
