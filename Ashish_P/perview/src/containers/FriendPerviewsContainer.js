@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import FriendPerviews from "../render_components/FriendPerviews/FriendPerviews";
 import { fetchUser } from '../actions/session_actions';
-import { fetchResults } from '../actions/search_item_actions';
+import { fetchItemResults } from '../actions/search_item_actions';
 import { createPerview, fetchFriendPerviews, fetchCategoryIds, clearErrors } from '../actions/perview_actions';
 
 const mapStateToProps = ({ session, perview, findItem }, ownProps) => {
@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     fetchUser: () => dispatch(fetchUser()),
     createPerview: (formData) => dispatch(createPerview(formData)),
-    fetchResults: (keywords) => dispatch(fetchResults(keywords)),
+    fetchItemResults: (keywords) => dispatch(fetchItemResults(keywords)),
     fetchFriendPerviews: (friendUserId, categoryId) => dispatch(fetchFriendPerviews(friendUserId, categoryId)),
     fetchCategoryIds: (categoryId) => dispatch(fetchCategoryIds(categoryId)),
     clearErrors: () => dispatch(clearErrors())

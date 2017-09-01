@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import HomePage from "../render_components/Homepage/HomePage";
 import { fetchUser } from '../actions/session_actions';
-import { fetchResults } from '../actions/search_item_actions';
+import { fetchItemResults } from '../actions/search_item_actions';
 import { createPerview, createItem, fetchAllPerviews, fetchCategoryIds, clearErrors } from '../actions/perview_actions';
 import { likePerview, bookmarkPerview } from '../actions/social_actions';
 
@@ -20,7 +20,7 @@ const mapStateToProps = ({ session, perview, findItem }, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     fetchUser: () => dispatch(fetchUser()),
-    fetchResults: (keywords) => dispatch(fetchResults(keywords)),
+    fetchResults: (keywords) => dispatch(fetchItemResults(keywords)),
     createItem: (itemJSON) => dispatch(createItem(itemJSON)),
     createPerview: (formData) => dispatch(createPerview(formData)),
     fetchAllPerviews: (categoryId) => dispatch(fetchAllPerviews(categoryId)),

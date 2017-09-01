@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const fetchResults = (keywords) => {
+export const fetchItemResults = (keywords) => {
   console.log("keywords", keywords);
   return axios('/amazon/item', {
     params: {

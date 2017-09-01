@@ -1,9 +1,10 @@
 import "../../styles/stylesheets/header.css";
+import logo from "../../styles/assets/logo.jpg";
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter, NavLink } from 'react-router-dom';
 import SearchPerviewBar from './SearchPerviewBar';
 import UserNavContainer from '../../containers/UserNavContainer';
-import logo from "../../styles/assets/logo.jpg";
+import CreatePerviewModal from "./CreatePerviews/CreatePerviewModal";
 
 class Header extends React.Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class Header extends React.Component {
     this.validateRedirect = this.validateRedirect.bind(this);
     this.selectItem = this.selectItem.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
+    this.renderCreateButton = this.renderCreateButton.bind(this);
   }
 
   componentWillMount() {
@@ -73,6 +75,38 @@ class Header extends React.Component {
     }
   }
 
+  renderNavOptions () {
+    return (
+      <div>
+        <span>
+          <Link to="/myperviews" className="headers__menuitem">
+            My Perviews
+          </Link>
+        </span>
+        <span>
+          <Link to="/favorites" className="headers__menuitem">
+            Favorites
+          </Link>
+        </span>
+
+      </div>
+    )
+  }
+
+  renderCreateButton () {
+    return (
+      <CreatePerviewModal
+        currentUser={this.props.currentUser}
+        results={this.props.itemResults}
+        fetchUser={this.props.fetchUser}
+        fetchResults={this.props.fetchItemResults}
+        createItem={this.props.createItem}
+        createPerview={this.props.createPerview}
+        selectedItem={this.props.selectedItem}
+      />
+    )
+  }
+
   render() {
     return (
       <div className={`header__container ${this.state ? this.state.scrolled : '' }`}>
@@ -82,19 +116,25 @@ class Header extends React.Component {
               <img className="header__logoimg" width="40px" src={logo} alt="Header logo"/>
             </Link>
           </div>
+
+          {this.renderNavOptions()}
           <div className="header__search">
             <SearchPerviewBar
               selectItem={this.selectItem}
-              results={this.props.results}
-              fetchResults={this.props.fetchResults} />
+              results={this.props.perviewResults}
+              fetchResults={this.props.fetchPerviewResults}
+            />
           </div>
+
           <div className="flexrow header__usernav">
-            <div className="header__greetings">
-              Hello, {this.state.fName}!
-            </div>
             <div className="header__usernavphoto">
-              <UserNavContainer imgUrl={this.state.imgUrl} logOut={this.props.logOut} />
+              <UserNavContainer
+                imgUrl={this.state.imgUrl}
+                logOut={this.props.logOut}
+              />
             </div>
+
+            {this.renderCreateButton()}
           </div>
         </div>
       </div>

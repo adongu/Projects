@@ -1,4 +1,4 @@
-import "../../styles/stylesheets/search.css";
+import "../../../styles/stylesheets/search.css";
 import { debounce } from 'lodash';
 import React from 'react';
 import { withRouter } from 'react-router-dom';

@@ -108,7 +108,6 @@ class NavBar extends React.Component {
           <div className="navbar__title">
             {this.state.pageTitle}
           </div>
-          { this.renderCreateButton() }
           { this.renderFilters() }
         </div>
       </div>

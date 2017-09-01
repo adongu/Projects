@@ -9,7 +9,7 @@ export const requestResults = () => ({
   type: REQUEST_RESULTS
 })
 
-const receiveResults = (results) => ({
+const receiveItemResults = (results) => ({
   type: RECEIVE_RESULTS,
   results
 });
@@ -23,12 +23,12 @@ export const clearErrors = () => ({
   type: CLEAR_ERRORS
 });
 
-export const fetchResults = (keywords) => dispatch => {
+export const fetchItemResults = (keywords) => dispatch => {
   dispatch(requestResults());
-  return APIUtil.fetchResults(keywords)
+  return APIUtil.fetchItemResults(keywords)
     .then( response => {
       console.log(response.data);
-      return dispatch(receiveResults(response.data))
+      return dispatch(receiveItemResults(response.data))
     },
     err => {
       return dispatch(receiveErrors(err.responseJSON))

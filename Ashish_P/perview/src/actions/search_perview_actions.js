@@ -9,7 +9,7 @@ export const requestResults = () => ({
   type: REQUEST_RESULTS
 })
 
-const receiveResults = (results) => ({
+const receivePerviewResults = (results) => ({
   type: RECEIVE_RESULTS,
   results
 });
@@ -23,12 +23,12 @@ export const clearErrors = () => ({
   type: CLEAR_ERRORS
 });
 
-export const fetchResults = (keywords) => dispatch => {
+export const fetchPerviewResults = (keywords) => dispatch => {
   dispatch(requestResults());
-  return APIUtil.fetchResults(keywords)
+  return APIUtil.fetchPerviewResults(keywords)
     .then( response => {
       console.log('action', response.data);
-      return dispatch(receiveResults(response.data))
+      return dispatch(receivePerviewResults(response.data))
     },
     err => {
       return dispatch(receiveErrors(err.responseJSON))

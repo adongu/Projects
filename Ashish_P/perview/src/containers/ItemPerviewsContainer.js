@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import ItemPerviews from '../render_components/ItemPerviews/ItemPerviews';
 import { fetchUser } from '../actions/session_actions';
-import { fetchResults } from '../actions/search_item_actions';
+import { fetchItemResults } from '../actions/search_item_actions';
 import { createItem, createPerview, fetchItemPerviews, fetchCategoryIds, clearErrors } from '../actions/perview_actions';
 import { likePerview, bookmarkPerview } from '../actions/social_actions';
 
@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     fetchUser: () => dispatch(fetchUser()),
     createItem: (itemJSON) => dispatch(createItem(itemJSON)),
     createPerview: (formData) => dispatch(createPerview(formData)),
-    fetchResults: (keywords) => dispatch(fetchResults(keywords)),
+    fetchItemResults: (keywords) => dispatch(fetchItemResults(keywords)),
     fetchItemPerviews: (categoryId) => dispatch(fetchItemPerviews(categoryId)),
     fetchCategoryIds: (categoryId) => dispatch(fetchCategoryIds(categoryId)),
     likePerview: (perviewId) => dispatch(likePerview(perviewId)),
