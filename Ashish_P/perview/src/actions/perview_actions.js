@@ -112,6 +112,7 @@ export const fetchAllPerviews = () => dispatch => {
   dispatch(requestLoading());
   return APIUtil.fetchAllPerviews()
     .then( response => {
+      console.log('all perviews', response.data);
       return dispatch(receiveAllPerviews(response.data))
     })
     .catch( err => {
@@ -145,7 +146,7 @@ export const fetchFavoritePerviews = (categoryId = null) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.fetchFavoritePerviews(categoryId)
     .then( response => {
-      console.log('fetch favorite perviews', response.data);
+      console.log('fetch favorite perviews', response);
       return dispatch(receiveFavoritePerviews(response.data))
     })
     .catch( err => {

@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { Button, ButtonToolbar } from 'react-bootstrap';
 import moment from 'moment';
 
-const WidePerview = ({ perviews, bookmarkPerview, history }) => {
+const WidePerview = ({ perviews, bookmarkPerview, likePerview, history }) => {
 
   const renderStars = (rating) => {
     let stars = [1, 2, 3, 4, 5];
@@ -33,6 +33,7 @@ const WidePerview = ({ perviews, bookmarkPerview, history }) => {
       } else {
         e.currentTarget.className = 'wideresults__review-social-icon';
       }
+
       if (bookmarkPerview) {
         console.log('bookmark', perviewId);
         bookmarkPerview(perviewId);
@@ -40,11 +41,18 @@ const WidePerview = ({ perviews, bookmarkPerview, history }) => {
     }
   }
 
-  const handleLikeClick = (e) => {
-    if (e.currentTarget.className === 'wideresults__review-social-icon') {
-      e.currentTarget.className = 'wideresults__review-social-icon active';
-    } else {
-      e.currentTarget.className = 'wideresults__review-social-icon';
+  const handleLikeClick = (perviewId) => {
+    return e => {
+      if (e.currentTarget.className === 'wideresults__review-social-icon') {
+        e.currentTarget.className = 'wideresults__review-social-icon active';
+      } else {
+        e.currentTarget.className = 'wideresults__review-social-icon';
+      }
+
+      if (likePerview) {
+        console.log('likeperview', perviewId);
+        likePerview(perviewId);
+      }
     }
   }
 
@@ -84,7 +92,7 @@ const WidePerview = ({ perviews, bookmarkPerview, history }) => {
                   <div className="wideresults__review-social-icon" onClick={handleSaveClick(perview.id)}>
                     <i className="fa fa-bookmark wideresults__review-icon-save" aria-hidden="true"></i>
                   </div>
-                  <div className="wideresults__review-social-icon" onClick={handleLikeClick}>
+                  <div className="wideresults__review-social-icon" onClick={handleLikeClick(perview.id)}>
                     <i className="fa fa-heart wideresults__review-icon-like" aria-hidden="true"></i>
                   </div>
                 </div>
