@@ -136,6 +136,10 @@ $lines-to-show: 5;
     border-radius: 50%;
   }
 
+  &review-user-img:hover {
+    cursor: pointer;
+  }
+
   &review-username {
     color: #3E3E3E;
     font-weight: bold;
