@@ -12,7 +12,7 @@ const PrivateRoute = ({ component: Component, ...props }) => {
 
   const validated = () => {
     console.log('hit validated');
-    // return () => {
+    return () => {
       props.fetchUser()
       .then((response) => {
         console.log('hit response');
@@ -22,7 +22,7 @@ const PrivateRoute = ({ component: Component, ...props }) => {
         console.log('hit error');
         return this.props.history.replace({ pathname: '/signin' })
       });
-    // }
+    }
   }
 
   return (
