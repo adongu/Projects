@@ -6,43 +6,46 @@ import {
 } from 'react-router-dom';
 import HeaderContainer from '../containers/HeaderContainer';
 
-
-// const PrivateRoute = ({ component: Component, ...props }) => {
 const PrivateRoute = ({ component: Component, ...props }) => {
 
-  const validated = () => {
-    console.log('hit validated');
+  const validated = (rest) => {
     return () => {
       props.fetchUser()
-      .then((response) => {
-        console.log('hit response');
-        return !!response.currentUser;
-      })
-      .catch((error) => {
-        console.log('hit error');
-        return this.props.history.replace({ pathname: '/signin' })
-      });
-    }
+        .then(() => {
+          return (
+            <div>
+              <HeaderContainer />
+              <Component {...rest}/>
+            </div>
+          )
+        })
+        .catch(()=> {
+          return (
+            <Redirect to={{
+              pathname: '/signin',
+              state: { from: props.location }
+            }}/>
+          )
+        });
+      }
   }
 
   return (
-    <Route {...props} render={rest => (
-      validated() ? (
+    <Route {...props} render={rest => {
+      return (
         <div>
-          <HeaderContainer />
-          <Component {...rest}/>
+          { validated(rest) }
         </div>
-      ) : (
-        <Redirect to={{
-          pathname: '/signin',
-          state: { from: props.location }
-        }}/>
       )
-    )}/>
+    }}/>
   )
 }
 
 export default withRouter(PrivateRoute);
+// <div>
+//   { validated(rest) }
+// </div>
+
 
 // validated() ? (
 //   <div>

@@ -24,10 +24,10 @@ class Header extends React.Component {
 
   componentWillMount() {
     // this.validateRedirect();
+    this.props.fetchUser();
   }
 
   componentDidMount() {
-    this.props.fetchUser();
     window.addEventListener('scroll', this.handleScroll, false);
   }
 

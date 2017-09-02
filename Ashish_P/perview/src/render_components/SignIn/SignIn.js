@@ -17,31 +17,31 @@ class SignIn extends React.Component {
     this.props.fetchToken();
     this.props.fetchUser()
     .then(() => {
-      this.redirectIfLoggedIn();
+      this.redirectIfLoggedIn(this.props);
     })
   }
 
   componentDidMount () {
 
     // .then(() => {
-    //   this.redirectIfLoggedIn();
+      this.redirectIfLoggedIn(this.props);
     // })
     // .catch(() => this.props.history.replace({ pathname: '/' }));
   }
 
   componentDidUpdate(newProps) {
-    if (newProps.session) {
-      newProps.fetchUser()
-      .then(() => {
-        this.redirectIfLoggedIn();
-      })
+    if (this.props.currentUser !== newProps.currentUser) {
+      console.log('newProps', newProps);
+      this.redirectIfLoggedIn(newProps)
+    } else if (this.props.match.path !== newProps.match.path) {
+      this.redirectIfLoggedIn(newProps)
     }
   }
 
-  redirectIfLoggedIn () {
-    if (this.props.currentUser) {
-      console.log('Hit response currentUser', this.props.currentUser);
-      this.props.history.replace({ pathname: '/' });
+  redirectIfLoggedIn (props) {
+    if (props.currentUser) {
+      console.log('Hit response currentUser', props.currentUser);
+      props.history.push({ pathname: '/' });
     }
   }
 
@@ -61,13 +61,10 @@ class SignIn extends React.Component {
   }
 
   handleSubmit (e) {
-    e.preventDefault();
 
-    this.props.logIn();
   }
 
   render() {
-    console.log(this.props);
     const auth_url = "http://localhost:8080/connect/facebook";
     let token = this.getCsrfToken();
 

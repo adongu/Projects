@@ -10,6 +10,7 @@ import SettingsContainer from './SettingsContainer';
 import SignInContainer from './SignInContainer';
 // import RestrictedContainer from './RestrictedContainer';
 import PrivateRouteContainer from './PrivateRouteContainer';
+import { ProtectedRoute, AuthRoute } from '../util/route_util.js';
 
 const Root = ({ store }) => {
   return (
@@ -17,13 +18,13 @@ const Root = ({ store }) => {
        <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
           <div className="root">
             <Switch>
-              <Route exact path="/signin" component={SignInContainer}/>
-              <PrivateRouteContainer exact path="/" component={HomePageContainer} />
-              <PrivateRouteContainer exact path="/myperviews" component={MyPerviewsContainer}/>
-              <PrivateRouteContainer exact path="/favorites" component={FavoritePerviewsContainer}/>
-              <PrivateRouteContainer exact path="/settings" component={SettingsContainer}/>
-              <PrivateRouteContainer exact path="/item/:item_id" component={ItemPerviewsContainer}/>
-              <PrivateRouteContainer exact path="/friend/:friend_id" component={FriendPerviewsContainer}/>
+              <AuthRoute component={SignInContainer} exact path="/signin" />
+              <ProtectedRoute component={HomePageContainer} exact path="/"/>
+              <ProtectedRoute component={MyPerviewsContainer}exact path="/myperviews"/>
+              <ProtectedRoute component={FavoritePerviewsContainer}exact path="/favorites"/>
+              <ProtectedRoute component={SettingsContainer}exact path="/settings"/>
+              <ProtectedRoute component={ItemPerviewsContainer}exact path="/item/:item_id"/>
+              <ProtectedRoute component={FriendPerviewsContainer}exact path="/friend/:friend_id"/>
               <Route render={() => (
                 <p>404 Page Not Found</p>
               )}/>
