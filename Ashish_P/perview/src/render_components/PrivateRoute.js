@@ -11,17 +11,18 @@ import HeaderContainer from '../containers/HeaderContainer';
 const PrivateRoute = ({ component: Component, ...props }) => {
 
   const validated = () => {
-    return () => {
+    console.log('hit validated');
+    // return () => {
       props.fetchUser()
       .then((response) => {
-        debugger
+        console.log('hit response');
         return !!response.currentUser;
       })
       .catch((error) => {
-        debugger
+        console.log('hit error');
         return this.props.history.replace({ pathname: '/signin' })
       });
-    }
+    // }
   }
 
   return (
