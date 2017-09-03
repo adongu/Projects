@@ -64,17 +64,19 @@ const ItemPerviewLayout = ({ perviews, bookmarkPerview, likePerview, history }) 
               <img className="itemperview__itemimg" src={item.data.imageUrls.large.url} alt="Item"/>
             </div>
             <div className="itemperview__iteminfobox">
-              <div className="itemperview__name">{item.data.title}</div>
-              <div className="itemperview__price">{item.data.lowestNewPrice.formattedAmount}</div>
-              <div className="itemperview__buy">
+              <div className="itemperview__itemname">{item.data.title}</div>
+              <div className="itemperview__itemprice">{item.data.lowestNewPrice.formattedAmount}</div>
+              <div className="itemperview__itembuy">
                 <ButtonToolbar>
-                  <Button className="itemperview__buybtn" href={item.data.detailPageUrl}>BUY AT AMAZON</Button>
+                  <Button className="itemperview__itembuy-btn" href={item.data.detailPageUrl}>BUY AT AMAZON</Button>
                 </ButtonToolbar>
               </div>
             </div>
           </div>
           <div className="itemperview__numperviewbox">
-            <span className="itemperview__numperview">{perviews ? `Perview by ${perviews.length} Friend` : "Be the first one to leave a perview!"}</span>
+            <span className="itemperview__numperview">
+              {perviews ? `Perview by ${perviews.length} Friend` : "Be the first one to leave a perview!"}
+            </span>
           </div>
         </section>
       )
@@ -113,9 +115,9 @@ const ItemPerviewLayout = ({ perviews, bookmarkPerview, likePerview, history }) 
   }
 
   return (
-    <div className="flexcolumn itemperviewlayout__container">
+    <div className="flexcolumn itemperview__layoutcontainer">
       {renderItemSection()}
-      <section>
+      <section className="itemperview__perviewscontainer">
         {renderPerviews()}
       </section>
     </div>
