@@ -93,6 +93,7 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
         errors: []
       });
     case RECEIVE_CATEGORY_IDS:
+      console.log('perview reducer', action.categoryIds);
       return Object.assign({}, newState, {
         categoryIds: action.categoryIds,
         requestLoading: false,

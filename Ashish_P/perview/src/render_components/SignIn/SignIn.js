@@ -16,27 +16,27 @@ class SignIn extends React.Component {
   componentWillMount() {
     this.props.fetchToken();
     this.props.fetchUser()
-    .then(() => {
-      this.redirectIfLoggedIn(this.props);
-    })
+    // .then(() => {
+    //   this.redirectIfLoggedIn(this.props);
+    // })
   }
 
   componentDidMount () {
-
+    console.log('hit signin page', this.props.currentUser);
     // .then(() => {
-      this.redirectIfLoggedIn(this.props);
+      // this.redirectIfLoggedIn(this.props);
     // })
     // .catch(() => this.props.history.replace({ pathname: '/' }));
   }
 
-  componentDidUpdate(newProps) {
-    if (this.props.currentUser !== newProps.currentUser) {
-      console.log('newProps', newProps);
-      this.redirectIfLoggedIn(newProps)
-    } else if (this.props.match.path !== newProps.match.path) {
-      this.redirectIfLoggedIn(newProps)
-    }
-  }
+  // componentDidUpdate(newProps) {
+  //   if (this.props.currentUser !== newProps.currentUser) {
+  //     console.log('newProps', newProps);
+  //     this.redirectIfLoggedIn(newProps)
+  //   } else if (this.props.match.path !== newProps.match.path) {
+  //     this.redirectIfLoggedIn(newProps)
+  //   }
+  // }
 
   redirectIfLoggedIn (props) {
     if (props.currentUser) {

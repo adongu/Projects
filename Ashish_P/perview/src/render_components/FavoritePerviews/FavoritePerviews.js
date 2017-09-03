@@ -1,7 +1,7 @@
 import "../../styles/stylesheets/favoriteperview.css";
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import NavBar from '../NavBar/NavBar'
+import NavBarContainer from '../../containers/NavBarContainer.js';
 import WidePerview from "../PerviewsLayouts/WidePerview";
 
 class FavoritePerviews extends React.Component {
@@ -13,14 +13,12 @@ class FavoritePerviews extends React.Component {
       categoryIds: []
     }
 
-    this.validateRedirect = this.validateRedirect.bind(this);
     this.filterPerviews = this.filterPerviews.bind(this);
   }
 
   componentWillMount () {
-    this.validateRedirect();
     this.props.fetchFavoritePerviews();
-    this.props.fetchCategoryIds()
+    this.props.fetchCategoryIds();
     // .then(() => this.setState({ categoryIds: this.props.categoryIds}))
   }
 
@@ -33,12 +31,6 @@ class FavoritePerviews extends React.Component {
         requestLoading: nextProps.requestLoading
       })
     }
-  }
-
-  validateRedirect() {
-    this.props.fetchUser()
-      // .then(() => { console.log("after fetchUser", this.props);})
-      .catch(() => this.props.history.replace({ pathname: '/signin' }));
   }
 
   filterPerviews(categoryId) {
@@ -60,7 +52,7 @@ class FavoritePerviews extends React.Component {
   render() {
     return (
     <div className="favoriteperview__container">
-      <NavBar
+      <NavBarContainer
         currentUser={this.props.currentUser}
         results={this.props.results}
         fetchUser={this.props.fetchUser}

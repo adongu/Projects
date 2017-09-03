@@ -1,7 +1,7 @@
 import "../../styles/stylesheets/homeperview.css";
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import NavBar from '../NavBar/NavBar'
+import NavBarContainer from '../../containers/NavBarContainer.js';
 import WidePerview from "../PerviewsLayouts/WidePerview";
 
 class HomePage extends React.Component {
@@ -58,15 +58,8 @@ class HomePage extends React.Component {
     console.log('render homepage');
     return (
     <div className="homepage__container">
-      <NavBar
-        createItem={this.props.createItem}
-        createPerview={this.props.createPerview}
-        clearErrors={this.props.clearErrors}
-        currentUser={this.props.currentUser}
-        fetchUser={this.props.fetchUser}
-        fetchResults={this.props.fetchResults}
-        selectedItem={this.props.selectedItem}
-        results={this.props.results}
+      <NavBarContainer
+        filterPerviews={this.props.fetchResults}
       />
 
       <div className="homepage__perviews">

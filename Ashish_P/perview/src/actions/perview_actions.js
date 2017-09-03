@@ -180,6 +180,7 @@ export const fetchCategoryIds = () => dispatch => {
   dispatch(requestLoading());
   return APIUtil.fetchCategoryIds()
     .then( response => {
+      console.log('fetch category id action', response.data);
       return dispatch(receiveCategoryIds(response.data))
     })
     .catch( err => {
