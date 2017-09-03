@@ -54,7 +54,7 @@ const ItemPerviewLayout = ({ perviews, bookmarkPerview, likePerview, history }) 
   }
 
   const renderItemSection = () => {
-    if (perviews[0].itemDto) {
+    if (perviews.length > 0) {
       let item = perviews[0].itemDto;
 
       return (
@@ -92,7 +92,7 @@ const ItemPerviewLayout = ({ perviews, bookmarkPerview, likePerview, history }) 
               <span className="itemperview__userimgbox">
                 <img className="itemperview__userimg" onClick={handleFriendClick(user.id)} src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
               </span>
-              <span className="itemperview__username"></span>
+              <span className="itemperview__username">{user.firstName}</span>
             </div>
             <div className="itemperview__ratingbox">
               {renderStars(perview.rating)}

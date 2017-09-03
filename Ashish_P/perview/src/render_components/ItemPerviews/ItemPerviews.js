@@ -13,14 +13,12 @@ class ItemPerviews extends React.Component {
       categoryIds: []
     }
 
-    this.validateRedirect = this.validateRedirect.bind(this);
     this.filterPerviews = this.filterPerviews.bind(this);
   }
 
   componentWillMount () {
-    this.validateRedirect();
     this.props.fetchItemPerviews(Number(this.props.match.params.item_id));
-    this.props.fetchCategoryIds()
+    this.props.fetchCategoryIds();
     // .then(() => this.setState({ categoryIds: this.props.categoryIds}))
   }
 
@@ -38,12 +36,6 @@ class ItemPerviews extends React.Component {
     }
   }
 
-  validateRedirect() {
-    this.props.fetchUser()
-      // .then(() => { console.log("after fetchUser", this.props);})
-      .catch(() => this.props.history.replace({ pathname: '/signin' }));
-  }
-
   filterPerviews(categoryId) {
     return (e) => this.props.fetchResults(categoryId);
   }
@@ -55,10 +47,11 @@ class ItemPerviews extends React.Component {
       )
     } else {
       return (
-        <WidePerview
+        <ItemPerviewLayout
           perviews={this.props.perviews}
           bookmarkPerview={this.props.bookmarkPerview}
-          match={this.props.history}/>
+          history={this.props.history}
+        />
       )
     }
   }
@@ -76,7 +69,8 @@ class ItemPerviews extends React.Component {
         filterPerviews={this.props.filterPerviews}
         fetchUser={this.props.fetchUser}
         fetchResults={this.props.fetchResults}
-        selectedItem={this.props.selectedItem}/>
+        selectedItem={this.props.selectedItem}
+      />
 
       <div className="homepage__perviews">
         {this.renderComponents()}
