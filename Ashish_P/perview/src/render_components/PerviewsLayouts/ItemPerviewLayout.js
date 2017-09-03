@@ -90,7 +90,7 @@ const ItemPerviewLayout = ({ perviews, bookmarkPerview, likePerview, history }) 
         return (
           <div className="flexcolumn itemperview__perviewbox" key={`item-${perview.itemDto.id}_Perview-${perview.id}`}>
             <div className="itemperview__timestamp">{moment(perview.ts).calendar()}</div>
-            <div className="itemperview__userbox">
+            <div className="flexrow itemperview__userbox">
               <span className="itemperview__userimgbox">
                 <img className="itemperview__userimg" onClick={handleFriendClick(user.id)} src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
               </span>
@@ -102,7 +102,7 @@ const ItemPerviewLayout = ({ perviews, bookmarkPerview, likePerview, history }) 
             <div className="itemperview__reviewbox">{perview.tags}</div>
             <div className="itemperview__socialbox">
               <span className="itemperview__social-bookmark" onClick={handleSaveClick(perview.id)}>
-                <i className="fa fa-bookmark-o itemperview__icon-save" aria-hidden="true"></i>
+                <i className="fa fa-bookmark-o itemperview__icon-bookmark" aria-hidden="true"></i>
               </span>
               <span className="itemperview__social-like" onClick={handleLikeClick(perview.id)}>
                 <i className="fa fa-heart-o itemperview__icon-like" aria-hidden="true"></i>
