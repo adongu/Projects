@@ -99,11 +99,9 @@ export const createItem = (item) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.createItem(item)
     .then( response => {
-      console.log('successfully created item');
       return dispatch(receiveItem(response.data))
     })
     .catch( err => {
-      console.log('error creating item');
       return dispatch(receiveErrors(err.responseJSON))
     })
 };
@@ -112,7 +110,6 @@ export const fetchAllPerviews = () => dispatch => {
   dispatch(requestLoading());
   return APIUtil.fetchAllPerviews()
     .then( response => {
-      console.log('all perviews', response.data);
       return dispatch(receiveAllPerviews(response.data))
     })
     .catch( err => {
@@ -146,7 +143,6 @@ export const fetchFavoritePerviews = (categoryId = null) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.fetchFavoritePerviews(categoryId)
     .then( response => {
-      console.log('fetch favorite perviews', response);
       return dispatch(receiveFavoritePerviews(response.data))
     })
     .catch( err => {
@@ -180,7 +176,6 @@ export const fetchCategoryIds = () => dispatch => {
   dispatch(requestLoading());
   return APIUtil.fetchCategoryIds()
     .then( response => {
-      console.log('fetch category id action', response.data);
       return dispatch(receiveCategoryIds(response.data))
     })
     .catch( err => {

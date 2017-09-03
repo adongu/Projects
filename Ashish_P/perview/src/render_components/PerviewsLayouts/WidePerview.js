@@ -20,8 +20,6 @@ const WidePerview = ({ perviews, bookmarkPerview, likePerview, history }) => {
 
   const handleFriendClick = (friendId) => {
     return (e) => {
-      // console.log(friendId);
-      // console.log(this.props);
       history.replace({ pathname: `/friend/${friendId}` });
     }
   }
@@ -35,7 +33,6 @@ const WidePerview = ({ perviews, bookmarkPerview, likePerview, history }) => {
       }
 
       if (bookmarkPerview) {
-        console.log('bookmark', perviewId);
         bookmarkPerview(perviewId);
       }
     }
@@ -50,7 +47,6 @@ const WidePerview = ({ perviews, bookmarkPerview, likePerview, history }) => {
       }
 
       if (likePerview) {
-        console.log('likeperview', perviewId);
         likePerview(perviewId);
       }
     }

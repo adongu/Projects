@@ -12,12 +12,10 @@ class FavoritePerviews extends React.Component {
       categoryIds: []
     }
 
-    this.validateRedirect = this.validateRedirect.bind(this);
     this.filterPerviews = this.filterPerviews.bind(this);
   }
 
   componentWillMount () {
-    this.validateRedirect();
     this.props.fetchFavoritePerviews();
     this.props.fetchCategoryIds()
     // .then(() => this.setState({ categoryIds: this.props.categoryIds}))
@@ -32,12 +30,6 @@ class FavoritePerviews extends React.Component {
         requestLoading: false
       })
     }
-  }
-
-  validateRedirect() {
-    this.props.fetchUser()
-      // .then(() => { console.log("after fetchUser", this.props);})
-      .catch(() => this.props.history.replace({ pathname: '/signin' }));
   }
 
   filterPerviews(categoryId) {

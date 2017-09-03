@@ -36,7 +36,6 @@ class SearchItemBar extends React.Component {
 
   getSuggestionValue(suggestion) {
     // pass item to modal
-    // console.log('suggestionid', suggestion.id);
     this.props.selectItem(
       suggestion.itemDto.data.imageUrls.large.url,
       suggestion.itemDto.dataname,
@@ -105,7 +104,6 @@ class SearchItemBar extends React.Component {
   }
 
   renderFriends(suggestion) {
-    // console.log('hit', suggestion);
     return(
       <div>
         friend

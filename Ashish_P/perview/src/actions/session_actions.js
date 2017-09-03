@@ -33,23 +33,13 @@ export const logIn = () => dispatch => {
   dispatch(requestUser());
   return APIUtil.logIn()
     .then( response => {
-      console.log('1st login action response', response);
       // return dispatch(receiveCurrentUser(response.data))
     },
     err => {
 
-      console.log('error', err);
+      console.('error', err);
       // return dispatch(receiveErrors(err.responseJSON))
     })
-    // .catch((error) => {
-    //   if (error.response) {
-    //     console.log('data', error.response.data);
-    //     console.log('status', error.response.status);
-    //     console.log('headers', error.response.headers);
-    //   } else {
-    //    console.log(error);
-    //   }
-    // })
 }
 
 export const fetchUser = () => dispatch => {
@@ -71,11 +61,9 @@ export const logOut = () => {
   return (dispatch) => {
     return APIUtil.logOut()
     .then((response) => {
-      console.log('passed logout');
       return dispatch(receiveCurrentUser(null));
     })
     .catch((error) => {
-      console.log('failed logout', error);
     })
   };
 };

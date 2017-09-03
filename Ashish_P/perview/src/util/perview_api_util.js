@@ -25,12 +25,10 @@ export const createPerview = (formData) => {
     config
   })
   .then(response => {
-    console.log('response', response);
     return response
   })
   .catch(error => {
     return error
-    console.log('error', error);
   });
 };
 

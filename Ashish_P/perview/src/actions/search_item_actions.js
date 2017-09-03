@@ -27,7 +27,6 @@ export const fetchItemResults = (keywords) => dispatch => {
   dispatch(requestResults());
   return APIUtil.fetchItemResults(keywords)
     .then( response => {
-      console.log(response.data);
       return dispatch(receiveItemResults(response.data))
     },
     err => {

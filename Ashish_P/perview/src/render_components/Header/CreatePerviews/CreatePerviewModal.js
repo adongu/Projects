@@ -23,7 +23,6 @@ class CreatePerviewModal extends React.Component {
       perviewers: []
     }
 
-    this.validateRedirect = this.validateRedirect.bind(this);
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
     this.showReviewBox = this.showReviewBox.bind(this);
@@ -31,12 +30,6 @@ class CreatePerviewModal extends React.Component {
     this.selectItem = this.selectItem.bind(this);
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  validateRedirect() {
-    this.props.fetchUser()
-      // .then(() => { console.log("after fetchUser", this.props);})
-      .catch(() => this.props.history.replace({ pathname: '/signin' }));
   }
 
   showModal() {
@@ -75,7 +68,6 @@ class CreatePerviewModal extends React.Component {
   selectItem(item) {
     this.props.createItem(item)
     .then((result) => {
-      console.log('select item', result);
       let item = this.props.selectedItem;
       this.setState({
         imgUrl: item.data.imageUrls.large.url,

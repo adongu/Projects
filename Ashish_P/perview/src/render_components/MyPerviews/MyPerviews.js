@@ -13,13 +13,11 @@ class MyPerviews extends React.Component {
       requestLoading: false
     }
 
-    this.validateRedirect = this.validateRedirect.bind(this);
     this.handleFilterChange = this.handleFilterChange.bind(this);
     this.handleSortChange = this.handleSortChange.bind(this);
   }
 
   componentWillMount () {
-    // this.validateRedirect();
     this.props.fetchMyPerviews();
     this.props.fetchCategoryIds();
   }
@@ -33,12 +31,6 @@ class MyPerviews extends React.Component {
         requestLoading: nextProps.requestLoading
       })
     }
-  }
-
-  validateRedirect() {
-    this.props.fetchUser()
-      .then(() => { console.log("after fetchUser", this.props);})
-      .catch(() => this.props.history.replace({ pathname: '/signin' }));
   }
 
   handleFilterChange(e) {

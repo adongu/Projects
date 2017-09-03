@@ -57,7 +57,6 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
         errors: []
       });
     case RECEIVE_ITEM_PERVIEWS:
-      console.log('item reducer', action.itemPerviews);
       return Object.assign({}, newState, {
         itemPerviews: action.itemPerviews,
         requestLoading: false,
@@ -71,7 +70,6 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
         errors: []
       });
     case RECEIVE_FAVORITE_PERVIEWS:
-      console.log('favorite perviews', action.favoritePerviews);
       return Object.assign({}, newState, {
         favoritePerviews: action.favoritePerviews,
         requestLoading: false,
@@ -79,21 +77,18 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
       });
     case RECEIVE_FRIEND_PERVIEWS:
       // newState.Perviews.unshift(action.perview);
-      console.log('friendperviews', action.friendPerviews);
       return Object.assign({}, newState, {
         friendPerviews: action.friendPerviews,
         requestLoading: false,
         errors: []
       });
     case RECEIVE_NUM_PERVIEWS:
-    console.log(action.numPerviews);
       return Object.assign({}, newState, {
         numPerviews: action.numPerviews,
         requestLoading: false,
         errors: []
       });
     case RECEIVE_CATEGORY_IDS:
-      console.log('perview reducer', action.categoryIds);
       return Object.assign({}, newState, {
         categoryIds: action.categoryIds,
         requestLoading: false,

@@ -20,7 +20,6 @@ class HomePage extends React.Component {
   componentWillMount() {
     this.props.fetchAllPerviews()
     .then((response) => {
-      // console.log('no error', response);
     });
     // this.validateRedirect();
 
@@ -43,7 +42,6 @@ class HomePage extends React.Component {
         <div>spinner</div>
       )
     } else {
-      console.log('render wideperview');
       return (
         <WidePerview
           perviews={this.props.allPerviews}
@@ -55,7 +53,6 @@ class HomePage extends React.Component {
   }
 
   render() {
-    console.log('render homepage');
     return (
     <div className="homepage__container">
       <NavBarContainer

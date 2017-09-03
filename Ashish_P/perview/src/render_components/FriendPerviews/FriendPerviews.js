@@ -14,13 +14,8 @@ class FriendPerviews extends React.Component {
   }
 
   componentWillMount () {
-    this.validateRedirect();
     this.props.fetchFriendPerviews(Number(this.props.match.params.friend_id));
     this.props.fetchCategoryIds();
-  }
-
-  componentDidMount() {
-    console.log(this.props.match.params);
   }
 
   componentDidReceiveProps (nextProps) {
@@ -29,12 +24,6 @@ class FriendPerviews extends React.Component {
         requestLoading: nextProps.requestLoading
       })
     }
-  }
-
-  validateRedirect() {
-    this.props.fetchUser()
-      .then(() => { console.log("after fetchUser", this.props);})
-      .catch(() => this.props.history.replace({ pathname: '/signin' }));
   }
 
   handleFilterChange(e) {

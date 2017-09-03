@@ -29,7 +29,6 @@ class NavBar extends React.Component {
   }
 
   updatePageTitle(props) {
-    console.log('navbar title', props.match);
     switch (props.match.path) {
       case '/':
       case '/item/:item_id':
@@ -55,8 +54,6 @@ class NavBar extends React.Component {
   }
 
   renderFilters() {
-    console.log('render canCreateFilters', this.state.canCreateFilters );
-    console.log('render allCategoryIds', this.state.allCategoryIds );
     if (this.state.canCreateFilters && this.state.allCategoryIds) {
       return (
         <div>

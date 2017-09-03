@@ -21,7 +21,6 @@ const ItemPerviewLayout = ({ perviews, bookmarkPerview, likePerview, history }) 
       }
 
       if (bookmarkPerview) {
-        console.log('bookmark', perviewId);
         bookmarkPerview(perviewId);
       }
     }
@@ -36,7 +35,6 @@ const ItemPerviewLayout = ({ perviews, bookmarkPerview, likePerview, history }) 
       }
 
       if (likePerview) {
-        console.log('likeperview', perviewId);
         likePerview(perviewId);
       }
     }

@@ -30,22 +30,17 @@ export const clearErrors = () => ({
 export const likePerview = (perviewId = null) => dispatch => {
   return APIUtil.likePerview(perviewId)
     .then(response => {
-      console.log('success liking', response.data);
     })
     .catch(error => {
-      console.log('Error', error.responseJSON);
       return dispatch(receiveErrors(error.responseJSON));
     })
 }
 
 export const bookmarkPerview = (perviewId) => dispatch => {
-  console.log('bookmark action', perviewId);
   return APIUtil.bookmarkPerview(perviewId)
     .then(response => {
-      console.log('success bookmarking', response);
     })
     .catch(error => {
-      console.log('Error', error.responseJSON);
       return dispatch(receiveErrors(error.responseJSON));
     })
 }

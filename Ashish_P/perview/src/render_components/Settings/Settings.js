@@ -9,7 +9,6 @@ class Settings extends React.Component{
     this.props.fetchUser()
     .then(() => {
       this.props.fetchNumPerviews();
-      console.log(this.props.numPerviews);
     });
   }
 
