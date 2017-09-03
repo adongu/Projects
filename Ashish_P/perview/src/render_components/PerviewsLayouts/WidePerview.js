@@ -1,7 +1,7 @@
 import "../../styles/stylesheets/wideperview.css"
 import product from "../../styles/assets/product.jpg"
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { Button, ButtonToolbar } from 'react-bootstrap';
 import moment from 'moment';
 
@@ -64,7 +64,10 @@ const WidePerview = ({ perviews, bookmarkPerview, likePerview, history }) => {
         return (
           <div key={`perviewindex__${perview.id}`} className="flexrow wideresults__box">
             <div className="flexrow wideresults__perview-left">
-              <div className="wideresults__productimg"><img className="wideresults__productimg-photo" src={item.data.imageUrls.large.url} alt="Product"/>
+              <div className="wideresults__productimg">
+                <Link to={`/item/${item.id}`}>
+                  <img className="wideresults__productimg-photo" src={item.data.imageUrls.large.url} alt="Product"/>
+                </Link>
             </div>
             <div className="flexcolumn wideresults__perview-left-info">
               <div className="wideresults__product-title">{item.data.title}</div>

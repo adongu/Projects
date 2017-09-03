@@ -54,7 +54,7 @@ const ItemPerviewLayout = ({ perviews, bookmarkPerview, likePerview, history }) 
   }
 
   const renderItemSection = () => {
-    if (perviews.length > 0) {
+    if (perviews && perviews.length > 0) {
       let item = perviews[0].itemDto;
 
       return (
@@ -113,7 +113,7 @@ const ItemPerviewLayout = ({ perviews, bookmarkPerview, likePerview, history }) 
   }
 
   return (
-    <div className="flexcolumn">
+    <div className="flexcolumn itemperviewlayout__container">
       {renderItemSection()}
       <section>
         {renderPerviews()}
