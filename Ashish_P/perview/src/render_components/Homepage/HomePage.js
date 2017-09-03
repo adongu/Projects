@@ -18,15 +18,15 @@ class HomePage extends React.Component {
   }
 
   componentWillMount() {
+    this.props.fetchAllPerviews()
+    .then((response) => {
+      // console.log('no error', response);
+    });
     // this.validateRedirect();
 
   }
 
   componentDidMount() {
-    this.props.fetchAllPerviews()
-    .then((response) => {
-      // console.log('no error', response);
-    });
   }
 
   componentDidReceiveProps(nextProps) {

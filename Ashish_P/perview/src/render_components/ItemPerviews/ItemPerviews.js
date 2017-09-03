@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar'
 import WidePerview from "../PerviewsLayouts/WidePerview";
+import ItemPerviewLayout from "../PerviewsLayouts/ItemPerviewLayout";
 
 class ItemPerviews extends React.Component {
   constructor (props) {

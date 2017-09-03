@@ -122,30 +122,4 @@ const WidePerview = ({ perviews, bookmarkPerview, likePerview, history }) => {
     </div>
   )
 }
-
-//
-// Array[{}]
-//   img: itemDto.data.imageUrls.large.url
-//   title: itemDto.data.title
-//   price: itemDto.data.lowestNewPrice.formattedAmount
-//   numPerviews: itemDto.data.
-//   categoryId: itemDto.categoryDto.id
-//   buyUrl: itemDto.data.detailPageUrl
-//
-// import moment from 'moment';
-//
-//   time: moment(ts).calendar();
-//   icon: userDto.facebookProfilePictureUrl.replace(/\/picture$/, "")
-//   username: userDto.fullName
-//   userId: userDto.id
-//   rating: rating
-//   tags: tags??
-//   comment: comments?? need to parse tags from comments
-//   numComments:?
-//   likes: ? need to send in as array likers.length
-//   perviewId: id
-//   save(favorite/cart): function:
-//   like: function
-//   sharing:?
-
 export default withRouter(WidePerview);
