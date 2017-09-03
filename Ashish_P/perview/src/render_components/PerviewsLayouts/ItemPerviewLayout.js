@@ -58,12 +58,12 @@ const ItemPerviewLayout = ({ perviews, bookmarkPerview, likePerview, history }) 
       let item = perviews[0].itemDto;
 
       return (
-        <section className="itemperview__itemcontainer">
-          <div className="itemperview__itembox">
+        <section className="flexcolumn itemperview__itemcontainer">
+          <div className="flexrow itemperview__itembox">
             <div className="itemperview__itemimgbox">
               <img className="itemperview__itemimg" src={item.data.imageUrls.large.url} alt="Item"/>
             </div>
-            <div className="itemperview__iteminfobox">
+            <div className="flexcolumn itemperview__iteminfobox">
               <div className="itemperview__itemname">{item.data.title}</div>
               <div className="itemperview__itemprice">{item.data.lowestNewPrice.formattedAmount}</div>
               <div className="itemperview__itembuy">
@@ -75,7 +75,7 @@ const ItemPerviewLayout = ({ perviews, bookmarkPerview, likePerview, history }) 
           </div>
           <div className="itemperview__numperviewbox">
             <span className="itemperview__numperview">
-              {perviews ? `Perview by ${perviews.length} Friend` : "Be the first one to leave a perview!"}
+              {perviews ? `Perview by ${perviews.length} Friends` : "Be the first one to leave a perview!"}
             </span>
           </div>
         </section>
@@ -88,7 +88,7 @@ const ItemPerviewLayout = ({ perviews, bookmarkPerview, likePerview, history }) 
       return perviews.map((perview) => {
         var user = perview.userDto;
         return (
-          <div key={`item-${perview.itemDto.id}_Perview-${perview.id}`}>
+          <div className="flexcolumn itemperview__perviewbox" key={`item-${perview.itemDto.id}_Perview-${perview.id}`}>
             <div className="itemperview__timestamp">{moment(perview.ts).calendar()}</div>
             <div className="itemperview__userbox">
               <span className="itemperview__userimgbox">
@@ -117,7 +117,10 @@ const ItemPerviewLayout = ({ perviews, bookmarkPerview, likePerview, history }) 
   return (
     <div className="flexcolumn itemperview__layoutcontainer">
       {renderItemSection()}
-      <section className="itemperview__perviewscontainer">
+      <section className="flexrow itemperview__perviewcontainer">
+        {renderPerviews()}
+        {renderPerviews()}
+        {renderPerviews()}
         {renderPerviews()}
       </section>
     </div>
