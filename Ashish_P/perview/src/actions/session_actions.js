@@ -33,13 +33,11 @@ export const logIn = () => dispatch => {
   dispatch(requestUser());
   return APIUtil.logIn()
     .then( response => {
-      // return dispatch(receiveCurrentUser(response.data))
-    },
-    err => {
-
-      console.('error', err);
-      // return dispatch(receiveErrors(err.responseJSON))
+      return dispatch(receiveCurrentUser(response.data))
     })
+    .catch((error) => {
+      return dispatch(receiveErrors(error))
+    });
 }
 
 export const fetchUser = () => dispatch => {

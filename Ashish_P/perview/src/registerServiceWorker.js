@@ -92,7 +92,7 @@ function checkValidServiceWorker(swUrl) {
         registerValidSW(swUrl);
       }
     })
-    .catch(() => {
+    .catch((error) => {
       console.error('Error during service worker registration:', error);
     });
 }
