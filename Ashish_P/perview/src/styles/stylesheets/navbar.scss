@@ -2,12 +2,15 @@
   &container {
     padding-top: 95px;
     width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
   }
 
   &box {
     margin: auto;
     justify-content: space-between;
-    width: 980px;
+    width: 100%;
   }
 
   &title {

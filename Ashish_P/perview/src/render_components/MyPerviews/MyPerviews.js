@@ -51,7 +51,7 @@ class MyPerviews extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className="myperview__container">
         <NavBar
           currentUser={this.props.currentUser}
           categories={this.props.perviews.categories}
@@ -64,7 +64,7 @@ class MyPerviews extends React.Component {
           handleSortChange={this.handleSortChange}
           clearErrors={this.props.clearErrors} />
 
-        <div className="myperviews__container">
+        <div className="myperview__perviews">
           <NarrowPerview
             perviews={this.props.perviews}
             />

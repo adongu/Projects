@@ -26,7 +26,11 @@ class UserNav extends React.Component {
               Settings
             </NavLink>
           </MenuItem>
-          <MenuItem eventKey="4" className="usernav__signout" ><button className="userNav__signout-btn" onClick={this.handleLogout}>Sign Out</button></MenuItem>
+          <MenuItem eventKey="4" className="usernav__signout" >
+            <div className="userNav__signout-btn" onClick={this.handleLogout}>
+              Sign Out
+            </div>
+          </MenuItem>
 
         </DropdownButton>
       </ButtonToolbar>

@@ -1,5 +1,12 @@
-.homepage__perviews {
-  width: 100%;
-  display: flex;
-  align-items: center;
+.homepage__ {
+  &container {
+    margin: auto;
+    max-width: 980px;
+  }
+
+  &perviews {
+    width: 100%;
+    // display: flex;
+    // justify-content: center;
+  }
 }

@@ -1,3 +1,4 @@
+import "../../styles/stylesheets/itemperview.css";
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar'
@@ -58,7 +59,7 @@ class ItemPerviews extends React.Component {
 
   render() {
     return (
-    <div>
+    <div className="itemperview__container">
       <NavBar
         allCategoryIds={this.props.allCategoryIds}
         clearErrors={this.props.clearErrors}
@@ -72,7 +73,7 @@ class ItemPerviews extends React.Component {
         selectedItem={this.props.selectedItem}
       />
 
-      <div className="homepage__perviews">
+    <div className="itemperview__perviews">
         {this.renderComponents()}
       </div>
     </div>

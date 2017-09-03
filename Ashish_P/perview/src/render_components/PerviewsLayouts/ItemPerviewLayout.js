@@ -117,12 +117,15 @@ const ItemPerviewLayout = ({ perviews, bookmarkPerview, likePerview, history }) 
   return (
     <div className="flexcolumn itemperview__layoutcontainer">
       {renderItemSection()}
-      <section className="flexrow itemperview__perviewcontainer">
-        {renderPerviews()}
-        {renderPerviews()}
-        {renderPerviews()}
-        {renderPerviews()}
-      </section>
+      <div className="itemperview__perviewcontainer">
+        <div className="itemperview__perviewcenterbox">
+          {renderPerviews()}
+          {renderPerviews()}
+          {renderPerviews()}
+          {renderPerviews()}
+          {renderPerviews()}
+        </div>
+      </div>
     </div>
   )
 }

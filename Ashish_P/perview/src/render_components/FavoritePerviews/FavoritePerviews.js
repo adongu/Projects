@@ -1,3 +1,4 @@
+import "../../styles/stylesheets/favoriteperview.css";
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar'
@@ -58,7 +59,7 @@ class FavoritePerviews extends React.Component {
 
   render() {
     return (
-    <div>
+    <div className="favoriteperview__container">
       <NavBar
         currentUser={this.props.currentUser}
         results={this.props.results}
@@ -69,7 +70,7 @@ class FavoritePerviews extends React.Component {
         filterPerviews={this.props.filterPerviews}
         clearErrors={this.props.clearErrors}  />
 
-      <div className="homepage__perviews">
+      <div className="favoriteperview__perviews">
         {this.renderComponents()}
       </div>
     </div>

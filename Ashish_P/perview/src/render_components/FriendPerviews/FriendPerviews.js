@@ -1,4 +1,4 @@
-// import "../../styles/stylesheets/homeperview.css";
+import "../../styles/stylesheets/friendperview.css";
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar'
@@ -47,7 +47,7 @@ class FriendPerviews extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className="friendperview__container">
         <NavBar
           currentUser={this.props.currentUser}
           categories={this.props.perviews.categories}
@@ -60,7 +60,7 @@ class FriendPerviews extends React.Component {
           handleSortChange={this.handleSortChange}
           clearErrors={this.props.clearErrors} />
 
-        <div className="myperviews__container">
+        <div className="friendperview__perviews">
           <NarrowPerview
             perviews={this.props.perviews}
             />

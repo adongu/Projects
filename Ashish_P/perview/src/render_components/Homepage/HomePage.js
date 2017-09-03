@@ -57,7 +57,7 @@ class HomePage extends React.Component {
   render() {
     console.log('render homepage');
     return (
-    <div>
+    <div className="homepage__container">
       <NavBar
         createItem={this.props.createItem}
         createPerview={this.props.createPerview}
@@ -67,7 +67,7 @@ class HomePage extends React.Component {
         fetchResults={this.props.fetchResults}
         selectedItem={this.props.selectedItem}
         results={this.props.results}
-        />
+      />
 
       <div className="homepage__perviews">
         {this.renderComponents()}
