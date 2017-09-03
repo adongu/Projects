@@ -1,17 +1,17 @@
 .header__ {
   &container {
-    width: 100vw;
+    width: 100%;
     position: fixed;
     background: white;
     z-index: 10;
   }
 
   &box {
-    justify-content: space-between;
+    max-width: 980px;
+    justify-content: space-around;
     align-items: center;
     padding: 18px 0 7px 0;
     margin: auto;
-    width: 100%;
     // border-bottom: 1px lightgray solid;
   }
 

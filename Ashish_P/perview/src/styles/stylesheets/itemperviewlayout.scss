@@ -1,11 +1,11 @@
-$container-width: 980px;
+// $container-width: 980px;
 $font-size: 15px;
 $line-height: 1.2;
 $lines-to-show: 5;
 
 .itemperview__{
   &layoutcontainer {
-    width: $container-width;
+    width: 100%;
     margin: auto;
   }
 //item section
@@ -103,24 +103,28 @@ $lines-to-show: 5;
     justify-content: center;
   }
 
+  &perviewcenterbox {
+    width: 100%;
+    margin-left: -15px;
+    margin-right: -15px;
+    margin: auto;
+    display: flex;
+    // justify-content: center;
+    flex-wrap: wrap;
+  }
 
   &perviewbox{
-    width: 311.66px;
+    width: 312px;
     padding: 20px;
-    margin-right: 15px;
     margin-bottom: 10px;
+    margin-left: 7px;
+    margin-right: 7px;
     border: 1px #D6D6D6 solid;
     box-shadow: 0px 2px 2px 1px #EAEAEA;
     border-radius: 7px;
+    align-self: flex-start;
   }
 
-  &perviewcenterbox {
-    width: 90%;
-    // max-width: $container-width;
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-  }
 
   &timestamp {
 
