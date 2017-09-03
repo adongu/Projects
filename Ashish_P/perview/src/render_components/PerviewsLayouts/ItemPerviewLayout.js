@@ -14,10 +14,10 @@ const ItemPerviewLayout = ({ perviews, bookmarkPerview, likePerview, history }) 
 
   const handleSaveClick = (perviewId) => {
     return e => {
-      if (e.currentTarget.className === 'itemperview__review-social-icon') {
-        e.currentTarget.className = 'itemperview__review-social-icon active';
+      if (e.currentTarget.className === 'itemperview__social-icon') {
+        e.currentTarget.className = 'itemperview__social-icon active';
       } else {
-        e.currentTarget.className = 'itemperview__review-social-icon';
+        e.currentTarget.className = 'itemperview__social-icon';
       }
 
       if (bookmarkPerview) {
@@ -29,10 +29,10 @@ const ItemPerviewLayout = ({ perviews, bookmarkPerview, likePerview, history }) 
 
   const handleLikeClick = (perviewId) => {
     return e => {
-      if (e.currentTarget.className === 'itemperview__review-social-icon') {
-        e.currentTarget.className = 'itemperview__review-social-icon active';
+      if (e.currentTarget.className === 'itemperview__social-icon') {
+        e.currentTarget.className = 'itemperview__social-icon active';
       } else {
-        e.currentTarget.className = 'itemperview__review-social-icon';
+        e.currentTarget.className = 'itemperview__social-icon';
       }
 
       if (likePerview) {
@@ -100,10 +100,10 @@ const ItemPerviewLayout = ({ perviews, bookmarkPerview, likePerview, history }) 
             <div className="itemperview__reviewbox">{perview.tags}</div>
             <div className="itemperview__socialbox">
               <span className="itemperview__social-bookmark" onClick={handleSaveClick(perview.id)}>
-                <i className="fa fa-bookmark-o itemperview__review-icon-save" aria-hidden="true"></i>
+                <i className="fa fa-bookmark-o itemperview__icon-save" aria-hidden="true"></i>
               </span>
               <span className="itemperview__social-like" onClick={handleLikeClick(perview.id)}>
-                <i className="fa fa-heart-o itemperview__review-icon-like" aria-hidden="true"></i>
+                <i className="fa fa-heart-o itemperview__icon-like" aria-hidden="true"></i>
               </span>
             </div>
           </div>
