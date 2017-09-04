@@ -2,66 +2,44 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import "../../styles/stylesheets/navbar.css";
 
-class NavBar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      allCategoryIds: [],
-      pageTitle: "",
-      canCreateFilters: true
-    }
+const NavBar = ({ filterPerviews, isFetching, currentUser, allCategoryIds, match, requestLoading }) => {
 
-    this.updatePageTitle = this.updatePageTitle.bind(this);
-  }
-
-  componentWillMount() {
-    this.updatePageTitle(this.props);
-    this.props.fetchCategoryIds()
-    .then(() => {
-      this.setState({ allCategoryIds: this.props.allCategoryIds })
-    })
-  }
-
-  componentDidMount() {
-  }
-
-  updatePageTitle(props) {
-    switch (props.match.path) {
+  const renderPageTitle = () => {
+    switch (match.path) {
       case '/':
       case '/item/:item_id':
-        this.setState({pageTitle: "Check the Perviews of your friends!" })
+        return "Check the Perviews of your friends!";
         break;
       case '/myperviews':
-        this.setState({pageTitle: "My Perviews" })
+        return "My Perviews";
         break;
       case '/favorites':
-        this.setState({pageTitle: "Saved Perviews" })
+        return "Saved Perviews";
         break;
       case '/friend/:friend_id':
-        this.setState({pageTitle: `Friend Perviews` })
+        return `Friend Perviews`;
         break;
       default:
-        this.setState({pageTitle: 'Settings', canCreateFilters: false})
+        return 'Settings';
         break;
     }
   }
 
-  handleFilterChange (e) {
+  const handleFilterChange = (e) => {
     console.log('hits filter change', e.currentTarget.value);
-    this.props.filterPerviews(e.currentTarget.value);
-    // debugger
-    // this.props.filterPerviews(e.currentTarget.value);
+    filterPerviews(e.currentTarget.value);
+    // filterPerviews(e.currentTarget.value);
   }
 
-  renderFilters() {
-    if (this.state.canCreateFilters && this.state.allCategoryIds) {
+  const renderFilters = () => {
+    if (allCategoryIds) {
       return (
         <div>
           <label className="navbar__filter">
             Filter by
             <select className="navbar__dropdown-filter" defaultValue={null} onChange={this.handleFilterChange}>
               <option className='filter__option' value={null}>All Catagories</option>
-              {this.state.allCategoryIds.map((category, id) => {
+              {allCategoryIds.map((category, id) => {
                   return (
                     <option className='filter__option' key={`category_${category.id}`}  value={category.id}>{category.displayName}</option>
                   )
@@ -74,19 +52,16 @@ class NavBar extends React.Component {
     }
   }
 
-  render() {
-    return (
-      <div className="navbar__container">
-        <div className="flexrow navbar__box">
-          <div className="navbar__title">
-            {this.state.pageTitle}
-          </div>
-          { this.renderFilters() }
+  return (
+    <div className="navbar__container">
+      <div className="flexrow navbar__box">
+        <div className="navbar__title">
+          {renderPageTitle()}
         </div>
+        {renderFilters()}
       </div>
-
-    )
-  }
+    </div>
+  )
 }
 
 export default withRouter(NavBar);
