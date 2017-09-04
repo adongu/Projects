@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import FavoritePerviews from '../render_components/FavoritePerviews/FavoritePerviews';
 import { fetchUser } from '../actions/session_actions';
 import { fetchItemResults } from '../actions/search_item_actions';
-import { createPerview, fetchFavoritePerviews, fetchCategoryIds, clearErrors } from '../actions/perview_actions';
+import { fetchCategoryIds, createPerview, fetchFavoritePerviews, clearErrors } from '../actions/perview_actions';
 
 const mapStateToProps = ({ session, perview, findItem }, ownProps) => {
   return {
@@ -11,8 +11,6 @@ const mapStateToProps = ({ session, perview, findItem }, ownProps) => {
     requestLoading: perview.requestLoading,
     results: findItem.itemResults,
     perviews: perview.favoritePerviews.perviews,
-    allCategoryIds: perview.categoryIds,
-    categoryIds: perview.myPerviews.categories.map((obj)=> {obj.id})
   }
 };
 
@@ -22,7 +20,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     createPerview: (formData) => dispatch(createPerview(formData)),
     fetchResults: (keywords) => dispatch(fetchItemResults(keywords)),
     fetchFavoritePerviews: (categoryId) => dispatch(fetchFavoritePerviews(categoryId)),
-    fetchCategoryIds: (categoryId) => dispatch(fetchCategoryIds(categoryId)),
+    fetchCategoryIds: () => dispatch(fetchCategoryIds()),
     clearErrors: () => dispatch(clearErrors())
   }
 }

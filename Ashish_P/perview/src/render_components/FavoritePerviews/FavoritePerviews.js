@@ -13,12 +13,13 @@ class FavoritePerviews extends React.Component {
       categoryIds: []
     }
 
-    this.filterPerviews = this.filterPerviews.bind(this);
+    this.fetchFilteredPerviews = this.fetchFilteredPerviews.bind(this);
   }
 
   componentWillMount () {
     this.props.fetchFavoritePerviews();
     this.props.fetchCategoryIds();
+
     // .then(() => this.setState({ categoryIds: this.props.categoryIds}))
   }
 
@@ -33,8 +34,8 @@ class FavoritePerviews extends React.Component {
     }
   }
 
-  filterPerviews(categoryId) {
-    return (e) => this.props.fetchResults(categoryId);
+  fetchFilteredPerviews(categoryId) {
+    this.props.fetchFavoritePerviews(categoryId);
   }
 
   renderComponents() {
@@ -44,7 +45,9 @@ class FavoritePerviews extends React.Component {
       )
     } else {
       return (
-        <WidePerview perviews={this.props.perviews}/>
+        <WidePerview
+          perviews = {this.props.perviews}
+        />
       )
     }
   }
@@ -53,14 +56,8 @@ class FavoritePerviews extends React.Component {
     return (
     <div className="favoriteperview__container">
       <NavBarContainer
-        currentUser={this.props.currentUser}
-        results={this.props.results}
-        fetchUser={this.props.fetchUser}
-        fetchResults={this.props.fetchResults}
-        createPerview={this.props.createPerview}
-        allCategoryIds={this.props.allCategoryIds}
-        filterPerviews={this.props.filterPerviews}
-        clearErrors={this.props.clearErrors}  />
+        filterPerviews = {this.fetchFilteredPerviews}
+      />
 
       <div className="favoriteperview__perviews">
         {this.renderComponents()}

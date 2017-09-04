@@ -14,26 +14,28 @@ class HomePage extends React.Component {
       img: "",
       requestLoading: false
     }
-    // this.getPerviews = this.getPerviews.bind(this);
+    this.fetchFilteredPerviews = this.fetchFilteredPerviews.bind(this);
   }
 
   componentWillMount() {
     this.props.fetchAllPerviews()
-    .then((response) => {
-    });
-    // this.validateRedirect();
+    this.props.fetchCategoryIds();
 
   }
 
   componentDidMount() {
   }
 
-  componentDidReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (nextProps.requestLoading !== this.props.requestLoading) {
       this.setState({
         requestLoading: nextProps.requestLoading
       })
     }
+  }
+
+  fetchFilteredPerviews (categoryId) {
+    this.props.fetchAllPerviews(categoryId);
   }
 
   renderComponents() {
@@ -44,9 +46,9 @@ class HomePage extends React.Component {
     } else {
       return (
         <WidePerview
-          perviews={this.props.allPerviews}
-          bookmarkPerview={this.props.bookmarkPerview}
-          likePerview={this.props.likePerview}
+          perviews = {this.props.allPerviews}
+          bookmarkPerview = {this.props.bookmarkPerview}
+          likePerview = {this.props.likePerview}
         />
       )
     }
@@ -56,7 +58,7 @@ class HomePage extends React.Component {
     return (
     <div className="homepage__container">
       <NavBarContainer
-        filterPerviews={this.props.fetchResults}
+        filterPerviews = {this.fetchFilteredPerviews}
       />
 
       <div className="homepage__perviews">

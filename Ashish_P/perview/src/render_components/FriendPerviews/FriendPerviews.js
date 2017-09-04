@@ -1,7 +1,7 @@
 import "../../styles/stylesheets/friendperview.css";
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import NavBar from '../NavBar/NavBar'
+import NavBarContainer from '../../containers/NavBarContainer.js';
 import NarrowPerview from "../PerviewsLayouts/NarrowPerview";
 
 class FriendPerviews extends React.Component {
@@ -9,49 +9,52 @@ class FriendPerviews extends React.Component {
     super(props);
 
     this.state = {
-      requestLoading: false
+      requestLoading: false,
+      friendId: null
     }
+
+    this.fetchFilteredPerviews = this.fetchFilteredPerviews.bind(this);
   }
 
   componentWillMount () {
     this.props.fetchFriendPerviews(Number(this.props.match.params.friend_id));
     this.props.fetchCategoryIds();
+
+    this.setState({
+      friendId: Number(this.props.match.params.friend_id)
+    });
   }
 
-  componentDidReceiveProps (nextProps) {
+  componentWillReceiveProps (nextProps) {
     if (nextProps.requestLoading !== this.props.requestLoading) {
       this.setState({
         requestLoading: nextProps.requestLoading
-      })
+      });
+    }
+
+    if (this.props.match.params.friend_id !== nextProps.match.params.friend_id) {
+      this.props.fetchItemPerviews(Number(nextProps.match.params.friend_id))
+
+      this.setState({
+        itemId: Number(nextProps.match.params.friend_id)
+      });
     }
   }
 
-  handleFilterChange(e) {
-    this.props.fetchFriendPerviews(Number(this.props.match.params.friend_id), e.target.value);
-  }
-
-  handleSortChange(event) {
-
+  fetchFilteredPerviews(catetoryId) {
+    this.props.fetchFriendPerviews(this.state.friendId, catetoryId);
   }
 
   render () {
     return (
       <div className="friendperview__container">
-        <NavBar
-          currentUser={this.props.currentUser}
-          categories={this.props.perviews.categories}
-          results={this.props.results}
-          fetchUser={this.props.fetchUser}
-          fetchResults={this.props.fetchResults}
-          createPerview={this.props.createPerview}
-          allCategoryIds={this.props.allCategoryIds}
-          handleFilterChange={this.handleFilterChange}
-          handleSortChange={this.handleSortChange}
-          clearErrors={this.props.clearErrors} />
+        <NavBarContainer
+          filterPerviews = {this.fetchFilteredPerviews}
+        />
 
         <div className="friendperview__perviews">
           <NarrowPerview
-            perviews={this.props.perviews}
+            perviews = {this.props.perviews}
             />
         </div>
       </div>

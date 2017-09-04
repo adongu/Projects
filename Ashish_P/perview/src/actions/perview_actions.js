@@ -178,7 +178,7 @@ export const fetchCategoryIds = () => dispatch => {
     .then( response => {
       return dispatch(receiveCategoryIds(response.data))
     })
-    .catch( err => {
-      return dispatch(receiveErrors(err.responseJSON))
+    .catch( error => {
+      return dispatch(receiveErrors(error))
     })
 };

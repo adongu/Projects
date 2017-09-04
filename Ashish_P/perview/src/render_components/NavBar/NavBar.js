@@ -25,9 +25,6 @@ class NavBar extends React.Component {
   componentDidMount() {
   }
 
-  componentDidReceiveProps (newProps) {
-  }
-
   updatePageTitle(props) {
     switch (props.match.path) {
       case '/':
@@ -50,7 +47,10 @@ class NavBar extends React.Component {
   }
 
   handleFilterChange (e) {
+    console.log('hits filter change', e.currentTarget.value);
     this.props.filterPerviews(e.currentTarget.value);
+    // debugger
+    // this.props.filterPerviews(e.currentTarget.value);
   }
 
   renderFilters() {
@@ -59,7 +59,7 @@ class NavBar extends React.Component {
         <div>
           <label className="navbar__filter">
             Filter by
-            <select className="navbar__dropdown-filter" defaultValue={null} onChange={this.props.handleFilterChange}>
+            <select className="navbar__dropdown-filter" defaultValue={null} onChange={this.handleFilterChange}>
               <option className='filter__option' value={null}>All Catagories</option>
               {this.state.allCategoryIds.map((category, id) => {
                   return (
