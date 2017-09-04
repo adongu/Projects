@@ -4,24 +4,24 @@ import "../../styles/stylesheets/navbar.css";
 
 const NavBar = ({ filterPerviews, isFetching, currentUser, allCategoryIds, match, requestLoading }) => {
 
-  const renderPageTitle = () => {
-    switch (match.path) {
-      case '/':
-      case '/item/:item_id':
-        return "Check the Perviews of your friends!";
-        break;
-      case '/myperviews':
-        return "My Perviews";
-        break;
-      case '/favorites':
-        return "Saved Perviews";
-        break;
-      case '/friend/:friend_id':
-        return `Friend Perviews`;
-        break;
-      default:
-        return 'Settings';
-        break;
+  const pageSettings = {
+    "/" : {
+      "title": "Check the Perviews of your friends!", "hasFilters": true
+    },
+    "/myperviews": {
+      "title": "My Perviews", "hasFilters": true
+    },
+    "/favorites": {
+      "title": "Saved Perviews", "hasFilters": true
+    },
+    "/friend/:friend_id": {
+      "title": `${currentUser.firstName} Perviews`, "hasFilters": true
+    },
+    "settings": {
+      "title": "Settings", "hasFilters": false
+    },
+    "/item/:item_id": {
+      "title": "Check the Perviews of your friends!", "hasFilters": false
     }
   }
 
@@ -33,19 +33,18 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, allCategoryIds, match
   }
 
   const renderFilters = () => {
-    if (allCategoryIds) {
+    if (allCategoryIds && match && match.path && pageSettings[match.path].hasFilters) {
       return (
         <div>
           <label className="navbar__filter">
             Filter by
             <select className="navbar__dropdown-filter" defaultValue={null} onChange={handleFilterChange}>
-              <option className='filter__option' value={null}>All Catagories</option>
-              {allCategoryIds.map((category, id) => {
+              <option className='filter__option' value={""}>All Catagories</option>
+                {allCategoryIds.map((category, id) => {
                   return (
                     <option className='filter__option' key={`category_${category.id}`}  value={category.id}>{category.displayName}</option>
                   )
                 })}
-              }
             </select>
           </label>
         </div>
@@ -57,7 +56,7 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, allCategoryIds, match
     <div className="navbar__container">
       <div className="flexrow navbar__box">
         <div className="navbar__title">
-          {renderPageTitle()}
+          {(match && pageSettings[match.path]) ? pageSettings[match.path]["title"] : ""}
         </div>
         {renderFilters()}
       </div>

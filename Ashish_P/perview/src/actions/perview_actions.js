@@ -106,9 +106,9 @@ export const createItem = (item) => dispatch => {
     })
 };
 
-export const fetchAllPerviews = () => dispatch => {
+export const fetchAllPerviews = (categoryId) => dispatch => {
   dispatch(requestLoading());
-  return APIUtil.fetchAllPerviews()
+  return APIUtil.fetchAllPerviews(categoryId)
     .then( response => {
       return dispatch(receiveAllPerviews(response.data))
     })
@@ -128,11 +128,10 @@ export const fetchItemPerviews = (itemId = null) => dispatch => {
     })
 };
 
-export const fetchMyPerviews = (categoryId = null) => dispatch => {
+export const fetchMyPerviews = (categoryId) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.fetchMyPerviews(categoryId)
     .then( response => {
-      console.log(response);
       return dispatch(receiveMyPerviews(response.data))
     })
     .catch( err => {
@@ -140,10 +139,11 @@ export const fetchMyPerviews = (categoryId = null) => dispatch => {
     })
 };
 
-export const fetchFavoritePerviews = (categoryId = null) => dispatch => {
+export const fetchFavoritePerviews = (categoryId) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.fetchFavoritePerviews(categoryId)
     .then( response => {
+      console.log('hit favorite', response);
       return dispatch(receiveFavoritePerviews(response.data))
     })
     .catch( err => {
@@ -151,7 +151,7 @@ export const fetchFavoritePerviews = (categoryId = null) => dispatch => {
     })
 };
 
-export const fetchFriendPerviews = (friendUserId, categoryId = null) => dispatch => {
+export const fetchFriendPerviews = (friendUserId, categoryId) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.fetchFriendPerviews(friendUserId, categoryId)
     .then( response => {

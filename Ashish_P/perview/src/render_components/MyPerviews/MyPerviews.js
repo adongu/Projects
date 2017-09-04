@@ -19,7 +19,7 @@ class MyPerviews extends React.Component {
   componentWillMount () {
     this.props.fetchMyPerviews();
     this.props.fetchCategoryIds();
-
+    console.log('pros', this.props);
   }
 
   componentDidMount() {

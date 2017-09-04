@@ -41,12 +41,20 @@ export const createItem = (item) => {
   })
 };
 
-export const fetchAllPerviews = () => {
-  return axios('/api')
+export const fetchAllPerviews = (categoryId) => {
+  return axios.get('/api', {
+    params: {
+      categoryId: categoryId
+    }
+  })
 }
 
-export const fetchItemPerviews = (itemId) => {
-  return axios(`/api/item/${itemId}`)
+export const fetchItemPerviews = (itemId, categoryId) => {
+  return axios.get(`/api/item/${itemId}`, {
+    params: {
+      categoryId: categoryId
+    }
+  })
 }
 
 export const fetchMyPerviews = (categoryId) => {
@@ -58,11 +66,19 @@ export const fetchMyPerviews = (categoryId) => {
 }
 
 export const fetchFavoritePerviews = (categoryId) => {
-  return axios('/api/bookmarks', categoryId)
+  return axios.get('/api/bookmarks', {
+    params: {
+      categoryId: categoryId
+    }
+  })
 }
 
 export const fetchFriendPerviews = (friendUserId, categoryId) => {
-  return axios(`/api/friend/${friendUserId}`, categoryId)
+  return axios.get(`/api/friend/${friendUserId}`, {
+    params: {
+      categoryId: categoryId
+    }
+  })
 }
 
 export const fetchNumPerviews = () => {
