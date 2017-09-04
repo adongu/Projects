@@ -26,6 +26,7 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, allCategoryIds, match
   }
 
   const handleFilterChange = (e) => {
+
     console.log('hits filter change', e.currentTarget.value);
     filterPerviews(e.currentTarget.value);
     // filterPerviews(e.currentTarget.value);
@@ -37,7 +38,7 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, allCategoryIds, match
         <div>
           <label className="navbar__filter">
             Filter by
-            <select className="navbar__dropdown-filter" defaultValue={null} onChange={this.handleFilterChange}>
+            <select className="navbar__dropdown-filter" defaultValue={null} onChange={handleFilterChange}>
               <option className='filter__option' value={null}>All Catagories</option>
               {allCategoryIds.map((category, id) => {
                   return (

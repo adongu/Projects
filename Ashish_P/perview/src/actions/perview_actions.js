@@ -132,6 +132,7 @@ export const fetchMyPerviews = (categoryId = null) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.fetchMyPerviews(categoryId)
     .then( response => {
+      console.log(response);
       return dispatch(receiveMyPerviews(response.data))
     })
     .catch( err => {

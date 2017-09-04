@@ -50,7 +50,11 @@ export const fetchItemPerviews = (itemId) => {
 }
 
 export const fetchMyPerviews = (categoryId) => {
-  return axios('/api/self', categoryId)
+  return axios.get('/api/self', {
+    params: {
+      categoryId: categoryId
+    }
+  })
 }
 
 export const fetchFavoritePerviews = (categoryId) => {
