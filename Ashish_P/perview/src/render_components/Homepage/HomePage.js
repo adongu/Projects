@@ -46,6 +46,7 @@ class HomePage extends React.Component {
     } else {
       return (
         <WidePerview
+          currentUserId = {this.props.currentUser.id}
           perviews = {this.props.allPerviews}
           bookmarkPerview = {this.props.bookmarkPerview}
           likePerview = {this.props.likePerview}

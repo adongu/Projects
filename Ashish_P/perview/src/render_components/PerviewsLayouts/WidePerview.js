@@ -5,7 +5,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { Button, ButtonToolbar } from 'react-bootstrap';
 import moment from 'moment';
 
-const WidePerview = ({ perviews, bookmarkPerview, likePerview, history }) => {
+const WidePerview = ({ currentUserId, perviews, bookmarkPerview, likePerview, history }) => {
 
   const renderStars = (rating) => {
     let stars = [1, 2, 3, 4, 5];
@@ -20,7 +20,11 @@ const WidePerview = ({ perviews, bookmarkPerview, likePerview, history }) => {
 
   const handleFriendClick = (friendId) => {
     return (e) => {
-      history.replace({ pathname: `/friend/${friendId}` });
+      if (currentUserId === friendId) {
+        history.replace({ pathname: `/myperviews` });
+      } else {
+        history.replace({ pathname: `/friend/${friendId}` });
+      }
     }
   }
 

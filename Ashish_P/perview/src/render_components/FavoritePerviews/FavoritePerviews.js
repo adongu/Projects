@@ -46,6 +46,7 @@ class FavoritePerviews extends React.Component {
     } else {
       return (
         <WidePerview
+          currentUserId = {this.props.currentUser.id}
           perviews = {this.props.perviews}
         />
       )
