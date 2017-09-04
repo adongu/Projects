@@ -106,7 +106,7 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, likePervi
         var user = perview.userDto;
         return (
           <div className="flexcolumn itemperview__perviewbox" key={`item-${perview.itemDto.id}_Perview-${perview.id}`}>
-            <div className="itemperview__timestamp">{moment(perview.ts).calendar()}</div>
+            <div className="itemperview__timestamp">{moment(perview.ts).format("MMM D")}</div>
             <div className="flexrow itemperview__userbox">
               <span className="itemperview__userimgbox">
                 <img className="itemperview__userimg" onClick={handleFriendClick(user.id)} src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>

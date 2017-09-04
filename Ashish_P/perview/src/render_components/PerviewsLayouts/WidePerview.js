@@ -81,7 +81,7 @@ const WidePerview = ({ currentUserId, perviews, bookmarkPerview, likePerview, hi
           </div>
           <div className="wideresults__perview-right">
             <div className="flexcolumn wideresults__perview-rightbox">
-              <div className="wideresults__review-time">{moment(perview.ts).calendar()}</div>
+              <div className="wideresults__review-time">{moment(perview.ts).format("MMM D")}</div>
               <div className="flexrow wideresults__review-user">
                 <div className="wideresults__review-user-icon" onClick={handleFriendClick(user.id)}>
                   <img className="wideresults__review-user-img" src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
