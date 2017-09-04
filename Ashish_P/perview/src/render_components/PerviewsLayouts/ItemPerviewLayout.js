@@ -66,7 +66,7 @@ const ItemPerviewLayout = ({ perviews, bookmarkPerview, likePerview, history }) 
               <div className="itemperview__itemprice">{item.data.lowestNewPrice.formattedAmount}</div>
               <div className="itemperview__itembuy">
                 <ButtonToolbar>
-                  <Button className="itemperview__itembuy-btn" href={item.data.detailPageUrl}>BUY AT AMAZON</Button>
+                  <Button className="itemperview__itembuy-btn" href={item.data.detailPageUrl} target="_blank">BUY AT AMAZON</Button>
                 </ButtonToolbar>
               </div>
             </div>

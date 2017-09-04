@@ -164,7 +164,22 @@ $lines-to-show: 5;
   }
 
   &reviewbox {
-
+    width: 100%;
+    padding-bottom: 10px;
+    color: #3F3F3F;
+    display: block; /* Fallback for non-webkit */
+    display: -webkit-box;
+    // height: 50px;
+    height: $review-font-size*$review-line-height*$review-lines-to-show;
+    margin: 0 auto;
+    font-size: $review-font-size;
+    font-weight: 300;
+    line-height: $review-line-height;
+    /* Fallback for non-webkit */
+    -webkit-line-clamp: $review-lines-to-show;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   &socialbox {

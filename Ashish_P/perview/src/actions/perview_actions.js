@@ -143,7 +143,6 @@ export const fetchFavoritePerviews = (categoryId) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.fetchFavoritePerviews(categoryId)
     .then( response => {
-      console.log(`hit favorite id:${categoryId}`, response);
       return dispatch(receiveFavoritePerviews(response.data))
     })
     .catch( err => {

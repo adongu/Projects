@@ -71,7 +71,7 @@ const WidePerview = ({ perviews, bookmarkPerview, likePerview, history }) => {
                 <div className="wideresults__product-price">{item.data.lowestNewPrice.formattedAmount}</div>
               </div>
               <ButtonToolbar>
-                <Button className="wideresults__product-buybtn" href={item.data.detailPageUrl}>BUY AT AMAZON</Button>
+                <Button className="wideresults__product-buybtn" href={item.data.detailPageUrl} target="_blank">BUY AT AMAZON</Button>
               </ButtonToolbar>
             </div>
           </div>
@@ -79,7 +79,9 @@ const WidePerview = ({ perviews, bookmarkPerview, likePerview, history }) => {
             <div className="flexcolumn wideresults__perview-rightbox">
               <div className="wideresults__review-time">{moment(perview.ts).calendar()}</div>
               <div className="flexrow wideresults__review-user">
-                <div className="wideresults__review-user-icon" onClick={handleFriendClick(user.id)}><img className="wideresults__review-user-img" src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/></div>
+                <div className="wideresults__review-user-icon" onClick={handleFriendClick(user.id)}>
+                  <img className="wideresults__review-user-img" src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
+                </div>
                 <div className="wideresults__review-username">{user.fullName}</div>
               </div>
               <div className="wideresults__review-stars">

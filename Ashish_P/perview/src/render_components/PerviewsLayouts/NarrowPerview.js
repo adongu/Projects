@@ -1,7 +1,7 @@
 import "../../styles/stylesheets/narrowperview.css"
 import product from "../../styles/assets/product.jpg"
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { Button, ButtonToolbar } from 'react-bootstrap';
 import moment from 'moment';
 
@@ -29,12 +29,16 @@ const NarrowPerview = ({ perviews }) => {
           <div key={`perviewindex__${i}`} className="flexcolumn narrowperviews__box">
             <div className="flexcolumn narrowperviews__productbox">
               <div className="narrowperviews__time">{moment(perview.ts).calendar()}</div>
-              <div className="narrowperviews__img"><img className="narrowperviews__productimg-photo" src={item.data.imageUrls.large.url} alt="product"/></div>
+              <div className="narrowperviews__img">
+                <Link to={`/item/${item.id}`}>
+                  <img className="narrowperviews__productimg-photo" src={item.data.imageUrls.large.url} alt="product"/>
+                </Link>
+              </div>
               <div className="narrowperviews__name">{item.data.title}</div>
               <div className="narrowperviews__price">{item.data.lowestNewPrice.formattedAmount}</div>
               <div className="flexrow narrowperviews__buybox">
                 <ButtonToolbar>
-                  <Button className="narrowperviews__buy-btn" href={item.data.detailPageUrl}>BUY AT AMAZON</Button>
+                  <Button className="narrowperviews__buy-btn" href={item.data.detailPageUrl} target="_blank">BUY AT AMAZON</Button>
                 </ButtonToolbar>
                 <div className="narrowperviews__numperviews">{perview.likes ? perview.likes : 0} perviews</div>
               </div>

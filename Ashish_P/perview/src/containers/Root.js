@@ -18,13 +18,13 @@ const Root = ({ store }) => {
        <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
           <div className="root">
             <Switch>
-              <AuthRoute component={SignInContainer} exact path="/signin" />
+              <AuthRoute component={SignInContainer} path="/signin" />
               <ProtectedRoute component={HomePageContainer} exact path="/"/>
-              <ProtectedRoute component={MyPerviewsContainer}exact path="/myperviews"/>
-              <ProtectedRoute component={FavoritePerviewsContainer}exact path="/favorites"/>
-              <ProtectedRoute component={SettingsContainer}exact path="/settings"/>
-              <ProtectedRoute component={ItemPerviewsContainer}exact path="/item/:item_id"/>
-              <ProtectedRoute component={FriendPerviewsContainer}exact path="/friend/:friend_id"/>
+              <ProtectedRoute component={MyPerviewsContainer} exact path="/myperviews"/>
+              <ProtectedRoute component={FavoritePerviewsContainer} exact path="/favorites"/>
+              <ProtectedRoute component={SettingsContainer} exact path="/settings"/>
+              <ProtectedRoute component={ItemPerviewsContainer} exact path="/item/:item_id"/>
+              <ProtectedRoute component={FriendPerviewsContainer} exact path="/friend/:friend_id"/>
               <Route render={() => (
                 <p>404 Page Not Found</p>
               )}/>

@@ -50,6 +50,7 @@ class FriendPerviews extends React.Component {
       <div className="friendperview__container">
         <NavBarContainer
           filterPerviews = {this.fetchFilteredPerviews}
+          userFriend = {this.props.perviews[0] !== undefined ? this.props.perviews[0].userDto : null}
         />
 
         <div className="friendperview__perviews">

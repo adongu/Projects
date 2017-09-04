@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import "../../styles/stylesheets/navbar.css";
 
-const NavBar = ({ filterPerviews, isFetching, currentUser, allCategoryIds, match, requestLoading }) => {
+const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, allCategoryIds, match, requestLoading }) => {
 
   const pageSettings = {
     "/" : {
@@ -15,9 +15,9 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, allCategoryIds, match
       "title": "Saved Perviews", "hasFilters": true
     },
     "/friend/:friend_id": {
-      "title": `${currentUser ? currentUser.firstName : ""} Perviews`, "hasFilters": true
+      "title": "Perview's", "hasFilters": true
     },
-    "settings": {
+    "/settings": {
       "title": "Settings", "hasFilters": false
     },
     "/item/:item_id": {
@@ -28,6 +28,19 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, allCategoryIds, match
   const handleFilterChange = (e) => {
     filterPerviews(e.currentTarget.value);
     // filterPerviews(e.currentTarget.value);
+  }
+
+  const renderUserFriend = () => {
+    if (userFriend) {
+      return (
+        <div className="flexrow navbar__userbox">
+          <span className="navbar__userimgbox">
+            <img className="navbar__userimg" src={userFriend.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
+          </span>
+          <span className="navbar__username">{userFriend.fullName}</span>
+        </div>
+      )
+    }
   }
 
   const renderFilters = () => {
@@ -54,7 +67,8 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, allCategoryIds, match
   return (
     <div className="navbar__container">
       <div className="flexrow navbar__box">
-        <div className="navbar__title">
+        <div className="flexrow navbar__title">
+          {renderUserFriend()}
           {(match && pageSettings[match.path]) ? pageSettings[match.path]["title"] : ""}
         </div>
         {renderFilters()}

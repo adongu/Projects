@@ -1,10 +1,10 @@
 .settings__ {
-  width: 100%;
-
   &container {
-    width: 980px;
+    max-width: 980px;
     margin: auto;
     color: red;
+    display: flex;
+    flex-wrap: wrap;
   }
 
   &row-top,
@@ -17,8 +17,15 @@
   &invite,
   &networks,
   &perviews {
-    width: 50%;
+    width: 480px;
     margin: auto;
+    height: 150px;
+    display: block;
+    margin-bottom: 10px;
+    margin-bottom: 20px;
+    border: 1px #D6D6D6 solid;
+    box-shadow: 0px 2px 2px 1px #EAEAEA;
+    border-radius: 7px;
   }
 
   &portrait {
