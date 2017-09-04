@@ -70,27 +70,33 @@ class CreatePerviewModal extends React.Component {
     });
   }
 
-  renderRatingTip () {
-    if (this.state.ratingTip && this.state.ratingHover) {
-      console.log("render rating tip");
-      return (
-        <div className="createperview__ratingtipbox">
-          <div className="createperview__ratingtip">{this.state.ratingTip[this.state.ratingHover]}</div>
-          <div className="createperview__ratingtipbox-triangle"></div>
-        </div>
-      )
-    }
-  }
+  // renderRatingTip () {
+  //   if (this.state.ratingTip && this.state.ratingHover) {
+  //     console.log("render rating tip");
+  //     return (
+  //       <div className="createperview__ratingtipbox">
+  //         <div className="createperview__ratingtip">{this.state.ratingTip[this.state.ratingHover]}</div>
+  //         <div className="createperview__ratingtipbox-triangle"></div>
+  //       </div>
+  //     )
+  //   }
+  // }
 
+// -${this.state.ratingHover === ele ? 'active' : ''}
   renderReviewStars (ratings) {
     let stars = [1, 2, 3, 4, 5];
     return stars.map((ele)=>{
       return (
         <span key={`star_rating_${ele}`} className={ele <= ratings ? 'active_star' : 'no_star'} onClick={() => {this.setState({ rating: ele })}}
-        onMouseOver={()=>{ this.setState({ rating: ele, ratingHover: ele }) }}
-        onMouseLeave={()=>{ this.setState({ rating: this.state.rating, ratingHover: 0 })}}
         >
-          <i className="fa fa-star createperview__rating-star" aria-hidden="true"></i>
+          <div className={`createperview__ratingtipbox ${this.state.ratingHover === ele ? 'active' : ''}`}>
+            <div className="createperview__ratingtip">{this.state.ratingTip[ele]}</div>
+            <div className="createperview__ratingtipbox-triangle"></div>
+          </div>
+          <i onMouseOver={()=>{ this.setState({ rating: ele, ratingHover: ele }) }}
+            onMouseLeave={()=>{ this.setState({ rating: this.state.rating, ratingHover: 0 })}}
+            className="fa fa-star createperview__rating-star" aria-hidden="true">
+          </i>
         </span>
       )
     })
@@ -173,8 +179,7 @@ class CreatePerviewModal extends React.Component {
                 <div className="createperview__review-rating-msg">
                   Perview this Product!
                 </div>
-                <div className="createperview__review-rating-stars">
-                  {this.renderRatingTip()}
+                <div className="flexrow createperview__review-rating-stars">
                   {this.renderReviewStars(this.state.rating)}
                 </div>
               </div>
