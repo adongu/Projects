@@ -26,13 +26,12 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, allCategoryIds, match
   }
 
   const handleFilterChange = (e) => {
-
-    console.log('hits filter change', e.currentTarget.value);
     filterPerviews(e.currentTarget.value);
     // filterPerviews(e.currentTarget.value);
   }
 
   const renderFilters = () => {
+    console.log(allCategoryIds);
     if (allCategoryIds && match && match.path && pageSettings[match.path].hasFilters) {
       return (
         <div>
