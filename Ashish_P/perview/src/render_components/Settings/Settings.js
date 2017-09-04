@@ -33,12 +33,12 @@ class Settings extends React.Component{
           <NavBar />
           <div className="flexcolumn settings__container">
             <section className="flexrow settings__row-top">
-              <div className="flexrow settings__user">
-                <div className="settings_portrait">
-                  <img className="settings__userimg" src={currentUser.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"></img>
+              <div className="flexrow settings__userbox">
+                <div className="settings_userimgbox">
+                  <img className="settings__userimg" src={currentUser.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User" />
                 </div>
-                <div className="settings__name">{currentUser.firstName}
-                  {currentUser.lastName}
+                <div className="settings__username">
+                  {currentUser.fullName}
                 </div>
               </div>
               <span className="settings__invite">
