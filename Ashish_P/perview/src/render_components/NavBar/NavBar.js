@@ -44,7 +44,6 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, allCatego
   }
 
   const renderFilters = () => {
-    console.log(allCategoryIds);
     if (allCategoryIds && match && match.path && pageSettings[match.path].hasFilters) {
       return (
         <div>

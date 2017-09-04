@@ -18,6 +18,15 @@ class CreatePerviewModal extends React.Component {
       itemId: null,
       tags: '',
       rating: 0,
+      ratingHover: 0,
+      ratingTip: {
+        0: "",
+        1: "Hate It!",
+        2: "Meh",
+        3: "Just Okay",
+        4: "Great",
+        5: "Love It!"
+      },
       asin: null,
       item: {},
       perviewers: []
@@ -47,19 +56,41 @@ class CreatePerviewModal extends React.Component {
       itemId: null,
       tags: '',
       rating: 0,
+      ratingHover: 0,
+      ratingTip: {
+        0: "",
+        1: "Hate It!",
+        2: "Meh",
+        3: "Just Okay",
+        4: "Great",
+        5: "Love It!"
+      },
       // asin: '',
       perviewers: []
     });
+  }
+
+  renderRatingTip () {
+    if (this.state.ratingTip && this.state.ratingHover) {
+      console.log("render rating tip");
+      return (
+        <div className="createperview__ratingtipbox">
+          <div className="createperview__ratingtip">{this.state.ratingTip[this.state.ratingHover]}</div>
+          <div className="createperview__ratingtipbox-triangle"></div>
+        </div>
+      )
+    }
   }
 
   renderReviewStars (ratings) {
     let stars = [1, 2, 3, 4, 5];
     return stars.map((ele)=>{
       return (
-        <span key={ele} className={ele <= ratings ? 'active_star' : 'no_star'} onClick={() => {this.setState({ rating: ele })}}
-        onMouseMove={()=>{ this.setState({ rating: ele }) }}
-        onMouseLeave={()=>{ this.setState({ rating: this.state.rating })}}>
-        <i className="fa fa-star createperview__rating-star" aria-hidden="true"></i>
+        <span key={`star_rating_${ele}`} className={ele <= ratings ? 'active_star' : 'no_star'} onClick={() => {this.setState({ rating: ele })}}
+        onMouseOver={()=>{ this.setState({ rating: ele, ratingHover: ele }) }}
+        onMouseLeave={()=>{ this.setState({ rating: this.state.rating, ratingHover: 0 })}}
+        >
+          <i className="fa fa-star createperview__rating-star" aria-hidden="true"></i>
         </span>
       )
     })
@@ -143,6 +174,7 @@ class CreatePerviewModal extends React.Component {
                   Perview this Product!
                 </div>
                 <div className="createperview__review-rating-stars">
+                  {this.renderRatingTip()}
                   {this.renderReviewStars(this.state.rating)}
                 </div>
               </div>
