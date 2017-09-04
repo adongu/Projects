@@ -97,10 +97,12 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
     case RECEIVE_ERRORS:
       let errors = action.errors;
       return Object.assign({}, oldState, {
+        requestLoading: false,
         errors: errors
       });
     default:
       return merge(oldState, {
+        requestLoading: false,
         errors: []
       });
   }

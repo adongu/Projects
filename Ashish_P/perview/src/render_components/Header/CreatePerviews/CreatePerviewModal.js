@@ -85,7 +85,6 @@ class CreatePerviewModal extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.validateRedirect();
     if(this.props.currentUser){
       let formData = new FormData();
       formData.append("itemId", this.state.itemId);

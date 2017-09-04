@@ -21,7 +21,7 @@ export const createPerview = (formData) => {
     headers: {
       'Content-Type': 'multipart/form-data',
     },
-    data: formData,
+    data: {UserPerview: formData},
     config
   })
   .then(response => {

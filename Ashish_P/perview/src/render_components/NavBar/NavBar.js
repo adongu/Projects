@@ -15,7 +15,7 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, allCategoryIds, match
       "title": "Saved Perviews", "hasFilters": true
     },
     "/friend/:friend_id": {
-      "title": `${currentUser.firstName} Perviews`, "hasFilters": true
+      "title": `${currentUser ? currentUser.firstName : ""} Perviews`, "hasFilters": true
     },
     "settings": {
       "title": "Settings", "hasFilters": false
