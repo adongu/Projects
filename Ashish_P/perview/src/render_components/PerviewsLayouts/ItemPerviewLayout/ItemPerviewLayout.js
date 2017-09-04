@@ -1,8 +1,9 @@
-import "../../styles/stylesheets/itemperviewlayout.css"
+import "../../../styles/stylesheets/itemperviewlayout.css"
+import moment from 'moment';
 import React from 'react';
 import { Button, ButtonToolbar } from 'react-bootstrap';
 import { Link, withRouter } from 'react-router-dom';
-import moment from 'moment';
+import ItemPerviewModal from './ItemPerviewModal';
 
 const ItemPerviewLayout = ({ perviews, bookmarkPerview, likePerview, history }) => {
 
@@ -51,6 +52,20 @@ const ItemPerviewLayout = ({ perviews, bookmarkPerview, likePerview, history }) 
     })
   }
 
+  const renderModalLink = (perview) => {
+    if (perview.tags && perview.tags.length > 25 ) {
+      return (
+        <ItemPerviewModal
+          perview = {perview}
+          handleSaveClick = {handleSaveClick}
+          handleFriendClick = {handleFriendClick}
+          handleLikeClick = {handleLikeClick}
+          renderStars = {renderStars}
+        />
+      )
+    }
+  }
+
   const renderItemSection = () => {
     if (perviews && perviews.length > 0) {
       let item = perviews[0].itemDto;
@@ -97,7 +112,10 @@ const ItemPerviewLayout = ({ perviews, bookmarkPerview, likePerview, history }) 
             <div className="itemperview__ratingbox">
               {renderStars(perview.rating)}
             </div>
-            <div className="itemperview__reviewbox">{perview.tags}</div>
+            <div className="itemperview__reviewbox">
+              {perview.tags}
+              {renderModalLink(perview)}
+            </div>
             <div className="itemperview__socialbox">
               <span className="itemperview__social-bookmark" onClick={handleSaveClick(perview.id)}>
                 <i className="fa fa-bookmark-o itemperview__icon-bookmark" aria-hidden="true"></i>

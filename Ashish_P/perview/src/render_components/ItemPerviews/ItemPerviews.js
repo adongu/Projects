@@ -3,7 +3,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import NavBarContainer from '../../containers/NavBarContainer.js';
 import WidePerview from "../PerviewsLayouts/WidePerview";
-import ItemPerviewLayout from "../PerviewsLayouts/ItemPerviewLayout";
+import ItemPerviewLayout from "../PerviewsLayouts/ItemPerviewLayout/ItemPerviewLayout";
 
 class ItemPerviews extends React.Component {
   constructor (props) {
@@ -21,7 +21,7 @@ class ItemPerviews extends React.Component {
   componentWillMount () {
     this.props.fetchItemPerviews(Number(this.props.match.params.item_id));
     this.props.fetchCategoryIds();
-    
+
     this.setState({
       itemId: Number(this.props.match.params.item_id)
     });
