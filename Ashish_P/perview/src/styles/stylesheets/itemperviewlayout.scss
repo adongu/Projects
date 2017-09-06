@@ -1,7 +1,10 @@
-// $container-width: 980px;
-$font-size: 15px;
-$line-height: 1.2;
-$lines-to-show: 5;
+$title-font-size: 15px;
+$title-line-height: 1.4;
+$title-lines-to-show: 5;
+
+$review-font-size: 15px;
+$review-line-height: 1.2;
+$review-lines-to-show: 5;
 
 .itemperview__{
   &layoutcontainer {
@@ -56,13 +59,13 @@ $lines-to-show: 5;
     width: 100%;
     padding-bottom: 10px;
     color: darkgray;
-    height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
+    height: $title-font-size*$title-line-height*$title-lines-to-show; /* Fallback for non-webkit */
     margin: 0 auto;
     margin-bottom: 20px;
-    font-size: $font-size;
+    font-size: $title-font-size;
     font-weight: 300;
-    line-height: $line-height;
-    -webkit-line-clamp: $lines-to-show;
+    line-height: $title-line-height;
+    -webkit-line-clamp: $title-lines-to-show;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
