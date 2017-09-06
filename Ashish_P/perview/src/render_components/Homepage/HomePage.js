@@ -19,8 +19,6 @@ class HomePage extends React.Component {
 
   componentWillMount() {
     this.props.fetchAllPerviews()
-    this.props.fetchCategoryIds();
-
   }
 
   componentDidMount() {
@@ -60,6 +58,7 @@ class HomePage extends React.Component {
     <div className="homepage__container">
       <NavBarContainer
         filterPerviews = {this.fetchFilteredPerviews}
+        categories = {this.props.categories}
       />
 
       <div className="homepage__perviews">

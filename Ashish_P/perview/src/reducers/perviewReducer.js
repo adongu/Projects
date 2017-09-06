@@ -5,7 +5,10 @@ const _nullPerviews = Object.freeze({
   requestLoading: false,
   selectedItem: {},
   categoryIds: [],
-  allPerviews: [],
+  allPerviews: {
+    categories: [],
+    perviews: []
+  },
   itemPerviews: {
     item: {},
     perviews: []
@@ -36,7 +39,7 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
         requestLoading: true
       });
       case RECEIVE_PERVIEW:
-      newState.allPerviews.unshift(action.perview);
+      newState.allPerviews.perviews.unshift(action.perview);
       if (action.perview.id === newState.itemPerviews.item.id) {
         newState.itemPerviews.perviews.unshift(action.perview);
       }
@@ -46,7 +49,10 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
       });
     case RECEIVE_ALL_PERVIEWS:
       return Object.assign({}, newState, {
-        allPerviews: action.allPerviews.reverse(),
+        allPerviews: {
+          perviews: action.allPerviews.perviews.reverse(),
+          categories: action.allPerviews.categories
+        } ,
         requestLoading: false,
         errors: []
       });

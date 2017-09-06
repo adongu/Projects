@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import "../../styles/stylesheets/navbar.css";
 
-const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, allCategoryIds, match, requestLoading }) => {
+const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, categories, match, requestLoading }) => {
 
   const pageSettings = {
     "/" : {
@@ -44,14 +44,14 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, allCatego
   }
 
   const renderFilters = () => {
-    if (allCategoryIds && match && match.path && pageSettings[match.path].hasFilters) {
+    if (categories && match && match.path && pageSettings[match.path].hasFilters) {
       return (
         <div>
           <label className="navbar__filter">
             Filter by
             <select className="navbar__dropdown-filter" defaultValue={null} onChange={handleFilterChange}>
               <option className='filter__option' value={""}>All Catagories</option>
-                {allCategoryIds.map((category, id) => {
+                {categories.map((category, id) => {
                   return (
                     <option className='filter__option' key={`category_${category.id}`}  value={category.id}>{category.displayName}</option>
                   )
