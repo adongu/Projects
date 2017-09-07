@@ -141,7 +141,7 @@ class SearchItemBar extends React.Component {
 
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
-      placeholder: 'Search on Amazon',
+      placeholder: 'Search Perview',
       value,
       onChange: this.onChange,
       type: 'search'
