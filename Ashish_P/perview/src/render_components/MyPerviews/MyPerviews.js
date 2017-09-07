@@ -10,16 +10,19 @@ class MyPerviews extends React.Component {
     super(props);
 
     this.state = {
-      requestLoading: false
+      requestLoading: false,
+      categories: []
     }
 
     this.fetchFilteredPerviews = this.fetchFilteredPerviews.bind(this);
   }
 
   componentWillMount () {
-    this.props.fetchMyPerviews();
-    this.props.fetchCategoryIds();
-    console.log('pros', this.props);
+    this.props.fetchMyPerviews()
+    .then(() => {
+      this.setState({ categories: this.props.categories });
+    });
+    console.log(this.state.categories);
   }
 
   componentDidMount() {
@@ -41,6 +44,7 @@ class MyPerviews extends React.Component {
     return (
       <div className="myperview__container">
         <NavBarContainer
+          categories = {this.state.categories }
           filterPerviews = {this.fetchFilteredPerviews}
         />
 

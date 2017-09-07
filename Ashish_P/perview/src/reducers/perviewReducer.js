@@ -40,6 +40,7 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
       });
       case RECEIVE_PERVIEW:
       newState.allPerviews.perviews.unshift(action.perview);
+      newState.myPerviews.perviews.unshift(action.perview);
       if (action.perview.id === newState.itemPerviews.item.id) {
         newState.itemPerviews.perviews.unshift(action.perview);
       }
@@ -69,15 +70,20 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
         errors: []
       });
     case RECEIVE_MY_PERVIEWS:
-      // newState.myPerviews.categories.unshift(action.myPerviews.categories);
       return Object.assign({}, newState, {
-        myPerviews: action.myPerviews,
+        myPerviews: {
+          perviews: action.myPerviews.perviews,
+          categories: action.myPerviews.categories
+        },
         requestLoading: false,
         errors: []
       });
     case RECEIVE_FAVORITE_PERVIEWS:
       return Object.assign({}, newState, {
-        favoritePerviews: action.favoritePerviews,
+        favoritePerviews: {
+          perviews: action.favoritePerviews.perviews,
+          categories: action.favoritePerviews.categories
+        },
         requestLoading: false,
         errors: []
       });

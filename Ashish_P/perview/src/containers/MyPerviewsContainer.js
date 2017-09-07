@@ -8,19 +8,16 @@ const mapStateToProps = ({ session, perview, findItem }, ownProps) => {
   return {
     currentUser: session.currentUser,
     isFetching: session.isFetching,
-    requestLoading: perview.requestLoading,
-    results: findItem.itemResults,
+    categories: perview.myPerviews.categories,
     perviews: perview.myPerviews.perviews,
+    requestLoading: perview.requestLoading
   }
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     fetchUser: () => dispatch(fetchUser()),
-    createPerview: (formData) => dispatch(createPerview(formData)),
-    fetchItemResults: (keywords) => dispatch(fetchItemResults(keywords)),
     fetchMyPerviews: (categoryId) => dispatch(fetchMyPerviews(categoryId)),
-    fetchCategoryIds: () => dispatch(fetchCategoryIds()),
     clearErrors: () => dispatch(clearErrors())
   }
 }

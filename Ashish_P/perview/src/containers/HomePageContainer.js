@@ -12,7 +12,6 @@ const mapStateToProps = ({ session, perview, findItem }, ownProps) => {
     currentUser: session.currentUser,
     requestLoading: perview.requestLoading,
     allPerviews: perview.allPerviews.perviews,
-    categories: perview.allPerviews.categories,
     results: findItem.itemResults
   }
 };

@@ -10,17 +10,17 @@ class FavoritePerviews extends React.Component {
 
     this.state = {
       requestLoading: false,
-      categoryIds: []
+      categories: []
     }
 
     this.fetchFilteredPerviews = this.fetchFilteredPerviews.bind(this);
   }
 
   componentWillMount () {
-    this.props.fetchFavoritePerviews();
-    this.props.fetchCategoryIds();
-
-    // .then(() => this.setState({ categoryIds: this.props.categoryIds}))
+    this.props.fetchFavoritePerviews()
+    .then(() => {
+      this.setState({ categories: this.props.categories });
+    })
   }
 
   componentDidMount() {
@@ -57,6 +57,7 @@ class FavoritePerviews extends React.Component {
     return (
     <div className="favoriteperview__container">
       <NavBarContainer
+        categories = {this.state.categories}
         filterPerviews = {this.fetchFilteredPerviews}
       />
 
