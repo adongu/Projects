@@ -50,10 +50,10 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, categorie
           <label className="navbar__filter">
             Filter by
             <select className="navbar__dropdown-filter" defaultValue={null} onChange={handleFilterChange}>
-              <option className='filter__option' value={""}>All Catagories</option>
+              <option default={true} className='navbar__filteroption' value={""}>All Catagories</option>
                 {categories.map((category, id) => {
                   return (
-                    <option className='filter__option' key={`category_${category.id}`}  value={category.id}>{category.displayName}</option>
+                    <option className='navbar__filteroption' key={`category_${category.id}`}  value={category.id}>{category.displayName}</option>
                   )
                 })}
             </select>

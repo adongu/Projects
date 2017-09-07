@@ -2,7 +2,7 @@ import "../../styles/stylesheets/favoriteperview.css";
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import NavBarContainer from '../../containers/NavBarContainer.js';
-import WidePerview from "../PerviewsLayouts/WidePerview";
+import NarrowPerview from "../PerviewsLayouts/NarrowPerview";
 
 class FavoritePerviews extends React.Component {
   constructor (props) {
@@ -45,8 +45,7 @@ class FavoritePerviews extends React.Component {
       )
     } else {
       return (
-        <WidePerview
-          currentUserId = {this.props.currentUser.id}
+        <NarrowPerview
           perviews = {this.props.perviews}
         />
       )

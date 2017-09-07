@@ -5,7 +5,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { Button, ButtonToolbar } from 'react-bootstrap';
 import moment from 'moment';
 
-const NarrowPerview = ({ perviews }) => {
+const NarrowPerview = ({ perviews, bookmarkPerview, likePerview, history  }) => {
 
   const renderStars = (ratings) => {
     let stars = [1, 2, 3, 4, 5];
