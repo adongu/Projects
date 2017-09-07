@@ -142,7 +142,9 @@ class CreatePerviewModal extends React.Component {
 
         })
         this.hideModal();
-        this.props.history.replace({ pathname: '/' });
+        if (this.props.history.location.pathname !== '/' ) {
+          this.props.history.replace({ pathname: '/' });
+        }
       }
     } else {
       // make user go back to signin
