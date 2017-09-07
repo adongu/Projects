@@ -7,6 +7,7 @@ import { fetchCategoryIds, createPerview, fetchFriendPerviews, clearErrors } fro
 const mapStateToProps = ({ session, perview, findItem }, ownProps) => {
   return {
     currentUser: session.currentUser,
+    categories: session.currentUser,
     isFetching: session.isFetching,
     requestLoading: perview.requestLoading,
     perviews: perview.friendPerviews.perviews,

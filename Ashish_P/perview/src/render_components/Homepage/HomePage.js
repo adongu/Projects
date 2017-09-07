@@ -56,10 +56,7 @@ class HomePage extends React.Component {
   render() {
     return (
     <div className="homepage__container">
-      <NavBarContainer
-        filterPerviews = {this.fetchFilteredPerviews}
-        categories = {this.props.categories}
-      />
+      <NavBarContainer />
 
       <div className="homepage__perviews">
         {this.renderComponents()}
