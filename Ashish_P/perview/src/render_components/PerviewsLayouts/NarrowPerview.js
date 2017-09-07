@@ -34,7 +34,9 @@ const NarrowPerview = ({ perviews, bookmarkPerview, likePerview, history  }) => 
                   <img className="narrowperviews__productimg-photo" src={item.data.imageUrls.large.url} alt="product"/>
                 </Link>
               </div>
-              <div className="narrowperviews__name">{item.data.title}</div>
+              <Link to={`/item/${item.id}`}>
+                {item.data.title}
+              </Link>
               <div className="narrowperviews__price">{item.data.lowestNewPrice.formattedAmount}</div>
               <div className="flexrow narrowperviews__buybox">
                 <ButtonToolbar>

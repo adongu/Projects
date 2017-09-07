@@ -105,6 +105,7 @@ class Header extends React.Component {
         createItem={this.props.createItem}
         createPerview={this.props.createPerview}
         selectedItem={this.props.selectedItem}
+        history={this.props.history}
       />
     )
   }

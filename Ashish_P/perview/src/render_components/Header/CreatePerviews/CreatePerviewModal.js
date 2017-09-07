@@ -139,8 +139,10 @@ class CreatePerviewModal extends React.Component {
           itemId: null,
           tags: '',
           rating: 0
+
         })
         this.hideModal();
+        this.props.history.replace({ pathname: '/' });
       }
     } else {
       // make user go back to signin
@@ -200,6 +202,7 @@ class CreatePerviewModal extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <ButtonToolbar>
         <button className="createperview__btn" onClick={this.showModal}>

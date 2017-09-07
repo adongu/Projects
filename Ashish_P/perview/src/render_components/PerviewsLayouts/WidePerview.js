@@ -70,7 +70,9 @@ const WidePerview = ({ currentUserId, perviews, bookmarkPerview, likePerview, hi
                 </Link>
             </div>
             <div className="flexcolumn wideresults__perview-left-info">
-              <div className="wideresults__product-title">{item.data.title}</div>
+              <Link to={`/item/${item.id}`}>
+                {item.data.title}
+              </Link>
               <div className="flexrow wideresults__product-info">
                 <div className="wideresults__product-price">{item.data.lowestNewPrice.formattedAmount}</div>
               </div>
@@ -86,7 +88,9 @@ const WidePerview = ({ currentUserId, perviews, bookmarkPerview, likePerview, hi
                 <div className="wideresults__review-user-icon" onClick={handleFriendClick(user.id)}>
                   <img className="wideresults__review-user-img" src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
                 </div>
-                <div className="wideresults__review-username">{user.fullName}</div>
+                <a className="wideresults__review-username" onClick={handleFriendClick(user.id)}>
+                  {user.fullName}
+                </a>
               </div>
               <div className="wideresults__review-stars">
                 {renderStars(perview.rating)}
