@@ -215,13 +215,17 @@ $lines-to-show: 5;
   //   cursor: pointer;
   // }
 
-  &review-icon-save,
+  &review-icon-bookmark,
   &review-icon-like {
     color: #E9E9E9;
     text-shadow: 0px 0px 1px #000;
   }
+  &review-icon-bookmark:hover,
+  &review-icon-like:hover {
+    cursor: pointer;
+  }
 
-  &review-icon-save.active,
+  &review-icon-bookmark.active,
   &review-icon-like.active {
     color: #6E96C8;
     transition: ease .2s;
@@ -233,7 +237,7 @@ $lines-to-show: 5;
   }
 
   &review {
-    &-save,
+    &-bookmark,
     &-like,
     &-share {
       color: gray;

@@ -10,6 +10,7 @@ class ItemPerviews extends React.Component {
     super(props);
 
     this.state = {
+      fetchingUpdate: false,
       requestLoading: false,
       categoryIds: [],
       itemId: null
@@ -20,7 +21,6 @@ class ItemPerviews extends React.Component {
 
   componentWillMount () {
     this.props.fetchItemPerviews(Number(this.props.match.params.item_id));
-    this.props.fetchCategoryIds();
 
     this.setState({
       itemId: Number(this.props.match.params.item_id)
@@ -29,21 +29,33 @@ class ItemPerviews extends React.Component {
   }
 
   componentDidMount() {
+    console.log('did mount', this.props);
   }
 
   componentWillReceiveProps (nextProps) {
-    if (nextProps.requestLoading !== this.props.requestLoading) {
-      this.setState({
-        requestLoading: nextProps.requestLoading
-      });
-    }
+    // if (nextProps.requestLoading !== this.props.requestLoading) {
+    //   this.setState({
+    //     requestLoading: nextProps.requestLoading
+    //   });
+    // }
 
     if (this.props.match.params.item_id !== nextProps.match.params.item_id) {
-      this.props.fetchItemPerviews(Number(nextProps.match.params.item_id));
+      nextProps.fetchItemPerviews(Number(nextProps.match.params.item_id));
 
       this.setState({
         itemId: Number(nextProps.match.params.item_id)
       });
+    }
+
+    if (nextProps.fetchingUpdate !== this.props.fetchingUpdate) {
+      console.log('hits');
+      this.setState({
+        fetchingUpdate: nextProps.fetchingUpdate
+      })
+
+      // if (this.state.fetchingUpdate) {
+        nextProps.fetchItemPerviews(Number(nextProps.match.params.item_id));
+      // }
     }
   }
 
@@ -61,6 +73,9 @@ class ItemPerviews extends React.Component {
         <ItemPerviewLayout
           perviews = {this.props.perviews}
           bookmarkPerview = {this.props.bookmarkPerview}
+          unbookmarkPerview = {this.props.unbookmarkPerview}
+          likePerview = {this.props.likePerview}
+          unlikePerview = {this.props.unlikePerview}
           history = {this.props.history}
         />
       )

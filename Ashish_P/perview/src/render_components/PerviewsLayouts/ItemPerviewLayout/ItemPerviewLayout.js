@@ -5,7 +5,7 @@ import { Button, ButtonToolbar } from 'react-bootstrap';
 import { Link, withRouter } from 'react-router-dom';
 import ItemPerviewModal from './ItemPerviewModal';
 
-const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, likePerview, history }) => {
+const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, history }) => {
 
   const handleFriendClick = (friendId) => {
     return (e) => {
@@ -17,30 +17,23 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, likePervi
     }
   }
 
-  const handleSaveClick = (perviewId) => {
+  const handleSaveClick = (perview) => {
     return e => {
-      if (e.currentTarget.className === 'itemperview__social-icon') {
-        e.currentTarget.className = 'itemperview__social-icon active';
+      if (perview && perview.bookmarkedByLoggedInUser) {
+        unbookmarkPerview(perview.id)
       } else {
-        e.currentTarget.className = 'itemperview__social-icon';
-      }
-
-      if (bookmarkPerview) {
-        bookmarkPerview(perviewId);
+        bookmarkPerview(perview.id)
       }
     }
   }
 
-  const handleLikeClick = (perviewId) => {
+  const handleLikeClick = (perview) => {
     return e => {
-      if (e.currentTarget.className === 'itemperview__social-icon') {
-        e.currentTarget.className = 'itemperview__social-icon active';
+      console.log('hit like', perview);
+      if (perview && perview.likedByLoggedInUser) {
+        unlikePerview(perview.id);
       } else {
-        e.currentTarget.className = 'itemperview__social-icon';
-      }
-
-      if (likePerview) {
-        likePerview(perviewId);
+        likePerview(perview.id);
       }
     }
   }
@@ -57,7 +50,7 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, likePervi
   }
 
   const renderModalLink = (perview) => {
-    if (perview.tags && perview.tags.length > 25 ) {
+    if (perview.tags && perview.tags.length + "" > 25 ) {
       return (
         <ItemPerviewModal
           perview = {perview}
@@ -121,11 +114,11 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, likePervi
               {renderModalLink(perview)}
             </div>
             <div className="itemperview__socialbox">
-              <span className="itemperview__social-bookmark" onClick={handleSaveClick(perview.id)}>
-                <i className="fa fa-bookmark-o itemperview__icon-bookmark" aria-hidden="true"></i>
+              <span className="itemperview__social-bookmark" onClick={handleSaveClick(perview)}>
+                <i className={`fa fa-bookmark-o itemperview__icon-bookmark ${perview.bookmarkedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
               </span>
-              <span className="itemperview__social-like" onClick={handleLikeClick(perview.id)}>
-                <i className="fa fa-heart-o itemperview__icon-like" aria-hidden="true"></i>
+              <span className="itemperview__social-like" >
+                <i onClick={handleLikeClick(perview)} className={`fa fa-heart-o itemperview__icon-like ${perview.likedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
               </span>
             </div>
           </div>

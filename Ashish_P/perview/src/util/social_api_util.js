@@ -6,9 +6,10 @@ var config = {
 };
 
 export const likePerview = (perviewId) => {
+  console.log(perviewId);
   return axios({
     method: 'POST',
-    url: `api/${perviewId}/like`,
+    url: `/api/${perviewId}/like`,
     config
   })
 }
@@ -16,15 +17,15 @@ export const likePerview = (perviewId) => {
 export const bookmarkPerview = (perviewId) => {
   return axios({
     method: 'POST',
-    url: `api/${perviewId}/bookmark`,
+    url: `/api/${perviewId}/bookmark`,
     config
   })
 }
 
 export const unlikePerview = (perviewId) => {
-  return axios.post(`api/${perviewId}/unlike`)
+  return axios.post(`/api/${perviewId}/unlike`)
 }
 
 export const unbookmarkPerview = (perviewId) => {
-  return axios.post(`api/${perviewId}/unbookmark`)
+  return axios.post(`/api/${perviewId}/unbookmark`)
 }

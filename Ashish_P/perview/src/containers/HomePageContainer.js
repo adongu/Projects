@@ -23,10 +23,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     fetchResults: (keywords) => dispatch(fetchItemResults(keywords)),
     fetchAllPerviews: (categoryId) => dispatch(fetchAllPerviews(categoryId)),
     fetchCategoryIds: () => dispatch(fetchCategoryIds()),
-    likePerview: (perviewId) => dispatch(likePerview(perviewId)),
-    unlikePerview: (perviewId) => dispatch(unlikePerview(perviewId)),
     bookmarkPerview: (perviewId) => dispatch(bookmarkPerview(perviewId)),
     unbookmarkPerview: (perviewId) => dispatch(unbookmarkPerview(perviewId)),
+    likePerview: (perviewId) => dispatch(likePerview(perviewId)),
+    unlikePerview: (perviewId) => dispatch(unlikePerview(perviewId)),
     clearErrors: () => dispatch(clearErrors())
   }
 }

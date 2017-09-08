@@ -32,21 +32,14 @@ const WidePerview = ({ fetchingUpdate, currentUserId, perviews, bookmarkPerview,
     return e => {
       if (perview && perview.bookmarkedByLoggedInUser) {
         unbookmarkPerview(perview.id)
-        // .then(() => {
-        //   e.currentTarget.className = "fa fa-bookmark wideresults__review-icon-save"
-        // })
       } else {
         bookmarkPerview(perview.id)
-        // .then(() => {
-        //   e.currentTarget.className = "fa fa-bookmark wideresults__review-icon-save active"
-        // })
       }
     }
   }
 
   const handleLikeClick = (perview) => {
     return e => {
-      e.persist();
       if (perview && perview.likedByLoggedInUser) {
         unlikePerview(perview.id);
       } else {
@@ -101,7 +94,7 @@ const WidePerview = ({ fetchingUpdate, currentUserId, perviews, bookmarkPerview,
 
                 <div className="flexrow wideresults__review-social">
                   <span className="wideresults__review-social-icon" >
-                    <i onClick={handleSaveClick(perview)} className={`fa fa-bookmark wideresults__review-icon-save ${perview.bookmarkedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
+                    <i onClick={handleSaveClick(perview)} className={`fa fa-bookmark wideresults__review-icon-bookmark ${perview.bookmarkedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
                   </span>
                   <span className="wideresults__review-social-icon">
                     <i onClick={handleLikeClick(perview)} className={`fa fa-heart wideresults__review-icon-like ${perview.likedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>

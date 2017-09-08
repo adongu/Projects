@@ -123,6 +123,7 @@ $review-lines-to-show: 5;
     margin-left: 7px;
     margin-right: 7px;
     border: 1px #D6D6D6 solid;
+    background: #E9E9E9;
     box-shadow: 0px 2px 2px 1px #EAEAEA;
     border-radius: 7px;
     align-self: flex-start;
@@ -147,7 +148,7 @@ $review-lines-to-show: 5;
 
   &userimg {
     width: 100%;
-    max-height: 50px;
+    height: 38px;
     overflow: hidden;
     border-radius: 50%;
   }
@@ -193,16 +194,27 @@ $review-lines-to-show: 5;
 
   }
 
-  &icon-bookmark {
-
-  }
 
   &social-like {
 
   }
 
+  &icon-bookmark,
   &icon-like {
+    color: #E9E9E9;
+    text-shadow: 0px 0px 1px #000;
+  }
 
+  &icon-bookmark:hover,
+  &icon-like:hover {
+    cursor: pointer;
+  }
+
+  &icon-bookmark.active,
+  &icon-like.active {
+    color: #6E96C8;
+    transition: ease .2s;
+    text-shadow: 0px 0px 0px #E9E9E9;
   }
 
 

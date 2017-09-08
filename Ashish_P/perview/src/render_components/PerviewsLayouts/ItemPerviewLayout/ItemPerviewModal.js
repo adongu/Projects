@@ -56,11 +56,11 @@ class ItemPerviewModal extends React.Component {
               </div>
               <div className="itemperview__reviewbox">{perview.tags}</div>
               <div className="itemperview__socialbox">
-                <span className="itemperview__social-bookmark" onClick={this.props.handleSaveClick(perview.id)}>
-                  <i className="fa fa-bookmark-o itemperview__icon-bookmark" aria-hidden="true"></i>
+                <span className="itemperview__social-bookmark" onClick={this.props.handleSaveClick(perview)}>
+                  <i className={`fa fa-heart-o itemperview__icon-like ${perview.bookmarkedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
                 </span>
-                <span className="itemperview__social-like" onClick={this.props.handleLikeClick(perview.id)}>
-                  <i className="fa fa-heart-o itemperview__icon-like" aria-hidden="true"></i>
+                <span className="itemperview__social-like" onClick={this.props.handleLikeClick(perview)}>
+                  <i className={`fa fa-heart-o itemperview__icon-like ${perview.likedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
                 </span>
               </div>
             </div>
