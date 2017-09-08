@@ -5,7 +5,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { Button, ButtonToolbar } from 'react-bootstrap';
 import moment from 'moment';
 
-const WidePerview = ({ currentUserId, perviews, bookmarkPerview, likePerview, history }) => {
+const WidePerview = ({ fetchingUpdate, currentUserId, perviews, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, history }) => {
 
   const renderStars = (rating) => {
     let stars = [1, 2, 3, 4, 5];
@@ -28,36 +28,36 @@ const WidePerview = ({ currentUserId, perviews, bookmarkPerview, likePerview, hi
     }
   }
 
-  const handleSaveClick = (perviewId) => {
+  const handleSaveClick = (perview) => {
     return e => {
-      if (e.currentTarget.className === 'wideresults__review-social-icon') {
-        e.currentTarget.className = 'wideresults__review-social-icon active';
+      if (perview && perview.bookmarkedByLoggedInUser) {
+        unbookmarkPerview(perview.id)
+        // .then(() => {
+        //   e.currentTarget.className = "fa fa-bookmark wideresults__review-icon-save"
+        // })
       } else {
-        e.currentTarget.className = 'wideresults__review-social-icon';
-      }
-
-      if (bookmarkPerview) {
-        bookmarkPerview(perviewId);
+        bookmarkPerview(perview.id)
+        // .then(() => {
+        //   e.currentTarget.className = "fa fa-bookmark wideresults__review-icon-save active"
+        // })
       }
     }
   }
 
-  const handleLikeClick = (perviewId) => {
+  const handleLikeClick = (perview) => {
     return e => {
-      if (e.currentTarget.className === 'wideresults__review-social-icon') {
-        e.currentTarget.className = 'wideresults__review-social-icon active';
+      e.persist();
+      if (perview && perview.likedByLoggedInUser) {
+        unlikePerview(perview.id);
       } else {
-        e.currentTarget.className = 'wideresults__review-social-icon';
-      }
-
-      if (likePerview) {
-        likePerview(perviewId);
+        likePerview(perview.id);
       }
     }
   }
 
   const renderPerviews = () => {
     if (perviews) {
+      console.log('rerendering');
       return perviews.map((perview, i) => {
         var item = perview.itemDto;
         var user = perview.userDto;
@@ -98,17 +98,13 @@ const WidePerview = ({ currentUserId, perviews, bookmarkPerview, likePerview, hi
               </div>
               <div className="wideresults__review-text">{perview.tags}</div>
               <div className="flexrow wideresults__review-social-box">
-                <div className="wideresults__likes-box">
-                  <i className="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                  <span className="wideresults__likes">{perview.likedByLoggedInUser ? perview.likedByLoggedInUser : ''} Likes</span>
-                </div>
 
                 <div className="flexrow wideresults__review-social">
-                  <span className={`wideresults__review-social-icon ${perview.bookmarkedByLoggedInUser ? "active":""}`} onClick={handleSaveClick(perview.id)}>
-                    <i className="fa fa-bookmark wideresults__review-icon-save" aria-hidden="true"></i>
+                  <span className="wideresults__review-social-icon" >
+                    <i onClick={handleSaveClick(perview)} className={`fa fa-bookmark wideresults__review-icon-save ${perview.bookmarkedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
                   </span>
-                  <span className={`wideresults__review-social-icon ${perview.likedByLoggedInUser ? "active" : ""}`} onClick={handleLikeClick(perview.id)}>
-                    <i className="fa fa-heart wideresults__review-icon-like" aria-hidden="true"></i>
+                  <span className="wideresults__review-social-icon">
+                    <i onClick={handleLikeClick(perview)} className={`fa fa-heart wideresults__review-icon-like ${perview.likedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
                   </span>
                 </div>
               </div>

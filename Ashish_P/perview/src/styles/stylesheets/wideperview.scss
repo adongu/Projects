@@ -124,7 +124,7 @@ $lines-to-show: 5;
     align-content:flex-start;
     // align-items: center;
     width: 100%;
-
+    margin-bottom: 20px;
   }
 
   &review-user-icon {
@@ -207,41 +207,30 @@ $lines-to-show: 5;
   }
 
   &review-social-icon {
-    color: #E9E9E9;
     padding: 0 5px;
   }
-  &review-social-icon:hover {
-    color: #6E96C8;
-    cursor: pointer;
+
+  // &review-social-icon:hover {
+  //   color: #6E96C8;
+  //   cursor: pointer;
+  // }
+
+  &review-icon-save,
+  &review-icon-like {
+    color: #E9E9E9;
+    text-shadow: 0px 0px 1px #000;
   }
 
-  &review-social-icon.active {
+  &review-icon-save.active,
+  &review-icon-like.active {
     color: #6E96C8;
     transition: ease .2s;
-  }
-
-  &review-icon-save {
-    color: #6E96C8;
-    text-shadow: 0px 0px 1px #000;
-  }
-
-  &review-icon-like {
-    color: #6E96C8;
-    text-shadow: 0px 0px 1px #000;
+    text-shadow: none;
   }
 
   &review-social-share {
     padding: 0 5px;
   }
-
-  &review-icon {
-    // &-save,
-    // &-like,
-    &-share {
-      color: #6E96C8;
-    }
-  }
-
 
   &review {
     &-save,
@@ -250,7 +239,5 @@ $lines-to-show: 5;
       color: gray;
     }
   }
-
-
 
 }

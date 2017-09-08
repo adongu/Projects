@@ -12,6 +12,7 @@ class HomePage extends React.Component {
       lName: "",
       id: "",
       img: "",
+      fetchingUpdate: false,
       requestLoading: false
     }
     this.fetchFilteredPerviews = this.fetchFilteredPerviews.bind(this);
@@ -30,6 +31,14 @@ class HomePage extends React.Component {
         requestLoading: nextProps.requestLoading
       })
     }
+
+    if (nextProps.fetchingUpdate !== this.props.fetchingUpdate) {
+      console.log('hits');
+      this.setState({
+        fetchingUpdate: nextProps.fetchingUpdate
+      })
+      this.props.fetchAllPerviews();
+    }
   }
 
   fetchFilteredPerviews (categoryId) {
@@ -37,17 +46,20 @@ class HomePage extends React.Component {
   }
 
   renderComponents() {
-    if (this.state.requestLoading) {
+    if (this.state.requestloading) {
       return (
         <div>spinner</div>
       )
     } else {
       return (
         <WidePerview
+          fetchingUpdate = {this.state.fetchingUpdate}
           currentUserId = {this.props.currentUser.id}
           perviews = {this.props.allPerviews}
           bookmarkPerview = {this.props.bookmarkPerview}
+          unbookmarkPerview = {this.props.unbookmarkPerview}
           likePerview = {this.props.likePerview}
+          unlikePerview = {this.props.unlikePerview}
         />
       )
     }
