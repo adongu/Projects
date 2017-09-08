@@ -13,8 +13,10 @@ export const fetchingUpdate = () => ({
   type: FETCHING_UPDATE
 })
 
-export const finishUpdate = () => ({
-  type: FINISH_UPDATE
+export const finishUpdate = (perviewId, socialType) => ({
+  type: FINISH_UPDATE,
+  perviewId,
+  socialType
 })
 
 const receiveErrors = (errors) => ({
@@ -32,7 +34,7 @@ export const likePerview = (perviewId = null) => dispatch => {
   dispatch(fetchingUpdate());
   return APIUtil.likePerview(perviewId)
     .then(response => {
-      dispatch(finishUpdate());
+      dispatch(finishUpdate(perviewId, 'like'));
     })
     .catch(error => {
       dispatch(finishUpdate());
@@ -42,7 +44,7 @@ export const likePerview = (perviewId = null) => dispatch => {
 
 export const unlikePerview = (perviewId = null) => dispatch => {
   dispatch(fetchingUpdate());
-  return APIUtil.unlikePerview(perviewId)
+  return APIUtil.unlikePerview(perviewId, 'like')
     .then(response => {
       dispatch(finishUpdate());
     })
@@ -56,7 +58,7 @@ export const bookmarkPerview = (perviewId) => dispatch => {
   dispatch(fetchingUpdate());
   return APIUtil.bookmarkPerview(perviewId)
     .then(response => {
-      dispatch(finishUpdate());
+      dispatch(finishUpdate(perviewId, 'bookmark'));
     })
     .catch(error => {
       dispatch(finishUpdate());
@@ -66,7 +68,7 @@ export const bookmarkPerview = (perviewId) => dispatch => {
 
 export const unbookmarkPerview = (perviewId) => dispatch => {
   dispatch(fetchingUpdate());
-  return APIUtil.unbookmarkPerview(perviewId)
+  return APIUtil.unbookmarkPerview(perviewId, 'bookmark')
     .then(response => {
       dispatch(finishUpdate());
     })

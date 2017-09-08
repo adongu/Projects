@@ -37,7 +37,9 @@ class HomePage extends React.Component {
       this.setState({
         fetchingUpdate: nextProps.fetchingUpdate
       })
-      this.props.fetchAllPerviews();
+      if (this.state.fetchingUpdate) {
+        this.props.fetchAllPerviews();
+      }
     }
   }
 
