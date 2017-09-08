@@ -50,7 +50,8 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmar
   }
 
   const renderModalLink = (perview) => {
-    if (perview.tags && perview.tags.length + "" > 25 ) {
+    if (perview.tags && (perview.tags.length > 25) ) {
+      console.log(perview.tags.length);
       return (
         <ItemPerviewModal
           perview = {perview}
@@ -111,8 +112,8 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmar
             </div>
             <div className="itemperview__reviewbox">
               {perview.tags}
-              {renderModalLink(perview)}
             </div>
+            {renderModalLink(perview)}
             <div className="itemperview__socialbox">
               <span className="itemperview__social-bookmark" onClick={handleSaveClick(perview)}>
                 <i className={`fa fa-bookmark-o itemperview__icon-bookmark ${perview.bookmarkedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>

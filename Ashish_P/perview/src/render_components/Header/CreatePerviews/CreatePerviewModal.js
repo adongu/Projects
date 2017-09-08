@@ -193,7 +193,7 @@ class CreatePerviewModal extends React.Component {
               </div>
               <textarea className="createperview__review-input" value={this.state.tags} onChange={this.update("tags")} placeholder="#amazing #wow #almostlikeapet">
               </textarea>
-              <button className="createperview__review-submit" onClick={this.handleSubmit}>
+              <button disabled={this.state.rating < 1} className="createperview__review-submit" onClick={this.handleSubmit}>
                 Submit
               </button>
             </form>
