@@ -21,10 +21,10 @@ export const bookmarkPerview = (perviewId) => {
   })
 }
 
-// export const unlikePerview = (perviewId) => {
-//   return axios.post(`api/${perviewId}/add`)
-// }
-//
-// export const unbookmarkPerview = (perviewId) => {
-//   return axios.post(`api/${perviewId}/add`)
-// }
+export const unlikePerview = (perviewId) => {
+  return axios.post(`api/${perviewId}/unlike`)
+}
+
+export const unbookmarkPerview = (perviewId) => {
+  return axios.post(`api/${perviewId}/unbookmark`)
+}

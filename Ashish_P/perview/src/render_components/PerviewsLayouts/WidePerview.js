@@ -94,6 +94,7 @@ const WidePerview = ({ currentUserId, perviews, bookmarkPerview, likePerview, hi
               </div>
               <div className="wideresults__review-stars">
                 {renderStars(perview.rating)}
+
               </div>
               <div className="wideresults__review-text">{perview.tags}</div>
               <div className="flexrow wideresults__review-social-box">
@@ -103,11 +104,11 @@ const WidePerview = ({ currentUserId, perviews, bookmarkPerview, likePerview, hi
                 </div>
 
                 <div className="flexrow wideresults__review-social">
-                  <span className="wideresults__review-social-icon" onClick={handleSaveClick(perview.id)}>
-                    <i className="fa fa-bookmark-o wideresults__review-icon-save" aria-hidden="true"></i>
+                  <span className={`wideresults__review-social-icon ${perview.bookmarkedByLoggedInUser ? "active":""}`} onClick={handleSaveClick(perview.id)}>
+                    <i className="fa fa-bookmark wideresults__review-icon-save" aria-hidden="true"></i>
                   </span>
-                  <span className="wideresults__review-social-icon" onClick={handleLikeClick(perview.id)}>
-                    <i className="fa fa-heart-o wideresults__review-icon-like" aria-hidden="true"></i>
+                  <span className={`wideresults__review-social-icon ${perview.likedByLoggedInUser ? "active" : ""}`} onClick={handleLikeClick(perview.id)}>
+                    <i className="fa fa-heart wideresults__review-icon-like" aria-hidden="true"></i>
                   </span>
                 </div>
               </div>
