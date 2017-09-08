@@ -8,7 +8,7 @@
 
   &box {
     max-width: 980px;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     padding: 18px 0 7px 0;
     margin: auto;
@@ -17,31 +17,46 @@
 
   /* logo */
   &logo {
-    width: 25%;
+    width: 15%;
   }
 
   &logoimg {
-    // border-radius: 50%;
     width: 160px;
-    // border: 1px lightgray solid;
     overflow: hidden;
     height: 60px;
+    padding: 0 8px;
+
+  }
+
+  &nav {
+    display: flex;
+    padding: 0 8px;
+    width: 15%;
+  }
+
+  &menuitem {
+    padding: 0 8px;
   }
 
   &search {
     display: flex;
     justify-content: center;
-    width: 50%;
+    width: 40%;
+    padding: 0 8px;
   }
 
   &usernav{
     display: flex;
-    padding-left: 50px;
     justify-content: space-around;
     align-items: center;
-    width: 25%;
-
+    width: 5%;
+    padding: 0 8px;
   }
+}
+
+.createperview__container {
+  width: 21%;
+  padding: 0 8px;
 }
 
 /* scrolling shadow */

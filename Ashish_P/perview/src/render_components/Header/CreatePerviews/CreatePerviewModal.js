@@ -205,7 +205,7 @@ class CreatePerviewModal extends React.Component {
 
   render() {
     return (
-      <ButtonToolbar>
+      <ButtonToolbar className="createperview__container">
         <button className="createperview__btn" onClick={this.showModal}>
           Create a Perview
         </button>

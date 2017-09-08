@@ -77,15 +77,15 @@ class Header extends React.Component {
 
   renderNavOptions () {
     return (
-      <div className="flexrow">
+      <div className="flexrow header__nav">
         <span>
-          <Link to="/myperviews" className="flexrow headers__menuitem">
+          <Link to="/myperviews" className="flexrow header__menuitem">
             <i className="fa fa-star" aria-hidden="true"></i>
             <span> Personal</span>
           </Link>
         </span>
         <span>
-          <Link to="/favorites" className="flexrow headers__menuitem">
+          <Link to="/favorites" className="flexrow header__menuitem">
             <i className="fa fa-bookmark" aria-hidden="true"></i>
             <span> Wishlist</span>
           </Link>
@@ -135,9 +135,8 @@ class Header extends React.Component {
                 logOut={this.props.logOut}
               />
             </div>
-
-            {this.renderCreateButton()}
           </div>
+          {this.renderCreateButton()}
         </div>
       </div>
     )
