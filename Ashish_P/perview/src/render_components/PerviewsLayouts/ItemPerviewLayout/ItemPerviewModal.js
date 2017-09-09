@@ -1,3 +1,4 @@
+import "../../../styles/stylesheets/itemperviewlayoutmodal.css"
 import React from 'react';
 import { Modal, ButtonToolbar, Button } from 'react-bootstrap';
 import moment from 'moment';
@@ -29,7 +30,7 @@ class ItemPerviewModal extends React.Component {
 
     return (
       <ButtonToolbar>
-        <a className="itemperview__modal-show" onClick={this.showModal}>
+        <a className="itemperviewmodal__modal-show" onClick={this.showModal}>
           ...See more
         </a>
 
@@ -39,28 +40,27 @@ class ItemPerviewModal extends React.Component {
           onHide={this.hideModal}
           dialogClassName="custom-modal"
         >
-          <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-lg">Modal heading</Modal.Title>
-          </Modal.Header>
+          <Modal.Header className="itemperviewmodal__header" closeButton></Modal.Header>
           <Modal.Body>
-            <div className="flexcolumn itemperview__perviewbox" key={`item-${perview.itemDto.id}_Perview-${perview.id}`}>
-              <div className="itemperview__timestamp">{moment(perview.ts).format("MMM D")}</div>
-              <div className="flexrow itemperview__userbox">
-                <span className="itemperview__userimgbox">
-                  <img className="itemperview__userimg" onClick={this.props.handleFriendClick(user.id)} src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
+            <div className="flexcolumn itemperviewmodal__perviewbox" key={`item-${perview.itemDto.id}_Perview-${perview.id}`}>
+              <div className="flexrow itemperviewmodal__userbox">
+                <span className="itemperviewmodal__userimgbox">
+                  <img className="itemperviewmodal__userimg" onClick={this.props.handleFriendClick(user.id)} src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
                 </span>
-                <span className="itemperview__username">{user.firstName}</span>
+                <span className="itemperviewmodal__username">{user.firstName}</span>
               </div>
-              <div className="itemperview__ratingbox">
+              <div className="itemperviewmodal__ratingbox">
                 {this.props.renderStars(perview.rating)}
               </div>
-              <div className="itemperview__reviewbox">{perview.tags}</div>
-              <div className="itemperview__socialbox">
-                <span className="itemperview__social-bookmark" onClick={this.props.handleSaveClick(perview)}>
-                  <i className={`fa fa-bookmark-o itemperview__icon-like ${perview.bookmarkedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
+              <div className="itemperviewmodal__reviewbox">
+                {perview.tags}
+              </div>
+              <div className="itemperviewmodal__socialbox">
+                <span className="itemperviewmodal__social-icon" onClick={this.props.handleSaveClick(perview)}>
+                  <i className={`fa fa-bookmark-o itemperviewmodal__social-like ${perview.bookmarkedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
                 </span>
-                <span className="itemperview__social-like" onClick={this.props.handleLikeClick(perview)}>
-                  <i className={`fa fa-heart-o itemperview__icon-like ${perview.likedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
+                <span className="itemperviewmodal__social-icon" onClick={this.props.handleLikeClick(perview)}>
+                  <i className={`fa fa-heart-o itemperviewmodal__social-like ${perview.likedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
                 </span>
               </div>
             </div>
