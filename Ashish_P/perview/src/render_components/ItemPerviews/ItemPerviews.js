@@ -89,7 +89,7 @@ class ItemPerviews extends React.Component {
         filterPerviews = {this.fetchFilteredPerviews}
       />
 
-    <div className="itemperview__perviews">
+      <div className="itemperview__perviews">
         {this.renderComponents()}
       </div>
     </div>

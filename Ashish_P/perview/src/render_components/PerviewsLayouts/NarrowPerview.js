@@ -39,9 +39,7 @@ const NarrowPerview = ({ perviews, bookmarkPerview, likePerview, history  }) => 
               </Link>
               <div className="narrowperviews__price">{item.data.lowestNewPrice.formattedAmount}</div>
               <div className="flexrow narrowperviews__buybox">
-                <ButtonToolbar>
-                  <Button className="narrowperviews__buy-btn" href={item.data.detailPageUrl} target="_blank">BUY AT AMAZON</Button>
-                </ButtonToolbar>
+                <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">BUY AT AMAZON</a>
                 <div className="narrowperviews__numperviews">{perview.likes ? perview.likes : 0} perviews</div>
               </div>
             </div>

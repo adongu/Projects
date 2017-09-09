@@ -13,6 +13,12 @@ $font-size: 15px;
 .root {
 }
 
+.btn-default:active,
+.btn-default.active {
+  background: #85B0FB
+}
+
+// start rating
 .active_star {
 font-size: $font-size;
 // content: "\2605";
@@ -49,4 +55,44 @@ indent: 5px;
 .react-autosuggest__input {
   max-width: 92%;
   overflow: auto;
+}
+
+//BUY achnor Button
+
+.buy-{
+  &btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 28px;
+    font-size: 10px;
+    font-family: arial;
+    margin-top: 10px;
+    background: #79A0CF;
+    border-radius: 18px;
+    transition: 0.3s;
+  }
+
+  &btn:hover {
+    background: #79A0E3;
+    box-shadow: 1px 5px 5px #E1E1E1;
+    transition: 0.3s;
+  }
+
+  &btn:active {
+    background: #85B0FB;
+    box-shadow: 0 0 1px #E1E1E1;
+    -webkit-transform: translateY(2px);
+    transition: .15s;
+  }
+
+  &btn,
+  &btn:hover,
+  &btn:active,
+  &btn:visited,
+  &btn:focus {
+    color: white;
+    text-decoration: none;
+  }
 }
