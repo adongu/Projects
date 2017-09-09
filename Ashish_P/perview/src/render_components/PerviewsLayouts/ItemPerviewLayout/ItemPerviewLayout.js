@@ -50,16 +50,17 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmar
   }
 
   const renderModalLink = (perview) => {
-    if (perview.tags && (perview.tags.length > 25) ) {
-      console.log(perview.tags.length);
+    if (perview.tags && (perview.tags.length > 150) ) {
       return (
-        <ItemPerviewModal
-          perview = {perview}
-          handleSaveClick = {handleSaveClick}
-          handleFriendClick = {handleFriendClick}
-          handleLikeClick = {handleLikeClick}
-          renderStars = {renderStars}
-        />
+        <div className="itemperview__showmore">
+          <ItemPerviewModal
+            perview = {perview}
+            handleSaveClick = {handleSaveClick}
+            handleFriendClick = {handleFriendClick}
+            handleLikeClick = {handleLikeClick}
+            renderStars = {renderStars}
+          />
+        </div>
       )
     }
   }
@@ -100,7 +101,6 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmar
         var user = perview.userDto;
         return (
           <div className="flexcolumn itemperview__perviewbox" key={`item-${perview.itemDto.id}_Perview-${perview.id}`}>
-            <div className="itemperview__timestamp">{moment(perview.ts).format("MMM D")}</div>
             <div className="flexrow itemperview__userbox">
               <span className="itemperview__userimgbox">
                 <img className="itemperview__userimg" onClick={handleFriendClick(user.id)} src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
@@ -111,9 +111,11 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmar
               {renderStars(perview.rating)}
             </div>
             <div className="itemperview__reviewbox">
-              {perview.tags}
+              <p className="itemperview__review">
+                {perview.tags.substr(0, 155)}
+              </p>
+              {renderModalLink(perview)}
             </div>
-            {renderModalLink(perview)}
             <div className="itemperview__socialbox">
               <span className="itemperview__social-bookmark" onClick={handleSaveClick(perview)}>
                 <i className={`fa fa-bookmark-o itemperview__icon-bookmark ${perview.bookmarkedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
@@ -133,10 +135,6 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmar
       {renderItemSection()}
       <div className="itemperview__perviewcontainer">
         <div className="itemperview__perviewcenterbox">
-          {renderPerviews()}
-          {renderPerviews()}
-          {renderPerviews()}
-          {renderPerviews()}
           {renderPerviews()}
         </div>
       </div>
