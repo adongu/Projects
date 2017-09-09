@@ -21,11 +21,11 @@ class CreatePerviewModal extends React.Component {
       ratingHover: 0,
       ratingTip: {
         0: "",
-        1: "Hate It!",
-        2: "Meh",
-        3: "Just Okay",
-        4: "Great",
-        5: "Love It!"
+        1: "Hate",
+        2: "Dislike",
+        3: "Neutral",
+        4: "Like",
+        5: "Love"
       },
       asin: null,
       item: {},
@@ -56,6 +56,7 @@ class CreatePerviewModal extends React.Component {
       itemId: null,
       tags: '',
       rating: 0,
+      lastRating: 0,
       ratingHover: 0,
       ratingTip: {
         0: "",
@@ -87,14 +88,15 @@ class CreatePerviewModal extends React.Component {
     let stars = [1, 2, 3, 4, 5];
     return stars.map((ele)=>{
       return (
-        <span key={`star_rating_${ele}`} className={ele <= ratings ? 'active_star' : 'no_star'} onClick={() => {this.setState({ rating: ele })}}
+        <span key={`star_rating_${ele}`} className={ele <= ratings ? 'active_star' : 'no_star'}
+          onClick={() => {this.setState({ rating: ele, lastRating: ele })}}
         >
           <div className={`createperview__ratingtipbox ${this.state.ratingHover === ele ? 'active' : ''}`}>
             <div className="createperview__ratingtip">{this.state.ratingTip[ele]}</div>
             <div className="createperview__ratingtipbox-triangle"></div>
           </div>
           <i onMouseOver={()=>{ this.setState({ rating: ele, ratingHover: ele }) }}
-            onMouseLeave={()=>{ this.setState({ rating: this.state.rating, ratingHover: 0 })}}
+            onMouseLeave={()=>{ this.setState({ rating: this.state.lastRating, ratingHover: 0 })}}
             className="fa fa-star createperview__rating-star" aria-hidden="true">
           </i>
         </span>
