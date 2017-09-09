@@ -3,6 +3,7 @@ import { debounce } from 'lodash';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Autosuggest from 'react-autosuggest';
+import IsolatedScroll from 'react-isolated-scroll';
 
 class SearchItemBar extends React.Component {
   constructor(props){
@@ -21,6 +22,7 @@ class SearchItemBar extends React.Component {
     this.onChange = this.onChange.bind(this);
     this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this);
     this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(this);
+    this.renderSuggestionsContainer = this.renderSuggestionsContainer.bind(this);
     this.renderInputComponent = this.renderInputComponent.bind(this);
     this.renderSuggestion = this.renderSuggestion.bind(this);
     this.renderSearchPerviewFriends = this.renderSearchPerviewFriends.bind(this);
@@ -37,14 +39,15 @@ class SearchItemBar extends React.Component {
 
   getSuggestionValue(suggestion) {
     // pass item to modal
+    let perview = suggestion[0];
     this.props.selectItem(
-      suggestion.itemDto.data.imageUrls.large.url,
-      suggestion.itemDto.dataname,
-      suggestion.itemDto.data.lowestNewPrice.formattedAmount,
-      suggestion.itemDto.id
+      perview.itemDto.data.imageUrls.large.url,
+      perview.itemDto.dataname,
+      perview.itemDto.data.lowestNewPrice.formattedAmount,
+      perview.itemDto.id
       // suggestion.data.asin
     );
-    return suggestion.itemDto.name;
+    return perview.itemDto.name;
   }
 
   // Teach Autosuggest how to calculate suggestions for any given input value.
@@ -116,6 +119,21 @@ class SearchItemBar extends React.Component {
   logChange(val) {
     this.setState({value: val.value});
   }
+// prevents scrolling on outside of autosuggest if mouse is inside component
+  renderSuggestionsContainer({ containerProps, children }) {
+    const { ref, ...restContainerProps } = containerProps;
+    const callRef = isolatedScroll => {
+      if (isolatedScroll !== null) {
+        ref(isolatedScroll.component);
+      }
+    };
+
+    return (
+      <IsolatedScroll ref={callRef} {...restContainerProps}>
+        {children}
+      </IsolatedScroll>
+    );
+  }
 
   renderSearchPerviewFriends(perviews) {
     if (perviews !== null) {
@@ -125,9 +143,9 @@ class SearchItemBar extends React.Component {
             var user = perview.userDto;
 
             return (
-              <div id={`suggestion-liker-${perview.id}`}>
-                <div className="search__userimgbox">
-                  <img className="search__userimg" src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt={user.fullName}/>
+              <div id={`suggestion-liker-${perview.id}`} className="headersearch__userimgcontainer">
+                <div className="headersearch__userimgbox">
+                  <img className="headersearch__userimg" src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt={user.fullName}/>
                 </div>
               </div>
             )
@@ -173,12 +191,30 @@ class SearchItemBar extends React.Component {
       onChange: this.onChange,
       type: 'search'
     };
+    // for customerization with className
+    const theme = {
+      container:                'react-autosuggest__container',
+      containerOpen:            'react-autosuggest__container--open',
+      input:                    'react-autosuggest__input',
+      inputOpen:                'react-autosuggest__input--open',
+      inputFocused:             'react-autosuggest__input--focused',
+      suggestionsContainer:     'react-autosuggest__autosuggestions-container headersearch__autosuggestions-container',
+      suggestionsContainerOpen: 'react-autosuggest__suggestions-container--open headersearch__suggestions-container--open',
+      suggestionsList:          'react-autosuggest__suggestions-list',
+      suggestion:               'react-autosuggest__suggestion',
+      suggestionFirst:          'react-autosuggest__suggestion--first',
+      suggestionHighlighted:    'react-autosuggest__suggestion--highlighted',
+      sectionContainer:         'react-autosuggest__section-container',
+      sectionContainerFirst:    'react-autosuggest__section-container--first',
+      sectionTitle:             'react-autosuggest__section-title'
+    }
 
     return (
-      <div className="search__container search__perview">
+      <div className="search__container headersearch__perview">
         <div className="search__box">
           <Autosuggest
-            id="header__suggest"
+            id="headersearch__container"
+            theme={theme}
             suggestions={suggestions}
             onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
             onSuggestionsClearRequested={this.onSuggestionsClearRequested}
@@ -186,6 +222,7 @@ class SearchItemBar extends React.Component {
             renderSuggestion={this.renderSuggestion}
             renderInputComponent={this.renderInputComponent}
             inputProps={inputProps}
+            renderSuggestionsContainer={this.renderSuggestionsContainer}
           />
         </div>
     </div>
