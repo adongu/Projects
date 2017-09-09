@@ -2,7 +2,6 @@ import "../../styles/stylesheets/itemperview.css";
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import NavBarContainer from '../../containers/NavBarContainer.js';
-import WidePerview from "../PerviewsLayouts/WidePerview";
 import ItemPerviewLayout from "../PerviewsLayouts/ItemPerviewLayout/ItemPerviewLayout";
 
 class ItemPerviews extends React.Component {

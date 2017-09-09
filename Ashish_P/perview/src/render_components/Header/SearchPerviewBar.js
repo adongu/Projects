@@ -17,6 +17,7 @@ class SearchItemBar extends React.Component {
     };
 
     // this.updateKeywords = this.updateKeywords.bind(this);
+    this.fetchResults = this.fetchResults.bind(this);
     this.getSuggestions = this.getSuggestions.bind(this);
     this.getSuggestionValue = this.getSuggestionValue.bind(this);
     this.logChange = this.logChange.bind(this);
@@ -56,13 +57,17 @@ class SearchItemBar extends React.Component {
     return this.state.suggestions;
   };
 
+  fetchResults = debounce((newValue) => {
+    this.props.fetchResults(newValue);
+  }, 250);
+
   onChange (event, { newValue }) {
     this.setState({
       value: newValue,
       isFetching: true
     });
     // if (newValue.length > 0) {
-    this.props.fetchResults(newValue);
+    this.fetchResults(newValue);
     // }
   };
 
@@ -144,7 +149,7 @@ class SearchItemBar extends React.Component {
             var user = perview.userDto;
 
             return (
-              <div>
+              <div key={`headersearch-${perview.id}`}>
                 <div className={`headersearch__hovernamebox ${this.state.hoverUserName === user.fullName ? 'active' : ''}`}>
                   <div className="headersearch__hovername">{this.state.hoverUserName}</div>
                   <div className="headersearch__rhovernamebox-triangle"></div>

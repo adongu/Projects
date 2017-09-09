@@ -1,8 +1,6 @@
 import "../../styles/stylesheets/narrowperview.css"
-import product from "../../styles/assets/product.jpg"
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { Button, ButtonToolbar } from 'react-bootstrap';
 import moment from 'moment';
 
 const NarrowPerview = ({ perviews, bookmarkPerview, likePerview, history  }) => {
@@ -22,8 +20,7 @@ const NarrowPerview = ({ perviews, bookmarkPerview, likePerview, history  }) => 
     if (perviews) {
 
       return perviews.map((perview, i) => {
-        var item = perview.itemDto;
-        var user = perview.userDto;
+        let item = perview.itemDto;
 
         return (
           <div key={`perviewindex__${i}`} className="flexcolumn narrowperviews__box">

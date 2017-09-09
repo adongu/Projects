@@ -1,7 +1,7 @@
 import "../../styles/stylesheets/header.css";
 import logo from "../../styles/assets/logo.jpg";
 import React from 'react';
-import { Link, withRouter, NavLink } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import SearchPerviewBar from './SearchPerviewBar';
 import UserNavContainer from '../../containers/UserNavContainer';
 import CreatePerviewModal from "./CreatePerviews/CreatePerviewModal";

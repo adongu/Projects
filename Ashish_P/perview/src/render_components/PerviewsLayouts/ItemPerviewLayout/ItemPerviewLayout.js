@@ -1,8 +1,6 @@
 import "../../../styles/stylesheets/itemperviewlayout.css"
-import moment from 'moment';
 import React from 'react';
-import { Button, ButtonToolbar } from 'react-bootstrap';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import ItemPerviewModal from './ItemPerviewModal';
 
 const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, history }) => {

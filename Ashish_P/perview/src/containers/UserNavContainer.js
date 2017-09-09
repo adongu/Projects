@@ -14,6 +14,10 @@ const mapDispatchToProps = () => {
 }
 
 export default connect (
-  null, null, null, {
-  pure: true
-})(UserNav);
+  mapStateToProps,
+  mapDispatchToProps,
+  null,
+  {
+    pure: true
+  }
+)(UserNav);

@@ -1,5 +1,4 @@
 import "../../../styles/stylesheets/createperviewmodal.css";
-import product from "../../../styles/assets/product.jpg";
 import React from 'react';
 import { ButtonToolbar, Modal } from 'react-bootstrap';
 import SearchItemBar from "./SearchItemBar";

@@ -1,8 +1,6 @@
 import "../../styles/stylesheets/wideperview.css"
-import product from "../../styles/assets/product.jpg"
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { Button, ButtonToolbar } from 'react-bootstrap';
 import moment from 'moment';
 
 const WidePerview = ({ fetchingUpdate, currentUserId, perviews, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, history }) => {

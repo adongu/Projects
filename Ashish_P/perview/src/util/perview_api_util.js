@@ -15,21 +15,21 @@ var config = {
 export const createPerview = (formData) => {
   return axios.post('/api/add', formData, config)
 
-  return axios({
-    method: 'POST',
-    url: '/api/add',
-    headers: {
-      'Content-Type': 'multipart/form-data',
-    },
-    data: {UserPerview: formData},
-    config
-  })
-  .then(response => {
-    return response
-  })
-  .catch(error => {
-    return error
-  });
+  // return axios({
+  //   method: 'POST',
+  //   url: '/api/add',
+  //   headers: {
+  //     'Content-Type': 'multipart/form-data',
+  //   },
+  //   data: {UserPerview: formData},
+  //   config
+  // })
+  // .then(response => {
+  //   return response
+  // })
+  // .catch(error => {
+  //   return error
+  // });
 };
 
 export const createItem = (item) => {

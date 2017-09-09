@@ -1,10 +1,10 @@
 import "../../styles/stylesheets/usernav.css";
 import React from 'react';
-import { withRouter, NavLink } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { DropdownButton, MenuItem, ButtonToolbar } from 'react-bootstrap';
 // import { LinkContainer } from 'react-router-bootstrap';
 
-class UserNav extends React.Component {
+class UserNav extends React.PureComponent {
   constructor(props) {
     super(props)
     this.redirectToSettings = this.redirectToSettings.bind(this)
