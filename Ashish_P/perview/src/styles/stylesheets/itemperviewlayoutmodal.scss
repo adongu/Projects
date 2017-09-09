@@ -4,6 +4,25 @@
     cursor: pointer;
   }
 
+  &modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+    max-width: 400px;
+    // padding-top: calc(50%-200px);
+    // transform: translateY(-50%);
+    margin-top: 0;
+    // height: 100vh;
+  }
+
+  &header {
+    padding-bottom: 0;
+  }
+
+  &body {
+  }
+
   &perviewbox {
     padding: 0 20px 20px 20px;
   }

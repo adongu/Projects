@@ -38,10 +38,10 @@ class ItemPerviewModal extends React.Component {
           {...this.props}
           show={this.state.show}
           onHide={this.hideModal}
-          dialogClassName="custom-modal"
+          dialogClassName="itemperviewmodal__modal"
         >
           <Modal.Header className="itemperviewmodal__header" closeButton></Modal.Header>
-          <Modal.Body>
+          <Modal.Body className="itemperviewmodal__body">
             <div className="flexcolumn itemperviewmodal__perviewbox" key={`item-${perview.itemDto.id}_Perview-${perview.id}`}>
               <div className="flexrow itemperviewmodal__userbox">
                 <span className="itemperviewmodal__userimgbox">
