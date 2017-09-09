@@ -9,9 +9,23 @@
     display: flex;
     align-items: center;
   }
+  &imgbox {
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    display: block;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
 
   &img {
     width: 100%;
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
     image-rendering: -moz-crisp-edges;         /* Firefox */
     image-rendering:   -o-crisp-edges;         /* Opera */
     image-rendering: -webkit-optimize-contrast;/* Webkit (non-standard naming) */

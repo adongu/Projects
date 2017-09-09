@@ -138,15 +138,13 @@ class SearchItemBar extends React.Component {
   renderSearchPerviewFriends(perviews) {
     if (perviews !== null) {
       return(
-        <div>
+        <div className="flexrow headersearch__container">
           {perviews.map((perview) => {
             var user = perview.userDto;
 
             return (
-              <div id={`suggestion-liker-${perview.id}`} className="headersearch__userimgcontainer">
-                <div className="headersearch__userimgbox">
-                  <img className="headersearch__userimg" src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt={user.fullName}/>
-                </div>
+              <div id={`suggestion-liker-${perview.id}`} className="headersearch__userbox">
+                <img className="headersearch__userimg-img" src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt={user.fullName}/>
               </div>
             )
           })}

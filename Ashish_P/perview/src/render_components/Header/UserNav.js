@@ -30,7 +30,13 @@ class UserNav extends React.Component {
   render () {
     return (
       <ButtonToolbar>
-        <DropdownButton bsStyle="default" title={<img src={this.props.imgUrl} className="usernav__img" alt="User Icon"/>} noCaret pullRight id="dropdown-pull-right" className="usernav__dropdown">
+        <DropdownButton bsStyle="default"
+          title={
+            <div className="usernav__imgbox">
+              <img src={this.props.imgUrl} className="usernav__img" alt="User Icon"/>
+            </div>
+          }
+          noCaret pullRight id="dropdown-pull-right" className="usernav__dropdown">
           <MenuItem className="usernav__settings" eventKey="3">
             <div className="usernav__settings-btn" onClick={this.redirectToSettings}>
               <i className="fa fa-cog" aria-hidden="true"></i>
