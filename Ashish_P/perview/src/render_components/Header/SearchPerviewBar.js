@@ -15,15 +15,15 @@ class SearchItemBar extends React.Component {
     };
 
     // this.updateKeywords = this.updateKeywords.bind(this);
-    this.onChange = this.onChange.bind(this);
-    this.logChange = this.logChange.bind(this);
     this.getSuggestions = this.getSuggestions.bind(this);
     this.getSuggestionValue = this.getSuggestionValue.bind(this);
+    this.logChange = this.logChange.bind(this);
+    this.onChange = this.onChange.bind(this);
     this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this);
     this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(this);
     this.renderInputComponent = this.renderInputComponent.bind(this);
     this.renderSuggestion = this.renderSuggestion.bind(this);
-    this.renderFriends = this.renderFriends.bind(this);
+    this.renderSearchPerviewFriends = this.renderSearchPerviewFriends.bind(this);
   }
 
   componentWillReceiveProps (nextProps) {
@@ -117,56 +117,46 @@ class SearchItemBar extends React.Component {
     this.setState({value: val.value});
   }
 
-  renderFriends(suggestion) {
-    // console.log('suggestions', suggestion);
-    // if (suggestion !== null) {
-    //   let suggestionKeys = Object.keys(suggestion);
-    //   if (suggestionKeys === 1) {
-    //     let perview = suggestion.suggestionKeys;
-    //     let user = perview.userDto;
-    //     return (
-    //       <div id={`suggestion-liker-${user.id}`}>
-    //         <img className="wideresults__review-user-img" src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt={user.fullName}/>
-    //       </div>
-    //     )
-    //   } else {
-    //     return(
-    //       <div>
-    //        {suggestionKeys.map((perviewKey) => {
-    //         let perview = suggestion.suggestionKeys[0];
-    //         let user = perview.userDto;
-    //         return (
-    //           <div id={`suggestion-liker-${perview.id}`}>
-    //             <img className="wideresults__review-user-img" src={perview.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt={perview.fullName}/>
-    //           </div>
-    //         )
-    //       })}
-    //     </div>
-    //     )
-    //   }
-    // }
+  renderSearchPerviewFriends(perviews) {
+    if (perviews !== null) {
+      return(
+        <div>
+          {perviews.map((perview) => {
+            var user = perview.userDto;
+
+            return (
+              <div id={`suggestion-liker-${perview.id}`}>
+                <div className="search__userimgbox">
+                  <img className="search__userimg" src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt={user.fullName}/>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      )
+    }
   }
 
   renderSuggestion(suggestion){
     if (suggestion) {
-      let userImageUrl = suggestion[0].itemDto.data.imageUrls.large.url;
-      let productPrice = suggestion[0].itemDto.data.lowestNewPrice.formattedAmount;
+      let itemImageUrl = suggestion[0].itemDto.data.imageUrls.large.url;
+      let itemPrice = suggestion[0].itemDto.data.lowestNewPrice.formattedAmount;
 
       return (
         <div className="flexrow autosuggest__item">
           <div className="flexrow autosuggest__product">
             <div className="autosuggest__product-left">
-              <img className="autosuggest__img" src={userImageUrl} alt="product"/>
+              <img className="autosuggest__img" src={itemImageUrl} alt="product"/>
             </div>
             <div className="flexcolumn autosuggest__product-right">
               <div className="autosuggest__name">{suggestion[0].itemDto.name}</div>
-              <div className="autosuggest__price">{productPrice}</div>
+              <div className="autosuggest__price">{itemPrice}</div>
             </div>
           </div>
 
           <div className="flexcolumn autosuggest__friends">
             <div>Likes</div>
-            {this.renderFriends(suggestion)}
+            {this.renderSearchPerviewFriends(suggestion)}
           </div>
         </div>
       );
