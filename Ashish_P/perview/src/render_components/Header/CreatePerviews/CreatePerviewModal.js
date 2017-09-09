@@ -171,9 +171,6 @@ class CreatePerviewModal extends React.Component {
                   <div className="createperview__product-price">
                     {this.state.price}
                   </div>
-                  <div className="createperview__product-perviews">
-                    8 perviews
-                  </div>
                 </div>
               </div>
             </div>
@@ -182,17 +179,11 @@ class CreatePerviewModal extends React.Component {
           <div className="createperview__review-container">
             <form className="flexcolumn createperview__review-box" action>
               <div className="flexrow createperview__review-rating">
-                <div className="createperview__review-rating-msg">
-                  Perview this Product!
-                </div>
                 <div className="flexrow createperview__review-rating-stars">
                   {this.renderReviewStars(this.state.rating)}
                 </div>
               </div>
 
-              <div className="createperview__review-msg">
-                Tag it, comment or both!
-              </div>
               <textarea className="createperview__review-input" value={this.state.tags} onChange={this.update("tags")} placeholder="Write a full review or hashtag it or both or neither #nopressure">
               </textarea>
               <button disabled={this.state.rating < 1} className="createperview__review-submit" onClick={this.handleSubmit}>
