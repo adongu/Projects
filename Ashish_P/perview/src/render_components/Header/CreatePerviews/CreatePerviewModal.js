@@ -193,7 +193,7 @@ class CreatePerviewModal extends React.Component {
               <div className="createperview__review-msg">
                 Tag it, comment or both!
               </div>
-              <textarea className="createperview__review-input" value={this.state.tags} onChange={this.update("tags")} placeholder="#amazing #wow #almostlikeapet">
+              <textarea className="createperview__review-input" value={this.state.tags} onChange={this.update("tags")} placeholder="Write a full review or hashtag it or both or neither #nopressure">
               </textarea>
               <button disabled={this.state.rating < 1} className="createperview__review-submit" onClick={this.handleSubmit}>
                 Submit
@@ -209,7 +209,7 @@ class CreatePerviewModal extends React.Component {
     return (
       <ButtonToolbar className="createperview__container">
         <button className="createperview__btn" onClick={this.showModal}>
-          Create a Perview
+          Create Perview
         </button>
 
         <Modal
@@ -220,9 +220,8 @@ class CreatePerviewModal extends React.Component {
         >
           <Modal.Header className="createperview__modalhead" closeButton>
 
-          <div className="createperview__title">Create a PerView</div>
+          <div className="createperview__title">Create Perview</div>
           <div className="flexcolumn createperview__search-container">
-            <div className="createperview__search-msg">Search a product to perview it</div>
             <div className="createperview__search-background">
               <div className="createperview__search-box">
                 <SearchItemBar
