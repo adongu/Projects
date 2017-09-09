@@ -27,7 +27,6 @@ export const fetchPerviewResults = (keywords) => dispatch => {
   dispatch(requestResults());
   return APIUtil.fetchPerviewResults(keywords)
     .then( response => {
-      console.log(response.data);
       return dispatch(receivePerviewResults(response.data))
     },
     err => {

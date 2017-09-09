@@ -17,6 +17,7 @@ const searchItemReducer = (oldState = _nullSearchItem, action) => {
     case RECEIVE_ITEM_RESULTS:
       return Object.assign({}, oldState, {
         itemResults: action.results,
+        isFetching: false,
         errors: []
       });
     case RECEIVE_ERRORS:

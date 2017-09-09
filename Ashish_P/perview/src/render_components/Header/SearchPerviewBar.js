@@ -1,4 +1,5 @@
 import "../../styles/stylesheets/search.css";
+import { debounce } from 'lodash';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Autosuggest from 'react-autosuggest';
@@ -53,11 +54,12 @@ class SearchItemBar extends React.Component {
 
   onChange (event, { newValue }) {
     this.setState({
-      value: newValue
+      value: newValue,
+      isFetching: true
     });
-    if (newValue.length > 0) {
-      this.props.fetchResults(newValue);
-    }
+    // if (newValue.length > 0) {
+    this.props.fetchResults(newValue);
+    // }
   };
 
   // Autosuggest will call this function every time you need to update suggestions.
@@ -73,16 +75,28 @@ class SearchItemBar extends React.Component {
     this.setState({
       keywords: '',
       value: '',
-      suggestions: []
+      suggestions: [],
+      isFetching: false
     });
   };
 
   renderInputComponent (inputProps) {
+    let renderSearchOrLoading;
+    if (this.state.isFetching) {
+      renderSearchOrLoading = (
+        <i className="fa fa-spinner fa-pulse fa-lg fa-fw"></i>
+      )
+    } else {
+      renderSearchOrLoading = (
+        <i className="fa fa-search search__btn-icon" aria-hidden="true"></i>
+      )
+    }
+
     return (
       <div className="search__inputContainer">
         <input {...inputProps} />
         <button className="search__btn">
-          <i className="fa fa-search search__btn-icon" aria-hidden="true"></i>
+          {renderSearchOrLoading}
         </button>
       </div>
     )
@@ -94,7 +108,7 @@ class SearchItemBar extends React.Component {
     });
     return (
       <div className="search__suggestions">
-        { this.renderSuggestion() }
+        { this.renderSuggestion }
       </div>
     )
   }
@@ -104,31 +118,54 @@ class SearchItemBar extends React.Component {
   }
 
   renderFriends(suggestion) {
-    return(
-      <div>
-        friend
-      </div>
-    )
+    // console.log('suggestions', suggestion);
+    // if (suggestion !== null) {
+    //   let suggestionKeys = Object.keys(suggestion);
+    //   if (suggestionKeys === 1) {
+    //     let perview = suggestion.suggestionKeys;
+    //     let user = perview.userDto;
+    //     return (
+    //       <div id={`suggestion-liker-${user.id}`}>
+    //         <img className="wideresults__review-user-img" src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt={user.fullName}/>
+    //       </div>
+    //     )
+    //   } else {
+    //     return(
+    //       <div>
+    //        {suggestionKeys.map((perviewKey) => {
+    //         let perview = suggestion.suggestionKeys[0];
+    //         let user = perview.userDto;
+    //         return (
+    //           <div id={`suggestion-liker-${perview.id}`}>
+    //             <img className="wideresults__review-user-img" src={perview.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt={perview.fullName}/>
+    //           </div>
+    //         )
+    //       })}
+    //     </div>
+    //     )
+    //   }
+    // }
   }
 
   renderSuggestion(suggestion){
     if (suggestion) {
-      let imgUrl = suggestion.itemDto.data.imageUrls.large.url;
-      let price = suggestion.itemDto.data.lowestNewPrice.formattedAmount;
+      let userImageUrl = suggestion[0].itemDto.data.imageUrls.large.url;
+      let productPrice = suggestion[0].itemDto.data.lowestNewPrice.formattedAmount;
+
       return (
         <div className="flexrow autosuggest__item">
           <div className="flexrow autosuggest__product">
             <div className="autosuggest__product-left">
-              <img className="autosuggest__img" src={imgUrl} alt="product"/>
+              <img className="autosuggest__img" src={userImageUrl} alt="product"/>
             </div>
             <div className="flexcolumn autosuggest__product-right">
-              <div className="autosuggest__name">{suggestion.itemDto.name}</div>
-              <div className="autosuggest__price">{price}</div>
+              <div className="autosuggest__name">{suggestion[0].itemDto.name}</div>
+              <div className="autosuggest__price">{productPrice}</div>
             </div>
           </div>
 
           <div className="flexcolumn autosuggest__friends">
-            <div>Perview by</div>
+            <div>Likes</div>
             {this.renderFriends(suggestion)}
           </div>
         </div>
