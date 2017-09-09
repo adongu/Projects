@@ -11,6 +11,7 @@ class SearchItemBar extends React.Component {
     this.state = {
       keywords: "",
       value: '',
+      hoverUserName: "",
       suggestions: [],
       isFetching: false
     };
@@ -143,8 +144,17 @@ class SearchItemBar extends React.Component {
             var user = perview.userDto;
 
             return (
-              <div id={`suggestion-liker-${perview.id}`} className="headersearch__userbox">
-                <img className="headersearch__userimg-img" src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt={user.fullName}/>
+              <div>
+                <div className={`headersearch__hovernamebox ${this.state.hoverUserName === user.fullName ? 'active' : ''}`}>
+                  <div className="headersearch__hovername">{this.state.hoverUserName}</div>
+                  <div className="headersearch__rhovernamebox-triangle"></div>
+                </div>
+                <div id={`suggestion-liker-${perview.id}`} className="headersearch__userbox">
+                  <img
+                    onMouseOver={() => { this.setState({ hoverUserName: user.fullName }) }}
+                    onMouseLeave={()=> { this.setState({ hoverUserName: "" }) }}
+                    className="headersearch__userimg-img" src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt={user.fullName}/>
+                </div>
               </div>
             )
           })}
@@ -171,7 +181,7 @@ class SearchItemBar extends React.Component {
           </div>
 
           <div className="flexcolumn autosuggest__friends">
-            <div>Likes</div>
+            <div>Perviewed By</div>
             {this.renderSearchPerviewFriends(suggestion)}
           </div>
         </div>
