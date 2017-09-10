@@ -8,8 +8,6 @@ import MyPerviewsContainer from './MyPerviewsContainer';
 import FriendPerviewsContainer from './FriendPerviewsContainer';
 import SettingsContainer from './SettingsContainer';
 import SignInContainer from './SignInContainer';
-// import RestrictedContainer from './RestrictedContainer';
-import PrivateRouteContainer from './PrivateRouteContainer';
 import { ProtectedRoute, AuthRoute } from '../util/route_util.js';
 
 const Root = ({ store }) => {

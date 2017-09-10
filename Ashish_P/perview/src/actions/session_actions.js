@@ -51,7 +51,7 @@ export const fetchUser = () => dispatch => {
       console.log('hits error!', error);
       return dispatch(receiveErrors(error))
       // return Promise.resolve('no user');
-      return Promise.reject('response failed no user')
+      // return Promise.reject('response failed no user')
     });
 }
 

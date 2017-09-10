@@ -21,7 +21,7 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, categorie
       "title": "Settings", "hasFilters": false
     },
     "/item/:item_id": {
-      "title": "Check the Perviews of your friends!", "hasFilters": false
+      "title": "", "hasFilters": false
     }
   }
 

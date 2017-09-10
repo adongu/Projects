@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
 import MyPerviews from "../render_components/MyPerviews/MyPerviews";
 import { fetchUser } from '../actions/session_actions';
-import { fetchItemResults } from '../actions/search_item_actions';
-import { fetchCategoryIds, createPerview, fetchMyPerviews, clearErrors } from '../actions/perview_actions';
+import { fetchMyPerviews, clearErrors } from '../actions/perview_actions';
 
 const mapStateToProps = ({ session, perview, findItem }, ownProps) => {
   return {

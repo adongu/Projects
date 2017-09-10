@@ -1,8 +1,6 @@
 import "../../styles/stylesheets/wideperview.css"
-import product from "../../styles/assets/product.jpg"
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { Button, ButtonToolbar } from 'react-bootstrap';
 import moment from 'moment';
 
 const WidePerview = ({ fetchingUpdate, currentUserId, perviews, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, history }) => {
@@ -69,9 +67,7 @@ const WidePerview = ({ fetchingUpdate, currentUserId, perviews, bookmarkPerview,
               <div className="flexrow wideresults__product-info">
                 <div className="wideresults__product-price">{item.data.lowestNewPrice.formattedAmount}</div>
               </div>
-              <ButtonToolbar>
-                <Button className="wideresults__product-buybtn" href={item.data.detailPageUrl} target="_blank">BUY AT AMAZON</Button>
-              </ButtonToolbar>
+                <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">BUY AT AMAZON</a>
             </div>
           </div>
           <div className="wideresults__perview-right">

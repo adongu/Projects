@@ -1,7 +1,6 @@
 import "../../../styles/stylesheets/itemperviewlayoutmodal.css"
 import React from 'react';
-import { Modal, ButtonToolbar, Button } from 'react-bootstrap';
-import moment from 'moment';
+import { Modal, ButtonToolbar } from 'react-bootstrap';
 
 class ItemPerviewModal extends React.Component {
 
