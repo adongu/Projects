@@ -81,11 +81,6 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmar
               </div>
             </div>
           </div>
-          <div className="itemperview__numperviewbox">
-            <span className="itemperview__numperview">
-              {perviews ? `Perview by ${perviews.length} Friends` : "Be the first one to leave a perview!"}
-            </span>
-          </div>
         </section>
       )
     }
