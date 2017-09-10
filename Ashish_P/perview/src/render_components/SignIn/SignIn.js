@@ -68,7 +68,7 @@ class SignIn extends React.Component {
               Purchase your favorite products with the trust of your friends
             </div>
             <form className="signin__form" action={auth_url} method="post">
-              <input type="hidden" name="scope" value="user_friends"/>
+              <input type="hidden" name="scope" value="user_friends,email"/>
               <input type="hidden" name="_csrf" value={token}/>
               <button type="submit" className="signin__form-facebook">SIGN IN WITH FACEBOOK</button>
             </form>
