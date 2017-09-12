@@ -37,15 +37,15 @@ class UserNav extends React.PureComponent {
             </div>
           }
           noCaret pullRight id="dropdown-pull-right" className="usernav__dropdown">
-          <MenuItem className="usernav__settings" eventKey="3">
-            <div className="usernav__settings-btn" onClick={this.redirectToSettings}>
+          <MenuItem className="usernav__option" eventKey="1">
+            <div className="usernav__option" onClick={this.redirectToSettings}>
               <i className="fa fa-cog" aria-hidden="true"></i>
-              Settings
+              <span>Settings</span>
             </div>
           </MenuItem>
-          <MenuItem eventKey="4" className="usernav__signout" >
-            <div className="userNav__signout-btn" onClick={this.handleLogout}>
-              Sign Out
+          <MenuItem eventKey="4" className="usernav__option" eventKey="2">
+            <div className="usernav__signout-btn" onClick={this.handleLogout}>
+              <span>Sign Out</span>
             </div>
           </MenuItem>
 
