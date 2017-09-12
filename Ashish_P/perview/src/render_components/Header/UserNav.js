@@ -6,10 +6,13 @@ import { DropdownButton, MenuItem, ButtonToolbar } from 'react-bootstrap';
 
 class UserNav extends React.PureComponent {
   constructor(props) {
-    super(props)
-    this.redirectToSettings = this.redirectToSettings.bind(this)
-    this.handleLogout = this.handleLogout.bind(this)
+    super(props);
+
+    this.redirectToSettings = this.redirectToSettings.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
+
+  compon
 
   redirectToSettings() {
     this.props.history.push('/settings');
@@ -38,13 +41,15 @@ class UserNav extends React.PureComponent {
           }
           noCaret pullRight id="dropdown-pull-right" className="usernav__dropdown">
           <MenuItem className="usernav__option" eventKey="1">
-            <div className="usernav__option" onClick={this.redirectToSettings}>
+            <div onClick={this.redirectToSettings}
+              className="usernav__option" >
               <i className="fa fa-cog" aria-hidden="true"></i>
               <span>Settings</span>
             </div>
           </MenuItem>
           <MenuItem eventKey="4" className="usernav__option" eventKey="2">
-            <div className="usernav__signout-btn" onClick={this.handleLogout}>
+            <div onClick={this.handleLogout} className="usernav__signout-btn">
+              <i className="fa fa-sign-out" aria-hidden="true"></i>
               <span>Sign Out</span>
             </div>
           </MenuItem>
