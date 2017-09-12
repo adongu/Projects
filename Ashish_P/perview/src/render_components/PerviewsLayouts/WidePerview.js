@@ -67,7 +67,7 @@ const WidePerview = ({ fetchingUpdate, currentUserId, perviews, bookmarkPerview,
               <div className="flexrow wideresults__product-info">
                 <div className="wideresults__product-price">{item.data.lowestNewPrice.formattedAmount}</div>
               </div>
-                <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">BUY AT AMAZON</a>
+                <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">Buy on Amazon</a>
             </div>
           </div>
           <div className="wideresults__perview-right">
