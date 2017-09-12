@@ -28,7 +28,6 @@ class ItemPerviews extends React.Component {
   }
 
   componentDidMount() {
-    console.log('did mount', this.props);
   }
 
   componentWillReceiveProps (nextProps) {
@@ -47,7 +46,6 @@ class ItemPerviews extends React.Component {
     }
 
     if (nextProps.fetchingUpdate !== this.props.fetchingUpdate) {
-      console.log('hits');
       this.setState({
         fetchingUpdate: nextProps.fetchingUpdate
       })

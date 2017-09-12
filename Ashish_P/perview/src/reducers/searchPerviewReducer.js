@@ -32,7 +32,6 @@ const searchPerviewReducer = (oldState = _nullSearchPerview, action) => {
         isFetching: false,
         errors: []
       });
-      console.log('reducer', results);
       return newState;
     case RECEIVE_ERRORS:
       let errors = action.errors;

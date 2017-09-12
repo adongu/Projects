@@ -27,7 +27,6 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmar
 
   const handleLikeClick = (perview) => {
     return e => {
-      console.log('hit like', perview);
       if (perview && perview.likedByLoggedInUser) {
         unlikePerview(perview.id);
       } else {

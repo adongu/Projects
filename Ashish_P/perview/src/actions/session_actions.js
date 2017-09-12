@@ -44,7 +44,7 @@ export const fetchUser = () => dispatch => {
   dispatch(requestUser());
   return APIUtil.fetchUser()
     .then( response => {
-      console.log('success', response.data);
+      console.log('session action', response.data);
       return dispatch(receiveCurrentUser(response.data))
     })
     .catch((error) => {

@@ -33,7 +33,6 @@ class HomePage extends React.Component {
     }
 
     if (nextProps.fetchingUpdate !== this.props.fetchingUpdate) {
-      console.log('hits');
       this.setState({
         fetchingUpdate: nextProps.fetchingUpdate
       })

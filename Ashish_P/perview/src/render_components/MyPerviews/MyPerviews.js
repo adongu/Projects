@@ -22,7 +22,6 @@ class MyPerviews extends React.Component {
     .then(() => {
       this.setState({ categories: this.props.categories });
     });
-    console.log(this.state.categories);
   }
 
   componentDidMount() {

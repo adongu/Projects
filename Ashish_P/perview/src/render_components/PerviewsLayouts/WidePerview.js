@@ -48,7 +48,6 @@ const WidePerview = ({ fetchingUpdate, currentUserId, perviews, bookmarkPerview,
 
   const renderPerviews = () => {
     if (perviews) {
-      console.log('rerendering');
       return perviews.map((perview, i) => {
         var item = perview.itemDto;
         var user = perview.userDto;

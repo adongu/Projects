@@ -6,7 +6,6 @@ var config = {
 };
 
 export const likePerview = (perviewId) => {
-  console.log(perviewId);
   return axios({
     method: 'POST',
     url: `/api/${perviewId}/like`,
