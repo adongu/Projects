@@ -12,17 +12,6 @@ class Settings extends React.Component{
     });
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   if (this.props.currentUser) {
-  //     if (nextProps.currentUser.id !== this.props.currentUser.id) {
-  //       this.props.fetchUser()
-  //       .then(() => {
-  //         this.props.fetchNumPerviews();
-  //       });
-  //     }
-  //   }
-  // }
-
   render() {
     let currentUser;
     if (this.props.currentUser) {
