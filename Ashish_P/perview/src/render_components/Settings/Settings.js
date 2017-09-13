@@ -1,6 +1,6 @@
 import "../../styles/stylesheets/setting.css";
 import React from 'react';
-import NavBar from '../NavBar/NavBar';
+import NavBarContainer from '../../containers/NavBarContainer.js';
 import { withRouter } from 'react-router-dom';
 
 class Settings extends React.Component{
@@ -18,9 +18,10 @@ class Settings extends React.Component{
       currentUser = this.props.currentUser;
 
       return(
-        <div>
-          <NavBar />
-          <div className="flexcolumn settings__container">
+        <div className="settings__container">
+          <NavBarContainer />
+
+          <div className="flexcolumn settings__box">
             <section className="flexrow settings__row-top">
               <div className="flexrow settings__userbox">
                 <div className="settings_userimgbox">

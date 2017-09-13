@@ -1,6 +1,7 @@
 {
   "name": "perview",
   "version": "0.1.0",
+  "homepage" : "http://perview.co",
   "private": true,
   "proxy": "http://localhost:8080",
   "dependencies": {
