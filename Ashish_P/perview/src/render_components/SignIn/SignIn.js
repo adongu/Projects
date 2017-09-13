@@ -57,35 +57,39 @@ class SignIn extends React.Component {
     let token = this.getCsrfToken();
 
     return (
-      <div className="signin__container">
-        <div className="column signin__box">
-          <div className="signin__logo">
-            <img className="signin__logoimg" src="https://pmcdeadline2.files.wordpress.com/2016/07/logo-tv-logo.png" alt="logo"/>
-          </div>
-          <div className="column signin__body">
-            <div className="signin__bodywelcome">
-              Welcome to Perview
+      <div className="signin">
+        <div className="signin__container">
+          <div className="column signin__box">
+            <div className="signin__logo">
+              <img className="signin__logoimg" src="https://pmcdeadline2.files.wordpress.com/2016/07/logo-tv-logo.png" alt="logo"/>
             </div>
-            <div className="signin__bodymessage">
-              Purchase your favorite products with the trust of your friends
+            <div className="column signin__body">
+              <div className="signin__bodywelcome">
+                Welcome to Perview
+              </div>
+              <div className="signin__bodymessage">
+                Purchase your favorite products with the trust of your friends
+              </div>
+              <form className="flexcolumn signin__form" action={auth_url} method="post">
+                <input type="hidden" name="scope" value="user_friends"/>
+                <input type="hidden" name="scope" value="email"/>
+                <input type="hidden" name="_csrf" value={token}/>
+                <button type="submit" className="signin__submit-facebook">Continue with Facebook</button>
+                <p className="signin__submit-msg">
+                  We'll never post anything without your permission.
+                </p>
+              </form>
             </div>
-            <form className="flexcolumn signin__form" action={auth_url} method="post">
-              <input type="hidden" name="scope" value="user_friends"/>
-              <input type="hidden" name="scope" value="email"/>
-              <input type="hidden" name="_csrf" value={token}/>
-              <button type="submit" className="signin__submit-facebook">Continue with Facebook</button>
-              <p className="signin__submit-msg">
-                We'll never post anything without your permission.
-              </p>
-            </form>
+            <div className="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
           </div>
-          <div className="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
+          <div className="signin__terms">
+            Creating an account means you're okay with Perview's
+            <Link className="signin__terms-urls" to="">Terms of Service</Link>
+            and
+            <Link className="signin__terms-urls" to="">Privacy Policy</Link>
+          </div>
         </div>
-        <div className="signin__terms">
-          Creating an account means you're okay with Perview's
-          <Link className="signin__terms-urls" to="">Terms of Service</Link>
-          and
-          <Link className="signin__terms-urls" to="">Privacy Policy</Link>
+        <div className="signin__background">
         </div>
       </div>
     );
