@@ -59,11 +59,11 @@ class SignIn extends React.Component {
     return (
       <div className="signin">
         <div className="signin__container">
-          <div className="column signin__box">
+          <div className="flexcolumn signin__box">
             <div className="signin__logo">
-              <img className="signin__logoimg" src="https://pmcdeadline2.files.wordpress.com/2016/07/logo-tv-logo.png" alt="logo"/>
+              <img className="signin__logoimg" src="https://s3.amazonaws.com/yumpapp-dev/perview/logo.jpg" alt="logo"/>
             </div>
-            <div className="column signin__body">
+            <div className="flexcolumn signin__body">
               <div className="signin__bodywelcome">
                 Welcome to Perview
               </div>

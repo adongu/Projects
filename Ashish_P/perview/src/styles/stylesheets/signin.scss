@@ -1,3 +1,8 @@
+.signin{
+  max-width: 100%;
+  height: auto;
+}
+
 .signin__ {
   /* signin box */
   &background {
@@ -20,8 +25,8 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding-top: 100px;
-    border-top: 10%;
+    padding: 0 10px;
+    margin-top: 150px;
     color: blue;
   }
 
@@ -32,50 +37,56 @@
     margin: auto;
     background: white;
     width: 450px;
-    height: 350px;
-    border: 2px gray solid;
+    height: 458px;
+    border: 1px #D6D6D6 solid;
+    box-shadow: 1px 7px 18px 1px #888;
+
   }
   /* logo */
   &logo {
-    position: absolute;
-    margin: auto;
-    background-color: #777777;
-    border-radius: 50%;
-    left: 180px;
-    top: -60px;
-    width: 90px;
-    height: 90px;
-    z-index: 1;
-    // background-color: gray;
+    height: 45%;
+    width: 100%;
+    margin-top: 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &logoimg {
-    border-radius: 50%;
-    margin: auto;
-    width: 100%;
+    width: 60%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    image-rendering: -moz-crisp-edges;         /* Firefox */
+    image-rendering:   -o-crisp-edges;         /* Opera */
+    image-rendering: -webkit-optimize-contrast;/* Webkit (non-standard naming) */
+    image-rendering: crisp-edges;
   }
 
   /* Welcome Message */
   &body {
-    width:85%;
+    height: 55%;
+    width: 85%;
     margin: auto;
+    border-top: 1px solid #D6D6D6;
+    padding-top: 10px;
   }
 
   &bodywelcome {
+    margin: auto;
+    padding: 0 0 15px 0;
+    font-size: 25px;
+    color: #484848;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: auto;
-    padding: 20px 0 15px 0;
-    font-size: 25px;
-    color: gray;
   }
 
   &bodymessage {
     margin: auto;
     font-size: 14px;
     color: gray;
-    padding: 0 15px 0 17px;
+    padding: 10px 15px 0 17px;
   }
   /* auth button*/
   &form {
@@ -83,7 +94,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 60px 0 0 0;
+    padding: 40px 0 0 0;
   }
 
   &form-facebook:hover {
@@ -91,31 +102,67 @@
   }
 
   &submit-facebook {
-    // width: 50%;
-    margin: auto;
-    padding: 8px 23px;
+    width: 201px;
+    height: 33px;
     margin-bottom: 10px;
     border-radius: 18px;
     font-size: 14px;
     background: #6E96C8;
     color: white;
-    text-decoration: none;
-    text-align: center;
+    font-family: "FirSans-Regular";
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &submit-msg {
-    font-size: 12px;
+    font-size: 10px;
     color: #484848;
+    text-shadow: 0px 0px 10px #fff;
   }
 
   &terms {
     padding: 30px 0;
     margin: auto;
     font-size: 14px;
-    color: gray;
+    color: #fff;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 
     &-urls {
-      color: gray;
+      text-decoration: underline;
+      padding: 0 4px;
+    }
+  }
+}
+
+@media only screen and (min-width : 320px) and (max-width : 480px) {
+  .signin{
+    max-width: 100%;
+    height: 100%;
+  }
+
+	.signin__{
+    &background {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0.79;
+      background: #79A9CF url("https://s3.amazonaws.com/yumpapp-dev/perview/background+icons.png") repeat;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      z-index: -1;
+    }
+
+    &box {
+      width: 100%;
+      height: 100%;
     }
   }
 }
