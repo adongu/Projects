@@ -10,6 +10,7 @@
   &box {
     margin: auto;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
   }
 
@@ -59,13 +60,27 @@
     // display: flex;
   }
 
+
+  &filterbox {
+  }
+
+  &filter-title {
+    padding-right: 20px;
+    font-size: 14px;
+  }
+
   &dropdown-filter {
     width: 210px;
+    height: 30px;
     border: 1px #D6D6D6 solid;
     border-radius: 50%;
   }
 
   &filteroption {
+  }
+
+  &filteroption-text{
+    font-size: 18px;
   }
 
   // &creatererview {

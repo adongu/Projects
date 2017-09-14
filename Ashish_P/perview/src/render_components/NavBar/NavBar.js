@@ -35,7 +35,9 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, categorie
       return (
         <div className="flexrow navbar__userbox">
           <span className="navbar__userimgbox">
-            <img className="navbar__userimg" src={userFriend.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
+            <img className="navbar__userimg"
+              src={userFriend.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"
+            />
           </span>
           <span className="navbar__username">{userFriend.fullName}</span>
         </div>
@@ -47,16 +49,23 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, categorie
     if (categories && match && match.path && pageSettings[match.path].hasFilters) {
       return (
         <div>
-          <label className="navbar__filter">
-            Filter by
-            <select className="navbar__dropdown-filter" defaultValue={null} onChange={handleFilterChange}>
-              <option default={true} className='navbar__filteroption' value={""}>All Catagories</option>
-                {categories.map((category, id) => {
-                  return (
-                    <option className='navbar__filteroption' key={`category_${category.id}`}  value={category.id}>{category.displayName}</option>
-                  )
-                })}
-            </select>
+          <label className="navbar__filterbox">
+            <span className="navbar__filter-title">
+              Filter by
+            </span>
+              <select className="navbar__dropdown-filter" defaultValue={null} onChange={handleFilterChange}>
+                <option default={true} className='navbar__filteroption' value={""}>All Catagories</option>
+                  {categories.map((category, id) => {
+                    return (
+                      <option
+                        className='navbar__filteroption'
+                        key={`category_${category.id}`}
+                        value={category.id}>
+                        <p className="navbar__filteroption-text">{category.displayName}</p>
+                      </option>
+                    )
+                  })}
+              </select>
           </label>
         </div>
       )
