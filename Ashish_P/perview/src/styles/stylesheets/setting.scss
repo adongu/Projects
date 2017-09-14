@@ -155,6 +155,37 @@ $lines-to-show: 6;
         transition: .1s;
       }
     }
-
   }
+
+  // Active Networks
+  &networks{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &-header {
+      font-size: 16px;
+      padding-bottom: 10px;
+    }
+
+    &-facebook{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+
+    &-facebookicon {
+      color: #3b5998;
+      padding-right: 8px;
+    }
+
+    &-facebook {
+      color: #3B5998;
+      font-size: 14px;
+    }
+  }
+
+  // Total Perviews
 }

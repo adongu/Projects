@@ -63,9 +63,11 @@ class Settings extends React.Component{
 
             <section className="flexrow settings__row-bottom">
               <div className="settings__networks">
-                <p>Active Social Networks</p>
-                <div>Facebook</div>
-                <div>Facebook</div>
+                <p className="settings__networks-header">Active Social Networks</p>
+                <div className="settings__networks-facebook">
+                  <i className="fa fa-facebook fa-4x settings__networks-facebookicon" aria-hidden="true"></i>
+                  <div className="settings__networks-facebooktext">Facebook</div>
+                </div>
               </div>
 
               <div className="settings__perviews">
