@@ -4,6 +4,15 @@ import NavBarContainer from '../../containers/NavBarContainer.js';
 import { withRouter } from 'react-router-dom';
 
 class Settings extends React.Component{
+  constructor(props) {
+    super(props)
+
+    // this.performCopyUrl = this.performCopyUrl.bind(this)
+    this.state = {
+      copySuccess: ""
+    }
+  }
+
 
   componentWillMount() {
     this.props.fetchUser()
@@ -11,7 +20,14 @@ class Settings extends React.Component{
       this.props.fetchNumPerviews();
     });
   }
-  // "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
+  performCopyUrl (e) {
+    this.textArea.select();
+    document.execCommand('copy');
+    e.target.focus();
+    this.setState({ copySuccess: "Copied Successful!" });
+  }
+
   render() {
     let currentUser;
     if (this.props.currentUser) {
@@ -36,15 +52,19 @@ class Settings extends React.Component{
 
               <div className="settings__invitebox">
                 <p className="settings__invite-text">Invite URL - share to gain points!</p>
-                <p className="settings__invite-id">{currentUser.inviteCode}</p>
-                <button className="settings__invite-copy">Copy Invite Url</button>
+                <form className="settings__copy" onSubmit={this.performCopyUrl}>
+                  <textarea className="settings__invite-id" value={currentUser.inviteCode}></textarea>
+                  <button className="settings__copy-btn">Copy Invite Url</button>
+                </form>
+                <p className="settings__copy-success">{this.state.copySuccess}</p>
               </div>
             </section>
 
             <section className="flexrow settings__row-bottom">
               <div className="settings__networks">
                 <p>Active Social Networks</p>
-                <div>networks</div>
+                <div>Facebook</div>
+                <div>Facebook</div>
               </div>
 
               <div className="settings__perviews">
