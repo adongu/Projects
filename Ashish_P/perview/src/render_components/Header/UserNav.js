@@ -12,8 +12,6 @@ class UserNav extends React.PureComponent {
     this.handleLogout = this.handleLogout.bind(this);
   }
 
-  compon
-
   redirectToSettings() {
     this.props.history.push('/settings');
   }
@@ -40,15 +38,14 @@ class UserNav extends React.PureComponent {
             </div>
           }
           noCaret pullRight id="dropdown-pull-right" className="usernav__dropdown">
-          <MenuItem className="usernav__option" eventKey="1">
-            <div onClick={this.redirectToSettings}
-              className="usernav__settings" >
+          <MenuItem onClick={this.redirectToSettings} className="usernav__option" eventKey="1">
+            <div className="usernav__settings" >
               <i className="fa fa-cog usernav__option-icon" aria-hidden="true"></i>
               <span className="usernav__option-text">Settings</span>
             </div>
           </MenuItem>
-          <MenuItem eventKey="4" className="usernav__option" eventKey="2">
-            <div onClick={this.handleLogout} className="usernav__signout">
+          <MenuItem onClick={this.handleLogout} eventKey="4" className="usernav__option" eventKey="2">
+            <div className="usernav__signout">
               <i className="fa fa-sign-out usernav__option-icon" aria-hidden="true"></i>
               <span className="usernav__option-text">Sign Out</span>
             </div>

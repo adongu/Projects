@@ -100,15 +100,56 @@ $lines-to-show: 6;
     }
 
     &-text {
+    }
 
+    &form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &invite-center {
+      display: flex;
+      justify-content: center;
     }
 
     &-id {
+      width: 250px;
+      text-align: left;
+      border: 1px dashed #D6D6D6;
       font-size: $font-size;
+      margin-bottom: 8px;
     }
 
     &-copy {
-
+      width: 201px;
+      height: 33px;
+      margin-bottom: 10px;
+      border-radius: 18px;
+      font-size: 14px;
+      background: #79A0CF;
+      color: white;
+      transition: 0.3s;
+      font-family: "FirSans-Regular";
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
     }
+
+    &-copy{
+      &:hover {
+        background: #79A0E3;
+        box-shadow: 1px 5px 5px #E1E1E1;
+        transition: 0.3s;
+      }
+
+      &:active {
+        background: #85B0FB;
+        box-shadow: 0 0 1px #E1E1E1;
+        transition: .1s;
+      }
+    }
+
   }
 }

@@ -9,12 +9,15 @@ class Settings extends React.Component{
 
     // this.performCopyUrl = this.performCopyUrl.bind(this)
     this.state = {
-      copySuccess: "Copy"
+      copySuccess: "Copy",
+      inviteCode: ""
     }
     this.performCopyUrl = this.performCopyUrl.bind(this);
+    this.handleChangeInput = this.handleChangeInput.bind(this);
   }
 
   componentWillMount() {
+    this.setState({ inviteCode: this.props.currentUser.inviteCode });
   }
 
   performCopyUrl (e) {
@@ -23,12 +26,13 @@ class Settings extends React.Component{
     document.execCommand('copy');
     e.target.focus();
     this.setState({ copySuccess: "Copied!" }, () => {
-      window.setTimeout(() => this.setState({ copySuccess: "Copy" }), 1300)
+      window.setTimeout(() => this.setState({ copySuccess: "Copy" }), 2000)
     });
   }
 
   handleChangeInput (e) {
-
+    console.log(this.props.currentUser.inviteCode);
+    this.setState({ inviteCode: e.target.value })
   }
 
   render() {
@@ -54,9 +58,11 @@ class Settings extends React.Component{
 
               <div className="settings__invitebox">
                 <p className="settings__invite-text">Invite URL - share to gain points!</p>
-                <form className="settings__copy" onSubmit={this.performCopyUrl}>
-                  <input onChange={this.handleChangeInput} className="settings__invite-id" value={currentUser.inviteCode}></input>
-                  <button className="settings__copy-btn">{this.state.copySuccess}</button>
+                <form className="flexcolumn settings__inviteform">
+                  <div className="settings__invite-center">
+                    <input onChange={this.handleChangeInput} className="settings__invite-id" value={this.state.inviteCode}></input>
+                  </div>
+                  <span onClick={this.performCopyUrl} className="settings__invite-copy">{this.state.copySuccess}</span>
                 </form>
               </div>
             </section>
