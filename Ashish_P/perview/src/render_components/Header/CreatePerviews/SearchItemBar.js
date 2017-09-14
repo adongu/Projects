@@ -22,7 +22,7 @@ class SearchItemBar extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      keywords: "",
+      keywords: '',
       value: '',
       suggestions: [],
       isFetching: false
@@ -86,7 +86,8 @@ class SearchItemBar extends React.Component {
     this.setState({
       keywords: '',
       value: '',
-      suggestions: []
+      suggestions: [],
+      isFetching: false
     });
   };
 

@@ -57,14 +57,6 @@ class CreatePerviewModal extends React.Component {
       rating: 0,
       lastRating: 0,
       ratingHover: 0,
-      ratingTip: {
-        0: "",
-        1: "Hate It!",
-        2: "Meh",
-        3: "Just Okay",
-        4: "Great",
-        5: "Love It!"
-      },
       // asin: '',
       perviewers: []
     });
