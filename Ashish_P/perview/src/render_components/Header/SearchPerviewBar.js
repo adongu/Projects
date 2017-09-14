@@ -151,9 +151,12 @@ class SearchItemBar extends React.Component {
             return (
               <div key={`headersearch-${perview.id}`}>
                 <div className={`headersearch__hovernamebox ${this.state.hoverUserName === user.fullName ? 'active' : ''}`}>
-                  <div className="headersearch__hovername">{this.state.hoverUserName}</div>
+                  <div className="headersearch__hovername">
+                    {this.state.hoverUserName}
+                  </div>
                   <div className="headersearch__rhovernamebox-triangle"></div>
                 </div>
+
                 <div id={`suggestion-liker-${perview.id}`} className="headersearch__userbox">
                   <img
                     onMouseOver={() => { this.setState({ hoverUserName: user.fullName }) }}
@@ -179,9 +182,14 @@ class SearchItemBar extends React.Component {
             <div className="autosuggest__product-left">
               <img className="autosuggest__img" src={itemImageUrl} alt="product"/>
             </div>
+
             <div className="flexcolumn autosuggest__product-right">
-              <div className="autosuggest__name">{suggestion[0].itemDto.name}</div>
-              <div className="autosuggest__price">{itemPrice}</div>
+              <div className="autosuggest__name">
+                {suggestion[0].itemDto.name}
+              </div>
+              <div className="autosuggest__price">
+                {itemPrice}
+              </div>
             </div>
           </div>
 

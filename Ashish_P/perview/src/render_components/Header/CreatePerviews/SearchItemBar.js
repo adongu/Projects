@@ -133,15 +133,18 @@ class SearchItemBar extends React.Component {
     let price = suggestion.lowestNewPrice.formattedAmount;
 
     return (
-      <div className="flexrow autosuggest__productcontainer">
-        <div className="autosuggest__product-left">
-          <img className="autosuggest__img" src={imgUrl} alt="product"/>
+      // <div className="flexrow autosuggest__item">
+
+        <div className="flexrow autosuggest__productcontainer">
+          <div className="autosuggest__product-left">
+            <img className="autosuggest__img" src={imgUrl} alt="product"/>
+          </div>
+          <div className="flexcolumn autosuggest__product-right">
+            <div className="autosuggest__name">{suggestion.title}</div>
+            <div className="autosuggest__price">{price}</div>
+          </div>
         </div>
-        <div className="flexcolumn autosuggest__product-right">
-          <div className="autosuggest__name">{suggestion.title}</div>
-          <div className="autosuggest__price">{price}</div>
-        </div>
-      </div>
+      // </div>
     );
   }
 

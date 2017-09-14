@@ -1,10 +1,6 @@
 $title-font-size: 15px;
-$title-line-height: 1.4;
-$title-lines-to-show: 5;
-
-$review-font-size: 15px;
-$review-line-height: 1.2;
-$review-lines-to-show: 5;
+$title-line-height: 1.3;
+$title-lines-to-show: 3;
 
 .search__{
   &container {
@@ -138,6 +134,7 @@ body {
 .react-autosuggest__suggestion {
   cursor: pointer;
   border-bottom: 1px #D6D6D6 solid;
+  padding: 10px 0;
 }
 /* autosuggest highlight */
 .react-autosuggest__suggestion--highlighted {
@@ -148,8 +145,11 @@ body {
 .autosuggest__{
   &item {
     width: 100%;
-    height: 150px;
-    padding: 15px 0;
+    height: 160px;
+    // padding: 15px 0;
+    // display: flex;
+    // justify-content: flex-start;
+    // align-items: center;
   }
 
 /* product display left side */
@@ -174,11 +174,10 @@ body {
 
   &name {
     width: 100%;
-    padding: 30px 4px 10px 4px;
     color: darkgray;
+    display: block;
     height: $title-font-size*$title-line-height*$title-lines-to-show; /* Fallback for non-webkit */
-    margin: 0 auto;
-    margin-bottom: 20px;
+    margin: 10px auto;
     font-size: $title-font-size;
     font-weight: 300;
     line-height: $title-line-height;
@@ -189,7 +188,7 @@ body {
   }
 
   &price {
-    padding: 10px 4px 30px 4px;
+    // padding: 10px 4px;
   }
 
   &product {
