@@ -25,25 +25,33 @@ const NarrowPerview = ({ perviews, bookmarkPerview, likePerview, history  }) => 
         return (
           <div key={`perviewindex__${i}`} className="flexcolumn narrowperviews__box">
             <div className="flexcolumn narrowperviews__productbox">
-              <div className="narrowperviews__time">{moment(perview.ts).format("MMM D")}</div>
+              <div className="narrowperviews__time">
+                {moment(perview.ts).format("MMM D")}
+              </div>
               <div className="narrowperviews__img">
                 <Link to={`/item/${item.id}`}>
                   <img className="narrowperviews__productimg-photo" src={item.data.imageUrls.large.url} alt="product"/>
                 </Link>
               </div>
-              <Link to={`/item/${item.id}`}>
+
+              <Link to={`/item/${item.id}`} className="narrowperviews__product-name">
                 {item.data.title}
               </Link>
+
               <div className="narrowperviews__price">{item.data.lowestNewPrice.formattedAmount}</div>
+
               <div className="flexrow narrowperviews__buybox">
                 <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">Buy on Amazon</a>
-                <div className="narrowperviews__numperviews">{perview.likes ? perview.likes : 0} perviews</div>
+                <div className="narrowperviews__numperviews">
+                  {perview.likes ? perview.likes : 0} perviews
+                </div>
               </div>
             </div>
 
             <div className="flexcolumn narrowperviews__reviewbox">
               <div className="flexrow narrowperviews__reviewnav">
                 <div className="narrowperviews__stars">{renderStars(perview.rating)}</div>
+
                 <div className="flexrow narrowperviews__editbox">
                   <button className="narrowperviews__edit-btn">
                     <i className="fa fa-pencil narrowperviews__edit-icon" aria-hidden="true"></i>
@@ -53,6 +61,7 @@ const NarrowPerview = ({ perviews, bookmarkPerview, likePerview, history  }) => 
                   </button>
                 </div>
               </div>
+
               <div className="narrowperviews__review-text">{perview.tags}</div>
             </div>
           </div>

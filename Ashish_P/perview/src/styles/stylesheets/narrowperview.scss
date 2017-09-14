@@ -11,7 +11,6 @@ $review-lines-to-show: 6;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    // align-items: space-around;
     justify-content: space-around;
     width: 980px;
     margin: auto;
@@ -19,17 +18,13 @@ $review-lines-to-show: 6;
   }
 
   &box {
-    // -webkit-flex: 320 1 auto;
     display: flex;
     align-items: center;
     width: 320px;
-    height: 540px;
-    // padding: 10px;
-    // margin: auto;
+    height: 560px;
     box-shadow: 1px 1px 1px #888;
     margin-top: 10px;
     margin-bottom: 20px;
-    // padding: 10px 10px 20px 10px;
     border: 1px #D6D6D6 solid;
     box-shadow: 0px 2px 2px 0px #EAEAEA;
     border-radius: 5px;
@@ -48,6 +43,7 @@ $review-lines-to-show: 6;
     margin-left: auto;
     color: #3F3F3F;
     padding: 6px 0;
+    margin-bottom: 8px;
   }
 
   &img{
@@ -64,10 +60,10 @@ $review-lines-to-show: 6;
     margin: auto;
     max-width: 284px;
     max-height: 150px;
-    // border-radius: 7px;
+    margin-bottom: 10px;
   }
 
-  &name {
+  &product-name {
     width: 100%;
     color: #3F3F3F;
     display: block; /* Fallback for non-webkit */
@@ -117,7 +113,7 @@ $review-lines-to-show: 6;
   &reviewnav {
     display: flex;
     justify-content: space-between;
-    padding: 10px 0 20px;
+    padding: 10px 0 10px 0;
   }
 
   &stars {
@@ -156,11 +152,10 @@ $review-lines-to-show: 6;
 
   &review-text {
     width: 100%;
-    padding-bottom: 10px;
+    padding: 0 8px 10px 8px;
     color: #3F3F3F;
     display: block; /* Fallback for non-webkit */
-    display: -webkit-box;
-    // height: 50px;
+    // display: -webkit-box;
     height: $review-font-size*$review-line-height*$review-lines-to-show;
     margin: 0 auto;
     font-size: $review-font-size;
