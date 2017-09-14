@@ -168,16 +168,24 @@ class CreatePerviewModal extends React.Component {
           </div>
 
           <div className="createperview__review-container">
-            <form className="flexcolumn createperview__review-box" action>
+            <form onSubmit={this.handleSubmit} className="flexcolumn createperview__review-box">
               <div className="flexrow createperview__review-rating">
                 <div className="flexrow createperview__review-rating-stars">
+                  <span className="createperview__review-rating-text">
+                    Perview this Product!
+                  </span>
                   {this.renderReviewStars(this.state.rating)}
                 </div>
               </div>
 
-              <textarea className="createperview__review-input" value={this.state.tags} onChange={this.update("tags")} placeholder="Write a full review or hashtag it or both or neither #nopressure">
+              <p>Tag it, comment or both!</p>
+              <textarea
+                onChange={this.update("tags")}
+                className="createperview__review-input"
+                value={this.state.tags}
+                placeholder="Write a full review or hashtag it or both or neither #nopressure">
               </textarea>
-              <button disabled={this.state.rating < 1} className="createperview__review-submit" onClick={this.handleSubmit}>
+              <button disabled={this.state.rating < 1} className="createperview__review-submit">
                 Submit
               </button>
             </form>
@@ -202,7 +210,9 @@ class CreatePerviewModal extends React.Component {
         >
           <Modal.Header className="createperview__modalhead" closeButton>
 
-          <div className="createperview__title">Create Perview</div>
+          <div className="createperview__title">
+            Create Perview
+          </div>
           <div className="flexcolumn createperview__search-container">
             <div className="createperview__search-background">
               <div className="createperview__search-box">
