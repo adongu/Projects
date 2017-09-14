@@ -1,7 +1,7 @@
 import "../../styles/stylesheets/search.css";
 import { debounce } from 'lodash';
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Autosuggest from 'react-autosuggest';
 import IsolatedScroll from 'react-isolated-scroll';
 
@@ -143,8 +143,7 @@ class SearchItemBar extends React.Component {
 
   renderSearchPerviewFriends(perviews) {
     if (perviews !== null) {
-      // let newPerviews = perviews.length > 3 ? perviews.slice(0, 3) : perviews;
-      // perviews = perviews.concat(perviews).concat(perviews).concat(perviews);
+      perviews = perviews.length > 3 ? perviews.slice(0, 3) : perviews;
 
       return(
         <div className="flexrow headersearch__container">
@@ -169,6 +168,8 @@ class SearchItemBar extends React.Component {
               </div>
             )
           })}
+
+          <Link> </Link>
         </div>
       )
     }
@@ -199,6 +200,7 @@ class SearchItemBar extends React.Component {
           <div className="flexcolumn autosuggest__friends">
             <div>Perviewed By</div>
             {this.renderSearchPerviewFriends(suggestion)}
+            {}
           </div>
         </div>
       );
