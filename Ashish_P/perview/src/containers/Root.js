@@ -16,7 +16,7 @@ const Root = ({ store }) => {
        <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
           <div className="root">
             <Switch>
-              <AuthRoute component={SignInContainer} path="/signin" />
+              <AuthRoute component={SignInContainer} exact path="/signin" />
               <ProtectedRoute component={HomePageContainer} exact path="/"/>
               <ProtectedRoute component={MyPerviewsContainer} exact path="/myperviews"/>
               <ProtectedRoute component={FavoritePerviewsContainer} exact path="/favorites"/>

@@ -79,6 +79,11 @@ $review-lines-to-show: 6;
     text-overflow: ellipsis;
   }
 
+  &product-name:hover {
+    text-decoration: none;
+    color: #c45500;
+  }
+
   &price {
     padding: 10px 0;
   }

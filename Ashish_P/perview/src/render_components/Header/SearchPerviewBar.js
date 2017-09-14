@@ -143,6 +143,9 @@ class SearchItemBar extends React.Component {
 
   renderSearchPerviewFriends(perviews) {
     if (perviews !== null) {
+      // let newPerviews = perviews.length > 3 ? perviews.slice(0, 3) : perviews;
+      // perviews = perviews.concat(perviews).concat(perviews).concat(perviews);
+
       return(
         <div className="flexrow headersearch__container">
           {perviews.map((perview) => {
