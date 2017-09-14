@@ -34,10 +34,10 @@ class Settings extends React.Component{
                 </div>
               </div>
 
-              <div className="settings__invite">
-                <p>Invite URL - share to gain points!</p>
-                <div>{currentUser.inviteCode}</div>
-                <button>Copy Invite Url</button>
+              <div className="settings__invitebox">
+                <p className="settings__invite-text">Invite URL - share to gain points!</p>
+                <p className="settings__invite-id">{currentUser.inviteCode}</p>
+                <button className="settings__invite-copy">Copy Invite Url</button>
               </div>
             </section>
 

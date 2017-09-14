@@ -17,12 +17,12 @@ $lines-to-show: 6;
   }
 
   &userbox,
-  &invite,
+  &invitebox,
   &networks,
   &perviews {
     width: 465px;
-    margin: auto;
     height: 200px;
+    margin: auto;
     display: block;
     margin-right: 15px;
     margin-bottom: 20px;
@@ -31,7 +31,7 @@ $lines-to-show: 6;
     border-radius: 7px;
   }
 
-
+//User Box
   &userbox {
     display: flex;
     flex-direction: row;
@@ -79,8 +79,8 @@ $lines-to-show: 6;
     flex-wrap: wrap;
 
     height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
-    margin-top: 20px;
-    margin-bottom: 20px;
+    // margin-top: 20px;
+    // margin-bottom: 20px;
     font-size: $font-size;
     font-weight: 300;
     line-height: $line-height;
@@ -88,5 +88,27 @@ $lines-to-show: 6;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  // Invite box
+  &invite{
+    &box {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &-text {
+
+    }
+
+    &-id {
+      font-size: $font-size;
+    }
+
+    &-copy {
+
+    }
   }
 }
