@@ -13,6 +13,12 @@ class Settings extends React.Component{
     }
     this.performCopyUrl = this.performCopyUrl.bind(this);
     this.handleChangeInput = this.handleChangeInput.bind(this);
+    this.renderProfile = this.renderProfile.bind(this);
+    this.renderSocialNetworks = this.renderSocialNetworks.bind(this);
+    this.renderTotalPoints = this.renderTotalPoints.bind(this);
+    this.renderNumberPerviews = this.renderNumberPerviews.bind(this);
+    this.renderIsBetaUser = this.renderIsBetaUser.bind(this);
+    this.renderInviteUrl = this.renderInviteUrl.bind(this);
   }
 
   performCopyUrl (e) {
@@ -29,6 +35,105 @@ class Settings extends React.Component{
     e.preventDefault();
   }
 
+  renderProfile (currentUser) {
+    return (
+      <div className="flexrow settings__userbox">
+        <div className="settings__userimgcontainer">
+          <div className="settings__userimgbox">
+            <img className="settings__userimg" src={currentUser.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User" />
+          </div>
+        </div>
+        <div className="settings__username">
+          {currentUser.fullName}
+        </div>
+      </div>
+    )
+  }
+
+  renderSocialNetworks (currentUser) {
+    return (
+      <div className="settings__networks">
+        <p className="settings__networks-header">
+          Active Social Networks
+        </p>
+
+        <div className="settings__networks-facebook">
+          <i className="fa fa-facebook fa-4x settings__networks-facebookicon" aria-hidden="true"></i>
+
+          <div className="settings__networks-facebooktext">
+            Facebook
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  renderInviteUrl (currentUser) {
+    return (
+      <div className="settings__invitebox">
+        <p className="settings__invite-text">
+          Share your Link to gain points!
+        </p>
+
+        <form className="flexcolumn settings__inviteform">
+          <div className="settings__invite-center">
+            <input className="settings__invite-id" value={currentUser.inviteCode} />
+          </div>
+
+          <span onClick={this.performCopyUrl} className="settings__invite-copy">
+            {this.state.copySuccess}
+          </span>
+        </form>
+      </div>
+    )
+  }
+
+  renderTotalPoints (currentUser) {
+    return (
+      <div className="settings__points">
+        <p className="settings__points-header">
+          Total Points Earned
+        </p>
+
+        <div className="settings__points-box">
+          <i className="fa fa-trophy fa-3x settings__points-icon" aria-hidden="true"></i>
+          <span className="settings__points-number">
+            {currentUser.points}
+          </span>
+        </div>
+      </div>
+    )
+  }
+
+  renderNumberPerviews (currentUser) {
+    return (
+      <div className="settings__perviews">
+        <p className="settings__perviews-header">
+          Total PerViews
+        </p>
+
+        <div className="settings__perviews-number">
+          {currentUser.numPerviews}
+        </div>
+      </div>
+    )
+  }
+
+  renderIsBetaUser (currentUser) {
+    return (
+      <div className="settings__perviews">
+        <p className="settings__perviews-header">
+          Beta Status
+        </p>
+
+        <div className="settings__perviews-number">
+          {currentUser.beta}
+        </div>
+      </div>
+    )
+  }
+
+
   render() {
     if (this.props.currentUser) {
       let currentUser = this.props.currentUser;
@@ -39,41 +144,15 @@ class Settings extends React.Component{
 
           <div className="flexcolumn settings__box">
             <section className="flexrow settings__row-top">
-              <div className="flexrow settings__userbox">
-                <div className="settings__userimgcontainer">
-                  <div className="settings__userimgbox">
-                    <img className="settings__userimg" src={currentUser.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User" />
-                  </div>
-                </div>
-                <div className="settings__username">
-                  {currentUser.fullName}
-                </div>
-              </div>
+              {this.renderProfile(currentUser)}
 
-              <div className="settings__invitebox">
-                <p className="settings__invite-text">Share your Link to gain points!</p>
-                <form className="flexcolumn settings__inviteform">
-                  <div className="settings__invite-center">
-                    <input className="settings__invite-id" value={currentUser.inviteCode}></input>
-                  </div>
-                  <span onClick={this.performCopyUrl} className="settings__invite-copy">{this.state.copySuccess}</span>
-                </form>
-              </div>
+              {this.renderSocialNetworks(currentUser)}
             </section>
 
             <section className="flexrow settings__row-bottom">
-              <div className="settings__networks">
-                <p className="settings__networks-header">Active Social Networks</p>
-                <div className="settings__networks-facebook">
-                  <i className="fa fa-facebook fa-4x settings__networks-facebookicon" aria-hidden="true"></i>
-                  <div className="settings__networks-facebooktext">Facebook</div>
-                </div>
-              </div>
+              {this.renderTotalPoints(currentUser)}
 
-              <div className="settings__perviews">
-                <p>Total PerViews</p>
-                <div>{currentUser.numPerviews}</div>
-              </div>
+              {this.renderNumberPerviews(currentUser)}
             </section>
           </div>
         </div>
@@ -81,11 +160,10 @@ class Settings extends React.Component{
     } else {
       return(
         <div>
-          No User Found
+          No User Found :(
         </div>
       )
     }
-
   }
 }
 

@@ -7,17 +7,19 @@ $lines-to-show: 6;
     max-width: 980px;
     margin: auto;
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
+    box-sizing: border-box;
   }
 
   &row-top,
   &row-bottom {
     width: 100%;
-    justify-content: space-between;
+    // justify-content: space-between;
   }
 
   &userbox,
-  &invitebox,
+  &points,
   &networks,
   &perviews {
     width: 465px;
@@ -102,7 +104,7 @@ $lines-to-show: 6;
     &-text {
       font-size: 16px;
       box-sizing: border-box;
-      padding-bottom: 7px;
+      padding-bottom: 13px;
     }
 
     &form {
@@ -119,9 +121,9 @@ $lines-to-show: 6;
     &-id {
       width: 250px;
       text-align: left;
-      border: 1px dashed #D6D6D6;
+      border: 2px dashed #D6D6D6;
       font-size: $font-size;
-      margin-bottom: 8px;
+      margin-bottom: 14px;
       padding: 0 8px;
       cursor: default;
     }
@@ -187,5 +189,49 @@ $lines-to-show: 6;
     }
   }
 
+  // Total Points
+  &points {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &-header {
+      font-size: 16px;
+      padding-bottom: 10px;
+    }
+
+    &-box {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &-icon {
+      color: #B8A98D;
+      padding-right: 8px;
+    }
+
+    &-number {
+      font-size: 2em;
+    }
+  }
+
   // Total Perviews
+  &perviews {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &-header {
+      font-size: 16px;
+    }
+
+    &-number {
+      font-size: 45px;
+    }
+  }
+
 }
