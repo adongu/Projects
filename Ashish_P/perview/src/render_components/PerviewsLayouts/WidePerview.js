@@ -48,9 +48,11 @@ const WidePerview = ({ fetchingUpdate, currentUserId, perviews, bookmarkPerview,
 
   const renderPerviews = () => {
     if (perviews) {
+      perviews = perviews.length > 10 ? perviews.slice(0, 10) : perviews;
       return perviews.map((perview, i) => {
         var item = perview.itemDto;
         var user = perview.userDto;
+
         return (
           <div key={`perviewindex__${perview.id}`} className="flexrow wideresults__box">
             <div className="flexrow wideresults__perview-left">
@@ -59,19 +61,25 @@ const WidePerview = ({ fetchingUpdate, currentUserId, perviews, bookmarkPerview,
                   <img className="wideresults__productimg-photo" src={item.data.imageUrls.large.url} alt="Product"/>
                 </Link>
             </div>
+
             <div className="flexcolumn wideresults__perview-left-info">
-              <Link to={`/item/${item.id}`}>
+              <Link to={`/item/${item.id}`} className="wideresults__product-name">
                 {item.data.title}
               </Link>
               <div className="flexrow wideresults__product-info">
-                <div className="wideresults__product-price">{item.data.lowestNewPrice.formattedAmount}</div>
+                <div className="wideresults__product-price">
+                  {item.data.lowestNewPrice.formattedAmount}
+                </div>
               </div>
                 <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">Buy on Amazon</a>
             </div>
           </div>
+
           <div className="wideresults__perview-right">
             <div className="flexcolumn wideresults__perview-rightbox">
-              <div className="wideresults__review-time">{moment(perview.ts).format("MMM D")}</div>
+              <div className="wideresults__review-time">
+                {moment(perview.ts).format("MMM D")}
+              </div>
               <div className="flexrow wideresults__review-user">
                 <div className="wideresults__review-user-icon" onClick={handleFriendClick(user.id)}>
                   <img className="wideresults__review-user-img" src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
@@ -80,11 +88,14 @@ const WidePerview = ({ fetchingUpdate, currentUserId, perviews, bookmarkPerview,
                   {user.fullName}
                 </a>
               </div>
+
               <div className="wideresults__review-stars">
                 {renderStars(perview.rating)}
-
               </div>
-              <div className="wideresults__review-text">{perview.tags}</div>
+              <div className="wideresults__review-text">
+                {perview.tags}
+              </div>
+
               <div className="flexrow wideresults__review-social-box">
 
                 <div className="flexrow wideresults__review-social">

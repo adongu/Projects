@@ -51,10 +51,10 @@ $lines-to-show: 5;
     padding: 20px 30px 50px 10px;
   }
 
-  &product-title {
+  &product-name {
     width: 100%;
     padding-bottom: 10px;
-    color: darkgray;
+    color: #484848;
     height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
     margin: 0 auto;
     margin-bottom: 20px;
@@ -200,7 +200,7 @@ $lines-to-show: 5;
   }
 
   &review-comments{
-    color: gray;
+    color: #484848;
     font-size: 11px;
   }
 
