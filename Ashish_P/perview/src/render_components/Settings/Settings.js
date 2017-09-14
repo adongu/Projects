@@ -11,7 +11,7 @@ class Settings extends React.Component{
       this.props.fetchNumPerviews();
     });
   }
-
+  // "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   render() {
     let currentUser;
     if (this.props.currentUser) {
@@ -24,28 +24,33 @@ class Settings extends React.Component{
           <div className="flexcolumn settings__box">
             <section className="flexrow settings__row-top">
               <div className="flexrow settings__userbox">
-                <div className="settings_userimgbox">
-                  <img className="settings__userimg" src={currentUser.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User" />
+                <div className="settings__userimgcontainer">
+                  <div className="settings__userimgbox">
+                    <img className="settings__userimg" src={currentUser.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User" />
+                  </div>
                 </div>
                 <div className="settings__username">
                   {currentUser.fullName}
                 </div>
               </div>
-              <span className="settings__invite">
-                <p>Invite URL</p>
+
+              <div className="settings__invite">
+                <p>Invite URL - share to gain points!</p>
                 <div>{currentUser.inviteCode}</div>
-              </span>
+                <button>Copy Invite Url</button>
+              </div>
             </section>
 
             <section className="flexrow settings__row-bottom">
-              <span className="settings__networks">
+              <div className="settings__networks">
                 <p>Active Social Networks</p>
                 <div>networks</div>
-              </span>
-              <span className="settings__perviews">
+              </div>
+
+              <div className="settings__perviews">
                 <p>Total PerViews</p>
                 <div>{this.props.numPerviews}</div>
-              </span>
+              </div>
             </section>
           </div>
         </div>
