@@ -100,6 +100,9 @@ $lines-to-show: 6;
     }
 
     &-text {
+      font-size: 16px;
+      box-sizing: border-box;
+      padding-bottom: 7px;
     }
 
     &form {
@@ -119,6 +122,8 @@ $lines-to-show: 6;
       border: 1px dashed #D6D6D6;
       font-size: $font-size;
       margin-bottom: 8px;
+      padding: 0 8px;
+      cursor: default;
     }
 
     &-copy {
@@ -126,7 +131,7 @@ $lines-to-show: 6;
       height: 33px;
       margin-bottom: 10px;
       border-radius: 18px;
-      font-size: 14px;
+      font-size: 18px;
       background: #79A0CF;
       color: white;
       transition: 0.3s;
