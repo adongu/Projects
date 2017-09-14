@@ -9,29 +9,31 @@ class Settings extends React.Component{
 
     // this.performCopyUrl = this.performCopyUrl.bind(this)
     this.state = {
-      copySuccess: ""
+      copySuccess: "Copy"
     }
+    this.performCopyUrl = this.performCopyUrl.bind(this);
   }
 
-
   componentWillMount() {
-    this.props.fetchUser()
-    .then(() => {
-      this.props.fetchNumPerviews();
-    });
   }
 
   performCopyUrl (e) {
-    this.textArea.select();
+    e.preventDefault();
+    document.querySelector(".settings__invite-id").select();
     document.execCommand('copy');
     e.target.focus();
-    this.setState({ copySuccess: "Copied Successful!" });
+    this.setState({ copySuccess: "Copied!" }, () => {
+      window.setTimeout(() => this.setState({ copySuccess: "Copy" }), 1300)
+    });
+  }
+
+  handleChangeInput (e) {
+
   }
 
   render() {
-    let currentUser;
     if (this.props.currentUser) {
-      currentUser = this.props.currentUser;
+      let currentUser = this.props.currentUser;
 
       return(
         <div className="settings__container">
@@ -53,10 +55,9 @@ class Settings extends React.Component{
               <div className="settings__invitebox">
                 <p className="settings__invite-text">Invite URL - share to gain points!</p>
                 <form className="settings__copy" onSubmit={this.performCopyUrl}>
-                  <textarea className="settings__invite-id" value={currentUser.inviteCode}></textarea>
-                  <button className="settings__copy-btn">Copy Invite Url</button>
+                  <input onChange={this.handleChangeInput} className="settings__invite-id" value={currentUser.inviteCode}></input>
+                  <button className="settings__copy-btn">{this.state.copySuccess}</button>
                 </form>
-                <p className="settings__copy-success">{this.state.copySuccess}</p>
               </div>
             </section>
 
@@ -69,7 +70,7 @@ class Settings extends React.Component{
 
               <div className="settings__perviews">
                 <p>Total PerViews</p>
-                <div>{this.props.numPerviews}</div>
+                <div>{currentUser.numPerviews}</div>
               </div>
             </section>
           </div>
