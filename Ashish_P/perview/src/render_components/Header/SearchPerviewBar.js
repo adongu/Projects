@@ -176,9 +176,8 @@ class SearchItemBar extends React.Component {
                     alt={user.fullName}/>
                 </div>
 
-                <div className={'headersearch__hovernamebox active'}>
-                  <div className="headersearch__hovernamebox-triangle"></div>
-                  <div className="headersearch__hovernamebox-name">
+                <div className={'headersearch__friendbox active'}>
+                  <div className="headersearch__friend-text">
                     {user.firstName}
                   </div>
                 </div>

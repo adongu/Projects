@@ -46,21 +46,6 @@ class Header extends React.Component {
     window.removeEventListener('scroll', this.handleScroll);
   }
 
-  // validateRedirect() {
-  //   this.props.fetchUser()
-  //   .then(() => {
-  //     if (this.props.currentUser === null) {
-  //       this.props.history.replace({ pathname: '/signin' });
-  //     } else {
-  //       let user = this.props.currentUser;
-  //       this.setState({
-  //         fName: user.firstName,
-  //         imgUrl: user.facebookProfilePictureUrl.replace(/\/picture$/, "")
-  //       })
-  //     }
-  //   })
-  // }
-
   selectItem( imgUrl, name, price, itemId ) {
     if (itemId) {
       this.props.history.replace({ pathname: `/item/${itemId}`});
