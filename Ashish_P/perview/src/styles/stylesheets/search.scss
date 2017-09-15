@@ -128,6 +128,10 @@ body {
   border-bottom-right-radius: 4px;
   overflow-y: auto;
   z-index: 2;
+
+  -webkit-box-shadow: 1px 3px 5px rgba(100, 100, 100, 0.49);
+  -moz-box-shadow:    1px 3px 5px rgba(100, 100, 100, 0.49);
+  box-shadow:         1px 3px 5px rgba(100, 100, 100, 0.49);
 }
 /* autosuggest list */
 .react-autosuggest__suggestions-list {
@@ -150,7 +154,7 @@ body {
 .autosuggest__{
   &item {
     width: 100%;
-    height: 160px;
+    height: 140px;
     // padding: 15px 0;
     // display: flex;
     // justify-content: flex-start;
@@ -174,7 +178,7 @@ body {
   /* product display right side */
   &product-right {
     width: 66.66%;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 
   &name {

@@ -266,6 +266,7 @@ class SearchItemBar extends React.Component {
             getSuggestionValue={this.getSuggestionValue}
             renderSuggestion={this.renderSuggestion}
             renderInputComponent={this.renderInputComponent}
+            renderSuggestionsContainer={this.renderSuggestionsContainer}
             inputProps={inputProps}
           />
         </div>
