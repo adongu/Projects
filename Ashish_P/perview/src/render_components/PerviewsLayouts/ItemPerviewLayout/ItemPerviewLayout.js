@@ -89,7 +89,9 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmar
   const renderPerviews = () => {
     if (perviews) {
       return perviews.map((perview) => {
+        console.log('render perviews perviews', perview);
         var user = perview.userDto;
+
         return (
           <div className="flexcolumn itemperview__perviewbox" key={`item-${perview.itemDto.id}_Perview-${perview.id}`}>
             <div className="flexrow itemperview__userbox">
@@ -112,11 +114,11 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmar
 
             <div className="itemperview__socialbox">
               <span className="itemperview__social-bookmark" onClick={handleSaveClick(perview)}>
-                <i className={`fa fa-bookmark-o itemperview__icon-bookmark ${perview.bookmarkedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
+                <i className={`fa fa-bookmark itemperview__icon-bookmark ${perview.bookmarkedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
               </span>
 
               <span className="itemperview__social-like" >
-                <i onClick={handleLikeClick(perview)} className={`fa fa-heart-o itemperview__icon-like ${perview.likedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
+                <i onClick={handleLikeClick(perview)} className={`fa fa-heart itemperview__icon-like ${perview.likedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
               </span>
             </div>
           </div>

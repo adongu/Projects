@@ -4,6 +4,10 @@ import { FETCHING_UPDATE, FINISH_UPDATE, RECEIVE_ERRORS } from '../actions/socia
 
 const _nullSocial = Object.freeze({
   fetchingUpdate: false,
+  UserSocialState: {
+    likes: {},
+    bookmarks: {}
+  },
   errors: []
 })
 

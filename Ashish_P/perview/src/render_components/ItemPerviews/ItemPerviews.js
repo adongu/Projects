@@ -19,6 +19,7 @@ class ItemPerviews extends React.Component {
   }
 
   componentWillMount () {
+    console.log('componentWillMount itemperviews class component');
     this.props.fetchItemPerviews(Number(this.props.match.params.item_id));
 
     this.setState({
@@ -31,28 +32,25 @@ class ItemPerviews extends React.Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    // if (nextProps.requestLoading !== this.props.requestLoading) {
-    //   this.setState({
-    //     requestLoading: nextProps.requestLoading
-    //   });
-    // }
-
     if (this.props.match.params.item_id !== nextProps.match.params.item_id) {
-      nextProps.fetchItemPerviews(Number(nextProps.match.params.item_id));
+      let nextItemId = Number(nextProps.match.params.item_id)
 
+      nextProps.fetchItemPerviews(nextItemId);
       this.setState({
-        itemId: Number(nextProps.match.params.item_id)
+        itemId: nextItemId
       });
     }
 
     if (nextProps.fetchingUpdate !== this.props.fetchingUpdate) {
+      console.log('component will receive props fetching update', nextProps);
       this.setState({
         fetchingUpdate: nextProps.fetchingUpdate
       })
 
-      // if (this.state.fetchingUpdate) {
-        nextProps.fetchItemPerviews(Number(nextProps.match.params.item_id));
-      // }
+      if (this.state.fetchingUpdate) {
+        console.log('component will receive props fetching new itemperviews');
+        this.props.fetchItemPerviews(Number(nextProps.match.params.item_id))
+      }
     }
   }
 

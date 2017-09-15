@@ -13,12 +13,25 @@ class Header extends React.Component {
       fName: "",
       userId: null,
       imgUrl: "https://www.juicedb.com/img/user/temp-user-128.jpg",
-      scrolled: ''
+      scrolled: '',
+      navOptions: [
+        {
+          url: '/myperviews',
+          text: 'Personal',
+          icon: 'star'
+        },
+        {
+          url: '/favorites',
+          text: 'Wishlist',
+          icon: 'bookmark'
+        }
+      ]
     }
 
     // this.validateRedirect = this.validateRedirect.bind(this);
     this.selectItem = this.selectItem.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
+    this.renderNavOptions = this.renderNavOptions.bind(this);
     this.renderCreateButton = this.renderCreateButton.bind(this);
   }
 
@@ -61,23 +74,31 @@ class Header extends React.Component {
   }
 
   renderNavOptions () {
-    return (
-      <div className="flexrow header__nav">
-        <span>
-          <Link to="/myperviews" className="flexrow header__menuitem">
-            <i className="fa fa-star header__navicon" aria-hidden="true"></i>
-            <span>Personal</span>
-          </Link>
-        </span>
-        <span>
-          <Link to="/favorites" className="flexrow header__menuitem">
-            <i className="fa fa-bookmark header__navicon" aria-hidden="true"></i>
-            <span>Wishlist</span>
-          </Link>
-        </span>
+    const navOptions = [
+      {
+        url: '/myperviews',
+        text: 'Personal',
+        icon: 'star'
+      },
+      {
+        url: '/favorites',
+        text: 'Wishlist',
+        icon: 'bookmark'
+      }
+    ];
 
-      </div>
-    )
+    return navOptions.map((option) => {
+      return (
+        <div className="flexrow header__nav">
+          <span>
+            <Link to={option.url} className="flexrow header__menuitem">
+              <i className={`fa fa-${option.icon} header__navicon`} aria-hidden="true"></i>
+              <span>{option.text}</span>
+            </Link>
+          </span>
+        </div>
+      )
+    })
   }
 
   renderCreateButton () {
