@@ -73,4 +73,22 @@
   &social-icon {
     padding-right: 8px;
   }
+
+  &social-bookmark,
+  &social-like {
+    color: #fff;
+    text-shadow: 0px 0px 1px #000;
+  }
+
+  &social-bookmark:hover,
+  &social-like:hover {
+    cursor: pointer;
+  }
+
+  &social-bookmark.active,
+  &social-like.active {
+    color: #6E96C8;
+    transition: ease .2s;
+    text-shadow: 0px 0px 0px #E9E9E9;
+  }
 }

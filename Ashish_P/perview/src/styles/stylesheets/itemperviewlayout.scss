@@ -191,28 +191,23 @@ $review-lines-to-show: 5;
   &socialbox {
   }
 
-  &social-bookmark {
+  &social-icon {
 
   }
 
-
+  &social-bookmark,
   &social-like {
-
-  }
-
-  &icon-bookmark,
-  &icon-like {
     color: #E9E9E9;
     text-shadow: 0px 0px 1px #000;
   }
 
-  &icon-bookmark:hover,
-  &icon-like:hover {
+  &social-bookmark:hover,
+  &social-like:hover {
     cursor: pointer;
   }
 
-  &icon-bookmark.active,
-  &icon-like.active {
+  &social-bookmark.active,
+  &social-like.active {
     color: #6E96C8;
     transition: ease .2s;
     text-shadow: 0px 0px 0px #E9E9E9;
