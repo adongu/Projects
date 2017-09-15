@@ -61,7 +61,7 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, categorie
                         className='navbar__filteroption'
                         key={`category_${category.id}`}
                         value={category.id}>
-                        <p className="navbar__filteroption-text">{category.displayName}</p>
+                        {category.displayName}
                       </option>
                     )
                   })}

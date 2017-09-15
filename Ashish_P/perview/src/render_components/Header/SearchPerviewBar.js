@@ -8,10 +8,11 @@ import IsolatedScroll from 'react-isolated-scroll';
 class SearchItemBar extends React.Component {
   constructor(props){
     super(props);
+
     this.state = {
       keywords: "",
       value: '',
-      hoverUserName: "",
+      hoverUserName: '',
       suggestions: [],
       isFetching: false
     };
@@ -124,7 +125,7 @@ class SearchItemBar extends React.Component {
   }
 
   logChange(val) {
-    this.setState({value: val.value});
+    this.setState({value: val.value });
   }
 // prevents scrolling on outside of autosuggest if mouse is inside component
   renderSuggestionsContainer({ containerProps, children }) {
@@ -157,27 +158,28 @@ class SearchItemBar extends React.Component {
     if (perviews !== null) {
       let truncatedPerviews = perviews.length > 3 ? perviews.slice(0, 3) : perviews;
 
-
       return(
         <div className="flexrow headersearch__container">
 
           {truncatedPerviews.map((perview) => {
-            var user = perview.userDto;
+            let user = perview.userDto;
 
             return (
               <div key={`headersearch-${perview.id}`}>
 
                 <div className="headersearch__userbox">
                   <img
-                    onMouseOver={() => { this.setState({ hoverUserName: user.fullName }) }}
+                    onMouseOver={() => { this.setState({ hoverUserName: perview.userDto.fullName}) }}
                     onMouseLeave={() => { this.setState({ hoverUserName: "" }) }}
-                    className="headersearch__userimg-img" src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt={user.fullName}/>
+                    className="headersearch__userimg-img"
+                    src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")}
+                    alt={user.fullName}/>
                 </div>
 
-                <div className={`headersearch__hovernamebox ${this.state.hoverUserName === user.fullName ? 'active' : ''}`}>
+                <div className={'headersearch__hovernamebox active'}>
                   <div className="headersearch__hovernamebox-triangle"></div>
-                  <div className="headersearch__hovername">
-                    {user.fullName}
+                  <div className="headersearch__hovernamebox-name">
+                    {user.firstName}
                   </div>
                 </div>
               </div>
@@ -225,6 +227,7 @@ class SearchItemBar extends React.Component {
   }
 
   render() {
+    console.log('hover name in serach', this.state.hoverUserName);
     const { value, suggestions } = this.state;
 
     // Autosuggest will pass through all these props to the input.
@@ -265,10 +268,9 @@ class SearchItemBar extends React.Component {
             renderSuggestion={this.renderSuggestion}
             renderInputComponent={this.renderInputComponent}
             inputProps={inputProps}
-            renderSuggestionsContainer={this.renderSuggestionsContainer}
           />
         </div>
-    </div>
+      </div>
     )
   }
 }

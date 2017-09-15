@@ -232,11 +232,11 @@ body {
     margin-right: 8px;
     overflow: hidden;
     border-radius: 50%;
-    // vertical-align: middle;
   }
 
   &userimg-img{
     width: 100%;
+    position: relative;
     overflow: hidden;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
@@ -248,7 +248,6 @@ body {
 
   &userimg-img:hover {
     cursor: pointer;
-    border: 1px solid red;
   }
 
   &hovernamebox {
@@ -256,6 +255,8 @@ body {
   }
 
   &hovernamebox.active {
-    display: inline;
+    display: block;
+    height: 10px;
+    border: 1px solid red;
   }
 }

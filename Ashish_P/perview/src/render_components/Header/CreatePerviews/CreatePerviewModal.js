@@ -80,12 +80,13 @@ class CreatePerviewModal extends React.Component {
     return stars.map((ele)=>{
       return (
         <span key={`star_rating_${ele}`} className={ele <= ratings ? 'active_star' : 'no_star'}
-          onClick={() => {this.setState({ rating: ele, lastRating: ele })}}
-        >
+          onClick={() => {this.setState({ rating: ele, lastRating: ele })}}>
+
           <div className={`createperview__ratingtipbox ${this.state.ratingHover === ele ? 'active' : ''}`}>
             <div className="createperview__ratingtip">{this.state.ratingTip[ele]}</div>
             <div className="createperview__ratingtipbox-triangle"></div>
           </div>
+
           <i onMouseOver={()=>{ this.setState({ rating: ele, ratingHover: ele }) }}
             onMouseLeave={()=>{ this.setState({ rating: this.state.lastRating, ratingHover: 0 })}}
             className="fa fa-star createperview__rating-star" aria-hidden="true">
