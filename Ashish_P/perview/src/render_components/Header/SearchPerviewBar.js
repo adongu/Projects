@@ -226,7 +226,6 @@ class SearchItemBar extends React.Component {
   }
 
   render() {
-    console.log('hover name in serach', this.state.hoverUserName);
     const { value, suggestions } = this.state;
 
     // Autosuggest will pass through all these props to the input.

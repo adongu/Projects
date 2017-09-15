@@ -72,6 +72,7 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmar
             <div className="itemperview__itemimgbox">
               <img className="itemperview__itemimg" src={item.data.imageUrls.large.url} alt="Item"/>
             </div>
+
             <div className="flexcolumn itemperview__iteminfobox">
               <div className="itemperview__itemname">{item.data.title}</div>
               <div className="itemperview__itemprice">{item.data.lowestNewPrice.formattedAmount}</div>
@@ -97,19 +98,23 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmar
               </span>
               <span className="itemperview__username">{user.firstName}</span>
             </div>
+
             <div className="itemperview__ratingbox">
               {renderStars(perview.rating)}
             </div>
+
             <div className="itemperview__reviewbox">
               <p className="itemperview__review">
                 {perview.tags.substr(0, 155)}
               </p>
               {renderModalLink(perview)}
             </div>
+
             <div className="itemperview__socialbox">
               <span className="itemperview__social-bookmark" onClick={handleSaveClick(perview)}>
                 <i className={`fa fa-bookmark-o itemperview__icon-bookmark ${perview.bookmarkedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
               </span>
+
               <span className="itemperview__social-like" >
                 <i onClick={handleLikeClick(perview)} className={`fa fa-heart-o itemperview__icon-like ${perview.likedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
               </span>

@@ -44,7 +44,7 @@ class UserNav extends React.PureComponent {
               <span className="usernav__option-text">Settings</span>
             </div>
           </MenuItem>
-          <MenuItem onClick={this.handleLogout} eventKey="4" className="usernav__option" eventKey="2">
+          <MenuItem onClick={this.handleLogout} className="usernav__option" eventKey="2">
             <div className="usernav__signout">
               <i className="fa fa-sign-out usernav__option-icon" aria-hidden="true"></i>
               <span className="usernav__option-text">Sign Out</span>
