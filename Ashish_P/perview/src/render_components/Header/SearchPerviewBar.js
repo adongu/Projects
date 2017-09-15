@@ -147,7 +147,7 @@ class SearchItemBar extends React.Component {
     let numPerviews = suggestion.length;
     let itemId = suggestion[0].itemDto.id;
 
-    if (numPerviews < 3) {
+    if (numPerviews > 3) {
       return (
         <Link to={`/item/${itemId}`}>See all</Link>
       )
@@ -176,7 +176,7 @@ class SearchItemBar extends React.Component {
                     alt={user.fullName}/>
                 </div>
 
-                <div className={'headersearch__friendbox active'}>
+                <div className={'headersearch__friendbox'}>
                   <div className="headersearch__friend-text">
                     {user.firstName}
                   </div>
@@ -211,8 +211,8 @@ class SearchItemBar extends React.Component {
             </div>
           </div>
 
-          <div className="flexcolumn autosuggest__friends">
-            <div>Perviewed By</div>
+          <div className="autosuggest__friends">
+            <div className="autosuggest__friends-header">Perviewed By</div>
             <div>
               {this.renderSearchPerviewFriends(suggestion)}
             </div>

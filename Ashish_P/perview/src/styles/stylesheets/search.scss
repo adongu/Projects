@@ -220,6 +220,10 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  &-header {
+    margin-top: 10px;
+  }
 }
 
 .headersearch__{
@@ -262,7 +266,6 @@ body {
 
   &friend-text {
     height: $name-font-size*$name-line-height*$name-lines-to-show; /* Fallback for non-webkit */
-    // margin: 10px auto;
     font-size: $name-font-size;
     font-weight: 400;
     line-height: $name-line-height;
