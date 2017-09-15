@@ -25,6 +25,7 @@ class SearchItemBar extends React.Component {
     this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this);
     this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(this);
     this.renderSuggestionsContainer = this.renderSuggestionsContainer.bind(this);
+    this.renderSeeAllLink = this.renderSeeAllLink.bind(this);
     this.renderInputComponent = this.renderInputComponent.bind(this);
     this.renderSuggestion = this.renderSuggestion.bind(this);
     this.renderSearchPerviewFriends = this.renderSearchPerviewFriends.bind(this);
@@ -141,35 +142,47 @@ class SearchItemBar extends React.Component {
     );
   }
 
+  renderSeeAllLink(suggestion) {
+    let numPerviews = suggestion.length;
+    let itemId = suggestion[0].itemDto.id;
+
+    if (numPerviews < 3) {
+      return (
+        <Link to={`/item/${itemId}`}>See all</Link>
+      )
+    }
+  }
+
   renderSearchPerviewFriends(perviews) {
     if (perviews !== null) {
-      perviews = perviews.length > 3 ? perviews.slice(0, 3) : perviews;
+      let truncatedPerviews = perviews.length > 3 ? perviews.slice(0, 3) : perviews;
+
 
       return(
         <div className="flexrow headersearch__container">
-          {perviews.map((perview) => {
+
+          {truncatedPerviews.map((perview) => {
             var user = perview.userDto;
 
             return (
               <div key={`headersearch-${perview.id}`}>
-                <div className={`headersearch__hovernamebox ${this.state.hoverUserName === user.fullName ? 'active' : ''}`}>
-                  <div className="headersearch__hovername">
-                    {this.state.hoverUserName}
-                  </div>
-                  <div className="headersearch__rhovernamebox-triangle"></div>
-                </div>
 
-                <div id={`suggestion-liker-${perview.id}`} className="headersearch__userbox">
+                <div className="headersearch__userbox">
                   <img
                     onMouseOver={() => { this.setState({ hoverUserName: user.fullName }) }}
-                    onMouseLeave={()=> { this.setState({ hoverUserName: "" }) }}
+                    onMouseLeave={() => { this.setState({ hoverUserName: "" }) }}
                     className="headersearch__userimg-img" src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt={user.fullName}/>
+                </div>
+
+                <div className={`headersearch__hovernamebox ${this.state.hoverUserName === user.fullName ? 'active' : ''}`}>
+                  <div className="headersearch__hovernamebox-triangle"></div>
+                  <div className="headersearch__hovername">
+                    {user.fullName}
+                  </div>
                 </div>
               </div>
             )
           })}
-
-          <Link> </Link>
         </div>
       )
     }
@@ -199,8 +212,12 @@ class SearchItemBar extends React.Component {
 
           <div className="flexcolumn autosuggest__friends">
             <div>Perviewed By</div>
-            {this.renderSearchPerviewFriends(suggestion)}
-            {}
+            <div>
+              {this.renderSearchPerviewFriends(suggestion)}
+            </div>
+            <div>
+              {this.renderSeeAllLink(suggestion)}
+            </div>
           </div>
         </div>
       );

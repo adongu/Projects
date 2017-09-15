@@ -246,7 +246,16 @@ body {
     image-rendering: crisp-edges;
   }
 
-  &userimgbox-img:hover {
+  &userimg-img:hover {
     cursor: pointer;
+    border: 1px solid red;
+  }
+
+  &hovernamebox {
+    display: none;
+  }
+
+  &hovernamebox.active {
+    display: inline;
   }
 }

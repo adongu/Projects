@@ -65,12 +65,12 @@ $lines-to-show: 5;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    text-decoration: none;
   }
 
   &product-name:hover {
     color: #c45500;
     transition: ease 0.3s;
+    text-decoration: none;
   }
 
   &product-info {
