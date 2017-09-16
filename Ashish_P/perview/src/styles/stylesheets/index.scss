@@ -102,3 +102,8 @@ indent: 5px;
 i::before{
     background:transparent;
 }
+
+// Overrides React Router Link's css for links
+a:-webkit-any-link {
+  text-decoration: none;
+}

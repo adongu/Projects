@@ -75,24 +75,32 @@ class Header extends React.Component {
 
   renderNavOptions () {
     const navOptions = [
+      // {
+      //   path: '/',
+      //   text: 'Home',
+      //   icon: 'home'
+      // },
       {
-        url: '/myperviews',
-        text: 'Personal',
+        path: '/myperviews',
+        text: 'My Perviews',
         icon: 'star'
       },
       {
-        url: '/favorites',
+        path: '/favorites',
         text: 'Wishlist',
         icon: 'bookmark'
       }
     ];
 
     return navOptions.map((option) => {
+    let currentPath = this.props.match.path;
+    let isActive = option.path === currentPath ? true : false;
+
       return (
-        <div className="flexrow header__nav">
+        <div className={`flexrow header__nav ${isActive ? "active" : ""}`}>
           <span>
-            <Link to={option.url} className="flexrow header__menuitem">
-              <i className={`fa fa-${option.icon} header__navicon`} aria-hidden="true"></i>
+            <Link to={option.path} className="flexrow header__menuitem">
+              <i className={`fa fa-${option.icon} fa-lg header__navicon`} aria-hidden="true"></i>
               <span>{option.text}</span>
             </Link>
           </span>
@@ -125,7 +133,11 @@ class Header extends React.Component {
               <img className="header__logoimg" width="40px" src={logo} alt="Header logo"/>
             </Link>
           </div>
-          {this.renderNavOptions()}
+
+          <div className="flexrow header__navbox">
+            {this.renderNavOptions()}
+          </div>
+
           <div className="header__search">
             <SearchPerviewBar
               selectItem={this.selectItem}

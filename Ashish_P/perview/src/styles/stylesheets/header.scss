@@ -1,27 +1,29 @@
 .header__ {
   &container {
     width: 100%;
+    height: 70px;
+    // margin-top: 4px;
     position: fixed;
     background: white;
     z-index: 10;
+    display: flex;
+    align-items: center;
   }
 
   &box {
-    max-width: 980px;
+    width: 980px;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 0 7px 0;
     margin: auto;
   }
 
   /* logo */
   &logo {
-    width: 15%;
+    width: 160px;
   }
 
   &logoimg {
-    width: 160px;
-    height: 60px;
+    width: 100%;
     padding: 0 8px;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
@@ -31,22 +33,38 @@
     image-rendering: crisp-edges;
   }
 
-  &nav {
-    display: flex;
-    padding: 0 8px;
-    width: 15%;
-  }
-//Nav Menu
-  &menuitem {
-    padding: 0 8px;
-    font-size: 14px;
-    color: #567394;
-    display: flex;
+  //Nav Menu
+  &navbox {
+    width: 195px;
+    margin: auto 8px;
+    justify-content: space-between;
     align-items: center;
   }
 
+  &nav {
+    // color: #484848;
+    color: green;
+    padding: 25px 0;
+    // padding-bottom: 10px;
+    overflow: auto;
+  }
+
   &navicon {
-    color: #7a9bc0;
+    color: #8c8c8c;
+    padding-right: 8px;
+  }
+
+  &menuitem {
+    color: gray;
+  }
+
+
+// active menu item
+  &nav:hover,
+  &nav.active {
+    // padding: 23px 0;
+    padding-bottom: 22px;
+    border-bottom: 3px solid red;
   }
 // Search Bar
   &search {
@@ -66,8 +84,8 @@
 }
 
 .createperview__container {
-  width: 21%;
-  padding: 0 8px;
+  width: 19%;
+  margin: 0 8px;
 }
 
 /* scrolling shadow */
