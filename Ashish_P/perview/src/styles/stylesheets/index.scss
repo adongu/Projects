@@ -97,3 +97,8 @@ indent: 5px;
     text-decoration: none;
   }
 }
+
+// font awesome background invible
+i::before{
+    background:transparent;
+}
