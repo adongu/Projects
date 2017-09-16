@@ -20,11 +20,11 @@
   /* logo */
   &logo {
     width: 160px;
+    margin-right: 8px;
   }
 
   &logoimg {
     width: 100%;
-    padding: 0 8px;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     image-rendering: -moz-crisp-edges;         /* Firefox */
