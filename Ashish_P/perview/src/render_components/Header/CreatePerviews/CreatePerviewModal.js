@@ -62,19 +62,6 @@ class CreatePerviewModal extends React.Component {
     });
   }
 
-  // renderRatingTip () {
-  //   if (this.state.ratingTip && this.state.ratingHover) {
-  //     console.log("render rating tip");
-  //     return (
-  //       <div className="createperview__ratingtipbox">
-  //         <div className="createperview__ratingtip">{this.state.ratingTip[this.state.ratingHover]}</div>
-  //         <div className="createperview__ratingtipbox-triangle"></div>
-  //       </div>
-  //     )
-  //   }
-  // }
-
-// -${this.state.ratingHover === ele ? 'active' : ''}
   renderReviewStars (ratings) {
     let stars = [1, 2, 3, 4, 5];
     return stars.map((ele)=>{
@@ -196,7 +183,7 @@ class CreatePerviewModal extends React.Component {
     return (
       <ButtonToolbar className="createperview__container">
         <button className="createperview__btn" onClick={this.showModal}>
-          Edit Perview
+          Create Perview
         </button>
 
         <Modal
@@ -208,7 +195,19 @@ class CreatePerviewModal extends React.Component {
           <Modal.Header className="createperview__modalhead" closeButton>
 
           <div className="createperview__title">
-            Edit Perview
+            Create Perview
+          </div>
+
+          <div className="flexcolumn createperview__search-container">
+            <div className="createperview__search-background">
+              <div className="createperview__search-box">
+                <SearchItemBar
+                  selectItem={this.selectItem}
+                  results={this.props.results}
+                  fetchResults={this.props.fetchResults}
+                />
+              </div>
+            </div>
           </div>
 
           <div className="createperview__section">

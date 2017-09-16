@@ -4,18 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import moment from 'moment';
 import PerviewCard from './PerviewCard/PerviewCard.js';
 
-const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, history }) => {
-
-  const renderStars = (ratings) => {
-    let stars = [1, 2, 3, 4, 5];
-    return stars.map((ele)=>{
-      return (
-        <span key={ele} className={ele <= ratings ? 'active_star' : 'no_star'} >
-          <i className="fa fa-star" aria-hidden="true"></i>
-        </span>
-      )
-    })
-  }
+const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, history, showConfirmation }) => {
 
   const renderPerviews = () => {
     if (perviews) {
@@ -60,6 +49,8 @@ const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPer
                 likePerview = {likePerview}
                 unlikePerview = {unlikePerview}
                 history = {history}
+                editPerview = {editPerview}
+                deletePerview = {deletePerview}
               />
             </div>
           </div>

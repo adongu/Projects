@@ -13,7 +13,8 @@ class MyPerviews extends React.Component {
       requestLoading: false,
       fetchingUpdate: false,
       categoryId: "",
-      categories: []
+      categories: [],
+      showConfirmation: false,
     }
 
     this.fetchFilteredPerviews = this.fetchFilteredPerviews.bind(this);
@@ -53,6 +54,11 @@ class MyPerviews extends React.Component {
     this.props.fetchMyPerviews(categoryId);
   }
 
+  toggleDeleteConfirmation(e) {
+    e.preventDefault();
+    this.setState({ })
+  }
+
   render () {
     return (
       <div className="myperview__container">
@@ -71,6 +77,7 @@ class MyPerviews extends React.Component {
             unbookmarkPerview = {this.props.unbookmarkPerview}
             likePerview = {this.props.likePerview}
             unlikePerview = {this.props.unlikePerview}
+            toggleConfirmation = {this.toggleConfirmation}
           />
         </div>
       </div>

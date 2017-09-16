@@ -2,8 +2,10 @@ import "../../../styles/stylesheets/PerviewLayouts/PerviewCard/perviewcard.css"
 import { Link, withRouter } from 'react-router-dom';
 import moment from 'moment';
 import React from 'react';
+import PerviewCardDetailModal from './PerviewCardDetailModal';
+import PerviewDeleteConfirmation from './PerviewDeleteConfirmation';
 
-const PerviewCard = ({ currentUserId, perviewUser, perview, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, history }) => {
+const PerviewCard = ({ currentUserId, perviewUser, perview, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, history }) => {
 
   const renderStars = (rating) => {
     let stars = [1, 2, 3, 4, 5];
@@ -46,18 +48,29 @@ const PerviewCard = ({ currentUserId, perviewUser, perview, bookmarkPerview, unb
     }
   }
 
-  const renderPerviewEdit = () => {
-    return (
-      <div className="flexrow narrowperviews__editbox">
-        <button className="narrowperviews__edit-btn">
-          <i className="fa fa-pencil narrowperviews__edit-icon" aria-hidden="true"></i>
-        </button>
+  const confirmDeletePerview = () => {
+    return e => {
+      if (deletePerview) {
+        deletePerview(perview.id)
+      }
+    }
+  }
 
-        <button className="narrowperviews__delete-btn">
-          <i className="fa fa-trash narrowperviews__delete-icon" aria-hidden="true"></i>
-        </button>
-      </div>
-    )
+  const renderPerviewEdit = () => {
+    if (history.pathname === '/myperviews') {
+      return (
+        <div className="flexrow narrowperviews__editbox">
+          <PerviewCardDetailModal
+            perview = {perview}
+            editPerview = {editPerview}
+          />
+
+          <PerviewDeleteConfirmation
+            confirmDeletePerview = {confirmDeletePerview}
+          />
+        </div>
+      )
+    }
   }
 
   // var user = perview.userDto;
@@ -66,14 +79,18 @@ const PerviewCard = ({ currentUserId, perviewUser, perview, bookmarkPerview, unb
       <div className="perviewcard__review-time">
         {moment(perview.ts).format("MMM D")}
       </div>
-      <div className="flexrow perviewcard__review-user">
-        <div className="perviewcard__review-user-icon" onClick={handleFriendClick(perviewUser.id)}>
-          <img className="perviewcard__review-user-img" src={perviewUser.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
-        </div>
-        <a className="perviewcard__review-username" onClick={handleFriendClick(perviewUser.id)}>
-          {perviewUser.fullName}
-        </a>
 
+      <div>
+        <div className="flexrow perviewcard__review-user">
+          <div className="perviewcard__review-user-icon" onClick={handleFriendClick(perviewUser.id)}>
+            <img className="perviewcard__review-user-img" src={perviewUser.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
+          </div>
+          <a className="perviewcard__review-username" onClick={handleFriendClick(perviewUser.id)}>
+            {perviewUser.fullName}
+          </a>
+        </div>
+
+        {renderPerviewEdit()}
       </div>
 
       <div className="perviewcard__review-stars">

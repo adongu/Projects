@@ -8,7 +8,7 @@ const WidePerview = ({ fetchingUpdate, currentUserId, perviews, bookmarkPerview,
 
   const renderPerviews = () => {
     if (perviews) {
-      perviews = perviews.length > 10 ? perviews.slice(0, 10) : perviews;
+      // perviews = perviews.length > 10 ? perviews.slice(0, 10) : perviews;
       return perviews.map((perview, i) => {
         var item = perview.itemDto;
         var user = perview.userDto;
