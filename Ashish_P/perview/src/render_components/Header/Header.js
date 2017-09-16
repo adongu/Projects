@@ -97,14 +97,10 @@ class Header extends React.Component {
     let isActive = option.path === currentPath ? true : false;
 
       return (
-        <div className={`flexrow header__nav ${isActive ? "active" : ""}`}>
-          <span>
-            <Link to={option.path} className="flexrow header__menuitem">
-              <i className={`fa fa-${option.icon} fa-lg header__navicon`} aria-hidden="true"></i>
-              <span>{option.text}</span>
-            </Link>
-          </span>
-        </div>
+        <Link to={option.path} className={`flexrow header__navbox ${isActive ? "active" : ""}`}>
+          <i className={`fa fa-${option.icon} fa-lg header__navicon`} aria-hidden="true"></i>
+          <span className="header__navtext">{option.text}</span>
+        </Link>
       )
     })
   }
@@ -134,10 +130,6 @@ class Header extends React.Component {
             </Link>
           </div>
 
-          <div className="flexrow header__navbox">
-            {this.renderNavOptions()}
-          </div>
-
           <div className="header__search">
             <SearchPerviewBar
               selectItem={this.selectItem}
@@ -145,6 +137,12 @@ class Header extends React.Component {
               fetchResults={this.props.fetchPerviewResults}
             />
           </div>
+
+          <div className="flexrow header__nav">
+            {this.renderNavOptions()}
+          </div>
+
+          {this.renderCreateButton()}
 
           <div className="flexrow header__usernav">
             <div className="header__usernavphoto">
@@ -154,7 +152,6 @@ class Header extends React.Component {
               />
             </div>
           </div>
-          {this.renderCreateButton()}
         </div>
       </div>
     )

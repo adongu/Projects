@@ -1,17 +1,17 @@
 .header__ {
   &container {
     width: 100%;
-    height: 70px;
-    // margin-top: 4px;
     position: fixed;
     background: white;
     z-index: 10;
     display: flex;
+    justify-content: center;
     align-items: center;
   }
 
   &box {
     width: 980px;
+    height: 60px;
     justify-content: space-between;
     align-items: center;
     margin: auto;
@@ -34,38 +34,37 @@
   }
 
   //Nav Menu
-  &navbox {
+  &nav {
     width: 195px;
+    height: 100%;
     margin: auto 8px;
     justify-content: space-between;
     align-items: center;
   }
 
-  &nav {
-    // color: #484848;
-    color: green;
-    padding: 25px 0;
-    // padding-bottom: 10px;
+  &navbox {
+    height: 100%;
+    color: #3F3F3F;
+    border-bottom: 3px solid transparent;
     overflow: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
   }
 
   &navicon {
-    color: #8c8c8c;
+    // color: #8c8c8c;
     padding-right: 8px;
   }
 
-  &menuitem {
-    color: gray;
+  // active menu item
+  &navbox:hover,
+  &navbox.active {
+    color: #6E96C8;
+    border-bottom: 3px solid #6E96C8;
   }
 
-
-// active menu item
-  &nav:hover,
-  &nav.active {
-    // padding: 23px 0;
-    padding-bottom: 22px;
-    border-bottom: 3px solid red;
-  }
 // Search Bar
   &search {
     display: flex;
