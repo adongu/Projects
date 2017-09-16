@@ -97,7 +97,7 @@ class Header extends React.Component {
     let isActive = option.path === currentPath ? true : false;
 
       return (
-        <Link to={option.path} className={`flexrow header__navbox ${isActive ? "active" : ""}`}>
+        <Link to={option.path} className={`flexrow header__navbox ${isActive ? "active" : ""}`} key={`navoptions-${option.text}`}>
           <i className={`fa fa-${option.icon} fa-lg header__navicon`} aria-hidden="true"></i>
           <span className="header__navtext">{option.text}</span>
         </Link>
