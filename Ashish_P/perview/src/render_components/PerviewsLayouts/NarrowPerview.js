@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import moment from 'moment';
 import PerviewCard from './PerviewCard/PerviewCard.js';
 
-const NarrowPerview = ({ perviews, bookmarkPerview, likePerview, history  }) => {
+const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, history }) => {
 
   const renderStars = (ratings) => {
     let stars = [1, 2, 3, 4, 5];
@@ -22,6 +22,7 @@ const NarrowPerview = ({ perviews, bookmarkPerview, likePerview, history  }) => 
 
       return perviews.map((perview, i) => {
         let item = perview.itemDto;
+        var user = perview.userDto;
 
         return (
           <div key={`perviewindex__${i}`} className="flexcolumn narrowperviews__box">
@@ -50,20 +51,16 @@ const NarrowPerview = ({ perviews, bookmarkPerview, likePerview, history  }) => 
             </div>
 
             <div className="flexcolumn narrowperviews__reviewbox">
-              <div className="flexrow narrowperviews__reviewnav">
-                <div className="narrowperviews__stars">{renderStars(perview.rating)}</div>
-
-                <div className="flexrow narrowperviews__editbox">
-                  <button className="narrowperviews__edit-btn">
-                    <i className="fa fa-pencil narrowperviews__edit-icon" aria-hidden="true"></i>
-                  </button>
-                  <button className="narrowperviews__delete-btn">
-                    <i className="fa fa-trash narrowperviews__delete-icon" aria-hidden="true"></i>
-                  </button>
-                </div>
-              </div>
-
-              <div className="narrowperviews__review-text">{perview.tags}</div>
+              <PerviewCard
+                currentUserId = {currentUserId}
+                perviewUser = { user }
+                perview = {perview}
+                bookmarkPerview = {bookmarkPerview}
+                unbookmarkPerview = {unbookmarkPerview}
+                likePerview = {likePerview}
+                unlikePerview = {unlikePerview}
+                history = {history}
+              />
             </div>
           </div>
         )

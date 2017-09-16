@@ -9,6 +9,7 @@ class FriendPerviews extends React.Component {
     super(props);
 
     this.state = {
+      fetchingUpdate: false,
       requestLoading: false,
       friendId: null
     }
@@ -18,7 +19,6 @@ class FriendPerviews extends React.Component {
 
   componentWillMount () {
     this.props.fetchFriendPerviews(Number(this.props.match.params.friend_id));
-    this.props.fetchCategoryIds();
 
     this.setState({
       friendId: Number(this.props.match.params.friend_id)
@@ -39,6 +39,18 @@ class FriendPerviews extends React.Component {
         itemId: Number(nextProps.match.params.friend_id)
       });
     }
+
+    if (nextProps.fetchingUpdate !== this.props.fetchingUpdate) {
+      console.log('component will receive props fetching update', nextProps);
+      this.setState({
+        fetchingUpdate: nextProps.fetchingUpdate
+      })
+
+      if (this.state.fetchingUpdate) {
+        console.log('component will receive props fetching new itemperviews');
+        this.props.fetchItemPerviews(Number(nextProps.match.params.friend_id))
+      }
+    }
   }
 
   fetchFilteredPerviews(catetoryId) {
@@ -55,7 +67,12 @@ class FriendPerviews extends React.Component {
 
         <div className="friendperview__perviews">
           <NarrowPerview
+            currentUserId = {this.props.currentUser.id}
             perviews = {this.props.perviews}
+            bookmarkPerview = {this.props.bookmarkPerview}
+            unbookmarkPerview = {this.props.unbookmarkPerview}
+            likePerview = {this.props.likePerview}
+            unlikePerview = {this.props.unlikePerview}
             />
         </div>
       </div>

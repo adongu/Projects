@@ -107,11 +107,11 @@ export const editPerview = (formData) => dispatch => {
     })
 };
 
-export const deletePerview = (formData) => dispatch => {
+export const deletePerview = (perviewId) => dispatch => {
   dispatch(requestLoading());
-  return APIUtil.deletePerview(formData)
+  return APIUtil.deletePerview(perviewId)
     .then( response => {
-      return dispatch(receiveDeletePerview(response.data))
+      return dispatch(receiveDeletePerview(perviewId))
     })
     .catch( err => {
       return dispatch(receiveErrors(err.responseJSON))

@@ -11,6 +11,8 @@ class MyPerviews extends React.Component {
 
     this.state = {
       requestLoading: false,
+      fetchingUpdate: false,
+      categoryId: "",
       categories: []
     }
 
@@ -33,9 +35,20 @@ class MyPerviews extends React.Component {
         requestLoading: nextProps.requestLoading
       })
     }
+
+    if (nextProps.fetchingUpdate !== this.props.fetchingUpdate) {
+      this.setState({
+        fetchingUpdate: nextProps.fetchingUpdate
+      })
+
+      if (this.state.fetchingUpdate) {
+        this.props.fetchMyPerviews(this.state.categoryId);
+      }
+    }
   }
 
   fetchFilteredPerviews(categoryId) {
+    this.setState({ categoryId: categoryId })
     this.props.fetchMyPerviews(categoryId);
   }
 
@@ -49,7 +62,14 @@ class MyPerviews extends React.Component {
 
         <div className="myperview__perviews">
           <NarrowPerview
+            currentUserId = {this.props.currentUser.id}
             perviews = {this.props.perviews}
+            editPerview = {this.props.editPerview}
+            deletePerview = {this.props.deletePerview}
+            bookmarkPerview = {this.props.bookmarkPerview}
+            unbookmarkPerview = {this.props.unbookmarkPerview}
+            likePerview = {this.props.likePerview}
+            unlikePerview = {this.props.unlikePerview}
           />
         </div>
       </div>

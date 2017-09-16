@@ -10,6 +10,7 @@ class FavoritePerviews extends React.Component {
 
     this.state = {
       requestLoading: false,
+      fetchingUpdate: false,
       categories: []
     }
 
@@ -32,6 +33,15 @@ class FavoritePerviews extends React.Component {
         requestLoading: nextProps.requestLoading
       })
     }
+
+    if (nextProps.fetchingUpdate !== this.props.fetchingUpdate) {
+      this.setState({
+        fetchingUpdate: nextProps.fetchingUpdate
+      })
+      if (this.state.fetchingUpdate) {
+        this.props.fetchAllPerviews();
+      }
+    }
   }
 
   fetchFilteredPerviews(categoryId) {
@@ -46,7 +56,12 @@ class FavoritePerviews extends React.Component {
     } else {
       return (
         <NarrowPerview
+          currentUserId = {this.props.currentUser.id}
           perviews = {this.props.perviews}
+          bookmarkPerview = {this.props.bookmarkPerview}
+          unbookmarkPerview = {this.props.unbookmarkPerview}
+          likePerview = {this.props.likePerview}
+          unlikePerview = {this.props.unlikePerview}
         />
       )
     }

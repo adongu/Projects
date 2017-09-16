@@ -13,7 +13,7 @@ import { ProtectedRoute, AuthRoute } from '../util/route_util.js';
 const Root = ({ store }) => {
   return (
     <Provider store={ store }>
-       <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
+       <BrowserRouter>
           <div className="root">
             <Switch>
               <AuthRoute component={SignInContainer} exact path="/signin" />

@@ -66,6 +66,7 @@ class ItemPerviews extends React.Component {
     } else {
       return (
         <ItemPerviewLayout
+          currentUserId = {this.props.currentUser.id}
           perviews = {this.props.perviews}
           bookmarkPerview = {this.props.bookmarkPerview}
           unbookmarkPerview = {this.props.unbookmarkPerview}

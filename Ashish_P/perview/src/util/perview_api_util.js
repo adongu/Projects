@@ -16,12 +16,12 @@ export const createPerview = (formData) => {
   return axios.post('/api/add', formData, config)
 };
 
-export const editPerview = (keywords) => {
-  return axios.post('/api/add', formData, config)
+export const editPerview = (formData) => {
+  return axios.post('/api/edit', formData, config)
 }
 
 export const deletePerview = (perviewId) => {
-  return axios.post(`/api/${perviewId}/delete`, formData, config)
+  return axios.post(`/api/${perviewId}/delete`, config)
 }
 
 
