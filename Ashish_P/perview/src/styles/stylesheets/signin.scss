@@ -77,7 +77,8 @@
     padding: 0 0 15px 0;
     font-size: 25px;
     color: #484848;
-    font-family: 'Roboto-Light';
+    font-family: 'Roboto';
+    font-weight: lighter;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -88,7 +89,8 @@
     font-size: 14px;
     color: gray;
     padding: 10px 15px 0 17px;
-    font-family: 'Roboto-Light';
+    font-family: 'Roboto';
+    font-weight: lighter;
   }
   /* auth button*/
   &form {
@@ -112,7 +114,8 @@
     background: #79A0CF;
     color: white;
     transition: 0.3s;
-    font-family: "FirSans-Regular";
+    line-height: 1.6px;
+    font-family: "Fira Sans";
     display: flex;
     justify-content: center;
     align-items: center;
