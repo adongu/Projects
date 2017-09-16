@@ -11,6 +11,7 @@ class Settings extends React.Component{
     this.state = {
       copySuccess: "Copy"
     }
+
     this.performCopyUrl = this.performCopyUrl.bind(this);
     this.handleChangeInput = this.handleChangeInput.bind(this);
     this.renderProfile = this.renderProfile.bind(this);

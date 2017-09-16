@@ -108,6 +108,8 @@ const PerviewCard = ({ currentUserId, perviewUser, perview, bookmarkPerview, unb
           </span>
           <span className="perviewcard__review-social-icon">
             <i onClick={handleLikeClick(perview)} className={`fa fa-heart perviewcard__review-icon-like ${perview.likedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
+
+            <span className="perviewcard__numlikes"></span>
           </span>
         </div>
       </div>
