@@ -51,6 +51,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    transition: all ease 0.5s;
   }
 
   &navicon {
@@ -61,8 +62,10 @@
   // active menu item
   &navbox:hover,
   &navbox.active {
+    // width: 100%;
     color: #6E96C8;
     border-bottom: 3px solid #6E96C8;
+    transition: all ease 0.5s;
   }
 
 // Search Bar

@@ -2,6 +2,8 @@ import "../../styles/stylesheets/wideperview.css"
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import moment from 'moment';
+import PerviewCard from './PerviewCard/PerviewCard.js';
+
 
 const WidePerview = ({ fetchingUpdate, currentUserId, perviews, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, history }) => {
 
@@ -14,36 +16,6 @@ const WidePerview = ({ fetchingUpdate, currentUserId, perviews, bookmarkPerview,
         </span>
       )
     })
-  }
-
-  const handleFriendClick = (friendId) => {
-    return (e) => {
-      if (currentUserId === friendId) {
-        history.replace({ pathname: `/myperviews` });
-      } else {
-        history.replace({ pathname: `/friend/${friendId}` });
-      }
-    }
-  }
-
-  const handleSaveClick = (perview) => {
-    return e => {
-      if (perview && perview.bookmarkedByLoggedInUser) {
-        unbookmarkPerview(perview.id)
-      } else {
-        bookmarkPerview(perview.id)
-      }
-    }
-  }
-
-  const handleLikeClick = (perview) => {
-    return e => {
-      if (perview && perview.likedByLoggedInUser) {
-        unlikePerview(perview.id);
-      } else {
-        likePerview(perview.id);
-      }
-    }
   }
 
   const renderPerviews = () => {
@@ -76,38 +48,16 @@ const WidePerview = ({ fetchingUpdate, currentUserId, perviews, bookmarkPerview,
           </div>
 
           <div className="wideresults__perview-right">
-            <div className="flexcolumn wideresults__perview-rightbox">
-              <div className="wideresults__review-time">
-                {moment(perview.ts).format("MMM D")}
-              </div>
-              <div className="flexrow wideresults__review-user">
-                <div className="wideresults__review-user-icon" onClick={handleFriendClick(user.id)}>
-                  <img className="wideresults__review-user-img" src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
-                </div>
-                <a className="wideresults__review-username" onClick={handleFriendClick(user.id)}>
-                  {user.fullName}
-                </a>
-              </div>
-
-              <div className="wideresults__review-stars">
-                {renderStars(perview.rating)}
-              </div>
-              <div className="wideresults__review-text">
-                {perview.tags}
-              </div>
-
-              <div className="flexrow wideresults__review-social-box">
-
-                <div className="flexrow wideresults__review-social">
-                  <span className="wideresults__review-social-icon" >
-                    <i onClick={handleSaveClick(perview)} className={`fa fa-bookmark wideresults__review-icon-bookmark ${perview.bookmarkedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
-                  </span>
-                  <span className="wideresults__review-social-icon">
-                    <i onClick={handleLikeClick(perview)} className={`fa fa-heart wideresults__review-icon-like ${perview.likedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
-                  </span>
-                </div>
-              </div>
-            </div>
+            <PerviewCard
+              currentUserId = {currentUserId}
+              perviewUser = { user }
+              perview = {perview}
+              bookmarkPerview = {bookmarkPerview}
+              unbookmarkPerview = {unbookmarkPerview}
+              likePerview = {likePerview}
+              unlikePerview = {unlikePerview}
+              history = {history}
+            />
           </div>
         </div>
         )

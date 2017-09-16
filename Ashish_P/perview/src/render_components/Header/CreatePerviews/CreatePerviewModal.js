@@ -196,7 +196,7 @@ class CreatePerviewModal extends React.Component {
     return (
       <ButtonToolbar className="createperview__container">
         <button className="createperview__btn" onClick={this.showModal}>
-          Create Perview
+          Edit Perview
         </button>
 
         <Modal
@@ -208,18 +208,7 @@ class CreatePerviewModal extends React.Component {
           <Modal.Header className="createperview__modalhead" closeButton>
 
           <div className="createperview__title">
-            Create Perview
-          </div>
-          <div className="flexcolumn createperview__search-container">
-            <div className="createperview__search-background">
-              <div className="createperview__search-box">
-                <SearchItemBar
-                  selectItem={this.selectItem}
-                  results={this.props.results}
-                  fetchResults={this.props.fetchResults}
-                  />
-              </div>
-            </div>
+            Edit Perview
           </div>
 
           <div className="createperview__section">
