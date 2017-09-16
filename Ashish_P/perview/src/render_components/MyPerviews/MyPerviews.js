@@ -48,7 +48,8 @@ class MyPerviews extends React.Component {
   }
 
   fetchFilteredPerviews(categoryId) {
-    this.setState({ categoryId: categoryId })
+    this.setState({ categoryId: categoryId });
+
     this.props.fetchMyPerviews(categoryId);
   }
 

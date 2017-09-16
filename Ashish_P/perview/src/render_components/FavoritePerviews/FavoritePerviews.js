@@ -30,26 +30,30 @@ class FavoritePerviews extends React.Component {
   componentWillReceiveProps (nextProps) {
     if (nextProps.requestLoading !== this.props.requestLoading) {
       this.setState({
-        requestLoading: nextProps.requestLoading
+        requestLoading: nextProps.requestLoading,
+        categories: this.props.categories
       })
     }
 
     if (nextProps.fetchingUpdate !== this.props.fetchingUpdate) {
       this.setState({
-        fetchingUpdate: nextProps.fetchingUpdate
+        fetchingUpdate: nextProps.fetchingUpdate,
+        categories: this.props.categories
       })
       if (this.state.fetchingUpdate) {
-        this.props.fetchAllPerviews();
+        this.props.fetchFavoritePerviews(this.state.categoryId);
       }
     }
   }
 
   fetchFilteredPerviews(categoryId) {
+    this.setState({ categoryId: categoryId })
+
     this.props.fetchFavoritePerviews(categoryId);
   }
 
   renderComponents() {
-    if (this.state.requestLoading) {
+    if (false) {
       return (
         <div>spinner</div>
       )
@@ -69,16 +73,16 @@ class FavoritePerviews extends React.Component {
 
   render() {
     return (
-    <div className="favoriteperview__container">
-      <NavBarContainer
-        categories = {this.state.categories}
-        filterPerviews = {this.fetchFilteredPerviews}
-      />
+      <div className="favoriteperview__container">
+        <NavBarContainer
+          categories = {this.state.categories}
+          filterPerviews = {this.fetchFilteredPerviews}
+        />
 
-      <div className="favoriteperview__perviews">
-        {this.renderComponents()}
+        <div className="favoriteperview__perviews">
+          {this.renderComponents()}
+        </div>
       </div>
-    </div>
     )
   }
 }
