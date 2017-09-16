@@ -172,14 +172,10 @@ class CreatePerviewModal extends React.Component {
             <form onSubmit={this.handleSubmit} className="flexcolumn createperview__review-box">
               <div className="flexrow createperview__review-rating">
                 <div className="flexrow createperview__review-rating-stars">
-                  <span className="createperview__review-rating-text">
-                    Perview this Product!
-                  </span>
                   {this.renderReviewStars(this.state.rating)}
                 </div>
               </div>
 
-              <p>Tag it, comment or both!</p>
               <textarea
                 onChange={this.update("tags")}
                 className="createperview__review-input"
