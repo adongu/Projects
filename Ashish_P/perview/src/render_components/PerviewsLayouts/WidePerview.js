@@ -1,22 +1,10 @@
 import "../../styles/stylesheets/wideperview.css"
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import moment from 'moment';
 import PerviewCard from './PerviewCard/PerviewCard.js';
 
 
 const WidePerview = ({ fetchingUpdate, currentUserId, perviews, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, history }) => {
-
-  const renderStars = (rating) => {
-    let stars = [1, 2, 3, 4, 5];
-    return stars.map((ele)=>{
-      return (
-        <span key={ele} className={ele <= rating ? 'active_star' : 'no_star'} >
-          <i className="fa fa-star" aria-hidden="true"></i>
-        </span>
-      )
-    })
-  }
 
   const renderPerviews = () => {
     if (perviews) {

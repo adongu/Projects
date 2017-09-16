@@ -14,23 +14,16 @@ var config = {
 
 export const createPerview = (formData) => {
   return axios.post('/api/add', formData, config)
-
-  // return axios({
-  //   method: 'POST',
-  //   url: '/api/add',
-  //   headers: {
-  //     'Content-Type': 'multipart/form-data',
-  //   },
-  //   data: {UserPerview: formData},
-  //   config
-  // })
-  // .then(response => {
-  //   return response
-  // })
-  // .catch(error => {
-  //   return error
-  // });
 };
+
+export const editPerview = (keywords) => {
+  return axios.post('/api/add', formData, config)
+}
+
+export const deletePerview = (perviewId) => {
+  return axios.post(`/api/${perviewId}/delete`, formData, config)
+}
+
 
 export const createItem = (item) => {
   return axios({
@@ -87,13 +80,4 @@ export const fetchNumPerviews = () => {
 
 export const fetchCategoryIds = () => {
   return axios('/api/item/category')
-}
-
-
-export const editPerview = (keywords) => {
-
-}
-
-export const deletePerview = (keywords) => {
-
 }

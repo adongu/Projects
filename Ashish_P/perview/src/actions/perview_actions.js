@@ -65,14 +65,15 @@ export const receiveCategoryIds = (categoryIds) => ({
   categoryIds
 });
 
-export const editPerview = () => ({
-  type: EDIT_PERVIEW
+export const receiveEditPerview = (perview) => ({
+  type: EDIT_PERVIEW,
+  perview
 });
 
 
-export const deletePerview = (perview) => ({
+export const receiveDeletePerview = (perviewId) => ({
   type: DELETE_PERVIEW,
-  perview
+  perviewId
 })
 
 const receiveErrors = (errors) => ({
@@ -89,6 +90,28 @@ export const createPerview = (formData) => dispatch => {
   return APIUtil.createPerview(formData)
     .then( response => {
       return dispatch(receivePerview(response.data))
+    })
+    .catch( err => {
+      return dispatch(receiveErrors(err.responseJSON))
+    })
+};
+
+export const editPerview = (formData) => dispatch => {
+  dispatch(requestLoading());
+  return APIUtil.editPerview(formData)
+    .then( response => {
+      return dispatch(receiveEditPerview(response.data))
+    })
+    .catch( err => {
+      return dispatch(receiveErrors(err.responseJSON))
+    })
+};
+
+export const deletePerview = (formData) => dispatch => {
+  dispatch(requestLoading());
+  return APIUtil.deletePerview(formData)
+    .then( response => {
+      return dispatch(receiveDeletePerview(response.data))
     })
     .catch( err => {
       return dispatch(receiveErrors(err.responseJSON))

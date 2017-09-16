@@ -2,6 +2,7 @@ import "../../styles/stylesheets/narrowperview.css"
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import moment from 'moment';
+import PerviewCard from './PerviewCard/PerviewCard.js';
 
 const NarrowPerview = ({ perviews, bookmarkPerview, likePerview, history  }) => {
 
