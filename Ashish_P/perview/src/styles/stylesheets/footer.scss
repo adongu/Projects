@@ -1,0 +1,22 @@
+.footer__{
+  &container {
+    width: 100%;
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center
+  }
+
+  &box {
+    width: 980px;
+    border-top: 1px solid #ccc;
+    padding-top: 30px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  &item {
+    margin: 8px;
+  }
+}

@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { Route, withRouter, Redirect } from 'react-router-dom';
 import React from 'react';
 import HeaderContainer from '../containers/HeaderContainer';
+import Footer from '../render_components/Footer/Footer';
 
 // renders component if logged out, otherwise redirects to the root url
 const Auth = ({component: Component, path, loggedIn}) => (
@@ -21,6 +22,7 @@ const Protected = ({component: Component, path, loggedIn}) => (
       <div>
         <HeaderContainer />
         <Component {...props}/>
+        <Footer />
       </div>
     ) : (
       <Redirect to="/signin"/>
