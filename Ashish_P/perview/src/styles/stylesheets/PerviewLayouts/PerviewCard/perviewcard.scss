@@ -1,11 +1,12 @@
-$font-size: 15px;
-$line-height: 1.2;
-$lines-to-show: 5;
+$font-size: 14px;
+$line-height: 1.25;
+$lines-to-show: 4;
 
 .perviewcard__ {
   &perview-rightbox {
     width: 100%;
     height: 100%;
+    padding: 10px 0;
   }
 
   &review-time {
@@ -27,12 +28,14 @@ $lines-to-show: 5;
     align-content:flex-start;
     // align-items: center;
     width: 100%;
+    padding-bottom: 14px;
   }
 
   &review-user-icon {
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    margin-right: 10px;
     background: #D3D6DB;
     overflow: hidden;
     justify-content: center;
@@ -70,6 +73,7 @@ $lines-to-show: 5;
 
 // Rating
   &review-stars {
+    padding-bottom: 4px;
   }
 
   &review-tags {
@@ -82,7 +86,6 @@ $lines-to-show: 5;
   &review-text {
     width: 100%;
     // height: 140px;
-    // line-height: 140px;
     color: #3F3F3F;
     display: block; /* Fallback for non-webkit */
     display: -webkit-box;
@@ -97,6 +100,10 @@ $lines-to-show: 5;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  &showmore {
+    padding: 0 8px;
   }
   /* right bottom */
   &review-social-box {
@@ -123,6 +130,7 @@ $lines-to-show: 5;
 
   &review-social-icon {
     padding-right: 5px;
+    font-size: 18px;
   }
 
   // &review-social-icon:hover {
@@ -148,7 +156,10 @@ $lines-to-show: 5;
   }
 
 // Liker Popover
-  &numlikers {
+  &numlikers-box {
+    width: 100%;
+    display: flex;
+    align-items: center;
   }
 
 

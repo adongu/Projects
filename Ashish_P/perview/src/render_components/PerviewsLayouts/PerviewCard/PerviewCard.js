@@ -62,7 +62,9 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
     if (likers.length > 1) {
       let numLikersMore = likers.length - 1;
       return (
-        <span>and {numLikersMore} More...</span>
+        <span>
+          and {numLikersMore} More...
+        </span>
       )
     }
   }
@@ -102,7 +104,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
     if (likers) {
       return (
         <OverlayTrigger trigger="click" placement="top" rootClose overlay={popoverClickRootClose} className="perviewcard__popovertrigger">
-          <a className="perviewcard__numlikers">{likers.length} Likes</a>
+          <a className="perviewcard__numlikers">{likers.length} likes</a>
         </OverlayTrigger>
       )
     } else {
@@ -153,9 +155,9 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
   }
 
   const renderModalLink = (perview) => {
-    if (perview.tags && (perview.tags.length > 10) ) {
+    if (perview.tags && (perview.tags.length > 180) ) {
       return (
-        <div className="itemperview__showmore">
+        <div className="perviewcard__showmore">
           <PerviewDetailModal
             perview = {perview}
             handleSaveClick = {handleSaveClick}
@@ -187,7 +189,8 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
 
       <div className="perviewcard__review-tags">
         <p className="perviewcard__review-text">
-          {perview.tags.substr(0, 100)}
+          {perview.tags.substr(0, 180)}
+
         </p>
         {renderModalLink(perview)}
       </div>
@@ -202,7 +205,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
             <i onClick={handleLikeClick(perview)} className={`fa fa-heart perviewcard__review-icon-like ${perview.likedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
 
           </span>
-          <div className="perviewcard__numperviews">
+          <div className="perviewcard__numlikers-box">
             {renderNumLikes()}
           </div>
         </div>
