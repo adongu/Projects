@@ -84,7 +84,9 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
         </OverlayTrigger>
       )
     } else {
-      <span>0 likes</span>
+      return (
+        <span>0 likes</span>
+      )
     }
   }
 
