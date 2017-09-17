@@ -57,30 +57,49 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
     // }
   }
 
+  const renderAndMoreLikes = () => {
+    if (likers.length > 1) {
+      let numLikersMore = likers.length - 1;
+      return (
+        <span>and {numLikersMore} More...</span>
+      )
+    }
+  }
+
   const popoverClickRootClose = likers ? (
-    <Popover id="popover-trigger-click-root-close" title="Popover bottom" className="perviewcard__popover">
-      {likers.map((liker) => {
-        return (
-          <div key={`perviewcard-${perview.id}-${liker.id}`} className="perviewcard__popover-liker">
-            <div className="perviewcard__popover-icon">
-              <img src={liker.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
+    <Popover
+      id="popover-trigger-click-root-close"
+      title="Likers"
+      className="perviewcard__popover"
+    >
+      <div>
+        {likers.slice(0, 1).map((liker) => {
+          return (
+            <div key={`perviewcard-${perview.id}-${liker.id}`} className="flexrow perviewcard__popover-user">
+              <div className="perviewcard__popover-user-icon">
+                <img className="perviewcard__popover-user-img" src={liker.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
+              </div>
+              <div className="perviewcard__popover-username">
+                {liker.firstName}
+              </div>
             </div>
-            <div className="perviewcard__popover-name">
-              {liker.firstName}
-            </div>
-          </div>
-        )
-      })}
+          )
+        })}
+
+        <div>
+          {renderAndMoreLikes()}
+        </div>
+      </div>
     </Popover>
   ) : (
-    <div>NOTHING HERE</div>
+    <div></div>
   );
 
   const renderNumLikes = () => {
     if (likers) {
       return (
-        <OverlayTrigger trigger="click" rootClose placement="top" overlay={popoverClickRootClose} className="perviewcard__popovertrigger">
-          <a>{likers.length} Likes</a>
+        <OverlayTrigger trigger="click" placement="top" rootClose overlay={popoverClickRootClose} className="perviewcard__popovertrigger">
+          <a className="perviewcard__numlikers">{likers.length} Likes</a>
         </OverlayTrigger>
       )
     } else {

@@ -84,7 +84,7 @@ $lines-to-show: 5;
   /* right bottom */
   &review-social-box {
     margin-top: auto;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
   }
 
@@ -105,6 +105,7 @@ $lines-to-show: 5;
   }
 
   &review-social-icon {
+    padding-right: 5px;
   }
 
   // &review-social-icon:hover {
@@ -129,14 +130,64 @@ $lines-to-show: 5;
     text-shadow: 0px 0px 0px #E9E9E9;
   }
 
-  &review-social-share {
+// Liker Popover
+  &numlikers {
   }
 
-  &review {
-    &-bookmark,
-    &-like,
-    &-share {
-      color: #E9E9E9;
-    }
+
+  &popover {
+    // z-index is 10 for header
+    z-index: 9;
+    // overflow-y: auto;
+    width: 180px;
+    // height: 300px;
+    transform: translate(-55px, -10px);
   }
+
+  &popover-user {
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start;
+    margin-bottom: 8px;
+  }
+
+  &popover-user-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #D3D6DB;
+    margin-right: 8px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
+  &popover-user-img {
+    width: 100%;
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    image-rendering: -moz-crisp-edges;         /* Firefox */
+    image-rendering:   -o-crisp-edges;         /* Opera */
+    image-rendering: -webkit-optimize-contrast;/* Webkit (non-standard naming) */
+    image-rendering: crisp-edges;
+  }
+
+  &popover-user-img:hover {
+    cursor: pointer;
+  }
+
+  &popover-username {
+    color: #3E3E3E;
+    font-weight: bold;
+    // width: 0%;
+    margin: auto 0;
+    cursor: pointer;
+    overflow: hidden;
+  }
+}
+
+.arrow {
+  transform: translateX(55px);
 }
