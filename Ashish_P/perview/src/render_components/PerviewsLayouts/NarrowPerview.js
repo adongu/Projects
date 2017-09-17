@@ -8,8 +8,8 @@ const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPer
 
   const renderPerviews = () => {
     if (perviews) {
-
       return perviews.map((perview, i) => {
+        console.log(perview.likers);
         let item = perview.itemDto;
         let user = perview.userDto;
 

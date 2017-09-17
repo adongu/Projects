@@ -57,11 +57,11 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
     }
   }
 
-  const popoverClickRootClose = (
+  const popoverClickRootClose = likers ? (
     <Popover id="popover-trigger-click-root-close" title="Popover bottom" className="perviewcard__popover">
       {likers.map((liker) => {
         return (
-          <div key={`perviewcard-${perview.id}-${liker.id}`}>
+          <div key={`perviewcard-${perview.id}-${liker.id}`} className="perviewcard__popover-liker">
             <div className="perviewcard__popover-icon">
               <img src={liker.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
             </div>
@@ -72,25 +72,11 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
         )
       })}
     </Popover>
+  ) : (
+    <div>NOTHING HERE</div>
   );
 
-  const renderPopover = () => {
-    if (likers.length > 0) {
-      return (
-        <OverlayTrigger trigger="click" rootClose placement="top" overlay={popoverClickRootClose} className="perviewcard__popovertrigger">
-          <a>{likers.length} Likes</a>
-        </OverlayTrigger>
-      )
-    } else {
-      return (
-        <span>
-          0 Likes
-        </span>
-      )
-    }
-  }
-
-  const renderNumLikes = (perviewId) => {
+  const renderNumLikes = () => {
     if (likers) {
       return (
         <OverlayTrigger trigger="click" rootClose placement="top" overlay={popoverClickRootClose} className="perviewcard__popovertrigger">
@@ -98,11 +84,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
         </OverlayTrigger>
       )
     } else {
-      return (
-        <span>
-          0 Likes
-        </span>
-      )
+      <span>0 likes</span>
     }
   }
 
