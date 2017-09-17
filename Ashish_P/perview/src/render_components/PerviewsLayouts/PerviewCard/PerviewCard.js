@@ -6,7 +6,7 @@ import PerviewCardDetailModal from './PerviewCardDetailModal';
 import PerviewDeleteConfirmation from './PerviewDeleteConfirmation';
 import { Popover, OverlayTrigger } from 'react-bootstrap';
 
-const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, history }) => {
+const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, history, toRenderUserProfile }) => {
 
   const renderStars = (rating) => {
     let stars = [1, 2, 3, 4, 5];
@@ -132,14 +132,9 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
     }
   }
 
-  // var user = perview.userDto;
-  return (
-    <div className="flexcolumn perviewcard__perview-rightbox">
-      <div className="perviewcard__review-time">
-        {moment(perview.ts).format("MMM D")}
-      </div>
-
-      <div className="perviewcard__perview-options">
+  const renderUserProfile = () => {
+    if (toRenderUserProfile) {
+      return (
         <div className="flexrow perviewcard__review-user">
           <div className="perviewcard__review-user-icon" onClick={handleFriendClick(perviewUser.id)}>
             <img className="perviewcard__review-user-img" src={perviewUser.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
@@ -148,6 +143,23 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
             <div>{perviewUser.fullName}</div>
           </a>
         </div>
+      )
+    } else {
+      return (
+        <div></div>
+      )
+    }
+  }
+
+  // var user = perview.userDto;
+  return (
+    <div className="flexcolumn perviewcard__perview-rightbox">
+      <div className="perviewcard__review-time">
+        {moment(perview.ts).format("MMM D")}
+      </div>
+
+      <div className="perviewcard__perview-options">
+        {renderUserProfile()}
 
         {renderPerviewEdit()}
       </div>

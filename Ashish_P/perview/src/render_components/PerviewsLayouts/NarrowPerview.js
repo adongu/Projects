@@ -4,12 +4,11 @@ import { Link, withRouter } from 'react-router-dom';
 import moment from 'moment';
 import PerviewCard from './PerviewCard/PerviewCard.js';
 
-const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, history, showConfirmation, showLikers }) => {
+const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, history, toRenderUserProfile }) => {
 
   const renderPerviews = () => {
     if (perviews) {
       return perviews.map((perview, i) => {
-        console.log(perview);
         let item = perview.itemDto;
         let user = perview.userDto;
 
@@ -48,6 +47,7 @@ const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPer
                 likePerview = {likePerview}
                 unlikePerview = {unlikePerview}
                 history = {history}
+                toRenderUserProfile = {toRenderUserProfile}
                 editPerview = {editPerview}
                 deletePerview = {deletePerview}
               />

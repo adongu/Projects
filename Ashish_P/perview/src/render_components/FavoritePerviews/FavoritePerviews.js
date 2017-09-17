@@ -66,6 +66,8 @@ class FavoritePerviews extends React.Component {
           unbookmarkPerview = {this.props.unbookmarkPerview}
           likePerview = {this.props.likePerview}
           unlikePerview = {this.props.unlikePerview}
+          toRenderUserProfile = {true}
+          history = {this.props.history}
         />
       )
     }

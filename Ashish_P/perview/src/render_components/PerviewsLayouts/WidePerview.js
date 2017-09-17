@@ -3,7 +3,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import PerviewCard from './PerviewCard/PerviewCard.js';
 
-const WidePerview = ({ fetchingUpdate, currentUserId, perviews, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, history }) => {
+const WidePerview = ({ fetchingUpdate, currentUserId, perviews, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, history, toRenderUserProfile }) => {
 
   const renderPerviews = () => {
     if (perviews) {
@@ -45,6 +45,7 @@ const WidePerview = ({ fetchingUpdate, currentUserId, perviews, bookmarkPerview,
               likePerview = {likePerview}
               unlikePerview = {unlikePerview}
               history = {history}
+              toRenderUserProfile = {toRenderUserProfile}
             />
           </div>
         </div>
