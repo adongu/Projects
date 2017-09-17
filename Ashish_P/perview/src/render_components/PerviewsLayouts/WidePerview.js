@@ -35,18 +35,20 @@ const WidePerview = ({ fetchingUpdate, currentUserId, perviews, bookmarkPerview,
           </div>
 
           <div className="wideresults__perview-right">
-            <PerviewCard
-              currentUserId = {currentUserId}
-              perviewUser = { user }
-              perview = {perview}
-              likers = {perview.likers}
-              bookmarkPerview = {bookmarkPerview}
-              unbookmarkPerview = {unbookmarkPerview}
-              likePerview = {likePerview}
-              unlikePerview = {unlikePerview}
-              history = {history}
-              toRenderUserProfile = {toRenderUserProfile}
-            />
+            <div className="wideresults__perview-rightbox">
+              <PerviewCard
+                currentUserId = {currentUserId}
+                perviewUser = { user }
+                perview = {perview}
+                likers = {perview.likers}
+                bookmarkPerview = {bookmarkPerview}
+                unbookmarkPerview = {unbookmarkPerview}
+                likePerview = {likePerview}
+                unlikePerview = {unlikePerview}
+                history = {history}
+                toRenderUserProfile = {toRenderUserProfile}
+              />
+            </div>
           </div>
         </div>
         )
