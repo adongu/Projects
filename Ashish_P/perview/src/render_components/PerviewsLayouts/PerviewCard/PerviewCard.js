@@ -103,12 +103,8 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
     if (likers) {
       return (
         <OverlayTrigger trigger="click" placement="top" rootClose overlay={popoverClickRootClose} className="perviewcard__popovertrigger">
-          <a className="perviewcard__numlikers">{likers.length} likes</a>
+          <a className="perviewcard__numlikers">{likers.length}</a>
         </OverlayTrigger>
-      )
-    } else {
-      return (
-        <span>0 likes</span>
       )
     }
   }
