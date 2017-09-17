@@ -110,7 +110,7 @@ class Settings extends React.Component{
     return (
       <div className="settings__perviews">
         <p className="settings__perviews-header">
-          Total PerViews
+          Total Perviews
         </p>
 
         <div className="settings__perviews-number">

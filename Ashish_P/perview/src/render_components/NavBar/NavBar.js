@@ -6,16 +6,16 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, categorie
 
   const pageSettings = {
     "/" : {
-      "title": "Check the Perviews of your friends!", "hasFilters": true
+      "title": "", "hasFilters": true
     },
     "/myperviews": {
-      "title": "My Perviews", "hasFilters": true
+      "title": "", "hasFilters": true
     },
     "/favorites": {
-      "title": "Saved Perviews", "hasFilters": true
+      "title": "", "hasFilters": true
     },
     "/friend/:friend_id": {
-      "title": "Perview's", "hasFilters": true
+      "title": "Perviews", "hasFilters": true
     },
     "/settings": {
       "title": "Settings", "hasFilters": false
@@ -39,7 +39,7 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, categorie
               src={userFriend.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"
             />
           </span>
-          <span className="navbar__username">{userFriend.fullName}</span>
+          <span className="navbar__username">{userFriend.fullNamePossession}</span>
         </div>
       )
     }

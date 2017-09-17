@@ -68,7 +68,7 @@ class SignIn extends React.Component {
                 Welcome to Perview
               </div>
               <div className="signin__bodymessage">
-                Purchase your favorite products with the trust of your friends
+                A place to tell your friends about your favorite things.
               </div>
               <form className="flexcolumn signin__form" action={auth_url} method="post">
                 <input type="hidden" name="scope" value="user_friends"/>
@@ -76,17 +76,17 @@ class SignIn extends React.Component {
                 <input type="hidden" name="_csrf" value={token}/>
                 <button type="submit" className="signin__submit-facebook">Continue with Facebook</button>
                 <p className="signin__submit-msg">
-                  We'll never post anything without your permission.
+                  We don’t post anything to Facebook.
                 </p>
               </form>
             </div>
             <div className="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
           </div>
           <div className="signin__terms">
-            Creating an account means you're okay with Perview's
-            <Link className="signin__terms-urls" to="">Terms of Service</Link>
+            By continuing, you indicate that you have read and agree Perview's
+            <Link to="https://s3.amazonaws.com/tosandpp/2017_9_7_Perview_Terms_of_Service.pdf" className="signin__terms-urls" to="">Terms of Service</Link>
             and
-            <Link className="signin__terms-urls" to="">Privacy Policy</Link>
+            <Link to="https://s3.amazonaws.com/tosandpp/2017_9_7_Perview_Privacy_Policy.pdf" className="signin__terms-urls" to="">Privacy Policy</Link>
           </div>
         </div>
         <div className="signin__background">
