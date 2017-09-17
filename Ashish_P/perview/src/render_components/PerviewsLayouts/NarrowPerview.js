@@ -4,14 +4,14 @@ import { Link, withRouter } from 'react-router-dom';
 import moment from 'moment';
 import PerviewCard from './PerviewCard/PerviewCard.js';
 
-const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, history, showConfirmation }) => {
+const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, history, showConfirmation, showLikers }) => {
 
   const renderPerviews = () => {
     if (perviews) {
 
       return perviews.map((perview, i) => {
         let item = perview.itemDto;
-        var user = perview.userDto;
+        let user = perview.userDto;
 
         return (
           <div key={`perviewindex__${i}`} className="flexcolumn narrowperviews__box">
@@ -33,17 +33,16 @@ const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPer
 
               <div className="flexrow narrowperviews__buybox">
                 <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">Buy on Amazon</a>
-                <div className="narrowperviews__numperviews">
-                  {perview.likes ? perview.likes : 0} perviews
-                </div>
               </div>
             </div>
 
             <div className="flexcolumn narrowperviews__reviewbox">
               <PerviewCard
+                item = {item}
                 currentUserId = {currentUserId}
                 perviewUser = { user }
                 perview = {perview}
+                likers = {perview.likers}
                 bookmarkPerview = {bookmarkPerview}
                 unbookmarkPerview = {unbookmarkPerview}
                 likePerview = {likePerview}

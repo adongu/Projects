@@ -4,8 +4,9 @@ import moment from 'moment';
 import React from 'react';
 import PerviewCardDetailModal from './PerviewCardDetailModal';
 import PerviewDeleteConfirmation from './PerviewDeleteConfirmation';
+import { Popover, OverlayTrigger } from 'react-bootstrap';
 
-const PerviewCard = ({ currentUserId, perviewUser, perview, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, history }) => {
+const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, history }) => {
 
   const renderStars = (rating) => {
     let stars = [1, 2, 3, 4, 5];
@@ -56,13 +57,65 @@ const PerviewCard = ({ currentUserId, perviewUser, perview, bookmarkPerview, unb
     }
   }
 
-  const renderPerviewEdit = () => {
-    if (history.pathname === '/myperviews') {
+  const popoverClickRootClose = (
+    <Popover id="popover-trigger-click-root-close" title="Popover bottom" className="perviewcard__popover">
+      {likers.map((liker) => {
+        return (
+          <div key={`perviewcard-${perview.id}-${liker.id}`}>
+            <div className="perviewcard__popover-icon">
+              <img src={liker.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
+            </div>
+            <div className="perviewcard__popover-name">
+              {liker.firstName}
+            </div>
+          </div>
+        )
+      })}
+    </Popover>
+  );
+
+  const renderPopover = () => {
+    if (likers.length > 0) {
       return (
-        <div className="flexrow narrowperviews__editbox">
+        <OverlayTrigger trigger="click" rootClose placement="top" overlay={popoverClickRootClose} className="perviewcard__popovertrigger">
+          <a>{likers.length} Likes</a>
+        </OverlayTrigger>
+      )
+    } else {
+      return (
+        <span>
+          0 Likes
+        </span>
+      )
+    }
+  }
+
+  const renderNumLikes = (perviewId) => {
+    if (likers) {
+      return (
+        <OverlayTrigger trigger="click" rootClose placement="top" overlay={popoverClickRootClose} className="perviewcard__popovertrigger">
+          <a>{likers.length} Likes</a>
+        </OverlayTrigger>
+      )
+    } else {
+      return (
+        <span>
+          0 Likes
+        </span>
+      )
+    }
+  }
+
+  const renderPerviewEdit = () => {
+    if (history.location.pathname === '/myperviews') {
+      return (
+        <div className="flexrow perviewcard__editbox">
           <PerviewCardDetailModal
+            item = {item}
             perview = {perview}
             editPerview = {editPerview}
+            currentUserId = {currentUserId}
+            history = {history}
           />
 
           <PerviewDeleteConfirmation
@@ -86,7 +139,7 @@ const PerviewCard = ({ currentUserId, perviewUser, perview, bookmarkPerview, unb
             <img className="perviewcard__review-user-img" src={perviewUser.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
           </div>
           <a className="perviewcard__review-username" onClick={handleFriendClick(perviewUser.id)}>
-            {perviewUser.fullName}
+            <div>{perviewUser.fullName}</div>
           </a>
         </div>
 
@@ -109,7 +162,9 @@ const PerviewCard = ({ currentUserId, perviewUser, perview, bookmarkPerview, unb
           <span className="perviewcard__review-social-icon">
             <i onClick={handleLikeClick(perview)} className={`fa fa-heart perviewcard__review-icon-like ${perview.likedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
 
-            <span className="perviewcard__numlikes"></span>
+            <div className="perviewcard__numperviews">
+              {renderNumLikes()}
+            </div>
           </span>
         </div>
       </div>

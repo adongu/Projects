@@ -38,6 +38,32 @@ class PerviewCardDetailModal extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentWillMount() {
+    if (this.props.item) {
+      let item = this.props.item
+
+      this.setState({
+        imgUrl: item.data.imageUrls.large.url,
+        name: item.data.title,
+        price: item.data.lowestNewPrice.formattedAmount,
+        itemId: item.id
+      })
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.item.id !== this.props.item.id) {
+      let item = nextProps.item
+
+      this.setState({
+        imgUrl: item.data.imageUrls.large.url,
+        name: item.data.title,
+        price: item.data.lowestNewPrice.formattedAmount,
+        itemId: item.id
+      })
+    }
+  }
+
   showModal() {
     this.setState({show: true});
   }
@@ -99,7 +125,7 @@ class PerviewCardDetailModal extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    if(this.props.currentUser){
+    if(this.props.currentUserId){
       let formData = new FormData();
       formData.append("itemId", this.state.itemId);
       formData.append("tags", this.state.tags);
@@ -119,9 +145,9 @@ class PerviewCardDetailModal extends React.Component {
 
         })
         this.hideModal();
-        if (this.props.history.location.pathname !== '/' ) {
-          this.props.history.replace({ pathname: '/' });
-        }
+        // if (this.props.history.location.pathname !== '/' ) {
+        //   this.props.history.replace({ pathname: '/' });
+        // }
       }
     } else {
       // make user go back to signin
