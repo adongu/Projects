@@ -73,6 +73,7 @@ class ItemPerviews extends React.Component {
           likePerview = {this.props.likePerview}
           unlikePerview = {this.props.unlikePerview}
           history = {this.props.history}
+          toRenderUserProfile = {true}
         />
       )
     }

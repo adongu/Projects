@@ -2,7 +2,8 @@ import "../../../styles/stylesheets/PerviewLayouts/PerviewCard/perviewcard.css"
 import { Link, withRouter } from 'react-router-dom';
 import moment from 'moment';
 import React from 'react';
-import PerviewCardDetailModal from './PerviewCardDetailModal';
+import PerviewEditModal from './PerviewEditModal';
+import PerviewDetailModal from './PerviewDetailModal';
 import PerviewDeleteConfirmation from './PerviewDeleteConfirmation';
 import { Popover, OverlayTrigger } from 'react-bootstrap';
 
@@ -115,7 +116,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
     if (history.location.pathname === '/myperviews') {
       return (
         <div className="flexrow perviewcard__editbox">
-          <PerviewCardDetailModal
+          <PerviewEditModal
             item = {item}
             perview = {perview}
             editPerview = {editPerview}
@@ -151,6 +152,22 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
     }
   }
 
+  const renderModalLink = (perview) => {
+    if (perview.tags && (perview.tags.length > 10) ) {
+      return (
+        <div className="itemperview__showmore">
+          <PerviewDetailModal
+            perview = {perview}
+            handleSaveClick = {handleSaveClick}
+            handleFriendClick = {handleFriendClick}
+            handleLikeClick = {handleLikeClick}
+            renderStars = {renderStars}
+          />
+        </div>
+      )
+    }
+  }
+
   // var user = perview.userDto;
   return (
     <div className="flexcolumn perviewcard__perview-rightbox">
@@ -167,8 +184,12 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
       <div className="perviewcard__review-stars">
         {renderStars(perview.rating)}
       </div>
-      <div className="perviewcard__review-text">
-        {perview.tags}
+
+      <div className="perviewcard__review-tags">
+        <p className="perviewcard__review-text">
+          {perview.tags.substr(0, 100)}
+        </p>
+        {renderModalLink(perview)}
       </div>
 
       <div className="flexrow perviewcard__review-social-box">

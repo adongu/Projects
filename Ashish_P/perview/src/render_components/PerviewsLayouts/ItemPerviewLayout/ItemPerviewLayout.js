@@ -1,9 +1,9 @@
 import "../../../styles/stylesheets/itemperviewlayout.css"
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import ItemPerviewModal from './ItemPerviewModal';
+import PerviewCard from '../PerviewCard/PerviewCard.js';
 
-const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, history }) => {
+const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, history, toRenderUserProfile }) => {
 
   const handleFriendClick = (friendId) => {
     return (e) => {
@@ -46,22 +46,6 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmar
     })
   }
 
-  const renderModalLink = (perview) => {
-    if (perview.tags && (perview.tags.length > 150) ) {
-      return (
-        <div className="itemperview__showmore">
-          <ItemPerviewModal
-            perview = {perview}
-            handleSaveClick = {handleSaveClick}
-            handleFriendClick = {handleFriendClick}
-            handleLikeClick = {handleLikeClick}
-            renderStars = {renderStars}
-          />
-        </div>
-      )
-    }
-  }
-
   const renderItemSection = () => {
     if (perviews && perviews.length > 0) {
       let item = perviews[0].itemDto;
@@ -89,38 +73,24 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmar
   const renderPerviews = () => {
     if (perviews) {
       return perviews.map((perview) => {
-        console.log('render perviews perviews', perview);
-        var user = perview.userDto;
+        let user = perview.userDto;
+        let item = perviews[0].itemDto;
 
         return (
           <div className="flexcolumn itemperview__perviewbox" key={`item-${perview.itemDto.id}_Perview-${perview.id}`}>
-            <div className="flexrow itemperview__userbox">
-              <span className="itemperview__userimgbox">
-                <img className="itemperview__userimg" onClick={handleFriendClick(user.id)} src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
-              </span>
-              <span className="itemperview__username">{user.firstName}</span>
-            </div>
-
-            <div className="itemperview__ratingbox">
-              {renderStars(perview.rating)}
-            </div>
-
-            <div className="itemperview__reviewbox">
-              <p className="itemperview__review">
-                {perview.tags.substr(0, 155)}
-              </p>
-              {renderModalLink(perview)}
-            </div>
-
-            <div className="itemperview__socialbox">
-              <span className="itemperview__social-icon" onClick={handleSaveClick(perview)}>
-                <i className={`fa fa-bookmark itemperview__social-bookmark ${perview.bookmarkedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
-              </span>
-
-              <span className="itemperview__social-icon" >
-                <i onClick={handleLikeClick(perview)} className={`fa fa-heart itemperview__social-like ${perview.likedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
-              </span>
-            </div>
+            <PerviewCard
+              item = {item}
+              currentUserId = {currentUserId}
+              perviewUser = { user }
+              perview = {perview}
+              likers = {perview.likers}
+              bookmarkPerview = {bookmarkPerview}
+              unbookmarkPerview = {unbookmarkPerview}
+              likePerview = {likePerview}
+              unlikePerview = {unlikePerview}
+              history = {history}
+              toRenderUserProfile = {toRenderUserProfile}
+            />
           </div>
         )
       })

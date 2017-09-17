@@ -2,7 +2,7 @@ import "../../../styles/stylesheets/itemperviewlayoutmodal.css"
 import React from 'react';
 import { Modal, ButtonToolbar } from 'react-bootstrap';
 
-class ItemPerviewModal extends React.Component {
+class PerviewDetailModal extends React.Component {
 
   constructor (props) {
     super(props)
@@ -70,4 +70,4 @@ class ItemPerviewModal extends React.Component {
   }
 };
 
-export default ItemPerviewModal;
+export default PerviewDetailModal;

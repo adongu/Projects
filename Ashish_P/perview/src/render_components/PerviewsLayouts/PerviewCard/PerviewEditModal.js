@@ -2,7 +2,7 @@ import "../../../styles/stylesheets/PerviewLayouts/PerviewCard/perviewcarddetail
 import React from 'react';
 import { ButtonToolbar, Modal } from 'react-bootstrap';
 
-class PerviewCardDetailModal extends React.Component {
+class PerviewEditModal extends React.Component {
   constructor(props) {
     super(props);
 
@@ -228,4 +228,4 @@ class PerviewCardDetailModal extends React.Component {
   }
 };
 
-export default PerviewCardDetailModal;
+export default PerviewEditModal;
