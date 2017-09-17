@@ -77,11 +77,13 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
           return (
             <div key={`perviewcard-${perview.id}-${liker.id}`} className="flexrow perviewcard__popover-user">
               <div className="perviewcard__popover-user-icon">
-                <img className="perviewcard__popover-user-img" src={liker.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
+                <img
+                  onClick={handleFriendClick(liker.id)}
+                  className="perviewcard__popover-user-img" src={liker.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
               </div>
-              <div className="perviewcard__popover-username">
+              <a onClick={handleFriendClick(liker.id)} className="perviewcard__popover-username">
                 {liker.firstName}
-              </div>
+              </a>
             </div>
           )
         })}
@@ -137,7 +139,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
         {moment(perview.ts).format("MMM D")}
       </div>
 
-      <div>
+      <div className="perviewcard__perview-options">
         <div className="flexrow perviewcard__review-user">
           <div className="perviewcard__review-user-icon" onClick={handleFriendClick(perviewUser.id)}>
             <img className="perviewcard__review-user-img" src={perviewUser.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>

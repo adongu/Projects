@@ -14,6 +14,14 @@ $lines-to-show: 5;
     font-size: 12px;
   }
 
+  // Perview Card Option
+  &perview-options {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   &review-user {
     display: flex;
     align-content:flex-start;
@@ -54,7 +62,13 @@ $lines-to-show: 5;
     margin: auto;
     cursor: pointer;
   }
+// edit and delete box
+  &editbox {
+    display: flex;
+    align-items: center;
+  }
 
+// Rating
   &review-stars {
   }
 
