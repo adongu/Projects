@@ -76,7 +76,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
       className="perviewcard__popover"
     >
       <div>
-        {likers.slice(0, 1).map((liker) => {
+        {likers.map((liker) => {
           return (
             <div key={`perviewcard-${perview.id}-${liker.id}`} className="flexrow perviewcard__popover-user">
               <div className="perviewcard__popover-user-icon">
@@ -92,7 +92,6 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
         })}
 
         <div>
-          {renderAndMoreLikes()}
         </div>
       </div>
     </Popover>
