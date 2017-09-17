@@ -3,6 +3,10 @@ $line-height: 1.25;
 $lines-to-show: 4;
 
 .perviewcard__ {
+  &modal {
+    width: 850px;
+  }
+
   &perview-rightbox {
     width: 100%;
     height: 100%;

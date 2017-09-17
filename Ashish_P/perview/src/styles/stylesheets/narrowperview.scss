@@ -20,7 +20,7 @@ $review-lines-to-show: 6;
     display: flex;
     align-items: center;
     width: 320px;
-    height: 550px;
+    height: 590px;
     box-shadow: 1px 1px 1px #888;
     margin: 10px 3px 20px 3px;
     border: 1px #D6D6D6 solid;
@@ -33,7 +33,7 @@ $review-lines-to-show: 6;
   &productbox {
     display: flex;
     width: 94%;
-    // padding: 10px;
+    height: 440px;
     padding: 0 3px;
   }
 
@@ -102,7 +102,7 @@ $review-lines-to-show: 6;
 // perview tags and info
 .narrowperviews__{
   &reviewbox {
-    height: 280px;
+    height: 332px;
     width: 94%;
     margin: 0 10px 15px 10px;
     padding: 10px;
