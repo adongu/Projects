@@ -49,12 +49,12 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
     }
   }
 
-  const confirmDeletePerview = () => {
-    return e => {
-      if (deletePerview) {
-        deletePerview(perview.id)
-      }
+  const confirmDeletePerview = (perviewId) => {
+    // return e => {
+    if (deletePerview) {
+      deletePerview(perview.id)
     }
+    // }
   }
 
   const popoverClickRootClose = likers ? (
@@ -103,6 +103,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
           />
 
           <PerviewDeleteConfirmation
+            perviewId = {perview.id}
             confirmDeletePerview = {confirmDeletePerview}
           />
         </div>
@@ -146,10 +147,10 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
           <span className="perviewcard__review-social-icon">
             <i onClick={handleLikeClick(perview)} className={`fa fa-heart perviewcard__review-icon-like ${perview.likedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
 
-            <div className="perviewcard__numperviews">
-              {renderNumLikes()}
-            </div>
           </span>
+          <div className="perviewcard__numperviews">
+            {renderNumLikes()}
+          </div>
         </div>
       </div>
     </div>

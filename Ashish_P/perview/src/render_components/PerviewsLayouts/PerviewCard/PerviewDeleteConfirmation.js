@@ -29,7 +29,7 @@ const PerviewDeleteConfirmation = React.createClass({
             <div>
               <p>Are you Sure you want to Delete this Perview?</p>
               <div>
-                <button className="">Yes I'm sure!</button>
+                <button onClick={this.props.confirmDeletePerview} className="">Yes I'm sure!</button>
                 <button className="">Cancel</button>
               </div>
             </div>

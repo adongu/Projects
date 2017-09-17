@@ -1,0 +1,188 @@
+$font-size: 15px;
+$line-height: 1.4;
+$lines-to-show: 4;
+
+
+.perviewdetailmodal__{
+  &modal {
+    width: 850px;
+  }
+
+  &modalhead {
+    padding: 15px 0 0 0;
+  }
+
+  &btn{
+    width: 100%;
+    margin: 16px 0;
+    padding: 3px 0;
+    font-size: 18px;
+    border-radius: 5px;
+    color: white;
+    background: black;
+  }
+}
+
+/* review section*/
+
+.perviewdetailmodal__ {
+
+  &section,
+  &product-container {
+    width: 100%;
+    min-height: 501px;
+  }
+
+  &product {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 10px;
+    padding: 20px 10% 0 40px;
+  }
+
+  &product-left {
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  &product-img {
+    max-width: 80%;
+    height: 80%;
+    position:absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-backface-visibility: hidden;
+    // border: 1px #D6D6D6 solid;
+  }
+
+  &product-right {
+    width: 70%;
+    padding: 10px 0 40px 0;
+  }
+
+  &product-info {
+    align-items: space-between;
+  }
+
+  &product-title {
+    padding-bottom: 30px;
+    width: 100%;
+    padding-bottom: 10px;
+    // height: 140px;
+    // line-height: 140px;
+    color: #3F3F3F;
+    display: block; /* Fallback for non-webkit */
+    display: -webkit-box;
+    min-width: 352px;
+    // height: 50px;
+    height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
+    margin: 0 auto;
+    font-size: $font-size;
+    font-weight: 300;
+    line-height: $line-height;
+    -webkit-line-clamp: $lines-to-show;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &product-details {
+    align-items: flex-end;
+    margin-top: 30px;
+  }
+
+  &product-price {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  &product-perviews {
+    margin-left: auto;
+    font-size: 12px;
+    color: #3F3F3F;
+  }
+
+
+  /* review section */
+  &review-container {
+    display: flex;
+    justify-content: flex-end;
+    background: #F7F7F7;
+    padding: 20px 10% 15px 40px;
+  }
+
+  &review-box {
+    width: 70%;
+  }
+//rating stars
+  &review-rating:hover {
+    cursor: pointer;
+  }
+
+  &review-rating-msg{
+    justify-content: flex-start;
+  }
+
+  &review-rating {
+    padding-bottom: 20px;
+  }
+
+  &review-rating-text {
+    padding-right: 20px;
+  }
+
+  &review-rating-stars {
+    position: relative;
+  }
+
+  &ratingtipbox {
+    display: none;
+    // content: "";
+    top: -50px;
+    position: absolute;
+  }
+
+  &ratingtipbox.active{
+    display: inline;
+    top: -50px;
+    position: absolute;
+  }
+
+  &review-stars {
+    width: 50%;
+  }
+
+  &rating-star {
+    font-size: 22px;
+    padding-left: 5px;
+  }
+// review tags
+  &review-msg {
+    width: 50%;
+    padding-bottom: 5px;
+  }
+
+  &review-input {
+    max-width: 100%;
+    min-height: 160px;
+    border: 1px #D4D4D4 solid;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 4px 8px;
+    font-size: 16px;
+  }
+
+  &review-submit {
+    margin: auto;
+    padding: 5px;
+    width: 150px;
+    color: white;
+    background: #919ECB;
+    border-radius: 18px;
+  }
+}

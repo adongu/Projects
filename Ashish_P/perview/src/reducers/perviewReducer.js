@@ -1,5 +1,5 @@
 import { merge } from 'lodash';
-import { REQUEST_LOADING, RECEIVE_ITEM, RECEIVE_PERVIEW, RECEIVE_ALL_PERVIEWS, RECEIVE_ITEM_PERVIEWS, RECEIVE_MY_PERVIEWS, RECEIVE_FAVORITE_PERVIEWS, RECEIVE_FRIEND_PERVIEWS, RECEIVE_CATEGORY_IDS, RECEIVE_NUM_PERVIEWS, RECEIVE_ERRORS } from '../actions/perview_actions';
+import { REQUEST_LOADING, RECEIVE_ITEM, RECEIVE_PERVIEW, EDIT_PERVIEW, DELETE_PERVIEW, RECEIVE_ALL_PERVIEWS, RECEIVE_ITEM_PERVIEWS, RECEIVE_MY_PERVIEWS, RECEIVE_FAVORITE_PERVIEWS, RECEIVE_FRIEND_PERVIEWS, RECEIVE_CATEGORY_IDS, RECEIVE_NUM_PERVIEWS, RECEIVE_ERRORS } from '../actions/perview_actions';
 
 const _nullPerviews = Object.freeze({
   requestLoading: false,
@@ -39,7 +39,7 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
       return Object.assign({}, oldState, {
         requestLoading: true
       });
-      case RECEIVE_PERVIEW:
+    case RECEIVE_PERVIEW:
       newState.allPerviews.perviews.unshift(action.perview);
       newState.myPerviews.perviews.unshift(action.perview);
       if (action.perview.id === newState.itemPerviews.item.id) {
@@ -49,6 +49,20 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
         requestLoading: false,
         errors: []
       });
+    // case RECEIVE_EDIT_PERVIEW:
+
+
+    // for (var pair of formData.entries()) {
+    // console.log(pair[0]+ ', ' + pair[1]);
+    // }
+      // return Object.assign({}, newState, {
+      //   myPerviews: {
+      //
+      //   }
+      // })
+    // case DELETE_PERVIEW
+      // check out pattern at https://hackernoon.com/redux-patterns-add-edit-remove-objects-in-an-array-6ee70cab2456
+
     case RECEIVE_ALL_PERVIEWS:
       return Object.assign({}, newState, {
         allPerviews: {

@@ -3,6 +3,8 @@ import * as APIUtil from '../util/perview_api_util';
 export const REQUEST_LOADING = 'REQUEST_LOADING';
 export const RECEIVE_ITEM = 'RECEIVE_ITEM';
 export const RECEIVE_PERVIEW = 'RECEIVE_PERVIEW';
+export const EDIT_PERVIEW = 'EDIT_PERVIEW';
+export const DELETE_PERVIEW = 'DELETE_PERVIEW';
 export const RECEIVE_ALL_PERVIEWS = 'RECEIVE_ALL_PERVIEWS';
 export const RECEIVE_ITEM_PERVIEWS = 'RECEIVE_ITEM_PERVIEWS';
 export const RECEIVE_MY_PERVIEWS = 'RECEIVE_MY_PERVIEWS';
@@ -10,8 +12,6 @@ export const RECEIVE_FAVORITE_PERVIEWS = 'RECEIVE_FAVORITE_PERVIEWS';
 export const RECEIVE_FRIEND_PERVIEWS = 'RECEIVE_FRIEND_PERVIEWS';
 export const RECEIVE_NUM_PERVIEWS = 'RECEIVE_NUM_PERVIEWS';
 export const RECEIVE_CATEGORY_IDS = 'RECEIVE_CATEGORY_IDS';
-export const EDIT_PERVIEW = 'EDIT_PERVIEW';
-export const DELETE_PERVIEW = 'DELETE_PERVIEW';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
@@ -29,6 +29,16 @@ export const receivePerview = (perview) => ({
   type: RECEIVE_PERVIEW,
   perview
 });
+
+export const receiveEditPerview = (perview) => ({
+  type: EDIT_PERVIEW,
+  perview
+});
+
+export const receiveDeletePerview = (perviewId) => ({
+  type: DELETE_PERVIEW,
+  perviewId
+})
 
 export const receiveAllPerviews = (allPerviews) => ({
   type: RECEIVE_ALL_PERVIEWS,
@@ -65,17 +75,6 @@ export const receiveCategoryIds = (categoryIds) => ({
   categoryIds
 });
 
-export const receiveEditPerview = (perview) => ({
-  type: EDIT_PERVIEW,
-  perview
-});
-
-
-export const receiveDeletePerview = (perviewId) => ({
-  type: DELETE_PERVIEW,
-  perviewId
-})
-
 const receiveErrors = (errors) => ({
   type: RECEIVE_ERRORS,
   errors
@@ -89,6 +88,7 @@ export const createPerview = (formData) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.createPerview(formData)
     .then( response => {
+      console.log('create perview', response.data);
       return dispatch(receivePerview(response.data))
     })
     .catch( err => {
@@ -100,7 +100,8 @@ export const editPerview = (formData) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.editPerview(formData)
     .then( response => {
-      return dispatch(receiveEditPerview(response.data))
+      console.log('editperview', response.data);
+      return dispatch(receiveEditPerview(response.data));
     })
     .catch( err => {
       return dispatch(receiveErrors(err.responseJSON))

@@ -7,8 +7,8 @@ var config = {
     // 'Content-Type': 'multipart/form-data'
     // 'Content-Type': undefined
   // }
-  // xsrfCookieName: 'XSRF-TOKEN',
-  // xsrfHeaderName: 'X-XSRF-TOKEN'
+  xsrfCookieName: 'XSRF-TOKEN',
+  xsrfHeaderName: 'X-XSRF-TOKEN'
 
 }
 

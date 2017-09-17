@@ -1,4 +1,4 @@
-import "../../../styles/stylesheets/createperviewmodal.css";
+import "../../../styles/stylesheets/PerviewLayouts/PerviewCard/perviewcarddetailmodal.css";
 import React from 'react';
 import { ButtonToolbar, Modal } from 'react-bootstrap';
 
@@ -92,14 +92,14 @@ class PerviewCardDetailModal extends React.Component {
         <span key={`star_rating_${ele}`} className={ele <= ratings ? 'active_star' : 'no_star'}
           onClick={() => {this.setState({ rating: ele, lastRating: ele })}}>
 
-          <div className={`createperview__ratingtipbox ${this.state.ratingHover === ele ? 'active' : ''}`}>
-            <div className="createperview__ratingtip">{this.state.ratingTip[ele]}</div>
-            <div className="createperview__ratingtipbox-triangle"></div>
+          <div className={`perviewdetailmodal__ratingtipbox ${this.state.ratingHover === ele ? 'active' : ''}`}>
+            <div className="perviewdetailmodal__ratingtip">{this.state.ratingTip[ele]}</div>
+            <div className="perviewdetailmodal__ratingtipbox-triangle"></div>
           </div>
 
           <i onMouseOver={()=>{ this.setState({ rating: ele, ratingHover: ele }) }}
             onMouseLeave={()=>{ this.setState({ rating: this.state.lastRating, ratingHover: 0 })}}
-            className="fa fa-star createperview__rating-star" aria-hidden="true">
+            className="fa fa-star perviewdetailmodal__rating-star" aria-hidden="true">
           </i>
         </span>
       )
@@ -157,18 +157,18 @@ class PerviewCardDetailModal extends React.Component {
 
   showReviewBox() {
     return (
-      <div className="flexcolumn createperview__product-container">
-        <div className="flexrow createperview__product">
-          <div className="createperview__product-left">
-            <img className="createperview__product-img" src={this.state.imgUrl} alt="product"/>
+      <div className="flexcolumn perviewdetailmodal__product-container">
+        <div className="flexrow perviewdetailmodal__product">
+          <div className="perviewdetailmodal__product-left">
+            <img className="perviewdetailmodal__product-img" src={this.state.imgUrl} alt="product"/>
           </div>
-          <div className="createperview__product-right">
-            <div className="flextcolumn createperview__product-info">
-              <div className="createperview__product-title">
+          <div className="perviewdetailmodal__product-right">
+            <div className="flextcolumn perviewdetailmodal__product-info">
+              <div className="perviewdetailmodal__product-title">
                 {this.state.name}
               </div>
-              <div className="flexrow createperview__product-details">
-                <div className="createperview__product-price">
+              <div className="flexrow perviewdetailmodal__product-details">
+                <div className="perviewdetailmodal__product-price">
                   {this.state.price}
                 </div>
               </div>
@@ -176,21 +176,21 @@ class PerviewCardDetailModal extends React.Component {
           </div>
         </div>
 
-        <div className="createperview__review-container">
-          <form onSubmit={this.handleSubmit} className="flexcolumn createperview__review-box">
-            <div className="flexrow createperview__review-rating">
-              <div className="flexrow createperview__review-rating-stars">
+        <div className="perviewdetailmodal__review-container">
+          <form onSubmit={this.handleSubmit} className="flexcolumn perviewdetailmodal__review-box">
+            <div className="flexrow perviewdetailmodal__review-rating">
+              <div className="flexrow perviewdetailmodal__review-rating-stars">
                 {this.renderReviewStars(this.state.rating)}
               </div>
             </div>
 
             <textarea
               onChange={this.update("tags")}
-              className="createperview__review-input"
+              className="perviewdetailmodal__review-input"
               value={this.state.tags}
               placeholder="Write a full review or hashtag it or both or neither #nopressure">
             </textarea>
-            <button disabled={this.state.rating < 1} className="createperview__review-submit">
+            <button disabled={this.state.rating < 1} className="perviewdetailmodal__review-submit">
               Submit
             </button>
           </form>
@@ -201,8 +201,8 @@ class PerviewCardDetailModal extends React.Component {
 
   render() {
     return (
-      <ButtonToolbar className="createperview__container">
-        <button className="createperview__btn" onClick={this.showModal}>
+      <ButtonToolbar className="perviewdetailmodal__container">
+        <button className="perviewdetailmodal__btn" onClick={this.showModal}>
           <i className="fa fa-pencil narrowperviews__edit-icon" aria-hidden="true"></i>
         </button>
 
@@ -210,15 +210,15 @@ class PerviewCardDetailModal extends React.Component {
           {...this.props}
           show={this.state.show}
           onHide={this.hideModal}
-          dialogClassName="createperview__modal"
+          dialogClassName="perviewdetailmodal__modal"
         >
-          <Modal.Header className="createperview__modalhead" closeButton>
+          <Modal.Header className="perviewdetailmodal__modalhead" closeButton>
 
-          <div className="createperview__title">
+          <div className="perviewdetailmodal__title">
             Edit Perview
           </div>
 
-          <div className="createperview__section">
+          <div className="perviewdetailmodal__section">
             { this.showReviewBox() }
           </div>
           </Modal.Header>
