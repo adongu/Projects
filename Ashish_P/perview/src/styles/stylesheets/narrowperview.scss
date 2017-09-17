@@ -20,7 +20,7 @@ $review-lines-to-show: 6;
     display: flex;
     align-items: center;
     width: 320px;
-    height: 560px;
+    height: 550px;
     box-shadow: 1px 1px 1px #888;
     margin: 10px 3px 20px 3px;
     border: 1px #D6D6D6 solid;
@@ -85,7 +85,7 @@ $review-lines-to-show: 6;
   }
 
   &price {
-    padding: 10px 0;
+    padding: 2px 0;
   }
 
   &buybox {
