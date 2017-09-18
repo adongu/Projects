@@ -54,7 +54,7 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, categorie
               Filter by
             </span>
               <select className="navbar__dropdown-filter" defaultValue={null} onChange={handleFilterChange}>
-                <option default={true} className='navbar__filteroption' value={""}>All Catagories</option>
+                <option default={true} className='navbar__filteroption' value={""}>All Categories</option>
                   {categories.map((category, id) => {
                     return (
                       <option
