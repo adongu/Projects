@@ -71,8 +71,7 @@ class SignIn extends React.Component {
                 A place to tell your friends about your favorite things.
               </div>
               <form className="flexcolumn signin__form" action={auth_url} method="post">
-                <input type="hidden" name="scope" value="user_friends"/>
-                <input type="hidden" name="scope" value="email"/>
+                <input type="hidden" name="scope" value="user_friends,email"/>
                 <input type="hidden" name="_csrf" value={token}/>
                 <button type="submit" className="signin__submit-facebook">Continue with Facebook</button>
                 <p className="signin__submit-msg">
