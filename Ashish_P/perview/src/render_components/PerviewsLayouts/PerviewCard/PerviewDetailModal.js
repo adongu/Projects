@@ -30,7 +30,7 @@ class PerviewDetailModal extends React.Component {
     return (
       <ButtonToolbar>
         <a className="perviewdetailmodal__modal-show" onClick={this.showModal}>
-          ...more
+          ... more
         </a>
 
         <Modal
