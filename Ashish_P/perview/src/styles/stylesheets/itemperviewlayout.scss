@@ -58,7 +58,7 @@ $review-lines-to-show: 5;
   &itemname {
     width: 100%;
     padding-bottom: 10px;
-    color: darkgray;
+    color: #3F3F3F;
     height: $title-font-size*$title-line-height*$title-lines-to-show; /* Fallback for non-webkit */
     margin: 0 auto;
     margin-bottom: 20px;
