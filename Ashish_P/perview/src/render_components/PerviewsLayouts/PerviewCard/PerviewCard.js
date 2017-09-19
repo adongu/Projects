@@ -169,7 +169,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
   return (
     <div className="flexcolumn perviewcard__perview-rightbox">
       <div className="perviewcard__review-time">
-        {moment(perview.ts).format("MMM D")}
+        {moment(perview.ts).format("MMM DD, Y")}
       </div>
 
       <div className="perviewcard__perview-options">

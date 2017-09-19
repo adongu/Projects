@@ -16,7 +16,6 @@ const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPer
           <div key={`perviewindex__${i}`} className="flexcolumn narrowperviews__box">
             <div className="flexcolumn narrowperviews__productbox">
               <div className="narrowperviews__time">
-                {moment(perview.ts).format("MMM D")}
               </div>
               <div className="narrowperviews__img">
                 <Link to={`/item/${item.id}`}>
