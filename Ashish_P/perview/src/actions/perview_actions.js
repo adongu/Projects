@@ -112,6 +112,7 @@ export const deletePerview = (perviewId) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.deletePerview(perviewId)
     .then( response => {
+      console.log('delete', response.data);
       return dispatch(receiveDeletePerview(perviewId))
     })
     .catch( err => {
@@ -157,6 +158,8 @@ export const fetchMyPerviews = (categoryId) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.fetchMyPerviews(categoryId)
     .then( response => {
+      console.log('perviews', response.data);
+
       return dispatch(receiveMyPerviews(response.data))
     })
     .catch( err => {
@@ -168,6 +171,8 @@ export const fetchFavoritePerviews = (categoryId) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.fetchFavoritePerviews(categoryId)
     .then( response => {
+      console.log('perviews', response.data);
+
       return dispatch(receiveFavoritePerviews(response.data))
     })
     .catch( err => {
@@ -179,6 +184,8 @@ export const fetchFriendPerviews = (friendUserId, categoryId) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.fetchFriendPerviews(friendUserId, categoryId)
     .then( response => {
+      console.log('perviews', response.data);
+
       return dispatch(receiveFriendPerviews(response.data))
     })
     .catch( err => {

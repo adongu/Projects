@@ -199,7 +199,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
           >
             <i className={`fa fa-bookmark perviewcard__review-icon-bookmark ${perview.bookmarkedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
             <span className="perviewcard__review-social-text">
-              Add to Wish List
+              Add to Wishlist
             </span>
           </span>
           <span

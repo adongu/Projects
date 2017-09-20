@@ -42,13 +42,11 @@ class ItemPerviews extends React.Component {
     }
 
     if (nextProps.fetchingUpdate !== this.props.fetchingUpdate) {
-      console.log('component will receive props fetching update', nextProps);
       this.setState({
         fetchingUpdate: nextProps.fetchingUpdate
       })
 
       if (this.state.fetchingUpdate) {
-        console.log('component will receive props fetching new itemperviews');
         this.props.fetchItemPerviews(Number(nextProps.match.params.item_id))
       }
     }

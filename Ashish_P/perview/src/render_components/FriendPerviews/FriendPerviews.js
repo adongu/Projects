@@ -26,29 +26,24 @@ class FriendPerviews extends React.Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    if (nextProps.requestLoading !== this.props.requestLoading) {
-      this.setState({
-        requestLoading: nextProps.requestLoading
-      });
-    }
-
     if (this.props.match.params.friend_id !== nextProps.match.params.friend_id) {
-      this.props.fetchItemPerviews(Number(nextProps.match.params.friend_id))
+      let nextFriendId = Number(nextProps.match.params.friend_id);
+
+      this.props.fetchFriendPerviews(nextFriendId)
 
       this.setState({
-        itemId: Number(nextProps.match.params.friend_id)
+        friendId: nextFriendId
       });
     }
 
     if (nextProps.fetchingUpdate !== this.props.fetchingUpdate) {
-      console.log('component will receive props fetching update', nextProps);
       this.setState({
         fetchingUpdate: nextProps.fetchingUpdate
       })
 
       if (this.state.fetchingUpdate) {
-        console.log('component will receive props fetching new itemperviews');
-        this.props.fetchItemPerviews(Number(nextProps.match.params.friend_id))
+        console.log(nextProps.perviews);
+        this.props.fetchFriendPerviews(Number(nextProps.match.params.friend_id))
       }
     }
   }

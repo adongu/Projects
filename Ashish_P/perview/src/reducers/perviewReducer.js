@@ -60,8 +60,18 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
       //
       //   }
       // })
-    // case DELETE_PERVIEW
-      // check out pattern at https://hackernoon.com/redux-patterns-add-edit-remove-objects-in-an-array-6ee70cab2456
+    case DELETE_PERVIEW:
+      const newPerviews = newState.myPerviews.perviews.filter((perview) => {
+        return perview.id !== action.perviewId
+      });
+
+      return Object.assign({}, newState, {
+        myPerviews: {
+          perviews: newPerviews
+        },
+        requestLoading: false,
+        errors: []
+      });
 
     case RECEIVE_ALL_PERVIEWS:
       return Object.assign({}, newState, {
@@ -72,18 +82,21 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
         requestLoading: false,
         errors: []
       });
+
     case RECEIVE_ITEM:
       return Object.assign({}, newState, {
         selectedItem: action.item,
         requestLoading: false,
         errors: []
       });
+
     case RECEIVE_ITEM_PERVIEWS:
       return Object.assign({}, newState, {
         itemPerviews: action.itemPerviews,
         requestLoading: false,
         errors: []
       });
+
     case RECEIVE_MY_PERVIEWS:
       return Object.assign({}, newState, {
         myPerviews: {
@@ -93,6 +106,7 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
         requestLoading: false,
         errors: []
       });
+
     case RECEIVE_FAVORITE_PERVIEWS:
       return Object.assign({}, newState, {
         favoritePerviews: {
@@ -102,31 +116,39 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
         requestLoading: false,
         errors: []
       });
+
     case RECEIVE_FRIEND_PERVIEWS:
       // newState.Perviews.unshift(action.perview);
       return Object.assign({}, newState, {
-        friendPerviews: action.friendPerviews,
+        friendPerviews: {
+          perviews: action.friendPerviews.perviews,
+          categories: action.friendPerviews.categories
+        },
         requestLoading: false,
         errors: []
       });
+      
     case RECEIVE_NUM_PERVIEWS:
       return Object.assign({}, newState, {
         numPerviews: action.numPerviews,
         requestLoading: false,
         errors: []
       });
+
     case RECEIVE_CATEGORY_IDS:
       return Object.assign({}, newState, {
         categoryIds: action.categoryIds,
         requestLoading: false,
         errors: []
       });
+
     case RECEIVE_ERRORS:
       let errors = action.errors;
       return Object.assign({}, oldState, {
         requestLoading: false,
         errors: errors
       });
+
     default:
       return merge(oldState, {
         requestLoading: false,
