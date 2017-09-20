@@ -129,8 +129,8 @@ $lines-to-show: 4;
   }
 
   &review-social {
-    margin: 0 10px;
-    width: 50%;
+    margin-right: 3px;
+    // width: 50%;
     display: flex;
   }
 
@@ -183,6 +183,7 @@ $lines-to-show: 4;
 //
 // Liker Popover
   &numlikers-box {
+    min-width: 1px;
     width: 100%;
     display: flex;
     align-items: center;
