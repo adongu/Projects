@@ -168,8 +168,12 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
   // var user = perview.userDto;
   return (
     <div className="flexcolumn perviewcard__perview-rightbox">
-      <div className="perviewcard__review-time">
-        {moment(perview.ts).format("MMM DD, Y")}
+      <div className="perviewcard__header">
+        <span className="perviewcard__badges">
+        </span>
+        <span className="perviewcard__review-time">
+          {moment(perview.ts).format("MMM DD, Y")}
+        </span>
       </div>
 
       <div className="perviewcard__perview-options">

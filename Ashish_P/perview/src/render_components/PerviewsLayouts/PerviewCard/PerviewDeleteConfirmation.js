@@ -1,3 +1,4 @@
+import "../../../styles/stylesheets/PerviewLayouts/PerviewCard/perviewdeleteconfirmation.css";
 import React from 'react';
 import { ButtonToolbar, Modal, Button } from 'react-bootstrap';
 
@@ -17,7 +18,7 @@ const PerviewDeleteConfirmation = React.createClass({
   render() {
     return (
       <div>
-        <button onClick={this.open}>
+        <button onClick={this.open} className="perviewdelete__open">
           <i className="fa fa-trash" aria-hidden="true"></i>
         </button>
 

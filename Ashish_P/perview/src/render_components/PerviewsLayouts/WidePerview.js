@@ -14,6 +14,7 @@ const WidePerview = ({ fetchingUpdate, currentUserId, perviews, bookmarkPerview,
 
         return (
           <div key={`perviewindex__${perview.id}`} className="flexrow wideresults__box">
+            <img src="https://png.icons8.com/medal-first-place/dusk/64" title="Medal First Place" width="24" height="24" />
             <div className="flexrow wideresults__perview-left">
               <div className="wideresults__productimg">
                 <Link to={`/item/${item.id}`}>

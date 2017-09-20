@@ -15,8 +15,9 @@ const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPer
         return (
           <div key={`perviewindex__${i}`} className="flexcolumn narrowperviews__box">
             <div className="flexcolumn narrowperviews__productbox">
-              <div className="narrowperviews__time">
-              </div>
+              <span className="narrowperviews__badges">
+                <img src="https://png.icons8.com/medal-first-place/dusk/64" title="Medal First Place" width="24" height="24" />
+              </span>
               <div className="narrowperviews__img">
                 <Link to={`/item/${item.id}`}>
                   <img className="narrowperviews__productimg-photo" src={item.data.imageUrls.large.url} alt="product"/>
