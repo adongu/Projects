@@ -212,7 +212,7 @@ class SearchItemBar extends React.Component {
           </div>
 
           <div className="autosuggest__friends">
-            <div className="autosuggest__friends-header">Perviewed By</div>
+            <div className="autosuggest__friends-header">Perviewed by:</div>
             <div>
               {this.renderSearchPerviewFriends(suggestion)}
             </div>

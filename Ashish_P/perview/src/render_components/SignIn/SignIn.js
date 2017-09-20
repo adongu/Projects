@@ -83,9 +83,9 @@ class SignIn extends React.Component {
           </div>
           <div className="signin__terms">
             By continuing, you indicate that you have read and agree Perview's
-            <Link to="https://s3.amazonaws.com/tosandpp/2017_9_7_Perview_Terms_of_Service.pdf" className="signin__terms-urls" to="">Terms of Service</Link>
+            <a href="https://s3.amazonaws.com/tosandpp/2017_9_7_Perview_Terms_of_Service.pdf" className="signin__terms-urls" target="_blank">Terms of Service</a>
             and
-            <Link to="https://s3.amazonaws.com/tosandpp/2017_9_7_Perview_Privacy_Policy.pdf" className="signin__terms-urls" to="">Privacy Policy</Link>
+            <a href="https://s3.amazonaws.com/tosandpp/2017_9_7_Perview_Privacy_Policy.pdf" className="signin__terms-urls" target="_blank">Privacy Policy</a>
           </div>
         </div>
         <div className="signin__background">

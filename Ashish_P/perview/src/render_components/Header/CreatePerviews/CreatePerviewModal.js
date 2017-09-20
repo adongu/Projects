@@ -167,7 +167,7 @@ class CreatePerviewModal extends React.Component {
                 onChange={this.update("tags")}
                 className="createperview__review-input"
                 value={this.state.tags}
-                placeholder="Write a full review or hashtag it or both or neither #nopressure">
+                placeholder="What did you think of this product? #hashtag">
               </textarea>
               <button disabled={this.state.rating < 1} className="createperview__review-submit">
                 Submit
