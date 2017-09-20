@@ -136,7 +136,7 @@ $lines-to-show: 4;
 
   &review-social-btn {
     margin-right: 8px;
-    padding: 2px 5px;
+    padding: 5px 8px;
     border: 1px solid #ced0d4;
     border-radius: 3px;
     font-size: 13px;
@@ -149,7 +149,7 @@ $lines-to-show: 4;
 
   &review-social-btn:hover {
     background: #e9ebee;
-    transition: 200ms cubic-bezier(.08,.52,.52,1) background-color, 200ms cubic-bezier(.08,.52,.52,1) box-shadow, 200ms cubic-bezier(.08,.52,.52,1) transform;
+    transition: background-color ease 0.25s;
   }
 
   &review-social-text {
@@ -166,24 +166,24 @@ $lines-to-show: 4;
     transition: color ease 0.25s;
   }
 
-  &review-icon-bookmark:hover,
-  &review-icon-like:hover {
-    cursor: pointer;
-    color: #e9ebee;
-    transition: color ease 0.25s;
-  }
+  // &review-icon-bookmark:hover,
+  // &review-icon-like:hover {
+  //   cursor: pointer;
+  //   color: #3D70F0;
+  //   transition: color ease 0.25s;
+  // }
 
   &review-icon-bookmark.active,
   &review-icon-like.active {
     color: #3D70F0;
     transition: ease .2s;
     -webkit-text-stroke-width: 0;
-    transition: color ease 0.25s;
+    transition: color ease 0.2s;
   }
 //
 // Liker Popover
   &numlikers-box {
-    min-width: 1px;
+    min-width: 8px;
     width: 100%;
     display: flex;
     align-items: center;
