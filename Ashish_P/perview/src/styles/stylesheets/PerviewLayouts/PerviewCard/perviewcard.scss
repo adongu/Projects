@@ -112,8 +112,8 @@ $lines-to-show: 4;
   /* right bottom */
   &review-social-box {
     margin-top: auto;
-    justify-content: flex-end;
     align-items: center;
+    justify-content: flex-end;
   }
 
   &review-comments-box{
@@ -129,36 +129,58 @@ $lines-to-show: 4;
   }
 
   &review-social {
-    // margin: 10px 0;
+    margin: 0 10px;
+    width: 50%;
+    display: flex;
   }
 
-  &review-social-icon {
-    padding-right: 5px;
-    font-size: 18px;
+  &review-social-btn {
+    margin-right: 8px;
+    padding: 2px 5px;
+    border: 1px solid #ced0d4;
+    border-radius: 3px;
+    font-size: 13px;
+    background: #f6f7f9;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
   }
 
-  // &review-social-icon:hover {
-  //   color: #3D70F0;
-  //   cursor: pointer;
-  // }
+  &review-social-btn:hover {
+    background: #e9ebee;
+    transition: 200ms cubic-bezier(.08,.52,.52,1) background-color, 200ms cubic-bezier(.08,.52,.52,1) box-shadow, 200ms cubic-bezier(.08,.52,.52,1) transform;
+  }
+
+  &review-social-text {
+    white-space: nowrap;
+  }
 
   &review-icon-bookmark,
   &review-icon-like {
-    color: #E9E9E9;
-    text-shadow: 0px 0px 1px #000;
+    opacity: 1;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #4b4f56;
+    color: transparent;
+    margin-right: 5px;
+    transition: color ease 0.25s;
   }
+
   &review-icon-bookmark:hover,
   &review-icon-like:hover {
     cursor: pointer;
+    color: #e9ebee;
+    transition: color ease 0.25s;
   }
 
   &review-icon-bookmark.active,
   &review-icon-like.active {
     color: #3D70F0;
     transition: ease .2s;
-    text-shadow: 0px 0px 0px #E9E9E9;
+    -webkit-text-stroke-width: 0;
+    transition: color ease 0.25s;
   }
-
+//
 // Liker Popover
   &numlikers-box {
     width: 100%;

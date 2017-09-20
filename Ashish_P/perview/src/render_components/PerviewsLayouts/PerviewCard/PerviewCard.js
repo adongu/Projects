@@ -193,12 +193,23 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
       <div className="flexrow perviewcard__review-social-box">
 
         <div className="flexrow perviewcard__review-social">
-          <span className="perviewcard__review-social-icon" >
-            <i onClick={handleSaveClick(perview)} className={`fa fa-bookmark perviewcard__review-icon-bookmark ${perview.bookmarkedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
+          <span
+            onClick={handleSaveClick(perview)}
+            className="perviewcard__review-social-btn"
+          >
+            <i className={`fa fa-bookmark perviewcard__review-icon-bookmark ${perview.bookmarkedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
+            <span className="perviewcard__review-social-text">
+              Add to Wish List
+            </span>
           </span>
-          <span className="perviewcard__review-social-icon">
-            <i onClick={handleLikeClick(perview)} className={`fa fa-heart perviewcard__review-icon-like ${perview.likedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
-
+          <span
+            onClick={handleLikeClick(perview)}
+            className="perviewcard__review-social-btn"
+          >
+            <i className={`fa fa-heart perviewcard__review-icon-like ${perview.likedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
+            <span className="perviewcard__review-social-text">
+              Like
+            </span>
           </span>
           <div className="perviewcard__numlikers-box">
             {renderNumLikes()}
