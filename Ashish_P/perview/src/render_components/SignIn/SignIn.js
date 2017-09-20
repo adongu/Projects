@@ -97,7 +97,6 @@ class SignIn extends React.Component {
 
 export default withRouter(SignIn);
 
-// <form className="signin__form" onSubmit={this.handleSubmit}>
 // <form className="signin__form" action={auth_url} method="post">
 
 
