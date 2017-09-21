@@ -17,28 +17,35 @@ const PerviewDeleteConfirmation = React.createClass({
 
   render() {
     return (
-      <div>
-        <button onClick={this.open} className="perviewdelete__open">
+      <div className="perviewdelete__box">
+        <span onClick={this.open} className="perviewdelete__open">
           <i className="fa fa-trash" aria-hidden="true"></i>
-        </button>
+        </span>
 
-        <Modal show={this.state.showModal} onHide={this.close}>
-          <Modal.Header closeButton>
-            <Modal.Title>Perview Details</Modal.Title>
+        <Modal
+          {...this.props}
+          show={this.state.showModal} onHide={this.close}
+          dialogClassName="perviewdelete__modal"
+        >
+          <Modal.Header closeButton className="perviewdelete__modal-header">
+            <Modal.Title>Delete Perview</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <div>
-              <p>Are you Sure you want to Delete this Perview?</p>
-              <div>
-                <button onClick={this.props.confirmDeletePerview} className="">Yes I'm sure!</button>
-                <button className="">Cancel</button>
+            <div className="perviewdelete__content">
+              <p className="perviewdelete__confirm-text">
+                Are you Sure you want to delete this Perview forever?
+              </p>
+              <div className="perviewdelete__options">
+                <span onClick={this.props.confirmDeletePerview} className="perviewdelete__delete">
+                  Yes I'm sure!
+                </span>
+                <span onClick={this.close} className="perviewdelete__cancel">
+                  Cancel
+                </span>
               </div>
             </div>
 
           </Modal.Body>
-          <Modal.Footer>
-            <button onClick={this.close}>Close</button>
-          </Modal.Footer>
         </Modal>
       </div>
     );

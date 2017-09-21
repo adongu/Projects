@@ -121,10 +121,12 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
             history = {history}
           />
 
-          <PerviewDeleteConfirmation
-            perviewId = {perview.id}
-            confirmDeletePerview = {confirmDeletePerview}
-          />
+          <div className="perviewdelete__container">
+            <PerviewDeleteConfirmation
+              perviewId = {perview.id}
+              confirmDeletePerview = {confirmDeletePerview}
+            />
+          </div>
         </div>
       )
     }
@@ -199,20 +201,21 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
         <div className="flexrow perviewcard__review-social">
           <span
             onClick={handleSaveClick(perview)}
-            className="perviewcard__review-social-btn"
+            className={`perviewcard__review-social-btn ${perview.bookmarkedByLoggedInUser ? "active" : ""}`}
           >
             <i className={`fa fa-bookmark perviewcard__review-icon-bookmark ${perview.bookmarkedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
             <span className="perviewcard__review-social-text">
-              Add to Wishlist
+              {perview.bookmarkedByLoggedInUser ? 'Added' : 'Add to Wishlist'}
             </span>
           </span>
+
           <span
             onClick={handleLikeClick(perview)}
-            className="perviewcard__review-social-btn"
+            className={`perviewcard__review-social-btn ${perview.likedByLoggedInUser ? "active" : ""}`}
           >
             <i className={`fa fa-heart perviewcard__review-icon-like ${perview.likedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
             <span className="perviewcard__review-social-text">
-              Like
+              {perview.likedByLoggedInUser ? 'Liked' : 'Like'}
             </span>
           </span>
           <div className="perviewcard__numlikers-box">

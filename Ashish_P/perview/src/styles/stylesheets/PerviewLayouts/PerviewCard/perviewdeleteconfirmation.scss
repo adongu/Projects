@@ -1,6 +1,54 @@
 .perviewdelete__ {
+  &container {
+    max-width: 300px;
+    max-height: 200px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  &modal {
+    // max-width: 90%;
+    // position: absolute;
+    top: 30%;
+    // -ms-transform: translateY(-50%);
+    // -webkit-transform: translateY(-50%);
+    // transform: translateY(-50%);
+    -webkit-backface-visibility: hidden;
+
+  }
+
+  &modal-header {
+
+  }
+
+
+
+
   &open {
-    
+    font-size: 18px;
+  }
+
+  &open:hover {
+    cursor: pointer;
+  }
+
+  &confirm-text {
+
+  }
+
+  &content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  &options {
+    display: flex;
+    justify-content: center;
+
   }
 
 }

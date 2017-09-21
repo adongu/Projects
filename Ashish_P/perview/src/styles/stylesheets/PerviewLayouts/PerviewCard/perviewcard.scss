@@ -140,22 +140,31 @@ $lines-to-show: 4;
   }
 
   &review-social-btn {
-    margin-right: 8px;
-    padding: 5px 8px;
+    margin-right: 3px;
+    padding: 3px 8px;
     border: 1px solid #ced0d4;
-    border-radius: 3px;
-    font-size: 13px;
+    border-radius: 6px;
+    font-size: 12px;
     background: #f6f7f9;
     display: flex;
     flex-direction: row;
     align-items: center;
     cursor: pointer;
+    transition: all linear 250ms;
   }
 
-  &review-social-btn:hover {
-    background: #e9ebee;
-    transition: background-color ease 0.25s;
+  &review-social-btn.active {
+    background: #3D70F0;
+    color: #fff;
+    border: 1px solid #ccc;
+    transition: all linear 250ms;
   }
+
+  // &review-social-btn:hover {
+  //   background: #3D70F0;
+  //   color: #fff;
+  //   transition: background-color ease 0.25s;
+  // }
 
   &review-social-text {
     white-space: nowrap;
@@ -168,7 +177,7 @@ $lines-to-show: 4;
     -webkit-text-stroke-color: #4b4f56;
     color: transparent;
     margin-right: 5px;
-    transition: color ease 0.25s;
+    transition: all linear 250ms;
   }
 
   // &review-icon-bookmark:hover,
@@ -180,10 +189,11 @@ $lines-to-show: 4;
 
   &review-icon-bookmark.active,
   &review-icon-like.active {
-    color: #3D70F0;
+    color: #fff;
     transition: ease .2s;
-    -webkit-text-stroke-width: 0;
-    transition: color ease 0.2s;
+    -webkit-text-stroke-width: 1;
+    -webkit-text-stroke-color: #ccc;
+    transition: color linear 250ms;
   }
 //
 // Liker Popover
