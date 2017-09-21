@@ -20,10 +20,19 @@ class HomePage extends React.Component {
 
   componentWillMount() {
     this.props.fetchAllPerviews()
+
   }
 
   componentDidMount() {
   }
+
+  componentDidUpdate(prevProps) {
+    console.log(prevProps);
+     if (this.props.history.location !== prevProps.history.location) {
+       console.log('hits didupdate');
+       window.scrollTo(0, 0)
+     }
+   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.requestLoading !== this.props.requestLoading) {

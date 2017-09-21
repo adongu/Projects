@@ -15,7 +15,7 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, categorie
       "title": "", "hasFilters": true
     },
     "/friend/:friend_id": {
-      "title": "Perviews", "hasFilters": true
+      "title": "", "hasFilters": true
     },
     "/settings": {
       "title": "Settings", "hasFilters": false
@@ -27,22 +27,59 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, categorie
 
   const handleFilterChange = (e) => {
     filterPerviews(e.currentTarget.value);
-    // filterPerviews(e.currentTarget.value);
   }
 
-  const renderUserFriend = () => {
-    if (userFriend) {
-      return (
-        <div className="flexrow navbar__userbox">
-          <span className="navbar__userimgbox">
-            <img className="navbar__userimg"
-              src={userFriend.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"
-            />
-          </span>
-          <span className="navbar__username">{userFriend.fullNamePossession}</span>
-        </div>
-      )
+  const renderUserHero = () => {
+    if (currentUser || userFriend) {
+      let user;
+
+      if (currentUser) {
+        user = currentUser;
+      } else if(userFriend) {
+        user = userFriend;
+      };
+
+      if (user.facebookProfilePictureUrl) {
+        return (
+          <div className="navbar__dashboard">
+            <div className="navbar__dashboard-photo">
+              <img
+                className="navbar__dashboard-img" src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")}
+                alt="User"
+              />
+            </div>
+
+            <div className="navbar__dashboard-info">
+              <div className="navbar__dashboard-name">
+                {user.fullName}
+              </div>
+              <div className="navbar__dashboard-stats">
+                <span className="navbar__dashboard-numperviews">
+                  {user.numPerviews}
+                  <span className="navbar__dashboard-text">
+                    Posts
+                  </span>
+                </span>
+                <span className="navbar__dashboard-numfriends">
+                  {user.numFriends}
+                  <span className="navbar__dashboard-text">
+                    Friends
+                  </span>
+                </span>
+                <span className="navbar__dashboard-numfirsts">
+                  {user.numFirsts}
+                  <span className="navbar__dashboard-text">
+                    Firsts
+                  </span>
+                </span>
+              </div>
+            </div>
+
+          </div>
+        )
+      }
     }
+
   }
 
   const renderFilters = () => {
@@ -54,7 +91,9 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, categorie
               Filter by
             </span>
               <select className="navbar__dropdown-filter" defaultValue={null} onChange={handleFilterChange}>
-                <option default={true} className='navbar__filteroption' value={""}>All Categories</option>
+                <option default={true} className='navbar__filteroption' value={""}>
+                  All Categories
+                </option>
                   {categories.map((category, id) => {
                     return (
                       <option
@@ -76,7 +115,7 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, categorie
     <div className="navbar__container">
       <div className="flexrow navbar__box">
         <div className="flexrow navbar__title">
-          {renderUserFriend()}
+          {renderUserHero()}
           {(match && pageSettings[match.path]) ? pageSettings[match.path]["title"] : ""}
         </div>
         {renderFilters()}

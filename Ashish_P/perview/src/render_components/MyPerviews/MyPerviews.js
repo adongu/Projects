@@ -64,6 +64,7 @@ class MyPerviews extends React.Component {
     return (
       <div className="myperview__container">
         <NavBarContainer
+          currentUser = {this.props.currentUser}
           categories = {this.state.categories }
           filterPerviews = {this.fetchFilteredPerviews}
         />

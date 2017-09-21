@@ -1,8 +1,8 @@
 import "../../styles/stylesheets/FriendPerviews/friendhero.css";
 import React from 'react';
 
-const FriendHero = ({user, numPerviews}) => {
-  console.log('friendhero', user);
+const FriendHero = ({user}) => {
+
   return (
     <div className="friendhero">
       <div className="friendhero__photo">
@@ -16,20 +16,14 @@ const FriendHero = ({user, numPerviews}) => {
         <span className="friendhero__name">
           {user.fullName}
         </span>
-        <span className="friendhero__membersince">
-          Member since
-        </span>
         <span className="friendhero__perviews">
-          {numPerviews}
+          {user.numPerviews} Posts
         </span>
         <span className="friendhero__friends">
-          {user.numFriends}
+          {user.numFriends} Friends
         </span>
         <span className="friendhero__firsts">
-          First to Perview: {user.firsts}
-        </span>
-        <span className="friendhero__earnings">
-          Points {user.points}
+          {user.numFirsts} Firsts
         </span>
       </div>
 

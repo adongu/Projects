@@ -6,6 +6,7 @@ import { likePerview, unlikePerview, bookmarkPerview, unbookmarkPerview } from '
 
 const mapStateToProps = ({ session, perview, findItem, social}, ownProps) => {
   return {
+    userFriend: perview.friendPerviews.user,
     currentUser: session.currentUser,
     perviews: perview.friendPerviews.perviews,
     categories: session.currentUser,

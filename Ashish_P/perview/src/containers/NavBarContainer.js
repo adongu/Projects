@@ -6,7 +6,6 @@ const mapStateToProps = ({ session, perview, findItem, match }) => {
   return {
     isFetching: session.isFetching,
     requestLoading: perview.requestLoading,
-    currentUser: session.currentUser,
     match: match
   }
 }

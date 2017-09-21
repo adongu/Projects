@@ -4,11 +4,22 @@ import React from 'react';
 import HeaderContainer from '../containers/HeaderContainer';
 import Footer from '../render_components/Footer/Footer';
 
+class ScrollToTop extends React.Component {
+  componentDidUpdate(prevProps) {
+    if (this.props.location !== prevProps.location) {
+      window.scrollTo(0, 0);
+    }
+  }
+
+  render() {
+    return this.props.children
+  }
+}
 // renders component if logged out, otherwise redirects to the root url
 const Auth = ({component: Component, path, loggedIn}) => (
   <Route path={path} render={(props) => (
     !loggedIn ? (
-      <Component {...props}/>
+      <Component {...props} />
     ) : (
       <Redirect to="/" />
     )

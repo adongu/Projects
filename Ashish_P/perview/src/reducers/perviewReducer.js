@@ -23,6 +23,7 @@ const _nullPerviews = Object.freeze({
     perviews: []
   },
   friendPerviews: {
+    user: {},
     categories: [],
     perviews: []
   },
@@ -119,15 +120,19 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
 
     case RECEIVE_FRIEND_PERVIEWS:
       // newState.Perviews.unshift(action.perview);
+
+      console.log(action.friendPerviews.user);
+
       return Object.assign({}, newState, {
         friendPerviews: {
+          user: action.friendPerviews.user,
           perviews: action.friendPerviews.perviews,
           categories: action.friendPerviews.categories
         },
         requestLoading: false,
         errors: []
       });
-      
+
     case RECEIVE_NUM_PERVIEWS:
       return Object.assign({}, newState, {
         numPerviews: action.numPerviews,

@@ -2,7 +2,6 @@ import "../../styles/stylesheets/FriendPerviews/friendperview.css";
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import NavBarContainer from '../../containers/NavBarContainer';
-import FriendHero from "./FriendHero";
 import NarrowPerview from "../PerviewsLayouts/NarrowPerview";
 
 class FriendPerviews extends React.Component {
@@ -16,7 +15,6 @@ class FriendPerviews extends React.Component {
     }
 
     this.fetchFilteredPerviews = this.fetchFilteredPerviews.bind(this);
-    this.renderHero = this.renderHero.bind(this);
   }
 
   componentWillMount () {
@@ -54,23 +52,22 @@ class FriendPerviews extends React.Component {
     this.props.fetchFriendPerviews(this.state.friendId, catetoryId);
   }
 
-  renderHero(perview) {
-    if (perview[0] && perview[0].userDto) {
-      return (
-        <FriendHero
-          user = {this.props.perviews[0].userDto}
-          numPerviews = {this.props.perviews.length}
-        />
-      )
-    }
-  }
+  // renderHero(userFriend) {
+  //   if (userFriend.facebookProfilePictureUrl) {
+  //     return (
+  //       <FriendHero
+  //         userFriend = {userFriend}
+  //       />
+  //     )
+  //   }
+  // }
 
   render () {
     return (
       <div className="friendperview__container">
-        <div className="friendperview__hero">
-          {this.renderHero(this.props.perviews)}
-        </div>
+        <NavBarContainer
+          userFriend = {this.props.userFriend}
+        />
 
         <div className="friendperview__perviews">
           <NarrowPerview
