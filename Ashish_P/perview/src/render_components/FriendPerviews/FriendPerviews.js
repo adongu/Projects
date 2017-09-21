@@ -16,6 +16,7 @@ class FriendPerviews extends React.Component {
     }
 
     this.fetchFilteredPerviews = this.fetchFilteredPerviews.bind(this);
+    this.renderHero = this.renderHero.bind(this);
   }
 
   componentWillMount () {
@@ -43,7 +44,7 @@ class FriendPerviews extends React.Component {
       })
 
       if (this.state.fetchingUpdate) {
-        console.log(nextProps.perviews);
+        console.log(nextProps);
         this.props.fetchFriendPerviews(Number(nextProps.match.params.friend_id))
       }
     }
@@ -53,23 +54,33 @@ class FriendPerviews extends React.Component {
     this.props.fetchFriendPerviews(this.state.friendId, catetoryId);
   }
 
+  renderHero(perview) {
+    if (perview[0] && perview[0].userDto) {
+      return (
+        <FriendHero
+          user = {this.props.perviews[0]}
+          numPerviews = {this.props.perviews.length}
+        />
+      )
+    }
+  }
+
   render () {
     return (
       <div className="friendperview__container">
-        <NavBarContainer
-          filterPerviews = {this.fetchFilteredPerviews}
-          userFriend = {this.props.perviews[0] !== undefined ? this.props.perviews[0].userDto : null}
-        />
+        <div className="friendperview__hero">
+          {this.renderHero(this.props.perviews)}
+        </div>
 
         <div className="friendperview__perviews">
           <NarrowPerview
-            currentUserId = {this.props.currentUser.id}
-            perviews = {this.props.perviews}
-            bookmarkPerview = {this.props.bookmarkPerview}
+            currentUserId =     {this.props.currentUser.id}
+            perviews =          {this.props.perviews}
+            bookmarkPerview =   {this.props.bookmarkPerview}
             unbookmarkPerview = {this.props.unbookmarkPerview}
-            likePerview = {this.props.likePerview}
-            unlikePerview = {this.props.unlikePerview}
-            history = {this.props.history}
+            likePerview =       {this.props.likePerview}
+            unlikePerview =     {this.props.unlikePerview}
+            history =           {this.props.history}
           />
         </div>
       </div>
