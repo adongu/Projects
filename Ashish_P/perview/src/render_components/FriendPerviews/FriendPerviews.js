@@ -1,7 +1,8 @@
-import "../../styles/stylesheets/friendperview.css";
+import "../../styles/stylesheets/FriendPerviews/friendperview.css";
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import NavBarContainer from '../../containers/NavBarContainer.js';
+import NavBarContainer from '../../containers/NavBarContainer';
+import FriendHero from "./FriendHero";
 import NarrowPerview from "../PerviewsLayouts/NarrowPerview";
 
 class FriendPerviews extends React.Component {

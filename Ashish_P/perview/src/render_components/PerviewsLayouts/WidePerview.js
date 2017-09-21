@@ -11,7 +11,7 @@ const WidePerview = ({ fetchingUpdate, currentUserId, perviews, bookmarkPerview,
         <div className="wideresults__badge-container">
           <img className="wideresults__badge-first"
           src="https://png.icons8.com/medal-first-place/dusk/64"
-          title="Medal First Place"/>
+          title="First to Perview"/>
         </div>
       )
     }

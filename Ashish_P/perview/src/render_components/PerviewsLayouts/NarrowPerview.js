@@ -12,7 +12,7 @@ const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPer
         <div className="narrowperviews__badge-container">
           <img className="narrowperviews__badge-first"
           src="https://png.icons8.com/medal-first-place/dusk/64"
-          title="Medal First Place"/>
+          title="First to Perview"/>
         </div>
       )
     }

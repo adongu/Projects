@@ -172,6 +172,7 @@ class SearchItemBar extends React.Component {
                     onMouseOver={() => { this.setState({ hoverUserName: perview.userDto.fullName}) }}
                     onMouseLeave={() => { this.setState({ hoverUserName: "" }) }}
                     className="headersearch__userimg-img"
+                    title={user.fullName}
                     src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")}
                     alt={user.fullName}/>
                 </div>
