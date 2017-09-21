@@ -15,6 +15,11 @@ const PerviewDeleteConfirmation = React.createClass({
     this.setState({ showModal: true });
   },
 
+  handleDeleteClick() {
+    this.props.confirmDeletePerview();
+    this.setState({ showModal: false });
+  },
+
   render() {
     return (
       <div className="perviewdelete__box">
@@ -36,7 +41,7 @@ const PerviewDeleteConfirmation = React.createClass({
                 Are you Sure you want to delete this Perview forever?
               </p>
               <div className="perviewdelete__options">
-                <span onClick={this.props.confirmDeletePerview} className="perviewdelete__delete">
+                <span onClick={this.handleDeleteClick} className="perviewdelete__delete">
                   Yes I'm sure!
                 </span>
                 <span onClick={this.close} className="perviewdelete__cancel">
