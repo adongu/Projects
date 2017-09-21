@@ -51,11 +51,9 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
   }
 
   const confirmDeletePerview = (perviewId) => {
-    // return e => {
     if (deletePerview) {
       deletePerview(perview.id)
     }
-    // }
   }
 
   const renderAndMoreLikes = () => {
@@ -113,15 +111,17 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
     if (history.location.pathname === '/myperviews') {
       return (
         <div className="flexrow perviewcard__editbox">
-          <PerviewEditModal
-            item = {item}
-            perview = {perview}
-            editPerview = {editPerview}
-            currentUserId = {currentUserId}
-            history = {history}
-          />
+          <div className="perviewcard__edit-container" alt="Edit Perview">
+            <PerviewEditModal
+              item = {item}
+              perview = {perview}
+              editPerview = {editPerview}
+              currentUserId = {currentUserId}
+              history = {history}
+            />
+          </div>
 
-          <div className="perviewdelete__container">
+          <div className="perviewcard__delete-container">
             <PerviewDeleteConfirmation
               perviewId = {perview.id}
               confirmDeletePerview = {confirmDeletePerview}

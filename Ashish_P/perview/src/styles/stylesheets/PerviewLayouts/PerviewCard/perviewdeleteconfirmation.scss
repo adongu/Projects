@@ -33,22 +33,50 @@
     cursor: pointer;
   }
 
-  &confirm-text {
-
-  }
-
   &content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    margin-bottom: 20px;
   }
+
+  &confirm-text {
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
 
   &options {
+    width: 35%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+  }
+
+  &delete,
+  &cancel {
+    margin-right: 3px;
+    padding: 5px 10px;
+    border: 1px solid #ced0d4;
+    border-radius: 6px;
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    transition: all linear 250ms;
 
   }
 
+  &delete:hover {
+    color: #fff;
+    background: #d9534f;
+    border-color: #d43f3a;
+  }
+
+  &cancel:hover {
+    background: #f6f7f9;
+    border-color: #ced0d4;
+  }
 }

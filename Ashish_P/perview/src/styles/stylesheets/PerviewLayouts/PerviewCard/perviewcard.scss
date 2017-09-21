@@ -73,11 +73,30 @@ $lines-to-show: 4;
     width: 80%;
     margin: auto;
     cursor: pointer;
+    // overflow: hidden;
+    text-overflow: ellipsis;
   }
 // edit and delete box
   &editbox {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    max-width: 23px;
+    margin-right: 8px;
+  }
+
+  &edit-container {
+    width: 50%;
+    margin-right: 8px;
+    // background: white;
+  }
+
+  &edit-container:hover {
+    cursor: pointer;
+  }
+
+  &delete-container {
+    width: 50%;
   }
 
 // Rating
