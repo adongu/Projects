@@ -57,19 +57,19 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, categorie
                 <span className="navbar__dashboard-numperviews">
                   {user.numPerviews}
                   <span className="navbar__dashboard-text">
-                    Posts
+                    perviews
                   </span>
                 </span>
                 <span className="navbar__dashboard-numfriends">
                   {user.numFriends}
                   <span className="navbar__dashboard-text">
-                    Friends
+                    friends
                   </span>
                 </span>
                 <span className="navbar__dashboard-numfirsts">
                   {user.numFirsts}
                   <span className="navbar__dashboard-text">
-                    Firsts
+                    firsts
                   </span>
                 </span>
               </div>
