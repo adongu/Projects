@@ -58,7 +58,7 @@ class FriendPerviews extends React.Component {
     if (perview[0] && perview[0].userDto) {
       return (
         <FriendHero
-          user = {this.props.perviews[0]}
+          user = {this.props.perviews[0].userDto}
           numPerviews = {this.props.perviews.length}
         />
       )
