@@ -126,7 +126,7 @@ class Header extends React.Component {
         <div className="flexrow header__box">
           <div className="header__logo">
             <Link to="/">
-              <img className="header__logoimg" width="40px" src={logo} alt="Header logo"/>
+              <img className="header__logoimg" width="40px" src="https://s3.amazonaws.com/perviewimages/logo.png" alt="Header logo"/>
             </Link>
           </div>
 
