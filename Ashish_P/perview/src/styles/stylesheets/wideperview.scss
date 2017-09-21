@@ -27,10 +27,28 @@ $lines-to-show: 5;
     justify-content: space-between;
     width: 60%;
     background: #FFF;
-    padding-top: 20px;
+    padding: 20px;
+
   }
 
   // left perview - left side
+
+  // badges
+  &badges {
+    position: relative;
+  }
+
+  &badge-container {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+  }
+
+  &badge-first {
+    width: 24px;
+    height: 24px;
+  }
+
   &productimg {
     display: block;
     width: 40%;

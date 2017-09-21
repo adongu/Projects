@@ -6,6 +6,18 @@ import PerviewCard from './PerviewCard/PerviewCard.js';
 
 const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, history, toRenderUserProfile }) => {
 
+  const renderFirstReviewBadge = (perview) => {
+    if (perview.firstToPerviewItem) {
+      return (
+        <div className="narrowperviews__badge-container">
+          <img className="narrowperviews__badge-first"
+          src="https://png.icons8.com/medal-first-place/dusk/64"
+          title="Medal First Place"/>
+        </div>
+      )
+    }
+  }
+
   const renderPerviews = () => {
     if (perviews) {
       return perviews.map((perview, i) => {
@@ -16,7 +28,7 @@ const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPer
           <div key={`perviewindex__${i}`} className="flexcolumn narrowperviews__box">
             <div className="flexcolumn narrowperviews__productbox">
               <span className="narrowperviews__badges">
-                <img src="https://png.icons8.com/medal-first-place/dusk/64" title="Medal First Place" width="24" height="24" />
+                {renderFirstReviewBadge(perview)}
               </span>
               <div className="narrowperviews__img">
                 <Link to={`/item/${item.id}`}>

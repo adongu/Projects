@@ -34,7 +34,23 @@ $review-lines-to-show: 6;
     display: flex;
     width: 94%;
     height: 440px;
-    padding: 0 3px;
+    padding: 10px 3px;
+  }
+
+  // badges
+  &badges {
+    position: relative;
+  }
+
+  &badge-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &badge-first {
+    width: 24px;
+    height: 24px;
   }
 
   &time {
