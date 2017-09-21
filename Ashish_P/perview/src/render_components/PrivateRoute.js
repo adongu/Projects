@@ -42,19 +42,3 @@ const PrivateRoute = ({ component: Component, ...props }) => {
 }
 
 export default withRouter(PrivateRoute);
-// <div>
-//   { validated(rest) }
-// </div>
-
-
-// validated() ? (
-//   <div>
-//     <HeaderContainer />
-//     <Component {...rest}/>
-//   </div>
-// ) : (
-//   <Redirect to={{
-//   pathname: '/signin',
-//   state: { from: props.location }
-//   }}/>
-// )

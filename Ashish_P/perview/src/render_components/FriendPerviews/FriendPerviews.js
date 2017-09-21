@@ -35,16 +35,6 @@ class FriendPerviews extends React.Component {
         requestLoading: nextProps.requestLoading
       })
     }
-    //
-    // if (this.props.match.params.friend_id !== nextProps.match.params.friend_id) {
-    //   let nextFriendId = Number(nextProps.match.params.friend_id);
-    //
-    //   this.props.fetchFriendPerviews(nextFriendId)
-    //
-    //   this.setState({
-    //     friendId: nextFriendId
-    //   });
-    // }
 
     if (nextProps.fetchingUpdate !== this.props.fetchingUpdate) {
       this.setState({
@@ -53,12 +43,7 @@ class FriendPerviews extends React.Component {
 
       if (this.state.fetchingUpdate) {
         this.props.fetchFriendPerviews(Number(nextProps.match.params.friend_id),  this.state.categoryId)
-        // .then(() => {
-        //   this.setState({
-        //     categories: this.props.categories,
-        //     friendId: Number(this.props.match.params.friend_id)
-        //   });
-        // });
+
       }
     }
   }
@@ -68,16 +53,6 @@ class FriendPerviews extends React.Component {
 
     this.props.fetchFriendPerviews(this.state.friendId, catetoryId);
   }
-
-  // renderHero(userFriend) {
-  //   if (userFriend.facebookProfilePictureUrl) {
-  //     return (
-  //       <FriendHero
-  //         userFriend = {userFriend}
-  //       />
-  //     )
-  //   }
-  // }
 
   render () {
     return (

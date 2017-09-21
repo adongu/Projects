@@ -18,8 +18,8 @@ const WidePerview = ({ fetchingUpdate, currentUserId, perviews, bookmarkPerview,
   }
 
   const renderPerviews = () => {
-    console.log(perviews);
     if (perviews) {
+      // for pagination
       // perviews = perviews.length > 10 ? perviews.slice(0, 10) : perviews;
       return perviews.map((perview, i) => {
         var item = perview.itemDto;

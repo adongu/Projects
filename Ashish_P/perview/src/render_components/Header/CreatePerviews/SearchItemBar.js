@@ -4,16 +4,6 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Autosuggest from 'react-autosuggest';
 
-//// Teach Autosuggest how to calculate suggestions for any given input value.
-// const getSuggestions = value => {
-//   const inputValue = value.trim().toLowerCase();
-//   const inputLength = inputValue.length;
-//
-//   return inputLength === 0 ? [] : languages.filter(lang =>
-//     lang.name.toLowerCase().slice(0, inputLength) === inputValue
-//   );
-// };
-
 // When suggestion is clicked, Autosuggest needs to populate the input
 // based on the clicked suggestion. Teach Autosuggest how to calculate the
 // input value for every given suggestion.
@@ -28,7 +18,6 @@ class SearchItemBar extends React.Component {
       isFetching: false
     };
 
-    // this.updateKeywords = this.updateKeywords.bind(this);
     this.logChange = this.logChange.bind(this);
     this.renderSuggestion = this.renderSuggestion.bind(this);
     this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this);
@@ -68,9 +57,8 @@ class SearchItemBar extends React.Component {
       value: newValue,
       isFetching: true
     });
-    // if (newValue.length > 2) {
+
     this.fetchResults(newValue);
-    // }
   };
 
   // Autosuggest will call this function every time you need to update suggestions.
@@ -133,18 +121,15 @@ class SearchItemBar extends React.Component {
     let price = suggestion.lowestNewPrice.formattedAmount;
 
     return (
-      // <div className="flexrow autosuggest__item">
-
-        <div className="flexrow autosuggest__productcontainer">
-          <div className="autosuggest__product-left">
-            <img className="autosuggest__img" src={imgUrl} alt="product"/>
-          </div>
-          <div className="flexcolumn autosuggest__product-right">
-            <div className="autosuggest__name">{suggestion.title}</div>
-            <div className="autosuggest__price">{price}</div>
-          </div>
+      <div className="flexrow autosuggest__productcontainer">
+        <div className="autosuggest__product-left">
+          <img className="autosuggest__img" src={imgUrl} alt="product"/>
         </div>
-      // </div>
+        <div className="flexcolumn autosuggest__product-right">
+          <div className="autosuggest__name">{suggestion.title}</div>
+          <div className="autosuggest__price">{price}</div>
+        </div>
+      </div>
     );
   }
 
@@ -176,5 +161,5 @@ class SearchItemBar extends React.Component {
     )
   }
 }
-// https://codepen.io/moroshko/pen/PZWbzK for
+
 export default withRouter(SearchItemBar);

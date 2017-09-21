@@ -28,7 +28,6 @@ class Header extends React.Component {
       ]
     }
 
-    // this.validateRedirect = this.validateRedirect.bind(this);
     this.selectItem = this.selectItem.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
     this.renderNavOptions = this.renderNavOptions.bind(this);
@@ -36,7 +35,6 @@ class Header extends React.Component {
   }
 
   componentWillMount() {
-    // this.validateRedirect();
     this.props.fetchUser();
   }
 
@@ -75,11 +73,6 @@ class Header extends React.Component {
 
   renderNavOptions () {
     const navOptions = [
-      // {
-      //   path: '/',
-      //   text: 'Home',
-      //   icon: 'home'
-      // },
       {
         path: '/myperviews',
         text: 'My Perviews',

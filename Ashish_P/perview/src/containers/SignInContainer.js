@@ -1,11 +1,9 @@
 import { connect } from 'react-redux';
 import { logIn, fetchUser, fetchToken } from '../actions/session_actions';
-// import {login, logout, signup, clearErrors } from '../actions/session_actions';
 import SignIn from '../render_components/SignIn/SignIn';
 
 const mapStateToProps = ({ session }) => {
   return {
- // Boolean(props.session.currentUser),
     currentUser: session.currentUser,
     errors: session.errors
   }
@@ -16,7 +14,6 @@ const mapDispatchToProps = ( dispatch, newProps) => {
     logIn: () => dispatch(logIn()),
     fetchUser: () => dispatch(fetchUser()),
     fetchToken: () => dispatch(fetchToken())
-    // clearErrors: () => dispatch(clearErrors())
   });
 };
 

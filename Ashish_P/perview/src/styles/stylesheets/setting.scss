@@ -15,7 +15,6 @@ $lines-to-show: 6;
   &row-top,
   &row-bottom {
     width: 100%;
-    // justify-content: space-between;
   }
 
   &userbox,
@@ -81,8 +80,6 @@ $lines-to-show: 6;
     flex-wrap: wrap;
 
     height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
-    // margin-top: 20px;
-    // margin-bottom: 20px;
     font-size: $font-size;
     font-weight: 300;
     line-height: $line-height;

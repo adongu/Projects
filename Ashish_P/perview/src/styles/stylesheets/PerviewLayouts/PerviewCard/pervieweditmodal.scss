@@ -14,12 +14,9 @@ $lines-to-show: 4;
 
   &btn{
     width: 100%;
-    // margin: 16px 0;
     padding: 3px 0;
     font-size: 18px;
     border-radius: 5px;
-    // color: white;
-    // background: black;
   }
 }
 
@@ -73,13 +70,10 @@ $lines-to-show: 4;
     padding-bottom: 30px;
     width: 100%;
     padding-bottom: 10px;
-    // height: 140px;
-    // line-height: 140px;
     color: #3F3F3F;
     display: block; /* Fallback for non-webkit */
     display: -webkit-box;
     min-width: 352px;
-    // height: 50px;
     height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
     margin: 0 auto;
     font-size: $font-size;
@@ -142,7 +136,6 @@ $lines-to-show: 4;
 
   &ratingtipbox {
     display: none;
-    // content: "";
     top: -50px;
     position: absolute;
   }

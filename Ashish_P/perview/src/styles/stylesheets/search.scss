@@ -40,16 +40,12 @@ $name-lines-to-show: 1;
 
   &btn {
     position: absolute;
-    // margin-left: auto;
-    // margin-right: 10px;
     width: 5%;
     background: white;
     border-radius: 5px;
     top: 5px;
     right: 10px;
-    // width: 24px;
-    // height: 24px;
-}
+  }
 
   &btn-icon {
     color: #D6D6D6;
@@ -76,8 +72,6 @@ body {
   font-family: Helvetica, sans-serif;
   font-weight: 300;
   font-size: 16px;
-  // border: 1px solid #aaa;
-  // border-radius: 18px;
   padding-left: 20px;
   font-size: 20px;
   font-weight: 300;
@@ -155,10 +149,6 @@ body {
   &item {
     width: 100%;
     height: 160px;
-    // padding: 15px 0;
-    // display: flex;
-    // justify-content: flex-start;
-    // align-items: center;
   }
 
 /* product display left side */
@@ -197,7 +187,6 @@ body {
   }
 
   &price {
-    // padding: 10px 4px;
   }
 
   &product {

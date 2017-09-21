@@ -20,23 +20,17 @@ $font-size: 15px;
 
 // start rating
 .active_star {
-font-size: $font-size;
-// content: "\2605";
-/*position: relative;*/
-// font: #fff;
-color: #D8AA36;
-border-radius: 1px;
-indent: 5px;
+  font-size: $font-size;
+  color: #D8AA36;
+  border-radius: 1px;
+  indent: 5px;
 }
 
 .no_star {
-font-size: $font-size;
-// content: "\2605";
-/*position: relative;*/
-// font: #fff;
-color: #D1D1D1;
-border-radius: 1px;
-indent: 5px;
+  font-size: $font-size;
+  color: #D1D1D1;
+  border-radius: 1px;
+  indent: 5px;
 }
 
 /* Take out bootstrap component text shadow blur */

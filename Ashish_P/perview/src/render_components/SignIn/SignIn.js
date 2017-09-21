@@ -18,14 +18,10 @@ class SignIn extends React.Component {
   componentWillMount() {
     this.props.fetchToken();
     this.props.fetchUser()
-    // .then(() => {
-    //   this.redirectIfLoggedIn(this.props);
-    // })
   }
 
   componentDidMount () {
   }
-
 
   redirectIfLoggedIn (props) {
     if (props.currentUser) {
@@ -96,8 +92,3 @@ class SignIn extends React.Component {
 }
 
 export default withRouter(SignIn);
-
-// <form className="signin__form" action={auth_url} method="post">
-
-
-// <button onClick={this.handleSubmit} className="signin__form-facebook">SIGN IN WITH FACEBOOK</button>

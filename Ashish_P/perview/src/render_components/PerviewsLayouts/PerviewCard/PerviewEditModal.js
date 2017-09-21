@@ -80,7 +80,6 @@ class PerviewEditModal extends React.Component {
       rating: 0,
       lastRating: 0,
       ratingHover: 0,
-      // asin: '',
       perviewers: []
     });
   }
@@ -145,9 +144,6 @@ class PerviewEditModal extends React.Component {
 
         })
         this.hideModal();
-        // if (this.props.history.location.pathname !== '/' ) {
-        //   this.props.history.replace({ pathname: '/' });
-        // }
       }
     } else {
       // make user go back to signin

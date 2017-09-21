@@ -51,16 +51,7 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
         errors: []
       });
     // case RECEIVE_EDIT_PERVIEW:
-
-
-    // for (var pair of formData.entries()) {
-    // console.log(pair[0]+ ', ' + pair[1]);
-    // }
-      // return Object.assign({}, newState, {
-      //   myPerviews: {
-      //
-      //   }
-      // })
+    // For pattern, check out http://redux.js.org/docs/recipes/reducers/ImmutableUpdatePatterns.html
     case DELETE_PERVIEW:
       const newPerviews = newState.myPerviews.perviews.filter((perview) => {
         return perview.id !== action.perviewId
@@ -119,10 +110,6 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
       });
 
     case RECEIVE_FRIEND_PERVIEWS:
-      // newState.Perviews.unshift(action.perview);
-
-      console.log(action.friendPerviews.categories);
-
       return Object.assign({}, newState, {
         friendPerviews: {
           user: action.friendPerviews.user,

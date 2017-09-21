@@ -17,7 +17,6 @@ class SearchItemBar extends React.Component {
       isFetching: false
     };
 
-    // this.updateKeywords = this.updateKeywords.bind(this);
     this.fetchResults = this.fetchResults.bind(this);
     this.getSuggestions = this.getSuggestions.bind(this);
     this.getSuggestionValue = this.getSuggestionValue.bind(this);
@@ -49,7 +48,6 @@ class SearchItemBar extends React.Component {
       perview.itemDto.dataname,
       perview.itemDto.data.lowestNewPrice.formattedAmount,
       perview.itemDto.id
-      // suggestion.data.asin
     );
     return perview.itemDto.name;
   }
@@ -68,9 +66,8 @@ class SearchItemBar extends React.Component {
       value: newValue,
       isFetching: true
     });
-    // if (newValue.length > 0) {
+
     this.fetchResults(newValue);
-    // }
   };
 
   // Autosuggest will call this function every time you need to update suggestions.
@@ -274,5 +271,5 @@ class SearchItemBar extends React.Component {
     )
   }
 }
-// https://codepen.io/moroshko/pen/PZWbzK for
+
 export default withRouter(SearchItemBar);

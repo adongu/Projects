@@ -1,4 +1,3 @@
-// LIKE_PERVIEW, UNLIKE_PERVIEW, BOOKMARK_PERVIEW, UNBOOKMARK_PERVIEW,
 import { merge } from 'lodash';
 import { FETCHING_UPDATE, FINISH_UPDATE, RECEIVE_ERRORS } from '../actions/social_actions';
 
