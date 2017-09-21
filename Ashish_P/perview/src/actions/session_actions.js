@@ -44,11 +44,9 @@ export const fetchUser = () => dispatch => {
   dispatch(requestUser());
   return APIUtil.fetchUser()
     .then( response => {
-      console.log('session action', response.data);
       return dispatch(receiveCurrentUser(response.data))
     })
     .catch((error) => {
-      console.log('hits error!', error);
       return dispatch(receiveErrors(error))
       // return Promise.resolve('no user');
       // return Promise.reject('response failed no user')

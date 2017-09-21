@@ -23,7 +23,7 @@ class FriendPerviews extends React.Component {
     this.props.fetchFriendPerviews(Number(this.props.match.params.friend_id))
     .then(() => {
       this.setState({
-        categories: this.props.categories,
+        // categories: this.props.categories,
         friendId: Number(this.props.match.params.friend_id)
       });
     });
@@ -43,7 +43,9 @@ class FriendPerviews extends React.Component {
 
       if (this.state.fetchingUpdate) {
         this.props.fetchFriendPerviews(Number(nextProps.match.params.friend_id),  this.state.categoryId)
-
+        // .then(() => {
+        //   categories: nextProps.categories
+        // })
       }
     }
   }

@@ -27,9 +27,7 @@ class HomePage extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log(prevProps);
      if (this.props.history.location !== prevProps.history.location) {
-       console.log('hits didupdate');
        window.scrollTo(0, 0)
      }
    }

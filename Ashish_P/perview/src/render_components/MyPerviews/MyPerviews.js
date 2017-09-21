@@ -60,7 +60,6 @@ class MyPerviews extends React.Component {
   }
 
   render () {
-    console.log(this.props.perviews);
     return (
       <div className="myperview__container">
         <NavBarContainer

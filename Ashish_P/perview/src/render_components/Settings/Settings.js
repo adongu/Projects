@@ -7,9 +7,9 @@ class Settings extends React.Component{
   constructor(props) {
     super(props)
 
-    // this.performCopyUrl = this.performCopyUrl.bind(this)
     this.state = {
-      copySuccess: "Copy"
+      copySuccess: "Copy",
+      user: {}
     }
 
     this.performCopyUrl = this.performCopyUrl.bind(this);
@@ -20,6 +20,16 @@ class Settings extends React.Component{
     this.renderNumberPerviews = this.renderNumberPerviews.bind(this);
     this.renderIsBetaUser = this.renderIsBetaUser.bind(this);
     this.renderInviteUrl = this.renderInviteUrl.bind(this);
+  }
+
+  componentWillMount() {
+    this.setState({ user: this.props.currentUser})
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.currentUser !== nextProps.currentUser) {
+      this.setState({ user: nextProps.currentUser })
+    }
   }
 
   performCopyUrl (e) {
@@ -136,8 +146,8 @@ class Settings extends React.Component{
 
 
   render() {
-    if (this.props.currentUser) {
-      let currentUser = this.props.currentUser;
+    if (this.state.currentUser) {
+      let currentUser = this.state.currentUser;
 
       return(
         <div className="settings__container">

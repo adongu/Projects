@@ -19,7 +19,6 @@ class ItemPerviews extends React.Component {
   }
 
   componentWillMount () {
-    console.log('componentWillMount itemperviews class component');
     this.props.fetchItemPerviews(Number(this.props.match.params.item_id));
 
     this.setState({
