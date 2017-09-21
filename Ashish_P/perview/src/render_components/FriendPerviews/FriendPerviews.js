@@ -66,7 +66,9 @@ class FriendPerviews extends React.Component {
     return (
       <div className="friendperview__container">
         <NavBarContainer
+          categories = {this.props.categories}
           userFriend = {this.props.userFriend}
+          filterPerviews = {this.fetchFilteredPerviews}
         />
 
         <div className="friendperview__perviews">

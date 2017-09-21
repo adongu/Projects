@@ -184,7 +184,7 @@ export const fetchFriendPerviews = (friendUserId, categoryId) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.fetchFriendPerviews(friendUserId, categoryId)
     .then( response => {
-      console.log('perviews', response.data);
+      console.log('friend perviews', response.data);
 
       return dispatch(receiveFriendPerviews(response.data))
     })

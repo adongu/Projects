@@ -6,7 +6,7 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, categorie
 
   const pageSettings = {
     "/" : {
-      "title": "", "hasFilters": true
+      "title": "", "hasFilters": false
     },
     "/myperviews": {
       "title": "", "hasFilters": true
@@ -83,6 +83,7 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, categorie
   }
 
   const renderFilters = () => {
+    console.log(categories);
     if (categories && match && match.path && pageSettings[match.path].hasFilters) {
       return (
         <div>
