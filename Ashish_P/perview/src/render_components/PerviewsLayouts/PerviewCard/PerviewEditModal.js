@@ -1,4 +1,4 @@
-import "../../../styles/stylesheets/PerviewLayouts/PerviewCard/perviewcarddetailmodal.css";
+import "../../../styles/stylesheets/PerviewLayouts/PerviewCard/pervieweditmodal.css";
 import React from 'react';
 import { ButtonToolbar, Modal } from 'react-bootstrap';
 
@@ -202,9 +202,9 @@ class PerviewEditModal extends React.Component {
   render() {
     return (
       <ButtonToolbar className="perviewdetailmodal__container">
-        <button className="perviewdetailmodal__btn" onClick={this.showModal}>
-          <i className="fa fa-pencil narrowperviews__edit-icon" aria-hidden="true"></i>
-        </button>
+        <span className="perviewdetailmodal__btn" onClick={this.showModal}>
+          <i className="fa fa-pencil perviewdetailmodal__edit-icon" aria-hidden="true"></i>
+        </span>
 
         <Modal
           {...this.props}

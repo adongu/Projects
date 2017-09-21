@@ -5,7 +5,20 @@ import PerviewCard from './PerviewCard/PerviewCard.js';
 
 const WidePerview = ({ fetchingUpdate, currentUserId, perviews, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, history, toRenderUserProfile }) => {
 
+  const renderFirstReviewBadge = (perview) => {
+    if (perview.firstToPerviewItem) {
+      return (
+        <div className="wideresults__badge-container">
+          <img className="wideresults__badge-first"
+          src="https://png.icons8.com/medal-first-place/dusk/64"
+          title="Medal First Place"/>
+        </div>
+      )
+    }
+  }
+
   const renderPerviews = () => {
+    console.log(perviews);
     if (perviews) {
       // perviews = perviews.length > 10 ? perviews.slice(0, 10) : perviews;
       return perviews.map((perview, i) => {
@@ -14,15 +27,18 @@ const WidePerview = ({ fetchingUpdate, currentUserId, perviews, bookmarkPerview,
 
         return (
           <div key={`perviewindex__${perview.id}`} className="flexrow wideresults__box">
-            <img src="https://png.icons8.com/medal-first-place/dusk/64" title="Medal First Place" width="24" height="24" />
             <div className="flexrow wideresults__perview-left">
+              <span className="wideresults__badges">
+                {renderFirstReviewBadge(perview)}
+              </span>
+
               <div className="wideresults__productimg">
                 <Link to={`/item/${item.id}`}>
                   <img className="wideresults__productimg-photo" src={item.data.imageUrls.large.url} alt="Product"/>
                 </Link>
-            </div>
+              </div>
 
-            <div className="flexcolumn wideresults__perview-left-info">
+              <div className="flexcolumn wideresults__perview-left-info">
               <Link to={`/item/${item.id}`} className="wideresults__product-name">
                 {item.data.title}
               </Link>
