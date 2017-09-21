@@ -11,30 +11,40 @@ class FriendPerviews extends React.Component {
     this.state = {
       fetchingUpdate: false,
       requestLoading: false,
-      friendId: null
+      friendId: null,
+      categoryId: "",
+      categories: []
     }
 
     this.fetchFilteredPerviews = this.fetchFilteredPerviews.bind(this);
   }
 
   componentWillMount () {
-    this.props.fetchFriendPerviews(Number(this.props.match.params.friend_id));
-
-    this.setState({
-      friendId: Number(this.props.match.params.friend_id)
+    this.props.fetchFriendPerviews(Number(this.props.match.params.friend_id))
+    .then(() => {
+      this.setState({
+        categories: this.props.categories,
+        friendId: Number(this.props.match.params.friend_id)
+      });
     });
   }
 
   componentWillReceiveProps (nextProps) {
-    if (this.props.match.params.friend_id !== nextProps.match.params.friend_id) {
-      let nextFriendId = Number(nextProps.match.params.friend_id);
-
-      this.props.fetchFriendPerviews(nextFriendId)
-
+    if (nextProps.requestLoading !== this.props.requestLoading) {
       this.setState({
-        friendId: nextFriendId
-      });
+        requestLoading: nextProps.requestLoading
+      })
     }
+    //
+    // if (this.props.match.params.friend_id !== nextProps.match.params.friend_id) {
+    //   let nextFriendId = Number(nextProps.match.params.friend_id);
+    //
+    //   this.props.fetchFriendPerviews(nextFriendId)
+    //
+    //   this.setState({
+    //     friendId: nextFriendId
+    //   });
+    // }
 
     if (nextProps.fetchingUpdate !== this.props.fetchingUpdate) {
       this.setState({
@@ -42,13 +52,20 @@ class FriendPerviews extends React.Component {
       })
 
       if (this.state.fetchingUpdate) {
-        console.log(nextProps);
-        this.props.fetchFriendPerviews(Number(nextProps.match.params.friend_id))
+        this.props.fetchFriendPerviews(Number(nextProps.match.params.friend_id),  this.state.categoryId)
+        // .then(() => {
+        //   this.setState({
+        //     categories: this.props.categories,
+        //     friendId: Number(this.props.match.params.friend_id)
+        //   });
+        // });
       }
     }
   }
 
   fetchFilteredPerviews(catetoryId) {
+    this.setState({ categoryId: catetoryId });
+
     this.props.fetchFriendPerviews(this.state.friendId, catetoryId);
   }
 
@@ -66,7 +83,7 @@ class FriendPerviews extends React.Component {
     return (
       <div className="friendperview__container">
         <NavBarContainer
-          categories = {this.props.categories}
+          categories = {this.state.categories}
           userFriend = {this.props.userFriend}
           filterPerviews = {this.fetchFilteredPerviews}
         />
