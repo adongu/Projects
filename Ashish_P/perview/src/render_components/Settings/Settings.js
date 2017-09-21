@@ -93,13 +93,13 @@ class Settings extends React.Component{
     return (
       <div className="settings__points">
         <p className="settings__points-header">
-          Total Points Earned
+          Total Earnings
         </p>
 
         <div className="settings__points-box">
           <i className="fa fa-trophy fa-3x settings__points-icon" aria-hidden="true"></i>
           <span className="settings__points-number">
-            {currentUser.points}
+            {currentUser.points} points ({currentUser.earnings})
           </span>
         </div>
       </div>
