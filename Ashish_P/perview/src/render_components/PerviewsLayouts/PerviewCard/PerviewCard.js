@@ -70,7 +70,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
   const popoverClickRootClose = likers ? (
     <Popover
       id="popover-trigger-click-root-close"
-      title="Likers"
+      title="Recommenders"
       className="perviewcard__popover"
     >
       <div>
@@ -215,7 +215,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
           >
             <i className={`fa fa-heart perviewcard__review-icon-like ${perview.likedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
             <span className="perviewcard__review-social-text">
-              {perview.likedByLoggedInUser ? 'Liked' : 'Like'}
+              {perview.likedByLoggedInUser ? 'Recommended' : 'Recommend'}
             </span>
           </span>
           <div className="perviewcard__numlikers-box">
