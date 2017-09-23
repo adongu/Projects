@@ -1,5 +1,5 @@
 import { merge } from 'lodash';
-import { REQUEST_LOADING, RECEIVE_ITEM, RECEIVE_PERVIEW, EDIT_PERVIEW, DELETE_PERVIEW, RECEIVE_ALL_PERVIEWS, RECEIVE_ITEM_PERVIEWS, RECEIVE_MY_PERVIEWS, RECEIVE_FAVORITE_PERVIEWS, RECEIVE_FRIEND_PERVIEWS, RECEIVE_CATEGORY_IDS, RECEIVE_NUM_PERVIEWS, RECEIVE_ERRORS } from '../actions/perview_actions';
+import { REQUEST_LOADING, RECEIVE_ITEM, RECEIVE_PERVIEW, RECEIVE_EDIT_PERVIEW, DELETE_PERVIEW, RECEIVE_ALL_PERVIEWS, RECEIVE_ITEM_PERVIEWS, RECEIVE_MY_PERVIEWS, RECEIVE_FAVORITE_PERVIEWS, RECEIVE_FRIEND_PERVIEWS, RECEIVE_CATEGORY_IDS, RECEIVE_NUM_PERVIEWS, RECEIVE_ERRORS } from '../actions/perview_actions';
 
 const _nullPerviews = Object.freeze({
   requestLoading: false,
@@ -50,10 +50,27 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
         requestLoading: false,
         errors: []
       });
-    // case RECEIVE_EDIT_PERVIEW:
+    case RECEIVE_EDIT_PERVIEW:
+      console.log(action.perview);
+
+      const newEditedPerviews = newState.myPerviews.perviews.map((perview) => {
+        if(perview.id === action.perview.id) {
+          return action.perview;
+        } else {
+          return perview;
+        }
+      });
+
+      return Object.assign({}, newState, {
+        myPerviews: {
+          perviews: newEditedPerviews
+        },
+        requestLoading: false,
+        errors: []
+      });
     // For pattern, check out http://redux.js.org/docs/recipes/reducers/ImmutableUpdatePatterns.html
     case DELETE_PERVIEW:
-      const newPerviews = newState.myPerviews.perviews.filter((perview) => {
+      let newPerviews = newState.myPerviews.perviews.filter((perview) => {
         return perview.id !== action.perviewId
       });
 

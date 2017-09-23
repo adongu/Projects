@@ -3,7 +3,7 @@ import * as APIUtil from '../util/perview_api_util';
 export const REQUEST_LOADING = 'REQUEST_LOADING';
 export const RECEIVE_ITEM = 'RECEIVE_ITEM';
 export const RECEIVE_PERVIEW = 'RECEIVE_PERVIEW';
-export const EDIT_PERVIEW = 'EDIT_PERVIEW';
+export const RECEIVE_EDIT_PERVIEW = 'EDIT_PERVIEW';
 export const DELETE_PERVIEW = 'DELETE_PERVIEW';
 export const RECEIVE_ALL_PERVIEWS = 'RECEIVE_ALL_PERVIEWS';
 export const RECEIVE_ITEM_PERVIEWS = 'RECEIVE_ITEM_PERVIEWS';
@@ -31,7 +31,7 @@ export const receivePerview = (perview) => ({
 });
 
 export const receiveEditPerview = (perview) => ({
-  type: EDIT_PERVIEW,
+  type: RECEIVE_EDIT_PERVIEW,
   perview
 });
 
