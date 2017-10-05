@@ -17,6 +17,7 @@ class SearchItemBar extends React.Component {
       isFetching: false
     };
 
+    this.handleFriendClick = this.handleFriendClick.bind(this);
     this.fetchResults = this.fetchResults.bind(this);
     this.getSuggestions = this.getSuggestions.bind(this);
     this.getSuggestionValue = this.getSuggestionValue.bind(this);
@@ -139,6 +140,12 @@ class SearchItemBar extends React.Component {
     );
   }
 
+  handleFriendClick(friendId) {
+    return (e) => {
+      this.props.history.replace({ pathname: `/friend/${friendId}` });
+    }
+  }
+
   renderSeeAllLink(suggestion) {
     let numPerviews = suggestion.length;
     let itemId = suggestion[0].itemDto.id;
@@ -165,6 +172,7 @@ class SearchItemBar extends React.Component {
 
                 <div className="headersearch__userbox">
                   <img
+                    onClick={this.handleFriendClick(user.id)}
                     onMouseOver={() => { this.setState({ hoverUserName: perview.userDto.fullName}) }}
                     onMouseLeave={() => { this.setState({ hoverUserName: "" }) }}
                     className="headersearch__userimg-img"

@@ -4,6 +4,7 @@ import { REQUEST_PERVIEW_RESULTS, RECEIVE_PERVIEW_RESULTS, RECEIVE_ERRORS, CLEAR
 const _nullSearchPerview = Object.freeze({
   isFetching: false,
   perviewResults: [],
+  amazon: [],
   errors: []
 })
 
@@ -16,12 +17,14 @@ const searchPerviewReducer = (oldState = _nullSearchPerview, action) => {
       });
     case RECEIVE_PERVIEW_RESULTS:
     // turns result object into an array
-      let results = Object.keys(action.results).map((key) => {
-        if (action.results[key].length === 1) {
+      let perviews = action.results.perview;
+
+      let results = Object.keys(perviews).map((key) => {
+        if (perviews[key].length === 1) {
           // turns single perview into array for uniform format
-          return [action.results[key][0]];
+          return [perviews[key][0]];
         } else {
-          return action.results[key].map((perviewObject) => {
+          return perviews[key].map((perviewObject) => {
             return perviewObject;
           })
         }
