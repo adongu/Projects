@@ -44,12 +44,12 @@ class SearchItemBar extends React.Component {
   getSuggestionValue(suggestion) {
     // pass item to modal
     let perview = suggestion[0];
-    this.props.selectItem(
-      perview.itemDto.data.imageUrls.large.url,
-      perview.itemDto.dataname,
-      perview.itemDto.data.lowestNewPrice.formattedAmount,
-      perview.itemDto.id
-    );
+    // this.props.selectItem(
+    //   perview.itemDto.data.imageUrls.large.url,
+    //   perview.itemDto.dataname,
+    //   perview.itemDto.data.lowestNewPrice.formattedAmount,
+    //   perview.itemDto.id
+    // );
     return perview.itemDto.name;
   }
 
