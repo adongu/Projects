@@ -4,6 +4,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import Autosuggest from 'react-autosuggest';
 import IsolatedScroll from 'react-isolated-scroll';
+import CreatePerviewModal from "./CreatePerviews/CreatePerviewModal";
 
 class SearchItemBar extends React.Component {
   constructor(props){
@@ -22,14 +23,20 @@ class SearchItemBar extends React.Component {
     this.getSuggestions = this.getSuggestions.bind(this);
     this.getSuggestionValue = this.getSuggestionValue.bind(this);
     this.logChange = this.logChange.bind(this);
+
     this.onChange = this.onChange.bind(this);
     this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this);
     this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(this);
+
     this.renderSuggestionsContainer = this.renderSuggestionsContainer.bind(this);
     this.renderSeeAllLink = this.renderSeeAllLink.bind(this);
-    this.renderInputComponent = this.renderInputComponent.bind(this);
-    this.renderSuggestion = this.renderSuggestion.bind(this);
     this.renderSearchPerviewFriends = this.renderSearchPerviewFriends.bind(this);
+    this.renderResultUserOrCreate = this.renderResultUserOrCreate.bind(this);
+
+    this.renderInputComponent = this.renderInputComponent.bind(this);
+    this.renderSectionTitle = this.renderSectionTitle.bind(this);
+    this.getSectionSuggestions = this.getSectionSuggestions.bind(this);
+    this.renderSuggestion = this.renderSuggestion.bind(this);
   }
 
   componentWillReceiveProps (nextProps) {
@@ -194,6 +201,43 @@ class SearchItemBar extends React.Component {
     }
   }
 
+  renderSectionTitle(section) {
+    return (
+      <strong>{section.title}</strong>
+    );
+  }
+
+  getSectionSuggestions(section) {
+    return section.results;
+  }
+
+  renderResultUserOrCreate(suggestion) {
+    if (suggestion && suggestion.length > 0 && suggestion[0].userDto) {
+      return (
+        <div className="autosuggest__friends">
+          <div className="autosuggest__friends-header">Perviewed by:</div>
+          <div>
+            {this.renderSearchPerviewFriends(suggestion)}
+          </div>
+          <div>
+            {this.renderSeeAllLink(suggestion)}
+          </div>
+        </div>
+      )
+    } else {
+      return (
+        <CreatePerviewModal
+          currentUser={this.props.currentUser}
+          fetchUser={this.props.fetchUser}
+          createItem={this.props.createItem}
+          createPerview={this.props.createPerview}
+          selectedItem={this.props.selectedItem}
+          history={this.props.history}
+        />
+      )
+    }
+  }
+
   renderSuggestion(suggestion){
     if (suggestion) {
       let itemImageUrl = suggestion[0].itemDto.data.imageUrls.large.url;
@@ -216,15 +260,7 @@ class SearchItemBar extends React.Component {
             </div>
           </div>
 
-          <div className="autosuggest__friends">
-            <div className="autosuggest__friends-header">Perviewed by:</div>
-            <div>
-              {this.renderSearchPerviewFriends(suggestion)}
-            </div>
-            <div>
-              {this.renderSeeAllLink(suggestion)}
-            </div>
-          </div>
+          {this.renderResultUserOrCreate(suggestion)}
         </div>
       );
     }
@@ -264,6 +300,7 @@ class SearchItemBar extends React.Component {
           <Autosuggest
             id="headersearch__container"
             theme={theme}
+            multiSection={true}
             suggestions={suggestions}
             onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
             onSuggestionsClearRequested={this.onSuggestionsClearRequested}
@@ -271,6 +308,8 @@ class SearchItemBar extends React.Component {
             renderSuggestion={this.renderSuggestion}
             renderInputComponent={this.renderInputComponent}
             renderSuggestionsContainer={this.renderSuggestionsContainer}
+            renderSectionTitle={this.renderSectionTitle}
+            getSectionSuggestions={this.getSectionSuggestions}
             inputProps={inputProps}
           />
         </div>
