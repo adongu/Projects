@@ -38,8 +38,8 @@ const searchPerviewReducer = (oldState = _nullSearchPerview, action) => {
       });
     case RECEIVE_PERVIEW_RESULTS:
     // turns result object into an array
-      let amazon = newArrayFromObject(action.results.amazon)
-      let perview = newArrayFromObject(action.results.perview)
+      let amazon = newArrayFromObject(action.results.amazon).slice(0, 5);
+      let perview = newArrayFromObject(action.results.perview).slice(0, 10)
 
       let newState =  Object.assign({}, oldState, {
         perviewResults: [

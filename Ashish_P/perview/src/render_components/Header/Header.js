@@ -128,6 +128,12 @@ class Header extends React.Component {
               selectItem={this.selectItem}
               results={this.props.perviewResults}
               fetchResults={this.props.fetchPerviewResults}
+
+              currentUser={this.props.currentUser}
+              fetchUser={this.props.fetchUser}
+              createItem={this.props.createItem}
+              createPerview={this.props.createPerview}
+              history={this.props.history}
             />
           </div>
 

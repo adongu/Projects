@@ -225,6 +225,7 @@ class SearchItemBar extends React.Component {
         </div>
       )
     } else {
+
       return (
         <CreatePerviewModal
           currentUser={this.props.currentUser}
@@ -240,13 +241,17 @@ class SearchItemBar extends React.Component {
 
   renderSuggestion(suggestion){
     if (suggestion) {
+      let itemId = suggestion[0].itemDto.id;
       let itemImageUrl = suggestion[0].itemDto.data.imageUrls.large.url;
       let itemPrice = suggestion[0].itemDto.data.lowestNewPrice.formattedAmount;
 
       return (
         <div className="flexrow autosuggest__item">
           <div className="flexrow autosuggest__product">
-            <div className="autosuggest__product-left">
+            <div
+              onClick={() => {this.props.history.push(`/item/${itemId}`)} }
+              className="autosuggest__product-left"
+            >
               <img className="autosuggest__img" src={itemImageUrl} alt="product"/>
             </div>
 

@@ -200,11 +200,16 @@ class CreatePerviewModal extends React.Component {
           <div className="flexcolumn createperview__search-container">
             <div className="createperview__search-background">
               <div className="createperview__search-box">
-                <SearchItemBar
-                  selectItem={this.selectItem}
-                  results={this.props.results}
-                  fetchResults={this.props.fetchResults}
-                />
+                {this.props.results ?
+                  (<SearchItemBar
+                    selectItem={this.selectItem}
+                    results={this.props.results}
+                    fetchResults={this.props.fetchResults}
+                  />)
+                : (
+                  <span></span>
+                )
+              }
               </div>
             </div>
           </div>
