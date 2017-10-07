@@ -157,7 +157,7 @@ class SearchItemBar extends React.Component {
     let numPerviews = suggestion.length;
     let itemId = suggestion[0].itemDto.id;
 
-    if (numPerviews > 3) {
+    if (numPerviews > 1) {
       return (
         <Link to={`/item/${itemId}`}>See all</Link>
       )
