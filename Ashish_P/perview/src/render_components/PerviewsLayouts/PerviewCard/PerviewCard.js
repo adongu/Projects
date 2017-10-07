@@ -7,7 +7,7 @@ import PerviewDetailModal from './PerviewDetailModal';
 import PerviewDeleteConfirmation from './PerviewDeleteConfirmation';
 import { Popover, OverlayTrigger } from 'react-bootstrap';
 
-const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, history, toRenderUserProfile }) => {
+const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, handleFriendClick, history, toRenderUserProfile }) => {
 
   const renderStars = (rating) => {
     let stars = [1, 2, 3, 4, 5];
@@ -18,16 +18,6 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
         </span>
       )
     })
-  }
-
-  const handleFriendClick = (friendId) => {
-    return (e) => {
-      if (currentUserId === friendId) {
-        history.replace({ pathname: `/myperviews` });
-      } else {
-        history.replace({ pathname: `/friend/${friendId}` });
-      }
-    }
   }
 
   const handleSaveClick = (perview) => {
