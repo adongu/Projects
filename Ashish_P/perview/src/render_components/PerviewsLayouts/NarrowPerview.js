@@ -5,6 +5,7 @@ import moment from 'moment';
 import PerviewCard from './PerviewCard/PerviewCard.js';
 
 const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, history, toRenderUserProfile }) => {
+
   const handleFriendClick = (friendId) => {
     return (e) => {
       if (currentUserId === friendId) {
@@ -59,9 +60,7 @@ const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPer
           </a>
         </div>
 
-        {/* <span className="narrowperviews__badges">
-          {renderFirstReviewBadge(perview)}
-        </span> */}
+
         <div className="narrowperviews__img">
           <Link to={`/item/${item.id}`}>
             <img className="narrowperviews__productimg-photo" src={item.data.imageUrls.large.url} alt="product"/>
