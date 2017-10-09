@@ -6,7 +6,7 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, categorie
 
   const pageSettings = {
     "/" : {
-      "title": "", "hasFilters": false
+      "title": "", "hasFilters": false, "hasCreateSolicit": true
     },
     "/myperviews": {
       "title": "", "hasFilters": true
@@ -27,6 +27,17 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, categorie
 
   const handleFilterChange = (e) => {
     filterPerviews(e.currentTarget.value);
+  }
+
+  const renderCreateSolicit = () => {
+    if (match && match.path && pageSettings[match.path].hasCreateSolicit) {
+      return (
+        <form action={(e) => (e) => e.preventDefault()}>
+          <textarea placeholder="What kind of items do you want your friends to perview? #chrismas presents #babyshower #wedding #videogames"/>
+          <button>Submit</button>
+        </form>
+      )
+    }
   }
 
   const renderUserHero = () => {
@@ -115,6 +126,7 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, categorie
     <div className="navbar__container">
       <div className="flexrow navbar__box">
         <div className="flexrow navbar__title">
+          {renderCreateSolicit()}
           {renderUserHero()}
           {(match && pageSettings[match.path]) ? pageSettings[match.path]["title"] : ""}
         </div>

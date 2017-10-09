@@ -103,12 +103,16 @@ class CreatePerviewModal extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     if(this.props.currentUser){
+      let submitPerviewObject = { 'data': null };
+
       let formData = new FormData();
       formData.append("itemId", this.state.itemId);
       formData.append("tags", this.state.tags);
       formData.append("rating", this.state.rating);
+
+      submitPerviewObject.formData = formData;
       // when submit fails prevent review lost
-      if(!this.props.createPerview(formData)) {
+      if(!this.props.createPerview(submitPerviewObject)) {
         this.setState({
           itemId: this.state.itemID,
           tags: this.state.tags,

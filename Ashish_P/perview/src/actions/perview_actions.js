@@ -84,9 +84,9 @@ export const clearErrors = () => ({
   type: CLEAR_ERRORS
 });
 
-export const createPerview = (formData) => dispatch => {
+export const createPerview = (submitPerviewObject) => dispatch => {
   dispatch(requestLoading());
-  return APIUtil.createPerview(formData)
+  return APIUtil.createPerview(submitPerviewObject)
     .then( response => {
       return dispatch(receivePerview(response.data))
     })
