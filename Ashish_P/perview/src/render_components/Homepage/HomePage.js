@@ -79,7 +79,9 @@ class HomePage extends React.Component {
   render() {
     return (
     <div className="homepage__container">
-      <NavBarContainer />
+      <NavBarContainer
+        createPerview = {this.props.createPerview}
+      />
 
       <div className="homepage__perviews">
         {this.renderComponents()}

@@ -1,8 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import "../../styles/stylesheets/navbar.css";
+import CreateSolicitForm from "./CreateSolicitForm.js";
 
-const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, categories, match, requestLoading }) => {
+const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, categories, match, requestLoading, createPerview }) => {
 
   const pageSettings = {
     "/" : {
@@ -32,10 +33,9 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, categorie
   const renderCreateSolicit = () => {
     if (match && match.path && pageSettings[match.path].hasCreateSolicit) {
       return (
-        <form action={(e) => (e) => e.preventDefault()}>
-          <textarea placeholder="What kind of items do you want your friends to perview? #chrismas presents #babyshower #wedding #videogames"/>
-          <button>Submit</button>
-        </form>
+        <CreateSolicitForm
+          createPerview = {createPerview}
+        />
       )
     }
   }
@@ -128,6 +128,7 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, categorie
         <div className="flexrow navbar__title">
           {renderCreateSolicit()}
           {renderUserHero()}
+
           {(match && pageSettings[match.path]) ? pageSettings[match.path]["title"] : ""}
         </div>
         {renderFilters()}

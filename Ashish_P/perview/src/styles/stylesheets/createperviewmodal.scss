@@ -216,6 +216,10 @@ $lines-to-show: 4;
     font-size: 16px;
   }
 
+  &review-input::placeholder {
+    color: #ccc;
+  }
+
   &review-submit {
     margin: auto;
     padding: 5px;
