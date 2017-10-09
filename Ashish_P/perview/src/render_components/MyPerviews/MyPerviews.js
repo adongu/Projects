@@ -6,6 +6,7 @@ import NavBarContainer from '../../containers/NavBarContainer.js';
 import NarrowPerview from "../PerviewsLayouts/NarrowPerview";
 
 class MyPerviews extends React.Component {
+
   constructor (props) {
     super(props);
 
@@ -64,8 +65,10 @@ class MyPerviews extends React.Component {
       <div className="myperview__container">
         <NavBarContainer
           currentUser = {this.props.currentUser}
+          currentUsersFriends = {this.props.currentUser.friends}
           categories = {this.state.categories }
           filterPerviews = {this.fetchFilteredPerviews}
+          history = {this.props.history}
         />
 
         <div className="myperview__perviews">

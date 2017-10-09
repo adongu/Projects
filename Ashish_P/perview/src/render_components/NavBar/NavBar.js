@@ -1,8 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import "../../styles/stylesheets/navbar.css";
+import { Popover, OverlayTrigger } from 'react-bootstrap';
 
-const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, categories, match, requestLoading }) => {
+const NavBar = ({ filterPerviews, isFetching, currentUser, currentUsersFriends, userFriend, history, categories, match, requestLoading }) => {
 
   const pageSettings = {
     "/" : {
@@ -28,6 +29,49 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, categorie
   const handleFilterChange = (e) => {
     filterPerviews(e.currentTarget.value);
   }
+
+  // This method was copied from PerviewCard since it already does this.
+  // I don't know how/where to put this method so both classes can access
+  // globally. ABP. 10-09-2017
+  const handleFriendClick = (friendId) => {
+    return (e) => {
+      if (currentUser.id === friendId) {
+        history.replace({ pathname: `/myperviews` });
+      } else {
+        history.replace({ pathname: `/friend/${friendId}` });
+      }
+    }
+  }
+
+  const popoverClickFriendClose = currentUsersFriends ? (
+    <Popover
+      id="popover-trigger-click-friend-close"
+      title="Friends"
+      className="myperviews__popover"
+    >
+      <div>
+        {currentUsersFriends.map((friend) => {
+          return (
+            <div key={`myperviews-${currentUser.id}-${friend.id}`} className="flexrow myperviews__popover-user">
+              <div className="myperviews__popover-user-icon">
+                <img
+                  onClick={handleFriendClick(friend.id)}
+                  className="myperviews__popover-user-img" src={friend.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
+              </div>
+              <a onClick={handleFriendClick(friend.id)} className="myperviews__popover-username">
+                {friend.firstName}
+              </a>
+            </div>
+          )
+        })}
+
+        <div>
+        </div>
+      </div>
+    </Popover>
+  ) : (
+    <div></div>
+  );
 
   const renderUserHero = () => {
     if (currentUser || userFriend) {
@@ -60,12 +104,18 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, categorie
                     perviews
                   </span>
                 </span>
-                <span className="navbar__dashboard-numfriends">
-                  {user.numFriends}
-                  <span className="navbar__dashboard-text">
-                    friends
+
+                <div className="perviewcard__numlikers-box">
+                <OverlayTrigger trigger="click" placement="top" rootClose overlay={popoverClickFriendClose} className="myperviews__popovertrigger">
+                  <span className="navbar__dashboard-numfriends">
+                    {user.numFriends}
+                    <span className="navbar__dashboard-text">
+                      friends
+                    </span>
                   </span>
-                </span>
+                </OverlayTrigger>
+                </div>
+
                 <span className="navbar__dashboard-numfirsts">
                   {user.numFirsts}
                   <span className="navbar__dashboard-text">
