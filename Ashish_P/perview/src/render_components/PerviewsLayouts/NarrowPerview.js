@@ -86,23 +86,35 @@ const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPer
   }
 
 
-  const renderSolicitTag = (solicitId, solicitUser) => {
+  const renderSolicit = (solicitId, solicitUser) => {
 
+  }
+
+  const renderPerviewOrSolicit = (perview) => {
+    if (perview.isSolicit) {
+
+    } else {
+      const perviewObject = {
+        item:        perview.itemDto,
+        perviewUser: perview.userDto
+      };
+
+      return (
+        <div className="flexcolumn">
+          {renderPerview(perview, perviewObject)}
+          {renderPeriviewCard(perview, perviewObject)}
+        </div>
+      )
+    }
   }
 
   const renderFeed = () => {
 
     if (perviews) {
       return perviews.map((perview, i) => {
-        const perviewObject = {
-          item:        perview.itemDto,
-          perviewUser: perview.userDto
-        };
-
         return (
           <div key={`perviewindex__${i}`} className="flexcolumn narrowperviews__box">
-            {renderPerview(perview, perviewObject)}
-            {renderPeriviewCard(perview, perviewObject)}
+            {renderPerviewOrSolicit(perview)}
           </div>
         )
       });

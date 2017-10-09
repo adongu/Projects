@@ -16,6 +16,18 @@ export const createPerview = (formData) => {
   return axios.post('/api/add', formData, config)
 };
 
+export const createSolicit = (formData) => {
+  return axios({
+    method: 'POST',
+    url: '/api/add',
+    data: formData,
+    params: {
+      isSolicit: true
+    },
+    config
+  })
+};
+
 export const editPerview = (formData) => {
   return axios.post('/api/edit', formData, config)
 }
