@@ -57,8 +57,3 @@ class UserNav extends React.PureComponent {
   }
 }
 export default withRouter(UserNav);
-
-
-
-//
-//

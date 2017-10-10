@@ -158,11 +158,20 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
     }
   }
 
+  const renderPerviewContentView = () => {
+
+  }
+
+  const renderSolicitContentView = () => {
+
+  }
+
   // var user = perview.userDto;
   return (
     <div className="flexcolumn perviewcard__perview-rightbox">
       <div className="perviewcard__header">
         <span className="perviewcard__badges">
+          {perview.perviewSolicitId ? perview.perviewSolicitId : ""}
         </span>
         <span className="perviewcard__review-time">
           {moment(perview.ts).format("MMM DD, Y")}

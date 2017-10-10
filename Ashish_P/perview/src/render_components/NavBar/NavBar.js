@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import "../../styles/stylesheets/navbar.css";
 import CreateSolicitForm from "./CreateSolicitForm.js";
 
-const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, categories, match, requestLoading, createPerview }) => {
+const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, categories, match, requestLoading, createPerview, history }) => {
 
   const pageSettings = {
     "/" : {
@@ -34,7 +34,9 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, userFriend, categorie
     if (match && match.path && pageSettings[match.path].hasCreateSolicit) {
       return (
         <CreateSolicitForm
-          createPerview = {createPerview}
+          currentUser={currentUser}
+          createPerview={createPerview}
+          history={history}
         />
       )
     }

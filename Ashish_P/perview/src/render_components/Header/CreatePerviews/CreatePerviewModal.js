@@ -10,6 +10,8 @@ class CreatePerviewModal extends React.Component {
     this.state = {
       show: false,
       chosen: false,
+      isSolicit: false,
+      solicitPerviewId: null,
       keywords: '',
       imgUrl: '',
       name: '',

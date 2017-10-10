@@ -85,6 +85,7 @@ export const clearErrors = () => ({
 });
 
 export const createPerview = (submitPerviewObject) => dispatch => {
+  debugger
   dispatch(requestLoading());
   return APIUtil.createPerview(submitPerviewObject)
     .then( response => {
@@ -132,6 +133,7 @@ export const fetchAllPerviews = (categoryId) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.fetchAllPerviews(categoryId)
     .then( response => {
+      console.log(response.data);
       return dispatch(receiveAllPerviews(response.data))
     })
     .catch( err => {
