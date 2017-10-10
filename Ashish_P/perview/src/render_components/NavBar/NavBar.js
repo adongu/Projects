@@ -5,7 +5,7 @@ import { Popover, OverlayTrigger } from 'react-bootstrap';
 import CreateSolicitForm from "./CreateSolicitForm.js";
 
 
-const NavBar = ({ filterPerviews, isFetching, currentUser, currentUsersFriends, userFriend, history, categories, match, requestLoading }) => {
+const NavBar = ({ createPerview, filterPerviews, isFetching, currentUser, currentUsersFriends, userFriend, history, categories, match, toShowUserDashBoard, requestLoading }) => {
 
   const pageSettings = {
     "/" : {
@@ -105,14 +105,16 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, currentUsersFriends, 
     if (match && pageSettings[match.path].hasCreateSolicit) {
       return (
         <CreateSolicitForm
-
+          currentUser={currentUser}
+          createPerview={createPerview}
+          history={history}
         />
       )
     }
   }
 
   const renderUserHero = () => {
-    if (currentUser || userFriend) {
+    if (toShowUserDashBoard && (currentUser || userFriend)) {
       let user;
 
       if (currentUser) {

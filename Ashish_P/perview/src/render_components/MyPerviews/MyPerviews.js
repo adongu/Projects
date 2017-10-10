@@ -16,6 +16,7 @@ class MyPerviews extends React.Component {
       categoryId: "",
       categories: [],
       showConfirmation: false,
+      toShowUserDashBoard: true,
     }
 
     this.fetchFilteredPerviews = this.fetchFilteredPerviews.bind(this);
@@ -24,7 +25,9 @@ class MyPerviews extends React.Component {
   componentWillMount () {
     this.props.fetchMyPerviews()
     .then(() => {
-      this.setState({ categories: this.props.categories });
+      this.setState({
+        categories: this.props.categories
+     });
     });
   }
 
@@ -64,6 +67,7 @@ class MyPerviews extends React.Component {
     return (
       <div className="myperview__container">
         <NavBarContainer
+          toShowUserDashBoard={this.state.toShowUserDashBoard}
           currentUser = {this.props.currentUser}
           currentUsersFriends = {this.props.currentUser.friends}
           categories = {this.state.categories }

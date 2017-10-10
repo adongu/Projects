@@ -5,6 +5,7 @@ class CreateSolicitForm extends React.Component {
     super(props)
 
     this.state = {
+      itemId: 77,
       rating: 0,
       solicitTags: ''
     }
@@ -23,21 +24,21 @@ class CreateSolicitForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger
 
+    debugger
     if (this.props.currentUser) {
       let formData = new FormData();
-      let submitData = {
-        data: null,
-        isSolicit: true
+      let submitPerviewObject = {
+        'isSolicit': true
       };
 
+      formData.append("itemId", this.state.itemId);
       formData.append("rating", this.state.rating);
       formData.append("tags", this.state.solicitTags);
 
-      submitData.data = formData;
+      submitPerviewObject.formData = formData;
 
-      if (this.props.createPerview(submitData)) {
+      if (this.props.createPerview(submitPerviewObject)) {
         this.setState({
           rating: 0,
           solicitTags: ''
