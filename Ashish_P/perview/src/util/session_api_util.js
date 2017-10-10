@@ -57,7 +57,11 @@ export const logIn = () => {
 }
 
 export const fetchUser = () => {
-  return axios('/api/user')
+  return axios('/api/user', {
+    params: {
+      withFriends: true
+    }
+  })
 }
 
 export const fetchToken = () => {
