@@ -145,7 +145,16 @@ const NavBar = ({ createPerview, filterPerviews, isFetching, currentUser, curren
                   </span>
                 </span>
 
-                {renderNumFriends()}
+                <div className="perviewcard__numlikers-box">
+                  <OverlayTrigger trigger="click" placement="top" rootClose overlay={popoverClickFriendClose} className="myperviews__popovertrigger">
+                    <span className="navbar__dashboard-numfriends">
+                      {user.numFriends}
+                      <span className="navbar__dashboard-text">
+                        friends
+                      </span>
+                    </span>
+                  </OverlayTrigger>
+                </div>
 
                 <span className="navbar__dashboard-numfirsts">
                   {user.numFirsts}
