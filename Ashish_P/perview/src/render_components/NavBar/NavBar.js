@@ -45,20 +45,20 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, currentUsersFriends, 
 
   const popoverClickFriendClose = currentUsersFriends ? (
     <Popover
-      id="popover-trigger-click-friend-close"
+      id="popover-trigger-click-root-close"
       title="Friends"
-      className="myperviews__popover"
+      className="perviewcard__popover"
     >
       <div>
         {currentUsersFriends.map((friend) => {
           return (
-            <div key={`myperviews-${currentUser.id}-${friend.id}`} className="flexrow myperviews__popover-user">
-              <div className="myperviews__popover-user-icon">
+            <div key={`myperviews-${currentUser.id}-${friend.id}`} className="flexrow perviewcard__popover-user">
+              <div className="perviewcard__popover-user-icon">
                 <img
                   onClick={handleFriendClick(friend.id)}
-                  className="myperviews__popover-user-img" src={friend.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
+                  className="perviewcard__popover-user-img" src={friend.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
               </div>
-              <a onClick={handleFriendClick(friend.id)} className="myperviews__popover-username">
+              <a onClick={handleFriendClick(friend.id)} className="perviewcard__popover-username">
                 {friend.firstName}
               </a>
             </div>
@@ -106,7 +106,7 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, currentUsersFriends, 
                 </span>
 
                 <div className="perviewcard__numlikers-box">
-                <OverlayTrigger trigger="click" placement="top" rootClose overlay={popoverClickFriendClose} className="myperviews__popovertrigger">
+                <OverlayTrigger trigger="click" placement="bottom" rootClose overlay={popoverClickFriendClose} className="perviewcard__popovertrigger">
                   <span className="navbar__dashboard-numfriends">
                     {user.numFriends}
                     <span className="navbar__dashboard-text">
