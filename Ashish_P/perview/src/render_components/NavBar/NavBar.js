@@ -73,13 +73,39 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, currentUsersFriends, 
     <div></div>
   );
 
+  const renderNumFriends = () => {
+    if (currentUser) {
+      return (
+        <div className="perviewcard__numlikers-box">
+        <OverlayTrigger trigger="click" placement="bottom" rootClose overlay={popoverClickFriendClose} className="perviewcard__popovertrigger">
+          <span className="navbar__dashboard-numfriends">
+            {currentUser.numFriends}
+            <span className="navbar__dashboard-text">
+              friends
+            </span>
+          </span>
+        </OverlayTrigger>
+        </div>
+      )
+    } else if (userFriend) {
+      return (
+        <span className="navbar__dashboard-numfriends">
+          {userFriend.numFriends}
+          <span className="navbar__dashboard-text">
+            friends
+          </span>
+        </span>
+      )
+    }
+  }
+
   const renderUserHero = () => {
     if (currentUser || userFriend) {
       let user;
 
       if (currentUser) {
         user = currentUser;
-      } else if(userFriend) {
+      } else if (userFriend) {
         user = userFriend;
       };
 
@@ -105,16 +131,7 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, currentUsersFriends, 
                   </span>
                 </span>
 
-                <div className="perviewcard__numlikers-box">
-                <OverlayTrigger trigger="click" placement="bottom" rootClose overlay={popoverClickFriendClose} className="perviewcard__popovertrigger">
-                  <span className="navbar__dashboard-numfriends">
-                    {user.numFriends}
-                    <span className="navbar__dashboard-text">
-                      friends
-                    </span>
-                  </span>
-                </OverlayTrigger>
-                </div>
+                {renderNumFriends()}
 
                 <span className="navbar__dashboard-numfirsts">
                   {user.numFirsts}
