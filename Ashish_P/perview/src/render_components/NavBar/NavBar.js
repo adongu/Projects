@@ -101,6 +101,16 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, currentUsersFriends, 
     }
   }
 
+  const renderCreateSolicit = () => {
+    if (match && pageSettings[match.path].hasCreateSolicit) {
+      return (
+        <CreateSolicitForm
+
+        />
+      )
+    }
+  }
+
   const renderUserHero = () => {
     if (currentUser || userFriend) {
       let user;
