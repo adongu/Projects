@@ -2,10 +2,10 @@ import "../../../styles/stylesheets/PerviewLayouts/PerviewCard/perviewcard.css"
 import { Link, withRouter } from 'react-router-dom';
 import moment from 'moment';
 import React from 'react';
+import { Popover, OverlayTrigger } from 'react-bootstrap';
 import PerviewEditModal from './PerviewEditModal';
 import PerviewDetailModal from './PerviewDetailModal';
 import PerviewDeleteConfirmation from './PerviewDeleteConfirmation';
-import { Popover, OverlayTrigger } from 'react-bootstrap';
 
 const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, handleFriendClick, history, toRenderUserProfile }) => {
 
