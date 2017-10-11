@@ -17,6 +17,7 @@ var config = {
 // };
 
 export const createPerview = ({formData, isSolicit = false, solicitPerviewId = null}) => {
+  console.log('CREATEPERVIEW', solicitPerviewId);
   return axios({
     method: 'POST',
     url: '/api/add',

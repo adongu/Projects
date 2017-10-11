@@ -6,6 +6,7 @@ import { Popover, OverlayTrigger } from 'react-bootstrap';
 import PerviewEditModal from './PerviewEditModal';
 import PerviewDetailModal from './PerviewDetailModal';
 import PerviewDeleteConfirmation from './PerviewDeleteConfirmation';
+import CreatePerviewModalContainer from '../../../containers/CreatePerviewModalContainer';
 
 const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, handleFriendClick, history, toRenderUserProfile }) => {
 
@@ -13,7 +14,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
     let stars = [1, 2, 3, 4, 5];
     return stars.map((ele)=>{
       return (
-        <span key={ele} className={ele <= rating ? 'active_star' : 'no_star'} >
+        <span key={ele} classNadeeme={ele <= rating ? 'active_star' : 'no_star'} >
           <i className="fa fa-star" aria-hidden="true"></i>
         </span>
       )
@@ -158,16 +159,15 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
     }
   }
 
-  const renderPerviewContentView = () => {
-
+  const renderPerviewOrSolicitContentView = () => {
+    if (perview.solicit === true) {
+      return renderSolicitContentView;
+    } else {
+      return renderPerviewContentView;
+    }
   }
 
-  const renderSolicitContentView = () => {
-
-  }
-
-  // var user = perview.userDto;
-  return (
+  const renderPerviewContentView = (
     <div className="flexcolumn perviewcard__perview-rightbox">
       <div className="perviewcard__header">
         <span className="perviewcard__badges">
@@ -195,34 +195,50 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
         </p>
         {renderModalLink(perview)}
       </div>
+    </div>
+  )
 
-      <div className="flexrow perviewcard__review-social-box">
+  const renderSolicitContentView = (
+    <CreatePerviewModalContainer
+      perviewSolicitId={perview.id}
+      history={history}
+    />
+  )
 
-        <div className="flexrow perviewcard__review-social">
-          <span
-            onClick={handleSaveClick(perview)}
-            className={`perviewcard__review-social-btn ${perview.bookmarkedByLoggedInUser ? "active" : ""}`}
-          >
-            <i className={`fa fa-bookmark perviewcard__review-icon-bookmark ${perview.bookmarkedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
-            <span className="perviewcard__review-social-text">
-              {perview.bookmarkedByLoggedInUser ? 'Added' : 'Add to Wishlist'}
-            </span>
-          </span>
+  const renderSocialBar = (
+    <div className="flexrow perviewcard__review-social">
+      <span
+        onClick={handleSaveClick(perview)}
+        className={`perviewcard__review-social-btn ${perview.bookmarkedByLoggedInUser ? "active" : ""}`}
+      >
+        <i className={`fa fa-bookmark perviewcard__review-icon-bookmark ${perview.bookmarkedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
+        <span className="perviewcard__review-social-text">
+          {perview.bookmarkedByLoggedInUser ? 'Added' : 'Add to Wishlist'}
+        </span>
+      </span>
 
-          <span
-            onClick={handleLikeClick(perview)}
-            className={`perviewcard__review-social-btn ${perview.likedByLoggedInUser ? "active" : ""}`}
-          >
-            <i className={`fa fa-heart perviewcard__review-icon-like ${perview.likedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
-            <span className="perviewcard__review-social-text">
-              {perview.likedByLoggedInUser ? 'Liked' : 'Like'}
-            </span>
-          </span>
-          <div className="perviewcard__numlikers-box">
-            {renderNumLikes()}
-          </div>
-        </div>
+      <span
+        onClick={handleLikeClick(perview)}
+        className={`perviewcard__review-social-btn ${perview.likedByLoggedInUser ? "active" : ""}`}
+      >
+        <i className={`fa fa-heart perviewcard__review-icon-like ${perview.likedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
+        <span className="perviewcard__review-social-text">
+          {perview.likedByLoggedInUser ? 'Liked' : 'Like'}
+        </span>
+      </span>
+      <div className="perviewcard__numlikers-box">
+        {renderNumLikes()}
       </div>
+    </div>
+  )
+
+
+
+  // var user = perview.userDto;
+  return (
+      <div className="flexrow perviewcard__review-social-box">
+        {renderPerviewOrSolicitContentView()}
+        {renderSocialBar}
     </div>
   )
 }

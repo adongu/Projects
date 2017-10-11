@@ -11,7 +11,7 @@ class CreatePerviewModal extends React.Component {
       show: false,
       chosen: false,
       isSolicit: false,
-      solicitPerviewId: null,
+      perviewSolicitId: null,
       keywords: '',
       imgUrl: '',
       name: '',
@@ -122,6 +122,9 @@ class CreatePerviewModal extends React.Component {
       formData.append("rating", this.state.rating);
 
       submitPerviewObject.formData = formData;
+      submitPerviewObject.solicitPerviewId = this.props.perviewSolicitId;
+      submitPerviewObject.isSolicit = this.state.isSolicit;
+      console.log(submitPerviewObject);
       // when submit fails prevent review lost
       if(!this.props.createPerview(submitPerviewObject)) {
         this.setState({
