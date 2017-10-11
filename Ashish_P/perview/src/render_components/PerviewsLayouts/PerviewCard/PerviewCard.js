@@ -161,6 +161,8 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
 
   const renderPerviewOrSolicitContentView = () => {
     if (perview.solicit) {
+      console.log('perview.id', perview.id);
+      console.log('perview.solicit', perview.solicit);
       return renderSolicitContentView;
     } else {
       return renderPerviewContentView;

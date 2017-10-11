@@ -85,7 +85,6 @@ export const clearErrors = () => ({
 });
 
 export const createPerview = (submitPerviewObject) => dispatch => {
-  debugger
   dispatch(requestLoading());
   return APIUtil.createPerview(submitPerviewObject)
     .then( response => {
