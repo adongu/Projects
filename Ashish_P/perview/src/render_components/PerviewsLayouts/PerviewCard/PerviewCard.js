@@ -14,7 +14,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
     let stars = [1, 2, 3, 4, 5];
     return stars.map((ele)=>{
       return (
-        <span key={ele} classNadeeme={ele <= rating ? 'active_star' : 'no_star'} >
+        <span key={ele} className={ele <= rating ? 'active_star' : 'no_star'} >
           <i className="fa fa-star" aria-hidden="true"></i>
         </span>
       )
@@ -160,11 +160,11 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
   }
 
   const renderPerviewOrSolicitContentView = () => {
-    if (perview.solicit === true) {
+    if (perview.solicit) {
       return renderSolicitContentView;
     } else {
       return renderPerviewContentView;
-    }
+    // }
   }
 
   const renderPerviewContentView = (
