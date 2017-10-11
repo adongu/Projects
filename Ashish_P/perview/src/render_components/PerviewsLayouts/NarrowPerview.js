@@ -63,7 +63,7 @@ const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPer
 
         <div className="narrowperviews__img">
           <Link to={`/item/${item.id}`}>
-            {/* <img className="narrowperviews__productimg-photo" src={item.data.imageUrls.large.url} alt="product"/> */}
+            <img className="narrowperviews__productimg-photo" src={item.data.imageUrls.large.url} alt="product"/>
           </Link>
         </div>
 

@@ -14,7 +14,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
     let stars = [1, 2, 3, 4, 5];
     return stars.map((ele)=>{
       return (
-        <span key={ele} classNaeme={ele <= rating ? 'active_star' : 'no_star'} >
+        <span key={ele} className={ele <= rating ? 'active_star' : 'no_star'} >
           <i className="fa fa-star" aria-hidden="true"></i>
         </span>
       )
@@ -143,6 +143,25 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
     }
   }
 
+  const renderPerivewCardHeaderBar = (
+      <div>
+        <div className="perviewcard__header">
+          <span className="perviewcard__badges">
+            {perview.perviewSolicitId ? perview.perviewSolicitId : ""}
+          </span>
+          <span className="perviewcard__review-time">
+            {moment(perview.ts).format("MMM DD, Y")}
+          </span>
+        </div>
+
+        <div className="perviewcard__perview-options">
+          {renderUserProfile()}
+
+          {renderPerviewEdit()}
+        </div>
+      </div>
+  );
+
   const renderModalLink = (perview) => {
     if (perview.tags && (perview.tags.length > 180) ) {
       return (
@@ -161,8 +180,6 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
 
   const renderPerviewOrSolicitContentView = () => {
     if (perview.solicit) {
-      console.log('perview.id', perview.id);
-      console.log('perview.solicit', perview.solicit);
       return renderSolicitContentView;
     } else {
       return renderPerviewContentView;
@@ -171,21 +188,6 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
 
   const renderPerviewContentView = (
     <div className="flexcolumn perviewcard__perview-rightbox">
-      <div className="perviewcard__header">
-        <span className="perviewcard__badges">
-          {perview.perviewSolicitId ? perview.perviewSolicitId : ""}
-        </span>
-        <span className="perviewcard__review-time">
-          {moment(perview.ts).format("MMM DD, Y")}
-        </span>
-      </div>
-
-      <div className="perviewcard__perview-options">
-        {renderUserProfile()}
-
-        {renderPerviewEdit()}
-      </div>
-
       <div className="perviewcard__review-stars">
         {renderStars(perview.rating)}
       </div>
@@ -239,6 +241,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
   // var user = perview.userDto;
   return (
       <div className="flexrow perviewcard__review-social-box">
+        {renderPerivewCardHeaderBar}
         {renderPerviewOrSolicitContentView()}
         {renderSocialBar}
     </div>

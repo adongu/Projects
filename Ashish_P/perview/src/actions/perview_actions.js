@@ -132,7 +132,6 @@ export const fetchAllPerviews = (categoryId) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.fetchAllPerviews(categoryId)
     .then( response => {
-      console.log(response.data);
       return dispatch(receiveAllPerviews(response.data))
     })
     .catch( err => {
