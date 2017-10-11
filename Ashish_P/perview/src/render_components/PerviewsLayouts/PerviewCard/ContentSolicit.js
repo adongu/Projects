@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import moment from 'moment';
 import CreatePerviewModal from
 
-const ContentSolicit = ({}) => {
+const ContentSolicit = ({ currentUser, results, fetchUser, fetchResults, createItem, createPerview, selectedItem, history }) => {
 
   const renderCreateButton = () => {
     return (

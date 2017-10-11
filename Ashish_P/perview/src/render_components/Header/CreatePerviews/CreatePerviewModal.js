@@ -42,6 +42,14 @@ class CreatePerviewModal extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.itemResults !== this.props.itemResults) {
+      this.setState({
+        itemResults: nextProps.itemResults
+      })
+    }
+  }
+
   showModal() {
     this.setState({show: true});
   }
@@ -49,6 +57,7 @@ class CreatePerviewModal extends React.Component {
   hideModal() {
     this.setState({
       show: false,
+      itemResults: [],
       chosen: false,
       keywords: '',
       imgUrl: '',
@@ -208,7 +217,7 @@ class CreatePerviewModal extends React.Component {
               <div className="createperview__search-box">
                 <SearchItemBar
                   selectItem={this.selectItem}
-                  results={this.props.results}
+                  results={this.props.itemResults}
                   fetchResults={this.props.fetchResults}
                 />
               </div>

@@ -4,7 +4,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import SearchPerviewBar from './SearchPerviewBar';
 import UserNavContainer from '../../containers/UserNavContainer';
-import CreatePerviewModal from "./CreatePerviews/CreatePerviewModal";
+import CreatePerviewModalContainer from '../../containers/CreatePerviewModalContainer';
 
 class Header extends React.Component {
   constructor(props) {
@@ -100,14 +100,7 @@ class Header extends React.Component {
 
   renderCreateButton () {
     return (
-      <CreatePerviewModal
-        currentUser={this.props.currentUser}
-        results={this.props.itemResults}
-        fetchUser={this.props.fetchUser}
-        fetchResults={this.props.fetchItemResults}
-        createItem={this.props.createItem}
-        createPerview={this.props.createPerview}
-        selectedItem={this.props.selectedItem}
+      <CreatePerviewModalContainer
         history={this.props.history}
       />
     )
