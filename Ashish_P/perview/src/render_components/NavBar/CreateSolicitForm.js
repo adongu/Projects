@@ -25,7 +25,6 @@ class CreateSolicitForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    debugger
     if (this.props.currentUser) {
       let formData = new FormData();
       let submitPerviewObject = {
