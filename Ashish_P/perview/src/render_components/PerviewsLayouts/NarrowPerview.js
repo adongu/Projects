@@ -90,14 +90,19 @@ const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPer
   }
 
   const renderPerviewOrSolicit = (perview) => {
-    if (perview.isSolicit) {
+    const perviewObject = {
+      item:        perview.itemDto,
+      perviewUser: perview.userDto
+    };
 
+    if (perview.solicit) {
+      return (
+        <div className="flexcolumn">
+          <span>{perview.tags}</span>
+          {renderPeriviewCard(perview, perviewObject)}
+        </div>
+      )
     } else {
-      const perviewObject = {
-        item:        perview.itemDto,
-        perviewUser: perview.userDto
-      };
-
       return (
         <div className="flexcolumn">
           {renderPerview(perview, perviewObject)}
