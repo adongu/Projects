@@ -168,9 +168,11 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
           </span>
         </div>
 
-        <div className="perviewcard__perview-options">
-          {renderUserProfile()}
-          {renderFirstReviewBadge()}
+        <div className="flexrow perviewcard__perview-options">
+          <div className="flexcolumn divwrapper-fullwidth">
+            {renderUserProfile()}
+            {renderFirstReviewBadge()}
+          </div>
           {renderPerviewEdit()}
         </div>
       </div>
