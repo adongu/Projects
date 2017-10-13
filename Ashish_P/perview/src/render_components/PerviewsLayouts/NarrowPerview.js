@@ -73,14 +73,14 @@ const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPer
 
     if (perview.solicit) {
       return (
-        <div className="flexcolumn">
+        <div className="flexcolumn narrowperviews__content">
           <span>{perview.tags}</span>
           {renderPeriviewCard(perview, perviewObject)}
         </div>
       )
     } else {
       return (
-        <div className="flexcolumn">
+        <div className="flexcolumn narrowperviews__content">
           {renderPerview(perview, perviewObject)}
           {renderPeriviewCard(perview, perviewObject)}
         </div>

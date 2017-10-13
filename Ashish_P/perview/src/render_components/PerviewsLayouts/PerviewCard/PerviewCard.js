@@ -208,8 +208,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
 
       <div className="perviewcard__review-tags">
         <p className="perviewcard__review-text">
-          {perview.tags.substr(0, 180)}
-
+          {perview.tags ? perview.tags.substr(0, 180) : ""}
         </p>
         {renderModalLink(perview)}
       </div>
