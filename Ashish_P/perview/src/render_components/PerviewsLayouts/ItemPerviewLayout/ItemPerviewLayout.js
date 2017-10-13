@@ -59,7 +59,7 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmar
 
             <div className="flexcolumn itemperview__iteminfobox">
               <div className="itemperview__itemname">{item.data.title}</div>
-              <div className="itemperview__itemprice">{item.data.lowestNewPrice.formattedAmount}</div>
+              <div className="itemperview__itemprice">{item.data.listPrice.formattedAmount}</div>
               <div className="itemperview__itembuy">
                 <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">Buy on Amazon</a>
               </div>

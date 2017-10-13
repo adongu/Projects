@@ -16,17 +16,6 @@ const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPer
     }
   }
 
-  const renderFirstReviewBadge = (perview) => {
-    if (perview.firstToPerviewItem) {
-      return (
-        <div className="narrowperviews__badge-container">
-          <img className="narrowperviews__badge-first"
-          src="https://png.icons8.com/medal-first-place/dusk/64"
-          title="First to Perview"/>
-        </div>
-      )
-    }
-  }
   const renderPeriviewCard = (perview, {item, perviewUser}) => (
     <div className="flexcolumn narrowperviews__reviewbox">
       <PerviewCard
@@ -51,16 +40,6 @@ const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPer
   const renderPerview = (perview, { item, perviewUser }) => {
     return (
       <div className="flexcolumn narrowperviews__productbox">
-        <div className="flexrow perviewcard__review-user">
-          <div className="perviewcard__review-user-icon" onClick={handleFriendClick(perviewUser.id)}>
-            <img className="perviewcard__review-user-img" src={perviewUser.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
-          </div>
-          <a className="perviewcard__review-username" onClick={handleFriendClick(perviewUser.id)}>
-            <div>{perviewUser.fullName}</div>
-          </a>
-        </div>
-
-
         <div className="narrowperviews__img">
           <Link to={`/item/${item.id}`}>
             <img className="narrowperviews__productimg-photo" src={item.data.imageUrls.large.url} alt="product"/>
@@ -71,11 +50,9 @@ const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPer
           {item.data.title}
         </Link>
 
-        <div className="narrowperviews__price">
-          {item.data.lowestNewPrice.formattedAmount}
-        </div>
-
         <div className="flexrow narrowperviews__buybox">
+          {item.data.listPrice.formattedAmount}
+
           <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">
             Buy on Amazon
           </a>
@@ -83,7 +60,6 @@ const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPer
       </div>
     )
   }
-
 
   const renderSolicit = (solicitId, solicitUser) => {
 

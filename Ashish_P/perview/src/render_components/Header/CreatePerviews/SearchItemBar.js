@@ -118,7 +118,7 @@ class SearchItemBar extends React.Component {
   // Use your imagination to render suggestions.
   renderSuggestion(suggestion){
     let imgUrl = suggestion.imageUrls.large.url;
-    let price = suggestion.lowestNewPrice.formattedAmount;
+    let price = suggestion.listPrice.formattedAmount;
 
     return (
       <div className="flexrow autosuggest__productcontainer">

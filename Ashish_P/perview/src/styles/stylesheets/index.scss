@@ -1,11 +1,13 @@
 $font-size: 15px;
 
 .flexrow {
+  width: 100%;
   display: flex;
   flex-direction: row;
 }
 
 .flexcolumn {
+  width: 100%;
   display: flex;
   flex-direction: column;
 }

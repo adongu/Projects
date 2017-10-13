@@ -45,7 +45,7 @@ class PerviewEditModal extends React.Component {
       this.setState({
         imgUrl: item.data.imageUrls.large.url,
         name: item.data.title,
-        price: item.data.lowestNewPrice.formattedAmount,
+        price: item.data.listPrice.formattedAmount,
         itemId: item.id
       })
     }
@@ -58,7 +58,7 @@ class PerviewEditModal extends React.Component {
       this.setState({
         imgUrl: item.data.imageUrls.large.url,
         name: item.data.title,
-        price: item.data.lowestNewPrice.formattedAmount,
+        price: item.data.listPrice.formattedAmount,
         itemId: item.id
       })
     }
@@ -112,7 +112,7 @@ class PerviewEditModal extends React.Component {
       this.setState({
         imgUrl: item.data.imageUrls.large.url,
         name: item.data.title,
-        price: item.data.lowestNewPrice.formattedAmount,
+        price: item.data.listPrice.formattedAmount,
         itemId: item.id
       })
     })

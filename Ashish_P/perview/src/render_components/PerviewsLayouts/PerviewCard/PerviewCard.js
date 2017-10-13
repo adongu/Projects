@@ -58,6 +58,20 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
     }
   }
 
+  const renderFirstReviewBadge = () => {
+    if (perview.firstToPerviewItem) {
+      return (
+        <div className="flexrow narrowperviews__badge-container">
+          <img className="narrowperviews__badge-first"
+          src="https://png.icons8.com/medal-first-place/dusk/64"
+          title="First to Perview"/>
+
+          <span>First to Perview</span>
+        </div>
+      )
+    }
+  }
+
   const popoverClickRootClose = likers ? (
     <Popover
       id="popover-trigger-click-root-close"
@@ -156,7 +170,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
 
         <div className="perviewcard__perview-options">
           {renderUserProfile()}
-
+          {renderFirstReviewBadge()}
           {renderPerviewEdit()}
         </div>
       </div>
@@ -235,12 +249,9 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
       </div>
     </div>
   )
-
-
-
   // var user = perview.userDto;
   return (
-      <div className="flexrow perviewcard__review-social-box">
+      <div className="flexcolumn perviewcard__review-social-box">
         {renderPerivewCardHeaderBar}
         {renderPerviewOrSolicitContentView()}
         {renderSocialBar}
