@@ -9,8 +9,9 @@ $font-size: 15px;
   display: flex;
   flex-direction: column;
 }
-
-.root {
+// standard react div wrapper class
+.divwrapper-fullwidth {
+  width: 100%;
 }
 
 .btn-default:active,

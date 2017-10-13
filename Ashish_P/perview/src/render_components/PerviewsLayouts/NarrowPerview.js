@@ -61,28 +61,44 @@ const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPer
     )
   }
 
-  const renderSolicit = (solicitId, solicitUser) => {
+  const renderUserProfile = (perview) => {
+    let user = perview.userDto;
 
+    return (
+      <div className="flexcolumn narrowperview__solicit-user">
+        {moment(perview.ts).format("MMM DD, Y")}
+
+        <div className="flexrow perviewcard__popover-user">
+          <div className="perviewcard__popover-user-icon">
+            <img
+              onClick={() => handleFriendClick(user.id)}
+              className="perviewcard__popover-user-img" src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
+          </div>
+
+          <a onClick={() => handleFriendClick(user.id)} className="perviewcard__popover-username">
+            {user.firstName}
+          </a>
+        </div>
+
+        <p>
+          Is looking for suggestions for
+        </p>
+      </div>
+    )
   }
 
-  const renderPerviewOrSolicit = (perview) => {
-    const perviewObject = {
-      item:        perview.itemDto,
-      perviewUser: perview.userDto
-    };
-
+  const renderPerviewOrSolicit = (perview, perviewObject) => {
     if (perview.solicit) {
       return (
         <div className="flexcolumn narrowperviews__content">
+          {renderUserProfile(perview)}
           <span>{perview.tags}</span>
-          {renderPeriviewCard(perview, perviewObject)}
         </div>
       )
     } else {
       return (
         <div className="flexcolumn narrowperviews__content">
           {renderPerview(perview, perviewObject)}
-          {renderPeriviewCard(perview, perviewObject)}
         </div>
       )
     }
@@ -92,9 +108,21 @@ const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPer
 
     if (perviews) {
       return perviews.map((perview, i) => {
+        const perviewObject = {
+          item:        perview.itemDto,
+          perviewUser: perview.userDto
+        };
+
         return (
-          <div key={`perviewindex__${i}`} className="flexcolumn narrowperviews__box">
-            {renderPerviewOrSolicit(perview)}
+          <div
+            key={`perviewindex__${i}`}
+            className="flexcolumn narrowperviews__box"
+          >
+            {renderPerviewOrSolicit(perview, perviewObject)}
+            {renderPeriviewCard(perview, perviewObject)}
+
+            <div className={perview.solicit ? 'narrowperviews__solicitsbackground' : ''}>
+            </div>
           </div>
         )
       });

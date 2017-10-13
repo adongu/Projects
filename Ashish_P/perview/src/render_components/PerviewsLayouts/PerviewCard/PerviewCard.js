@@ -139,7 +139,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
   }
 
   const renderUserProfile = () => {
-    if (toRenderUserProfile) {
+    if (toRenderUserProfile && !perview.solicit) {
       return (
         <div className="flexrow perviewcard__review-user">
           <div className="perviewcard__review-user-icon" onClick={() => handleFriendClick(perviewUser.id)}>
@@ -158,13 +158,13 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
   }
 
   const renderPerivewCardHeaderBar = (
-      <div>
+      <div className="divwrapper-fullwidth">
         <div className="perviewcard__header">
           <span className="perviewcard__badges">
             {perview.perviewSolicitId ? perview.perviewSolicitId : ""}
           </span>
           <span className="perviewcard__review-time">
-            {moment(perview.ts).format("MMM DD, Y")}
+            {perview.solicit ? '' : moment(perview.ts).format("MMM DD, Y")}
           </span>
         </div>
 
@@ -230,7 +230,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
       >
         <i className={`fa fa-bookmark perviewcard__review-icon-bookmark ${perview.bookmarkedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
         <span className="perviewcard__review-social-text">
-          {perview.bookmarkedByLoggedInUser ? 'Added' : 'Add to Wishlist'}
+          {perview.bookmarkedByLoggedInUser ? 'Bookmarked' : 'Bookmark'}
         </span>
       </span>
 
