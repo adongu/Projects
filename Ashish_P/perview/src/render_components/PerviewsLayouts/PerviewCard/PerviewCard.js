@@ -248,7 +248,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
       </div>
     </div>
   )
-  // var user = perview.userDto;
+
   return (
       <div className="flexcolumn perviewcard__review-social-box">
         {renderPerivewCardHeaderBar}
