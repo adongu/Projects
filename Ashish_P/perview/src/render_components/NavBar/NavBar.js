@@ -12,13 +12,13 @@ const NavBar = ({ createPerview, filterPerviews, isFetching, currentUser, curren
       "title": "", "hasFilters": false, "hasCreateSolicit": true
     },
     "/myperviews": {
-      "title": "", "hasFilters": true
+      "title": "", "hasFilters": true, "userDashBoardType": 'self'
     },
     "/favorites": {
       "title": "", "hasFilters": true
     },
     "/friend/:friend_id": {
-      "title": "", "hasFilters": true
+      "title": "", "hasFilters": true, "userDashBoardType": 'friend'
     },
     "/settings": {
       "title": "Settings", "hasFilters": false
@@ -114,12 +114,13 @@ const NavBar = ({ createPerview, filterPerviews, isFetching, currentUser, curren
   }
 
   const renderUserHero = () => {
-    if (toShowUserDashBoard && (currentUser || userFriend)) {
+    if (toShowUserDashBoard && match && pageSettings[match.path].userDashBoardType){
+      let dashBoardType =  pageSettings[match.path].userDashBoardType;
       let user;
 
-      if (currentUser) {
+      if (dashBoardType === 'self') {
         user = currentUser;
-      } else if (userFriend) {
+      } else if (dashBoardType === 'friend') {
         user = userFriend;
       };
 

@@ -128,7 +128,9 @@ class Header extends React.Component {
             {this.renderNavOptions()}
           </div>
 
-          {this.renderCreateButton()}
+          <div className="flexrow header__createperview-container">
+            {this.renderCreateButton()}
+          </div>
 
           <div className="flexrow header__usernav">
             <div className="header__usernavphoto">

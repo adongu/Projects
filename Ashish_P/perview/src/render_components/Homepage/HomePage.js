@@ -69,7 +69,7 @@ class HomePage extends React.Component {
           unbookmarkPerview = {this.props.unbookmarkPerview}
           likePerview = {this.props.likePerview}
           unlikePerview = {this.props.unlikePerview}
-          toRenderUserProfile = {false}
+          toRenderUserProfile = {true}
           history = {this.props.history}
         />
       )

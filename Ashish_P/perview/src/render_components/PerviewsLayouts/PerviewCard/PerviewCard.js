@@ -61,8 +61,8 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
   const renderFirstReviewBadge = () => {
     if (perview.firstToPerviewItem) {
       return (
-        <div className="flexrow narrowperviews__badge-container">
-          <img className="narrowperviews__badge-first"
+        <div className="flexrow perviewcard__badge-container">
+          <img className="perviewcard__badge-first"
           src="https://png.icons8.com/medal-first-place/dusk/64"
           title="First to Perview"/>
 
@@ -84,11 +84,11 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
             <div key={`perviewcard-${perview.id}-${liker.id}`} className="flexrow perviewcard__popover-user">
               <div className="perviewcard__popover-user-icon">
                 <img
-                  onClick={() => handleFriendClick(liker.id)}
+                  onClick={handleFriendClick(liker.id)}
                   className="perviewcard__popover-user-img" src={liker.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
               </div>
 
-              <a onClick={() => handleFriendClick(liker.id)} className="perviewcard__popover-username">
+              <a onClick={handleFriendClick(liker.id)} className="perviewcard__popover-username">
                 {liker.firstName}
               </a>
             </div>
@@ -142,10 +142,10 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
     if (toRenderUserProfile && !perview.solicit) {
       return (
         <div className="flexrow perviewcard__review-user">
-          <div className="perviewcard__review-user-icon" onClick={() => handleFriendClick(perviewUser.id)}>
+          <div className="perviewcard__review-user-icon" onClick={handleFriendClick(perviewUser.id)}>
             <img className="perviewcard__review-user-img" src={perviewUser.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
           </div>
-          <a className="perviewcard__review-username" onClick={() => handleFriendClick(perviewUser.id)}>
+          <a className="perviewcard__review-username" onClick={handleFriendClick(perviewUser.id)}>
             <div>{perviewUser.fullName}</div>
           </a>
         </div>

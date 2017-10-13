@@ -11,6 +11,7 @@ class FriendPerviews extends React.Component {
     this.state = {
       fetchingUpdate: false,
       requestLoading: false,
+      toShowUserDashBoard: true,
       friendId: null,
       categoryId: "",
       categories: []
@@ -62,6 +63,7 @@ class FriendPerviews extends React.Component {
         <NavBarContainer
           categories = {this.state.categories}
           userFriend = {this.props.userFriend}
+          toShowUserDashBoard = {this.state.toShowUserDashBoard}
           filterPerviews = {this.fetchFilteredPerviews}
         />
 

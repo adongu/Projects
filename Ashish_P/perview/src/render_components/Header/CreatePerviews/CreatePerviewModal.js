@@ -124,7 +124,7 @@ class CreatePerviewModal extends React.Component {
       submitPerviewObject.formData = formData;
       submitPerviewObject.solicitPerviewId = this.props.perviewSolicitId;
       submitPerviewObject.isSolicit = this.state.isSolicit;
-      
+
       console.log(submitPerviewObject);
       // when submit fails prevent review lost
       if(!this.props.createPerview(submitPerviewObject)) {
@@ -199,7 +199,7 @@ class CreatePerviewModal extends React.Component {
 
   render() {
     return (
-      <ButtonToolbar className="createperview__container">
+      <ButtonToolbar className="createperview__box">
         <button className="createperview__btn" onClick={this.showModal}>
           Create Perview
         </button>

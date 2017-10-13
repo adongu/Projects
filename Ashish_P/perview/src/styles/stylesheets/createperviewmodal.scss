@@ -35,6 +35,10 @@ $lines-to-show: 4;
 }
 /* search section */
 .createperview__{
+  &box {
+    width: 100%;
+  }
+
   &search-container {
     width: 100%;
   }
