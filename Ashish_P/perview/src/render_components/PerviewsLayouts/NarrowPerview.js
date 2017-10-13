@@ -40,7 +40,7 @@ const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPer
                 {item.data.title}
               </Link>
 
-              <div className="narrowperviews__price">{item.data.lowestNewPrice.formattedAmount}</div>
+              <div className="narrowperviews__price">{item.data.listPrice.formattedAmount}</div>
 
               <div className="flexrow narrowperviews__buybox">
                 <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">Buy on Amazon</a>

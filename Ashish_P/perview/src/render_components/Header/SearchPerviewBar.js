@@ -46,7 +46,7 @@ class SearchItemBar extends React.Component {
     this.props.selectItem(
       perview.itemDto.data.imageUrls.large.url,
       perview.itemDto.dataname,
-      perview.itemDto.data.lowestNewPrice.formattedAmount,
+      perview.itemDto.data.listPrice.formattedAmount,
       perview.itemDto.id
     );
     return perview.itemDto.name;
@@ -189,7 +189,7 @@ class SearchItemBar extends React.Component {
   renderSuggestion(suggestion){
     if (suggestion) {
       let itemImageUrl = suggestion[0].itemDto.data.imageUrls.large.url;
-      let itemPrice = suggestion[0].itemDto.data.lowestNewPrice.formattedAmount;
+      let itemPrice = suggestion[0].itemDto.data.listPrice.formattedAmount;
 
       return (
         <div className="flexrow autosuggest__item">
