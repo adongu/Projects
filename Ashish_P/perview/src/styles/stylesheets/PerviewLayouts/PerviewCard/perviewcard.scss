@@ -183,7 +183,7 @@ $lines-to-show: 4;
   &review-social-btn {
     margin-right: 3px;
     padding: 3px 8px;
-    border: 1px solid #ced0d4;
+    // border: 1px solid #ced0d4;
     border-radius: 6px;
     font-size: 12px;
     background: #f6f7f9;
@@ -195,9 +195,12 @@ $lines-to-show: 4;
   }
 
   &review-social-btn.active {
+  }
+
+  &review-social-btn:hover {
     background: #3D70F0;
     color: #fff;
-    border: 1px solid #ccc;
+    // border: 1px solid #ccc;
     transition: all linear 250ms;
   }
 
@@ -217,6 +220,10 @@ $lines-to-show: 4;
 
   &review-icon-bookmark.active,
   &review-icon-like.active {
+  }
+
+  &review-icon-bookmark:hover,
+  &review-icon-like:hover {
     color: #fff;
     transition: ease .2s;
     -webkit-text-stroke-width: 1;
