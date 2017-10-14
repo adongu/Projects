@@ -71,11 +71,11 @@ const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPer
         <div className="flexrow perviewcard__popover-user">
           <div className="perviewcard__popover-user-icon">
             <img
-              onClick={() => handleFriendClick(user.id)}
+              onClick={handleFriendClick(user.id)}
               className="perviewcard__popover-user-img" src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
           </div>
 
-          <a onClick={() => handleFriendClick(user.id)} className="perviewcard__popover-username">
+          <a onClick={handleFriendClick(user.id)} className="perviewcard__popover-username">
             {user.firstName}
           </a>
         </div>

@@ -46,7 +46,8 @@ $review-lines-to-show: 6;
 
   &content {
     width: 100%;
-    height: 310px;
+    height: 320px;
+    padding: 10px;
   }
 }
 // box product info section
@@ -91,6 +92,7 @@ $review-lines-to-show: 6;
     // height: 50px;
     height: $title-font-size*$title-line-height*$title-lines-to-show;
     margin: 10px auto;
+    margin-bottom: 0;
     font-size: $title-font-size;
     font-weight: 300;
     line-height: $title-line-height;
@@ -112,6 +114,7 @@ $review-lines-to-show: 6;
 
   &buybox {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
   }

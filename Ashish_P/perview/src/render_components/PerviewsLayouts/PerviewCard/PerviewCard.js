@@ -8,7 +8,7 @@ import PerviewDetailModal from './PerviewDetailModal';
 import PerviewDeleteConfirmation from './PerviewDeleteConfirmation';
 import CreatePerviewModalContainer from '../../../containers/CreatePerviewModalContainer';
 
-const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, handleFriendClick, history, toRenderUserProfile }) => {
+const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, history, toRenderUserProfile }) => {
 
   const renderStars = (rating) => {
     let stars = [1, 2, 3, 4, 5];
@@ -37,6 +37,16 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
         unlikePerview(perview.id);
       } else {
         likePerview(perview.id);
+      }
+    }
+  }
+
+  const handleFriendClick = (friendId) => {
+    return (e) => {
+      if (currentUserId === friendId) {
+        history.replace({ pathname: `/myperviews` });
+      } else {
+        history.replace({ pathname: `/friend/${friendId}` });
       }
     }
   }
@@ -142,11 +152,16 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
     if (toRenderUserProfile && !perview.solicit) {
       return (
         <div className="flexrow perviewcard__review-user">
-          <div className="perviewcard__review-user-icon" onClick={handleFriendClick(perviewUser.id)}>
-            <img className="perviewcard__review-user-img" src={perviewUser.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
+          <div className="perviewcard__review-user-icon">
+            <img className="perviewcard__review-user-img"
+              onClick={handleFriendClick(perviewUser.id)} src={perviewUser.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"
+            />
           </div>
-          <a className="perviewcard__review-username" onClick={handleFriendClick(perviewUser.id)}>
-            <div>{perviewUser.fullName}</div>
+          <a
+            onClick={handleFriendClick(perviewUser.id)}
+            className="perviewcard__review-username"
+          >
+            {perviewUser.fullName}
           </a>
         </div>
       )
