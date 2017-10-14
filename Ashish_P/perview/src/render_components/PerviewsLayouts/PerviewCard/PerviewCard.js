@@ -256,6 +256,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
         className={`perviewcard__review-social-btn ${perview.likedByLoggedInUser ? "active" : ""}`}
       >
         <i className={`fa fa-heart perviewcard__review-icon-like ${perview.likedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
+
         <span className="perviewcard__review-social-text">
           {perview.likedByLoggedInUser ? 'Liked' : 'Like'}
         </span>
