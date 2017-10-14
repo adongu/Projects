@@ -212,7 +212,7 @@ $lines-to-show: 4;
   &review-social-btn:hover,
   &review-social-btn:hover *{
     background: #c7d6fb;
-    // color: #3D70F0;
+    color: #3D70F0;
     // border: 1px solid #ccc;
     // transition: all linear 250ms;
     // font icons
@@ -220,7 +220,7 @@ $lines-to-show: 4;
     -webkit-text-stroke-width: 1;
     -webkit-text-stroke-color: #3D70F0;
     // transition: ease .2s;
-    transition: color linear 250ms;
+    transition: color ease 250ms;
   }
 
   &review-social-text {
