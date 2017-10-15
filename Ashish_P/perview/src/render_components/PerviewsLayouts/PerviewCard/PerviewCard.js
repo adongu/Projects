@@ -203,6 +203,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
             handleFriendClick = {handleFriendClick}
             handleLikeClick = {handleLikeClick}
             renderStars = {renderStars}
+            toRenderPerviewCardDetailsView = {true}
           />
         </div>
       )
@@ -255,12 +256,29 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
         onClick={handleLikeClick(perview)}
         className={`perviewcard__review-social-btn ${perview.likedByLoggedInUser ? "active" : ""}`}
       >
-        <i className={`fa fa-heart perviewcard__review-icon-like ${perview.likedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
+        <i
+          className={`fa fa-heart perviewcard__review-icon-like ${perview.likedByLoggedInUser ? "active" : ""}`}
+          aria-hidden="true">
+        </i>
 
         <span className="perviewcard__review-social-text">
           {perview.likedByLoggedInUser ? 'Liked' : 'Like'}
         </span>
       </span>
+
+      <span
+        onClick={handleLikeClick(perview)}
+        className={`perviewcard__review-social-btn ${perview.likedByLoggedInUser ? "active" : ""}`}
+      >
+        <i
+          className={`fa fa-comment perviewcard__review-icon-comment ${perview.likedByLoggedInUser ? "active" : ""}`}
+          aria-hidden="true">
+        </i>
+        <span>
+        </span>
+      </span>
+
+
       <div className="perviewcard__numlikers-box">
         {renderNumLikes()}
       </div>
