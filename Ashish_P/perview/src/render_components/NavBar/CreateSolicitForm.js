@@ -50,19 +50,41 @@ class CreateSolicitForm extends React.Component {
     }
   }
 
+  renderSolicitSuggestionTagsBar () {
+    
+  }
+
+  renderSolicitSuggestionTags () {
+
+  }
+
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <textarea
-          onChange={this.updateInput("solicitTags")}
-          value={this.state.solicitTags}
-          placeholder="What kind of items do you want your friends to perview? #xmaspresents #babyshower #videogames"
-        />
+      <div>
+        <form
+          className="solicithero"
+          onSubmit={this.handleSubmit}
+        >
+          <label className="solicithero__label" for="solicit__tags">
+            What kind of items do you want your friends to perview?
+          </label>
 
-        <button type='submit'>
-          Submit
-        </button>
-      </form>
+          <textarea
+            name="solicit__tags"
+            className="solicithero__input"
+            onChange={this.updateInput("solicitTags")}
+            value={this.state.solicitTags}
+            placeholder="Enter tags e.g. #xmaspresents #babyshower #videogames"
+          />
+
+          <button
+            className="solicithero__submit"
+            type='submit'
+          >
+            Submit
+          </button>
+        </form>
+      </div>
     )
   }
 }

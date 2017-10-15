@@ -206,8 +206,10 @@ const NavBar = ({ createPerview, filterPerviews, isFetching, currentUser, curren
     <div className="navbar__container">
       <div className="flexrow navbar__box">
         <div className="flexrow navbar__title">
-          {renderCreateSolicit()}
-          {renderUserHero()}
+          <div>
+            {renderCreateSolicit()}
+            {renderUserHero()}
+          </div>
 
           {(match && pageSettings[match.path]) ? pageSettings[match.path]["title"] : ""}
         </div>
