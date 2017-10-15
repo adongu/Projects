@@ -7,11 +7,28 @@ class CreateSolicitForm extends React.Component {
     this.state = {
       itemId: 77,
       rating: 0,
+      SolicitTagsSuggestion: [
+        {
+          'title': '#xmaspresents', value: '#xmaspresents'
+        },
+        {
+          'title': '#babyshower', value: '#babyshower'
+        },
+        {
+          'title': '#xmaspresents', value: '#xmaspresents'
+        },
+        {
+          'title': '#videogames', value: '#videogames'
+        },
+      ],
       solicitTags: ''
     }
 
     this.updateInput = this.updateInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.selectTagSuggestion = this.selectTagSuggestion.bind(this);
+    this.renderSolicitTagSuggestionsBar = this.renderSolicitTagSuggestionsBar.bind(this);
+    this.renderSolicitTagSuggestions = this.renderSolicitTagSuggestions.bind(this);
   }
 
   updateInput(field) {
@@ -50,11 +67,44 @@ class CreateSolicitForm extends React.Component {
     }
   }
 
-  renderSolicitSuggestionTagsBar () {
-    
+  selectTagSuggestion (tagSuggestion) {
+    return (previousState, currentProps) => {
+      if (this.state.SolicitTagsSuggestion && !this.state.solicitTags) {
+        let newTags;
+        if (this.state.solicitTags) {
+          newTags = previousState.solicitTags + tagSuggestion;
+        } else {
+          newTags = previousState.solicitTags + '' + tagSuggestion;
+        }
+
+        return {
+          ...previousState,
+          solicitTags: newTags
+        }
+      }
+    }
   }
 
-  renderSolicitSuggestionTags () {
+  renderSolicitTagSuggestionsBar () {
+    if (!this.state.solicitTags) {
+      return (
+        <div>
+          {this.state.SolicitTagsSuggestion.map((suggestion, i) => {
+            return (
+              <span
+                onClick={() => this.setState(this.selectTagSuggestion(suggestion.value))}
+                key={`SolicitTagSuggestion-${i}`}
+              >
+                {suggestion.title}
+              </span>
+            )
+          })}
+        </div>
+      )
+    }
+  }
+
+  renderSolicitTagSuggestions () {
 
   }
 
@@ -65,7 +115,7 @@ class CreateSolicitForm extends React.Component {
           className="solicithero"
           onSubmit={this.handleSubmit}
         >
-          <label className="solicithero__label" for="solicit__tags">
+          <label className="solicithero__label" htmlFor="solicit__tags">
             What kind of items do you want your friends to perview?
           </label>
 
@@ -84,6 +134,10 @@ class CreateSolicitForm extends React.Component {
             Submit
           </button>
         </form>
+
+        <div>
+          {this.renderSolicitTagSuggestionsBar()}
+        </div>
       </div>
     )
   }
