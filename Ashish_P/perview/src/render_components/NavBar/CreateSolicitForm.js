@@ -1,4 +1,5 @@
 import React from "react";
+import "../../styles/stylesheets/NavBar/createsolicitform.css";
 
 class CreateSolicitForm extends React.Component {
   constructor(props) {
@@ -88,12 +89,13 @@ class CreateSolicitForm extends React.Component {
   renderSolicitTagSuggestionsBar () {
     if (!this.state.solicitTags) {
       return (
-        <div>
+        <div className="solicitsuggestion__box">
           {this.state.SolicitTagsSuggestion.map((suggestion, i) => {
             return (
               <span
                 onClick={() => this.setState(this.selectTagSuggestion(suggestion.value))}
                 key={`SolicitTagSuggestion-${i}`}
+                className="solicitsuggestion__suggestion"
               >
                 {suggestion.title}
               </span>
@@ -110,20 +112,23 @@ class CreateSolicitForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="solicithero__box">
         <form
-          className="solicithero"
+          className="solicithero__form"
           onSubmit={this.handleSubmit}
         >
-          <label className="solicithero__label" htmlFor="solicit__tags">
+          <label
+            className="solicithero__label"
+            htmlFor="solicit__tags"
+          >
             What kind of items do you want your friends to perview?
           </label>
 
           <textarea
             name="solicit__tags"
-            className="solicithero__input"
             onChange={this.updateInput("solicitTags")}
             value={this.state.solicitTags}
+            className="solicithero__input"
             placeholder="Enter tags e.g. #xmaspresents #babyshower #videogames"
           />
 
@@ -135,7 +140,7 @@ class CreateSolicitForm extends React.Component {
           </button>
         </form>
 
-        <div>
+        <div className="solicitsuggestion__container">
           {this.renderSolicitTagSuggestionsBar()}
         </div>
       </div>

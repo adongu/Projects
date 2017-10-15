@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import "../../styles/stylesheets/navbar.css";
+import "../../styles/stylesheets/NavBar/navbar.css";
 import { Popover, OverlayTrigger } from 'react-bootstrap';
 import CreateSolicitForm from "./CreateSolicitForm.js";
 
@@ -206,7 +206,7 @@ const NavBar = ({ createPerview, filterPerviews, isFetching, currentUser, curren
     <div className="navbar__container">
       <div className="flexrow navbar__box">
         <div className="flexrow navbar__title">
-          <div>
+          <div className="navbar__hero">
             {renderCreateSolicit()}
             {renderUserHero()}
           </div>

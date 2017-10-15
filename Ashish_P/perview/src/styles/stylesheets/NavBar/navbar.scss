@@ -13,6 +13,21 @@
     align-items: center;
     width: 100%;
   }
+// dashboard/hero wrapper
+
+  &title {
+    width: 60%;
+    padding: 16px 0;
+    font-size: 22px;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+  }
+
+  &hero {
+    width: 100%;
+  }
+
 // dashboard
   &dashboard {
     width: 400px;
@@ -82,17 +97,6 @@
     }
   }
 
-
-
-// filter bar
-  &title {
-    padding: 16px 0;
-    font-size: 22px;
-    justify-content: center;
-    align-items: center;
-    vertical-align: middle;
-  }
-
   &userbox {
     display: flex;
     align-items: center;
@@ -127,6 +131,8 @@
     margin-right: 0;
     padding-right: 0;
   }
+
+  // filter bar
 
 
   &filterbox {
