@@ -76,7 +76,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
           src="https://png.icons8.com/medal-first-place/dusk/64"
           title="First to Perview"/>
 
-          <span>First to Perview</span>
+          {/* <span>First to Perview</span> */}
         </div>
       )
     }
@@ -159,9 +159,11 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
           </div>
           <a
             onClick={handleFriendClick(perviewUser.id)}
-            className="perviewcard__review-username"
+            className="flexcolumn perviewcard__review-username"
           >
-            {perviewUser.fullName}
+            <div></div>
+            <div>{perviewUser.fullName}</div>
+            <div>{renderFirstReviewBadge()}</div>
           </a>
         </div>
       )
@@ -175,9 +177,9 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
   const renderPerivewCardHeaderBar = (
       <div className="divwrapper-fullwidth">
         <div className="perviewcard__header">
-          <span className="perviewcard__badges">
+          {/* <span className="perviewcard__badges">
             {perview.perviewSolicitId ? perview.perviewSolicitId : ""}
-          </span>
+          </span> */}
           <span className="perviewcard__review-time">
             {perview.solicit ? '' : moment(perview.ts).format("MMM DD, Y")}
           </span>
@@ -186,7 +188,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
         <div className="flexrow perviewcard__perview-options">
           <div className="flexcolumn divwrapper-fullwidth">
             {renderUserProfile()}
-            {renderFirstReviewBadge()}
+            {history.location.pathname === '/myperviews' ? renderFirstReviewBadge() : ''}
           </div>
           {renderPerviewEdit()}
         </div>

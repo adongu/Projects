@@ -32,6 +32,7 @@ $lines-to-show: 4;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    position: relative;
   }
 
   &review-user {
@@ -83,9 +84,9 @@ $lines-to-show: 4;
 
   &badge-container {
     // position: absolute;
-    // top: 0;
+    // top: 100;
     // left: 0;
-    padding-left: 50px;
+    // padding-left: 50px;
   }
 
   &badge-first {
