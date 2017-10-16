@@ -10,16 +10,16 @@ class CreateSolicitForm extends React.Component {
       rating: 0,
       SolicitTagsSuggestion: [
         {
-          'title': '#xmaspresents', value: '#xmaspresents'
+          'title': '#xmas presents', value: '#xmas presents'
         },
         {
-          'title': '#babyshower', value: '#babyshower'
+          'title': '#babyshower gifts', value: '#babyshower gifts'
         },
         {
-          'title': '#xmaspresents', value: '#xmaspresents'
+          'title': '#wedding registry', value: '#wedding registry'
         },
         {
-          'title': '#videogames', value: '#videogames'
+          'title': '#video games', value: '#video games'
         },
       ],
       solicitTags: ''
@@ -130,19 +130,22 @@ class CreateSolicitForm extends React.Component {
             value={this.state.solicitTags}
             className="solicithero__input"
             placeholder="Enter tags e.g. #xmaspresents #babyshower #videogames"
-          />
-
-          <button
-            className="solicithero__submit"
-            type='submit'
           >
-            Submit
-          </button>
-        </form>
+          </textarea>
 
-        <div className="solicitsuggestion__container">
-          {this.renderSolicitTagSuggestionsBar()}
-        </div>
+          <div className="solicitsuggestion__container">
+            {this.renderSolicitTagSuggestionsBar()}
+          </div>
+
+          <div className="solicithero__submit">
+            <button
+              className="solicithero__submit-btn"
+              type='submit'
+              >
+                Submit
+            </button>
+          </div>
+        </form>
       </div>
     )
   }
