@@ -7,6 +7,7 @@ import PerviewEditModal from './PerviewEditModal';
 import PerviewDetailModal from './PerviewDetailModal';
 import PerviewDeleteConfirmation from './PerviewDeleteConfirmation';
 import CreatePerviewModalContainer from '../../../containers/CreatePerviewModalContainer';
+import SocialBar from './SocialBar';
 
 const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, history, toRenderUserProfile }) => {
 
@@ -57,16 +58,16 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
     }
   }
 
-  const renderAndMoreLikes = () => {
-    if (likers.length > 1) {
-      let numLikersMore = likers.length - 1;
-      return (
-        <span>
-          and {numLikersMore} More...
-        </span>
-      )
-    }
-  }
+  // const renderAndMoreLikes = () => {
+  //   if (likers.length > 1) {
+  //     let numLikersMore = likers.length - 1;
+  //     return (
+  //       <span>
+  //         and {numLikersMore} More...
+  //       </span>
+  //     )
+  //   }
+  // }
 
   const renderFirstReviewBadge = () => {
     if (perview.firstToPerviewItem) {
@@ -75,8 +76,6 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
           <img className="perviewcard__badge-first"
           src="https://png.icons8.com/medal-first-place/dusk/64"
           title="First to Perview"/>
-
-          {/* <span>First to Perview</span> */}
         </div>
       )
     }
@@ -105,8 +104,6 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
           )
         })}
 
-        <div>
-        </div>
       </div>
     </Popover>
   ) : (
@@ -177,9 +174,6 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
   const renderPerivewCardHeaderBar = (
       <div className="divwrapper-fullwidth">
         <div className="perviewcard__header">
-          {/* <span className="perviewcard__badges">
-            {perview.perviewSolicitId ? perview.perviewSolicitId : ""}
-          </span> */}
           <span className="perviewcard__review-time">
             {perview.solicit ? '' : moment(perview.ts).format("MMM DD, Y")}
           </span>
@@ -196,7 +190,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
   );
 
   const renderModalLink = (perview) => {
-    if (perview.tags && (perview.tags.length > 180) ) {
+    if (perview.tags && (perview.tags.length > 155) ) {
       return (
         <div className="perviewcard__showmore">
           <PerviewDetailModal
@@ -227,10 +221,10 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
       </div>
 
       <div className="perviewcard__review-tags">
-        <p className="perviewcard__review-text">
-          {perview.tags ? perview.tags.substr(0, 180) : ""}
-        </p>
-        {renderModalLink(perview)}
+        <span className="perviewcard__review-text">
+          {perview.tags ? perview.tags.substr(0, 155) : ""}
+        </span>
+        <span>{renderModalLink(perview)}</span>
       </div>
     </div>
   )
@@ -244,43 +238,16 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
 
   const renderSocialBar = (
     <div className="flexrow perviewcard__review-social">
-      <span
-        onClick={handleSaveClick(perview)}
-        className={`perviewcard__review-social-btn ${perview.bookmarkedByLoggedInUser ? "active" : ""}`}
-      >
-        <i className={`fa fa-bookmark perviewcard__review-icon-bookmark ${perview.bookmarkedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
-        <span className="perviewcard__review-social-text">
-          {perview.bookmarkedByLoggedInUser ? 'Bookmarked' : 'Bookmark'}
-        </span>
-      </span>
-
-      <span
-        onClick={handleLikeClick(perview)}
-        className={`perviewcard__review-social-btn ${perview.likedByLoggedInUser ? "active" : ""}`}
-      >
-        <i
-          className={`fa fa-heart perviewcard__review-icon-like ${perview.likedByLoggedInUser ? "active" : ""}`}
-          aria-hidden="true">
-        </i>
-
-        <span className="perviewcard__review-social-text">
-          {perview.likedByLoggedInUser ? 'Liked' : 'Like'}
-        </span>
-      </span>
-
-      <span
-        onClick={handleLikeClick(perview)}
-        className={`perviewcard__review-social-btn ${perview.likedByLoggedInUser ? "active" : ""}`}
-      >
-        <i
-          className={`fa fa-comment perviewcard__review-icon-comment ${perview.likedByLoggedInUser ? "active" : ""}`}
-          aria-hidden="true">
-        </i>
-        <span>
-        </span>
-      </span>
-
-
+      <div className="flexrow divwrapper-fullwidth">
+        <SocialBar
+          bookmarkPerview={bookmarkPerview}
+          unbookmarkPerview={unbookmarkPerview}
+          likePerview={likePerview}
+          unlikePerview={unlikePerview}
+          perview={perview}
+          currentUserId={currentUserId}
+        />
+      </div>
       <div className="perviewcard__numlikers-box">
         {renderNumLikes()}
       </div>
