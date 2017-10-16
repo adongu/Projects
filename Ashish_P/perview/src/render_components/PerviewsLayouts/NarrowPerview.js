@@ -114,27 +114,12 @@ const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPer
         };
 
         return (
-          <div key={`perviewindex__${i}`} className="flexcolumn narrowperviews__box">
-            <div className="flexcolumn narrowperviews__productbox">
-              <span className="narrowperviews__badges">
-                {renderFirstReviewBadge(perview)}
-              </span>
-              <div className="narrowperviews__img">
-                <Link to={`/item/${item.id}`}>
-                  <img className="narrowperviews__productimg-photo" src={item.data.imageUrls.large.url} alt="product"/>
-                </Link>
-              </div>
-
-              <Link to={`/item/${item.id}`} className="narrowperviews__product-name">
-                {item.data.title}
-              </Link>
-
-              <div className="narrowperviews__price">{item.data.listPrice.formattedAmount}</div>
-
-              <div className="flexrow narrowperviews__buybox">
-                <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">Buy on Amazon</a>
-              </div>
-            </div>
+          <div
+            key={`perviewindex__${i}`}
+            className="flexcolumn narrowperviews__box"
+          >
+            {renderPerviewOrSolicit(perview, perviewObject)}
+            {renderPeriviewCard(perview, perviewObject)}
 
             <div className={perview.solicit ? 'narrowperviews__solicitsbackground' : ''}>
             </div>
