@@ -104,6 +104,10 @@
     padding: 2px 4px;
     border: 1px solid #3D70F0;
     cursor: pointer;
+  }
 
+  &suggestion:hover {
+    color: #fff;
+    background-color: #3D70F0;
   }
 }
