@@ -2,7 +2,6 @@ import "../../../styles/stylesheets/PerviewLayouts/PerviewCard/perviewcard.css"
 import { Link, withRouter } from 'react-router-dom';
 import moment from 'moment';
 import React from 'react';
-import { Popover, OverlayTrigger } from 'react-bootstrap';
 import PerviewEditModal from './PerviewEditModal';
 import PerviewDetailModal from './PerviewDetailModal';
 import PerviewDeleteConfirmation from './PerviewDeleteConfirmation';
@@ -77,45 +76,6 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
           src="https://png.icons8.com/medal-first-place/dusk/64"
           title="First to Perview"/>
         </div>
-      )
-    }
-  }
-
-  const popoverClickRootClose = likers ? (
-    <Popover
-      id="popover-trigger-click-root-close"
-      title="Likers"
-      className="perviewcard__popover"
-    >
-      <div>
-        {likers.map((liker) => {
-          return (
-            <div key={`perviewcard-${perview.id}-${liker.id}`} className="flexrow perviewcard__popover-user">
-              <div className="perviewcard__popover-user-icon">
-                <img
-                  onClick={handleFriendClick(liker.id)}
-                  className="perviewcard__popover-user-img" src={liker.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
-              </div>
-
-              <a onClick={handleFriendClick(liker.id)} className="perviewcard__popover-username">
-                {liker.firstName}
-              </a>
-            </div>
-          )
-        })}
-
-      </div>
-    </Popover>
-  ) : (
-    <div></div>
-  );
-
-  const renderNumLikes = () => {
-    if (likers) {
-      return (
-        <OverlayTrigger trigger="click" placement="top" rootClose overlay={popoverClickRootClose} className="perviewcard__popovertrigger">
-          <a className="perviewcard__numlikers">{likers.length}</a>
-        </OverlayTrigger>
       )
     }
   }
@@ -240,17 +200,17 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
     <div className="flexrow perviewcard__review-social">
       <div className="flexrow divwrapper-fullwidth">
         <SocialBar
+          currentUserId={currentUserId}
+          perview={perview}
+          likers={likers}
+          handleFriendClick={handleFriendClick}
           bookmarkPerview={bookmarkPerview}
           unbookmarkPerview={unbookmarkPerview}
           likePerview={likePerview}
           unlikePerview={unlikePerview}
-          perview={perview}
-          currentUserId={currentUserId}
         />
       </div>
-      <div className="perviewcard__numlikers-box">
-        {renderNumLikes()}
-      </div>
+
     </div>
   )
 
