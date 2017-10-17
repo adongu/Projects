@@ -55,7 +55,7 @@ const SocialBar = ({currentUserId, perview, likers, bookmarkPerview, unbookmarkP
   );
 
   const renderNumLikes = () => {
-    if (likers) {
+    if (likers && likers.length > 0) {
       return (
         <OverlayTrigger trigger="click" placement="top" rootClose overlay={popoverClickRootClose} className="perviewcard__popovertrigger">
           <a className="perviewcard__numlikers">{likers.length}</a>
