@@ -120,6 +120,15 @@ const SocialBar = ({currentUserId, perview, likers, bookmarkPerview, unbookmarkP
           className='fa fa-comments perviewcard__review-icon-comment'
           aria-hidden="true">
         </i>
+
+        <span className="perviewcard__review-social-text">
+          <span>
+            comments
+          </span>
+          <span>
+            {perview.comments ? perview.comments.length : ''}
+          </span>
+        </span>
       </span>
     </div>
   )
