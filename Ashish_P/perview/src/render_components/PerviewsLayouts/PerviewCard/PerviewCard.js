@@ -5,7 +5,8 @@ import React from 'react';
 import PerviewEditModal from './PerviewEditModal';
 import PerviewDetailModal from './PerviewDetailModal';
 import PerviewDeleteConfirmation from './PerviewDeleteConfirmation';
-import { Popover, OverlayTrigger } from 'react-bootstrap';
+import CreatePerviewModalContainer from '../../../containers/CreatePerviewModalContainer';
+import SocialBar from './SocialBar';
 
 const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, history, toRenderUserProfile }) => {
 
@@ -18,16 +19,6 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
         </span>
       )
     })
-  }
-
-  const handleFriendClick = (friendId) => {
-    return (e) => {
-      if (currentUserId === friendId) {
-        history.replace({ pathname: `/myperviews` });
-      } else {
-        history.replace({ pathname: `/friend/${friendId}` });
-      }
-    }
   }
 
   const handleSaveClick = (perview) => {
@@ -50,59 +41,41 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
     }
   }
 
+  const handleFriendClick = (friendId) => {
+    return (e) => {
+      if (currentUserId === friendId) {
+        history.replace({ pathname: `/myperviews` });
+      } else {
+        history.replace({ pathname: `/friend/${friendId}` });
+      }
+    }
+  }
+
   const confirmDeletePerview = (perviewId) => {
     if (deletePerview) {
       deletePerview(perview.id)
     }
   }
 
-  const renderAndMoreLikes = () => {
-    if (likers.length > 1) {
-      let numLikersMore = likers.length - 1;
+  // const renderAndMoreLikes = () => {
+  //   if (likers.length > 1) {
+  //     let numLikersMore = likers.length - 1;
+  //     return (
+  //       <span>
+  //         and {numLikersMore} More...
+  //       </span>
+  //     )
+  //   }
+  // }
+
+  const renderFirstReviewBadge = () => {
+    if (perview.firstToPerviewItem) {
       return (
-        <span>
-          and {numLikersMore} More...
-        </span>
-      )
-    }
-  }
-
-  const popoverClickRootClose = likers ? (
-    <Popover
-      id="popover-trigger-click-root-close"
-      title="Likers"
-      className="perviewcard__popover"
-    >
-      <div>
-        {likers.map((liker) => {
-          return (
-            <div key={`perviewcard-${perview.id}-${liker.id}`} className="flexrow perviewcard__popover-user">
-              <div className="perviewcard__popover-user-icon">
-                <img
-                  onClick={handleFriendClick(liker.id)}
-                  className="perviewcard__popover-user-img" src={liker.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
-              </div>
-              <a onClick={handleFriendClick(liker.id)} className="perviewcard__popover-username">
-                {liker.firstName}
-              </a>
-            </div>
-          )
-        })}
-
-        <div>
+        <div className="flexrow perviewcard__badge-container">
+          <img className="perviewcard__badge-first"
+          src="https://png.icons8.com/medal-first-place/dusk/64"
+          title="First to Perview"/>
         </div>
-      </div>
-    </Popover>
-  ) : (
-    <div></div>
-  );
-
-  const renderNumLikes = () => {
-    if (likers) {
-      return (
-        <OverlayTrigger trigger="click" placement="top" rootClose overlay={popoverClickRootClose} className="perviewcard__popovertrigger">
-          <a className="perviewcard__numlikers">{likers.length}</a>
-        </OverlayTrigger>
       )
     }
   }
@@ -133,14 +106,21 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
   }
 
   const renderUserProfile = () => {
-    if (toRenderUserProfile) {
+    if (toRenderUserProfile && !perview.solicit) {
       return (
         <div className="flexrow perviewcard__review-user">
-          <div className="perviewcard__review-user-icon" onClick={handleFriendClick(perviewUser.id)}>
-            <img className="perviewcard__review-user-img" src={perviewUser.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
+          <div className="perviewcard__review-user-icon">
+            <img className="perviewcard__review-user-img"
+              onClick={handleFriendClick(perviewUser.id)} src={perviewUser.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"
+            />
           </div>
-          <a className="perviewcard__review-username" onClick={handleFriendClick(perviewUser.id)}>
+          <a
+            onClick={handleFriendClick(perviewUser.id)}
+            className="flexcolumn perviewcard__review-username"
+          >
+            <div></div>
             <div>{perviewUser.fullName}</div>
+            <div>{renderFirstReviewBadge()}</div>
           </a>
         </div>
       )
@@ -151,8 +131,26 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
     }
   }
 
+  const renderPerivewCardHeaderBar = (
+      <div className="divwrapper-fullwidth">
+        <div className="perviewcard__header">
+          <span className="perviewcard__review-time">
+            {perview.solicit ? '' : moment(perview.ts).format("MMM DD, Y")}
+          </span>
+        </div>
+
+        <div className="flexrow perviewcard__perview-options">
+          <div className="flexcolumn divwrapper-fullwidth">
+            {renderUserProfile()}
+            {history.location.pathname === '/myperviews' ? renderFirstReviewBadge() : ''}
+          </div>
+          {renderPerviewEdit()}
+        </div>
+      </div>
+  );
+
   const renderModalLink = (perview) => {
-    if (perview.tags && (perview.tags.length > 180) ) {
+    if (perview.tags && (perview.tags.length > 155) ) {
       return (
         <div className="perviewcard__showmore">
           <PerviewDetailModal
@@ -161,68 +159,66 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
             handleFriendClick = {handleFriendClick}
             handleLikeClick = {handleLikeClick}
             renderStars = {renderStars}
+            toRenderPerviewCardDetailsView = {true}
           />
         </div>
       )
     }
   }
 
-  // var user = perview.userDto;
-  return (
+  const renderPerviewOrSolicitContentView = () => {
+    if (perview.solicit) {
+      return renderSolicitContentView;
+    } else {
+      return renderPerviewContentView;
+    }
+  }
+
+  const renderPerviewContentView = (
     <div className="flexcolumn perviewcard__perview-rightbox">
-      <div className="perviewcard__header">
-        <span className="perviewcard__badges">
-        </span>
-        <span className="perviewcard__review-time">
-          {moment(perview.ts).format("MMM DD, Y")}
-        </span>
-      </div>
-
-      <div className="perviewcard__perview-options">
-        {renderUserProfile()}
-
-        {renderPerviewEdit()}
-      </div>
-
       <div className="perviewcard__review-stars">
         {renderStars(perview.rating)}
       </div>
 
       <div className="perviewcard__review-tags">
-        <p className="perviewcard__review-text">
-          {perview.tags.substr(0, 180)}
+        <span className="perviewcard__review-text">
+          {perview.tags ? perview.tags.substr(0, 155) : ""}
+        </span>
+        <span>{renderModalLink(perview)}</span>
+      </div>
+    </div>
+  )
 
-        </p>
-        {renderModalLink(perview)}
+  const renderSolicitContentView = (
+    <CreatePerviewModalContainer
+      perviewSolicitId={perview.id}
+      history={history}
+    />
+  )
+
+  const renderSocialBar = (
+    <div className="flexrow perviewcard__review-social">
+      <div className="flexrow divwrapper-fullwidth">
+        <SocialBar
+          currentUserId={currentUserId}
+          perview={perview}
+          likers={likers}
+          handleFriendClick={handleFriendClick}
+          bookmarkPerview={bookmarkPerview}
+          unbookmarkPerview={unbookmarkPerview}
+          likePerview={likePerview}
+          unlikePerview={unlikePerview}
+        />
       </div>
 
-      <div className="flexrow perviewcard__review-social-box">
+    </div>
+  )
 
-        <div className="flexrow perviewcard__review-social">
-          <span
-            onClick={handleSaveClick(perview)}
-            className={`perviewcard__review-social-btn ${perview.bookmarkedByLoggedInUser ? "active" : ""}`}
-          >
-            <i className={`fa fa-bookmark perviewcard__review-icon-bookmark ${perview.bookmarkedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
-            <span className="perviewcard__review-social-text">
-              {perview.bookmarkedByLoggedInUser ? 'Added' : 'Add to Wishlist'}
-            </span>
-          </span>
-
-          <span
-            onClick={handleLikeClick(perview)}
-            className={`perviewcard__review-social-btn ${perview.likedByLoggedInUser ? "active" : ""}`}
-          >
-            <i className={`fa fa-heart perviewcard__review-icon-like ${perview.likedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
-            <span className="perviewcard__review-social-text">
-              {perview.likedByLoggedInUser ? 'Liked' : 'Like'}
-            </span>
-          </span>
-          <div className="perviewcard__numlikers-box">
-            {renderNumLikes()}
-          </div>
-        </div>
-      </div>
+  return (
+      <div className="flexcolumn perviewcard__review-social-box">
+        {renderPerivewCardHeaderBar}
+        {renderPerviewOrSolicitContentView()}
+        {renderSocialBar}
     </div>
   )
 }

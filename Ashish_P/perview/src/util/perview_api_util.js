@@ -12,8 +12,22 @@ var config = {
 
 }
 
-export const createPerview = (formData) => {
-  return axios.post('/api/add', formData, config)
+// export const createPerview = (formData) => {
+//   return axios.post('/api/add', formData, config)
+// };
+
+export const createPerview = ({formData, isSolicit = false, solicitPerviewId = null}) => {
+  console.log('CREATEPERVIEW', solicitPerviewId);
+  return axios({
+    method: 'POST',
+    url: '/api/add',
+    data: formData,
+    params: {
+      isSolicit: isSolicit,
+      solicitPerviewId: solicitPerviewId,
+    },
+    config
+  })
 };
 
 export const editPerview = (formData) => {

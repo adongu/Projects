@@ -6,63 +6,122 @@ import PerviewCard from './PerviewCard/PerviewCard.js';
 
 const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, history, toRenderUserProfile }) => {
 
-  const renderFirstReviewBadge = (perview) => {
-    if (perview.firstToPerviewItem) {
+  const handleFriendClick = (friendId) => {
+    return (e) => {
+      if (currentUserId === friendId) {
+        history.replace({ pathname: `/myperviews` });
+      } else {
+        history.replace({ pathname: `/friend/${friendId}` });
+      }
+    }
+  }
+
+  const renderPeriviewCard = (perview, {item, perviewUser}) => (
+    <div className="flexcolumn narrowperviews__reviewbox">
+      <PerviewCard
+        item = {item}
+        currentUserId = {currentUserId}
+        perviewUser = { perviewUser }
+        perview = {perview}
+        likers = {perview.likers}
+        bookmarkPerview = {bookmarkPerview}
+        unbookmarkPerview = {unbookmarkPerview}
+        likePerview = {likePerview}
+        unlikePerview = {unlikePerview}
+        history = {history}
+        toRenderUserProfile = {toRenderUserProfile}
+        handleFriendClick = {handleFriendClick}
+        editPerview = {editPerview}
+        deletePerview = {deletePerview}
+      />
+    </div>
+  )
+
+  const renderPerview = (perview, { item, perviewUser }) => {
+    return (
+      <div className="flexcolumn narrowperviews__productbox">
+        <div className="narrowperviews__img">
+          <Link to={`/item/${item.id}`}>
+            <img className="narrowperviews__productimg-photo" src={item.data.imageUrls.large.url} alt="product"/>
+          </Link>
+        </div>
+
+        <Link to={`/item/${item.id}`} className="narrowperviews__product-name">
+          {item.data.title}
+        </Link>
+
+        <div className="flexrow narrowperviews__buybox">
+          {item.data.listPrice.formattedAmount}
+
+          <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">
+            Buy on Amazon
+          </a>
+        </div>
+      </div>
+    )
+  }
+
+  const renderUserProfile = (perview) => {
+    let user = perview.userDto;
+
+    return (
+      <div className="flexcolumn narrowperview__solicit-user">
+        {moment(perview.ts).format("MMM DD, Y")}
+
+        <div className="flexrow perviewcard__popover-user">
+          <div className="perviewcard__popover-user-icon">
+            <img
+              onClick={handleFriendClick(user.id)}
+              className="perviewcard__popover-user-img" src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
+          </div>
+
+          <a onClick={handleFriendClick(user.id)} className="perviewcard__popover-username">
+            {user.firstName}
+          </a>
+        </div>
+
+        <p>
+          is looking for recommendations for
+        </p>
+      </div>
+    )
+  }
+
+  const renderPerviewOrSolicit = (perview, perviewObject) => {
+    if (perview.solicit) {
       return (
-        <div className="narrowperviews__badge-container">
-          <img className="narrowperviews__badge-first"
-          src="https://png.icons8.com/medal-first-place/dusk/64"
-          title="First to Perview"/>
+        <div className="flexcolumn narrowperviews__content">
+          {renderUserProfile(perview)}
+          <span>{perview.tags}</span>
+        </div>
+      )
+    } else {
+      return (
+        <div className="flexcolumn narrowperviews__content">
+          {renderPerview(perview, perviewObject)}
         </div>
       )
     }
   }
 
-  const renderPerviews = () => {
+  const renderFeed = () => {
+
     if (perviews) {
       return perviews.map((perview, i) => {
-        let item = perview.itemDto;
-        let user = perview.userDto;
+        const perviewObject = {
+          item:        perview.itemDto,
+          perviewUser: perview.userDto
+        };
 
         return (
-          <div key={`perviewindex__${i}`} className="flexcolumn narrowperviews__box">
-            <div className="flexcolumn narrowperviews__productbox">
-              <span className="narrowperviews__badges">
-                {renderFirstReviewBadge(perview)}
-              </span>
-              <div className="narrowperviews__img">
-                <Link to={`/item/${item.id}`}>
-                  <img className="narrowperviews__productimg-photo" src={item.data.imageUrls.large.url} alt="product"/>
-                </Link>
-              </div>
+          <div
+            key={`perviewindex__${i}`}
+            className="flexcolumn narrowperviews__box"
+          >
+            {renderPerviewOrSolicit(perview, perviewObject)}
+            {renderPeriviewCard(perview, perviewObject)}
 
-              <Link to={`/item/${item.id}`} className="narrowperviews__product-name">
-                {item.data.title}
-              </Link>
-
-              <div className="narrowperviews__price">{item.data.lowestNewPrice.formattedAmount}</div>
-
-              <div className="flexrow narrowperviews__buybox">
-                <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">Buy on Amazon</a>
-              </div>
-            </div>
-
-            <div className="flexcolumn narrowperviews__reviewbox">
-              <PerviewCard
-                item = {item}
-                currentUserId = {currentUserId}
-                perviewUser = { user }
-                perview = {perview}
-                likers = {perview.likers}
-                bookmarkPerview = {bookmarkPerview}
-                unbookmarkPerview = {unbookmarkPerview}
-                likePerview = {likePerview}
-                unlikePerview = {unlikePerview}
-                history = {history}
-                toRenderUserProfile = {toRenderUserProfile}
-                editPerview = {editPerview}
-                deletePerview = {deletePerview}
-              />
+            <div className={perview.solicit ? 'narrowperviews__solicitsbackground' : ''}>
             </div>
           </div>
         )
@@ -72,7 +131,7 @@ const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPer
 
   return (
     <div className="narrowperviews__container">
-      { renderPerviews() }
+      { renderFeed() }
     </div>
   )
 }

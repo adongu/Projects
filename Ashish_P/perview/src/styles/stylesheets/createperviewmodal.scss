@@ -35,6 +35,10 @@ $lines-to-show: 4;
 }
 /* search section */
 .createperview__{
+  &box {
+    width: 100%;
+  }
+
   &search-container {
     width: 100%;
   }
@@ -214,6 +218,10 @@ $lines-to-show: 4;
     margin-bottom: 15px;
     padding: 4px 8px;
     font-size: 16px;
+  }
+
+  &review-input::placeholder {
+    color: #ccc;
   }
 
   &review-submit {

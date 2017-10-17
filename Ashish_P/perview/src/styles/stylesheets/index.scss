@@ -9,8 +9,9 @@ $font-size: 15px;
   display: flex;
   flex-direction: column;
 }
-
-.root {
+// standard react div wrapper class
+.divwrapper-fullwidth {
+  width: 100%;
 }
 
 .btn-default:active,
@@ -62,7 +63,7 @@ $font-size: 15px;
     height: 28px;
     font-size: 14px;
     font-family: "Fira Sans";
-    margin-top: 10px;
+    // margin-top: 10px;
     background: #3D70F0;
     border-radius: 18px;
     transition: 0.3s;

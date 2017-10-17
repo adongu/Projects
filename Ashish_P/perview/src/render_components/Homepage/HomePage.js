@@ -3,6 +3,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import NavBarContainer from '../../containers/NavBarContainer.js';
 import WidePerview from "../PerviewsLayouts/WidePerview";
+import NarrowPerview from "../PerviewsLayouts/NarrowPerview";
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -60,8 +61,8 @@ class HomePage extends React.Component {
       )
     } else {
       return (
-        <WidePerview
-          fetchingUpdate = {this.state.fetchingUpdate}
+        <NarrowPerview
+          // fetchingUpdate = {this.state.fetchingUpdate}
           currentUserId = {this.props.currentUser.id}
           perviews = {this.props.allPerviews}
           bookmarkPerview = {this.props.bookmarkPerview}
@@ -69,6 +70,7 @@ class HomePage extends React.Component {
           likePerview = {this.props.likePerview}
           unlikePerview = {this.props.unlikePerview}
           toRenderUserProfile = {true}
+          history = {this.props.history}
         />
       )
     }
@@ -77,7 +79,9 @@ class HomePage extends React.Component {
   render() {
     return (
     <div className="homepage__container">
-      <NavBarContainer />
+      <NavBarContainer
+        createPerview = {this.props.createPerview}
+      />
 
       <div className="homepage__perviews">
         {this.renderComponents()}

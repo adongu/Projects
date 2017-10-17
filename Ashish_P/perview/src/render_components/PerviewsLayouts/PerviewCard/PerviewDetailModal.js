@@ -8,19 +8,80 @@ class PerviewDetailModal extends React.Component {
     super(props)
 
     this.state = {
-      show: false
+      show: false,
+      toRenderPerviewCardDetailsView: false,
+      toRenderSolicitCommentsView: false,
     }
 
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
+    this.renderDetailsSection = this.renderDetailsSection.bind(this);
+
+    this.renderSolicitSection = this.renderSolicitSection.bind(this);
+    this.renderCommentSection = this.renderCommentSection.bind(this);
   }
+
+  // componentWillReceiveProps (nextProps) {
+  //   if (nextProps.renderPerviewCardDetailsView !== this.props.renderPerviewCardDetailsView) {
+  //     this.setState({
+  //       toRenderPerviewCardDetailsView: nextProps.renderPerviewCardDetailsView
+  //       // renderSolicitCommentsView: false
+  //     });
+  //   } else if (nextProps.renderSolicitCommentsView !== this.props.renderSolicitCommentsView) {
+  //     this.setState({
+  //       toRenderPerviewCardDetailsView: nextProps.renderSolicitCommentsView
+  //       // renderSolicitCommentsView: false
+  //     });
+  //   }
+  // }
 
   showModal () {
     this.setState({ show: true });
   }
 
   hideModal () {
-    this.setState({ show: false });
+    this.setState({
+      show: false,
+      toRenderPerviewCardDetailsView: false,
+      renderSolicitCommentsView: false
+    });
+  }
+
+  renderDetailsSection (user, perview) {
+    if (this.props.toRenderPerviewCardDetailsView) {
+      return (
+        <div className="flexcolumn divwrapper-fullwidth">
+          <div className="flexrow perviewdetailmodal__userbox">
+            <span className="perviewdetailmodal__userimgbox">
+              <img className="perviewdetailmodal__userimg" onClick={this.props.handleFriendClick(user.id)} src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
+            </span>
+            <span className="perviewdetailmodal__username">{user.firstName}</span>
+          </div>
+          <div className="perviewdetailmodal__ratingbox">
+            {this.props.renderStars(perview.rating)}
+          </div>
+          <div className="perviewdetailmodal__reviewbox">
+            {perview.tags}
+          </div>
+          <div className="perviewdetailmodal__socialbox">
+            <span className="perviewdetailmodal__social-icon" onClick={this.props.handleSaveClick(perview)}>
+              <i className={`fa fa-bookmark perviewdetailmodal__social-bookmark ${perview.bookmarkedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
+            </span>
+            <span className="perviewdetailmodal__social-icon" onClick={this.props.handleLikeClick(perview)}>
+              <i className={`fa fa-heart perviewdetailmodal__social-like ${perview.likedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
+            </span>
+          </div>
+        </div>
+      )
+    }
+  }
+
+  renderSolicitSection () {
+
+  }
+
+  renderCommentSection () {
+
   }
 
   render () {
@@ -42,26 +103,7 @@ class PerviewDetailModal extends React.Component {
           <Modal.Header className="perviewdetailmodal__header" closeButton></Modal.Header>
           <Modal.Body className="perviewdetailmodal__body">
             <div className="flexcolumn perviewdetailmodal__perviewbox" key={`item-${perview.itemDto.id}_Perview-${perview.id}`}>
-              <div className="flexrow perviewdetailmodal__userbox">
-                <span className="perviewdetailmodal__userimgbox">
-                  <img className="perviewdetailmodal__userimg" onClick={this.props.handleFriendClick(user.id)} src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
-                </span>
-                <span className="perviewdetailmodal__username">{user.firstName}</span>
-              </div>
-              <div className="perviewdetailmodal__ratingbox">
-                {this.props.renderStars(perview.rating)}
-              </div>
-              <div className="perviewdetailmodal__reviewbox">
-                {perview.tags}
-              </div>
-              <div className="perviewdetailmodal__socialbox">
-                <span className="perviewdetailmodal__social-icon" onClick={this.props.handleSaveClick(perview)}>
-                  <i className={`fa fa-bookmark perviewdetailmodal__social-bookmark ${perview.bookmarkedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
-                </span>
-                <span className="perviewdetailmodal__social-icon" onClick={this.props.handleLikeClick(perview)}>
-                  <i className={`fa fa-heart perviewdetailmodal__social-like ${perview.likedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
-                </span>
-              </div>
+              {this.renderDetailsSection(user, perview)}
             </div>
           </Modal.Body>
         </Modal>

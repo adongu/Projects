@@ -10,6 +10,8 @@ class CreatePerviewModal extends React.Component {
     this.state = {
       show: false,
       chosen: false,
+      isSolicit: false,
+      perviewSolicitId: null,
       keywords: '',
       imgUrl: '',
       name: '',
@@ -40,6 +42,14 @@ class CreatePerviewModal extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.itemResults !== this.props.itemResults) {
+      this.setState({
+        itemResults: nextProps.itemResults
+      })
+    }
+  }
+
   showModal() {
     this.setState({show: true});
   }
@@ -47,6 +57,7 @@ class CreatePerviewModal extends React.Component {
   hideModal() {
     this.setState({
       show: false,
+      itemResults: [],
       chosen: false,
       keywords: '',
       imgUrl: '',
@@ -89,7 +100,7 @@ class CreatePerviewModal extends React.Component {
       this.setState({
         imgUrl: item.data.imageUrls.large.url,
         name: item.data.title,
-        price: item.data.lowestNewPrice.formattedAmount,
+        price: item.data.listPrice.formattedAmount,
         itemId: item.id,
         chosen: true
       })
@@ -103,12 +114,20 @@ class CreatePerviewModal extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     if(this.props.currentUser){
+      let submitPerviewObject = {};
+
       let formData = new FormData();
       formData.append("itemId", this.state.itemId);
       formData.append("tags", this.state.tags);
       formData.append("rating", this.state.rating);
+
+      submitPerviewObject.formData = formData;
+      submitPerviewObject.solicitPerviewId = this.props.perviewSolicitId;
+      submitPerviewObject.isSolicit = this.state.isSolicit;
+
+      console.log(submitPerviewObject);
       // when submit fails prevent review lost
-      if(!this.props.createPerview(formData)) {
+      if(!this.props.createPerview(submitPerviewObject)) {
         this.setState({
           itemId: this.state.itemID,
           tags: this.state.tags,
@@ -180,7 +199,7 @@ class CreatePerviewModal extends React.Component {
 
   render() {
     return (
-      <ButtonToolbar className="createperview__container">
+      <ButtonToolbar className="createperview__box">
         <button className="createperview__btn" onClick={this.showModal}>
           Create Perview
         </button>

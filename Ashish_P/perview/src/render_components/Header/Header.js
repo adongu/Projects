@@ -4,7 +4,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import SearchPerviewBar from './SearchPerviewBar';
 import UserNavContainer from '../../containers/UserNavContainer';
-import CreatePerviewModal from "./CreatePerviews/CreatePerviewModal";
+import CreatePerviewModalContainer from '../../containers/CreatePerviewModalContainer';
 
 class Header extends React.Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class Header extends React.Component {
         },
         {
           url: '/favorites',
-          text: 'Wishlist',
+          text: 'Favorites',
           icon: 'bookmark'
         }
       ]
@@ -80,7 +80,7 @@ class Header extends React.Component {
       },
       {
         path: '/favorites',
-        text: 'Wishlist',
+        text: 'Favorites',
         icon: 'bookmark'
       }
     ];
@@ -100,14 +100,7 @@ class Header extends React.Component {
 
   renderCreateButton () {
     return (
-      <CreatePerviewModal
-        currentUser={this.props.currentUser}
-        results={this.props.itemResults}
-        fetchUser={this.props.fetchUser}
-        fetchResults={this.props.fetchItemResults}
-        createItem={this.props.createItem}
-        createPerview={this.props.createPerview}
-        selectedItem={this.props.selectedItem}
+      <CreatePerviewModalContainer
         history={this.props.history}
       />
     )
@@ -141,7 +134,9 @@ class Header extends React.Component {
             {this.renderNavOptions()}
           </div>
 
-          {this.renderCreateButton()}
+          <div className="flexrow header__createperview-container">
+            {this.renderCreateButton()}
+          </div>
 
           <div className="flexrow header__usernav">
             <div className="header__usernavphoto">

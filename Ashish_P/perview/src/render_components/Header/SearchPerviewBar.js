@@ -243,7 +243,7 @@ class SearchItemBar extends React.Component {
     if (suggestion) {
       let itemId = suggestion[0].itemDto.id;
       let itemImageUrl = suggestion[0].itemDto.data.imageUrls.large.url;
-      let itemPrice = suggestion[0].itemDto.data.lowestNewPrice.formattedAmount;
+      let itemPrice = suggestion[0].itemDto.data.listPrice.formattedAmount;
 
       return (
         <div className="flexrow autosuggest__item">

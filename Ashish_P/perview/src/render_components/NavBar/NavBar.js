@@ -1,22 +1,24 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import "../../styles/stylesheets/navbar.css";
+import "../../styles/stylesheets/NavBar/navbar.css";
 import { Popover, OverlayTrigger } from 'react-bootstrap';
+import CreateSolicitForm from "./CreateSolicitForm.js";
 
-const NavBar = ({ filterPerviews, isFetching, currentUser, currentUsersFriends, userFriend, history, categories, match, requestLoading }) => {
+
+const NavBar = ({ createPerview, filterPerviews, isFetching, currentUser, currentUsersFriends, userFriend, history, categories, match, toShowUserDashBoard, requestLoading }) => {
 
   const pageSettings = {
     "/" : {
-      "title": "", "hasFilters": false
+      "title": "", "hasFilters": false, "hasCreateSolicit": true
     },
     "/myperviews": {
-      "title": "", "hasFilters": true
+      "title": "", "hasFilters": true, "userDashBoardType": 'self'
     },
     "/favorites": {
       "title": "", "hasFilters": true
     },
     "/friend/:friend_id": {
-      "title": "", "hasFilters": true
+      "title": "", "hasFilters": true, "userDashBoardType": 'friend'
     },
     "/settings": {
       "title": "Settings", "hasFilters": false
@@ -99,13 +101,26 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, currentUsersFriends, 
     }
   }
 
+  const renderCreateSolicit = () => {
+    if (match && pageSettings[match.path].hasCreateSolicit) {
+      return (
+        <CreateSolicitForm
+          currentUser={currentUser}
+          createPerview={createPerview}
+          history={history}
+        />
+      )
+    }
+  }
+
   const renderUserHero = () => {
-    if (currentUser || userFriend) {
+    if (toShowUserDashBoard && match && pageSettings[match.path].userDashBoardType){
+      let dashBoardType =  pageSettings[match.path].userDashBoardType;
       let user;
 
-      if (currentUser) {
+      if (dashBoardType === 'self') {
         user = currentUser;
-      } else if (userFriend) {
+      } else if (dashBoardType === 'friend') {
         user = userFriend;
       };
 
@@ -132,7 +147,7 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, currentUsersFriends, 
                 </span>
 
                 <div className="perviewcard__numlikers-box">
-                  <OverlayTrigger trigger="click" placement="top" rootClose overlay={popoverClickFriendClose} className="myperviews__popovertrigger">
+                  <OverlayTrigger trigger="click" placement="bottom" rootClose overlay={popoverClickFriendClose} className="myperviews__popovertrigger">
                     <span className="navbar__dashboard-numfriends">
                       {user.numFriends}
                       <span className="navbar__dashboard-text">
@@ -191,7 +206,11 @@ const NavBar = ({ filterPerviews, isFetching, currentUser, currentUsersFriends, 
     <div className="navbar__container">
       <div className="flexrow navbar__box">
         <div className="flexrow navbar__title">
-          {renderUserHero()}
+          <div className="navbar__hero">
+            {renderCreateSolicit()}
+            {renderUserHero()}
+          </div>
+
           {(match && pageSettings[match.path]) ? pageSettings[match.path]["title"] : ""}
         </div>
         {renderFilters()}
