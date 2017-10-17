@@ -81,7 +81,7 @@ const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPer
         </div>
 
         <p>
-          Is looking for suggestions for
+          is looking for recommendations for
         </p>
       </div>
     )

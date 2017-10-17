@@ -6,20 +6,26 @@ class CreateSolicitForm extends React.Component {
     super(props)
 
     this.state = {
-      itemId: 77,
+      itemId: 0,
       rating: 0,
       SolicitTagsSuggestion: [
         {
-          'title': '#xmas presents', value: '#xmas presents'
+          'title': '#newparentessentials', value: '#newparentessentials'
         },
         {
-          'title': '#babyshower gifts', value: '#babyshower gifts'
+          'title': '#housholditems', value: '#housholditems'
         },
         {
-          'title': '#wedding registry', value: '#wedding registry'
+          'title': '#babyshowergifts', value: '#babyshowergifts'
         },
         {
-          'title': '#video games', value: '#video games'
+          'title': '#weddinggifts', value: '#weddinggifts'
+        },
+        {
+          'title': '#speakers', value: '#speakers'
+        },
+        {
+          'title': '#christmasgifts', value: '#christmasgifts'
         },
       ],
       solicitTags: ''
@@ -121,7 +127,7 @@ class CreateSolicitForm extends React.Component {
             className="solicithero__label"
             htmlFor="solicit__tags"
           >
-            What kind of items do you want your friends to perview?
+            What do you want your friends to recommend?
           </label>
 
           <textarea
@@ -129,7 +135,7 @@ class CreateSolicitForm extends React.Component {
             onChange={this.updateInput("solicitTags")}
             value={this.state.solicitTags}
             className="solicithero__input"
-            placeholder="Enter tags e.g. #xmaspresents #babyshower #videogames"
+            placeholder="Select a tag from the suggestions below or enter your own"
           >
           </textarea>
 

@@ -22,7 +22,7 @@ class Header extends React.Component {
         },
         {
           url: '/favorites',
-          text: 'Wishlist',
+          text: 'Favorites',
           icon: 'bookmark'
         }
       ]
@@ -80,7 +80,7 @@ class Header extends React.Component {
       },
       {
         path: '/favorites',
-        text: 'Wishlist',
+        text: 'Favorites',
         icon: 'bookmark'
       }
     ];

@@ -88,7 +88,7 @@ const SocialBar = ({currentUserId, perview, likers, bookmarkPerview, unbookmarkP
       >
         <i className={`fa fa-bookmark perviewcard__review-icon-bookmark ${perview.bookmarkedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
         <span className="perviewcard__review-social-text">
-          {perview.bookmarkedByLoggedInUser ? 'Bookmarked' : 'Bookmark'}
+          {perview.bookmarkedByLoggedInUser ? 'Saved' : 'Save'}
         </span>
       </span>
 
