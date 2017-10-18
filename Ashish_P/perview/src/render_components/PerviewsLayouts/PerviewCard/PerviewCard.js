@@ -190,7 +190,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
   )
 
   const renderSolicitContentView = (
-    <CreatePerviewModalContainer
+    <CreatePerviewModalContainer      
       perviewSolicitId={perview.id}
       history={history}
     />
