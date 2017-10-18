@@ -5,6 +5,25 @@ var config = {
   xsrfHeaderName: 'X-XSRF-TOKEN'
 };
 
+export const createComment = ({perviewId, comment}) => {
+  return axios({
+    method: 'POST',
+    url: `/api/${commentId}/comment`,
+    params: {
+      comment: comment
+    },
+    config
+  })
+};
+
+export const deleteComment = ({perviewId}) => {
+  return axios({
+    method: 'POST',
+    url: `/api/${commentId}/comment/delete`,
+    config
+  })
+};
+
 export const likePerview = (perviewId) => {
   return axios({
     method: 'POST',
