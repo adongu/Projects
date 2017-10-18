@@ -1,6 +1,7 @@
 import "../../../styles/stylesheets/PerviewLayouts/PerviewCard/perviewdetailmodal.css";
 import React from 'react';
 import { Modal, ButtonToolbar } from 'react-bootstrap';
+import PerviewComments from './PerviewComments';
 
 class PerviewDetailModal extends React.Component {
 
@@ -10,7 +11,7 @@ class PerviewDetailModal extends React.Component {
     this.state = {
       show: false,
       toRenderPerviewCardDetailsView: false,
-      toRenderSolicitCommentsView: false,
+      toRenderPerviewCommentsView: false,
     }
 
     this.showModal = this.showModal.bind(this);
@@ -80,8 +81,12 @@ class PerviewDetailModal extends React.Component {
 
   }
 
-  renderCommentSection () {
-
+  renderCommentSection (perview) {
+    return (
+      <PerviewComments
+        perview = {perview}
+      />
+    )
   }
 
   render () {
@@ -102,8 +107,11 @@ class PerviewDetailModal extends React.Component {
         >
           <Modal.Header className="perviewdetailmodal__header" closeButton></Modal.Header>
           <Modal.Body className="perviewdetailmodal__body">
-            <div className="flexcolumn perviewdetailmodal__perviewbox" key={`item-${perview.itemDto.id}_Perview-${perview.id}`}>
+            <div
+              className="flexcolumn perviewdetailmodal__perviewbox" key={`item-${perview.itemDto.id}_Perview-${perview.id}`}
+            >
               {this.renderDetailsSection(user, perview)}
+              {this.renderCommentSection(user, perview)}
             </div>
           </Modal.Body>
         </Modal>
