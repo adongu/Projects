@@ -65,6 +65,8 @@ class HomePage extends React.Component {
           // fetchingUpdate = {this.state.fetchingUpdate}
           currentUserId = {this.props.currentUser.id}
           perviews = {this.props.allPerviews}
+          createComment = {this.props.createComment}
+          deleteComment = {this.props.deleteComment}
           bookmarkPerview = {this.props.bookmarkPerview}
           unbookmarkPerview = {this.props.unbookmarkPerview}
           likePerview = {this.props.likePerview}
@@ -77,6 +79,7 @@ class HomePage extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
     <div className="homepage__container">
       <NavBarContainer

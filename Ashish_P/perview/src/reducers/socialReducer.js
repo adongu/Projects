@@ -15,6 +15,8 @@ const _nullSocial = Object.freeze({
 
 const sessionReducer = (oldState = _nullSocial, action) => {
   Object.freeze(oldState);
+  let newState = merge({}, oldState)
+
   switch (action.type) {
     case FETCHING_UPDATE:
       return Object.assign({}, oldState, {
@@ -22,22 +24,22 @@ const sessionReducer = (oldState = _nullSocial, action) => {
         errors: []
       });
     case CREATE_COMMENT:
-      let commentedPerview = Object.keys(allPerviews).filter((perview) => {
+      let commentedPerview = Object.keys(newState.allPerviews).filter((perview) => {
         perview.id === action.perviewId;
       })
 
       commentedPerview.comments.push(action.perview);
 
-      let newAllPerviews = Object.keys(allPerviews).map((perview) => {
+      let newAllPerviews = Object.keys(newState.allPerviews).map((perview) => {
         return perview.id === action.perviewId ? commentedPerview : perview;
       })
 
-      return Object.assign({}, oldState, {
+      return Object.assign({}, newState, {
         allPerviews: newAllPerviews,
         errors: []
       });
     case DELETE_COMMENT:
-      let allPerviewsWithDeletedComment = Object.keys(allPerviews).map((perview) => {
+      let allPerviewsWithDeletedComment = Object.keys(newState.allPerviews).map((perview) => {
         if(perview.id === action.perviewId) {
           return deletedCommentPerview(perview, action.comment.id);
         } else {
@@ -45,7 +47,7 @@ const sessionReducer = (oldState = _nullSocial, action) => {
         }
       });
 
-      return Object.assign({}, oldState, {
+      return Object.assign({}, newState, {
         allPerviews: allPerviewsWithDeletedComment,
         errors: []
       });
@@ -63,13 +65,13 @@ const sessionReducer = (oldState = _nullSocial, action) => {
       return merge(oldState, { errors: []})
   };
 
+  const deletedCommentPerview = (perview, commentId) => {
+    return perview[newState.comments].filter((comment) => {
+      return comment.id !== commentId;
+    })
+  }
 };
 
-const deletedCommentPerview = (perview, commentId) => {
-  return perview[comments].filter((comment) => {
-    return comment.id !== commentId;
-  })
-}
 
 
 

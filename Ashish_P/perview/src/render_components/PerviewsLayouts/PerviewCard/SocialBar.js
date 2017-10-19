@@ -64,7 +64,7 @@ const SocialBar = ({currentUserId, perview, likers, bookmarkPerview, unbookmarkP
     }
   }
 
-  const renderCommentsModal = (perview) => {
+  const renderCommentsModal = () => {
     if (perview.comments) {
       return (
         <div className="perviewcard__detailmodalwrapper">
@@ -123,7 +123,7 @@ const SocialBar = ({currentUserId, perview, likers, bookmarkPerview, unbookmarkP
 
         <span className="perviewcard__review-social-text">
           <span>
-            comments
+            {renderCommentsModal()}
           </span>
           <span>
             {perview.comments ? perview.comments.length : ''}

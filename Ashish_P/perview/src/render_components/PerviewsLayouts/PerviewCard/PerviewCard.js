@@ -8,7 +8,7 @@ import PerviewDeleteConfirmation from './PerviewDeleteConfirmation';
 import CreatePerviewModalContainer from '../../../containers/CreatePerviewModalContainer';
 import SocialBar from './SocialBar';
 
-const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, history, toRenderUserProfile }) => {
+const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, createComment, deleteComment, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, history, toRenderUserProfile }) => {
 
   const renderStars = (rating) => {
     let stars = [1, 2, 3, 4, 5];
@@ -54,6 +54,21 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
   const confirmDeletePerview = (perviewId) => {
     if (deletePerview) {
       deletePerview(perview.id)
+    }
+  }
+
+  const handleCreateComment = () => {
+    if (createComment && perview.id) {
+      let objecta = {'perviewId': perview.id, 'comment': 'comment'}
+      createComment(objecta);
+    }
+  }
+
+  const handleDeleteComment = () => {
+    if (deleteComment && perview.id) {
+      let objectb = {'perviewId': perview.id, 'commentId': 2}
+
+      deleteComment(objectb);
     }
   }
 
@@ -190,7 +205,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
   )
 
   const renderSolicitContentView = (
-    <CreatePerviewModalContainer      
+    <CreatePerviewModalContainer
       perviewSolicitId={perview.id}
       perviewSolicitTags={perview.tags}
       perviewSolicitFirstName={perview.userDto.firstName}
@@ -221,6 +236,8 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
         {renderPerivewCardHeaderBar}
         {renderPerviewOrSolicitContentView()}
         {renderSocialBar}
+        <div onClick={handleCreateComment}>ADD COMMENT</div>
+        <div onClick={handleDeleteComment}>DELETE COMMENT</div>
     </div>
   )
 }

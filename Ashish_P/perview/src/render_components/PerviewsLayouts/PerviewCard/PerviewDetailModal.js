@@ -22,19 +22,31 @@ class PerviewDetailModal extends React.Component {
     this.renderCommentSection = this.renderCommentSection.bind(this);
   }
 
-  // componentWillReceiveProps (nextProps) {
-  //   if (nextProps.renderPerviewCardDetailsView !== this.props.renderPerviewCardDetailsView) {
-  //     this.setState({
-  //       toRenderPerviewCardDetailsView: nextProps.renderPerviewCardDetailsView
-  //       // renderSolicitCommentsView: false
-  //     });
-  //   } else if (nextProps.renderSolicitCommentsView !== this.props.renderSolicitCommentsView) {
-  //     this.setState({
-  //       toRenderPerviewCardDetailsView: nextProps.renderSolicitCommentsView
-  //       // renderSolicitCommentsView: false
-  //     });
-  //   }
-  // }
+  componentWillMount() {
+    if (this.props.renderPerviewCardDetailsView) {
+      this.setState({
+        toRenderPerviewCardDetailsView: this.props.renderPerviewCardDetailsView
+      });
+    } else if (this.props.renderSolicitCommentsView) {
+      this.setState({
+        toRenderPerviewCardDetailsView: this.props.renderSolicitCommentsView
+      });
+    }
+  }
+
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.renderPerviewCardDetailsView !== this.props.renderPerviewCardDetailsView) {
+      this.setState({
+        toRenderPerviewCardDetailsView: nextProps.renderPerviewCardDetailsView
+        // renderSolicitCommentsView: false
+      });
+    } else if (nextProps.renderSolicitCommentsView !== this.props.renderSolicitCommentsView) {
+      this.setState({
+        toRenderPerviewCardDetailsView: nextProps.renderSolicitCommentsView
+        // renderSolicitCommentsView: false
+      });
+    }
+  }
 
   showModal () {
     this.setState({ show: true });
@@ -98,7 +110,7 @@ class PerviewDetailModal extends React.Component {
     return (
       <ButtonToolbar>
         <a className="perviewdetailmodal__modal-show" onClick={this.showModal}>
-          ... more
+          {this.state.toRenderPerviewCardDetailsView ? '... more' : 'comments'}
         </a>
 
         <Modal
@@ -112,8 +124,10 @@ class PerviewDetailModal extends React.Component {
             <div
               className="flexcolumn perviewdetailmodal__perviewbox" key={`item-${perview.itemDto.id}_Perview-${perview.id}`}
             >
-              {this.renderDetailsSection(user, perview)}
-              {this.renderCommentSection(user, perview)}
+              <div className="divwrapper-fullwidth">
+                {this.renderDetailsSection(user, perview)}
+                {this.renderCommentSection(user, perview)}
+              </div>
             </div>
           </Modal.Body>
         </Modal>

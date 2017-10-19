@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import moment from 'moment';
 import PerviewCard from './PerviewCard/PerviewCard.js';
 
-const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, history, toRenderUserProfile }) => {
+const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, history, toRenderUserProfile }) => {
 
   const handleFriendClick = (friendId) => {
     return (e) => {
@@ -24,6 +24,8 @@ const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPer
         perviewUser = { perviewUser }
         perview = {perview}
         likers = {perview.likers}
+        createComment = {createComment}
+        deleteComment = {deleteComment}
         bookmarkPerview = {bookmarkPerview}
         unbookmarkPerview = {unbookmarkPerview}
         likePerview = {likePerview}

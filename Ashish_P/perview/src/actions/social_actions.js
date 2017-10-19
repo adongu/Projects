@@ -44,7 +44,7 @@ export const clearErrors = () => ({
 
 
 
-export const createComment = (perviewId = null, comment = '') => dispatch => {
+export const createComment = ({ perviewId = null, comment = '' }) => dispatch => {
   dispatch(fetchingUpdate());
   return APIUtil.createComment(perviewId, comment)
     .then(response => {
@@ -57,7 +57,7 @@ export const createComment = (perviewId = null, comment = '') => dispatch => {
     })
 }
 
-export const deleteComment = (perviewId = null, commentId = null) => dispatch => {
+export const deleteComment = ({ perviewId = null, commentId = null }) => dispatch => {
   dispatch(fetchingUpdate());
   return APIUtil.deleteComment(perviewId, commentId)
     .then(response => {
