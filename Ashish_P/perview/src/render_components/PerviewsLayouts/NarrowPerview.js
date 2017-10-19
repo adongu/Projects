@@ -107,7 +107,6 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
   }
 
   const renderFeed = () => {
-
     if (perviews) {
       return perviews.map((perview, i) => {
         const perviewObject = {

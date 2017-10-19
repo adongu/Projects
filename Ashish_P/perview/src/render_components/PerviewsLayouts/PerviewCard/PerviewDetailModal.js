@@ -10,6 +10,7 @@ class PerviewDetailModal extends React.Component {
 
     this.state = {
       show: false,
+      comments: [],
       toRenderPerviewCardDetailsView: false,
       toRenderPerviewCommentsView: false,
     }
@@ -22,31 +23,33 @@ class PerviewDetailModal extends React.Component {
     this.renderCommentSection = this.renderCommentSection.bind(this);
   }
 
-  componentWillMount() {
-    if (this.props.renderPerviewCardDetailsView) {
-      this.setState({
-        toRenderPerviewCardDetailsView: this.props.renderPerviewCardDetailsView
-      });
-    } else if (this.props.renderSolicitCommentsView) {
-      this.setState({
-        toRenderPerviewCardDetailsView: this.props.renderSolicitCommentsView
-      });
-    }
-  }
-
-  componentWillReceiveProps (nextProps) {
-    if (nextProps.renderPerviewCardDetailsView !== this.props.renderPerviewCardDetailsView) {
-      this.setState({
-        toRenderPerviewCardDetailsView: nextProps.renderPerviewCardDetailsView
-        // renderSolicitCommentsView: false
-      });
-    } else if (nextProps.renderSolicitCommentsView !== this.props.renderSolicitCommentsView) {
-      this.setState({
-        toRenderPerviewCardDetailsView: nextProps.renderSolicitCommentsView
-        // renderSolicitCommentsView: false
-      });
-    }
-  }
+  // componentWillMount() {
+  //   if (this.props.renderPerviewCardDetailsView) {
+  //     this.setState({
+  //       toRenderPerviewCardDetailsView: this.props.renderPerviewCardDetailsView
+  //     });
+  //   } else if (this.props.renderSolicitCommentsView) {
+  //     this.setState({
+  //       toRenderPerviewCardDetailsView: this.props.renderSolicitCommentsView,
+  //       comments: this.props.perview.comments
+  //     });
+  //   }
+  // }
+  //
+  // componentWillReceiveProps (nextProps) {
+  //   if (nextProps.renderPerviewCardDetailsView !== this.props.renderPerviewCardDetailsView) {
+  //     this.setState({
+  //       toRenderPerviewCardDetailsView: nextProps.renderPerviewCardDetailsView
+  //       // renderSolicitCommentsView: false
+  //     });
+  //   } else if (nextProps.renderSolicitCommentsView !== this.props.renderSolicitCommentsView) {
+  //     this.setState({
+  //       toRenderPerviewCardDetailsView: nextProps.renderSolicitCommentsView,
+  //       comments: nextProps.perview.comments
+  //       // renderSolicitCommentsView: false
+  //     });
+  //   }
+  // }
 
   showModal () {
     this.setState({ show: true });
@@ -93,11 +96,13 @@ class PerviewDetailModal extends React.Component {
 
   }
 
-  renderCommentSection (perview) {
+  renderCommentSection () {
     if (this.props.toRenderPerviewCommentsView) {
       return (
         <PerviewComments
-          perview = {perview}
+          perview = {this.props.perview}
+          createComment = {this.props.createComment}
+          deleteComment = {this.props.deleteComment}
         />
       )
     }
@@ -125,8 +130,8 @@ class PerviewDetailModal extends React.Component {
               className="flexcolumn perviewdetailmodal__perviewbox" key={`item-${perview.itemDto.id}_Perview-${perview.id}`}
             >
               <div className="divwrapper-fullwidth">
-                {this.renderDetailsSection(user, perview)}
                 {this.renderCommentSection(user, perview)}
+                {this.renderDetailsSection(user, perview)}
               </div>
             </div>
           </Modal.Body>

@@ -79,7 +79,6 @@ class HomePage extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
     <div className="homepage__container">
       <NavBarContainer

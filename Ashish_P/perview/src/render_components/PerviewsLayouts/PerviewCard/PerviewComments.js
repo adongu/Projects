@@ -33,11 +33,13 @@ class PerviewComments extends React.Component{
   }
 
   renderAllComments () {
+    console.log('perviewcomment', this.props.perview);
+    console.log('perviewcomment', this.props.perview.comments);
     return (
       <div className="divwrapper-fullwidth">
         {this.props.perview.comments.map((comment) => {
           return (
-            <div>
+            <div key={`perviewcomment-${this.props.perview.id}-${comment.id}`}>
               {/* {comment.username}
               {comment.userProfile}
               {comment.date}
