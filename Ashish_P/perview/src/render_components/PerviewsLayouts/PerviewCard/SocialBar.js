@@ -3,7 +3,7 @@ import React from 'react';
 import PerviewDetailModal from './PerviewDetailModal';
 import { Popover, OverlayTrigger } from 'react-bootstrap';
 
-const SocialBar = ({currentUserId, perview, likers, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, handleFriendClick}) => {
+const SocialBar = ({currentUserId, perview, likers, createComment, deleteComment, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, handleFriendClick}) => {
 
   const handleSaveClick = (perview) => {
     return e => {
@@ -70,6 +70,8 @@ const SocialBar = ({currentUserId, perview, likers, bookmarkPerview, unbookmarkP
         <div className="perviewcard__detailmodalwrapper">
           <PerviewDetailModal
             perview = {perview}
+            createComment={createComment}
+            deleteComment={deleteComment}
             handleSaveClick = {handleSaveClick}
             handleFriendClick = {handleFriendClick}
             handleLikeClick = {handleLikeClick}

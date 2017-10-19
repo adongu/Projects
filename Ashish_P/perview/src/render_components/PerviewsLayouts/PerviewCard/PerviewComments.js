@@ -6,29 +6,77 @@ class PerviewComments extends React.Component{
     this.state = {
       newComment: ''
     }
+
+    this.update = this.update.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDeleteComment = this.handleDeleteComment.bind(this);
+    this.renderCommenterProfile = this.renderCommenterProfile.bind(this);
   }
 
-  updateInput () {
+  update (field) {
     return (e) => {
       this.setState({
-        newComment: e.target.value
+        [field]: e.target.value
       })
     }
   }
 
-  deleteComment (commentId) {
+  handleSubmit (e) {
+    // return (e) => {
+    e.preventDefault();
 
+    if (this.props.createComment && this.props.perview.id && this.state.newComment.length > 0) {
+      let commentObject = {'perviewId': this.props.perview.id, 'comment': this.state.newComment };
+
+      if(this.props.createComment(commentObject)) {
+        this.setState({
+          newComment: ''
+        })
+      }
+    }
+    // }
+  }
+
+  handleDeleteComment (commentId) {
+    return (e) => {
+      e.preventDefault();
+      if (this.props.deleteComment && this.props.perview.id) {
+        let commentObject = {'perviewId': this.props.perview.id, 'commentId': commentId}
+
+        this.props.deleteComment(commentObject);
+      }
+    }
+  }
+
+  renderPerviewDetails () {
+    return (
+      <div>
+        user
+      </div>
+    )
   }
 
   renderAddCommentForm () {
     return (
-      <form action="">
+      <form onSubmit={this.handleSubmit}>
         <textarea
+          onChange={this.update("newComment")}
           placeholder = "What would you like to ask ${THIS USER}"
+          value={this.state.newComment}
         />
 
         <button>Submit</button>
       </form>
+    )
+  }
+
+  renderCommenterProfile (commenter) {
+    return (
+      <div>
+        {commenter.facebookProfilePictureUrl}
+        {commenter.firstName}
+        {commenter.lastName}
+      </div>
     )
   }
 
@@ -40,11 +88,10 @@ class PerviewComments extends React.Component{
         {this.props.perview.comments.map((comment) => {
           return (
             <div key={`perviewcomment-${this.props.perview.id}-${comment.id}`}>
-              {/* {comment.username}
-              {comment.userProfile}
-              {comment.date}
-              {comment.tags} */}
-              comment
+              {this.renderCommenterProfile(comment.commenter)}
+              {comment.comment}
+
+              <div onClick={this.handleDeleteComment(comment.id)}>Delete Comment</div>
             </div>
           )
         })}
@@ -56,6 +103,7 @@ class PerviewComments extends React.Component{
     return (
       <div className="divwrapper-fullwidth">
         <div>
+          {this.renderPerviewDetails}
           {this.renderAddCommentForm()}
           {this.renderAllComments()}
         </div>

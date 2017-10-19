@@ -57,21 +57,6 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, create
     }
   }
 
-  const handleCreateComment = () => {
-    if (createComment && perview.id) {
-      let objecta = {'perviewId': perview.id, 'comment': 'comment'}
-      createComment(objecta);
-    }
-  }
-
-  const handleDeleteComment = () => {
-    if (deleteComment && perview.id) {
-      let objectb = {'perviewId': perview.id, 'commentId': 2}
-
-      deleteComment(objectb);
-    }
-  }
-
   // const renderAndMoreLikes = () => {
   //   if (likers.length > 1) {
   //     let numLikersMore = likers.length - 1;
@@ -220,6 +205,8 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, create
           currentUserId={currentUserId}
           perview={perview}
           likers={likers}
+          createComment={createComment}
+          deleteComment={deleteComment}
           handleFriendClick={handleFriendClick}
           bookmarkPerview={bookmarkPerview}
           unbookmarkPerview={unbookmarkPerview}
@@ -236,8 +223,6 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, create
         {renderPerivewCardHeaderBar}
         {renderPerviewOrSolicitContentView()}
         {renderSocialBar}
-        <div onClick={handleCreateComment}>ADD COMMENT</div>
-        <div onClick={handleDeleteComment}>DELETE COMMENT</div>
     </div>
   )
 }

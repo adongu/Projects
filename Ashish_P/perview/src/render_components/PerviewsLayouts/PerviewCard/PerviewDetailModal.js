@@ -11,7 +11,7 @@ class PerviewDetailModal extends React.Component {
     this.state = {
       show: false,
       comments: [],
-      toRenderPerviewCardDetailsView: false,
+      toRenderPerviewCardDetailsView: true,
       toRenderPerviewCommentsView: false,
     }
 
@@ -62,9 +62,9 @@ class PerviewDetailModal extends React.Component {
       renderSolicitCommentsView: false
     });
   }
-
+// Abstract details into its own component
   renderDetailsSection (user, perview) {
-    if (this.props.toRenderPerviewCardDetailsView) {
+    // if (this.props.toRenderPerviewCardDetailsView) {
       return (
         <div className="flexcolumn divwrapper-fullwidth">
           <div className="flexrow perviewdetailmodal__userbox">
@@ -74,7 +74,7 @@ class PerviewDetailModal extends React.Component {
             <span className="perviewdetailmodal__username">{user.firstName}</span>
           </div>
           <div className="perviewdetailmodal__ratingbox">
-            {this.props.renderStars(perview.rating)}
+            {this.props.renderStars ? this.props.renderStars(perview.rating) : ''}
           </div>
           <div className="perviewdetailmodal__reviewbox">
             {perview.tags}
@@ -89,7 +89,7 @@ class PerviewDetailModal extends React.Component {
           </div>
         </div>
       )
-    }
+    // }
   }
 
   renderSolicitSection () {
@@ -130,8 +130,8 @@ class PerviewDetailModal extends React.Component {
               className="flexcolumn perviewdetailmodal__perviewbox" key={`item-${perview.itemDto.id}_Perview-${perview.id}`}
             >
               <div className="divwrapper-fullwidth">
-                {this.renderCommentSection(user, perview)}
                 {this.renderDetailsSection(user, perview)}
+                {this.renderCommentSection(user, perview)}
               </div>
             </div>
           </Modal.Body>
