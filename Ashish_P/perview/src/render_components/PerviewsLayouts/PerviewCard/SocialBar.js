@@ -73,7 +73,7 @@ const SocialBar = ({currentUserId, perview, likers, bookmarkPerview, unbookmarkP
             handleSaveClick = {handleSaveClick}
             handleFriendClick = {handleFriendClick}
             handleLikeClick = {handleLikeClick}
-            toRenderPerviewCardDetailsView = {true}
+            toRenderPerviewCommentsView = {true}
           />
         </div>
       )

@@ -28,12 +28,12 @@ const sessionReducer = (oldState = _nullSocial, action) => {
 
       commentedPerview.comments.push(action.perview);
 
-      let newAllPerviews = Object.keys(allperviews).map((perview) => {
+      let newAllPerviews = Object.keys(allPerviews).map((perview) => {
         return perview.id === action.perviewId ? commentedPerview : perview;
       })
 
       return Object.assign({}, oldState, {
-        allPerviews: newAllPerviews
+        allPerviews: newAllPerviews,
         errors: []
       });
     case DELETE_COMMENT:
@@ -46,7 +46,7 @@ const sessionReducer = (oldState = _nullSocial, action) => {
       });
 
       return Object.assign({}, oldState, {
-        allPerviews: allPerviewsWithDeletedComment
+        allPerviews: allPerviewsWithDeletedComment,
         errors: []
       });
     case FINISH_UPDATE:

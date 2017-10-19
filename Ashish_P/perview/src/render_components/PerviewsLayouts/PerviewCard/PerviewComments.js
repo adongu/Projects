@@ -4,14 +4,14 @@ class PerviewComments extends React.Component{
   constructor (props) {
     super(props);
     this.state = {
-      newComment = ''
+      newComment: ''
     }
   }
 
   updateInput () {
     return (e) => {
       this.setState({
-        e.target.value
+        newComment: e.target.value
       })
     }
   }
@@ -22,7 +22,7 @@ class PerviewComments extends React.Component{
 
   renderAddCommentForm () {
     return (
-      <form action=>
+      <form action="">
         <textarea
           placeholder = "What would you like to ask ${THIS USER}"
         />
@@ -35,7 +35,7 @@ class PerviewComments extends React.Component{
   renderAllComments () {
     return (
       <div className="divwrapper-fullwidth">
-        {perview.comments.map((comment) => {
+        {this.props.perview.comments.map((comment) => {
           return (
             <div>
               {/* {comment.username}

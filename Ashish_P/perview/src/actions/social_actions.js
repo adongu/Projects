@@ -27,9 +27,10 @@ export const receiveComment = (commentId, comment) => ({
   comment
 });
 
-export const removeComment = (perviewId) => ({
+export const removeComment = (perviewId, commentId) => ({
   type: RECEIVE_ERRORS,
-  perviewId
+  perviewId,
+  commentId
 });
 
 const receiveErrors = (errors) => ({
@@ -43,11 +44,25 @@ export const clearErrors = () => ({
 
 
 
-export const createComment = (perviewId = null) => dispatch => {
+export const createComment = (perviewId = null, comment = '') => dispatch => {
   dispatch(fetchingUpdate());
-  return APIUtil.likePerview(perviewId)
+  return APIUtil.createComment(perviewId, comment)
     .then(response => {
-      dispatch(finishUpdate(perviewId, 'like'));
+      // dispatch(finishUpdate(perviewId, 'like'));
+      return dispatch(receiveComment(perviewId, comment))
+    })
+    .catch(error => {
+      dispatch(finishUpdate());
+      return dispatch(receiveErrors(error));
+    })
+}
+
+export const deleteComment = (perviewId = null, commentId = null) => dispatch => {
+  dispatch(fetchingUpdate());
+  return APIUtil.deleteComment(perviewId, commentId)
+    .then(response => {
+      // dispatch(finishUpdate(perviewId, 'like'));
+      return dispatch(removeComment(perviewId, commentId))
     })
     .catch(error => {
       dispatch(finishUpdate());

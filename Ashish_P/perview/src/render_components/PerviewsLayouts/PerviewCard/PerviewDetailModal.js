@@ -82,11 +82,13 @@ class PerviewDetailModal extends React.Component {
   }
 
   renderCommentSection (perview) {
-    return (
-      <PerviewComments
-        perview = {perview}
-      />
-    )
+    if (this.props.toRenderPerviewCommentsView) {
+      return (
+        <PerviewComments
+          perview = {perview}
+        />
+      )
+    }
   }
 
   render () {

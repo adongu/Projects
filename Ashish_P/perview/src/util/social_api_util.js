@@ -16,10 +16,10 @@ export const createComment = ({perviewId, comment}) => {
   })
 };
 
-export const deleteComment = ({perviewId}) => {
+export const deleteComment = ({perviewId, commentId}) => {
   return axios({
     method: 'POST',
-    url: `/api/${commentId}/comment/delete`,
+    url: `/api/${perviewId}/comment/${commentId}/delete`,
     config
   })
 };
