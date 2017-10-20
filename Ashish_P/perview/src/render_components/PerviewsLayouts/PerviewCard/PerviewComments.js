@@ -1,3 +1,4 @@
+import '../../../styles/stylesheets/PerviewLayouts/PerviewCard/PerviewComments.css';
 import React from 'react';
 // perview
 class PerviewComments extends React.Component{
