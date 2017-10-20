@@ -128,7 +128,7 @@ class PerviewDetailModal extends React.Component {
           <Modal.Header className="perviewdetailmodal__header" closeButton></Modal.Header>
           <Modal.Body className="perviewdetailmodal__body">
             <div
-              className="flexcolumn perviewdetailmodal__perviewbox" key={`item-${perview.itemDto.id}_Perview-${perview.id}`}
+              className="flexcolumn perviewdetailmodal__perviewbox" 
             >
               <div className="divwrapper-fullwidth">
                 {this.renderDetailsSection(user, perview)}
