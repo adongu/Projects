@@ -11,6 +11,7 @@ class PerviewComments extends React.Component{
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDeleteComment = this.handleDeleteComment.bind(this);
     this.renderCommenterProfile = this.renderCommenterProfile.bind(this);
+    this.renderDeleteButton = this.renderDeleteButton.bind(this);
   }
 
   update (field) {
@@ -80,6 +81,14 @@ class PerviewComments extends React.Component{
     )
   }
 
+  renderDeleteButton (comment) {
+    if (this.props.currentUserId === comment.commenter.id) {
+      return (
+        <div onClick={this.handleDeleteComment(comment.id)}>Delete Comment</div>
+      )
+    }
+  }
+
   renderAllComments () {
     console.log('perviewcomment', this.props.perview);
     console.log('perviewcomment', this.props.perview.comments);
@@ -91,7 +100,7 @@ class PerviewComments extends React.Component{
               {this.renderCommenterProfile(comment.commenter)}
               {comment.comment}
 
-              <div onClick={this.handleDeleteComment(comment.id)}>Delete Comment</div>
+              {this.renderDeleteButton(comment)}
             </div>
           )
         })}

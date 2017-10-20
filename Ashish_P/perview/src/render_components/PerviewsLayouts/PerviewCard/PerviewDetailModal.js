@@ -100,6 +100,7 @@ class PerviewDetailModal extends React.Component {
     if (this.props.toRenderPerviewCommentsView) {
       return (
         <PerviewComments
+          currentUserId = {this.props.currentUserId}
           perview = {this.props.perview}
           createComment = {this.props.createComment}
           deleteComment = {this.props.deleteComment}

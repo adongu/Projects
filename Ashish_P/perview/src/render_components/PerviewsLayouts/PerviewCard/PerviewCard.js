@@ -86,6 +86,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, create
         <div className="flexrow perviewcard__editbox">
           <div className="perviewcard__edit-container" alt="Edit Perview">
             <PerviewEditModal
+              currentUserId = {currentUserId}
               item = {item}
               perview = {perview}
               editPerview = {editPerview}
