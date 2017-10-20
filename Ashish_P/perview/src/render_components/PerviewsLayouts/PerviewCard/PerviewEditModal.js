@@ -41,7 +41,7 @@ class PerviewEditModal extends React.Component {
   componentWillMount() {
     if (this.props.item) {
       let item = this.props.item
-
+      console.log(item);
       this.setState({
         imgUrl: item.data.imageUrls.large.url,
         name: item.data.title,
@@ -52,7 +52,7 @@ class PerviewEditModal extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.state.item.id && nextProps.item.id !== this.state.item.id) {
+    if (this.state.itemId && nextProps.item.id !== this.state.itemId) {
       let item = nextProps.item
 
       this.setState({
@@ -72,10 +72,10 @@ class PerviewEditModal extends React.Component {
     this.setState({
       show: false,
       keywords: '',
-      imgUrl: '',
-      name: '',
-      price: '',
-      itemId: null,
+      // imgUrl: '',
+      // name: '',
+      // price: '',
+      // itemId: null,
       tags: '',
       rating: 0,
       lastRating: 0,
