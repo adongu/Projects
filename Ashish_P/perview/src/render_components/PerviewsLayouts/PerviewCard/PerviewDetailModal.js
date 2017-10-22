@@ -40,7 +40,7 @@ class PerviewDetailModal extends React.Component {
       });
     }
 
-    if (nextProps.perview.comments !== this.props.perview.comments) {
+    if (nextProps.perview.comments.length !== this.props.perview.comments.length) {
       this.setState({
         toRenderPerviewCardDetailsView: nextProps.renderSolicitCommentsView,
         comments: nextProps.perview.comments
@@ -128,6 +128,7 @@ class PerviewDetailModal extends React.Component {
           currentUserId = {this.props.currentUserId}
           perview = {this.props.perview}
           comments = {this.state.comments}
+          handleFriendClick = {this.props.handleFriendClick}
           createComment = {this.props.createComment}
           deleteComment = {this.props.deleteComment}
         />

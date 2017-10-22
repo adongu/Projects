@@ -5,6 +5,7 @@ class PerviewComments extends React.Component{
   constructor (props) {
     super(props);
     this.state = {
+      comments: [],
       newComment: ''
     }
 
@@ -13,6 +14,21 @@ class PerviewComments extends React.Component{
     this.handleDeleteComment = this.handleDeleteComment.bind(this);
     this.renderCommenterProfile = this.renderCommenterProfile.bind(this);
     this.renderDeleteButton = this.renderDeleteButton.bind(this);
+  }
+
+  componentWillMount() {
+    this.setState({
+      comments: this.props.perview.comments
+    });
+  }
+  //
+
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.perview.comments.length !== this.props.perview.comments.length) {
+      this.setState({
+        comments: nextProps.perview.comments
+      });
+    }
   }
 
   update (field) {
@@ -66,10 +82,20 @@ class PerviewComments extends React.Component{
 
   renderCommenterProfile (commenter) {
     return (
-      <div>
-        {commenter.facebookProfilePictureUrl}
-        {commenter.firstName}
-        {commenter.lastName}
+
+      <div className="flexrow perviewcard__review-user">
+        <div className="perviewcard__review-user-icon">
+          <img className="perviewcard__review-user-img"
+            onClick={this.props.handleFriendClick(commenter.id)} src={commenter.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"
+          />
+        </div>
+        <a
+          onClick={this.props.handleFriendClick(commenter.id)}
+          className="flexcolumn perviewcard__review-username"
+        >
+          <div></div>
+          <span>{commenter.firstName} {commenter.lastName}</span>
+        </a>
       </div>
     )
   }
@@ -87,7 +113,7 @@ class PerviewComments extends React.Component{
     console.log('perviewcomment', this.props.perview.comments);
     return (
       <div className="divwrapper-fullwidth">
-        {this.props.comments.map((comment) => {
+        {this.state.comments.map((comment) => {
           return (
             <div key={`perviewcomment-${this.props.perview.id}-${comment.id}`}>
               {this.renderCommenterProfile(comment.commenter)}
