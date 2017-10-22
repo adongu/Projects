@@ -128,9 +128,12 @@ class PerviewDetailModal extends React.Component {
           <Modal.Header className="perviewdetailmodal__header" closeButton></Modal.Header>
           <Modal.Body className="perviewdetailmodal__body">
             <div
-              className="flexcolumn perviewdetailmodal__perviewbox" 
+              className="flexrow perviewdetailmodal__perviewbox"
             >
-              <div className="divwrapper-fullwidth">
+              <div className="perviewdetail">
+
+              </div>
+              <div className="perviewdetailmodal__socialbox">
                 {this.renderDetailsSection(user, perview)}
                 {this.renderCommentSection(user, perview)}
               </div>

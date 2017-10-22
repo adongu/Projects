@@ -115,23 +115,23 @@ const SocialBar = ({currentUserId, perview, likers, createComment, deleteComment
         </div>
       </div>
 
-      <span
-        className='perviewcard__review-social-btn'
-      >
-        <i
-          className='fa fa-comments perviewcard__review-icon-comment'
-          aria-hidden="true">
-        </i>
+      <div className="flexrow">
+        <span
+          className='perviewcard__review-social-btn'
+        >
+          <i
+            className='fa fa-comments perviewcard__review-icon-comment'
+            aria-hidden="true">
+          </i>
 
-        <span className="perviewcard__review-social-text">
-          <span>
+          <span className="perviewcard__review-social-text">
             {renderCommentsModal()}
           </span>
-          <span>
-            {perview.comments ? perview.comments.length : ''}
-          </span>
         </span>
-      </span>
+        <span>
+          {perview.comments ? perview.comments.length : ''}
+        </span>
+      </div>
     </div>
   )
 }
