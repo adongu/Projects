@@ -71,7 +71,7 @@ class PerviewComments extends React.Component{
       <form onSubmit={this.handleSubmit}>
         <textarea
           onChange={this.update("newComment")}
-          placeholder = "What would you like to ask ${THIS USER}"
+          placeholder = "What would you like to ask?"
           value={this.state.newComment}
         />
 
@@ -84,8 +84,8 @@ class PerviewComments extends React.Component{
     return (
 
       <div className="flexrow perviewcard__review-user">
-        <div className="perviewcard__review-user-icon">
-          <img className="perviewcard__review-user-img"
+        <div className="perviewcomment__userimgbox">
+          <img className="perviewcomment__userimg"
             onClick={this.props.handleFriendClick(commenter.id)} src={commenter.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"
           />
         </div>
@@ -109,10 +109,8 @@ class PerviewComments extends React.Component{
   }
 
   renderAllComments () {
-    console.log('perviewcomment', this.props.perview);
-    console.log('perviewcomment', this.props.perview.comments);
     return (
-      <div className="divwrapper-fullwidth">
+      <div className="divwrapper-fullwidth perviewcomment__commentsbox">
         {this.state.comments.map((comment) => {
           return (
             <div key={`perviewcomment-${this.props.perview.id}-${comment.id}`}>
@@ -131,8 +129,8 @@ class PerviewComments extends React.Component{
     return (
       <div className="divwrapper-fullwidth">
         <div>
-          {this.renderAddCommentForm()}
           {this.renderAllComments()}
+          {this.renderAddCommentForm()}
         </div>
       </div>
     )
