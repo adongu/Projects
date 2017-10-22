@@ -1,6 +1,7 @@
 import "../../../styles/stylesheets/PerviewLayouts/PerviewCard/perviewdetailmodal.css";
 import React from 'react';
 import { Modal, ButtonToolbar } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import PerviewComments from './PerviewComments';
 
 class PerviewDetailModal extends React.Component {
@@ -17,39 +18,36 @@ class PerviewDetailModal extends React.Component {
 
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
-    this.renderDetailsSection = this.renderDetailsSection.bind(this);
 
-    this.renderSolicitSection = this.renderSolicitSection.bind(this);
+    this.renderItemSection = this.renderItemSection.bind(this);
+    this.renderDetailsSection = this.renderDetailsSection.bind(this);
     this.renderCommentSection = this.renderCommentSection.bind(this);
   }
 
-  // componentWillMount() {
-  //   if (this.props.renderPerviewCardDetailsView) {
-  //     this.setState({
-  //       toRenderPerviewCardDetailsView: this.props.renderPerviewCardDetailsView
-  //     });
-  //   } else if (this.props.renderSolicitCommentsView) {
-  //     this.setState({
-  //       toRenderPerviewCardDetailsView: this.props.renderSolicitCommentsView,
-  //       comments: this.props.perview.comments
-  //     });
-  //   }
-  // }
+  componentWillMount() {
+    this.setState({
+      toRenderPerviewCardDetailsView: this.props.renderPerviewCardDetailsView,
+      toRenderPerviewCommentsView: this.props.renderSolicitCommentsView,
+      comments: this.props.perview.comments
+    });
+  }
   //
-  // componentWillReceiveProps (nextProps) {
-  //   if (nextProps.renderPerviewCardDetailsView !== this.props.renderPerviewCardDetailsView) {
-  //     this.setState({
-  //       toRenderPerviewCardDetailsView: nextProps.renderPerviewCardDetailsView
-  //       // renderSolicitCommentsView: false
-  //     });
-  //   } else if (nextProps.renderSolicitCommentsView !== this.props.renderSolicitCommentsView) {
-  //     this.setState({
-  //       toRenderPerviewCardDetailsView: nextProps.renderSolicitCommentsView,
-  //       comments: nextProps.perview.comments
-  //       // renderSolicitCommentsView: false
-  //     });
-  //   }
-  // }
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.renderPerviewCardDetailsView !== this.props.renderPerviewCardDetailsView) {
+      this.setState({
+        toRenderPerviewCardDetailsView: nextProps.renderPerviewCardDetailsView
+        // renderSolicitCommentsView: false
+      });
+    }
+
+    if (nextProps.perview.comments !== this.props.perview.comments) {
+      this.setState({
+        toRenderPerviewCardDetailsView: nextProps.renderSolicitCommentsView,
+        comments: nextProps.perview.comments
+        // renderSolicitCommentsView: false
+      });
+    }
+  }
 
   showModal () {
     this.setState({ show: true });
@@ -62,6 +60,37 @@ class PerviewDetailModal extends React.Component {
       renderSolicitCommentsView: false
     });
   }
+
+  /**
+   * @param perview type object
+   * itemDto
+  **/
+  renderItemSection (item) {
+    if(item && this.props.toRenderPerviewCommentsView) {
+      return (
+        <div className="flexcolumn narrowperviews__productbox">
+          <div className="narrowperviews__img">
+            <Link to={`/item/${item.id}`}>
+              <img className="narrowperviews__productimg-photo" src={item.data.imageUrls.large.url} alt="product"/>
+            </Link>
+          </div>
+
+          <Link to={`/item/${item.id}`} className="narrowperviews__product-name">
+            {item.data.title}
+          </Link>
+
+          <div className="flexrow narrowperviews__buybox">
+            {item.data.listPrice.formattedAmount}
+
+            <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">
+              Buy on Amazon
+            </a>
+          </div>
+        </div>
+      )
+    }
+  }
+
 // Abstract details into its own component
   renderDetailsSection (user, perview) {
     // if (this.props.toRenderPerviewCardDetailsView) {
@@ -92,16 +121,13 @@ class PerviewDetailModal extends React.Component {
     // }
   }
 
-  renderSolicitSection () {
-
-  }
-
   renderCommentSection () {
     if (this.props.toRenderPerviewCommentsView) {
       return (
         <PerviewComments
           currentUserId = {this.props.currentUserId}
           perview = {this.props.perview}
+          comments = {this.state.comments}
           createComment = {this.props.createComment}
           deleteComment = {this.props.deleteComment}
         />
@@ -110,8 +136,10 @@ class PerviewDetailModal extends React.Component {
   }
 
   render () {
-    let perview = this.props.perview
-    let user = perview.userDto;
+    // console.log('perview', this.props.perview);
+    const perview = this.props.perview
+    const { itemDto } = perview;
+    const user = perview.userDto;
 
     return (
       <ButtonToolbar>
@@ -130,8 +158,8 @@ class PerviewDetailModal extends React.Component {
             <div
               className="flexrow perviewdetailmodal__perviewbox"
             >
-              <div className="perviewdetail">
-
+              <div className="perviewdetailmodal__itembox">
+                {this.renderItemSection(itemDto)}
               </div>
               <div className="perviewdetailmodal__socialbox">
                 {this.renderDetailsSection(user, perview)}

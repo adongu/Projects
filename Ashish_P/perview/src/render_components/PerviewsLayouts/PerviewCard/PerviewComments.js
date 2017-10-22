@@ -50,14 +50,6 @@ class PerviewComments extends React.Component{
     }
   }
 
-  renderPerviewDetails () {
-    return (
-      <div>
-        user
-      </div>
-    )
-  }
-
   renderAddCommentForm () {
     return (
       <form onSubmit={this.handleSubmit}>
@@ -95,7 +87,7 @@ class PerviewComments extends React.Component{
     console.log('perviewcomment', this.props.perview.comments);
     return (
       <div className="divwrapper-fullwidth">
-        {this.props.perview.comments.map((comment) => {
+        {this.props.comments.map((comment) => {
           return (
             <div key={`perviewcomment-${this.props.perview.id}-${comment.id}`}>
               {this.renderCommenterProfile(comment.commenter)}
@@ -113,7 +105,6 @@ class PerviewComments extends React.Component{
     return (
       <div className="divwrapper-fullwidth">
         <div>
-          {this.renderPerviewDetails}
           {this.renderAddCommentForm()}
           {this.renderAllComments()}
         </div>
