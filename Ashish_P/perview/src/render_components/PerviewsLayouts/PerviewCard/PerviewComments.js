@@ -1,4 +1,4 @@
-import '../../../styles/stylesheets/PerviewLayouts/PerviewCard/PerviewComments.css';
+import '../../../styles/stylesheets/PerviewLayouts/PerviewCard/perviewcomments.css';
 import React from 'react';
 // perview
 class PerviewComments extends React.Component{
@@ -43,8 +43,9 @@ class PerviewComments extends React.Component{
   handleSubmit (e) {
     // return (e) => {
     e.preventDefault();
+    e.stopPropagation()
 
-    if (this.props.createComment && this.props.perview.id && this.state.newComment.length > 0) {
+    if (e.target.charCode === 13 && this.props.createComment && this.props.perview.id && this.state.newComment.length > 0) {
       let commentObject = {'perviewId': this.props.perview.id, 'comment': this.state.newComment };
 
       if(this.props.createComment(commentObject)) {
@@ -69,14 +70,23 @@ class PerviewComments extends React.Component{
 
   renderAddCommentForm () {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form
+        onSubmit={this.handleSubmit}
+        className="perviewcomment__form"
+      >
         <textarea
+          className="perviewcomment__newcomment"
           onChange={this.update("newComment")}
           placeholder = "What would you like to ask?"
           value={this.state.newComment}
         />
 
-        <button>Submit</button>
+        <button
+          className="perviewcomment__newcomment-submit"
+          type="submit"
+        >
+          Submit
+        </button>
       </form>
     )
   }
@@ -85,7 +95,7 @@ class PerviewComments extends React.Component{
     const commenter = comment.commenter;
 
     return (
-      <div className="flexrow perviewcard__review-user">
+      <div className="flexrow perviewcomment__review-user">
         <div className="flexrow perviewcomment__userbox">
           <div className="perviewcomment__userimgbox">
             <img className="perviewcomment__userimg"
@@ -100,10 +110,12 @@ class PerviewComments extends React.Component{
           </a>
         </div>
 
-        <span classname="flexrow perviewcomment__topcomment">
-          {topComment}
+        <div className="perviewcomment__topcomment">
+          <span>
+            {topComment}
+          </span>
           {this.renderDeleteButton(comment)}
-        </span>
+        </div>
       </div>
     )
   }
@@ -115,7 +127,7 @@ class PerviewComments extends React.Component{
           onClick={this.handleDeleteComment(comment.id)}
           className="perviewcomment__delete"
         >
-          x
+          <span>x</span>
         </div>
       )
     // }
@@ -139,7 +151,7 @@ class PerviewComments extends React.Component{
               <div>
                 {this.renderCommenterProfile(comment, topComment)}
               </div>
-              <div>
+              <div className="perviewcomment__bottomcomment">
                 {bottomComment}
               </div>
             </div>
@@ -152,10 +164,8 @@ class PerviewComments extends React.Component{
   render () {
     return (
       <div className="divwrapper-fullwidth">
-        <div>
           {this.renderAllComments()}
           {this.renderAddCommentForm()}
-        </div>
       </div>
     )
   }

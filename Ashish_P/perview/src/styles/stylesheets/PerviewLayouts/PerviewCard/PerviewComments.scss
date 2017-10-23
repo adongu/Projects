@@ -6,6 +6,13 @@
     margin-bottom: 20px;
   }
 
+  &userbox {
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
   &userimgbox {
     display: flex;
     align-items: center;
@@ -31,17 +38,26 @@
   }
 
   &username {
-    width: auto;
+    padding-left: 8px;
+  }
+
+  &topcomment {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 
   &delete {
     width: 10px;
-    border-radius: ;
+    border-radius: 50%;
     font-size: 10px;
+    margin-left: 3px;
+    margin-right: 8px;
     background: #D3D6DB;
     cursor: pointer;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
   }
@@ -50,5 +66,26 @@
     border-radius: 10em;
     color: #fff;
     background: #D3D6DB;
+  }
+
+  &bottomcomment {
+    padding: 0 8px;
+  }
+
+  &form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  &newcomment{
+    line-height: 18px;
+    flex-grow: 1;
+    resize: none;
+    flex-direction: column;
+    outline: none;
+    padding: 0;
+    max-height: 80px;
+    font-size: inherit;
   }
 }
