@@ -46,6 +46,7 @@ class HomePage extends React.Component {
       })
       if (this.state.fetchingUpdate) {
         this.props.fetchAllPerviews();
+        // console.log(this.props.perview.comments.length)
       }
     }
   }

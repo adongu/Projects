@@ -34,7 +34,11 @@ const sessionReducer = (oldState = _nullSocial, action) => {
         return perview.id === action.perviewId ? commentedPerview : perview;
       })
 
+      console.log('social reducer ADD COMMENT', newAllPerviews);
+      debugger
+
       return Object.assign({}, newState, {
+        fetchingUpdate: false,
         allPerviews: newAllPerviews,
         errors: []
       });
@@ -47,7 +51,12 @@ const sessionReducer = (oldState = _nullSocial, action) => {
         }
       });
 
+      console.log('socialreducer DELETE COMMENT', allPerviewsWithDeletedComment);
+
+      debugger
+
       return Object.assign({}, newState, {
+        fetchingUpdate: false,
         allPerviews: allPerviewsWithDeletedComment,
         errors: []
       });

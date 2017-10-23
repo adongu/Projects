@@ -82,11 +82,10 @@ class PerviewComments extends React.Component{
 
   renderCommenterProfile (commenter) {
     return (
-
       <div className="flexrow perviewcard__review-user">
         <div className="perviewcomment__userimgbox">
           <img className="perviewcomment__userimg"
-            onClick={this.props.handleFriendClick(commenter.id)} src={commenter.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"
+            onClick={this.props.handleFriendClick(commenter.id)} src={commenter.facebookProfilePictureUrl} alt="User"
           />
         </div>
         <a
@@ -101,11 +100,11 @@ class PerviewComments extends React.Component{
   }
 
   renderDeleteButton (comment) {
-    if (this.props.currentUserId === comment.commenter.id) {
+    // if (this.props.currentUserId === comment.commenter.id) {
       return (
         <div onClick={this.handleDeleteComment(comment.id)}>Delete Comment</div>
       )
-    }
+    // }
   }
 
   renderAllComments () {

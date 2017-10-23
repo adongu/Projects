@@ -22,13 +22,13 @@ export const finishUpdate = (perviewId, socialType) => ({
 });
 
 export const receiveComment = (commentId, comment) => ({
-  type: RECEIVE_ERRORS,
+  type: CREATE_COMMENT,
   commentId,
   comment
 });
 
 export const removeComment = (perviewId, commentId) => ({
-  type: RECEIVE_ERRORS,
+  type: DELETE_COMMENT,
   perviewId,
   commentId
 });
