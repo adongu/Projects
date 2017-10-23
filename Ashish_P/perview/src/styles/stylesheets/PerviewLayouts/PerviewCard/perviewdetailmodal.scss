@@ -9,7 +9,16 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) !important;
-    max-width: 850px;
+    width: 450px;
+    margin-top: 0;
+  }
+
+  &modal-large {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+    width: 800px;
     margin-top: 0;
   }
 
@@ -67,6 +76,8 @@
   }
 
   &socialbox {
+    width: 400px;
+    word-wrap: break-word;
     padding: 8px 0;
   }
 

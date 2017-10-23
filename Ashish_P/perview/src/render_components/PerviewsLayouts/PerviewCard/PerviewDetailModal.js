@@ -152,7 +152,7 @@ class PerviewDetailModal extends React.Component {
           {...this.props}
           show={this.state.show}
           onHide={this.hideModal}
-          dialogClassName="perviewdetailmodal__modal"
+          dialogClassName={`perviewdetailmodal__modal${this.props.toRenderPerviewCommentsView ? '-large' : ''}`}
         >
           <Modal.Header className="perviewdetailmodal__header" closeButton></Modal.Header>
           <Modal.Body className="perviewdetailmodal__body">
