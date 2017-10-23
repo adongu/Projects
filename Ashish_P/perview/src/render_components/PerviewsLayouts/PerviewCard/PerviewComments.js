@@ -42,10 +42,8 @@ class PerviewComments extends React.Component{
 
   handleSubmit (e) {
     // return (e) => {
-    e.preventDefault();
-    e.stopPropagation()
 
-    if (e.target.charCode === 13 && this.props.createComment && this.props.perview.id && this.state.newComment.length > 0) {
+    if (this.props.createComment && this.props.perview.id && this.state.newComment.length > 0) {
       let commentObject = {'perviewId': this.props.perview.id, 'comment': this.state.newComment };
 
       if(this.props.createComment(commentObject)) {
@@ -54,6 +52,8 @@ class PerviewComments extends React.Component{
         })
       }
     }
+    e.preventDefault();
+    e.stopPropagation()
     // }
   }
 
@@ -81,12 +81,11 @@ class PerviewComments extends React.Component{
           value={this.state.newComment}
         />
 
-        <button
+        <input
           className="perviewcomment__newcomment-submit"
           type="submit"
-        >
-          Submit
-        </button>
+          value="submit"
+        />
       </form>
     )
   }
