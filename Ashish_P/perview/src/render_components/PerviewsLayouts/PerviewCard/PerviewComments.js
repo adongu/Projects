@@ -6,6 +6,7 @@ class PerviewComments extends React.Component{
     super(props);
     this.state = {
       comments: [],
+      topLineMaxLength: 25,
       newComment: ''
     }
 
@@ -80,27 +81,27 @@ class PerviewComments extends React.Component{
     )
   }
 
-  renderCommenterProfile (comment) {
+  renderCommenterProfile (comment, topComment) {
     const commenter = comment.commenter;
 
     return (
       <div className="flexrow perviewcard__review-user">
-        <div className="perviewcomment__userimgbox">
-          <img className="perviewcomment__userimg"
-            onClick={this.props.handleFriendClick(commenter.id)} src={commenter.facebookProfilePictureUrl} alt="User"
-          />
-        </div>
-        <a
-          onClick={this.props.handleFriendClick(commenter.id)}
-          className="flexcolumn perviewcard__review-username"
-        >
-          <span>
+        <div className="flexrow perviewcomment__userbox">
+          <div className="perviewcomment__userimgbox">
+            <img className="perviewcomment__userimg"
+              onClick={this.props.handleFriendClick(commenter.id)} src={commenter.facebookProfilePictureUrl} alt="User"
+            />
+          </div>
+          <a
+            onClick={this.props.handleFriendClick(commenter.id)}
+            className="perviewcomment__username"
+          >
             {commenter.firstName}
-          </span>
-        </a>
+          </a>
+        </div>
 
-        <span>
-          {comment.comment}
+        <span classname="flexrow perviewcomment__topcomment">
+          {topComment}
           {this.renderDeleteButton(comment)}
         </span>
       </div>
@@ -114,7 +115,7 @@ class PerviewComments extends React.Component{
           onClick={this.handleDeleteComment(comment.id)}
           className="perviewcomment__delete"
         >
-          <span>x</span>
+          x
         </div>
       )
     // }
@@ -124,11 +125,23 @@ class PerviewComments extends React.Component{
     return (
       <div className="divwrapper-fullwidth perviewcomment__commentsbox">
         {this.state.comments.map((comment) => {
+          let topComment, bottomComment;
+          let commenterNameLength = comment.commenter.firstName.length;
+          let combinedNameAndCommentLength = commenterNameLength + comment.comment.length;
+          let maxTopCommentLength = this.state.topLineMaxLength - commenterNameLength;
+
+          if (combinedNameAndCommentLength > 2) {
+            topComment = comment.comment.slice(0, maxTopCommentLength)
+            bottomComment = comment.comment.slice(maxTopCommentLength);
+          }
           return (
             <div key={`perviewcomment-${this.props.perview.id}-${comment.id}`}>
-              <span>
-                {this.renderCommenterProfile(comment)}
-              </span>
+              <div>
+                {this.renderCommenterProfile(comment, topComment)}
+              </div>
+              <div>
+                {bottomComment}
+              </div>
             </div>
           )
         })}
