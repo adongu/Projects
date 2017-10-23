@@ -80,7 +80,9 @@ class PerviewComments extends React.Component{
     )
   }
 
-  renderCommenterProfile (commenter) {
+  renderCommenterProfile (comment) {
+    const commenter = comment.commenter;
+
     return (
       <div className="flexrow perviewcard__review-user">
         <div className="perviewcomment__userimgbox">
@@ -92,9 +94,15 @@ class PerviewComments extends React.Component{
           onClick={this.props.handleFriendClick(commenter.id)}
           className="flexcolumn perviewcard__review-username"
         >
-          <div></div>
-          <span>{commenter.firstName} {commenter.lastName}</span>
+          <span>
+            {commenter.firstName}
+          </span>
         </a>
+
+        <span>
+          {comment.comment}
+          {this.renderDeleteButton(comment)}
+        </span>
       </div>
     )
   }
@@ -102,7 +110,12 @@ class PerviewComments extends React.Component{
   renderDeleteButton (comment) {
     // if (this.props.currentUserId === comment.commenter.id) {
       return (
-        <div onClick={this.handleDeleteComment(comment.id)}>Delete Comment</div>
+        <div
+          onClick={this.handleDeleteComment(comment.id)}
+          className="perviewcomment__delete"
+        >
+          <span>x</span>
+        </div>
       )
     // }
   }
@@ -113,10 +126,9 @@ class PerviewComments extends React.Component{
         {this.state.comments.map((comment) => {
           return (
             <div key={`perviewcomment-${this.props.perview.id}-${comment.id}`}>
-              {this.renderCommenterProfile(comment.commenter)}
-              {comment.comment}
-
-              {this.renderDeleteButton(comment)}
+              <span>
+                {this.renderCommenterProfile(comment)}
+              </span>
             </div>
           )
         })}

@@ -229,7 +229,8 @@ $lines-to-show: 4;
   }
 
   &review-icon-bookmark,
-  &review-icon-like {
+  &review-icon-like,
+  &review-icon-comment {
     opacity: 1;
     font-weight: bold;
     -webkit-text-stroke-width: 1px;

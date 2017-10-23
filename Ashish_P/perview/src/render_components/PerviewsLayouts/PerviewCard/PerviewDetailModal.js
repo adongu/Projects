@@ -21,6 +21,7 @@ class PerviewDetailModal extends React.Component {
 
     this.renderItemSection = this.renderItemSection.bind(this);
     this.renderDetailsSection = this.renderDetailsSection.bind(this);
+    this.renderSocialSection = this.renderSocialSection.bind(this);
     this.renderCommentSection = this.renderCommentSection.bind(this);
   }
 
@@ -68,7 +69,7 @@ class PerviewDetailModal extends React.Component {
   renderItemSection (item) {
     if(item && this.props.toRenderPerviewCommentsView) {
       return (
-        <div className="flexcolumn narrowperviews__productbox">
+        <div className="flexcolumn narrowperviews__productbox divwrapper-fullwidth">
           <div className="narrowperviews__img">
             <Link to={`/item/${item.id}`}>
               <img className="narrowperviews__productimg-photo" src={item.data.imageUrls.large.url} alt="product"/>
@@ -108,14 +109,6 @@ class PerviewDetailModal extends React.Component {
           <div className="perviewdetailmodal__reviewbox">
             {perview.tags}
           </div>
-          <div className="perviewdetailmodal__socialbox">
-            <span className="perviewdetailmodal__social-icon" onClick={this.props.handleSaveClick(perview)}>
-              <i className={`fa fa-bookmark perviewdetailmodal__social-bookmark ${perview.bookmarkedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
-            </span>
-            <span className="perviewdetailmodal__social-icon" onClick={this.props.handleLikeClick(perview)}>
-              <i className={`fa fa-heart perviewdetailmodal__social-like ${perview.likedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
-            </span>
-          </div>
         </div>
       )
     // }
@@ -134,6 +127,19 @@ class PerviewDetailModal extends React.Component {
         />
       )
     }
+  }
+
+  renderSocialSection (perview) {
+    return (
+      <div className="perviewdetailmodal__socialbox">
+        <span className="perviewdetailmodal__social-icon" onClick={this.props.handleSaveClick(perview)}>
+          <i className={`fa fa-bookmark perviewdetailmodal__social-bookmark ${perview.bookmarkedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
+        </span>
+        <span className="perviewdetailmodal__social-icon" onClick={this.props.handleLikeClick(perview)}>
+          <i className={`fa fa-heart perviewdetailmodal__social-like ${perview.likedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
+        </span>
+      </div>
+    )
   }
 
   render () {
@@ -159,11 +165,12 @@ class PerviewDetailModal extends React.Component {
             <div
               className="flexrow perviewdetailmodal__perviewbox"
             >
-              <div className="perviewdetailmodal__itembox">
+              <div className={`${this.props.toRenderPerviewCommentsView ? 'perviewdetailmodal__itembox' : ''}`}>
                 {this.renderItemSection(itemDto)}
               </div>
-              <div className="perviewdetailmodal__socialbox">
+              <div className={`perviewdetailmodal__socialbox${this.props.toRenderPerviewCommentsView ? '' : '-large'}`}>
                 {this.renderDetailsSection(user, perview)}
+                {this.renderSocialSection(perview)}
                 {this.renderCommentSection(user, perview)}
               </div>
             </div>

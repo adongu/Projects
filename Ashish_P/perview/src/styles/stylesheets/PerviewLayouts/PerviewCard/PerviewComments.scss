@@ -1,7 +1,9 @@
 .perviewcomment__{
   &commentsbox {
+    height: 250px;
     overflow-y: scroll;
-    max-height: 400px;
+    border-bottom: 1px solid #efefef;
+    margin-bottom: 20px;
   }
 
   &userimgbox {
@@ -26,5 +28,23 @@
     image-rendering:   -o-crisp-edges;         /* Opera */
     image-rendering: -webkit-optimize-contrast;/* Webkit (non-standard naming) */
     image-rendering: crisp-edges;
+  }
+
+  &delete {
+    width: 10px;
+    border-radius: ;
+    font-size: 10px;
+    background: #D3D6DB;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &delete:hover {
+    border-radius: 10em;
+    color: #fff;
+    background: #D3D6DB;
   }
 }
