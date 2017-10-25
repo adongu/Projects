@@ -67,7 +67,6 @@ class PerviewDetailModal extends React.Component {
    * itemDto
   **/
   renderItemSection (item) {
-    console.log('is solicit', item);
     if(item && this.props.toRenderPerviewCommentsView) {
       // solicit background
       if(this.props.perview.solicit) {

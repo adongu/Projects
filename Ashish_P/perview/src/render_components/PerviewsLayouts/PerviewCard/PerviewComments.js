@@ -34,14 +34,21 @@ class PerviewComments extends React.Component{
 
   update (field) {
     return (e) => {
-      this.setState({
-        [field]: e.target.value
-      })
+      let charCode = (e.target.value.charCodeAt(e.target.value.length - 1));
+      if (charCode === 10) {
+        this.handleSubmit(e);
+      } else {
+        this.setState({
+          [field]: e.target.value
+        })
+      }
     }
   }
 
   handleSubmit (e) {
     // return (e) => {
+    e.preventDefault();
+    e.stopPropagation()
 
     if (this.props.createComment && this.props.perview.id && this.state.newComment.length > 0) {
       let commentObject = {'perviewId': this.props.perview.id, 'comment': this.state.newComment };
@@ -52,8 +59,6 @@ class PerviewComments extends React.Component{
         })
       }
     }
-    e.preventDefault();
-    e.stopPropagation()
     // }
   }
 
@@ -75,17 +80,16 @@ class PerviewComments extends React.Component{
         className="perviewcomment__form"
       >
         <textarea
+          type='text'
           className="perviewcomment__newcomment"
           onChange={this.update("newComment")}
           placeholder = "What would you like to ask?"
           value={this.state.newComment}
         />
 
-        <input
-          className="perviewcomment__newcomment-submit"
-          type="submit"
-          value="submit"
-        />
+        <button type='submit'>
+          Submit
+        </button>
       </form>
     )
   }
