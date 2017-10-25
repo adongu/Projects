@@ -129,19 +129,37 @@
 
   &social-bookmark,
   &social-like {
-    background: transparent;
-    text-shadow: 0px 0px 1px #000;
+    opacity: 1;
+    font-weight: bold;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #4b4f56;
+    color: transparent;
+    margin-right: 5px;
   }
 
   &social-bookmark:hover,
   &social-like:hover {
+    color: #3D70F0;
+    -webkit-text-stroke-width: 1;
+    -webkit-text-stroke-color: #3D70F0;
+    transition: color ease 250ms;
     cursor: pointer;
   }
 
   &social-bookmark.active,
   &social-like.active {
     color: #3D70F0;
+    font-weight: bold;
+    -webkit-text-stroke-width: 1;
+    -webkit-text-stroke-color: #3D70F0;
     transition: ease .2s;
-    text-shadow: 0px 0px 0px #E9E9E9;
+    transition: color linear 250ms;
+  }
+
+  &social-icon:hover{
+    color: #3D70F0;
+    -webkit-text-stroke-width: 1;
+    -webkit-text-stroke-color: #3D70F0;
+    transition: color ease 250ms;
   }
 }
