@@ -67,51 +67,62 @@ class PerviewDetailModal extends React.Component {
    * itemDto
   **/
   renderItemSection (item) {
+    console.log('is solicit', item);
     if(item && this.props.toRenderPerviewCommentsView) {
-      return (
-        <div className="flexcolumn narrowperviews__productbox divwrapper-fullwidth">
-          <div className="narrowperviews__img">
-            <Link to={`/item/${item.id}`}>
-              <img className="narrowperviews__productimg-photo" src={item.data.imageUrls.large.url} alt="product"/>
+      // solicit background
+      if(this.props.perview.solicit) {
+        return (
+          <div className="perviewdetailmodal__solicitbox">
+            <div className="perviewdetailmodal__solicitbackground">
+              Looking for Recommendations
+            </div>
+          </div>
+        )
+      } else {
+        return (
+          <div className="flexcolumn narrowperviews__productbox divwrapper-fullwidth">
+            <div className="narrowperviews__img">
+              <Link to={`/item/${item.id}`}>
+                <img className="narrowperviews__productimg-photo" src={item.data.imageUrls.large.url} alt="product"/>
+              </Link>
+            </div>
+
+            <Link to={`/item/${item.id}`} className="narrowperviews__product-name">
+              {item.data.title}
             </Link>
+
+            <div className="flexrow narrowperviews__buybox">
+              {item.data.listPrice.formattedAmount}
+
+              <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">
+                Buy on Amazon
+              </a>
+            </div>
           </div>
-
-          <Link to={`/item/${item.id}`} className="narrowperviews__product-name">
-            {item.data.title}
-          </Link>
-
-          <div className="flexrow narrowperviews__buybox">
-            {item.data.listPrice.formattedAmount}
-
-            <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">
-              Buy on Amazon
-            </a>
-          </div>
-        </div>
-      )
+        )
+      }
     }
   }
 
 // Abstract details into its own component
   renderDetailsSection (user, perview) {
     // if (this.props.toRenderPerviewCardDetailsView) {
-      return (
-        <div className="flexcolumn divwrapper-fullwidth">
-          <div className="flexrow perviewdetailmodal__userbox">
-            <span className="perviewdetailmodal__userimgbox">
-              <img className="perviewdetailmodal__userimg" onClick={this.props.handleFriendClick(user.id)} src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
-            </span>
-            <span className="perviewdetailmodal__username">{user.firstName}</span>
-          </div>
-          <div className="perviewdetailmodal__ratingbox">
-            {this.props.renderStars ? this.props.renderStars(perview.rating) : ''}
-          </div>
-          <div className="perviewdetailmodal__reviewbox">
-            {perview.tags}
-          </div>
+    return (
+      <div className="flexcolumn divwrapper-fullwidth">
+        <div className="flexrow perviewdetailmodal__userbox">
+          <span className="perviewdetailmodal__userimgbox">
+            <img className="perviewdetailmodal__userimg" onClick={this.props.handleFriendClick(user.id)} src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
+          </span>
+          <span className="perviewdetailmodal__username">{user.firstName}</span>
         </div>
-      )
-    // }
+        <div className="perviewdetailmodal__ratingbox">
+          {this.props.renderStars ? this.props.renderStars(perview.rating) : ''}
+        </div>
+        <div className="perviewdetailmodal__reviewbox">
+          {perview.tags}
+        </div>
+      </div>
+    )
   }
 
   renderCommentSection () {
