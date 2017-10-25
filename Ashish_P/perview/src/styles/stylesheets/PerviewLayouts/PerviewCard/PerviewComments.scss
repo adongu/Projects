@@ -78,6 +78,7 @@
   }
 
   &form {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -92,5 +93,15 @@
     padding: 0;
     max-height: 80px;
     font-size: inherit;
+  }
+
+  &formtip {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    // margin-left: auto;
+    font-size: 10px;
+    color: #484848;
+    opacity: .5;
   }
 }

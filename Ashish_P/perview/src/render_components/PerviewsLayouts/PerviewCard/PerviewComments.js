@@ -87,9 +87,11 @@ class PerviewComments extends React.Component{
           value={this.state.newComment}
         />
 
-        <button type='submit'>
-          Submit
-        </button>
+        <span
+          className="perviewcomment__formtip"
+        >
+          {this.state.newComment.length > 0 ? 'Press \'Enter\' key to Submit' : ''}
+        </span>
       </form>
     )
   }
