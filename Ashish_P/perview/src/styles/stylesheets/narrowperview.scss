@@ -200,8 +200,22 @@ $review-lines-to-show: 6;
 }
 
 // solicit user info
-.narrowperview__{
-  &solicit-user{
+.narrowperviews__ {
+  &userprofile {
+    height: 40%;
+  }
+
+  &solicit-tags {
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: roboto;
+    font-size: 18px;
+  }
+
+  &solicit-user {
+
   }
 
   &solicit-date {

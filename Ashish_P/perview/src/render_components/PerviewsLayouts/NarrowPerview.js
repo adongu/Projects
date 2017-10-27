@@ -67,8 +67,8 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
     let user = perview.userDto;
 
     return (
-      <div className="flexcolumn narrowperview__solicit-user">
-        <div className="narrowperview__solicit-date">
+      <div className="flexcolumn narrowperviews__solicit-user">
+        <div className="narrowperviews__solicit-date">
           {moment(perview.ts).format("MMM DD, Y")}
         </div>
 
@@ -95,8 +95,12 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
     if (perview.solicit) {
       return (
         <div className="flexcolumn narrowperviews__content">
-          {renderUserProfile(perview)}
-          <span>{perview.tags}</span>
+          <div className="narrowperviews__userprofile">
+            {renderUserProfile(perview)}
+          </div>
+          <div className="narrowperviews__solicit-tags">
+            {perview.tags}
+          </div>
         </div>
       )
     } else {
