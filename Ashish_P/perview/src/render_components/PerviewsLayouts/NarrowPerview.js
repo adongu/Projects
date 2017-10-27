@@ -68,7 +68,9 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
 
     return (
       <div className="flexcolumn narrowperview__solicit-user">
-        {moment(perview.ts).format("MMM DD, Y")}
+        <div className="narrowperview__solicit-date">
+          {moment(perview.ts).format("MMM DD, Y")}
+        </div>
 
         <div className="flexrow perviewcard__popover-user">
           <div className="perviewcard__popover-user-icon">

@@ -203,4 +203,10 @@ $review-lines-to-show: 6;
 .narrowperview__{
   &solicit-user{
   }
+
+  &solicit-date {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 8px;
+  }
 }
