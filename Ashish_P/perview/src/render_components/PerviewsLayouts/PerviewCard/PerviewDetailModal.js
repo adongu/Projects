@@ -1,8 +1,10 @@
 import "../../../styles/stylesheets/PerviewLayouts/PerviewCard/perviewdetailmodal.css";
 import React from 'react';
+import moment from 'moment';
 import { Modal, ButtonToolbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import PerviewComments from './PerviewComments';
+import * as util from '../../../actions/util_actions.js';
 
 class PerviewDetailModal extends React.Component {
 
@@ -110,7 +112,7 @@ class PerviewDetailModal extends React.Component {
       <div className="flexcolumn divwrapper-fullwidth">
         <div className="flexrow perviewdetailmodal__userbox">
           <span className="perviewdetailmodal__userimgbox">
-            <img className="perviewdetailmodal__userimg" onClick={this.props.handleFriendClick(user.id)} src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
+            <img className="perviewdetailmodal__userimg" onClick={this.props.handleFriendClick(user.id)} src={util.generateUserImageUrl(user.facebookId, 'square')} alt="User"/>
           </span>
           <span className="perviewdetailmodal__username">{user.firstName}</span>
         </div>

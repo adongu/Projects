@@ -5,6 +5,7 @@ import { Link, withRouter } from 'react-router-dom';
 import SearchPerviewBar from './SearchPerviewBar';
 import UserNavContainer from '../../containers/UserNavContainer';
 import CreatePerviewModalContainer from '../../containers/CreatePerviewModalContainer';
+import * as util from '../../actions/util_actions.js';
 
 class Header extends React.Component {
   constructor(props) {
@@ -45,9 +46,10 @@ class Header extends React.Component {
   componentWillReceiveProps (nextProps) {
     if (nextProps.currentUser) {
       let user = nextProps.currentUser;
+      console.log(nextProps);
       this.setState({
         fName: user.firstName,
-        imgUrl:  user.facebookProfilePictureUrl.replace(/\/picture$/, ""),
+        imgUrl:  util.generateUserImageUrl(user.facebookId, 'square'),
         isFetching: false
       })
     }

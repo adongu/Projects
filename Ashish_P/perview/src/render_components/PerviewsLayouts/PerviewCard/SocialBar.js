@@ -2,6 +2,7 @@
 import React from 'react';
 import PerviewDetailModal from './PerviewDetailModal';
 import { Popover, OverlayTrigger } from 'react-bootstrap';
+import * as util from '../../../actions/util_actions.js';
 
 const SocialBar = ({currentUserId, perview, likers, createComment, deleteComment, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, handleFriendClick}) => {
 
@@ -38,7 +39,7 @@ const SocialBar = ({currentUserId, perview, likers, createComment, deleteComment
               <div className="perviewcard__popover-user-icon">
                 <img
                   onClick={handleFriendClick(liker.id)}
-                  className="perviewcard__popover-user-img" src={liker.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
+                  className="perviewcard__popover-user-img" src={util.generateUserImageUrl(liker.facebookId, 'square')} alt="User"/>
               </div>
 
               <a onClick={handleFriendClick(liker.id)} className="perviewcard__popover-username">

@@ -1,5 +1,6 @@
 import "../../styles/stylesheets/FriendPerviews/friendhero.css";
 import React from 'react';
+import * as util from '../../actions/util_actions.js';
 
 const FriendHero = ({user}) => {
 
@@ -7,7 +8,7 @@ const FriendHero = ({user}) => {
     <div className="friendhero">
       <div className="friendhero__photo">
         <img
-          className="friendhero__img" src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")}
+          className="friendhero__img" src={util.generateUserImageUrl(user.facebookId, 'square')}
           alt="User"
         />
       </div>

@@ -1,5 +1,6 @@
 import '../../../styles/stylesheets/PerviewLayouts/PerviewCard/perviewcomments.css';
 import React from 'react';
+import * as util from '../../../actions/util_actions.js';
 // perview
 class PerviewComments extends React.Component{
   constructor (props) {
@@ -104,7 +105,8 @@ class PerviewComments extends React.Component{
         <div className="flexrow perviewcomment__userbox">
           <div className="perviewcomment__userimgbox">
             <img className="perviewcomment__userimg"
-              onClick={this.props.handleFriendClick(commenter.id)} src={commenter.facebookProfilePictureUrl} alt="User"
+              onClick={this.props.handleFriendClick(commenter.id)}
+              src={util.generateUserImageUrl(commenter.facebookId, 'square')} alt="User"
             />
           </div>
           <a

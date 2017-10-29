@@ -3,6 +3,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import moment from 'moment';
 import PerviewCard from './PerviewCard/PerviewCard.js';
+import * as util from '../../actions/util_actions.js';
 
 const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, history, toRenderUserProfile }) => {
 
@@ -76,7 +77,7 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
           <div className="perviewcard__popover-user-icon">
             <img
               onClick={handleFriendClick(user.id)}
-              className="perviewcard__popover-user-img" src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
+              className="perviewcard__popover-user-img" src={util.generateUserImageUrl(user.facebookId, 'square')} alt="User"/>
           </div>
 
           <a onClick={handleFriendClick(user.id)} className="perviewcard__popover-username">

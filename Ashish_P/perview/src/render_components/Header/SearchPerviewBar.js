@@ -4,6 +4,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import Autosuggest from 'react-autosuggest';
 import IsolatedScroll from 'react-isolated-scroll';
+import * as util from '../../actions/util_actions.js';
 
 class SearchItemBar extends React.Component {
   constructor(props){
@@ -169,7 +170,7 @@ class SearchItemBar extends React.Component {
                     onMouseLeave={() => { this.setState({ hoverUserName: "" }) }}
                     className="headersearch__userimg-img"
                     title={user.fullName}
-                    src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")}
+                    src={util.generateUserImageUrl(user.facebookId, 'square')}
                     alt={user.fullName}/>
                 </div>
 

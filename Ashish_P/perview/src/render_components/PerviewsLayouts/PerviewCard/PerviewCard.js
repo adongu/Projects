@@ -7,6 +7,7 @@ import PerviewDetailModal from './PerviewDetailModal';
 import PerviewDeleteConfirmation from './PerviewDeleteConfirmation';
 import CreatePerviewModalContainer from '../../../containers/CreatePerviewModalContainer';
 import SocialBar from './SocialBar';
+import * as util from '../../../actions/util_actions.js';
 
 const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, createComment, deleteComment, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, history, toRenderUserProfile }) => {
 
@@ -112,7 +113,8 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, create
         <div className="flexrow perviewcard__review-user">
           <div className="perviewcard__review-user-icon">
             <img className="perviewcard__review-user-img"
-              onClick={handleFriendClick(perviewUser.id)} src={perviewUser.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"
+              onClick={handleFriendClick(perviewUser.id)}
+              src={util.generateUserImageUrl(perviewUser.facebookId, 'square')} alt="User"
             />
           </div>
           <a
