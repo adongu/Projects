@@ -77,6 +77,7 @@ const SocialBar = ({currentUserId, perview, likers, createComment, deleteComment
             handleFriendClick = {handleFriendClick}
             handleLikeClick = {handleLikeClick}
             toRenderPerviewCommentsView = {true}
+            renderStars = {util.renderStars}
           />
         </div>
       )

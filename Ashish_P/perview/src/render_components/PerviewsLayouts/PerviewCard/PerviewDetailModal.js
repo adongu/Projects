@@ -107,23 +107,24 @@ class PerviewDetailModal extends React.Component {
 
 // Abstract details into its own component
   renderDetailsSection (user, perview) {
-    // if (this.props.toRenderPerviewCardDetailsView) {
-    return (
-      <div className="flexcolumn divwrapper-fullwidth">
-        <div className="flexrow perviewdetailmodal__userbox">
-          <span className="perviewdetailmodal__userimgbox">
-            <img className="perviewdetailmodal__userimg" onClick={this.props.handleFriendClick(user.id)} src={util.generateUserImageUrl(user.facebookId, 'square')} alt="User"/>
-          </span>
-          <span className="perviewdetailmodal__username">{user.firstName}</span>
+    if(this.props.toRenderPerviewCommentsView) {
+      return (
+        <div className="flexcolumn divwrapper-fullwidth">
+          <div className="flexrow perviewdetailmodal__userbox">
+            <span className="perviewdetailmodal__userimgbox">
+              <img className="perviewdetailmodal__userimg" onClick={this.props.handleFriendClick(user.id)} src={util.generateUserImageUrl(user.facebookId, 'square')} alt="User"/>
+            </span>
+            <span className="perviewdetailmodal__username">{user.firstName}</span>
+          </div>
+          <div className="perviewdetailmodal__ratingbox">
+            {this.props.renderStars ? this.props.renderStars(perview.rating) : ''}
+          </div>
+          <div className="perviewdetailmodal__reviewbox">
+            {perview.tags}
+          </div>
         </div>
-        <div className="perviewdetailmodal__ratingbox">
-          {this.props.renderStars ? this.props.renderStars(perview.rating) : ''}
-        </div>
-        <div className="perviewdetailmodal__reviewbox">
-          {perview.tags}
-        </div>
-      </div>
-    )
+      )
+    }
   }
 
   renderCommentSection () {
@@ -180,9 +181,10 @@ class PerviewDetailModal extends React.Component {
             >
               <div className={`${this.props.toRenderPerviewCommentsView ? 'perviewdetailmodal__itembox' : ''}`}>
                 {this.renderItemSection(itemDto)}
-              </div>
-              <div className={`perviewdetailmodal__socialbox${this.props.toRenderPerviewCommentsView ? '' : '-large'}`}>
                 {this.renderDetailsSection(user, perview)}
+              </div>
+              <div className={`perviewdetailmodal__socialbox${this.props.toRenderPerviewCommentsView ? '' : '-large'}`}
+              >
                 {this.renderSocialSection(perview)}
                 {this.renderCommentSection(user, perview)}
               </div>
