@@ -193,12 +193,14 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, create
   )
 
   const renderSolicitContentView = (
-    <CreatePerviewModalContainer
-      perviewSolicitId={perview.id}
-      perviewSolicitTags={perview.tags}
-      perviewSolicitFirstName={perview.userDto.firstName}
-      history={history}
-    />
+    <div className="perviewcard__createperview">
+      <CreatePerviewModalContainer
+        perviewSolicitId={perview.id}
+        perviewSolicitTags={perview.tags}
+        perviewSolicitFirstName={perview.userDto.firstName}
+        history={history}
+      />
+    </div>
   )
 
   const renderSocialBar = (

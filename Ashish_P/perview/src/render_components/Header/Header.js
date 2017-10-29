@@ -46,7 +46,6 @@ class Header extends React.Component {
   componentWillReceiveProps (nextProps) {
     if (nextProps.currentUser) {
       let user = nextProps.currentUser;
-      console.log(nextProps);
       this.setState({
         fName: user.firstName,
         imgUrl:  util.generateUserImageUrl(user.facebookId, 'square'),

@@ -41,7 +41,6 @@ class PerviewEditModal extends React.Component {
   componentWillMount() {
     if (this.props.item) {
       let item = this.props.item
-      console.log(item);
       this.setState({
         imgUrl: item.data.imageUrls.large.url,
         name: item.data.title,
