@@ -159,6 +159,8 @@ class PerviewComments extends React.Component{
   renderAllComments () {
     return (
       <div className="divwrapper-fullwidth perviewcomment__commentsbox">
+        <p className="perviewcomment__commentstitle">Friend Comments</p>
+
         {this.state.comments.map((comment) => {
           let topComment, bottomComment;
           let commenterNameLength = comment.commenter.firstName.length;
@@ -174,6 +176,7 @@ class PerviewComments extends React.Component{
               <div>
                 {this.renderCommenterProfile(comment, topComment)}
               </div>
+
               <div className="perviewcomment__bottomcomment">
                 {bottomComment}
               </div>
@@ -186,10 +189,13 @@ class PerviewComments extends React.Component{
 
   render () {
     return (
-      <div className="divwrapper-fullwidth">
+      <div className="perviewcomment__container divwrapper-fullwidth">
           {this.renderAllComments()}
+
+        <div className="perviewcomment__socialactions">
           {this.renderSocialSection(this.props.perview)}
           {this.renderAddCommentForm()}
+        </div>
       </div>
     )
   }

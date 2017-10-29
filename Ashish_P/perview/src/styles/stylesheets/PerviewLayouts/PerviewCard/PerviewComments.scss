@@ -1,9 +1,19 @@
 .perviewcomment__{
+  &container {
+    // display: flex;
+    height: 100%;
+  }
+
   &commentsbox {
-    height: 250px;
+    height: 80%;
     overflow-y: scroll;
     border-bottom: 1px solid #efefef;
     margin-bottom: 20px;
+  }
+
+  &commentstitle {
+    font-size: 16px;
+    font-family: roboto, Aria;
   }
 
   &userbox {
@@ -75,6 +85,14 @@
   &bottomcomment {
     padding: 0 8px;
     font-family: Roboto;
+  }
+
+  &socialactions {
+    height: 20%;
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   &form {
