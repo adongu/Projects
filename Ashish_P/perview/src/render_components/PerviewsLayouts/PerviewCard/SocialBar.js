@@ -59,8 +59,20 @@ const SocialBar = ({currentUserId, perview, likers, createComment, deleteComment
     if (likers && likers.length > 0) {
       return (
         <OverlayTrigger trigger="click" placement="top" rootClose overlay={popoverClickRootClose} className="perviewcard__popovertrigger">
-          <a className="perviewcard__numlikers">{likers.length}</a>
+          <a className="perviewcard__numlikers">
+            {likers.length}
+          </a>
         </OverlayTrigger>
+      )
+    }
+  }
+
+  const renderNumComments = () => {
+    if (perview.comments && perview.comments.length > 0) {
+      return (
+        <span>
+          {perview.comments.length}
+        </span>
       )
     }
   }
@@ -131,7 +143,7 @@ const SocialBar = ({currentUserId, perview, likers, createComment, deleteComment
           </span>
         </span>
         <span>
-          {perview.comments ? perview.comments.length : ''}
+          {renderNumComments()}
         </span>
       </div>
     </div>

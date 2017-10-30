@@ -74,13 +74,14 @@
   }
 // detail and comment section
   &socialbox {
-    width: 40%;
+    width: 43%;
   }
 
   &userbox {
     justify-content: flex-start;
     align-items: center;
     padding: 10px 0;
+    margin: auto 10px;
     border-top: 1px solid #efefef;
   }
 
@@ -122,8 +123,8 @@
 
   &socialbox {
     // width: 400px;
-    word-wrap: break-word;
-    padding: 8px 0;
+    // word-wrap: break-word;
+    // padding: 8px 0;
   }
 
   &social-icon {
