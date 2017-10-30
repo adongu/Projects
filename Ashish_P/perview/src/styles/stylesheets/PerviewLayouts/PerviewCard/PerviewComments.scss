@@ -5,7 +5,8 @@
   }
 
   &commentsbox {
-    height: 80%;
+    max-height: 355px;
+    height: 70%;
     overflow-y: scroll;
     border-bottom: 1px solid #efefef;
     margin-bottom: 20px;
@@ -104,6 +105,8 @@
 
   &newcomment{
     line-height: 18px;
+    font-size: 14px;
+    font-family: Fira Sans;
     flex-grow: 1;
     resize: none;
     flex-direction: column;
