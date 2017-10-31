@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
-import HomePage from "../render_components/HomePage/HomePage";
+import LandingPage from "../render_components/LandingPage/LandingPage";
 import { fetchUser } from '../actions/session_actions';
 import { fetchItemResults } from '../actions/search_item_actions';
-import { fetchCategoryIds, fetchAllPerviews, clearErrors } from '../actions/perview_actions';
+import { fetchCategoryIds, fetchLandingPerviews, clearErrors } from '../actions/perview_actions';
 import { createComment, deleteComment, likePerview, unlikePerview, bookmarkPerview, unbookmarkPerview } from '../actions/social_actions';
 
 const mapStateToProps = ({ session, perview, findItem, social }, ownProps) => {
@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     fetchUser: () => dispatch(fetchUser()),
     fetchResults: (keywords) => dispatch(fetchItemResults(keywords)),
-    fetchAllPerviews: (categoryId) => dispatch(fetchAllPerviews(categoryId)),
+    fetchLandingPerviews: (categoryId) => dispatch(fetchLandingPerviews(categoryId)),
     createComment: (perviewId, comment) => dispatch(createComment(perviewId, comment)),
     deleteComment: (perviewId, commentId) => dispatch(deleteComment(perviewId, commentId)),
     bookmarkPerview: (perviewId) => dispatch(bookmarkPerview(perviewId)),
@@ -34,4 +34,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(HomePage);
+)(LandingPage);

@@ -8,6 +8,9 @@ import * as util from '../../actions/util_actions.js';
 const NavBar = ({ createPerview, filterPerviews, isFetching, currentUser, currentUsersFriends, userFriend, history, categories, match, toShowUserDashBoard, requestLoading }) => {
 
   const pageSettings = {
+    "/home" : {
+      "title": "", "hasFilters": false, "hasCreateSolicit": false
+    },
     "/" : {
       "title": "", "hasFilters": false, "hasCreateSolicit": true
     },

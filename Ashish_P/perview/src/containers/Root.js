@@ -8,6 +8,7 @@ import MyPerviewsContainer from './MyPerviewsContainer';
 import FriendPerviewsContainer from './FriendPerviewsContainer';
 import SettingsContainer from './SettingsContainer';
 import SignInContainer from './SignInContainer';
+import LandingPageContainer from './LandingPageContainer';
 import { ProtectedRoute, AuthRoute } from '../util/route_util.js';
 
 const Root = ({ store }) => {
@@ -21,6 +22,7 @@ const Root = ({ store }) => {
           <Switch>
             {/* <AuthRoute component={} exact path="/home" /> */}
             <AuthRoute component={SignInContainer} exact path="/signin" />
+            <AuthRoute component={LandingPageContainer} exact path="/home" />
             <ProtectedRoute component={HomePageContainer} exact path="/"/>
             <ProtectedRoute component={MyPerviewsContainer} exact path="/myperviews"/>
             <ProtectedRoute component={FavoritePerviewsContainer} exact path="/favorites"/>

@@ -47,6 +47,10 @@ export const createItem = (item) => {
   })
 };
 
+export const fetchLandingPerviews = () => {
+  return axios.get('/home');
+}
+
 export const fetchAllPerviews = (categoryId) => {
   return axios.get('/api', {
     params: {

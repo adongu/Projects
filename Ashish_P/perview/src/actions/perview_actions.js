@@ -5,6 +5,7 @@ export const RECEIVE_ITEM = 'RECEIVE_ITEM';
 export const RECEIVE_PERVIEW = 'RECEIVE_PERVIEW';
 export const RECEIVE_EDIT_PERVIEW = 'EDIT_PERVIEW';
 export const DELETE_PERVIEW = 'DELETE_PERVIEW';
+export const RECEIVE_LANDING_PERVIEWS = 'RECEIVE_LANDING_PERVIEWS';
 export const RECEIVE_ALL_PERVIEWS = 'RECEIVE_ALL_PERVIEWS';
 export const RECEIVE_ITEM_PERVIEWS = 'RECEIVE_ITEM_PERVIEWS';
 export const RECEIVE_MY_PERVIEWS = 'RECEIVE_MY_PERVIEWS';
@@ -39,6 +40,11 @@ export const receiveDeletePerview = (perviewId) => ({
   type: DELETE_PERVIEW,
   perviewId
 })
+
+export const receiveLandingPerviews = (landingPerviews) => ({
+  type: RECEIVE_LANDING_PERVIEWS,
+  landingPerviews
+});
 
 export const receiveAllPerviews = (allPerviews) => ({
   type: RECEIVE_ALL_PERVIEWS,
@@ -122,6 +128,17 @@ export const createItem = (item) => dispatch => {
   return APIUtil.createItem(item)
     .then( response => {
       return dispatch(receiveItem(response.data))
+    })
+    .catch( err => {
+      return dispatch(receiveErrors(err.responseJSON))
+    })
+};
+
+export const fetchLandingPerviews = () => dispatch => {
+  dispatch(requestLoading());
+  return APIUtil.fetchLandingPerviews()
+    .then( response => {
+      return dispatch(receiveLandingPerviews(response.data))
     })
     .catch( err => {
       return dispatch(receiveErrors(err.responseJSON))
