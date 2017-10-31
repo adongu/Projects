@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import HomePageContainer from './HomePageContainer';
 import FavoritePerviewsContainer from './FavoritePerviewsContainer';
 import ItemPerviewsContainer from './ItemPerviewsContainer';
@@ -17,8 +17,9 @@ const Root = ({ store }) => {
 
   return (
     <Provider store={ store }>
-       <HashRouter>
+       <BrowserRouter>
           <Switch>
+            {/* <AuthRoute component={} exact path="/home" /> */}
             <AuthRoute component={SignInContainer} exact path="/signin" />
             <ProtectedRoute component={HomePageContainer} exact path="/"/>
             <ProtectedRoute component={MyPerviewsContainer} exact path="/myperviews"/>
@@ -30,7 +31,7 @@ const Root = ({ store }) => {
               <p>404 Page Not Found</p>
             )}/>
           </Switch>
-      </HashRouter>
+      </BrowserRouter>
     </Provider>
   )
 };

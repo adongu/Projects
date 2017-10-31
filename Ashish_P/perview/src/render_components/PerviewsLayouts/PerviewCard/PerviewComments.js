@@ -105,12 +105,12 @@ class PerviewComments extends React.Component{
     return (
       <div className="flexrow perviewcomment__review-user">
         <div className="flexrow perviewcomment__userbox">
-          <div className="perviewcomment__userimgbox">
+          {/* <div className="perviewcomment__userimgbox">
             <img className="perviewcomment__userimg"
               onClick={this.props.handleFriendClick(commenter.id)}
               src={util.generateUserImageUrl(commenter.facebookId, 'square')} alt="User"
             />
-          </div>
+          </div> */}
           <a
             onClick={this.props.handleFriendClick(commenter.id)}
             className="perviewcomment__username"
