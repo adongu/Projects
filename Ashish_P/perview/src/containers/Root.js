@@ -20,7 +20,7 @@ const Root = ({ store }) => {
 
   return (
     <Provider store={ store }>
-       <BrowserRouter history={history}>
+       <BrowserRouter>
           <Switch>
             {/* <AuthRoute component={} exact path="/home" /> */}
             <AuthRoute component={withTracker(SignInContainer)} exact path="/signin" />
