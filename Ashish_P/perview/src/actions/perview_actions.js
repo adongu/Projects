@@ -138,6 +138,7 @@ export const fetchLandingPerviews = () => dispatch => {
   dispatch(requestLoading());
   return APIUtil.fetchLandingPerviews()
     .then( response => {
+      console.log('fetch results', response.data)
       return dispatch(receiveLandingPerviews(response.data))
     })
     .catch( err => {

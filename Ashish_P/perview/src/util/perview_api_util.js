@@ -48,7 +48,7 @@ export const createItem = (item) => {
 };
 
 export const fetchLandingPerviews = () => {
-  return axios.get('/home');
+  return axios('/home');
 }
 
 export const fetchAllPerviews = (categoryId) => {
