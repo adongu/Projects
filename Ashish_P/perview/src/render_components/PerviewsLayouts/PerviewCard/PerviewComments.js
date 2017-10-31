@@ -159,7 +159,7 @@ class PerviewComments extends React.Component{
   renderAllComments () {
     return (
       <div className="divwrapper-fullwidth perviewcomment__commentsbox">
-        <p className="perviewcomment__commentstitle">Friend Comments</p>
+        <p className="perviewcomment__commentstitle">Comments</p>
 
         {this.state.comments.map((comment) => {
           let topComment, bottomComment;
