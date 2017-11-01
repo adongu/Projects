@@ -3,8 +3,9 @@ import logo from "../../styles/assets/logo.jpg";
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import SearchPerviewBar from './SearchPerviewBar';
-import UserNavContainer from '../../containers/UserNavContainer';
 import CreatePerviewModalContainer from '../../containers/CreatePerviewModalContainer';
+import SignInModalWrapper from '../SignIn/SignInModalWrapper.js';
+import UserNavContainer from '../../containers/UserNavContainer';
 import * as util from '../../actions/util_actions.js';
 
 class Header extends React.Component {
@@ -107,6 +108,14 @@ class Header extends React.Component {
     )
   }
 
+  renderSignInModal () {
+    return (
+      <SignInModalWrapper
+        history={this.props.history}
+      />
+    )
+  }
+
   render() {
     return (
       <div className={`header__container ${this.state ? this.state.scrolled : '' }`}>
@@ -131,6 +140,10 @@ class Header extends React.Component {
 
           <div className="flexrow header__createperview-container">
             {this.renderCreateButton()}
+          </div>
+
+          <div className="flexrow header__signin-container">
+            {this.renderSignInModal()}
           </div>
 
           <div className="flexrow header__usernav">

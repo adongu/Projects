@@ -1,8 +1,10 @@
 import "../../styles/stylesheets/homeperview.css";
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import HeaderContainer from '../../containers/HeaderContainer';
 import NavBarContainer from '../../containers/NavBarContainer.js';
 import NarrowPerview from "../PerviewsLayouts/NarrowPerview";
+import Footer from '../Footer/Footer.js'
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -81,14 +83,22 @@ class HomePage extends React.Component {
   render() {
     console.log('render landign page', this.props)
     return (
-    <div className="homepage__container">
-      <NavBarContainer
-        createPerview = {this.props.createPerview}
-      />
-      <div className="homepage__perviews">
-        {this.renderComponents()}
+      <div className="divwrapper-fullwidth">
+        <HeaderContainer />
+
+        <div className="homepage__container">
+
+          <NavBarContainer
+            // createPerview = {this.props.createPerview}
+          />
+
+          <div className="homepage__perviews">
+            {this.renderComponents()}
+          </div>
+        </div>
+
+        <Footer />
       </div>
-    </div>
     )
   }
 }
