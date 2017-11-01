@@ -2,21 +2,20 @@ import "../../styles/stylesheets/homeperview.css";
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import NavBarContainer from '../../containers/NavBarContainer.js';
-import WidePerview from "../PerviewsLayouts/WidePerview";
 import NarrowPerview from "../PerviewsLayouts/NarrowPerview";
 
 class HomePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      fName: "",
-      lName: "",
-      id: "",
-      img: "",
+      // fName: "",
+      // lName: "",
+      // id: "",
+      // img: "",
       fetchingUpdate: false,
       requestLoading: false
     }
-    this.fetchFilteredPerviews = this.fetchFilteredPerviews.bind(this);
+    // this.fetchFilteredPerviews = this.fetchFilteredPerviews.bind(this);
   }
 
   componentWillMount() {
@@ -63,9 +62,9 @@ class HomePage extends React.Component {
     } else {
       return (
         <NarrowPerview
-          // fetchingUpdate = {this.state.fetchingUpdate}
+          fetchingUpdate = {this.state.fetchingUpdate}
           // currentUserId = {this.props.currentUser.id}
-          perviews = {this.props.allPerviews}
+          perviews = {this.props.landingPerviews}
           createComment = {this.props.createComment}
           deleteComment = {this.props.deleteComment}
           bookmarkPerview = {this.props.bookmarkPerview}
@@ -80,12 +79,12 @@ class HomePage extends React.Component {
   }
 
   render() {
+    console.log('render landign page', this.props)
     return (
     <div className="homepage__container">
       <NavBarContainer
         createPerview = {this.props.createPerview}
       />
-
       <div className="homepage__perviews">
         {this.renderComponents()}
       </div>

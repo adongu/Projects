@@ -89,8 +89,8 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
     case RECEIVE_LANDING_PERVIEWS:
       return Object.assign({}, newState, {
         landingPerviews: {
-          perviews: action.allPerviews.perviews,
-          categories: action.allPerviews.categories
+          perviews: action.landingPerviews.perviews,
+          categories: action.landingPerviews.categories
         },
         requestLoading: false,
         errors: []
