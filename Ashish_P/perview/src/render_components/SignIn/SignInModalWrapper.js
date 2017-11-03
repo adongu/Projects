@@ -33,8 +33,10 @@ const SignInModalWrapper = React.createClass({
           <closeButton />
 
           <Modal.Body>
-            <SignInContainer
-            />
+            <div className="divwrapper-fullwidth">
+              <SignInContainer
+              />
+          </div>
           </Modal.Body>
         </Modal>
       </ButtonToolbar>
