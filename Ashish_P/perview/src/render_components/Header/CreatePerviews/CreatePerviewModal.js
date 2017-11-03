@@ -51,7 +51,9 @@ class CreatePerviewModal extends React.Component {
   }
 
   showModal() {
-    this.setState({show: true});
+    if (this.props.currentUser) {
+      this.setState({show: true});
+    }
   }
 
   hideModal() {

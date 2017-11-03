@@ -22,7 +22,7 @@ class HomePage extends React.Component {
 
   componentWillMount() {
     this.props.fetchLandingPerviews();
-    
+
     this.props.fetchToken();
     this.props.fetchUser();
 
