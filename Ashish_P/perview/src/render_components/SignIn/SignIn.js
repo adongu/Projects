@@ -63,25 +63,37 @@ class SignIn extends React.Component {
               <div className="signin__bodywelcome">
                 Welcome to Perview
               </div>
+
               <div className="signin__bodymessage">
                 A place to tell your friends about your favorite things.
               </div>
+
               <form className="flexcolumn signin__form" action={auth_url} method="post">
                 <input type="hidden" name="scope" value="user_friends,email"/>
                 <input type="hidden" name="_csrf" value={token}/>
-                <button type="submit" className="signin__submit-facebook">Continue with Facebook</button>
+                <button type="submit" className="signin__submit-facebook">
+                  Continue with Facebook
+                </button>
+
                 <p className="signin__submit-msg">
                   We don’t post anything to Facebook.
                 </p>
               </form>
             </div>
-            <div className="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
+
+            {/* <div className="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div> */}
           </div>
+
           <div className="signin__terms">
             By continuing, you indicate that you have read and agree Perview's
-            <a href="https://s3.amazonaws.com/tosandpp/2017_9_7_Perview_Terms_of_Service.pdf" className="signin__terms-urls" target="_blank">Terms of Service</a>
+
+            <a href="https://s3.amazonaws.com/tosandpp/2017_9_7_Perview_Terms_of_Service.pdf" className="signin__terms-urls" target="_blank">
+              Terms of Service
+            </a>
             and
-            <a href="https://s3.amazonaws.com/tosandpp/2017_9_7_Perview_Privacy_Policy.pdf" className="signin__terms-urls" target="_blank">Privacy Policy</a>
+            <a href="https://s3.amazonaws.com/tosandpp/2017_9_7_Perview_Privacy_Policy.pdf" className="signin__terms-urls" target="_blank">
+              Privacy Policy
+            </a>
           </div>
         </div>
         <div className="signin__background">

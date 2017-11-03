@@ -42,12 +42,14 @@ class PerviewDetailModal extends React.Component {
       });
     }
 
-    if (nextProps.perview.comments.length !== this.props.perview.comments.length) {
-      this.setState({
-        toRenderPerviewCardDetailsView: nextProps.renderSolicitCommentsView,
-        comments: nextProps.perview.comments
-        // renderSolicitCommentsView: false
-      });
+    if(nextProps.perview.comments) {
+      if (nextProps.perview.comments.length !== this.props.perview.comments.length) {
+        this.setState({
+          toRenderPerviewCardDetailsView: nextProps.renderSolicitCommentsView,
+          comments: nextProps.perview.comments
+          // renderSolicitCommentsView: false
+        });
+      }
     }
   }
 
