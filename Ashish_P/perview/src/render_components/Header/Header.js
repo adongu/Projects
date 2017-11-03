@@ -34,6 +34,7 @@ class Header extends React.Component {
     this.handleScroll = this.handleScroll.bind(this);
     this.renderNavOptions = this.renderNavOptions.bind(this);
     this.renderCreateButton = this.renderCreateButton.bind(this);
+    this.renderHeaderNav = this.renderHeaderNav.bind(this);
   }
 
   componentWillMount() {
@@ -109,22 +110,24 @@ class Header extends React.Component {
   }
 
   renderSignInModal () {
-    return (
-      <SignInModalWrapper
-        history={this.props.history}
-      />
-    )
+    if (!this.props.currentUser) {
+      return (
+        <SignInModalWrapper
+          history={this.props.history}
+        />
+      )
+    }
   }
 
-  render() {
-    return (
-      <div className={`header__container ${this.state ? this.state.scrolled : '' }`}>
-        <div className="flexrow header__box">
-          <div className="header__logo">
+  renderHeaderNav () {
+    if (this.props.currentUser) {
+      return (
+        <div className="header__authnav-box divwrapper-fullwidth">
+          {/* <div className="header__logo">
             <Link to="/">
               <img className="header__logoimg" width="40px" src="https://s3.amazonaws.com/perviewimages/logo.png" alt="Header logo"/>
             </Link>
-          </div>
+          </div> */}
 
           <div className="header__search">
             <SearchPerviewBar
@@ -142,10 +145,6 @@ class Header extends React.Component {
             {this.renderCreateButton()}
           </div>
 
-          <div className="flexrow header__signin-container">
-            {this.renderSignInModal()}
-          </div>
-
           <div className="flexrow header__usernav">
             <div className="header__usernavphoto">
               <UserNavContainer
@@ -153,6 +152,29 @@ class Header extends React.Component {
                 logOut={this.props.logOut}
               />
             </div>
+          </div>
+        </div>
+
+      )
+    }
+  }
+
+  render() {
+    return (
+      <div className = {`header__container ${this.state ? this.state.scrolled : '' }`}>
+        <div className = "flexrow header__box">
+          <div className="header__logo">
+            <Link to="/">
+              <img className="header__logoimg" width="40px" src="https://s3.amazonaws.com/perviewimages/logo.png" alt="Header logo"/>
+            </Link>
+          </div>
+
+          <div className="header__authnav">
+            {this.renderHeaderNav()}
+          </div>
+
+          <div className="flexrow header__signin-container">
+            {this.renderSignInModal()}
           </div>
         </div>
       </div>

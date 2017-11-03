@@ -1,3 +1,7 @@
+$logowidth: 160px;
+$maxwidth: 980px;
+$headernavwidth: 195px;
+
 .header__ {
   &container {
     width: 100%;
@@ -10,16 +14,31 @@
   }
 
   &box {
-    width: 980px;
+    // max-width: $maxwidth;
     height: 60px;
-    justify-content: space-between;
+    // justify-content: center;
     align-items: center;
-    margin: auto;
+    // margin: auto;
+  }
+// nav for authenicated user
+  &authnav {
+    width: $maxwidth - $logowidth;
+    display: flex;
+    // flex-direction: row;
+    // justify-content: flex-end;
+    align-items: center;
+  }
+
+  &authnav-box {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 
   /* logo */
   &logo {
-    width: 160px;
+    width: $logowidth;
     margin-right: 8px;
     transform: translateY(-3px);
     -webkit-backface-visibility: hidden;
@@ -77,7 +96,7 @@
   &search {
     display: flex;
     justify-content: center;
-    width: 40%;
+    width: 50%;
     padding: 0 8px;
   }
 
