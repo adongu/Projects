@@ -93,6 +93,12 @@ const SocialBar = ({currentUserId, perview, likers, createComment, deleteComment
           />
         </div>
       )
+    } else {
+      return (
+        <div className="perviewcard__detailmodalwrapper">
+          Comments
+        </div>
+      )
     }
   }
 

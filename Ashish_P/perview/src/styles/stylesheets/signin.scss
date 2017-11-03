@@ -155,6 +155,53 @@
       padding: 0 4px;
     }
   }
+
+}
+
+// signin modal
+.signinmodal > .modal-content {
+  width: 100%;
+  // height: 100%;
+  margin: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  // opacity: 0.79;
+  background: #779AF4 url("https://s3.amazonaws.com/perviewimages/signin_background.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  // z-index: -1;
+}
+// Header signin button
+.signinmodal-btn {
+  width: 101px;
+  height: 33px;
+  // margin-bottom: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  background: #3D70F0;
+  color: white;
+  transition: 0.3s;
+  line-height: 1.6px;
+  font-family: "Fira Sans";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    background: #79A0E3;
+    box-shadow: 1px 5px 5px #E1E1E1;
+    transition: 0.3s;
+  }
+
+  &:active {
+    background: #85B0FB;
+    box-shadow: 0 0 1px #E1E1E1;
+    transition: .1s;
+  }
 }
 
 @media only screen and (min-width : 320px) and (max-width : 480px) {

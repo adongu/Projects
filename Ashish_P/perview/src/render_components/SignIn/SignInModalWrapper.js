@@ -33,7 +33,7 @@ class SignInModalWrapper extends React.Component{
   render() {
     return (
       <ButtonToolbar className="signinmodal__box">
-        <span className="signinmodal-show" onClick={this.showModal}>
+        <span className="signinmodal-btn" onClick={this.showModal}>
           Sign in
         </span>
 
@@ -41,7 +41,7 @@ class SignInModalWrapper extends React.Component{
           {...this.props}
           show={this.state.show}
           onHide={this.hideModal}
-          dialogClassName="custom-modal"
+          dialogClassName="signinmodal"
         >
           <closeButton />
 

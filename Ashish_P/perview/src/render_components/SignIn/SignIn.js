@@ -17,7 +17,7 @@ class SignIn extends React.Component {
 
   componentWillMount() {
     this.props.fetchToken();
-    this.props.fetchUser()
+    this.props.fetchUser();
   }
 
   componentDidMount () {

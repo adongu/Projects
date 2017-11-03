@@ -21,10 +21,11 @@ class HomePage extends React.Component {
   }
 
   componentWillMount() {
+    this.props.fetchLandingPerviews();
+    
     this.props.fetchToken();
     this.props.fetchUser();
 
-    this.props.fetchLandingPerviews()
 
   }
 
@@ -84,7 +85,6 @@ class HomePage extends React.Component {
   }
 
   render() {
-    console.log('render landign page', this.props)
     return (
       <div className="divwrapper-fullwidth">
         <HeaderContainer />
