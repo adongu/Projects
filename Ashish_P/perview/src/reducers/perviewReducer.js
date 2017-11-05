@@ -37,7 +37,7 @@ const _nullPerviews = Object.freeze({
 
 const perviewReducer = (oldState = _nullPerviews, action) => {
   Object.freeze(oldState);
-  let newState = merge({}, oldState)
+  const newState = merge({}, oldState)
 
   switch (action.type) {
     case REQUEST_LOADING:
@@ -45,17 +45,23 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
         requestLoading: true
       });
     case RECEIVE_PERVIEW:
-      newState.allPerviews.perviews.unshift(action.perview);
-      newState.myPerviews.perviews.unshift(action.perview);
-      if (action.perview.id === newState.itemPerviews.item.id) {
-        newState.itemPerviews.perviews.unshift(action.perview);
-      }
+      console.log('old state', newState);
+      console.log('new perview', action.perview);
+      action.perview.forEach(() => {
+        newState.allPerviews.perviews.unshift(action.perview.pop());
+        newState.myPerviews.perviews.unshift(action.perview.pop());
+
+        if (action.perview.id === newState.itemPerviews.item.id) {
+          newState.itemPerviews.perviews.unshift(action.perview.pop());
+        };
+      });
+
+      console.log('new state', newState);
       return Object.assign({}, newState, {
         requestLoading: false,
         errors: []
       });
     case RECEIVE_EDIT_PERVIEW:
-      console.log(action.perview);
 
       const newEditedPerviews = newState.myPerviews.perviews.map((perview) => {
         if(perview.id === action.perview.id) {

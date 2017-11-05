@@ -108,7 +108,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, create
   }
 
   const renderUserProfile = () => {
-    if (toRenderUserProfile && !perview.solicit) {
+    if (perviewUser && toRenderUserProfile && !perview.solicit) {
       return (
         <div className="flexrow perviewcard__review-user">
           <div className="perviewcard__review-user-icon">
@@ -192,16 +192,20 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, create
     </div>
   )
 
-  const renderSolicitContentView = (
-    <div className="perviewcard__createperview">
-      <CreatePerviewModalContainer
-        perviewSolicitId={perview.id}
-        perviewSolicitTags={perview.tags}
-        perviewSolicitFirstName={perview.userDto.firstName}
-        history={history}
-      />
-    </div>
-  )
+  const renderSolicitContentView = () => {
+    if (perview.userDto) {
+      return (
+        <div className="perviewcard__createperview">
+          <CreatePerviewModalContainer
+            perviewSolicitId={perview.id}
+            perviewSolicitTags={perview.tags}
+            perviewSolicitFirstName={perview.userDto.firstName}
+            history={history}
+          />
+        </div>
+      );
+    }
+  };
 
   const renderSocialBar = (
     <div className="flexrow perviewcard__review-social">

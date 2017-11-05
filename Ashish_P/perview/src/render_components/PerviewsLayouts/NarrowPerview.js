@@ -41,27 +41,31 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
   )
 
   const renderPerview = (perview, { item, perviewUser }) => {
-    return (
-      <div className="flexcolumn narrowperviews__productbox">
-        <div className="narrowperviews__img">
-          <Link to={`/item/${item.id}`}>
-            <img className="narrowperviews__productimg-photo" src={item.data.imageUrls.large.url} alt="product"/>
-          </Link>
-        </div>
+    if (item) {
+      return (
+        <div className="flexcolumn narrowperviews__productbox">
+          <div className="narrowperviews__img">
+            <Link to={`/item/${item.id}`}>
+              <img className="narrowperviews__productimg-photo" src={item.data.imageUrls.large.url} alt="product"/>
+            </Link>
+          </div>
 
-        <Link to={`/item/${item.id}`} className="narrowperviews__product-name">
+          <Link to={`/item/${item.id}`} className="narrowperviews__product-name">
           {item.data.title}
-        </Link>
+          </Link>
 
-        <div className="flexrow narrowperviews__buybox">
-          {item.data.listPrice.formattedAmount}
+          <div className="flexrow narrowperviews__buybox">
+            {item.data.listPrice.formattedAmount}
 
-          <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">
-            Buy on Amazon
-          </a>
+            <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">
+              Buy on Amazon
+            </a>
+          </div>
         </div>
-      </div>
-    )
+      )
+    } else {
+      return ''
+    }
   }
 
   const renderUserProfile = (perview) => {

@@ -44,6 +44,7 @@ class CreatePerviewModal extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.itemResults !== this.props.itemResults) {
+      console.log('update new itemresults');
       this.setState({
         itemResults: nextProps.itemResults
       })

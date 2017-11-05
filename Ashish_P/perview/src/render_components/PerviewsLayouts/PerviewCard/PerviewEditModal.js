@@ -51,7 +51,7 @@ class PerviewEditModal extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.state.itemId && nextProps.item.id !== this.state.itemId) {
+    if (nextProps.item && nextProps.item.id !== this.state.itemId) {
       let item = nextProps.item
 
       this.setState({

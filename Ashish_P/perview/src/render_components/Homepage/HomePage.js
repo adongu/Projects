@@ -35,6 +35,7 @@ class HomePage extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.requestLoading !== this.props.requestLoading) {
+      console.log('new props', nextProps.allPerviews);
       this.setState({
         requestLoading: nextProps.requestLoading
       })

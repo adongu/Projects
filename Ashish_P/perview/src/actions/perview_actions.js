@@ -94,6 +94,7 @@ export const createPerview = (submitPerviewObject) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.createPerview(submitPerviewObject)
     .then( response => {
+      console.log('create pervie data', response.data);
       return dispatch(receivePerview(response.data))
     })
     .catch( err => {
