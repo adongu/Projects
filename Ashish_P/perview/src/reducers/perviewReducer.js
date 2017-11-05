@@ -45,8 +45,6 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
         requestLoading: true
       });
     case RECEIVE_PERVIEW:
-      console.log('old state', newState);
-      console.log('new perview', action.perview);
       action.perview.forEach(() => {
         newState.allPerviews.perviews.unshift(action.perview.pop());
         newState.myPerviews.perviews.unshift(action.perview.pop());
@@ -56,7 +54,6 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
         };
       });
 
-      console.log('new state', newState);
       return Object.assign({}, newState, {
         requestLoading: false,
         errors: []

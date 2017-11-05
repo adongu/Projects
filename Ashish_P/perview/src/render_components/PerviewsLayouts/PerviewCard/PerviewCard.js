@@ -171,7 +171,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, create
 
   const renderPerviewOrSolicitContentView = () => {
     if (perview.solicit) {
-      return renderSolicitContentView;
+      return renderSolicitContentView();
     } else {
       return renderPerviewContentView;
     }
@@ -193,7 +193,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, create
   )
 
   const renderSolicitContentView = () => {
-    if (perview.userDto) {
+    if (currentUserId) {
       return (
         <div className="perviewcard__createperview">
           <CreatePerviewModalContainer
