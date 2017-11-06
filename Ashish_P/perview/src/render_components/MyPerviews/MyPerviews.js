@@ -23,11 +23,10 @@ class MyPerviews extends React.Component {
   }
 
   componentWillMount () {
-    this.props.fetchMyPerviews()
-    .then(() => {
-      this.setState({
-        categories: this.props.categories
-     });
+    this.props.fetchMyPerviews();
+
+    this.setState({
+      categories: this.props.categories
     });
   }
 

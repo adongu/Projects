@@ -45,12 +45,13 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
         requestLoading: true
       });
     case RECEIVE_PERVIEW:
-      action.perview.forEach(() => {
-        newState.allPerviews.perviews.unshift(action.perview.pop());
-        newState.myPerviews.perviews.unshift(action.perview.pop());
+      action.perviewsArray.forEach((perview) => {
+        console.log('receive perview each perview item', perview);
+        newState.allPerviews.perviews.unshift(perview);
+        newState.myPerviews.perviews.unshift(perview);
 
         if (action.perview.id === newState.itemPerviews.item.id) {
-          newState.itemPerviews.perviews.unshift(action.perview.pop());
+          newState.itemPerviews.perviews.unshift(perview);
         };
       });
 

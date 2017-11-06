@@ -39,10 +39,10 @@ class PerviewEditModal extends React.Component {
   }
 
   componentWillMount() {
-    if (this.props.item) {
+    if (this.props.item.data) {
       let item = this.props.item
       this.setState({
-        imgUrl: item.data.imageUrls.large.url,
+        imgUrl: item.data.imageUrls.large.url || '',
         name: item.data.title,
         price: item.data.listPrice.formattedAmount,
         itemId: item.id
@@ -53,13 +53,15 @@ class PerviewEditModal extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.item && nextProps.item.id !== this.state.itemId) {
       let item = nextProps.item
-
-      this.setState({
-        imgUrl: item.data.imageUrls.large.url,
-        name: item.data.title,
-        price: item.data.listPrice.formattedAmount,
-        itemId: item.id
-      })
+      // Solicit has no item data, prevent render error
+      if (item.data) {
+        this.setState({
+          imgUrl: item.data.imageUrls.large.url,
+          name: item.data.title,
+          price: item.data.listPrice.formattedAmount,
+          itemId: item.id
+        })
+      }
     }
   }
 
