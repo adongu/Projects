@@ -9,7 +9,7 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
 
   const handleFriendClick = (friendId) => {
     return (e) => {
-      console.log('handle friend click', friendId);
+      // console.log('handle friend click', friendId);
       if (currentUserId === friendId) {
         history.replace({ pathname: `/myperviews` });
       } else {
@@ -71,7 +71,7 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
 
   const renderUserProfile = (perview) => {
     let user = perview.userDto;
-    console.log('renderUserProfile for solicit', perview.userDto);
+    // console.log('renderUserProfile for solicit', perview.userDto);
     return (
       <div className="flexcolumn narrowperviews__solicit-user">
         <div className="narrowperviews__solicit-date">

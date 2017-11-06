@@ -9,7 +9,9 @@ class PerviewComments extends React.Component{
     this.state = {
       comments: [],
       topLineMaxLength: 25,
-      newComment: ''
+      newComment: '',
+      addedComment: false,
+      commentElementClass: 'perviewcomment__comments-container',
     }
 
     this.update = this.update.bind(this);
@@ -22,7 +24,7 @@ class PerviewComments extends React.Component{
 
   componentWillMount() {
     this.setState({
-      comments: this.props.perview.comments
+      comments: this.props.perview.comments,
     });
   }
   //
@@ -35,11 +37,31 @@ class PerviewComments extends React.Component{
     }
   }
 
+  componentDidUpdate() {
+    if (this.state.addedComment) {
+      this.scrollToBottom('comments__box');
+    }
+  }
+
+  // scroll to end of comment box
+  scrollToBottom(elementId) {
+    let element = document.getElementById(elementId);
+    // let commentElementScrollHeight = document.getElementsByClassName('perviewcomment__comments-container');
+
+    // if(commentElementScrollHeight){
+    // commentElementScrollHeight = commentElementScrollHeight[0].scrollHeight;
+    // };
+    if (element) {
+      element.scrollTo(0, element.scrollHeight + 36);
+    }
+  }
+
   update (field) {
     return (e) => {
       let charCode = (e.target.value.charCodeAt(e.target.value.length - 1));
       if (charCode === 10) {
         this.handleSubmit(e);
+        // scroll to bottom of comments section
       } else {
         this.setState({
           [field]: e.target.value
@@ -58,8 +80,9 @@ class PerviewComments extends React.Component{
 
       if(this.props.createComment(commentObject)) {
         this.setState({
-          newComment: ''
-        })
+          newComment: '',
+          addedComment: true,
+        });
       }
     }
     // }
@@ -158,7 +181,10 @@ class PerviewComments extends React.Component{
 
   renderAllComments () {
     return (
-      <div className="divwrapper-fullwidth perviewcomment__commentsbox">
+      <div
+        className="divwrapper-fullwidth perviewcomment__commentsbox"
+        id="comments__box"
+      >
         <p className="perviewcomment__commentstitle">Friend Comments</p>
 
         {this.state.comments.map((comment) => {
@@ -172,7 +198,10 @@ class PerviewComments extends React.Component{
             bottomComment = comment.comment.slice(maxTopCommentLength);
           }
           return (
-            <div key={`perviewcomment-${this.props.perview.id}-${comment.id}`}>
+            <div
+              key={`perviewcomment-${this.props.perview.id}-${comment.id}`}
+              className={this.state.commentElementClass}
+            >
               <div>
                 {this.renderCommenterProfile(comment, topComment)}
               </div>

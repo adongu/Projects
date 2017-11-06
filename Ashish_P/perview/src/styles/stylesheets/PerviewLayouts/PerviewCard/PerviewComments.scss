@@ -5,8 +5,9 @@
   }
 
   &commentsbox {
-    max-height: 355px;
-    height: 70%;
+    height: 290px;
+    // min-height: 180px;
+    // height: 70%;
     overflow-y: scroll;
     border-bottom: 1px solid #efefef;
     margin-bottom: 20px;
