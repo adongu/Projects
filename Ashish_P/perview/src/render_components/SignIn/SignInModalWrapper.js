@@ -21,6 +21,7 @@ class SignInModalWrapper extends React.Component{
   }
 
   hideModal() {
+    this.props.hideLoginModal();
     this.setState({ show: false });
   }
 
@@ -28,6 +29,12 @@ class SignInModalWrapper extends React.Component{
     this.setState({
       show: false
     })
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.props.showLoginModal) {
+      this.setState.show
+    }
   }
 
   render() {

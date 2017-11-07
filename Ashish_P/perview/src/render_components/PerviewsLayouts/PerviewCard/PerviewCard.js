@@ -193,7 +193,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, create
   )
 
   const renderSolicitContentView = () => {
-    if (currentUserId) {
+    // if (currentUserId) {
       return (
         <div className="perviewcard__createperview">
           <CreatePerviewModalContainer
@@ -204,7 +204,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, create
           />
         </div>
       );
-    }
+    // }
   };
 
   const renderSocialBar = (

@@ -50,9 +50,9 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
         newState.allPerviews.perviews.unshift(perview);
         newState.myPerviews.perviews.unshift(perview);
 
-        if (action.perview.id === newState.itemPerviews.item.id) {
-          newState.itemPerviews.perviews.unshift(perview);
-        };
+        // if (action.perview.id === newState.itemPerviews.item.id) {
+          // newState.itemPerviews.perviews.unshift(perview);
+        // };
       });
 
       return Object.assign({}, newState, {

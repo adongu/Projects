@@ -2,6 +2,7 @@ import * as APIUtil from '../util/session_api_util';
 
 export const REQUEST_USER = 'REQUEST_USER';
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
+export const SHOW_LOGIN_MODAL = 'SHOW_LOGIN_MODAL';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
@@ -28,6 +29,14 @@ export const fetchToken = () => dispatch => {
     .then( response => {
     })
 }
+
+export const showLoginModal =() => ({
+  type: SHOW_LOGIN_MODAL
+})
+
+export const hideLoginModal =() => ({
+  type: HIDE_LOGIN_MODAL
+})
 
 export const logIn = () => dispatch => {
   dispatch(requestUser());
