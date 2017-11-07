@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import LandingPage from "../render_components/LandingPage/LandingPage";
-import { fetchUser, fetchToken } from '../actions/session_actions';
+import { fetchUser, fetchToken, showLoginModal, hideLoginModal } from '../actions/session_actions';
 import { fetchItemResults } from '../actions/search_item_actions';
 import { fetchCategoryIds, fetchLandingPerviews, clearErrors } from '../actions/perview_actions';
 import { createComment, deleteComment, likePerview, unlikePerview, bookmarkPerview, unbookmarkPerview } from '../actions/social_actions';
@@ -12,7 +12,8 @@ const mapStateToProps = ({ session, perview, findItem, social }, ownProps) => {
     requestLoading: perview.requestLoading,
     landingPerviews: perview.landingPerviews.perviews,
     results: findItem.itemResults,
-    fetchingUpdate: social.fetchingUpdate
+    fetchingUpdate: social.fetchingUpdate,
+    showLoginModal: session.showLoginModal,
   }
 };
 
@@ -28,7 +29,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     unbookmarkPerview: (perviewId) => dispatch(unbookmarkPerview(perviewId)),
     likePerview: (perviewId) => dispatch(likePerview(perviewId)),
     unlikePerview: (perviewId) => dispatch(unlikePerview(perviewId)),
-    clearErrors: () => dispatch(clearErrors())
+    showLoginModal: () => dispatch(showLoginModal()),
+    hideLoginModal: () => dispatch(hideLoginModal()),
+    clearErrors: () => dispatch(clearErrors()),
   }
 }
 

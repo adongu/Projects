@@ -4,9 +4,9 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import SearchPerviewBar from './SearchPerviewBar';
 import CreatePerviewModalContainer from '../../containers/CreatePerviewModalContainer';
-import SignInModalWrapper from '../SignIn/SignInModalWrapper.js';
+import SignInModalContainer from '../../containers/SignInModalContainer';
 import UserNavContainer from '../../containers/UserNavContainer';
-import * as util from '../../actions/util_actions.js';
+import * as util from '../../actions/util_actions';
 
 class Header extends React.Component {
   constructor(props) {
@@ -112,7 +112,7 @@ class Header extends React.Component {
   renderSignInModal () {
     if (!this.props.currentUser) {
       return (
-        <SignInModalWrapper
+        <SignInModalContainer
           history={this.props.history}
         />
       )

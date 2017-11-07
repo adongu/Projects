@@ -6,7 +6,7 @@ import NavBarContainer from '../../containers/NavBarContainer.js';
 import NarrowPerview from "../PerviewsLayouts/NarrowPerview";
 import Footer from '../Footer/Footer.js'
 
-class HomePage extends React.Component {
+class LandingPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,11 +22,8 @@ class HomePage extends React.Component {
 
   componentWillMount() {
     this.props.fetchLandingPerviews();
-
     this.props.fetchToken();
     this.props.fetchUser();
-
-
   }
 
   componentDidMount() {
@@ -71,12 +68,12 @@ class HomePage extends React.Component {
           fetchingUpdate = {this.state.fetchingUpdate}
           // currentUserId = {this.props.currentUser.id}
           perviews = {this.props.landingPerviews}
-          createComment = {this.props.createComment}
-          deleteComment = {this.props.deleteComment}
-          bookmarkPerview = {this.props.bookmarkPerview}
-          unbookmarkPerview = {this.props.unbookmarkPerview}
-          likePerview = {this.props.likePerview}
-          unlikePerview = {this.props.unlikePerview}
+          createComment = {this.props.showLoginModal}
+          deleteComment = {this.props.showLoginModal}
+          bookmarkPerview = {this.props.showLoginModal}
+          unbookmarkPerview = {this.props.showLoginModal}
+          likePerview = {this.props.showLoginModal}
+          unlikePerview = {this.props.showLoginModal}
           toRenderUserProfile = {true}
           history = {this.props.history}
         />
@@ -106,4 +103,4 @@ class HomePage extends React.Component {
   }
 }
 
-export default withRouter(HomePage);
+export default withRouter(LandingPage);

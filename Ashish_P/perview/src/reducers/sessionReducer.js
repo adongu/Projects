@@ -1,5 +1,5 @@
 import { merge } from 'lodash';
-import { REQUEST_USER, RECEIVE_CURRENT_USER, SHOW_LOGIN_MODAL, RECEIVE_ERRORS } from '../actions/session_actions';
+import { REQUEST_USER, RECEIVE_CURRENT_USER, SHOW_LOGIN_MODAL, HIDE_LOGIN_MODAL, RECEIVE_ERRORS } from '../actions/session_actions';
 
 const _nullSession = Object.freeze({
   isFetching: false,
@@ -33,10 +33,12 @@ const sessionReducer = (oldState = _nullSession, action) => {
         showLoginModal: true
       })
     case SHOW_LOGIN_MODAL:
+      console.log('hit SHOW_LOGIN_MODAL');
       return Object.assign({}, oldState, {
         showLoginModal: true
       })
     case HIDE_LOGIN_MODAL:
+      console.log('hit HIDE_LOGIN_MODAL');
       return Object.assign({}, oldState, {
         showLoginModal: false
       })

@@ -32,10 +32,16 @@ class SignInModalWrapper extends React.Component{
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.props.showLoginModal) {
-      this.setState.show
-    }
+    if (this.state.show !== nextProps.showLoginModal) {
+      this.setState({ show: nextProps.showLoginModal });
+    };
   }
+
+  // componentDidUpdate() {
+  //   if (this.props.show !== nextProps.showLoginModal && nextProps.showLoginModal) {
+  //     this.setState({ show: true });
+  //   };
+  // }
 
   render() {
     return (
