@@ -4,7 +4,7 @@ import { showLoginModal, hideLoginModal } from '../actions/session_actions';
 
 const mapStateToProps = ({ session }, ownProps) => {
   return {
-    showLoginModal: session.showLoginModal,
+    isLoginModalOn: session.showLoginModal,
   }
 };
 

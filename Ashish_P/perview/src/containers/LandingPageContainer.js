@@ -13,7 +13,7 @@ const mapStateToProps = ({ session, perview, findItem, social }, ownProps) => {
     landingPerviews: perview.landingPerviews.perviews,
     results: findItem.itemResults,
     fetchingUpdate: social.fetchingUpdate,
-    showLoginModal: session.showLoginModal,
+    isLoginModalOn: session.showLoginModal,
   }
 };
 

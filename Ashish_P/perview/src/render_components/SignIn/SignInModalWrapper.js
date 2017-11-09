@@ -9,7 +9,8 @@ class SignInModalWrapper extends React.Component{
     super(props);
 
     this.state = {
-      show: false
+      show: false,
+      hasClosed: true
     }
 
     this.showModal = this.showModal.bind(this);
@@ -17,23 +18,26 @@ class SignInModalWrapper extends React.Component{
   }
 
   showModal() {
-    this.setState({ show: true });
+    if (this.state.hasClosed) {
+      this.setState({ show: true, hasClosed: false });
+    }
   }
 
   hideModal() {
     this.props.hideLoginModal();
-    this.setState({ show: false });
+    this.setState({ show: false, hasClosed: true });
   }
 
   componentWillMount() {
     this.setState({
-      show: false
+      show: false,
+      hasClosed: true
     })
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.state.show !== nextProps.showLoginModal) {
-      this.setState({ show: nextProps.showLoginModal });
+    if (!!this.state.hasClosed && !!nextProps.isLoginModalOn) {
+      this.setState({ show: true, hasClosed: false });
     };
   }
 
