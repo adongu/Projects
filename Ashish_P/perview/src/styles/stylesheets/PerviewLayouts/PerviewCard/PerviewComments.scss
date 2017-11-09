@@ -19,10 +19,11 @@
   }
 
   &userbox {
-    padding: 8px;
+    padding: 5px 5px 0 2px;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: flex-start;
   }
 
   &userimgbox {
@@ -59,33 +60,38 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding-top: 3px;
     padding-right: 18px;
     font-family: Roboto;
 
   }
 
   &delete {
-    width: 10px;
-    border-radius: 50%;
+    width: 17px;
+    height: 17px;
     font-size: 10px;
+    font-weight: lighter;
+    // font-family: mono;
+    position: absolute;
+    right: 0;
+    color: #000;
+    border-radius: 50%;
     margin-left: 3px;
     margin-right: 8px;
-    // padding: 1px 3px;
-    background: #D3D6DB;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
 
-  &delete:hover {
-    border-radius: 10em;
-    color: #fff;
-    background: #D3D6DB;
+    &:hover {
+    border-radius: 13em;
+    border: 1px solid #000;
+    padding: 5px;
+    }
   }
 
   &bottomcomment {
-    padding: 0 8px;
+    padding: 0 8px 0 10px;
     font-family: Roboto;
   }
 

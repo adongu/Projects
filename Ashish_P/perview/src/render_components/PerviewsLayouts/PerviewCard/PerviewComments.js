@@ -8,12 +8,13 @@ class PerviewComments extends React.Component{
     super(props);
     this.state = {
       comments: [],
-      topLineMaxLength: 25,
+      topLineMaxLength: 42,
       newComment: '',
       addedComment: false,
       commentElementClass: 'perviewcomment__comments-container',
     }
 
+    this.splitCommentObject = this.splitCommentObject.bind(this);
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDeleteComment = this.handleDeleteComment.bind(this);
@@ -173,10 +174,36 @@ class PerviewComments extends React.Component{
           onClick={this.handleDeleteComment(comment.id)}
           className="perviewcomment__delete"
         >
-          <span>x</span>
+          <i
+            className="fa fa-times"
+            aria-hidden="true">
+          </i>
         </div>
       )
     // }
+  }
+
+  splitCommentObject (comment) {
+    let topComment = "",
+        bottomComment = "";
+    let commentArray = comment.comment.split(" ");
+
+    let commenterNameLength = comment.commenter.firstName.length;
+    let combinedNameAndCommentLength = commenterNameLength + comment.comment.length;
+    let maxTopCommentLength = this.state.topLineMaxLength - commenterNameLength;
+
+    commentArray.forEach((comment) => {
+      if (topComment.length < maxTopCommentLength) {
+        topComment += ` ${comment}`;
+      } else {
+        bottomComment += ` ${comment}`;
+      };
+    });
+
+    return {
+      'topComment': topComment || '',
+      'bottomComment': bottomComment || ''
+    };
   }
 
   renderAllComments () {
@@ -188,26 +215,19 @@ class PerviewComments extends React.Component{
         <p className="perviewcomment__commentstitle">Friend Comments</p>
 
         {this.state.comments.map((comment) => {
-          let topComment, bottomComment;
-          let commenterNameLength = comment.commenter.firstName.length;
-          let combinedNameAndCommentLength = commenterNameLength + comment.comment.length;
-          let maxTopCommentLength = this.state.topLineMaxLength - commenterNameLength;
+          let commentObject = this.splitCommentObject(comment);
 
-          if (combinedNameAndCommentLength > 2) {
-            topComment = comment.comment.slice(0, maxTopCommentLength)
-            bottomComment = comment.comment.slice(maxTopCommentLength);
-          }
           return (
             <div
               key={`perviewcomment-${this.props.perview.id}-${comment.id}`}
               className={this.state.commentElementClass}
             >
               <div>
-                {this.renderCommenterProfile(comment, topComment)}
+                {this.renderCommenterProfile(comment, commentObject.topComment)}
               </div>
 
               <div className="perviewcomment__bottomcomment">
-                {bottomComment}
+                {commentObject.bottomComment}
               </div>
             </div>
           )

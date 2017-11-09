@@ -139,6 +139,12 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
           </div>
         )
       });
+    } else {
+      return (
+        <div className="loading__spinner divwrapper-fullwidth">
+          <i className="fa fa-spinner fa-5x fa-pulse" aria-hidden="true"></i>
+        </div>
+      )
     }
   }
 

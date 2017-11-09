@@ -60,7 +60,8 @@ class SignInModalWrapper extends React.Component{
           onHide={this.hideModal}
           dialogClassName="signinmodal"
         >
-          <closeButton />
+          <Modal.Header className="signinmodal__header" closeButton></Modal.Header>
+
 
           <Modal.Body>
             <div className="divwrapper-fullwidth">

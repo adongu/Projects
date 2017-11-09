@@ -102,3 +102,10 @@ i::before{
 a:-webkit-any-link {
   text-decoration: none;
 }
+
+//loading spinner
+.loading__spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
