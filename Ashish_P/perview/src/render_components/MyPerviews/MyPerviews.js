@@ -3,7 +3,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 // switch to PersonalPerview when the component is finish building
 import NavBarContainer from '../../containers/NavBarContainer.js';
-import NarrowPerview from "../PerviewsLayouts/NarrowPerview";
+import NarrowPerviewContainer from '../../containers/NarrowPerviewContainer';
 
 class MyPerviews extends React.Component {
 
@@ -75,7 +75,7 @@ class MyPerviews extends React.Component {
         />
 
         <div className="myperview__perviews">
-          <NarrowPerview
+          <NarrowPerviewContainer
             currentUserId = {this.props.currentUser.id}
             perviews = {this.props.perviews}
             editPerview = {this.props.editPerview}

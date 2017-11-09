@@ -1,9 +1,8 @@
 import "../../styles/stylesheets/homeperview.css";
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import NavBarContainer from '../../containers/NavBarContainer.js';
-import WidePerview from "../PerviewsLayouts/WidePerview";
-import NarrowPerview from "../PerviewsLayouts/NarrowPerview";
+import NavBarContainer from '../../containers/NavBarContainer';
+import NarrowPerviewContainer from '../../containers/NarrowPerviewContainer.js';
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -63,12 +62,10 @@ class HomePage extends React.Component {
       )
     } else {
       return (
-        <NarrowPerview
+        <NarrowPerviewContainer
           // fetchingUpdate = {this.state.fetchingUpdate}
           currentUserId = {this.props.currentUser.id}
           perviews = {this.props.allPerviews}
-          createComment = {this.props.createComment}
-          deleteComment = {this.props.deleteComment}
           bookmarkPerview = {this.props.bookmarkPerview}
           unbookmarkPerview = {this.props.unbookmarkPerview}
           likePerview = {this.props.likePerview}

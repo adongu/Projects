@@ -3,7 +3,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import HeaderContainer from '../../containers/HeaderContainer';
 import NavBarContainer from '../../containers/NavBarContainer.js';
-import NarrowPerview from "../PerviewsLayouts/NarrowPerview";
+import NarrowPerviewContainer from '../../containers/NarrowPerviewContainer';
 import Footer from '../Footer/Footer.js'
 
 class LandingPage extends React.Component {
@@ -64,7 +64,7 @@ class LandingPage extends React.Component {
       )
     } else {
       return (
-        <NarrowPerview
+        <NarrowPerviewContainer
           fetchingUpdate = {this.state.fetchingUpdate}
           // currentUserId = {this.props.currentUser.id}
           perviews = {this.props.landingPerviews}

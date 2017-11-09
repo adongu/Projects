@@ -2,7 +2,7 @@ import "../../styles/stylesheets/FriendPerviews/friendperview.css";
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import NavBarContainer from '../../containers/NavBarContainer';
-import NarrowPerview from "../PerviewsLayouts/NarrowPerview";
+import NarrowPerviewContainer from '../../containers/NarrowPerviewContainer';
 
 class FriendPerviews extends React.Component {
   constructor (props) {
@@ -68,7 +68,7 @@ class FriendPerviews extends React.Component {
         />
 
         <div className="friendperview__perviews">
-          <NarrowPerview
+          <NarrowPerviewContainer
             currentUserId =     {this.props.currentUser.id}
             perviews =          {this.props.perviews}
             bookmarkPerview =   {this.props.bookmarkPerview}
