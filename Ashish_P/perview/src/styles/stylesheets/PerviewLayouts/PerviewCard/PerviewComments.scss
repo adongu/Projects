@@ -2,6 +2,7 @@
   &container {
     // display: flex;
     height: 100%;
+    overflow: hidden;
   }
 
   &commentsbox {
@@ -72,8 +73,8 @@
     font-size: 10px;
     font-weight: lighter;
     // font-family: mono;
-    position: absolute;
-    right: 0;
+    // position: absolute;
+    // right: 0;
     color: #000;
     border-radius: 50%;
     margin-left: 3px;

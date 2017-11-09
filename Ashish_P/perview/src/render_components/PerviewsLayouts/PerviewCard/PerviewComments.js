@@ -8,7 +8,7 @@ class PerviewComments extends React.Component{
     super(props);
     this.state = {
       comments: [],
-      topLineMaxLength: 42,
+      topLineMaxLength: 41,
       newComment: '',
       addedComment: false,
       commentElementClass: 'perviewcomment__comments-container',
@@ -147,8 +147,8 @@ class PerviewComments extends React.Component{
           <span>
             {topComment}
           </span>
-          {this.renderDeleteButton(comment)}
         </div>
+        {this.renderDeleteButton(comment)}
       </div>
     )
   }
@@ -212,8 +212,6 @@ class PerviewComments extends React.Component{
         className="divwrapper-fullwidth perviewcomment__commentsbox"
         id="comments__box"
       >
-        <p className="perviewcomment__commentstitle">Friend Comments</p>
-
         {this.state.comments.map((comment) => {
           let commentObject = this.splitCommentObject(comment);
 
@@ -235,11 +233,14 @@ class PerviewComments extends React.Component{
       </div>
     )
   }
-
+/**
+* @TODO Add emoji selector
+**/
   render () {
     return (
       <div className="perviewcomment__container divwrapper-fullwidth">
-          {this.renderAllComments()}
+        <p className="perviewcomment__commentstitle">Friend Comments</p>
+        {this.renderAllComments()}
 
         <div className="perviewcomment__socialactions">
           {this.renderSocialSection(this.props.perview)}
