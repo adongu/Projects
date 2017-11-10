@@ -7,6 +7,7 @@ class PerviewEditModal extends React.Component {
     super(props);
 
     this.state = {
+      id: null,
       show: false,
       keywords: '',
       imgUrl: '',
@@ -41,8 +42,11 @@ class PerviewEditModal extends React.Component {
   componentWillMount() {
     if (this.props.item.data) {
       let item = this.props.item
+      let perview = this.props.perview
+
       this.setState({
-        imgUrl: item.data.imageUrls.large.url || '',
+        id: perview.id,
+        imgUrl: item.data.imageUrls.large.url,
         name: item.data.title,
         price: item.data.listPrice.formattedAmount,
         itemId: item.id
@@ -53,15 +57,25 @@ class PerviewEditModal extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.item && nextProps.item.id !== this.state.itemId) {
       let item = nextProps.item
-      // Solicit has no item data, prevent render error
-      if (item.data) {
-        this.setState({
-          imgUrl: item.data.imageUrls.large.url,
-          name: item.data.title,
-          price: item.data.listPrice.formattedAmount,
-          itemId: item.id
-        })
-      }
+      // if (item.data) {
+      //   this.setState({
+      //     imgUrl: item.data.imageUrls.large.url,
+      //     name: item.data.title,
+      //     price: item.data.listPrice.formattedAmount,
+      //     itemId: item.id
+      //   })
+      // }
+
+
+      let perview = this.props.perview
+
+      this.setState({
+        id: perview.id,
+        imgUrl: item.data.imageUrls.large.url,
+        name: item.data.title,
+        price: item.data.listPrice.formattedAmount,
+        itemId: item.id
+      })
     }
   }
 
@@ -71,6 +85,7 @@ class PerviewEditModal extends React.Component {
 
   hideModal() {
     this.setState({
+      id: null,
       show: false,
       keywords: '',
       // imgUrl: '',
@@ -127,18 +142,21 @@ class PerviewEditModal extends React.Component {
     e.preventDefault();
     if(this.props.currentUserId){
       let formData = new FormData();
+      formData.append("id", this.state.id);
       formData.append("itemId", this.state.itemId);
       formData.append("tags", this.state.tags);
       formData.append("rating", this.state.rating);
       // when submit fails prevent review lost
       if(!this.props.editPerview(formData)) {
         this.setState({
+          id: this.state.id,
           itemId: this.state.itemID,
           tags: this.state.tags,
           rating: this.state.rating
         })
       } else {
         this.setState({
+          id: null,
           itemId: null,
           tags: '',
           rating: 0
