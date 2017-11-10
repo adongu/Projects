@@ -16,10 +16,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     deletePerview: (perviewId) => dispatch(deletePerview(perviewId)),
     createComment: (perviewId, comment) => dispatch(createComment(perviewId, comment)),
     deleteComment: (perviewId, commentId) => dispatch(deleteComment(perviewId, commentId)),
-    bookmarkPerview: (perviewId) => dispatch(bookmarkPerview(perviewId)),
-    unbookmarkPerview: (perviewId) => dispatch(unbookmarkPerview(perviewId)),
-    likePerview: (perviewId) => dispatch(likePerview(perviewId)),
-    unlikePerview: (perviewId) => dispatch(unlikePerview(perviewId)),
+    // bookmarkPerview: (perviewId) => dispatch(bookmarkPerview(perviewId)),
+    // unbookmarkPerview: (perviewId) => dispatch(unbookmarkPerview(perviewId)),
+    // likePerview: (perviewId) => dispatch(likePerview(perviewId)),
+    // unlikePerview: (perviewId) => dispatch(unlikePerview(perviewId)),
     clearErrors: () => dispatch(clearErrors())
   }
 }
