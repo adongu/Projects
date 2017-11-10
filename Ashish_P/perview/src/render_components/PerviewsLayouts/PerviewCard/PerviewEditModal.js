@@ -57,25 +57,17 @@ class PerviewEditModal extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.item && nextProps.item.id !== this.state.itemId) {
       let item = nextProps.item
-      // if (item.data) {
-      //   this.setState({
-      //     imgUrl: item.data.imageUrls.large.url,
-      //     name: item.data.title,
-      //     price: item.data.listPrice.formattedAmount,
-      //     itemId: item.id
-      //   })
-      // }
-
-
       let perview = this.props.perview
 
-      this.setState({
-        id: perview.id,
-        imgUrl: item.data.imageUrls.large.url,
-        name: item.data.title,
-        price: item.data.listPrice.formattedAmount,
-        itemId: item.id
-      })
+      if (item.data) {
+        this.setState({
+          id: perview.id,
+          imgUrl: item.data.imageUrls.large.url,
+          name: item.data.title,
+          price: item.data.listPrice.formattedAmount,
+          itemId: item.id
+        })
+      }
     }
   }
 

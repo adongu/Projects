@@ -23,10 +23,10 @@ const Root = ({ store }) => {
     <Provider store={ store }>
        <BrowserRouter>
           <Switch>
-            {/* <AuthRoute component={LandingPageContainer} exact path="/home" /> */}
 
             {/* <AuthRoute component={} exact path="/home" /> */}
             <AuthRoute component={withTracker(SignInContainer)} exact path="/signin" />
+            <AuthRoute component={withTracker(LandingPageContainer)} exact path="/home" />
             <ProtectedRoute component={withTracker(HomePageContainer)} exact path="/"/>
             <ProtectedRoute component={withTracker(MyPerviewsContainer)} exact path="/myperviews"/>
             <ProtectedRoute component={withTracker(FavoritePerviewsContainer)} exact path="/favorites"/>
