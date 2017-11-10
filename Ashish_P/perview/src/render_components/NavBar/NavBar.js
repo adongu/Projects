@@ -9,10 +9,10 @@ const NavBar = ({ createPerview, filterPerviews, isFetching, currentUser, curren
 
   const pageSettings = {
     "/home" : {
-      "title": "", "hasFilters": false, "hasCreateSolicit": false
+      "title": "Recent Perviews", "hasFilters": false, "hasCreateSolicit": false
     },
     "/" : {
-      "title": "", "hasFilters": false, "hasCreateSolicit": true
+      "title": "Perviews in your network", "hasFilters": false, "hasCreateSolicit": true
     },
     "/myperviews": {
       "title": "", "hasFilters": true, "userDashBoardType": 'self'
@@ -208,13 +208,15 @@ const NavBar = ({ createPerview, filterPerviews, isFetching, currentUser, curren
   return (
     <div className="navbar__container">
       <div className="flexrow navbar__box">
-        <div className="flexrow navbar__title">
+        <div className="flexcolumn navbar__title">
           <div className="navbar__hero">
             {renderCreateSolicit()}
             {renderUserHero()}
           </div>
 
-          {(match && pageSettings[match.path]) ? pageSettings[match.path]["title"] : ""}
+          <span className="navbar__title-text">
+            {(match && pageSettings[match.path]) ? pageSettings[match.path]["title"] : ""}
+          </span>
         </div>
         {renderFilters()}
       </div>
