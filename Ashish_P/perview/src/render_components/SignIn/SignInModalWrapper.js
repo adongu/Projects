@@ -37,6 +37,7 @@ class SignInModalWrapper extends React.Component{
 
   componentWillReceiveProps(nextProps) {
     if (!!this.state.hasClosed && !!nextProps.isLoginModalOn) {
+      console.log(`signin state ${this.state.show} \n signin hasClosed ${this.state.hasClosed}`);
       this.setState({ show: true, hasClosed: false });
     };
   }
