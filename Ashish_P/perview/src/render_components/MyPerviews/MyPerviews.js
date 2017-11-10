@@ -38,6 +38,10 @@ class MyPerviews extends React.Component {
       this.setState({
         requestLoading: nextProps.requestLoading
       })
+
+      if(this.props.perviews !== nextProps.perviews) {
+        this.props.fetchMyPerviews(this.state.categoryId);
+      }
     }
 
     if (nextProps.fetchingUpdate !== this.props.fetchingUpdate) {

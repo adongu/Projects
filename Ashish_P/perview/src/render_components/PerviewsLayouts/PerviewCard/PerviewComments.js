@@ -239,7 +239,7 @@ class PerviewComments extends React.Component{
   render () {
     return (
       <div className="perviewcomment__container divwrapper-fullwidth">
-        <p className="perviewcomment__commentstitle">Friend Comments</p>
+        <p className="perviewcomment__commentstitle">Comments</p>
         {this.renderAllComments()}
 
         <div className="perviewcomment__socialactions">
