@@ -10,7 +10,7 @@ class Settings extends React.Component{
 
     this.state = {
       copySuccess: "Copy",
-      user: {}
+      currentUser: {}
     }
 
     this.performCopyUrl = this.performCopyUrl.bind(this);
@@ -24,12 +24,12 @@ class Settings extends React.Component{
   }
 
   componentWillMount() {
-    this.setState({ user: this.props.currentUser})
+    this.setState({ currentUser: this.props.currentUser})
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.currentUser !== nextProps.currentUser) {
-      this.setState({ user: nextProps.currentUser })
+      this.setState({ currentUser: nextProps.currentUser })
     }
   }
 
@@ -171,7 +171,9 @@ class Settings extends React.Component{
       )
     } else {
       return(
-        <div>
+        <div className="settings__container">
+          <NavBarContainer />
+
           No User Found :(
         </div>
       )
