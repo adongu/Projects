@@ -108,12 +108,13 @@ class PerviewDetailModal extends React.Component {
             </Link>
 
             <div className="flexrow narrowperviews__buybox">
-              {item.data.listPrice.formattedAmount}
-
+              Amazon.com Price: {item.data.listPrice.formattedAmount}
               <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">
-                Buy on Amazon
+                Buy
               </a>
             </div>
+            <div className="narrowperviews__moreinfo">as of {moment(item.ts).format("HH:mm a Z")} - More info</div>
+
           </div>
         )
       }

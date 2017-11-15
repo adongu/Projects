@@ -120,6 +120,15 @@ $review-lines-to-show: 6;
     margin-top: 10px;
   }
 
+  &moreinfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: -3px;
+    font-size: 10px;
+  }
+
   &numperviews {
   }
 }

@@ -73,6 +73,14 @@ $review-lines-to-show: 5;
     font-size: 18px;
   }
 
+  &itempricemoreinfo {
+    align-self: flex-start;
+    white-space: normal;
+    font-weight: bold;
+    margin-top: -3px;
+    font-size: 10px;
+  }
+
   &itembuy {
   }
 

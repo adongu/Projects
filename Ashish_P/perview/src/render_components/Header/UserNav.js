@@ -19,11 +19,11 @@ class UserNav extends React.PureComponent {
   handleLogout() {
     this.props.logOut()
     .then(() => {
-      this.props.history.replace({ pathname: '/signin' });
+      this.props.history.replace({ pathname: '/home' });
       // this.props.history.push('/signin');
     })
     .catch(() => {
-      this.props.history.replace({ pathname: '/signin' });
+      this.props.history.replace({ pathname: '/home' });
       // this.props.history.push('/signin');
     })
   }
