@@ -10,8 +10,16 @@
   &box {
     width: 980px;
     border-top: 1px solid #ccc;
-    padding-top: 30px;
+  }
+
+  &disclaimer {
+    padding-top: 8px;
+    font-size: 10px;
+  }
+
+  &copyright {
     display: flex;
+    padding-top: 30px;
     justify-content: flex-start;
     align-items: center;
   }

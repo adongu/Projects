@@ -7,15 +7,20 @@ const Footer = () => {
 
   return (
     <div className="footer__container">
-      <div className="flexrow footer__box">
-        <span>
-          {disclaimer}
+
+      <div className="flexcolumn footer__box">
+        <span className="footer__disclaimer">
+          {disclaimer.toLowerCase()}
         </span>
 
-        <span className="footer__item">
-          © Alphathesis LLC. 2017
-        </span>
-        <Link to="/contact" className="footer__item">Contact Us</Link>
+        <div className="footer__copyright">
+          <span className="footer__item">
+            © Alphathesis LLC. 2017
+          </span>
+          <Link to="/contact" className="footer__item">
+            Contact Us
+          </Link>
+        </div>
       </div>
     </div>
   )
