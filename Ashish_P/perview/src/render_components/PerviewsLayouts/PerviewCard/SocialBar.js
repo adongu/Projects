@@ -4,7 +4,7 @@ import PerviewDetailModal from './PerviewDetailModal';
 import { Popover, OverlayTrigger } from 'react-bootstrap';
 import * as util from '../../../actions/util_actions.js';
 
-const SocialBar = ({currentUserId, perview, likers, createComment, deleteComment, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, handleFriendClick}) => {
+const SocialBar = ({currentUserId, perview, likers, createComment, deleteComment, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, handleFriendClick, showLoginModal}) => {
 
   const handleSaveClick = (perview) => {
     return e => {
@@ -78,28 +78,30 @@ const SocialBar = ({currentUserId, perview, likers, createComment, deleteComment
   }
 
   const renderCommentsModal = () => {
-    if (perview.comments) {
+    // if (perview.comments) {
       return (
         <div className="perviewcard__detailmodalwrapper">
           <PerviewDetailModal
-            perview = {perview}
+            currentUserId={currentUserId}
+            perview={perview}
             createComment={createComment}
             deleteComment={deleteComment}
             handleSaveClick = {handleSaveClick}
             handleFriendClick = {handleFriendClick}
             handleLikeClick = {handleLikeClick}
+            showLoginModal={showLoginModal}
             toRenderPerviewCommentsView = {true}
             renderStars = {util.renderStars}
           />
         </div>
       )
-    } else {
-      return (
-        <div className="perviewcard__detailmodalwrapper">
-          Comments
-        </div>
-      )
-    }
+    // } else {
+    //   return (
+    //     <div className="perviewcard__detailmodalwrapper">
+    //       Comments
+    //     </div>
+    //   )
+    // }
   }
 
   return (

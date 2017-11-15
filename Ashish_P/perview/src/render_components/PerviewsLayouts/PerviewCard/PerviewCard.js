@@ -9,7 +9,7 @@ import CreatePerviewModalContainer from '../../../containers/CreatePerviewModalC
 import SocialBar from './SocialBar';
 import * as util from '../../../actions/util_actions.js';
 
-const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, createComment, deleteComment, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, history, toRenderUserProfile }) => {
+const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, createComment, deleteComment, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, showLoginModal, history, toRenderUserProfile }) => {
 
   const renderStars = (rating) => {
     let stars = [1, 2, 3, 4, 5];
@@ -162,6 +162,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, create
             handleFriendClick = {handleFriendClick}
             handleLikeClick = {handleLikeClick}
             renderStars = {renderStars}
+            showLoginModal = {showLoginModal}
             toRenderPerviewCardDetailsView = {true}
           />
         </div>
@@ -221,6 +222,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, create
           unbookmarkPerview={unbookmarkPerview}
           likePerview={likePerview}
           unlikePerview={unlikePerview}
+          showLoginModal={showLoginModal}
         />
       </div>
 

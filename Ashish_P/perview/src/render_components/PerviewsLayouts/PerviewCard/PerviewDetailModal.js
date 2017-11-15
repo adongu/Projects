@@ -20,6 +20,7 @@ class PerviewDetailModal extends React.Component {
 
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
+    this.handleShowModalClick = this.handleShowModalClick.bind(this);
 
     this.renderItemSection = this.renderItemSection.bind(this);
     this.renderDetailsSection = this.renderDetailsSection.bind(this);
@@ -53,16 +54,29 @@ class PerviewDetailModal extends React.Component {
     }
   }
 
-  showModal () {
-    this.setState({ show: true });
+  showModal() {
+    if (this.props.currentUserId) {
+      this.setState({ show: true });
+    }
   }
 
-  hideModal () {
+  hideModal() {
     this.setState({
       show: false,
       toRenderPerviewCardDetailsView: false,
       renderSolicitCommentsView: false
     });
+  }
+
+  handleShowModalClick() {
+    console.log('handleShowModalClick', this.props);
+    if (this.props.currentUserId) {
+      this.showModal();
+    } else {
+      if (this.props.showLoginModal) {
+        this.props.showLoginModal();
+      }
+    }
   }
 
   /**
@@ -153,7 +167,7 @@ class PerviewDetailModal extends React.Component {
 
     return (
       <ButtonToolbar>
-        <a className="perviewdetailmodal__modal-show" onClick={this.showModal}>
+        <a className="perviewdetailmodal__modal-show" onClick={this.handleShowModalClick}>
           {this.props.toRenderPerviewCommentsView ? 'Comments': '... more'}
         </a>
 

@@ -35,6 +35,7 @@ class CreatePerviewModal extends React.Component {
 
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
+    this.handleShowModalClick = this.handleShowModalClick.bind(this);
     this.showReviewBox = this.showReviewBox.bind(this);
     this.renderReviewStars = this.renderReviewStars.bind(this);
     this.selectItem = this.selectItem.bind(this);
@@ -73,6 +74,16 @@ class CreatePerviewModal extends React.Component {
       ratingHover: 0,
       perviewers: []
     });
+  }
+
+  handleShowModalClick() {
+    if (this.props.currentUser) {
+      this.showModal();
+    } else {
+      if (this.props.showLoginModal) {
+        this.props.showLoginModal();
+      }
+    }
   }
 
   renderReviewStars (ratings) {
@@ -128,7 +139,6 @@ class CreatePerviewModal extends React.Component {
       submitPerviewObject.solicitPerviewId = this.props.perviewSolicitId;
       submitPerviewObject.isSolicit = this.state.isSolicit;
 
-      console.log(submitPerviewObject);
       // when submit fails prevent review lost
       if(!this.props.createPerview(submitPerviewObject)) {
         this.setState({
@@ -213,7 +223,7 @@ class CreatePerviewModal extends React.Component {
   render() {
     return (
       <ButtonToolbar className="createperview__box">
-        <button className="createperview__btn" onClick={this.showModal}>
+        <button className="createperview__btn" onClick={this.handleShowModalClick}>
           Create Perview
         </button>
 

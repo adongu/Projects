@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import NarrowPerview from '../render_components/PerviewsLayouts/NarrowPerview.js'
-import { fetchUser } from '../actions/session_actions';
+import { fetchUser, showLoginModal } from '../actions/session_actions';
 import { fetchMyPerviews, editPerview, deletePerview, clearErrors } from '../actions/perview_actions';
 import { likePerview, unlikePerview, createComment, deleteComment, bookmarkPerview, unbookmarkPerview } from '../actions/social_actions';
 
@@ -20,6 +20,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     // unbookmarkPerview: (perviewId) => dispatch(unbookmarkPerview(perviewId)),
     // likePerview: (perviewId) => dispatch(likePerview(perviewId)),
     // unlikePerview: (perviewId) => dispatch(unlikePerview(perviewId)),
+    showLoginModal: () => dispatch(showLoginModal()),
     clearErrors: () => dispatch(clearErrors())
   }
 }

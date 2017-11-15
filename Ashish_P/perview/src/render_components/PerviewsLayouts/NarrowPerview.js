@@ -5,15 +5,20 @@ import moment from 'moment';
 import PerviewCard from './PerviewCard/PerviewCard.js';
 import * as util from '../../actions/util_actions.js';
 
-const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, history, toRenderUserProfile }) => {
+const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, showLoginModal, history, toRenderUserProfile }) => {
 
   const handleFriendClick = (friendId) => {
     return (e) => {
-      // console.log('handle friend click', friendId);
-      if (currentUserId === friendId) {
-        history.replace({ pathname: `/myperviews` });
+      if (currentUserId) {
+        if (currentUserId === friendId) {
+          history.replace({ pathname: `/myperviews` });
+        } else {
+          history.replace({ pathname: `/friend/${friendId}` });
+        }
       } else {
-        history.replace({ pathname: `/friend/${friendId}` });
+        if (showLoginModal) {
+          showLoginModal();
+        }
       }
     }
   }
@@ -32,6 +37,7 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
         unbookmarkPerview = {unbookmarkPerview}
         likePerview = {likePerview}
         unlikePerview = {unlikePerview}
+        showLoginModal = {showLoginModal}
         history = {history}
         toRenderUserProfile = {toRenderUserProfile}
         handleFriendClick = {handleFriendClick}
