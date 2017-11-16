@@ -158,6 +158,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, create
         <div className="perviewcard__showmore">
           <PerviewDetailModal
             perview = {perview}
+            currentUserId = {currentUserId}
             handleSaveClick = {handleSaveClick}
             handleFriendClick = {handleFriendClick}
             handleLikeClick = {handleLikeClick}

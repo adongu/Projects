@@ -96,7 +96,7 @@ class PerviewDetailModal extends React.Component {
         )
       } else {
         return (
-          <div className="flexcolumn narrowperviews__productbox divwrapper-fullwidth">
+          <div className="flexcolumn perviewdetailmodal__productbox divwrapper-fullwidth">
             <div className="narrowperviews__img">
               <Link to={`/item/${item.id}`}>
                 <img className="narrowperviews__productimg-photo" src={item.data.imageUrls.large.url} alt="product"/>
@@ -123,7 +123,7 @@ class PerviewDetailModal extends React.Component {
 
 // Abstract details into its own component
   renderDetailsSection (user, perview) {
-    if(this.props.toRenderPerviewCommentsView) {
+    if(this.props.toRenderPerviewCommentsView || this.props.toRenderPerviewCardDetailsView) {
       return (
         <div className="flexcolumn divwrapper-fullwidth">
           <div className="flexrow perviewdetailmodal__userbox">

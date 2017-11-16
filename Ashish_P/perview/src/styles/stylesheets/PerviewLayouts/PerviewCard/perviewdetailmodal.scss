@@ -59,7 +59,14 @@
     color: rgba(0, 0, 0, 1);
     font-family: Roboto;
   }
-
+// productbox
+  &productbox {
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    overflow: hidden;
+    border-bottom: 1px solid #efefef;
+  }
 // item section
   &itembox {
     width: 55%;
@@ -82,7 +89,6 @@
     align-items: center;
     padding: 10px 0;
     margin: auto 10px;
-    border-top: 1px solid #efefef;
   }
 
   &userimgbox {
