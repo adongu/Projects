@@ -1,6 +1,7 @@
 import "../../styles/stylesheets/narrowperview.css"
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import { Popover, OverlayTrigger } from 'react-bootstrap';
 import moment from 'moment';
 import PerviewCard from './PerviewCard/PerviewCard.js';
 import * as util from '../../actions/util_actions.js';
@@ -47,6 +48,27 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
     </div>
   )
 
+  const popoverClickRootClose = (
+    <Popover
+      id="popover-trigger-click-root-close"
+      className="narrowperviews__popover"
+    >
+      <span>
+        Product prices and availability are accurate as of the date/time indicated and are subject to change. Any price and availability information displayed on perview.co at the time of purchase will apply to the purchase of this product.
+      </span>
+    </Popover>
+  )
+
+  const renderMoreInfoPopover = () => {
+    return (
+      <OverlayTrigger trigger="click" placement="bottom" rootClose overlay={popoverClickRootClose} className="narrowperviews__moreinfo-popover">
+        <a className="perviewcard__numlikers">
+          <i className="fa fa-question-circle-o" aria-hidden="true"></i>
+        </a>
+      </OverlayTrigger>
+    )
+  }
+
   const renderPerview = (perview, { item, perviewUser }) => {
     if (item) {
       return (
@@ -58,17 +80,24 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
           </div>
 
           <Link to={`/item/${item.id}`} className="narrowperviews__product-name">
-          {item.data.title}
+            {item.data.title}
           </Link>
 
           <div className="flexrow narrowperviews__buybox">
-            Amazon.com Price: {item.data.listPrice.formattedAmount}
+            Amazon Price: {item.data.listPrice.formattedAmount}
 
             <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">
               Buy
             </a>
           </div>
-          <div className="narrowperviews__moreinfo">as of {moment(item.ts).format("HH:mm a Z")} - More info</div>
+
+          <div className="narrowperviews__moreinfo">
+            <span className="narrowperviews__moreinfo-text">
+              {`as of ${moment(item.ts).format("HH:mm a Z")}`}
+            </span>
+
+            {renderMoreInfoPopover()}
+          </div>
 
         </div>
       )
