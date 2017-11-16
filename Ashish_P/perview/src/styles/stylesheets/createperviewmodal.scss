@@ -173,7 +173,7 @@ $lines-to-show: 4;
   }
 
   &review-rating {
-    padding-bottom: 20px;
+    padding-bottom: 10px;
   }
 
   &review-rating-text {
@@ -231,5 +231,13 @@ $lines-to-show: 4;
     color: white;
     background: #919ECB;
     border-radius: 18px;
+  }
+
+  &needrating {
+    padding: 5px;
+    font-size: 10px;
+    color: gray;
+    font-family: roboto;
+    font-weight: lighter;
   }
 }

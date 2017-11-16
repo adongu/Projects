@@ -20,6 +20,7 @@ class CreatePerviewModal extends React.Component {
       tags: '',
       rating: 0,
       ratingHover: 0,
+      lastRating: 0,
       ratingTip: {
         0: "",
         1: "Hate",
@@ -35,9 +36,11 @@ class CreatePerviewModal extends React.Component {
 
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
+
     this.handleShowModalClick = this.handleShowModalClick.bind(this);
     this.showReviewBox = this.showReviewBox.bind(this);
     this.renderReviewStars = this.renderReviewStars.bind(this);
+
     this.selectItem = this.selectItem.bind(this);
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -121,7 +124,7 @@ class CreatePerviewModal extends React.Component {
     })
   }
 
-  update (field) {
+  update(field) {
     return (e) => this.setState({ [field]: e.target.value });
   }
 
@@ -194,13 +197,22 @@ class CreatePerviewModal extends React.Component {
                 </div>
               </div>
 
+              <span className="createperview__needrating">
+                {
+                  this.state.lastRating < 1
+                  ? 'Please select a rating bewtween 1 and 5 before submitting :)'
+                  : ''
+                }
+              </span>
+
               <textarea
                 onChange={this.update("tags")}
                 className="createperview__review-input"
                 value={this.state.tags}
                 placeholder="What did you think of this product? #hashtag">
               </textarea>
-              <button disabled={this.state.rating < 1} className="createperview__review-submit">
+
+              <button disabled={this.state.lastRating < 1} className="createperview__review-submit">
                 Submit
               </button>
             </form>

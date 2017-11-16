@@ -17,6 +17,7 @@ class PerviewEditModal extends React.Component {
       tags: '',
       rating: 0,
       ratingHover: 0,
+      lastRating: 0,
       ratingTip: {
         0: "",
         1: "Hate",
@@ -99,14 +100,14 @@ class PerviewEditModal extends React.Component {
         <span key={`star_rating_${ele}`} className={ele <= ratings ? 'active_star' : 'no_star'}
           onClick={() => {this.setState({ rating: ele, lastRating: ele })}}>
 
-          <div className={`perviewdetailmodal__ratingtipbox ${this.state.ratingHover === ele ? 'active' : ''}`}>
-            <div className="perviewdetailmodal__ratingtip">{this.state.ratingTip[ele]}</div>
-            <div className="perviewdetailmodal__ratingtipbox-triangle"></div>
+          <div className={`pervieweditmodal__ratingtipbox ${this.state.ratingHover === ele ? 'active' : ''}`}>
+            <div className="pervieweditmodal__ratingtip">{this.state.ratingTip[ele]}</div>
+            <div className="pervieweditmodal__ratingtipbox-triangle"></div>
           </div>
 
           <i onMouseOver={()=>{ this.setState({ rating: ele, ratingHover: ele }) }}
             onMouseLeave={()=>{ this.setState({ rating: this.state.lastRating, ratingHover: 0 })}}
-            className="fa fa-star perviewdetailmodal__rating-star" aria-hidden="true">
+            className="fa fa-star pervieweditmodal__rating-star" aria-hidden="true">
           </i>
         </span>
       )
@@ -164,18 +165,18 @@ class PerviewEditModal extends React.Component {
 
   showReviewBox() {
     return (
-      <div className="flexcolumn perviewdetailmodal__product-container">
-        <div className="flexrow perviewdetailmodal__product">
-          <div className="perviewdetailmodal__product-left">
-            <img className="perviewdetailmodal__product-img" src={this.state.imgUrl} alt="product"/>
+      <div className="flexcolumn pervieweditmodal__product-container">
+        <div className="flexrow pervieweditmodal__product">
+          <div className="pervieweditmodal__product-left">
+            <img className="pervieweditmodal__product-img" src={this.state.imgUrl} alt="product"/>
           </div>
-          <div className="perviewdetailmodal__product-right">
-            <div className="flextcolumn perviewdetailmodal__product-info">
-              <div className="perviewdetailmodal__product-title">
+          <div className="pervieweditmodal__product-right">
+            <div className="flextcolumn pervieweditmodal__product-info">
+              <div className="pervieweditmodal__product-title">
                 {this.state.name}
               </div>
-              <div className="flexrow perviewdetailmodal__product-details">
-                <div className="perviewdetailmodal__product-price">
+              <div className="flexrow pervieweditmodal__product-edits">
+                <div className="pervieweditmodal__product-price">
                   {this.state.price}
                 </div>
               </div>
@@ -183,21 +184,30 @@ class PerviewEditModal extends React.Component {
           </div>
         </div>
 
-        <div className="perviewdetailmodal__review-container">
-          <form onSubmit={this.handleSubmit} className="flexcolumn perviewdetailmodal__review-box">
-            <div className="flexrow perviewdetailmodal__review-rating">
-              <div className="flexrow perviewdetailmodal__review-rating-stars">
+        <div className="pervieweditmodal__review-container">
+          <form onSubmit={this.handleSubmit} className="flexcolumn pervieweditmodal__review-box">
+            <div className="flexrow pervieweditmodal__review-rating">
+              <div className="flexrow pervieweditmodal__review-rating-stars">
                 {this.renderReviewStars(this.state.rating)}
               </div>
             </div>
 
+            <span className="pervieweditmodal__needrating">
+              {
+                this.state.lastRating < 1
+                ? 'Please select a rating bewtween 1 and 5 before submitting :)'
+                : ''
+              }
+            </span>
+
             <textarea
               onChange={this.update("tags")}
-              className="perviewdetailmodal__review-input"
+              className="pervieweditmodal__review-input"
               value={this.state.tags}
               placeholder="What did you think of this product? #hashtag">
             </textarea>
-            <button disabled={this.state.rating < 1} className="perviewdetailmodal__review-submit">
+
+            <button disabled={this.state.lastRating < 1} className="pervieweditmodal__review-submit">
               Submit
             </button>
           </form>
@@ -208,27 +218,29 @@ class PerviewEditModal extends React.Component {
 
   render() {
     return (
-      <ButtonToolbar className="perviewdetailmodal__container">
-        <span className="perviewdetailmodal__btn" onClick={this.showModal}>
-          <i className="fa fa-pencil perviewdetailmodal__edit-icon" aria-hidden="true"></i>
+      <ButtonToolbar className="pervieweditmodal__container">
+        <span className="pervieweditmodal__btn" onClick={this.showModal}>
+          <i className="fa fa-pencil pervieweditmodal__edit-icon" aria-hidden="true"></i>
         </span>
 
         <Modal
           {...this.props}
           show={this.state.show}
           onHide={this.hideModal}
-          dialogClassName="perviewdetailmodal__modal"
+          dialogClassName="pervieweditmodal__modal"
         >
-          <Modal.Header className="perviewdetailmodal__modalhead" closeButton>
-
-          <div className="perviewdetailmodal__title">
-            Edit Perview
-          </div>
-
-          <div className="perviewdetailmodal__section">
-            { this.showReviewBox() }
-          </div>
+          <Modal.Header className="pervieweditmodal__header" closeButton>
+            <div className="pervieweditmodal__title">
+              <i className="fa fa-pencil pervieweditmodal__edit-icon" aria-hidden="true"></i>
+              <span>Edit Perview</span>
+            </div>
           </Modal.Header>
+
+          <Modal.Body className="pervieweditmodal__body">
+            <div className="pervieweditmodal__section">
+              { this.showReviewBox() }
+            </div>
+          </Modal.Body>
         </Modal>
       </ButtonToolbar>
     );
