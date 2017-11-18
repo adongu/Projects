@@ -2,6 +2,9 @@ import "../../../styles/stylesheets/createperviewmodal.css";
 import React from 'react';
 import { ButtonToolbar, Modal } from 'react-bootstrap';
 import SearchItemBar from "./SearchItemBar";
+import {
+ renderMoreInfoPopover
+} from '../../SharedComponents/PricePopOver';
 
 class CreatePerviewModal extends React.Component {
   constructor(props) {
@@ -180,10 +183,12 @@ class CreatePerviewModal extends React.Component {
                 <div className="createperview__product-title">
                   {this.state.name}
                 </div>
-                <div className="flexrow createperview__product-details">
+                <div className="flexcolumn createperview__product-details">
                   <div className="createperview__product-price">
                     {this.state.price}
                   </div>
+
+                  {renderMoreInfoPopover()}
                 </div>
               </div>
             </div>

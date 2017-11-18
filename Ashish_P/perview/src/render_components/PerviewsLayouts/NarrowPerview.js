@@ -1,9 +1,11 @@
 import "../../styles/stylesheets/narrowperview.css"
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { Popover, OverlayTrigger } from 'react-bootstrap';
 import moment from 'moment';
 import PerviewCard from './PerviewCard/PerviewCard.js';
+import {
+  renderMoreInfoPopover
+} from '../SharedComponents/PricePopOver';
 import * as util from '../../actions/util_actions.js';
 
 const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, showLoginModal, history, toRenderUserProfile }) => {
@@ -48,29 +50,10 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
     </div>
   )
 
-  const popoverClickRootClose = (
-    <Popover
-      id="popover-trigger-click-root-close"
-      className="narrowperviews__popover"
-    >
-      <span>
-        Product prices and availability are accurate as of the date/time indicated and are subject to change. Any price and availability information displayed on perview.co at the time of purchase will apply to the purchase of this product.
-      </span>
-    </Popover>
-  )
-
-  const renderMoreInfoPopover = () => {
-    return (
-      <OverlayTrigger trigger="click" placement="bottom" rootClose overlay={popoverClickRootClose} className="narrowperviews__moreinfo-popover">
-        <a className="perviewcard__numlikers">
-          <i className="fa fa-question-circle-o" aria-hidden="true"></i>
-        </a>
-      </OverlayTrigger>
-    )
-  }
-
   const renderPerview = (perview, { item, perviewUser }) => {
     if (item) {
+      let latestUpdatedTime = item.ts;
+
       return (
         <div className="flexcolumn narrowperviews__productbox">
           <div className="narrowperviews__img">
@@ -84,21 +67,14 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
           </Link>
 
           <div className="flexrow narrowperviews__buybox">
-            Amazon Price: {item.data.listPrice.formattedAmount}
+            <span>{`Amazon Price: ${item.data.listPrice.formattedAmount}`}</span>
 
             <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">
               Buy
             </a>
           </div>
 
-          <div className="narrowperviews__moreinfo">
-            <span className="narrowperviews__moreinfo-text">
-              {`as of ${moment(item.ts).format("HH:mm a Z")}`}
-            </span>
-
-            {renderMoreInfoPopover()}
-          </div>
-
+          {renderMoreInfoPopover(latestUpdatedTime)}
         </div>
       )
     } else {

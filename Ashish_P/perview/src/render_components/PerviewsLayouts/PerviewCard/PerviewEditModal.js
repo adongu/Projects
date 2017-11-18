@@ -1,6 +1,9 @@
 import "../../../styles/stylesheets/PerviewLayouts/PerviewCard/pervieweditmodal.css";
 import React from 'react';
 import { ButtonToolbar, Modal } from 'react-bootstrap';
+import {
+ renderMoreInfoPopover
+} from '../../SharedComponents/PricePopOver';
 
 class PerviewEditModal extends React.Component {
   constructor(props) {
@@ -175,10 +178,12 @@ class PerviewEditModal extends React.Component {
               <div className="pervieweditmodal__product-title">
                 {this.state.name}
               </div>
-              <div className="flexrow pervieweditmodal__product-edits">
+              <div className="flexcolumn pervieweditmodal__product-edits">
                 <div className="pervieweditmodal__product-price">
                   {this.state.price}
                 </div>
+
+                {renderMoreInfoPopover()}
               </div>
             </div>
           </div>
