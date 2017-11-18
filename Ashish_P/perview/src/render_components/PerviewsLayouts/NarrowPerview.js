@@ -123,7 +123,9 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
           </div>
 
           <a onClick={handleFriendClick(user.id)} className="perviewcard__popover-username">
-            {user.firstName}
+            <span>
+              {user.firstName} {user.lastName}
+            </span>
           </a>
         </div>
 
