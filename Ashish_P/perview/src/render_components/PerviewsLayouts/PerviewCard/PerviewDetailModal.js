@@ -4,7 +4,10 @@ import moment from 'moment';
 import { Modal, ButtonToolbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import PerviewComments from './PerviewComments';
-import * as util from '../../../actions/util_actions.js';
+import {
+  renderMoreInfoPopover
+} from '../../SharedComponents/PricePopOver';
+import * as util from '../../../actions/util_actions';
 
 class PerviewDetailModal extends React.Component {
 
@@ -108,13 +111,15 @@ class PerviewDetailModal extends React.Component {
             </Link>
 
             <div className="flexrow narrowperviews__buybox">
-              Amazon.com Price: {item.data.listPrice.formattedAmount}
+              <div className='perviewdetailmodal__pricebox'>
+                {`Amazon.com Price: ${item.data.listPrice.formattedAmount}`}
+                {renderMoreInfoPopover()}
+              </div>
+
               <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">
                 Buy
               </a>
             </div>
-            <div className="narrowperviews__moreinfo">as of {moment(item.ts).format("HH:mm a Z")} - More info</div>
-
           </div>
         )
       }

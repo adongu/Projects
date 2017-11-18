@@ -69,8 +69,8 @@ $review-lines-to-show: 5;
   &itemprice {
     align-self: flex-start;
     white-space: normal;
-    font-weight: bold;
-    font-size: 18px;
+    // font-weight: bold;
+    font-size: 15px;
   }
 
   &itempricemoreinfo {
@@ -82,6 +82,7 @@ $review-lines-to-show: 5;
   }
 
   &itembuy {
+    padding-top: 8px;
   }
 
   &numperviewbox {

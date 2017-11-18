@@ -74,6 +74,15 @@
     padding: 8px;
   }
 
+  &moreinfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: -3px;
+    font-size: 10px;
+  }
+
 // detail section only
   &socialbox-large {
     width: 100%;

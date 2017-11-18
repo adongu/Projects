@@ -3,6 +3,9 @@ import React from 'react';
 import moment from 'moment';
 import { withRouter } from 'react-router-dom';
 import PerviewCard from '../PerviewCard/PerviewCard.js';
+import {
+  renderMoreInfoPopover
+} from '../../SharedComponents/PricePopOver';
 
 const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, history, toRenderUserProfile }) => {
 
@@ -60,8 +63,11 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmar
 
             <div className="flexcolumn itemperview__iteminfobox">
               <div className="itemperview__itemname">{item.data.title}</div>
-              <div className="itemperview__itemprice">Amazon.com Price: {item.data.listPrice.formattedAmount}</div>
-              <div className="itemperview__itempricemoreinfo">as of {moment(item.ts).format("HH:mm Z")} - More info</div>
+              <div className="flexcolumn itemperview__itemprice">
+                {`Amazon.com Price: ${item.data.listPrice.formattedAmount}`}
+                {renderMoreInfoPopover()}
+              </div>
+
               <div className="itemperview__itembuy">
                 <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">Buy</a>
               </div>
