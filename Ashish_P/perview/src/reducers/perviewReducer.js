@@ -45,20 +45,27 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
         requestLoading: true
       });
     case RECEIVE_PERVIEW:
-      // action.perviewsArray.forEach((perview) => {
-      console.log('receive perview each perview item', action.perviewObj);
-      newState.allPerviews.perviews.unshift(action.perviewObj);
-      newState.myPerviews.perviews.unshift(action.perviewObj);
+      console.log('Before receive perview reducer', action.perviewObj);
 
-        // if (action.perview.id === newState.itemPerviews.item.id) {
-        //   newState.itemPerviews.perviews.unshift(perview);
-        // };
-      // });
+      if (Array.isArray(action.perviewObj)) {
+        console.log('reducer is array', newState.allPerviews);
+        action.perviewObj.forEach((perview) => {
+          newState.allPerviews.perviews.unshift(perview);
+          newState.myPerviews.perviews.unshift(perview);
+        });
+      } else {
+        newState.allPerviews.perviews.unshift(action.perviewObj);
+        newState.myPerviews.perviews.unshift(action.perviewObj);
+      }
+      console.log('After receive perview reducer', newState.allPerviews);
 
-      return Object.assign({}, newState, {
-        requestLoading: false,
-        errors: []
-      });
+      return Object.assign({},
+        newState,
+        {
+          requestLoading: false,
+          errors: [],
+        }
+      );
     case RECEIVE_EDIT_PERVIEW:
 
       const newEditedPerviews = newState.myPerviews.perviews.map((perview) => {
@@ -69,22 +76,40 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
         }
       });
 
+      const newEditedAllPerviews = newState.newAllPerviews.perviews.map((perview) => {
+        if(perview.id === action.perview.id) {
+          return action.perview;
+        } else {
+          return perview;
+        }
+      });
+
       return Object.assign({}, newState, {
         myPerviews: {
-          perviews: newEditedPerviews
+          perviews: newEditedPerviews,
+        },
+        allPerviews: {
+          perviews: newEditedAllPerviews,
         },
         requestLoading: false,
         errors: []
       });
     // For pattern, check out http://redux.js.org/docs/recipes/reducers/ImmutableUpdatePatterns.html
     case DELETE_PERVIEW:
-      let newPerviews = newState.myPerviews.perviews.filter((perview) => {
+      let newAllPerviews = newState.allPerviews.perviews.filter((perview) => {
+        return perview.id !== action.perviewId
+      });
+
+      let newMyPerviews = newState.myPerviews.perviews.filter((perview) => {
         return perview.id !== action.perviewId
       });
 
       return Object.assign({}, newState, {
+        allPerviews: {
+          perviews: newAllPerviews,
+        },
         myPerviews: {
-          perviews: newPerviews
+          perviews: newMyPerviews,
         },
         requestLoading: false,
         errors: []
