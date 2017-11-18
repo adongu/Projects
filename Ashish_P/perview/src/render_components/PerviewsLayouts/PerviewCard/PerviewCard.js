@@ -44,10 +44,16 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, create
 
   const handleFriendClick = (friendId) => {
     return (e) => {
-      if (currentUserId === friendId) {
-        history.replace({ pathname: `/myperviews` });
+      if (currentUserId) {
+        if (currentUserId === friendId) {
+          history.replace({ pathname: `/myperviews` });
+        } else {
+          history.replace({ pathname: `/friend/${friendId}` });
+        }
       } else {
-        history.replace({ pathname: `/friend/${friendId}` });
+        if (showLoginModal) {
+          showLoginModal();
+        }
       }
     }
   }
