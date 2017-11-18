@@ -1,6 +1,7 @@
 import React, {PropType} from 'react';
 import moment from 'moment';
 import { Popover, OverlayTrigger } from 'react-bootstrap';
+import '../../styles/stylesheets/SharedComponents/pricepopover.css';
 
 const popoverClickRootClose = (
   <Popover
@@ -21,7 +22,7 @@ const overlayTrigger = (
     overlay={popoverClickRootClose}
     className="narrowperviews__moreinfo-popover"
   >
-    <a className="perviewcard__numlikers">
+    <a className="price__popover-icon">
       <i className="fa fa-question-circle-o" aria-hidden="true"></i>
     </a>
   </OverlayTrigger>
