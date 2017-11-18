@@ -45,10 +45,7 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
         requestLoading: true
       });
     case RECEIVE_PERVIEW:
-      console.log('Before receive perview reducer', action.perviewObj);
-
       if (Array.isArray(action.perviewObj)) {
-        console.log('reducer is array', newState.allPerviews);
         action.perviewObj.forEach((perview) => {
           newState.allPerviews.perviews.unshift(perview);
           newState.myPerviews.perviews.unshift(perview);
@@ -57,7 +54,6 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
         newState.allPerviews.perviews.unshift(action.perviewObj);
         newState.myPerviews.perviews.unshift(action.perviewObj);
       }
-      console.log('After receive perview reducer', newState.allPerviews);
 
       return Object.assign({},
         newState,
