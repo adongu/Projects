@@ -28,6 +28,7 @@ class ItemPerviews extends React.Component {
   }
 
   componentDidMount() {
+
   }
 
   componentWillReceiveProps (nextProps) {

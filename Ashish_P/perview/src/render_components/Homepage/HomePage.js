@@ -18,12 +18,10 @@ class HomePage extends React.Component {
     this.fetchFilteredPerviews = this.fetchFilteredPerviews.bind(this);
   }
 
-  componentWillMount() {
-    this.props.fetchAllPerviews()
-
-  }
-
   componentDidMount() {
+    if (!(Object.keys(this.props.allPerviews).length > 0)) {
+      this.props.fetchAllPerviews()
+    }
   }
 
   componentDidUpdate(prevProps) {

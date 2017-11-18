@@ -26,9 +26,9 @@ export const receiveItem = (item) => ({
   item
 });
 
-export const receivePerview = (perviewsArray) => ({
+export const receivePerview = (perviewObj) => ({
   type: RECEIVE_PERVIEW,
-  perviewsArray
+  perviewObj
 });
 
 export const receiveEditPerview = (perview) => ({
