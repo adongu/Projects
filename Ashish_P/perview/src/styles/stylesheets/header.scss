@@ -71,13 +71,14 @@ $headernavwidth: 195px;
   &navbox {
     height: 100%;
     color: #3F3F3F;
+    padding-bottom: 8px;
     border-bottom: 3px solid transparent;
     overflow: auto;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    transition: all ease 0.5s;
+    transition: all ease 0.01s;
   }
 
   &navicon {
@@ -89,7 +90,6 @@ $headernavwidth: 195px;
   &navbox.active {
     color: #3D70F0;
     border-bottom: 3px solid #3D70F0;
-    transition: all ease 0.5s;
   }
 
 // Search Bar
