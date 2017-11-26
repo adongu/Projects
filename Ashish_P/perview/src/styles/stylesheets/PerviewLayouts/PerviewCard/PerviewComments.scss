@@ -1,0 +1,130 @@
+.perviewcomment__{
+  &container {
+    // display: flex;
+    height: 100%;
+  }
+
+  &commentsbox {
+    max-height: 355px;
+    height: 70%;
+    overflow-y: scroll;
+    border-bottom: 1px solid #efefef;
+    margin-bottom: 20px;
+  }
+
+  &commentstitle {
+    font-size: 16px;
+    font-family: roboto, Aria;
+  }
+
+  &userbox {
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &userimgbox {
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    display: block;
+    width: 41px;
+    height: 41px;
+    overflow: hidden;
+    border-radius: 50%;
+    background: #D3D6DB;
+    vertical-align: middle;
+  }
+
+  &userimg {
+    width: 100%;
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    image-rendering: -moz-crisp-edges;         /* Firefox */
+    image-rendering:   -o-crisp-edges;         /* Opera */
+    image-rendering: -webkit-optimize-contrast;/* Webkit (non-standard naming) */
+    image-rendering: crisp-edges;
+  }
+
+  &username {
+    padding-left: 8px;
+  }
+
+  &topcomment {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 18px;
+    font-family: Roboto;
+
+  }
+
+  &delete {
+    width: 10px;
+    border-radius: 50%;
+    font-size: 10px;
+    margin-left: 3px;
+    margin-right: 8px;
+    // padding: 1px 3px;
+    background: #D3D6DB;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &delete:hover {
+    border-radius: 10em;
+    color: #fff;
+    background: #D3D6DB;
+  }
+
+  &bottomcomment {
+    padding: 0 8px;
+    font-family: Roboto;
+  }
+
+  &socialactions {
+    height: 20%;
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &form {
+    // position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  &newcomment{
+    line-height: 18px;
+    font-size: 14px;
+    font-family: Fira Sans;
+    flex-grow: 1;
+    resize: none;
+    flex-direction: column;
+    outline: none;
+    padding: 0;
+    max-height: 80px;
+    font-size: inherit;
+  }
+
+  &formtip {
+    position: absolute;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    bottom: 0;
+    right: 0;
+    // margin-left: auto;
+    font-size: 10px;
+    color: #484848;
+    opacity: .5;
+  }
+}

@@ -197,6 +197,16 @@ class CreatePerviewModal extends React.Component {
     }
   }
 
+  showRecommendationMessage() {
+      if (this.props.perviewSolicitId) {
+        return (
+          <div className="createperview__search-msg">
+            You are recommending {this.props.perviewSolicitTags} for {this.props.perviewSolicitFirstName}
+          </div>
+        )
+      }
+  }
+
   render() {
     return (
       <ButtonToolbar className="createperview__box">
@@ -216,7 +226,10 @@ class CreatePerviewModal extends React.Component {
             Create Perview
           </div>
 
+
+
           <div className="flexcolumn createperview__search-container">
+            { this.showRecommendationMessage() }
             <div className="createperview__search-background">
               <div className="createperview__search-box">
                 {this.props.results ?

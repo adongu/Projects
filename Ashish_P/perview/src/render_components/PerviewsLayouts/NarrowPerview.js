@@ -3,8 +3,9 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import moment from 'moment';
 import PerviewCard from './PerviewCard/PerviewCard.js';
+import * as util from '../../actions/util_actions.js';
 
-const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, history, toRenderUserProfile }) => {
+const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, history, toRenderUserProfile }) => {
 
   const handleFriendClick = (friendId) => {
     return (e) => {
@@ -24,6 +25,8 @@ const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPer
         perviewUser = { perviewUser }
         perview = {perview}
         likers = {perview.likers}
+        createComment = {createComment}
+        deleteComment = {deleteComment}
         bookmarkPerview = {bookmarkPerview}
         unbookmarkPerview = {unbookmarkPerview}
         likePerview = {likePerview}
@@ -65,14 +68,16 @@ const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPer
     let user = perview.userDto;
 
     return (
-      <div className="flexcolumn narrowperview__solicit-user">
-        {moment(perview.ts).format("MMM DD, Y")}
+      <div className="flexcolumn narrowperviews__solicit-user">
+        <div className="narrowperviews__solicit-date">
+          {moment(perview.ts).format("MMM DD, Y")}
+        </div>
 
         <div className="flexrow perviewcard__popover-user">
           <div className="perviewcard__popover-user-icon">
             <img
               onClick={handleFriendClick(user.id)}
-              className="perviewcard__popover-user-img" src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
+              className="perviewcard__popover-user-img" src={util.generateUserImageUrl(user.facebookId, 'square')} alt="User"/>
           </div>
 
           <a onClick={handleFriendClick(user.id)} className="perviewcard__popover-username">
@@ -91,8 +96,12 @@ const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPer
     if (perview.solicit) {
       return (
         <div className="flexcolumn narrowperviews__content">
-          {renderUserProfile(perview)}
-          <span>{perview.tags}</span>
+          <div className="narrowperviews__userprofile">
+            {renderUserProfile(perview)}
+          </div>
+          <div className="narrowperviews__solicit-tags">
+            {perview.tags}
+          </div>
         </div>
       )
     } else {
@@ -105,7 +114,6 @@ const NarrowPerview = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPer
   }
 
   const renderFeed = () => {
-
     if (perviews) {
       return perviews.map((perview, i) => {
         const perviewObject = {

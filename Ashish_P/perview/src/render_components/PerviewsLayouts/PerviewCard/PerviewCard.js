@@ -7,8 +7,9 @@ import PerviewDetailModal from './PerviewDetailModal';
 import PerviewDeleteConfirmation from './PerviewDeleteConfirmation';
 import CreatePerviewModalContainer from '../../../containers/CreatePerviewModalContainer';
 import SocialBar from './SocialBar';
+import * as util from '../../../actions/util_actions.js';
 
-const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, history, toRenderUserProfile }) => {
+const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, createComment, deleteComment, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, history, toRenderUserProfile }) => {
 
   const renderStars = (rating) => {
     let stars = [1, 2, 3, 4, 5];
@@ -86,6 +87,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
         <div className="flexrow perviewcard__editbox">
           <div className="perviewcard__edit-container" alt="Edit Perview">
             <PerviewEditModal
+              currentUserId = {currentUserId}
               item = {item}
               perview = {perview}
               editPerview = {editPerview}
@@ -111,7 +113,8 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
         <div className="flexrow perviewcard__review-user">
           <div className="perviewcard__review-user-icon">
             <img className="perviewcard__review-user-img"
-              onClick={handleFriendClick(perviewUser.id)} src={perviewUser.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"
+              onClick={handleFriendClick(perviewUser.id)}
+              src={util.generateUserImageUrl(perviewUser.facebookId, 'square')} alt="User"
             />
           </div>
           <a
@@ -190,10 +193,14 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
   )
 
   const renderSolicitContentView = (
-    <CreatePerviewModalContainer
-      perviewSolicitId={perview.id}
-      history={history}
-    />
+    <div className="perviewcard__createperview">
+      <CreatePerviewModalContainer
+        perviewSolicitId={perview.id}
+        perviewSolicitTags={perview.tags}
+        perviewSolicitFirstName={perview.userDto.firstName}
+        history={history}
+      />
+    </div>
   )
 
   const renderSocialBar = (
@@ -203,6 +210,8 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, bookma
           currentUserId={currentUserId}
           perview={perview}
           likers={likers}
+          createComment={createComment}
+          deleteComment={deleteComment}
           handleFriendClick={handleFriendClick}
           bookmarkPerview={bookmarkPerview}
           unbookmarkPerview={unbookmarkPerview}

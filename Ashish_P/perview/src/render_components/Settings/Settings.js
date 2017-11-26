@@ -2,6 +2,7 @@ import "../../styles/stylesheets/setting.css";
 import React from 'react';
 import NavBarContainer from '../../containers/NavBarContainer.js';
 import { withRouter } from 'react-router-dom';
+import * as util from '../../actions/util_actions.js';
 
 class Settings extends React.Component{
   constructor(props) {
@@ -51,7 +52,7 @@ class Settings extends React.Component{
       <div className="flexrow settings__userbox">
         <div className="settings__userimgcontainer">
           <div className="settings__userimgbox">
-            <img className="settings__userimg" src={currentUser.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User" />
+            <img className="settings__userimg" src={util.generateUserImageUrl(currentUser.facebookId, 'square')} alt="User" />
           </div>
         </div>
         <div className="settings__username">

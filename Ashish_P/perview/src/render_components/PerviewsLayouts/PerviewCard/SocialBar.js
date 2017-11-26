@@ -2,8 +2,9 @@
 import React from 'react';
 import PerviewDetailModal from './PerviewDetailModal';
 import { Popover, OverlayTrigger } from 'react-bootstrap';
+import * as util from '../../../actions/util_actions.js';
 
-const SocialBar = ({currentUserId, perview, likers, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, handleFriendClick}) => {
+const SocialBar = ({currentUserId, perview, likers, createComment, deleteComment, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, handleFriendClick}) => {
 
   const handleSaveClick = (perview) => {
     return e => {
@@ -38,7 +39,7 @@ const SocialBar = ({currentUserId, perview, likers, bookmarkPerview, unbookmarkP
               <div className="perviewcard__popover-user-icon">
                 <img
                   onClick={handleFriendClick(liker.id)}
-                  className="perviewcard__popover-user-img" src={liker.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
+                  className="perviewcard__popover-user-img" src={util.generateUserImageUrl(liker.facebookId, 'square')} alt="User"/>
               </div>
 
               <a onClick={handleFriendClick(liker.id)} className="perviewcard__popover-username">
@@ -58,22 +59,37 @@ const SocialBar = ({currentUserId, perview, likers, bookmarkPerview, unbookmarkP
     if (likers && likers.length > 0) {
       return (
         <OverlayTrigger trigger="click" placement="top" rootClose overlay={popoverClickRootClose} className="perviewcard__popovertrigger">
-          <a className="perviewcard__numlikers">{likers.length}</a>
+          <a className="perviewcard__numlikers">
+            {likers.length}
+          </a>
         </OverlayTrigger>
       )
     }
   }
 
-  const renderCommentsModal = (perview) => {
+  const renderNumComments = () => {
+    if (perview.comments && perview.comments.length > 0) {
+      return (
+        <span>
+          {perview.comments.length}
+        </span>
+      )
+    }
+  }
+
+  const renderCommentsModal = () => {
     if (perview.comments) {
       return (
         <div className="perviewcard__detailmodalwrapper">
           <PerviewDetailModal
             perview = {perview}
+            createComment={createComment}
+            deleteComment={deleteComment}
             handleSaveClick = {handleSaveClick}
             handleFriendClick = {handleFriendClick}
             handleLikeClick = {handleLikeClick}
-            toRenderPerviewCardDetailsView = {true}
+            toRenderPerviewCommentsView = {true}
+            renderStars = {util.renderStars}
           />
         </div>
       )
@@ -113,14 +129,23 @@ const SocialBar = ({currentUserId, perview, likers, bookmarkPerview, unbookmarkP
         </div>
       </div>
 
-      <span
-        className='perviewcard__review-social-btn'
-      >
-        <i
-          className='fa fa-comments perviewcard__review-icon-comment'
-          aria-hidden="true">
-        </i>
-      </span>
+      <div className="flexrow">
+        <span
+          className='perviewcard__review-social-btn'
+        >
+          <i
+            className='fa fa-comments perviewcard__review-icon-comment'
+            aria-hidden="true">
+          </i>
+
+          <span className="perviewcard__review-social-text">
+            {renderCommentsModal()}
+          </span>
+        </span>
+        <span>
+          {renderNumComments()}
+        </span>
+      </div>
     </div>
   )
 }

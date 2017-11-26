@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import "../../styles/stylesheets/NavBar/navbar.css";
 import { Popover, OverlayTrigger } from 'react-bootstrap';
 import CreateSolicitForm from "./CreateSolicitForm.js";
-
+import * as util from '../../actions/util_actions.js';
 
 const NavBar = ({ createPerview, filterPerviews, isFetching, currentUser, currentUsersFriends, userFriend, history, categories, match, toShowUserDashBoard, requestLoading }) => {
 
@@ -58,7 +58,7 @@ const NavBar = ({ createPerview, filterPerviews, isFetching, currentUser, curren
               <div className="perviewcard__popover-user-icon">
                 <img
                   onClick={handleFriendClick(friend.id)}
-                  className="perviewcard__popover-user-img" src={friend.facebookProfilePictureUrl.replace(/\/picture$/, "")} alt="User"/>
+                  className="perviewcard__popover-user-img" src={util.generateUserImageUrl(friend.facebookId, 'square')} alt="User"/>
               </div>
               <a onClick={handleFriendClick(friend.id)} className="perviewcard__popover-username">
                 {friend.firstName}
@@ -124,12 +124,12 @@ const NavBar = ({ createPerview, filterPerviews, isFetching, currentUser, curren
         user = userFriend;
       };
 
-      if (user.facebookProfilePictureUrl) {
+      if (user.facebookId) {
         return (
           <div className="navbar__dashboard">
             <div className="navbar__dashboard-photo">
               <img
-                className="navbar__dashboard-img" src={user.facebookProfilePictureUrl.replace(/\/picture$/, "")}
+                className="navbar__dashboard-img" src={util.generateUserImageUrl(user.facebookId, 'square')}
                 alt="User"
               />
             </div>

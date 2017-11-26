@@ -46,6 +46,7 @@ class HomePage extends React.Component {
       })
       if (this.state.fetchingUpdate) {
         this.props.fetchAllPerviews();
+        // console.log(this.props.perview.comments.length)
       }
     }
   }
@@ -65,6 +66,8 @@ class HomePage extends React.Component {
           // fetchingUpdate = {this.state.fetchingUpdate}
           currentUserId = {this.props.currentUser.id}
           perviews = {this.props.allPerviews}
+          createComment = {this.props.createComment}
+          deleteComment = {this.props.deleteComment}
           bookmarkPerview = {this.props.bookmarkPerview}
           unbookmarkPerview = {this.props.unbookmarkPerview}
           likePerview = {this.props.likePerview}
