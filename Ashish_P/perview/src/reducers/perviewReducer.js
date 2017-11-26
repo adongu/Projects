@@ -64,7 +64,7 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
       );
     case RECEIVE_EDIT_PERVIEW:
 
-      const newEditedPerviews = newState.myPerviews.perviews.map((perview) => {
+      const newEditedMyPerviews = newState.myPerviews.perviews.map((perview) => {
         if(perview.id === action.perview.id) {
           return action.perview;
         } else {
@@ -82,7 +82,7 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
 
       return Object.assign({}, newState, {
         myPerviews: {
-          perviews: newEditedPerviews,
+          perviews: newEditedMyPerviews,
         },
         allPerviews: {
           perviews: newEditedAllPerviews,

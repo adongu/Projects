@@ -106,7 +106,7 @@ export const editPerview = (formData) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.editPerview(formData)
     .then( response => {
-      return dispatch(receiveEditPerview(response.data));
+      return dispatch(receiveEditPerview(formData));
     })
     .catch( err => {
       return dispatch(receiveErrors(err.responseJSON))
