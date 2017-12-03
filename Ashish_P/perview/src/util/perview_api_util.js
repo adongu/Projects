@@ -92,11 +92,12 @@ export const fetchFriendPerviews = (friendUserId, categoryId) => {
 }
 
 export const fetchSolicitPerviews = (solicitPerviewId) => {
-  return axios.get(`/api/solicitPerviewId`, {
-    params: {
-      solicitPerviewId
-    }
-  })
+  return axios(`/api/solicitPerviewId/${solicitPerviewId}`);
+  //   , {
+  //   params: {
+  //     solicitPerviewId
+  //   }
+  // })
 }
 
 export const fetchNumPerviews = () => {

@@ -5,8 +5,9 @@ import NarrowPerviewContainer from '../../containers/NarrowPerviewContainer';
 
 class SolicitPerviews extends Component {
   componentDidMount() {
-    if (!this.props.perviews) {
-      this.props.fetchSolicitPerviews();
+    if (!this.props.perview) {
+      console.log('perview_id', Number(this.props.match.params.perview_id))
+      this.props.fetchSolicitPerviews(Number(this.props.match.params.perview_id));
     }
   }
 
