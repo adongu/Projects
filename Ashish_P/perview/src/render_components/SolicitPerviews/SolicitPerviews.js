@@ -11,6 +11,29 @@ class SolicitPerviews extends Component {
     }
   }
 
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.requestLoading !== this.props.requestLoading) {
+      this.setState({
+        requestLoading: nextProps.requestLoading
+      })
+
+      // if(this.props.perviews !== nextProps.perviews) {
+      //   this.props.fetchMyPerviews(this.state.categoryId);
+      // }
+    }
+
+    if (nextProps.fetchingUpdate !== this.props.fetchingUpdate) {
+      this.setState({
+        fetchingUpdate: nextProps.fetchingUpdate
+      })
+
+      if (this.state.fetchingUpdate) {
+        this.props.fetchSolicitPerviews(Number(this.props.match.params.perview_id));
+      }
+    }
+  }
+
+
   render() {
     return (
       <div>
