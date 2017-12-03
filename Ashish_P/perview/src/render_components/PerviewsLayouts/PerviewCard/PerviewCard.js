@@ -203,13 +203,21 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, create
   const renderSolicitContentView = () => {
     // if (currentUserId) {
       return (
-        <div className="perviewcard__createperview">
+        <div className="flexcolumn perviewcard__solicitcard">
           <CreatePerviewModalContainer
             perviewSolicitId={perview.id}
             perviewSolicitTags={perview.tags}
             perviewSolicitFirstName={perview.userDto.firstName}
             history={history}
           />
+
+          <div
+            onClick={() => {history.replace({ pathname: `/solicits/${perview.id}` })}}
+            className="suggestions"
+          >
+            <i className="fa fa-lightbulb-o" aria-hidden="true"></i>
+            <span>See Suggestions</span>
+          </div>
         </div>
       );
     // }

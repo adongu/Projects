@@ -328,15 +328,32 @@ $lines-to-show: 4;
   }
   //solicit perview creat perview wrapper
 
-  &createperview {
+  &solicitcard {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 60%;
+
+    .suggestions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 3px 0;
+      cursor: pointer;
+      font-family: Roboto, sans-serif;
+      color: white;
+      background: #919ECB;
+      border-radius: 5px;
+      margin-left: -5px;
+    }
+
+    .fa {
+      color: #DAB559;
+      padding-right: 8px;
+    }
   }
 }
-
-
-
 
 .popover.top > .arrow {
   display: none;
