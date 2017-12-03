@@ -1,5 +1,4 @@
 import "../../styles/stylesheets/header.css";
-import logo from "../../styles/assets/logo.jpg";
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import SearchPerviewBar from './SearchPerviewBar';
@@ -123,12 +122,6 @@ class Header extends React.Component {
     if (this.props.currentUser) {
       return (
         <div className="header__authnav-box divwrapper-fullwidth">
-          {/* <div className="header__logo">
-            <Link to="/">
-              <img className="header__logoimg" width="40px" src="https://s3.amazonaws.com/perviewimages/logo.png" alt="Header logo"/>
-            </Link>
-          </div> */}
-
           <div className="header__search">
             <SearchPerviewBar
               selectItem={this.selectItem}

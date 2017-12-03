@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import NarrowPerview from '../render_components/PerviewsLayouts/NarrowPerview.js'
-import { fetchUser, showLoginModal } from '../actions/session_actions';
-import { fetchMyPerviews, editPerview, deletePerview, clearErrors } from '../actions/perview_actions';
-import { likePerview, unlikePerview, createComment, deleteComment, bookmarkPerview, unbookmarkPerview } from '../actions/social_actions';
+import { showLoginModal } from '../actions/session_actions';
+import { editPerview, deletePerview, clearErrors } from '../actions/perview_actions';
+import { createComment, deleteComment } from '../actions/social_actions';
 
 const mapStateToProps = ({ session, findItem, social }, ownProps) => {
   return {
@@ -16,10 +16,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     deletePerview: (perviewId) => dispatch(deletePerview(perviewId)),
     createComment: (perviewId, comment) => dispatch(createComment(perviewId, comment)),
     deleteComment: (perviewId, commentId) => dispatch(deleteComment(perviewId, commentId)),
-    // bookmarkPerview: (perviewId) => dispatch(bookmarkPerview(perviewId)),
-    // unbookmarkPerview: (perviewId) => dispatch(unbookmarkPerview(perviewId)),
-    // likePerview: (perviewId) => dispatch(likePerview(perviewId)),
-    // unlikePerview: (perviewId) => dispatch(unlikePerview(perviewId)),
     showLoginModal: () => dispatch(showLoginModal()),
     clearErrors: () => dispatch(clearErrors())
   }

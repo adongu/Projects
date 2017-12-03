@@ -2,7 +2,7 @@ import '../../styles/stylesheets/signin.css';
 import '../../styles/assets/background.png';
 
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -87,11 +87,21 @@ class SignIn extends React.Component {
           <div className="signin__terms">
             By continuing, you indicate that you have read and agree Perview's
 
-            <a href="https://s3.amazonaws.com/tosandpp/2017_9_7_Perview_Terms_of_Service.pdf" className="signin__terms-urls" target="_blank">
+            <a
+              href="https://s3.amazonaws.com/tosandpp/2017_9_7_Perview_Terms_of_Service.pdf"
+              className="signin__terms-urls"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Terms of Service
             </a>
             and
-            <a href="https://s3.amazonaws.com/tosandpp/2017_9_7_Perview_Privacy_Policy.pdf" className="signin__terms-urls" target="_blank">
+            <a
+              href="https://s3.amazonaws.com/tosandpp/2017_9_7_Perview_Privacy_Policy.pdf"
+              className="signin__terms-urls"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Privacy Policy
             </a>
           </div>

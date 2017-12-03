@@ -16,8 +16,8 @@ import Footer from '../render_components/Footer/Footer';
 //   }
 // }
 // renders component if logged out, otherwise redirects to the root url
-const Auth = ({component: Component, path, loggedIn}) => {
-  console.log('Auth', path)
+const Auth = ({component: Component, path, loggedIn, ...rest}) => {
+  console.log('Auth rest of props', rest)
   return (
     <Route path={path} render={(props) => (
       !loggedIn ? (
@@ -48,7 +48,7 @@ const Protected = ({component: Component, path, loggedIn}) => {
 }
 // access the Redux state to check if the user is logged in
 const mapStateToProps = state => {
-  console.log('mapStateToProps', state)
+  // console.log('mapStateToProps', state)
   return { loggedIn: Boolean(state.session.currentUser) };
 }
 

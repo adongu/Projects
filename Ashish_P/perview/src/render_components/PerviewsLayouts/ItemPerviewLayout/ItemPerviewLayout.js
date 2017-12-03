@@ -1,6 +1,5 @@
 import "../../../styles/stylesheets/itemperviewlayout.css"
 import React from 'react';
-import moment from 'moment';
 import { withRouter } from 'react-router-dom';
 import PerviewCard from '../PerviewCard/PerviewCard.js';
 import {
@@ -8,48 +7,6 @@ import {
 } from '../../SharedComponents/PricePopOver';
 
 const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, history, toRenderUserProfile }) => {
-
-  const handleFriendClick = (friendId) => {
-    return (e) => {
-      if (currentUserId === friendId) {
-        history.replace({ pathname: `/myperviews` });
-      } else {
-        history.replace({ pathname: `/friend/${friendId}` });
-      }
-    }
-  }
-
-  const handleSaveClick = (perview) => {
-    return e => {
-      if (perview && perview.bookmarkedByLoggedInUser) {
-        unbookmarkPerview(perview.id)
-      } else {
-        bookmarkPerview(perview.id)
-      }
-    }
-  }
-
-  const handleLikeClick = (perview) => {
-    return e => {
-      if (perview && perview.likedByLoggedInUser) {
-        unlikePerview(perview.id);
-      } else {
-        likePerview(perview.id);
-      }
-    }
-  }
-
-  const renderStars = (rating) => {
-    let stars = [1, 2, 3, 4, 5];
-    return stars.map((ele)=>{
-      return (
-        <span key={ele} className={ele <= rating ? 'active_star' : 'no_star'} >
-          <i className="fa fa-star" aria-hidden="true"></i>
-        </span>
-      )
-    })
-  }
-
   const renderItemSection = () => {
     if (perviews && perviews.length > 0) {
       let item = perviews[0].itemDto;

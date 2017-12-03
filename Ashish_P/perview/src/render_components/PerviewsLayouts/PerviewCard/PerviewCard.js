@@ -1,5 +1,5 @@
 import "../../../styles/stylesheets/PerviewLayouts/PerviewCard/perviewcard.css"
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import moment from 'moment';
 import React from 'react';
 import PerviewEditModal from './PerviewEditModal';
@@ -79,9 +79,12 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, create
     if (perview.firstToPerviewItem) {
       return (
         <div className="flexrow perviewcard__badge-container">
-          <img className="perviewcard__badge-first"
-          src="https://png.icons8.com/medal-first-place/dusk/64"
-          title="First to Perview"/>
+          <img
+            src="https://png.icons8.com/medal-first-place/dusk/64"
+            className="perviewcard__badge-first"
+            title="First to Perview"
+            alt="first to perview badge"
+          />
         </div>
       )
     }
@@ -97,7 +100,6 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, create
               item = {item}
               perview = {perview}
               editPerview = {editPerview}
-              currentUserId = {currentUserId}
               history = {history}
             />
           </div>
@@ -120,7 +122,8 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, create
           <div className="perviewcard__review-user-icon">
             <img className="perviewcard__review-user-img"
               onClick={handleFriendClick(perviewUser.id)}
-              src={util.generateUserImageUrl(perviewUser.facebookId, 'square')} alt="User"
+              src={util.generateUserImageUrl(perviewUser.facebookId, 'square')}
+              alt="User"
             />
           </div>
           <a

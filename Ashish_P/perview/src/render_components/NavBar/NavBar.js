@@ -81,32 +81,6 @@ const NavBar = ({ createPerview, filterPerviews, isFetching, currentUser, curren
     <div></div>
   );
 
-  const renderNumFriends = () => {
-    if (currentUser) {
-      return (
-        <div className="perviewcard__numlikers-box">
-        <OverlayTrigger trigger="click" placement="bottom" rootClose overlay={popoverClickFriendClose} className="perviewcard__popovertrigger">
-          <span className="navbar__dashboard-numfriends">
-            {currentUser.numFriends}
-            <span className="navbar__dashboard-text">
-              friends
-            </span>
-          </span>
-        </OverlayTrigger>
-        </div>
-      )
-    } else if (userFriend) {
-      return (
-        <span className="navbar__dashboard-numfriends">
-          {userFriend.numFriends}
-          <span className="navbar__dashboard-text">
-            friends
-          </span>
-        </span>
-      )
-    }
-  }
-
   const renderCreateSolicit = () => {
     if (match && pageSettings[match.path]) {
       if(pageSettings[match.path].hasCreateSolicit) {

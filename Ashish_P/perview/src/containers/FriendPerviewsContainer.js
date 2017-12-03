@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import FriendPerviews from "../render_components/FriendPerviews/FriendPerviews";
 import { fetchUser } from '../actions/session_actions';
-import { fetchCategoryIds, fetchFriendPerviews, clearErrors } from '../actions/perview_actions';
+import { fetchFriendPerviews, clearErrors } from '../actions/perview_actions';
 import { likePerview, unlikePerview, bookmarkPerview, unbookmarkPerview } from '../actions/social_actions';
 
 const mapStateToProps = ({ session, perview, findItem, social}, ownProps) => {

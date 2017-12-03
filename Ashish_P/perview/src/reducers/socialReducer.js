@@ -13,6 +13,12 @@ const _nullSocial = Object.freeze({
   errors: []
 })
 
+const deletedCommentPerview = (perview, commentId, newState) => {
+  return perview[newState.comments].filter((comment) => {
+    return comment.id !== commentId;
+  })
+}
+
 const sessionReducer = (oldState = _nullSocial, action) => {
   Object.freeze(oldState);
   let newState = merge({}, oldState)
@@ -24,18 +30,14 @@ const sessionReducer = (oldState = _nullSocial, action) => {
         errors: []
       });
     case CREATE_COMMENT:
-      let commentedPerview = Object.keys(newState.allPerviews).filter((perview) => {
-        perview.id === action.perviewId;
-      })
-
+      let commentedPerview = Object.keys(newState.allPerviews).filter((perview) => (
+        perview.id === action.perviewId
+      ))
       commentedPerview.comments.push(action.perview);
 
       let newAllPerviews = Object.keys(newState.allPerviews).map((perview) => {
         return perview.id === action.perviewId ? commentedPerview : perview;
       })
-
-      console.log('social reducer ADD COMMENT', newAllPerviews);
-      debugger
 
       return Object.assign({}, newState, {
         fetchingUpdate: false,
@@ -45,15 +47,11 @@ const sessionReducer = (oldState = _nullSocial, action) => {
     case DELETE_COMMENT:
       let allPerviewsWithDeletedComment = Object.keys(newState.allPerviews).map((perview) => {
         if(perview.id === action.perviewId) {
-          return deletedCommentPerview(perview, action.comment.id);
+          return deletedCommentPerview(perview, action.comment.id, newState);
         } else {
           return perview;
         }
       });
-
-      console.log('socialreducer DELETE COMMENT', allPerviewsWithDeletedComment);
-
-      debugger
 
       return Object.assign({}, newState, {
         fetchingUpdate: false,
@@ -69,16 +67,10 @@ const sessionReducer = (oldState = _nullSocial, action) => {
       let errors = action.errors;
       return Object.assign({}, oldState, {
         errors: errors
-      })
+      });
     default:
-      return merge(oldState, { errors: []})
+      return merge(oldState, { errors: []});
   };
-
-  const deletedCommentPerview = (perview, commentId) => {
-    return perview[newState.comments].filter((comment) => {
-      return comment.id !== commentId;
-    })
-  }
 };
 
 

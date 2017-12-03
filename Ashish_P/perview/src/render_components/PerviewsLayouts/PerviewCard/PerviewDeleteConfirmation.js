@@ -1,6 +1,6 @@
 import "../../../styles/stylesheets/PerviewLayouts/PerviewCard/perviewdeleteconfirmation.css";
 import React from 'react';
-import { ButtonToolbar, Modal, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 
 const PerviewDeleteConfirmation = React.createClass({
   getInitialState() {

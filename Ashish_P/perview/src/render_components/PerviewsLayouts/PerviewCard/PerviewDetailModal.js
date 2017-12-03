@@ -1,6 +1,5 @@
 import "../../../styles/stylesheets/PerviewLayouts/PerviewCard/perviewdetailmodal.css";
 import React from 'react';
-import moment from 'moment';
 import { Modal, ButtonToolbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import PerviewComments from './PerviewComments';

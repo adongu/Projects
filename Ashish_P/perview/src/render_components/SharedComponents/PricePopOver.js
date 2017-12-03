@@ -1,4 +1,4 @@
-import React, {PropType} from 'react';
+import React from 'react';
 import moment from 'moment';
 import { Popover, OverlayTrigger } from 'react-bootstrap';
 import '../../styles/stylesheets/SharedComponents/pricepopover.css';

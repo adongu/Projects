@@ -1,6 +1,5 @@
 import '../../../styles/stylesheets/PerviewLayouts/PerviewCard/perviewcomments.css';
 import React from 'react';
-import * as util from '../../../actions/util_actions.js';
 
 // perview
 class PerviewComments extends React.Component{
@@ -189,7 +188,6 @@ class PerviewComments extends React.Component{
     let commentArray = comment.comment.split(" ");
 
     let commenterNameLength = comment.commenter.firstName.length;
-    let combinedNameAndCommentLength = commenterNameLength + comment.comment.length;
     let maxTopCommentLength = this.state.topLineMaxLength - commenterNameLength;
 
     commentArray.forEach((comment) => {

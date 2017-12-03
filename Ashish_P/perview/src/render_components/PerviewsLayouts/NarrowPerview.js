@@ -84,7 +84,6 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
 
   const renderUserProfile = (perview) => {
     let user = perview.userDto;
-    // console.log('renderUserProfile for solicit', perview.userDto);
     return (
       <div className="flexcolumn narrowperviews__solicit-user">
         <div className="narrowperviews__solicit-date">
@@ -114,7 +113,6 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
 
   const renderPerviewOrSolicit = (perview, perviewObject) => {
     if (perview.solicit) {
-      console.log("perview", perview)
       return (
         <div className="flexcolumn narrowperviews__content">
           <div className="narrowperviews__userprofile">
