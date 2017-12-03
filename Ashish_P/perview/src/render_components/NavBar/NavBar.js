@@ -28,7 +28,10 @@ const NavBar = ({ createPerview, filterPerviews, isFetching, currentUser, curren
     },
     "/item/:item_id": {
       "title": "", "hasFilters": false
-    }
+    },
+    "/solicits/:perview_id": {
+      "title": "solicits", "hasFilters": false
+    },
   }
 
   const handleFilterChange = (e) => {
@@ -105,14 +108,16 @@ const NavBar = ({ createPerview, filterPerviews, isFetching, currentUser, curren
   }
 
   const renderCreateSolicit = () => {
-    if (match && pageSettings[match.path].hasCreateSolicit) {
-      return (
-        <CreateSolicitForm
-          currentUser={currentUser}
-          createPerview={createPerview}
-          history={history}
-        />
-      )
+    if (match && pageSettings[match.path]) {
+      if(pageSettings[match.path].hasCreateSolicit) {
+        return (
+          <CreateSolicitForm
+            currentUser={currentUser}
+            createPerview={createPerview}
+            history={history}
+          />
+        )
+      }
     }
   }
 

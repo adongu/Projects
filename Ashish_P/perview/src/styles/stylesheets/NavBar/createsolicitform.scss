@@ -1,8 +1,6 @@
 .solicithero__{
   &box {
-    width: 100%;
-    // border: 1px solid red;
-    // margin-left: 10px;
+    width: 60%;
   }
 
   &form {
@@ -10,7 +8,7 @@
     position: relative;
     align-items: left;
     flex-direction: column;
-    // width: 100%;
+    width: 100%;
     padding: 10px;
 
     -webkit-box-shadow: 1px 1px 1px #888;
