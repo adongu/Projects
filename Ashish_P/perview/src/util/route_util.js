@@ -4,45 +4,51 @@ import React from 'react';
 import HeaderContainer from '../containers/HeaderContainer';
 import Footer from '../render_components/Footer/Footer';
 
-class ScrollToTop extends React.Component {
-  componentDidUpdate(prevProps) {
-    if (this.props.location !== prevProps.location) {
-      window.scrollTo(0, 0);
-    }
-  }
-
-  render() {
-    return this.props.children
-  }
-}
+// class ScrollToTop extends React.Component {
+//   componentDidUpdate(prevProps) {
+//     if (this.props.location !== prevProps.location) {
+//       window.scrollTo(0, 0);
+//     }
+//   }
+//
+//   render() {
+//     return this.props.children
+//   }
+// }
 // renders component if logged out, otherwise redirects to the root url
-const Auth = ({component: Component, path, loggedIn}) => (
-  <Route path={path} render={(props) => (
-    !loggedIn ? (
-      <Component {...props} />
-    ) : (
-      <Redirect to={path === '/home' ? "/" : path}/>
-    )
-  )}/>
-);
+const Auth = ({component: Component, path, loggedIn}) => {
+  console.log('Auth', path)
+  return (
+    <Route path={path} render={(props) => (
+      !loggedIn ? (
+        <Component {...props} />
+      ) : (
+        <Redirect to={path === '/home' ? "/" : path}/>
+      )
+    )}/>
+  );
+}
 
 // renders component if logged in, otherwise redirects to the login page
-const Protected = ({component: Component, path, loggedIn}) => (
-  <Route path={path} render={(props) => (
-    loggedIn ? (
-      <div>
-        <HeaderContainer />
-        <Component {...props}/>
-        <Footer />
-      </div>
-    ) : (
-      <Redirect to="/home"/>
-    )
-  )}/>
-);
-
+const Protected = ({component: Component, path, loggedIn}) => {
+  console.log('Protected', path)
+  return (
+    <Route path={path} render={(props) => (
+      loggedIn ? (
+        <div>
+          <HeaderContainer />
+          <Component {...props}/>
+          <Footer />
+        </div>
+      ) : (
+        <Redirect to='/home'/>
+      )
+    )}/>
+  );
+}
 // access the Redux state to check if the user is logged in
 const mapStateToProps = state => {
+  console.log('mapStateToProps', state)
   return { loggedIn: Boolean(state.session.currentUser) };
 }
 

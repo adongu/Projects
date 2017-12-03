@@ -114,12 +114,16 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
 
   const renderPerviewOrSolicit = (perview, perviewObject) => {
     if (perview.solicit) {
+      console.log("perview", perview)
       return (
         <div className="flexcolumn narrowperviews__content">
           <div className="narrowperviews__userprofile">
             {renderUserProfile(perview)}
           </div>
-          <div className="narrowperviews__solicit-tags">
+          <div
+            onClick={() => {history.replace({ pathname: `/solicits/${perview.id}` })}}
+            className="narrowperviews__solicit-tags"
+          >
             {perview.tags}
           </div>
         </div>

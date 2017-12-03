@@ -1,5 +1,5 @@
 import { merge } from 'lodash';
-import { REQUEST_LOADING, RECEIVE_ITEM, RECEIVE_PERVIEW, RECEIVE_EDIT_PERVIEW, DELETE_PERVIEW, RECEIVE_LANDING_PERVIEWS, RECEIVE_ALL_PERVIEWS, RECEIVE_ITEM_PERVIEWS, RECEIVE_MY_PERVIEWS, RECEIVE_FAVORITE_PERVIEWS, RECEIVE_FRIEND_PERVIEWS, RECEIVE_CATEGORY_IDS, RECEIVE_NUM_PERVIEWS, RECEIVE_ERRORS } from '../actions/perview_actions';
+import { REQUEST_LOADING, RECEIVE_ITEM, RECEIVE_PERVIEW, RECEIVE_EDIT_PERVIEW, DELETE_PERVIEW, RECEIVE_LANDING_PERVIEWS, RECEIVE_ALL_PERVIEWS, RECEIVE_ITEM_PERVIEWS, RECEIVE_MY_PERVIEWS, RECEIVE_FAVORITE_PERVIEWS, RECEIVE_FRIEND_PERVIEWS, RECEIVE_SOLICIT_PERVIEWS, RECEIVE_CATEGORY_IDS, RECEIVE_NUM_PERVIEWS, RECEIVE_ERRORS } from '../actions/perview_actions';
 
 const _nullPerviews = Object.freeze({
   requestLoading: false,
@@ -28,6 +28,11 @@ const _nullPerviews = Object.freeze({
   },
   friendPerviews: {
     user: {},
+    categories: [],
+    perviews: []
+  },
+  solicitPerviews: {
+    solicit: {},
     categories: [],
     perviews: []
   },
@@ -171,6 +176,16 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
           user: action.friendPerviews.user,
           perviews: action.friendPerviews.perviews,
           categories: action.friendPerviews.categories
+        },
+        requestLoading: false,
+        errors: []
+      });
+
+    case RECEIVE_SOLICIT_PERVIEWS:
+      return Object.assign({}, newState, {
+        solicitPerviews: {
+          perviews: action.solicitPerviews.perviews,
+          categories: action.solicitPerviews.categories
         },
         requestLoading: false,
         errors: []
