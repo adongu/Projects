@@ -154,6 +154,7 @@
     -webkit-text-stroke-color: #4b4f56;
     color: transparent;
     margin-right: 5px;
+    transition: color ease 100ms;
   }
 
   &social-bookmark:hover,
@@ -161,7 +162,7 @@
     color: #3D70F0;
     -webkit-text-stroke-width: 1;
     -webkit-text-stroke-color: #3D70F0;
-    transition: color ease 250ms;
+    transition: color ease 150ms;
     cursor: pointer;
   }
 
@@ -171,8 +172,8 @@
     font-weight: bold;
     -webkit-text-stroke-width: 1;
     -webkit-text-stroke-color: #3D70F0;
-    transition: ease .2s;
-    transition: color linear 250ms;
+    // transition: ease .2s;
+    // transition: color linear 250ms;
   }
 
   &social-icon:hover{
