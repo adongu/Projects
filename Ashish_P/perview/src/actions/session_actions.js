@@ -4,6 +4,7 @@ export const REQUEST_USER = 'REQUEST_USER';
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const SHOW_LOGIN_MODAL = 'SHOW_LOGIN_MODAL';
 export const HIDE_LOGIN_MODAL = 'HIDE_LOGIN_MODAL';
+export const RECEIVE_PREVIOUS_PATH = 'RECEIVE_PREVIOUS_PATH';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
@@ -37,6 +38,11 @@ export const showLoginModal =() => ({
 
 export const hideLoginModal =() => ({
   type: HIDE_LOGIN_MODAL
+})
+
+export const receivePreviousPath = (previousPath) => ({
+  type: RECEIVE_PREVIOUS_PATH,
+  previousPath
 })
 
 export const logIn = () => dispatch => {
@@ -73,3 +79,7 @@ export const logOut = () => {
     })
   };
 };
+
+export const updatePreviousPath = (previousPath) => dispatch => {
+  return dispatch(receivePreviousPath(previousPath));
+}

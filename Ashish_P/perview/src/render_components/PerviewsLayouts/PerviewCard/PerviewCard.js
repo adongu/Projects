@@ -135,31 +135,35 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, create
             <div>{renderFirstReviewBadge()}</div>
           </a>
         </div>
-      )
+      );
     } else {
       return (
         <div></div>
-      )
+      );
     }
   }
 
-  const renderPerivewCardHeaderBar = (
-      <div className="divwrapper-fullwidth">
-        <div className="perviewcard__header">
-          <span className="perviewcard__review-time">
-            {perview.solicit ? '' : moment(perview.ts).format("MMM DD, Y")}
-          </span>
-        </div>
-
-        <div className="flexrow perviewcard__perview-options">
-          <div className="flexcolumn divwrapper-fullwidth">
-            {renderUserProfile()}
-            {history.location.pathname === '/myperviews' ? renderFirstReviewBadge() : ''}
+  const renderPerivewCardHeaderBar = () => {
+    if(perview && history) {
+      return (
+        <div className="divwrapper-fullwidth">
+          <div className="perviewcard__header">
+            <span className="perviewcard__review-time">
+              {perview.solicit ? '' : moment(perview.ts).format("MMM DD, Y")}
+            </span>
           </div>
-          {renderPerviewEdit()}
+
+          <div className="flexrow perviewcard__perview-options">
+            <div className="flexcolumn divwrapper-fullwidth">
+              {renderUserProfile()}
+              {history.location.pathname === '/myperviews' ? renderFirstReviewBadge() : ''}
+            </div>
+            {renderPerviewEdit()}
+          </div>
         </div>
-      </div>
-  );
+      );
+    }
+  };
 
   const renderModalLink = (perview) => {
     if (perview.tags && (perview.tags.length > 155) ) {
@@ -176,7 +180,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, create
             toRenderPerviewCardDetailsView = {true}
           />
         </div>
-      )
+      );
     }
   }
 
@@ -226,26 +230,29 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, create
     // }
   };
 
-  const renderSocialBar = (
-    <div className="flexrow perviewcard__review-social">
-      <div className="flexrow divwrapper-fullwidth">
-        <SocialBar
-          currentUserId={currentUserId}
-          perview={perview}
-          likers={likers}
-          createComment={createComment}
-          deleteComment={deleteComment}
-          handleFriendClick={handleFriendClick}
-          bookmarkPerview={bookmarkPerview}
-          unbookmarkPerview={unbookmarkPerview}
-          likePerview={likePerview}
-          unlikePerview={unlikePerview}
-          showLoginModal={showLoginModal}
-        />
-      </div>
-
-    </div>
-  )
+  const renderSocialBar = () => {
+    if (perview) {
+      return (
+        <div className="flexrow perviewcard__review-social">
+          <div className="flexrow divwrapper-fullwidth">
+            <SocialBar
+              currentUserId={currentUserId}
+              perview={perview}
+              likers={likers}
+              createComment={createComment}
+              deleteComment={deleteComment}
+              handleFriendClick={handleFriendClick}
+              bookmarkPerview={bookmarkPerview}
+              unbookmarkPerview={unbookmarkPerview}
+              likePerview={likePerview}
+              unlikePerview={unlikePerview}
+              showLoginModal={showLoginModal}
+            />
+          </div>
+        </div>
+      );
+    }
+  }
 
   return (
       <div className="flexcolumn perviewcard__review-social-box">
@@ -253,7 +260,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, create
         {renderPerviewOrSolicitContentView()}
         {renderSocialBar}
     </div>
-  )
+  );
 }
 
 export default withRouter(PerviewCard);
