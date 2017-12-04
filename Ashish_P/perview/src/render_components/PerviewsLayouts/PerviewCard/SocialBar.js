@@ -141,14 +141,7 @@ const SocialBar = ({currentUserId, perview, likers, createComment, deleteComment
         <span
           className='perviewcard__review-social-btn'
         >
-          <i
-            className='fa fa-comments perviewcard__review-icon-comment'
-            aria-hidden="true">
-          </i>
-
-          <span className="perviewcard__review-social-text">
-            {renderCommentsModal()}
-          </span>
+          {renderCommentsModal()}
         </span>
         <span>
           {renderNumComments()}

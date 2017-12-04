@@ -16,8 +16,9 @@ import Footer from '../render_components/Footer/Footer';
 //   }
 // }
 // renders component if logged out, otherwise redirects to the root url
-const Auth = ({component: Component, path, loggedIn, ...rest}) => {
-  console.log('Auth rest of props', rest)
+const Auth = ({component: Component, path, loggedIn, ...restProps}) => {
+  console.log('Auth path', path)
+  console.log('Auth rest of props', restProps)
   return (
     <Route path={path} render={(props) => (
       !loggedIn ? (
@@ -30,21 +31,32 @@ const Auth = ({component: Component, path, loggedIn, ...rest}) => {
 }
 
 // renders component if logged in, otherwise redirects to the login page
-const Protected = ({component: Component, path, loggedIn}) => {
+const Protected = ({component: Component, path, loggedIn, ...restProps}) => {
   console.log('Protected', path)
-  return (
-    <Route path={path} render={(props) => (
-      loggedIn ? (
-        <div>
-          <HeaderContainer />
-          <Component {...props}/>
-          <Footer />
-        </div>
-      ) : (
-        <Redirect to='/home'/>
-      )
-    )}/>
-  );
+  if (loggedIn) {
+    if (restProps.location.state) {
+      restProps.history.push(restProps.location.state)
+    } else {
+      return (
+        <Route path={path} render={(props) => (
+          <div>
+            <HeaderContainer />
+            <Component {...props}/>
+            <Footer />
+          </div>
+        )}/>
+      );
+    }
+  }
+  const location = {
+    pathname: '/home',
+    state: { from: path }
+  }
+
+  // restProps.history.push(location);
+  // restProps.history.goBack();
+  return  <Redirect to='/home'/>
+  // return  <div />
 }
 // access the Redux state to check if the user is logged in
 const mapStateToProps = state => {
