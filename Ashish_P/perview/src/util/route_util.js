@@ -18,19 +18,8 @@ import { updatePreviousPath } from '../actions/session_actions';
 // }
 // renders component if logged out, otherwise redirects to the root url
 // const Auth = ({component: Component, path, loggedIn, previousPath, updatePreviousPath, ...restProps }) => {
-class Auth extends Component {
-  // console.log('Auth rest of props', restProps)
-  // componentWillMount() {
-  //   if (this.props.path !== '/home') {
-  //     this.setState({ previousPath: this.props.path })
-  //     this.props.updatePreviousPath(this.props.path);
-  //   }
-  // }
-  //
-  // componentWillReceiveProps(nextProps) {
-  //
-  // }
 
+class Auth extends Component {
   render () {
     const {
       component: Component,
@@ -41,7 +30,7 @@ class Auth extends Component {
     } = this.props;
 
     if (!loggedIn) {
-      console.log('Auth - not loggedin', this.props.previousPath);
+      // console.log('Auth - not loggedin', this.props.previousPath);
 
       return (
         <Route path={path} render={(props) => (
@@ -50,7 +39,7 @@ class Auth extends Component {
       );
     }
 
-    console.log('Auth - loggedin', this.props.previousPath);
+    // console.log('Auth - loggedin', this.props.previousPath);
 
     return (
       <Redirect to={previousPath === '/home' ? "/" : previousPath}/>
@@ -58,20 +47,10 @@ class Auth extends Component {
   }
 }
 
-// renders component if logged in, otherwise redirects to the login page
-// const Protected = ({component: Component, path, loggedIn, ...restProps}) => {
 class Protected extends Component {
-
-  // const location = {
-  //   pathname: '/home',
-  //   state: { from: path }
-  // }
-  componentWillMount() {
-    // if (this.props.path !== '/home') {
-      // this.setState({ previousPath: this.props.path })
-      this.props.updatePreviousPath(this.props.path);
-      console.log('Protected - componentWillMount', this.props.path)
-    // }
+  componentDidMount() {
+      this.props.updatePreviousPath(this.props.location.pathname);
+      // console.log('Protected - componentWillMount', this.props)
   }
 
   render () {
@@ -84,10 +63,7 @@ class Protected extends Component {
     } = this.props;
 
     if (loggedIn) {
-      // if (restProps.location.state !== '/home') {
-        // restProps.history.push(restProps.location).prevProps
-    // } else {
-      console.log(`Protected - Render ${this.props.previousPath}`)
+      // console.log(`Protected - Render ${this.props.previousPath}`)
 
       return (
         <Route path={path} render={(props) => (
@@ -98,18 +74,13 @@ class Protected extends Component {
           </div>
         )}/>
       );
-
-      // restProps.history.push(location);
-      // restProps.history.goBack();
-      // return  <div />
     }
-    console.log('Protected - redirect to /home')
+    // console.log('Protected - redirect to /home')
     return  <Redirect to='/home'/>
   }
 }
-// access the Redux state to check if the user is logged in
+
 const mapStateToProps = state => {
-  // console.log('mapStateToProps', state)
   return {
     loggedIn: Boolean(state.session.currentUser),
     previousPath: String(state.session.previousPath),

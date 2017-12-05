@@ -144,25 +144,23 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, create
   }
 
   const renderPerivewCardHeaderBar = () => {
-    if(perview && history) {
-      return (
-        <div className="divwrapper-fullwidth">
-          <div className="perviewcard__header">
-            <span className="perviewcard__review-time">
-              {perview.solicit ? '' : moment(perview.ts).format("MMM DD, Y")}
-            </span>
-          </div>
-
-          <div className="flexrow perviewcard__perview-options">
-            <div className="flexcolumn divwrapper-fullwidth">
-              {renderUserProfile()}
-              {history.location.pathname === '/myperviews' ? renderFirstReviewBadge() : ''}
-            </div>
-            {renderPerviewEdit()}
-          </div>
+    return (
+      <div className="divwrapper-fullwidth">
+        <div className="perviewcard__header">
+          <span className="perviewcard__review-time">
+            {perview.solicit ? '' : moment(perview.ts).format("MMM DD, Y")}
+          </span>
         </div>
-      );
-    }
+
+        <div className="flexrow perviewcard__perview-options">
+          <div className="flexcolumn divwrapper-fullwidth">
+            {renderUserProfile()}
+            {history.location.pathname === '/myperviews' ? renderFirstReviewBadge() : ''}
+          </div>
+          {renderPerviewEdit()}
+        </div>
+      </div>
+    );
   };
 
   const renderModalLink = (perview) => {
@@ -208,7 +206,7 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, create
   )
 
   const renderSolicitContentView = () => {
-    // if (currentUserId) {
+    if (currentUserId) {
       return (
         <div className="flexcolumn perviewcard__solicitcard">
           <CreatePerviewModalContainer
@@ -227,11 +225,11 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, create
           </div>
         </div>
       );
-    // }
+    }
   };
 
   const renderSocialBar = () => {
-    if (perview) {
+    if (currentUserId) {
       return (
         <div className="flexrow perviewcard__review-social">
           <div className="flexrow divwrapper-fullwidth">
@@ -255,10 +253,10 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, create
   }
 
   return (
-      <div className="flexcolumn perviewcard__review-social-box">
-        {renderPerivewCardHeaderBar}
+    <div className="flexcolumn perviewcard__review-social-box">
+        {renderPerivewCardHeaderBar()}
         {renderPerviewOrSolicitContentView()}
-        {renderSocialBar}
+        {renderSocialBar()}
     </div>
   );
 }
