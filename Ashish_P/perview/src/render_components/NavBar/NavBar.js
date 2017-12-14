@@ -148,7 +148,6 @@ const NavBar = ({ createPerview, filterPerviews, isFetching, currentUser, curren
                 </span>
               </div>
             </div>
-
           </div>
         )
       }

@@ -14,13 +14,13 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
     return (e) => {
       if (currentUserId) {
         if (currentUserId === friendId) {
-          history.replace({ pathname: `/myperviews` });
+          history.push({ pathname: `/myperviews` });
         } else {
-          history.replace({ pathname: `/friend/${friendId}` });
+          history.push({ pathname: `/friend/${friendId}` });
         }
       } else {
-        if (showLoginModal) {
-          showLoginModal();
+        if (this.showLoginModal) {
+          this.showLoginModal();
         }
       }
     }

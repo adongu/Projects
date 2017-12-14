@@ -78,30 +78,22 @@ const SocialBar = ({currentUserId, perview, likers, createComment, deleteComment
   }
 
   const renderCommentsModal = () => {
-    // if (perview.comments) {
-      return (
-        <div className="perviewcard__detailmodalwrapper">
-          <PerviewDetailModal
-            currentUserId={currentUserId}
-            perview={perview}
-            createComment={createComment}
-            deleteComment={deleteComment}
-            handleSaveClick = {handleSaveClick}
-            handleFriendClick = {handleFriendClick}
-            handleLikeClick = {handleLikeClick}
-            showLoginModal={showLoginModal}
-            toRenderPerviewCommentsView = {true}
-            renderStars = {util.renderStars}
-          />
-        </div>
-      )
-    // } else {
-    //   return (
-    //     <div className="perviewcard__detailmodalwrapper">
-    //       Comments
-    //     </div>
-    //   )
-    // }
+    return (
+      <div className="perviewcard__detailmodalwrapper">
+        <PerviewDetailModal
+          currentUserId={currentUserId}
+          perview={perview}
+          createComment={createComment}
+          deleteComment={deleteComment}
+          handleSaveClick = {handleSaveClick}
+          handleFriendClick = {handleFriendClick}
+          handleLikeClick = {handleLikeClick}
+          showLoginModal={showLoginModal}
+          toRenderPerviewCommentsView = {true}
+          renderStars = {util.renderStars}
+        />
+      </div>
+    )
   }
 
   return (
@@ -129,7 +121,6 @@ const SocialBar = ({currentUserId, perview, likers, createComment, deleteComment
           <span className="perviewcard__review-social-text">
             {perview.likedByLoggedInUser ? 'Liked' : 'Like'}
           </span>
-
         </span>
 
         <div className="perviewcard__numlikers-box">

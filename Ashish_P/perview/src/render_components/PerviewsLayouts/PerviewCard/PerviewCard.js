@@ -46,9 +46,9 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, create
     return (e) => {
       if (currentUserId) {
         if (currentUserId === friendId) {
-          history.replace({ pathname: `/myperviews` });
+          history.push({ pathname: `/myperviews` });
         } else {
-          history.replace({ pathname: `/friend/${friendId}` });
+          history.push({ pathname: `/friend/${friendId}` });
         }
       } else {
         if (showLoginModal) {
@@ -58,22 +58,19 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, create
     }
   }
 
+  const handleSuggestionClick = () => {
+    if (currentUserId) {
+      history.push({ pathname: `/solicits/${perview.id}`});
+    } else {
+      showLoginModal();
+    }
+  }
+
   const confirmDeletePerview = (perviewId) => {
     if (deletePerview) {
       deletePerview(perview.id)
     }
   }
-
-  // const renderAndMoreLikes = () => {
-  //   if (likers.length > 1) {
-  //     let numLikersMore = likers.length - 1;
-  //     return (
-  //       <span>
-  //         and {numLikersMore} More...
-  //       </span>
-  //     )
-  //   }
-  // }
 
   const renderFirstReviewBadge = () => {
     if (perview.firstToPerviewItem) {
@@ -206,50 +203,46 @@ const PerviewCard = ({ currentUserId, perviewUser, item, perview, likers, create
   )
 
   const renderSolicitContentView = () => {
-    if (currentUserId) {
-      return (
-        <div className="flexcolumn perviewcard__solicitcard">
-          <CreatePerviewModalContainer
-            perviewSolicitId={perview.id}
-            perviewSolicitTags={perview.tags}
-            perviewSolicitFirstName={perview.userDto.firstName}
-            history={history}
-          />
+    return (
+      <div className="flexcolumn perviewcard__solicitcard">
+        <CreatePerviewModalContainer
+          perviewSolicitId={perview.id}
+          perviewSolicitTags={perview.tags}
+          perviewSolicitFirstName={perview.userDto.firstName}
+          history={history}
+        />
 
-          <div
-            onClick={() => {history.replace({ pathname: `/solicits/${perview.id}` })}}
-            className="suggestions"
-          >
-            <i className="fa fa-lightbulb-o" aria-hidden="true"></i>
-            <span>See Suggestions</span>
-          </div>
+        <div
+          onClick={handleSuggestionClick}
+          className="suggestions"
+        >
+          <i className="fa fa-lightbulb-o" aria-hidden="true"></i>
+          <span>See Suggestions</span>
         </div>
-      );
-    }
+      </div>
+    );
   };
 
   const renderSocialBar = () => {
-    if (currentUserId) {
-      return (
-        <div className="flexrow perviewcard__review-social">
-          <div className="flexrow divwrapper-fullwidth">
-            <SocialBar
-              currentUserId={currentUserId}
-              perview={perview}
-              likers={likers}
-              createComment={createComment}
-              deleteComment={deleteComment}
-              handleFriendClick={handleFriendClick}
-              bookmarkPerview={bookmarkPerview}
-              unbookmarkPerview={unbookmarkPerview}
-              likePerview={likePerview}
-              unlikePerview={unlikePerview}
-              showLoginModal={showLoginModal}
-            />
-          </div>
+    return (
+      <div className="flexrow perviewcard__review-social">
+        <div className="flexrow divwrapper-fullwidth">
+          <SocialBar
+            currentUserId={currentUserId}
+            perview={perview}
+            likers={likers}
+            createComment={createComment}
+            deleteComment={deleteComment}
+            handleFriendClick={handleFriendClick}
+            bookmarkPerview={bookmarkPerview}
+            unbookmarkPerview={unbookmarkPerview}
+            likePerview={likePerview}
+            unlikePerview={unlikePerview}
+            showLoginModal={showLoginModal}
+          />
         </div>
-      );
-    }
+      </div>
+    );
   }
 
   return (

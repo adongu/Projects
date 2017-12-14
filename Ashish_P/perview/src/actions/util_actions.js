@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { showLoginModal } from '../actions/session_actions';
 
 /**
   @param number @facebookUserId
@@ -37,4 +38,15 @@ export const renderStars = (rating) => {
       </span>
     )
   })
+}
+
+export const handleShowLoginModalOrCallBack = (currentUserId, protectedCallBack) => {
+  if (currentUserId) {
+    this.protectedCallBack();
+  } else {
+    if (showLoginModal) {
+      console.log('shows login modal');
+      showLoginModal();
+    }
+  }
 }
