@@ -32,8 +32,8 @@ const _nullPerviews = Object.freeze({
     perviews: []
   },
   solicitPerviews: {
-    solicit: {},
     categories: [],
+    perview: {},
     perviews: []
   },
   numPerviews: null,
@@ -184,6 +184,7 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
     case RECEIVE_SOLICIT_PERVIEWS:
       return Object.assign({}, newState, {
         solicitPerviews: {
+          perview: action.solicitPerviews.solicitPerview,
           perviews: action.solicitPerviews.perviews,
           categories: action.solicitPerviews.categories
         },

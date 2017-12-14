@@ -1,0 +1,46 @@
+.friendhero {
+  width: 60%;
+}
+
+.friendhero__{
+  &info {
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 1em;
+    background: #dae4fc url("https://s3.amazonaws.com/yumpapp-dev/perview/background+icons.png") repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    // z-index: -1;
+
+    font-family: roboto;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  &user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px;
+
+    img {
+      border-radius: 10em;
+      margin-right: 8px;
+    }
+
+    padding-bottom: 8px;
+  }
+
+  &tags {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 12px;
+  }
+}

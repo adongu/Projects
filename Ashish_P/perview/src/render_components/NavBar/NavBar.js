@@ -4,8 +4,9 @@ import "../../styles/stylesheets/NavBar/navbar.css";
 import { Popover, OverlayTrigger } from 'react-bootstrap';
 import CreateSolicitForm from "./CreateSolicitForm.js";
 import * as util from '../../actions/util_actions.js';
+import FriendHero from './FriendHero';
 
-const NavBar = ({ createPerview, filterPerviews, isFetching, currentUser, currentUsersFriends, userFriend, history, categories, match, toShowUserDashBoard, requestLoading }) => {
+const NavBar = ({ createPerview, filterPerviews, isFetching, currentUser, currentUsersFriends, userFriend, history, categories, match, toShowUserDashBoard, requestLoading, solicit }) => {
 
   const pageSettings = {
     "/home" : {
@@ -30,7 +31,7 @@ const NavBar = ({ createPerview, filterPerviews, isFetching, currentUser, curren
       "title": "", "hasFilters": false
     },
     "/solicits/:perview_id": {
-      "title": "solicits", "hasFilters": false
+      "": "solicits", "hasFilters": false, "userDashBoardType": 'solicit'
     },
   }
 
@@ -44,9 +45,9 @@ const NavBar = ({ createPerview, filterPerviews, isFetching, currentUser, curren
   const handleFriendClick = (friendId) => {
     return (e) => {
       if (currentUser.id === friendId) {
-        history.replace({ pathname: `/myperviews` });
+        history.push({ pathname: `/myperviews` });
       } else {
-        history.replace({ pathname: `/friend/${friendId}` });
+        history.push({ pathname: `/friend/${friendId}` });
       }
     }
   }
@@ -152,7 +153,23 @@ const NavBar = ({ createPerview, filterPerviews, isFetching, currentUser, curren
         )
       }
     }
+  }
 
+  const renderSolicitHero = () => {
+    if (match && match.path && pageSettings[match.path].userDashBoardType === 'solicit') {
+      console.log('hits solicit', solicit)
+      if (solicit.userDto) {
+        return (
+          <div>
+            <FriendHero
+              user={solicit.userDto}
+              tags={solicit.tags}
+              handleFriendClick={handleFriendClick}
+            />
+          </div>
+        )
+      }
+    }
   }
 
   const renderFilters = () => {
@@ -191,6 +208,7 @@ const NavBar = ({ createPerview, filterPerviews, isFetching, currentUser, curren
           <div className="navbar__hero">
             {renderCreateSolicit()}
             {renderUserHero()}
+            {renderSolicitHero()}
           </div>
 
           <span className="navbar__title-text">

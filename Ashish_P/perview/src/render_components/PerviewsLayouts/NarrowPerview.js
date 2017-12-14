@@ -137,32 +137,41 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
 
   const renderFeed = () => {
     if (perviews) {
-      return perviews.map((perview, i) => {
-        const perviewObject = {
-          item:        perview.itemDto || {},
-          perviewUser: perview.userDto
-        };
+      if (perviews.length > 0) {
+        return perviews.map((perview, i) => {
+          const perviewObject = {
+            item:        perview.itemDto || {},
+            perviewUser: perview.userDto
+          };
 
-        return (
-          <div
-            key={`perviewindex__${i}`}
-            className="flexcolumn narrowperviews__box"
-          >
-            {renderPerviewOrSolicit(perview, perviewObject)}
-            {renderPeriviewCard(perview, perviewObject)}
+          return (
+            <div
+              key={`perviewindex__${i}`}
+              className="flexcolumn narrowperviews__box"
+            >
+              {renderPerviewOrSolicit(perview, perviewObject)}
+              {renderPeriviewCard(perview, perviewObject)}
 
-            <div className={perview.solicit ? 'narrowperviews__solicitsbackground' : ''}>
+              <div
+                className={perview.solicit ? 'narrowperviews__solicitsbackground' : ''}
+              />
             </div>
+          )
+        });
+      } else {
+        return (
+          <div>
+            Be the first of your friends to leave a perview!
           </div>
         )
-      });
-    } else {
-      return (
-        <div className="loading__spinner divwrapper-fullwidth">
-          <i className="fa fa-spinner fa-5x fa-pulse" aria-hidden="true"></i>
-        </div>
-      )
+      }
     }
+
+    return (
+      <div className="loading__spinner divwrapper-fullwidth">
+        <i className="fa fa-spinner fa-5x fa-pulse" aria-hidden="true"></i>
+      </div>
+    )
   }
 
   return (

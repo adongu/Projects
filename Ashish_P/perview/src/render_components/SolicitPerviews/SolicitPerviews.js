@@ -5,10 +5,7 @@ import NarrowPerviewContainer from '../../containers/NarrowPerviewContainer';
 
 class SolicitPerviews extends Component {
   componentDidMount() {
-    if (!this.props.perview) {
-      console.log('perview_id', Number(this.props.match.params.perview_id))
-      this.props.fetchSolicitPerviews(Number(this.props.match.params.perview_id));
-    }
+    this.props.fetchSolicitPerviews(Number(this.props.match.params.perview_id));
   }
 
   componentWillReceiveProps (nextProps) {
@@ -16,10 +13,6 @@ class SolicitPerviews extends Component {
       this.setState({
         requestLoading: nextProps.requestLoading
       })
-
-      // if(this.props.perviews !== nextProps.perviews) {
-      //   this.props.fetchMyPerviews(this.state.categoryId);
-      // }
     }
 
     if (nextProps.fetchingUpdate !== this.props.fetchingUpdate) {
@@ -33,12 +26,12 @@ class SolicitPerviews extends Component {
     }
   }
 
-
   render() {
     return (
       <div>
         <NavBarContainer
-          perview={this.props.perview}
+          history = {this.props.history}
+          solicit={this.props.perview}
         />
 
         <NarrowPerviewContainer

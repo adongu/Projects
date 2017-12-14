@@ -1,31 +1,31 @@
-import "../../styles/stylesheets/FriendPerviews/friendhero.css";
+import "../../styles/stylesheets/NavBar/friendhero.css";
 import React from 'react';
 import * as util from '../../actions/util_actions.js';
 
-const FriendHero = ({user}) => {
-
+const FriendHero = ({ user, tags, handleFriendClick }) => {
   return (
-    <div className="friendhero">
-      <div className="friendhero__photo">
-        <img
-          className="friendhero__img" src={util.generateUserImageUrl(user.facebookId, 'square')}
-          alt="User"
-        />
-      </div>
+    <div className="friendhero flexcolumn">
+      <p>See Friend's Suggestions for</p>
 
-      <div className="friendhero__info">
-        <span className="friendhero__name">
-          {user.fullName}
-        </span>
-        <span className="friendhero__perviews">
-          {user.numPerviews} Posts
-        </span>
-        <span className="friendhero__friends">
-          {user.numFriends} Friends
-        </span>
-        <span className="friendhero__firsts">
-          {user.numFirsts} Firsts
-        </span>
+      <div className="friendhero__info flexcolumn">
+        <div className="friendhero__user">
+          <img
+            onClick={handleFriendClick(user.id)}
+            className="friendhero__img" src={util.generateUserImageUrl(user.facebookId, 'square')}
+            alt="User"
+          />
+
+          <span
+            onClick={handleFriendClick(user.id)}
+            className="friendhero__name"
+          >
+            {user.fullName}
+          </span>
+        </div>
+
+        <div className="friendhero__tags">
+          {tags}
+        </div>
       </div>
 
     </div>

@@ -11,12 +11,13 @@
     margin: auto;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 980px;
   }
 
 // dashboard/hero wrapper
   &title {
-    width: 980px;
+    // width: 980px;
+    width: 100%;
     padding: 16px 0;
     font-size: 22px;
     justify-content: center;

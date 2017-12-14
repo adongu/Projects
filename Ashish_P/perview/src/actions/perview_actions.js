@@ -211,7 +211,6 @@ export const fetchSolicitPerviews = (solicitPerviewId) => dispatch => {
   dispatch(requestLoading());
   return APIUtil.fetchSolicitPerviews(solicitPerviewId)
     .then( response => {
-      console.log('fetchSolicitPerviews', response.data);
       return dispatch(receiveSolicitPerviews(response.data))
     })
     .catch( err => {
