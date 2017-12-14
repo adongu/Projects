@@ -43,6 +43,7 @@ class SolicitPerviews extends Component {
           unbookmarkPerview={this.props.unbookmarkPerview}
           likePerview={this.props.likePerview}
           unlikePerview={this.props.unlikePerview}
+          toRenderUserProfile={true}
         />
       </div>
     )
