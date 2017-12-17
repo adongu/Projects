@@ -39,7 +39,7 @@ class Auth extends Component {
       );
     }
 
-    // console.log('Auth - loggedin', this.props.previousPath);
+    console.log('Auth - loggedin', this.props.previousPath);
 
     return (
       <Redirect to={previousPath === '/home' ? "/" : previousPath}/>
