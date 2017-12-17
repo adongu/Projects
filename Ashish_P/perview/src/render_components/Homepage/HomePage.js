@@ -46,8 +46,8 @@ class HomePage extends React.Component {
       }
     }
 
-    if (nextProps.previousPath !== '/') {
-      this.props.history.replace({ pathname: nextProps.previousPath.replace('=/', '') });
+    if (nextProps.previousPath !== this.props.previousPath) {
+      nextProps.history.replace({ pathname: nextProps.previousPath.replace('=/', '') });
     }
   }
 
