@@ -45,6 +45,10 @@ class HomePage extends React.Component {
         this.props.fetchAllPerviews();
       }
     }
+
+    if (nextProps.previousPath !== '/') {
+      this.props.history.replace({ pathname: nextProps.previousPath.replace('=/', '') });
+    }
   }
 
   fetchFilteredPerviews (categoryId) {

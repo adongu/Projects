@@ -44,7 +44,6 @@ const sessionReducer = (oldState = _nullSession, action) => {
       if (!oldState.currentUser && !getCookie('perviewRedirectUrl')) {
         setCookie('perviewRedirectUrl', action.previousPath, 0.15)
         console.log('Storage is defined', getCookie('perviewRedirectUrl'));
-        debugger
       }
 
       const perviewRedirectUrl = getCookie('perviewRedirectUrl');

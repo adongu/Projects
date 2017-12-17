@@ -9,6 +9,7 @@ const mapStateToProps = ({ session, perview, findItem, social }, ownProps) => {
   return {
     isFetching: session.isFetching,
     currentUser: session.currentUser,
+    previousPath: session.previousPath,
     requestLoading: perview.requestLoading,
     allPerviews: perview.allPerviews.perviews,
     results: findItem.itemResults,
