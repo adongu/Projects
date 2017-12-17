@@ -43,33 +43,14 @@ const sessionReducer = (oldState = _nullSession, action) => {
 
       if (!oldState.currentUser && !getCookie('perviewRedirectUrl')) {
         setCookie('perviewRedirectUrl', action.previousPath, 0.15)
-        console.log('Storage is defined', getCookie('perviewRedirectUrl'));
       }
 
       const perviewRedirectUrl = getCookie('perviewRedirectUrl');
 
       if (oldState.currentUser && perviewRedirectUrl) {
-        console.log('hits oldState.currentUser && perviewRedirectUrl', getCookie('perviewRedirectUrl'));
           previousPath = perviewRedirectUrl;
           document.cookie = "perviewRedirectUrl=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
       };
-      console.log('previousPath', previousPath);
-
-      // if (!redirectProtectedPath && !oldState.currentUser) {
-      //   previousPath = action.previousPath;
-      //   redirectProtectedPath = action.previousPath;
-      // }
-      // console.log('redirectProtectedPath =', redirectProtectedPath);
-      // if (oldState.currentUser) {
-      //   if (redirectProtectedPath) {
-      //     previousPath = redirectProtectedPath;
-      //     // redirectProtectedPath = null;
-      //     console.log('hits redirectProtectedPath !== ``, previousPath =', previousPath);
-      //   } else {
-      //     previousPath = action.previousPath;
-      //     console.log('hits else, previousPath =', previousPath);
-      //   }
-      // }
 
       return {
         ...oldState,
