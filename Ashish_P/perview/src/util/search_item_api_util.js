@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const fetchItemResults = (keywords) => {
-  return axios('/api/amazon/item', {
+  return axios('/api/walmart/item', {
     params: {
       keywords: keywords
     }
