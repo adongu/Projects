@@ -1,5 +1,5 @@
 import { merge } from 'lodash';
-import { REQUEST_ITEM_RESULTS, RECEIVE_ITEM_RESULTS, RECEIVE_ERRORS, CLEAR_ERRORS } from '../actions/search_item_actions';
+import { REQUEST_ITEM_RESULTS, RECEIVE_ITEM_RESULTS, RECEIVE_METADATA_RESULTS, RECEIVE_ERRORS, CLEAR_ERRORS } from '../actions/search_item_actions';
 
 const _nullSearchItem = Object.freeze({
   isFetching: false,
@@ -17,6 +17,12 @@ const searchItemReducer = (oldState = _nullSearchItem, action) => {
     case RECEIVE_ITEM_RESULTS:
       return Object.assign({}, oldState, {
         itemResults: action.results,
+        isFetching: false,
+        errors: []
+      });
+    case RECEIVE_METADATA_RESULTS:
+      return Object.assign({}, oldState, {
+        itemResults: [action.results, ...oldState.itemResults],
         isFetching: false,
         errors: []
       });

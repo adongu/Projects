@@ -2,6 +2,7 @@ import * as APIUtil from '../util/search_item_api_util';
 
 export const REQUEST_ITEM_RESULTS = 'REQUEST_ITEM_RESULTS';
 export const RECEIVE_ITEM_RESULTS = 'RECEIVE_ITEM_RESULTS';
+export const RECEIVE_METADATA_RESULTS = 'RECEIVE_METADATA_RESULTS';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
@@ -13,6 +14,11 @@ const receiveItemResults = (results) => ({
   type: RECEIVE_ITEM_RESULTS,
   results
 });
+
+const receiveMetaDataResults = (results) => ({
+  type: RECEIVE_METADATA_RESULTS,
+  results
+})
 
 const receiveErrors = (errors) => ({
   type: RECEIVE_ERRORS,
@@ -34,8 +40,17 @@ export const fetchItemResults = (searchQuery) => dispatch => {
     err => {
       return dispatch(receiveErrors(err.responseJSON))
     })
+
     .then(() => {
-      APIUtil.fetchMetaData(url)
+      dispatch(requestResults());
+
+      return APIUtil.fetchMetaData(url)
+      .then((response) => {
+        return dispatch(receiveMetaDataResults(response.data))
+      },
+      err => {
+        return dispatch(receiveErrors(err.responseJSON))
+      })
     },
     err => {
       return dispatch(receiveErrors(err.responseJSON))

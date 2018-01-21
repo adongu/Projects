@@ -117,20 +117,40 @@ class SearchItemBar extends React.Component {
   };
   // Use your imagination to render suggestions.
   renderSuggestion(suggestion){
-    let imgUrl = suggestion.imageUrls.large.url;
-    let price = suggestion.listPrice.formattedAmount;
+    // default walmart result rendering
+    let imgUrl = '';
+    let price = '';
 
-    return (
-      <div className="flexrow autosuggest__productcontainer">
-        <div className="autosuggest__product-left">
-          <img className="autosuggest__img" src={imgUrl} alt="product"/>
+    if (suggestion.imageUrls && suggestion.listPrice) {
+      imgUrl = suggestion.imageUrls.large.url;
+      price = suggestion.listPrice.formattedAmount;
+
+      return (
+        <div className="flexrow autosuggest__productcontainer">
+          <div className="autosuggest__product-left">
+            <img className="autosuggest__img" src={imgUrl} alt="product"/>
+          </div>
+          <div className="flexcolumn autosuggest__product-right">
+            <div className="autosuggest__name">{suggestion.title}</div>
+            <div className="autosuggest__price">{price}</div>
+          </div>
         </div>
-        <div className="flexcolumn autosuggest__product-right">
-          <div className="autosuggest__name">{suggestion.title}</div>
-          <div className="autosuggest__price">{price}</div>
+      );
+    } else {
+      // OG or MetaData Rendering
+
+      return (
+        <div className="flexrow autosuggest__productcontainer">
+          <div className="autosuggest__product-left">
+            <img className="autosuggest__img" src={imgUrl} alt="product"/>
+          </div>
+          <div className="flexcolumn autosuggest__product-right">
+            <div className="autosuggest__name">{suggestion.title}</div>
+            <div className="autosuggest__price">{price}</div>
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 
   render() {
