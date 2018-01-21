@@ -79,6 +79,7 @@ $headernavwidth: 195px;
     justify-content: center;
     align-items: center;
     transition: all ease 0.01s;
+    user-select: none;
   }
 
   &navicon {
