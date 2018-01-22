@@ -256,8 +256,6 @@ class CreatePerviewModal extends React.Component {
             Create Perview
           </div>
 
-
-
           <div className="flexcolumn createperview__search-container">
             { this.showRecommendationMessage() }
             <div className="createperview__search-background">

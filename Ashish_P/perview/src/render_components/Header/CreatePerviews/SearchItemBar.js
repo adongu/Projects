@@ -136,17 +136,21 @@ class SearchItemBar extends React.Component {
           </div>
         </div>
       );
-    } else {
+    } else if (suggestion.hybridGraph.title) {
       // OG or MetaData Rendering
-
       return (
         <div className="flexrow autosuggest__productcontainer">
           <div className="autosuggest__product-left">
-            <img className="autosuggest__img" src={imgUrl} alt="product"/>
+            {suggestion.openGraph.imgUrl ||
+              <img
+                className="autosuggest__img"
+                src={suggestion.openGraph.imgUrl}
+                alt="product"
+              />
+            }
           </div>
           <div className="flexcolumn autosuggest__product-right">
-            <div className="autosuggest__name">{suggestion.title}</div>
-            <div className="autosuggest__price">{price}</div>
+            <div className="autosuggest__name">{suggestion.hybridGraph.title}</div>
           </div>
         </div>
       );
