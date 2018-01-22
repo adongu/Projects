@@ -2,9 +2,9 @@ import "../../../styles/stylesheets/itemperviewlayout.css"
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import PerviewCard from '../PerviewCard/PerviewCard.js';
-import {
-  renderMoreInfoPopover
-} from '../../SharedComponents/PricePopOver';
+// import {
+//   renderMoreInfoPopover
+// } from '../../SharedComponents/PricePopOver';
 
 const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, history, toRenderUserProfile }) => {
   const renderItemSection = () => {
@@ -21,8 +21,8 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmar
             <div className="flexcolumn itemperview__iteminfobox">
               <div className="itemperview__itemname">{item.data.title}</div>
               <div className="flexcolumn itemperview__itemprice">
-                {`Amazon.com Price: ${item.data.listPrice.formattedAmount}`}
-                {renderMoreInfoPopover()}
+                {`${item.data.listPrice.formattedAmount}`}
+                {/* {renderMoreInfoPopover()} */}
               </div>
 
               <div className="itemperview__itembuy">

@@ -3,9 +3,9 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import moment from 'moment';
 import PerviewCard from './PerviewCard/PerviewCard.js';
-import {
-  renderMoreInfoPopover
-} from '../SharedComponents/PricePopOver';
+// import {
+//   renderMoreInfoPopover
+// } from '../SharedComponents/PricePopOver';
 import * as util from '../../actions/util_actions.js';
 
 const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, showLoginModal, history, toRenderUserProfile }) => {
@@ -67,14 +67,14 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
           </Link>
 
           <div className="flexrow narrowperviews__buybox">
-            <span>{`Amazon Price: ${item.data.listPrice.formattedAmount}`}</span>
+            <span>{`${item.data.listPrice.formattedAmount}`}</span>
 
             <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">
               Buy
             </a>
           </div>
 
-          {renderMoreInfoPopover(latestUpdatedTime)}
+          {/* {renderMoreInfoPopover(latestUpdatedTime)} */}
         </div>
       )
     } else {

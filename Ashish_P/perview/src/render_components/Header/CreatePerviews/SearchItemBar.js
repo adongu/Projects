@@ -58,7 +58,9 @@ class SearchItemBar extends React.Component {
       isFetching: true
     });
 
-    this.fetchResults(newValue);
+    if (newValue.length > 0) {
+      this.fetchResults(newValue);
+    }
   };
 
   // Autosuggest will call this function every time you need to update suggestions.
@@ -83,6 +85,7 @@ class SearchItemBar extends React.Component {
     this.setState({
       keywords: e.target.value
     });
+
     return (
       <div className="search__suggestions">
         { this.renderSuggestion }

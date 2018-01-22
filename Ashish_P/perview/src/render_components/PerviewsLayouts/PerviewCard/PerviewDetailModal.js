@@ -3,9 +3,9 @@ import React from 'react';
 import { Modal, ButtonToolbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import PerviewComments from './PerviewComments';
-import {
-  renderMoreInfoPopover
-} from '../../SharedComponents/PricePopOver';
+// import {
+//   renderMoreInfoPopover
+// } from '../../SharedComponents/PricePopOver';
 import * as util from '../../../actions/util_actions';
 
 class PerviewDetailModal extends React.Component {
@@ -111,8 +111,8 @@ class PerviewDetailModal extends React.Component {
 
             <div className="flexrow narrowperviews__buybox">
               <div className='perviewdetailmodal__pricebox'>
-                {`Amazon.com Price: ${item.data.listPrice.formattedAmount}`}
-                {renderMoreInfoPopover()}
+                {`${item.data.listPrice.formattedAmount}`}
+                {/* {renderMoreInfoPopover()} */}
               </div>
 
               <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">
