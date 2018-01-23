@@ -116,7 +116,7 @@ class PerviewDetailModal extends React.Component {
               </div>
 
               <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">
-                Buy
+                Buy {!!(item.siteName) ? "on " + item.siteName : ""}
               </a>
             </div>
           </div>

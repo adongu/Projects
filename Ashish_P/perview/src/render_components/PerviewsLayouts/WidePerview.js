@@ -47,7 +47,9 @@ const WidePerview = ({ fetchingUpdate, currentUserId, perviews, bookmarkPerview,
                   {item.data.listPrice.formattedAmount}
                 </div>
               </div>
-                <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">Buy on Amazon</a>
+                <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">
+                Buy {!!(item.siteName) ? "on " + item.siteName : ""}
+                </a>
             </div>
           </div>
 

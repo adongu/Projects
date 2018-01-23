@@ -70,7 +70,7 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
             <span>{`${item.data.listPrice.formattedAmount}`}</span>
 
             <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">
-              Buy
+              Buy {!!(item.siteName) ? "on " + item.siteName : ""}
             </a>
           </div>
 
