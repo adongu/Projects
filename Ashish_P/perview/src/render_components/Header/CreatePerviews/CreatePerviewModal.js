@@ -117,13 +117,21 @@ class CreatePerviewModal extends React.Component {
     this.props.createItem(item)
     .then((result) => {
       let item = this.props.selectedItem;
-      this.setState({
-        imgUrl: item.data.imageUrls.large.url,
-        name: item.data.title,
-        price: item.data.listPrice.formattedAmount,
-        itemId: item.id,
-        chosen: true
-      })
+      if (item.data) {
+        this.setState({
+          imgUrl: item.data.imageUrls.large.url,
+          name: item.data.title,
+          price: item.data.listPrice.formattedAmount,
+          itemId: item.id,
+          chosen: true
+        })
+      } else {
+        this.setState({
+          imgUrl: item.openGraph.imgUrl ? item.openGraph.imgUrl : '',
+          name: item.hybridGraph.title ? item.hybridGraph.title : '',
+          chosen: true
+        })
+      }
     })
   }
 
@@ -137,7 +145,9 @@ class CreatePerviewModal extends React.Component {
       let submitPerviewObject = {};
 
       let formData = new FormData();
-      formData.append("itemId", this.state.itemId);
+      if (this.state.itemId) {
+        formData.append("itemId", this.state.itemId);
+      }
       formData.append("tags", this.state.tags);
       formData.append("rating", this.state.rating);
 
@@ -171,7 +181,7 @@ class CreatePerviewModal extends React.Component {
   }
 
   showReviewBox() {
-    if(this.state.chosen) {
+    if(this.state.chosen && this.state.title.length > 0) {
       return (
         <div className="flexcolumn createperview__product-container">
           <div className="flexrow createperview__product">
@@ -181,11 +191,11 @@ class CreatePerviewModal extends React.Component {
             <div className="createperview__product-right">
               <div className="flextcolumn createperview__product-info">
                 <div className="createperview__product-title">
-                  {this.state.name}
+                  {this.state.name ? this.state.name || ''}
                 </div>
                 <div className="flexcolumn createperview__product-details">
                   <div className="createperview__product-price">
-                    {this.state.price}
+                    {this.state.price ? this.state.price || ''}
                   </div>
 
                   {renderMoreInfoPopover()}

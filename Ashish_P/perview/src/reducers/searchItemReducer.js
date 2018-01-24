@@ -4,7 +4,6 @@ import { REQUEST_ITEM_RESULTS, RECEIVE_ITEM_RESULTS, RECEIVE_METADATA_RESULTS, R
 const _nullSearchItem = Object.freeze({
   isFetching: false,
   itemResults: [],
-  metadataResult: {},
   errors: []
 })
 

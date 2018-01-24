@@ -34,9 +34,9 @@ export const fetchItemResults = (searchQuery) => dispatch => {
   dispatch(requestResults());
   const {url, keywords} = keywordsURISeperator(searchQuery)
 
-  // if (url.length > 0) {
-  //   dispatch(fetchMetadata(url));
-  // }
+  if (url && url.length > 0) {
+    dispatch(fetchMetadata(url));
+  }
 
   return APIUtil.fetchItemResults(keywords)
     .then( response => {
@@ -50,7 +50,7 @@ export const fetchItemResults = (searchQuery) => dispatch => {
 export const fetchMetadata = (url) => dispatch => {
   dispatch(requestResults());
 
-  return APIUtil.fetchMetaData(url)
+  APIUtil.fetchMetaData(url)
     .then( response => {
       return dispatch(receiveMetaDataResults(response.data));
     },
