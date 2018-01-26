@@ -26,7 +26,9 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmar
               </div>
 
               <div className="itemperview__itembuy">
-                <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">Buy</a>
+                <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">
+                  Buy {!!(item.siteName) ? "on " + item.siteName : ""}
+                </a>
               </div>
             </div>
           </div>
