@@ -124,6 +124,7 @@ class SearchItemBar extends React.Component {
     if (suggestion.imageUrls && suggestion.listPrice) {
       imgUrl = suggestion.imageUrls.large.url;
       price = suggestion.listPrice.formattedAmount;
+      console.log("searchitembar item suggestion", suggestion)
 
       return (
         <div className="flexrow autosuggest__productcontainer">
@@ -136,21 +137,22 @@ class SearchItemBar extends React.Component {
           </div>
         </div>
       );
-    } else if (suggestion.hybridGraph.title) {
+    } else if (!suggestion.error && suggestion.hybridGraph.title) {
       // OG or MetaData Rendering
       return (
         <div className="flexrow autosuggest__productcontainer">
           <div className="autosuggest__product-left">
-            {suggestion.openGraph.imgUrl ||
+            {suggestion.hybridGraph.image ?
               <img
                 className="autosuggest__img"
-                src={suggestion.openGraph.imgUrl}
+                src={suggestion.hybridGraph.image}
                 alt="product"
               />
-            }
+            : ''}
           </div>
           <div className="flexcolumn autosuggest__product-right">
             <div className="autosuggest__name">{suggestion.hybridGraph.title}</div>
+            <div className="autosuggest__desciption">{suggestion.hybridGraph.title}</div>
           </div>
         </div>
       );

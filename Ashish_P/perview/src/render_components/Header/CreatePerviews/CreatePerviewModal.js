@@ -191,11 +191,11 @@ class CreatePerviewModal extends React.Component {
             <div className="createperview__product-right">
               <div className="flextcolumn createperview__product-info">
                 <div className="createperview__product-title">
-                  {this.state.name ? this.state.name || ''}
+                  {this.state.name ? this.state.name : ''}
                 </div>
                 <div className="flexcolumn createperview__product-details">
                   <div className="createperview__product-price">
-                    {this.state.price ? this.state.price || ''}
+                    {this.state.price ? this.state.price : ''}
                   </div>
 
                   {renderMoreInfoPopover()}
