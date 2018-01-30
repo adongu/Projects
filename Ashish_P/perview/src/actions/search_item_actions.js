@@ -49,6 +49,13 @@ export const fetchItemResults = (searchQuery) => dispatch => {
 
 export const fetchMetadata = (url) => dispatch => {
   dispatch(requestResults());
+  // 
+  // ReactGA.event({
+  //   category: 'Social',
+  //   action: 'SearchItem',
+  //   label: 'MetaData',
+  //   value: url,
+  // });
 
   APIUtil.fetchMetaData(url)
     .then( response => {
