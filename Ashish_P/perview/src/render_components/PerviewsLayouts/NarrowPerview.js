@@ -3,6 +3,8 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import moment from 'moment';
 import PerviewCard from './PerviewCard/PerviewCard.js';
+import { Grid, Row, Col } from 'react-bootstrap';
+
 // import {
 //   renderMoreInfoPopover
 // } from '../SharedComponents/PricePopOver';
@@ -145,9 +147,12 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
           };
 
           return (
-            <div
+            <Col
               key={`perviewindex__${i}`}
               className="flexcolumn narrowperviews__box"
+              xs={12}
+              sm={6}
+              md={4}
             >
               {renderPerviewOrSolicit(perview, perviewObject)}
               {renderPeriviewCard(perview, perviewObject)}
@@ -155,7 +160,7 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
               <div
                 className={perview.solicit ? 'narrowperviews__solicitsbackground' : ''}
               />
-            </div>
+            </Col>
           )
         });
       } else {
@@ -168,16 +173,18 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
     }
 
     return (
-      <div className="loading__spinner divwrapper-fullwidth">
+      <Col className="loading__spinner divwrapper-fullwidth">
         <i className="fa fa-spinner fa-5x fa-pulse" aria-hidden="true"></i>
-      </div>
+      </Col>
     )
   }
 
   return (
-    <div className="narrowperviews__container">
-      { renderFeed() }
-    </div>
+    <Grid className="narrowperviews__container">
+      <Row>
+        {renderFeed()}
+      </Row>
+    </Grid>
   )
 }
 

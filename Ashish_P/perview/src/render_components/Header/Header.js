@@ -6,6 +6,7 @@ import CreatePerviewModalContainer from '../../containers/CreatePerviewModalCont
 import SignInModalContainer from '../../containers/SignInModalContainer';
 import UserNavContainer from '../../containers/UserNavContainer';
 import * as util from '../../actions/util_actions';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 class Header extends React.Component {
   constructor(props) {
@@ -154,22 +155,24 @@ class Header extends React.Component {
 
   render() {
     return (
-      <div className = {`header__container ${this.state ? this.state.scrolled : '' }`}>
-        <div className = "flexrow header__box">
-          <div className="header__logo">
+      <div>
+      <Grid className = {`header__container ${this.state ? this.state.scrolled : '' }`}>
+        <Row className="flexrow header__box">
+          <Col className="header__logo" xs={4} md={2}>
             <Link to="/">
               <img className="header__logoimg" width="40px" src="https://s3.amazonaws.com/perviewimages/logo.png" alt="Header logo"/>
             </Link>
-          </div>
+          </Col>
 
-          <div className="header__authnav">
+          <Col className="header__authnav" xsHidden mdHidden>
             {this.renderHeaderNav()}
-          </div>
+          </Col>
 
-          <div className="flexrow header__signin-container">
+          <Col className="flexrow header__signin-container" xs={4} md={2}>
             {this.renderSignInModal()}
-          </div>
-        </div>
+          </Col>
+        </Row>
+      </Grid>
       </div>
     )
   }
