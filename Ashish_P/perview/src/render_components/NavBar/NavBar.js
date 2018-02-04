@@ -5,6 +5,7 @@ import { Popover, OverlayTrigger } from 'react-bootstrap';
 import CreateSolicitForm from "./CreateSolicitForm.js";
 import * as util from '../../actions/util_actions.js';
 import FriendHero from './FriendHero';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 const NavBar = ({ createPerview, filterPerviews, isFetching, currentUser, currentUsersFriends, userFriend, history, categories, match, toShowUserDashBoard, requestLoading, solicit }) => {
 
@@ -156,7 +157,6 @@ const NavBar = ({ createPerview, filterPerviews, isFetching, currentUser, curren
 
   const renderSolicitHero = () => {
     if (match && match.path && pageSettings[match.path].userDashBoardType === 'solicit') {
-      console.log('hits solicit', solicit)
       if (solicit.userDto) {
         return (
           <div>
@@ -202,20 +202,29 @@ const NavBar = ({ createPerview, filterPerviews, isFetching, currentUser, curren
 
   return (
     <div className="navbar__container">
-      <div className="flexrow navbar__box">
-        <div className="flexcolumn navbar__title">
-          <div className="navbar__hero">
-            {renderCreateSolicit()}
-            {renderUserHero()}
-            {renderSolicitHero()}
-          </div>
+      <Grid>
+        <Row>
+          {/* <div className="flexrow navbar__box"> */}
+            <Col xsHidden sm={12} md={10}>
+              {/* <div className="flexcolumn navbar__title"> */}
+                <div className="navbar__hero">
+                  {renderCreateSolicit()}
+                  {renderUserHero()}
+                  {renderSolicitHero()}
+                </div>
 
-          <span className="navbar__title-text">
-            {(match && pageSettings[match.path]) ? pageSettings[match.path]["title"] : ""}
-          </span>
-        </div>
-        {renderFilters()}
-      </div>
+                <span className="navbar__title-text">
+                  {(match && pageSettings[match.path]) ? pageSettings[match.path]["title"] : ""}
+                </span>
+              {/* </div> */}
+            </Col>
+
+            <Col xsHidden smHiddne md={2}>
+              {renderFilters()}
+            </Col>
+          {/* </div> */}
+        </Row>
+      </Grid>
     </div>
   )
 }

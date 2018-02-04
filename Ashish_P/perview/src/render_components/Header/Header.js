@@ -116,6 +116,15 @@ class Header extends React.Component {
           history={this.props.history}
         />
       )
+    } else {
+      return (
+        <div className="header__usernavphoto">
+          <UserNavContainer
+            imgUrl={this.state.imgUrl}
+            logOut={this.props.logOut}
+          />
+        </div>
+      )
     }
   }
 
@@ -138,15 +147,6 @@ class Header extends React.Component {
           <div className="flexrow header__createperview-container">
             {this.renderCreateButton()}
           </div>
-
-          <div className="flexrow header__usernav">
-            <div className="header__usernavphoto">
-              <UserNavContainer
-                imgUrl={this.state.imgUrl}
-                logOut={this.props.logOut}
-              />
-            </div>
-          </div>
         </div>
 
       )
@@ -155,24 +155,39 @@ class Header extends React.Component {
 
   render() {
     return (
-      <div>
-      <Grid className = {`header__container ${this.state ? this.state.scrolled : '' }`}>
-        <Row className="flexrow header__box">
-          <Col className="header__logo" xs={4} md={2}>
-            <Link to="/">
-              <img className="header__logoimg" width="40px" src="https://s3.amazonaws.com/perviewimages/logo.png" alt="Header logo"/>
-            </Link>
-          </Col>
+      <div className = {`header__container ${this.state ? this.state.scrolled : '' }`}>
+        <Grid>
+          <Row className="flexrow header__box">
+            <Col
+              className="header__logo"
+              xs={6}
+              sm={6}
+              md={4}
+            >
+              <Link to="/">
+                <img className="header__logoimg" src="https://s3.amazonaws.com/perviewimages/logo.png" alt="Header logo"/>
+              </Link>
+            </Col>
 
-          <Col className="header__authnav" xsHidden mdHidden>
-            {this.renderHeaderNav()}
-          </Col>
+            <Col className="header__authnav"
+              xsHidden
+              smHidden
+              md={7}
+            >
+              {this.renderHeaderNav()}
+            </Col>
 
-          <Col className="flexrow header__signin-container" xs={4} md={2}>
-            {this.renderSignInModal()}
-          </Col>
-        </Row>
-      </Grid>
+            <Col
+              xs={6}
+              sm={6}
+              md={1}
+            >
+              <div className="flexrow header__signin-container">
+                {this.renderSignInModal()}
+              </div>
+            </Col>
+          </Row>
+        </Grid>
       </div>
     )
   }
