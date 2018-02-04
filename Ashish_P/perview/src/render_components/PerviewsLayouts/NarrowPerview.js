@@ -149,17 +149,18 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
           return (
             <Col
               key={`perviewindex__${i}`}
-              className="flexcolumn narrowperviews__box"
               xs={12}
               sm={6}
               md={4}
             >
-              {renderPerviewOrSolicit(perview, perviewObject)}
-              {renderPeriviewCard(perview, perviewObject)}
+              <div className="flexcolumn narrowperviews__box">
+                {renderPerviewOrSolicit(perview, perviewObject)}
+                {renderPeriviewCard(perview, perviewObject)}
 
-              <div
-                className={perview.solicit ? 'narrowperviews__solicitsbackground' : ''}
-              />
+                <div
+                  className={perview.solicit ? 'narrowperviews__solicitsbackground' : ''}
+                />
+              </div>
             </Col>
           )
         });
