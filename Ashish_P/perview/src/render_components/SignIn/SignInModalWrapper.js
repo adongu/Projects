@@ -1,7 +1,7 @@
 import '../../styles/stylesheets/signin.css';
 import '../../styles/assets/background.png';
 import React from 'react';
-import { ButtonToolbar, Modal } from 'react-bootstrap';
+import { ButtonToolbar, Modal, Grid, Row, Col } from 'react-bootstrap';
 import SignInContainer from '../../containers/SignInContainer.js';
 
 class SignInModalWrapper extends React.Component{
@@ -61,15 +61,19 @@ class SignInModalWrapper extends React.Component{
           onHide={this.hideModal}
           dialogClassName="signinmodal"
         >
-          <Modal.Header className="signinmodal__header" closeButton></Modal.Header>
+            <Modal.Body>
+              <div
+                className="signinmodal__header divwrapper-fullwidth"
+              >
+                <i onClick={this.hideModal} className="fa fa-times"></i>
+              </div>
 
-
-          <Modal.Body>
-            <div className="divwrapper-fullwidth">
-              <SignInContainer
-              />
-          </div>
-          </Modal.Body>
+              <div
+                className="divwrapper-fullwidth"
+              >
+                <SignInContainer />
+              </div>
+            </Modal.Body>
         </Modal>
       </ButtonToolbar>
     );

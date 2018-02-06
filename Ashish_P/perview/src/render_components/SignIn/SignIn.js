@@ -1,6 +1,5 @@
 import '../../styles/stylesheets/signin.css';
 import '../../styles/assets/background.png';
-
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
@@ -76,17 +75,14 @@ class SignIn extends React.Component {
                 </button>
 
                 <p className="signin__submit-msg">
-                  We don’t post anything to Facebook.
+                  We won't post anything on Facebook.
                 </p>
               </form>
             </div>
-
-            {/* <div className="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div> */}
           </div>
 
-          <div className="signin__terms">
+          <p className="signin__terms">
             By continuing, you indicate that you have read and agree Perview's
-
             <a
               href="https://s3.amazonaws.com/tosandpp/2017_9_7_Perview_Terms_of_Service.pdf"
               className="signin__terms-urls"
@@ -95,7 +91,7 @@ class SignIn extends React.Component {
             >
               Terms of Service
             </a>
-            and
+              <span>and</span>
             <a
               href="https://s3.amazonaws.com/tosandpp/2017_9_7_Perview_Privacy_Policy.pdf"
               className="signin__terms-urls"
@@ -104,8 +100,9 @@ class SignIn extends React.Component {
             >
               Privacy Policy
             </a>
-          </div>
+          </p>
         </div>
+        
         <div className="signin__background">
         </div>
       </div>

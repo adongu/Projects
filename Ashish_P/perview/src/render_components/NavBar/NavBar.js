@@ -219,7 +219,7 @@ const NavBar = ({ createPerview, filterPerviews, isFetching, currentUser, curren
               {/* </div> */}
             </Col>
 
-            <Col xsHidden smHiddne md={2}>
+            <Col xsHidden smHidden md={2}>
               {renderFilters()}
             </Col>
           {/* </div> */}
