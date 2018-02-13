@@ -10,7 +10,6 @@
     flex-direction: column;
     width: 100%;
     padding: 10px;
-
     -webkit-box-shadow: 1px 1px 1px #888;
     box-shadow: 1px 1px 1px #888;
     border: 1px #D6D6D6 solid;
@@ -23,7 +22,6 @@
     font-size: 18px;
     font-family: Roboto;
     width: 100%;
-    border-bottom: 1px solid #D6D6D6;
   }
 
   &input {
@@ -36,25 +34,20 @@
     padding: 5px 10px;
     // height: 60px;
     font-size: 14px;
-
     width: 100%;
+    border-top: 1px solid #D6D6D6;
+    border-bottom: 1px solid #D6D6D6;
   }
 
     &input::placeholder {
-      // word-wrap: break-word;
       color: #ccc;
-      // overflow: scroll;
-      // width: 100%;
-      // font-size: 14px;
-      // position: relative;
-      // top:-7px;
   }
 
 
   &submit {
     width: 100%;
-    // margin-top: 10px;
-    border-top: 1px solid #D6D6D6;
+    margin-top: 10px;
+    // border-top: 1px solid #D6D6D6;
   }
 
   &submit-btn {

@@ -1,6 +1,7 @@
 .navbar__ {
   &container {
     padding-top: 70px;
+    padding-bottom: 15px;
     width: 100%;
     margin: auto;
     display: flex;
@@ -25,13 +26,9 @@
     vertical-align: middle;
   }
 
-  &title-text {
-    margin-right: auto;
-    padding-top: 10px;
-  }
-
   &hero {
     width: 100%;
+    margin-bottom: 10px;
   }
 
 // dashboard

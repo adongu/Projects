@@ -26,12 +26,12 @@ $headernavwidth: 195px;
   &box {
     height: 60px;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: auto;
   }
 // nav for authenicated user
   &authnav {
-    width: $maxwidth - $logowidth;
+    // width: $maxwidth - $logowidth;
     display: flex;
     // flex-direction: row;
     // justify-content: flex-end;
@@ -43,6 +43,7 @@ $headernavwidth: 195px;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
   }
 
   /* logo */
