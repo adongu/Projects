@@ -193,15 +193,16 @@ $lines-to-show: 4;
       position: absolute;
       top: -50px;
       padding: 0 16px;
-      height: 45px;
+      height: 25px;
       transform: translateX(-31%);
-      background: blue;
+      background: #DAB559;
+      color: white;
       border-radius: 1em;
-      border: 1px solid red;
-      line-height: 0px;
+      // border: 1px solid red;
+      line-height: 8px;
 
       &:after, &:before {
-      	bottom: 100%;
+      	// bottom: 100%;
       	left: 0%;
         transform: translateX(-50%);
       	border: solid transparent;
@@ -214,15 +215,6 @@ $lines-to-show: 4;
 
       /* CSS Triangle*/
       &:after {
-      	// border-color: rgba(170, 181, 181, 0);
-      	// border-bottom-color: #fff;
-        // width: 0;
-        // height: 0;
-        // border-style: solid;
-        // border-width: 20px 20px 20px 20px;
-        // -webkit-filter: drop-shadow(0px -1px 0px rgba(0, 0, 0, 0.2));
-        // filter: drop-shadow(0px -1px 0px rgba(0, 0, 0, 0.2));
-
         content: '';
         position: absolute;
         left: 50%;
@@ -231,7 +223,7 @@ $lines-to-show: 4;
         height: 0;
         border-left: 10px solid transparent;
         border-right: 10px solid transparent;
-        border-top: 10px solid #e8e8e8;
+        border-top: 10px solid #DAB559;
         clear: both;
       }
     }
