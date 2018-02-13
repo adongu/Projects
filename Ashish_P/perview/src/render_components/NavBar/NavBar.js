@@ -213,7 +213,7 @@ const NavBar = ({ createPerview, filterPerviews, isFetching, currentUser, curren
                   {renderSolicitHero()}
                 </div>
 
-                <span className="navbar__title-text">
+                <span className="navbar__title">
                   {(match && pageSettings[match.path]) ? pageSettings[match.path]["title"] : ""}
                 </span>
               {/* </div> */}

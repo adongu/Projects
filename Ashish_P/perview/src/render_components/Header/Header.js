@@ -162,7 +162,7 @@ class Header extends React.Component {
               className="header__logo"
               xs={6}
               sm={6}
-              md={4}
+              md={2}
               // lg={4}
             >
               <Link to="/">
@@ -173,7 +173,7 @@ class Header extends React.Component {
             <Col className="header__authnav"
               xsHidden
               smHidden
-              // md={6}
+              md={9}
             >
               {this.renderHeaderNav()}
             </Col>

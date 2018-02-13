@@ -135,13 +135,13 @@ class CreateSolicitForm extends React.Component {
             onChange={this.updateInput("solicitTags")}
             value={this.state.solicitTags}
             className="solicithero__input"
-            placeholder="Select a tag from the suggestions below or enter your own"
+            placeholder="What items do you want recommendations for? e.g. birthday presents"
           >
           </textarea>
 
-          <div className="solicitsuggestion__container">
+          {/* <div className="solicitsuggestion__container">
             {this.renderSolicitTagSuggestionsBar()}
-          </div>
+          </div> */}
 
           <div className="solicithero__submit">
             <button
