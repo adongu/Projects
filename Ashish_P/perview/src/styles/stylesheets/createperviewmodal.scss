@@ -16,7 +16,6 @@ $lines-to-show: 4;
 
 .createperview__{
   &modal {
-    width: 850px;
   }
 
   &modalhead {
@@ -44,11 +43,11 @@ $lines-to-show: 4;
   }
 
   &title {
-    margin: 0 353px;
-    padding-bottom: 10px;
-    font-size: 18px;
+    margin: 0 auto;
     text-align: center;
-    font-weight: 500;
+    padding-bottom: 10px;
+    font: 500 20px 'Fira Sans', tohoma;
+    color: #DAB559;
   }
 
   &search-msg {
@@ -67,7 +66,7 @@ $lines-to-show: 4;
   }
 
   &search-box {
-    width: 65%;
+    width: 80%;
   }
 }
 
@@ -78,7 +77,7 @@ $lines-to-show: 4;
   &section,
   &product-container {
     width: 100%;
-    min-height: 501px;
+    // min-height: 501px;
   }
 
   &product {
@@ -186,14 +185,56 @@ $lines-to-show: 4;
 
   &ratingtipbox {
     display: none;
-    top: -50px;
     position: absolute;
-  }
+    top: -50px;
 
-  &ratingtipbox.active{
-    display: inline;
-    top: -50px;
-    position: absolute;
+    &.active{
+      display: inline;
+      position: absolute;
+      top: -50px;
+      padding: 0 16px;
+      height: 45px;
+      transform: translateX(-31%);
+      background: blue;
+      border-radius: 1em;
+      border: 1px solid red;
+      line-height: 0px;
+
+      &:after, &:before {
+      	bottom: 100%;
+      	left: 0%;
+        transform: translateX(-50%);
+      	border: solid transparent;
+      	content: " ";
+      	height: 0;
+      	width: 0;
+      	position: relative;
+      	pointer-events: none;
+      }
+
+      /* CSS Triangle*/
+      &:after {
+      	// border-color: rgba(170, 181, 181, 0);
+      	// border-bottom-color: #fff;
+        // width: 0;
+        // height: 0;
+        // border-style: solid;
+        // border-width: 20px 20px 20px 20px;
+        // -webkit-filter: drop-shadow(0px -1px 0px rgba(0, 0, 0, 0.2));
+        // filter: drop-shadow(0px -1px 0px rgba(0, 0, 0, 0.2));
+
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 100%;
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid #e8e8e8;
+        clear: both;
+      }
+    }
   }
 
   &review-stars {
