@@ -101,7 +101,7 @@ class CreatePerviewModal extends React.Component {
 
           <div className={`createperview__ratingtipbox ${this.state.ratingHover === ele ? 'active' : ''}`}>
             <div className="createperview__ratingtip">{this.state.ratingTip[ele]}</div>
-            <div className="createperview__ratingtipbox-triangle"></div>
+            {/* <div className={`createperview__ratingtipbox-triangle ${this.state.ratingHover === ele ? 'active' : ''}`}></div> */}
           </div>
 
           <i onMouseOver={()=>{ this.setState({ rating: ele, ratingHover: ele }) }}
