@@ -163,6 +163,7 @@ class Header extends React.Component {
               xs={6}
               sm={6}
               md={4}
+              // lg={4}
             >
               <Link to="/">
                 <img className="header__logoimg" src="https://s3.amazonaws.com/perviewimages/logo.png" alt="Header logo"/>
@@ -172,19 +173,18 @@ class Header extends React.Component {
             <Col className="header__authnav"
               xsHidden
               smHidden
-              md={7}
+              // md={6}
             >
               {this.renderHeaderNav()}
             </Col>
 
-            <Col
+            <Col className="header__signin"
               xs={6}
               sm={6}
               md={1}
+              // lg={1}
             >
-              <div className="flexrow header__signin-container">
-                {this.renderSignInModal()}
-              </div>
+              {this.renderSignInModal()}
             </Col>
           </Row>
         </Grid>
