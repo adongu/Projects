@@ -12,6 +12,7 @@
   background: #fff;
 
   &:after, &:before {
+    position: absolute;
   	bottom: 100%;
   	left: 50%;
     transform: translateX(-50%);
@@ -19,7 +20,6 @@
   	content: " ";
   	height: 0;
   	width: 0;
-  	position: relative;
   	pointer-events: none;
   }
 

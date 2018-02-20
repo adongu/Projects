@@ -80,15 +80,15 @@ class ItemPerviews extends React.Component {
 
   render() {
     return (
-    <div className="itemperview__container">
-      <NavBarContainer
-        filterPerviews = {this.fetchFilteredPerviews}
-      />
+      <div className="itemperview__container">
+        <NavBarContainer
+          filterPerviews = {this.fetchFilteredPerviews}
+        />
 
-      <div className="itemperview__perviews">
-        {this.renderComponents()}
+        <div className="itemperview__perviews">
+          {this.renderComponents()}
+        </div>
       </div>
-    </div>
     )
   }
 }

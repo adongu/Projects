@@ -1,7 +1,9 @@
-import "../../../styles/stylesheets/itemperviewlayout.css"
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import PerviewCard from '../PerviewCard/PerviewCard.js';
+import { Grid, Row, Col } from 'react-bootstrap';
+import "../../../styles/stylesheets/itemperviewlayout.css"
+
 // import {
 //   renderMoreInfoPopover
 // } from '../../SharedComponents/PricePopOver';
@@ -65,14 +67,19 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmar
   }
 
   return (
-    <div className="flexcolumn itemperview__layoutcontainer">
+    <Grid className="flexcolumn itemperview__layoutcontainer">
       {renderItemSection()}
-      <div className="itemperview__perviewcontainer">
-        <div className="itemperview__perviewcenterbox">
+      <Row className="itemperview__perviewcontainer">
+        <Col
+          xs={12}
+          sm={12}
+          md={12}
+          className="itemperview__perviewcenterbox"
+          >
           {renderPerviews()}
-        </div>
-      </div>
-    </div>
+        </Col>
+      </Row>
+    </Grid>
   )
 }
 
