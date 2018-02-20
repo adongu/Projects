@@ -154,9 +154,9 @@ $lines-to-show: 4;
   /* review section */
   &review-container {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     background: #F7F7F7;
-    padding: 20px 10% 15px 40px;
+    padding: 20px 0;
   }
 
   &review-box {
