@@ -6,6 +6,7 @@ import CreatePerviewModalContainer from '../../containers/CreatePerviewModalCont
 import SignInModalContainer from '../../containers/SignInModalContainer';
 import UserNavContainer from '../../containers/UserNavContainer';
 import * as util from '../../actions/util_actions';
+import { Grid, Row, Col, Navbar, NavItem, Nav, MenuItem } from 'react-bootstrap';
 
 class Header extends React.Component {
   constructor(props) {
@@ -88,14 +89,16 @@ class Header extends React.Component {
     ];
 
     return navOptions.map((option) => {
-    let currentPath = this.props.match.path;
-    let isActive = option.path === currentPath ? true : false;
+      let currentPath = this.props.match.path;
+      let isActive = option.path === currentPath ? true : false;
 
       return (
-        <Link to={option.path} className={`flexrow header__navbox ${isActive ? "active" : ""}`} key={`navoptions-${option.text}`}>
-          <i className={`fa fa-${option.icon} fa-lg header__navicon`} aria-hidden="true"></i>
-          <span className="header__navtext">{option.text}</span>
-        </Link>
+        <NavItem>
+          <Link to={option.path} className={`flexrow header__navbox ${isActive ? "active" : ""}`} key={`navoptions-${option.text}`}>
+            <i className={`fa fa-${option.icon} fa-lg header__navicon`} aria-hidden="true"></i>
+            <span className="header__navtext">{option.text}</span>
+          </Link>
+        </NavItem>
       )
     })
   }
@@ -121,22 +124,29 @@ class Header extends React.Component {
   renderHeaderNav () {
     if (this.props.currentUser) {
       return (
-        <div className="header__authnav-box divwrapper-fullwidth">
-          <div className="header__search">
+        <NavItem
+          // className="header__authnav-box"
+        >
+          <NavItem
+            className="header__search hidden-xs hidden-sm"
+          >
             <SearchPerviewBar
               selectItem={this.selectItem}
               results={this.props.perviewResults}
               fetchResults={this.props.fetchPerviewResults}
             />
-          </div>
+          </NavItem>
 
-          <div className="flexrow header__nav">
+          <NavItem
+            className="flexrow header__nav"
+          >
             {this.renderNavOptions()}
-          </div>
+          </NavItem>
 
-          <div className="flexrow header__createperview-container">
+          <NavItem
+            // className="flexrow header__createperview-container"
+          >
             {this.renderCreateButton()}
-          </div>
 
           <div className="flexrow header__usernav">
             <div className="header__usernavphoto">
@@ -146,31 +156,68 @@ class Header extends React.Component {
               />
             </div>
           </div>
-        </div>
-
+        </NavItem>
+      </NavItem>
       )
     }
   }
 
   render() {
     return (
-      <div className = {`header__container ${this.state ? this.state.scrolled : '' }`}>
-        <div className = "flexrow header__box">
-          <div className="header__logo">
-            <Link to="/">
-              <img className="header__logoimg" width="40px" src="https://s3.amazonaws.com/perviewimages/logo.png" alt="Header logo"/>
-            </Link>
-          </div>
+        <Navbar collapseOnSelect className = {`header__container ${this.state ? this.state.scrolled : '' }`}>
+          <Navbar.Header
+            // className="flexrow header__box"
+            >
+            <Navbar.Brand
+              className="header__logo"
+            >
+              <Link to="/">
+                <img className="header__logoimg" src="https://s3.amazonaws.com/perviewimages/logo.png" alt="Header logo"/>
+              </Link>
+            </Navbar.Brand>
+            <Navbar.Toggle />
+          </Navbar.Header>
 
-          <div className="header__authnav">
-            {this.renderHeaderNav()}
-          </div>
+          <Navbar.Collapse>
 
-          <div className="flexrow header__signin-container">
-            {this.renderSignInModal()}
-          </div>
-        </div>
-      </div>
+            {/* <Nav> */}
+              {this.renderHeaderNav()}
+            {/* </Nav> */}
+
+          </Navbar.Collapse>
+
+          <Navbar.Collapse>
+            {/* <Nav
+              className="header__authnav"
+              // xsHidden
+              // smHidden
+              // md={9}
+            > */}
+            <Nav>
+
+              <NavItem
+                className="header__signin"
+                // xs={6}
+                // sm={6}
+                // md={1}
+              >
+                {this.renderSignInModal()}
+              </NavItem>
+            </Nav>
+          </Navbar.Collapse>
+
+          {this.props.currentUser &&
+            <div
+              className="hidden-md hidden-lg"
+            >
+              <SearchPerviewBar
+                selectItem={this.selectItem}
+                results={this.props.perviewResults}
+                fetchResults={this.props.fetchPerviewResults}
+              />
+            </div>
+          }
+      </Navbar>
     )
   }
 }
