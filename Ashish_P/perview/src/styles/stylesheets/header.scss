@@ -10,7 +10,7 @@ $headernavwidth: 195px;
     background: white;
     z-index: 10;
     // display: flex;
-    // justify-content: center;
+    // justify-content: space-between;
     // align-items: center;
 
     /* scrolling shadow */
@@ -104,10 +104,13 @@ $headernavwidth: 195px;
 
 // Search Bar
   &search {
-    display: flex;
-    justify-content: center;
-    width: 50%;
-    padding: 0 8px;
+    // width: auto;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // width: 50%;
+    // padding: 0 8px;
+    // position: absolute;
   }
 
   &usernav {

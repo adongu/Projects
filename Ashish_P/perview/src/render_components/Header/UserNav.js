@@ -31,7 +31,8 @@ class UserNav extends React.PureComponent {
   render () {
     return (
       <ButtonToolbar>
-        <DropdownButton bsStyle="default"
+        <DropdownButton
+          bsStyle="default"
           title={
             <div className="usernav__imgbox">
               <img src={this.props.imgUrl} className="usernav__img" alt="User Icon"/>
@@ -50,7 +51,6 @@ class UserNav extends React.PureComponent {
               <span className="usernav__option-text">Sign Out</span>
             </div>
           </MenuItem>
-
         </DropdownButton>
       </ButtonToolbar>
     );

@@ -6,7 +6,7 @@ import CreatePerviewModalContainer from '../../containers/CreatePerviewModalCont
 import SignInModalContainer from '../../containers/SignInModalContainer';
 import UserNavContainer from '../../containers/UserNavContainer';
 import * as util from '../../actions/util_actions';
-import { Grid, Row, Col, Navbar, NavItem, Nav, MenuItem } from 'react-bootstrap';
+import { Grid, Row, Col, FormGroup, Navbar, NavItem, Nav, MenuItem } from 'react-bootstrap';
 
 class Header extends React.Component {
   constructor(props) {
@@ -94,7 +94,9 @@ class Header extends React.Component {
 
       return (
         <NavItem>
-          <Link to={option.path} className={`flexrow header__navbox ${isActive ? "active" : ""}`} key={`navoptions-${option.text}`}>
+          <Link to={option.path}
+            // className={`flexrow header__navbox ${isActive ? "active" : ""}`}
+            key={`navoptions-${option.text}`}>
             <i className={`fa fa-${option.icon} fa-lg header__navicon`} aria-hidden="true"></i>
             <span className="header__navtext">{option.text}</span>
           </Link>
@@ -120,7 +122,10 @@ class Header extends React.Component {
       )
     } else {
       return (
-        <div className="header__usernavphoto">
+        <div
+          onClick={(e) => e.stopPropagation()}
+          // className="header__usernavphoto"
+        >
           <UserNavContainer
             imgUrl={this.state.imgUrl}
             logOut={this.props.logOut}
@@ -131,40 +136,41 @@ class Header extends React.Component {
   }
 
   renderHeaderNav () {
-    if (this.props.currentUser) {
-      return (
-        <Nav
-          // className="header__authnav-box"
+    return (
+      <Nav
+        // className="header__authnav-box"
+      >
+        <NavItem
+          onClick={(e) => e.stopPropagation()}
+          className="header__search"
         >
-          <NavItem
-            className="header__search hidden-xs hidden-sm"
-          >
-            <SearchPerviewBar
-              selectItem={this.selectItem}
-              results={this.props.perviewResults}
-              fetchResults={this.props.fetchPerviewResults}
-            />
-          </NavItem>
+          <SearchPerviewBar
+            selectItem={this.selectItem}
+            results={this.props.perviewResults}
+            fetchResults={this.props.fetchPerviewResults}
+          />
+        </NavItem>
 
-          <NavItem
-            className="flexrow header__nav"
-          >
-            {this.renderNavOptions()}
-          </NavItem>
+        <NavItem
+          // className="flexrow header__nav"
+        >
+          {this.renderNavOptions()}
+        </NavItem>
 
-          <NavItem
-            // className="flexrow header__createperview-container"
-          >
-            {this.renderCreateButton()}
-          </NavItem>
-        </Nav>
-      )
-    }
+        <NavItem
+          // className="flexrow header__createperview-container"
+        >
+          {this.renderCreateButton()}
+        </NavItem>
+      </Nav>
+    )
   }
 
   render() {
     return (
-        <Navbar collapseOnSelect className = {`header__container ${this.state ? this.state.scrolled : '' }`}>
+        <Navbar collapseOnSelect
+          // className={`header__container ${this.state ? this.state.scrolled : '' }`}
+          >
           <Navbar.Header
             // className="flexrow header__box"
             >
@@ -172,52 +178,54 @@ class Header extends React.Component {
               className="header__logo"
             >
               <Link to="/">
-                <img className="header__logoimg" src="https://s3.amazonaws.com/perviewimages/logo.png" alt="Header logo"/>
+                <img
+                  className="header__logoimg"
+                  src="https://s3.amazonaws.com/perviewimages/logo.png"
+                alt="Header logo"/>
               </Link>
             </Navbar.Brand>
-            <Navbar.Toggle />
+            {this.props.currentUser &&
+              <Navbar.Toggle />
+            }
           </Navbar.Header>
 
           <Navbar.Collapse>
+            <Nav
+              // className="header__authnav-box"
+            >
+              {/* <NavItem
+                  className="header__authnav-box"
+                > */}
+                  <NavItem
+                    onClick={(e) => e.stopPropagation()}
+                    // className="header__search"
+                  >
+                    <SearchPerviewBar
+                      selectItem={this.selectItem}
+                      results={this.props.perviewResults}
+                      fetchResults={this.props.fetchPerviewResults}
+                    />
+                  </NavItem>
 
-            {/* <Nav> */}
-              {this.renderHeaderNav()}
-            {/* </Nav> */}
+                  <NavItem
+                    // className="flexrow header__nav"
+                  >
+                    {this.renderNavOptions()}
+                  </NavItem>
 
-          </Navbar.Collapse>
+                  <NavItem
+                    // className="flexrow header__createperview-container"
+                  >
+                    {this.renderCreateButton()}
+                  </NavItem>
+                {/* </NavItem> */}
 
-          <Navbar.Collapse>
-            {/* <Nav
-              className="header__authnav"
-              // xsHidden
-              // smHidden
-              // md={9}
-            > */}
-            <Nav>
-
-              <NavItem
-                className="header__signin"
-                // xs={6}
-                // sm={6}
-                // md={1}
-              >
+              <NavItem>
                 {this.renderSignInModal()}
               </NavItem>
-            </Nav>
-          </Navbar.Collapse>
-
-          {this.props.currentUser &&
-            <div
-              className="hidden-md hidden-lg"
-            >
-              <SearchPerviewBar
-                selectItem={this.selectItem}
-                results={this.props.perviewResults}
-                fetchResults={this.props.fetchPerviewResults}
-              />
-            </div>
-          }
-        </Navbar>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
     )
   }
 }
