@@ -123,7 +123,7 @@ class Header extends React.Component {
     }
 
     return (
-      <div
+      <li
         onClick={(e) => e.stopPropagation()}
         // className="header__usernavphoto"
       >
@@ -131,7 +131,7 @@ class Header extends React.Component {
           imgUrl={this.state.imgUrl}
           logOut={this.props.logOut}
         />
-      </div>
+      </li>
     )
   }
 
@@ -188,11 +188,11 @@ class Header extends React.Component {
           {this.props.currentUser ?
             (<Navbar.Toggle />)
           :(
-            <div className="header__authnav">
+            <li className="header__authnav">
               <SignInModalContainer
                 history={this.props.history}
               />
-            </div>
+            </li>
           )}
         </Navbar.Header>
         <Navbar.Collapse>
