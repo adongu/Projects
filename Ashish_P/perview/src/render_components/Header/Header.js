@@ -120,19 +120,19 @@ class Header extends React.Component {
           history={this.props.history}
         />
       )
-    } else {
-      return (
-        <div
-          onClick={(e) => e.stopPropagation()}
-          // className="header__usernavphoto"
-        >
-          <UserNavContainer
-            imgUrl={this.state.imgUrl}
-            logOut={this.props.logOut}
-          />
-        </div>
-      )
     }
+
+    return (
+      <div
+        onClick={(e) => e.stopPropagation()}
+        // className="header__usernavphoto"
+      >
+        <UserNavContainer
+          imgUrl={this.state.imgUrl}
+          logOut={this.props.logOut}
+        />
+      </div>
+    )
   }
 
   renderHeaderNav () {
@@ -168,61 +168,71 @@ class Header extends React.Component {
 
   render() {
     return (
-        <Navbar collapseOnSelect
-          // className={`header__container ${this.state ? this.state.scrolled : '' }`}
+      <Navbar collapseOnSelect
+        // className={`header__container ${this.state ? this.state.scrolled : '' }`}
+      >
+        <Navbar.Header
+          // className="flexrow header__box"
           >
-          <Navbar.Header
-            // className="flexrow header__box"
-            >
-            <Navbar.Brand
-              className="header__logo"
-            >
-              <Link to="/">
-                <img
-                  className="header__logoimg"
-                  src="https://s3.amazonaws.com/perviewimages/logo.png"
-                alt="Header logo"/>
-              </Link>
-            </Navbar.Brand>
-            {this.props.currentUser &&
-              <Navbar.Toggle />
-            }
-          </Navbar.Header>
+          <Navbar.Brand
+            className="header__logo"
+          >
+            <Link to="/">
+              <img
+                className="header__logoimg"
+                src="https://s3.amazonaws.com/perviewimages/logo.png"
+              alt="Header logo"/>
+            </Link>
+          </Navbar.Brand>
 
-          <Navbar.Collapse>
-            <Nav
-              // className="header__authnav-box"
-            >
-              {/* <NavItem
-                  className="header__authnav-box"
-                > */}
-                  <NavItem
-                    onClick={(e) => e.stopPropagation()}
-                    // className="header__search"
-                  >
-                    <SearchPerviewBar
-                      selectItem={this.selectItem}
-                      results={this.props.perviewResults}
-                      fetchResults={this.props.fetchPerviewResults}
-                    />
-                  </NavItem>
+          {this.props.currentUser ?
+            (<Navbar.Toggle />)
+          :(
+            <div className="header__authnav">
+              <SignInModalContainer
+                history={this.props.history}
+              />
+            </div>
+          )}
+        </Navbar.Header>
+        <Navbar.Collapse>
+          <Nav
+            // className="header__authnav-box"
+          >
+              {this.props.currentUser &&
+                <NavItem
+                  onClick={(e) => e.stopPropagation()}
+                  // className="header__search"
+                >
+                  <SearchPerviewBar
+                    selectItem={this.selectItem}
+                    results={this.props.perviewResults}
+                    fetchResults={this.props.fetchPerviewResults}
+                  />
+                </NavItem>
+              }
 
-                  <NavItem
-                    // className="flexrow header__nav"
-                  >
-                    {this.renderNavOptions()}
-                  </NavItem>
+              {this.props.currentUser &&
+                <NavItem
+                  // className="flexrow header__nav"
+                >
+                  {this.renderNavOptions()}
+                </NavItem>
+              }
+              {this.props.currentUser &&
+                <NavItem
+                  // className="flexrow header__createperview-container"
+                >
+                  {this.renderCreateButton()}
+                </NavItem>
+              }
 
-                  <NavItem
-                    // className="flexrow header__createperview-container"
-                  >
-                    {this.renderCreateButton()}
-                  </NavItem>
-                {/* </NavItem> */}
-
-              <NavItem>
-                {this.renderSignInModal()}
-              </NavItem>
+            {/* <NavItem
+              pullRight
+              // expanded={true}
+            > */}
+              {this.renderSignInModal()}
+            {/* </NavItem> */}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
