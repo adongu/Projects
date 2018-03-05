@@ -120,19 +120,19 @@ class Header extends React.Component {
           history={this.props.history}
         />
       )
+    } else {
+      return (
+        <li
+          onClick={(e) => e.stopPropagation()}
+          // className="header__usernavphoto"
+          >
+            <UserNavContainer
+              imgUrl={this.state.imgUrl}
+              logOut={this.props.logOut}
+            />
+          </li>
+        )
     }
-
-    return (
-      <li
-        onClick={(e) => e.stopPropagation()}
-        // className="header__usernavphoto"
-      >
-        <UserNavContainer
-          imgUrl={this.state.imgUrl}
-          logOut={this.props.logOut}
-        />
-      </li>
-    )
   }
 
   renderHeaderNav () {
@@ -169,7 +169,7 @@ class Header extends React.Component {
   render() {
     return (
       <Navbar collapseOnSelect
-        // className={`header__container ${this.state ? this.state.scrolled : '' }`}
+        className={`header__container ${this.state ? this.state.scrolled : '' }`}
       >
         <Navbar.Header
           // className="flexrow header__box"
@@ -231,7 +231,10 @@ class Header extends React.Component {
               pullRight
               // expanded={true}
             > */}
-              {this.renderSignInModal()}
+
+              {this.props.currentUser &&
+                this.renderSignInModal()
+              }
             {/* </NavItem> */}
           </Nav>
         </Navbar.Collapse>
