@@ -4,7 +4,7 @@ $headernavwidth: 195px;
 
 .header__ {
   &container {
-      // height: 60px;
+      height: 60px;
       width: 100%;
       position: fixed;
       background: white;
@@ -22,7 +22,7 @@ $headernavwidth: 195px;
     }
 
     /* scrolling shadow */
-    .scrolled {
+    &.scrolled {
       -webkit-box-shadow: 0px 3px 5px rgba(100, 100, 100, 0.49);
       -moz-box-shadow:    0px 3px 5px rgba(100, 100, 100, 0.49);
       box-shadow:         0px 3px 5px rgba(100, 100, 100, 0.49);
@@ -52,7 +52,8 @@ $headernavwidth: 195px;
   }
 
   &logoimg {
-    width: 100%;
+    // width: 100%;
+    width: 10em;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     image-rendering: -moz-crisp-edges;         /* Firefox */
@@ -74,6 +75,7 @@ $headernavwidth: 195px;
   }
 
   &authnav-box {
+    list-style: none;
     width: calc(100%-$logowidth);
     display: flex;
     flex-direction: row;

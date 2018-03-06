@@ -197,6 +197,9 @@
   &-btn {
     width: 101px;
     height: 33px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 5px;
     outline: 0;
     font-size: 16px;
@@ -205,10 +208,8 @@
     transition: 0.3s;
     line-height: 1.6px;
     font-family: "Fira Sans";
-    display: flex;
-    justify-content: center;
-    align-items: center;
     cursor: pointer;
+    margin-left: auto;
 
     &:hover {
       background: #79A0E3;

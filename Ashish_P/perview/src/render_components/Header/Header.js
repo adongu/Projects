@@ -88,21 +88,25 @@ class Header extends React.Component {
       }
     ];
 
-    return navOptions.map((option) => {
-      let currentPath = this.props.match.path;
-      let isActive = option.path === currentPath ? true : false;
+    return (
+      <div className="flexrow header__nav">
+        {
+          navOptions.map((option) => {
+          let currentPath = this.props.match.path;
+          let isActive = option.path === currentPath ? true : false;
 
-      return (
-        <div>
-          <Link to={option.path}
-            // className={`flexrow header__navbox ${isActive ? "active" : ""}`}
-            key={`navoptions-${option.text}`}>
-            <i className={`fa fa-${option.icon} fa-lg header__navicon`} aria-hidden="true"></i>
-            <span className="header__navtext">{option.text}</span>
-          </Link>
-        </div>
-      )
-    })
+          return (
+              <Link to={option.path}
+                className={`flexrow header__navbox ${isActive ? "active" : ""}`}
+                key={`navoptions-${option.text}`}>
+                <i className={`fa fa-${option.icon} fa-lg header__navicon`} aria-hidden="true"></i>
+                <span className="header__navtext">{option.text}</span>
+              </Link>
+            )
+          })
+        }
+      </div>
+    )
   }
 
   renderCreateButton () {
@@ -122,15 +126,14 @@ class Header extends React.Component {
       )
     } else {
       return (
-        <li
-          onClick={(e) => e.stopPropagation()}
-          // className="header__usernavphoto"
-          >
+        // <li
+        //   className="header__usernavphoto"
+        //   >
             <UserNavContainer
               imgUrl={this.state.imgUrl}
               logOut={this.props.logOut}
             />
-          </li>
+          // </li>
         )
     }
   }
@@ -168,63 +171,49 @@ class Header extends React.Component {
 
   render() {
     return (
-      <div
-        className={`header__container ${this.state ? this.state.scrolled : '' }`}
-      >
-        <Grid>
-          <Row>
-            <Col xs={2} sm={2} md={2} lg={2}>
-                <div
-                // className="flexrow header__box"
-                >
-                  <div className="header__logo">
-                    <Link to="/">
-                      <img
-                        className="header__logoimg"
-                        src="https://s3.amazonaws.com/perviewimages/logo.png"
-                        alt="Header logo"/>
-                    </Link>
-                  </div>
-                </div>
-            </Col>
-            <Col xs={10} sm={10} md={10} lg={10}>
-              <div
-                // className="header__authnav-box"
-              >
-                <Col xsHidden smHidden md={4} lg={4}>
-                  <div className="header__search">
-                    <SearchPerviewBar
-                      selectItem={this.selectItem}
-                      results={this.props.perviewResults}
-                      fetchResults={this.props.fetchPerviewResults}
-                    />
-                  </div>
-                </Col>
-
-                <Col xsHidden smHidden md={3} lg={3}>
-                  <div
-                    // className="flexrow header__nav"
-                  >
-                    {this.renderNavOptions()}
-                  </div>
-                </Col>
-
-                <Col xsHidden smHidden md={2} lg={2}>
-                  <div
-                    // className="flexrow header__createperview-container"
-                  >
-                    {this.renderCreateButton()}
-                  </div>
-                </Col>
-
-                <Col sm={12} md={2} lg={2}>
-                  {this.renderSignInModal()}
-                </Col>
+      <Grid className={`header__container ${this.state ? this.state.scrolled : '' }`}>
+        <Row className="flexrow header__box">
+          <Col xs={7} sm={7} md={2} lg={2}>
+              <div className="header__logo">
+                <Link to="/">
+                  <img
+                    className="header__logoimg"
+                    src="https://s3.amazonaws.com/perviewimages/logo.png"
+                    alt="Header logo"/>
+                </Link>
+              </div>
+          </Col>
+          <Col xs={5} sm={5} md={10} lg={10}
+            className="header__authnav-box"
+          >
+            <Col xsHidden smHidden md={4} lg={4}>
+              <div className="header__search">
+                <SearchPerviewBar
+                  selectItem={this.selectItem}
+                  results={this.props.perviewResults}
+                  fetchResults={this.props.fetchPerviewResults}
+                />
               </div>
             </Col>
-          </Row>
-        </Grid>
-      </div>
+
+            <Col xsHidden smHidden md={3} lg={3}>
+              {this.renderNavOptions()}
+            </Col>
+
+            <Col xsHidden smHidden md={2} lg={2}>
+              <div
+                // className="flexrow header__createperview-container"
+              >
+                {this.renderCreateButton()}
+              </div>
+            </Col>
+
+            <Col xs={12} sm={12} md={2} lg={2}>
+              {this.renderSignInModal()}
+            </Col>
+          </Col>
+        </Row>
+      </Grid>
     )
   }
 }
