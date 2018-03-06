@@ -6,7 +6,7 @@ import CreatePerviewModalContainer from '../../containers/CreatePerviewModalCont
 import SignInModalContainer from '../../containers/SignInModalContainer';
 import UserNavContainer from '../../containers/UserNavContainer';
 import * as util from '../../actions/util_actions';
-import { Grid, Row, Col, FormGroup, Navbar, NavItem, Nav, MenuItem } from 'react-bootstrap';
+import { Grid, Row, Col, MenuItem } from 'react-bootstrap';
 
 class Header extends React.Component {
   constructor(props) {
@@ -93,14 +93,14 @@ class Header extends React.Component {
       let isActive = option.path === currentPath ? true : false;
 
       return (
-        <NavItem>
+        <div>
           <Link to={option.path}
             // className={`flexrow header__navbox ${isActive ? "active" : ""}`}
             key={`navoptions-${option.text}`}>
             <i className={`fa fa-${option.icon} fa-lg header__navicon`} aria-hidden="true"></i>
             <span className="header__navtext">{option.text}</span>
           </Link>
-        </NavItem>
+        </div>
       )
     })
   }
@@ -137,145 +137,94 @@ class Header extends React.Component {
 
   renderHeaderNav () {
     return (
-      <Nav
+      <div
         // className="header__authnav-box"
       >
-        <NavItem
-          onClick={(e) => e.stopPropagation()}
-          className="header__search"
+        <div
+          // onClick={(e) => e.stopPropagation()}
+          // className="header__search"
         >
           <SearchPerviewBar
             selectItem={this.selectItem}
             results={this.props.perviewResults}
             fetchResults={this.props.fetchPerviewResults}
           />
-        </NavItem>
+        </div>
 
-        <NavItem
+        <div
           // className="flexrow header__nav"
         >
           {this.renderNavOptions()}
-        </NavItem>
+        </div>
 
-        <NavItem
+        <div
           // className="flexrow header__createperview-container"
         >
           {this.renderCreateButton()}
-        </NavItem>
-      </Nav>
+        </div>
+      </div>
     )
   }
 
   render() {
     return (
-      <Navbar collapseOnSelect
+      <div
         className={`header__container ${this.state ? this.state.scrolled : '' }`}
       >
         <Grid>
           <Row>
-            <Col
-              xs={3}
-              xm={3}
-              md={2}
-              lg={2}
-              >
-              <Navbar.Header
+            <Col xs={2} sm={2} md={2} lg={2}>
+                <div
                 // className="flexrow header__box"
                 >
-                  <Navbar.Brand
-                    className="header__logo"
-                  >
+                  <div className="header__logo">
                     <Link to="/">
                       <img
                         className="header__logoimg"
                         src="https://s3.amazonaws.com/perviewimages/logo.png"
-                      alt="Header logo"/>
+                        alt="Header logo"/>
                     </Link>
-                  </Navbar.Brand>
-
-                  {this.props.currentUser ?
-                    (<Navbar.Toggle />)
-                  :(
-                    <li className="header__authnav">
-                      <SignInModalContainer
-                        history={this.props.history}
-                      />
-                    </li>
-                  )}
-              </Navbar.Header>
+                  </div>
+                </div>
             </Col>
-          <Col
-            xs={10}
-            sm={10}
-          >
-          <Navbar.Collapse>
-          <Nav
-            className="header__authnav-box"
-          >
-              {this.props.currentUser &&
-                <Col
-                  xs={10}
-                  xm={10}
-                  md={4}
-                  lg={4}
-                  >
-                  <NavItem
-                    onClick={(e) => e.stopPropagation()}
-                    className="header__search"
-                  >
+            <Col xs={10} sm={10} md={10} lg={10}>
+              <div
+                // className="header__authnav-box"
+              >
+                <Col xsHidden smHidden md={4} lg={4}>
+                  <div className="header__search">
                     <SearchPerviewBar
                       selectItem={this.selectItem}
                       results={this.props.perviewResults}
                       fetchResults={this.props.fetchPerviewResults}
                     />
-                  </NavItem>
+                  </div>
                 </Col>
-              }
 
-              {this.props.currentUser &&
-                <Col
-                  xs={12}
-                  xm={12}
-                  md={3}
-                  lg={3}
-                  >
-                  <NavItem
+                <Col xsHidden smHidden md={3} lg={3}>
+                  <div
                     // className="flexrow header__nav"
                   >
                     {this.renderNavOptions()}
-                  </NavItem>
+                  </div>
                 </Col>
-              }
-              {this.props.currentUser &&
-                <Col
-                  xs={12}
-                  xm={12}
-                  md={2}
-                  lg={2}
-                >
-                <NavItem
-                  // className="flexrow header__createperview-container"
-                >
-                  {this.renderCreateButton()}
-                </NavItem>
-                </Col>
-              }
 
-              {this.props.currentUser &&
-                <Col
-                  xm={12}
-                  md={2}
-                  lg={2}
-                >
-                 {this.renderSignInModal()}
+                <Col xsHidden smHidden md={2} lg={2}>
+                  <div
+                    // className="flexrow header__createperview-container"
+                  >
+                    {this.renderCreateButton()}
+                  </div>
                 </Col>
-              }
-          </Nav>
-        </Navbar.Collapse>
-        </Col>
-      </Row>
-      </Grid>
-      </Navbar>
+
+                <Col sm={12} md={2} lg={2}>
+                  {this.renderSignInModal()}
+                </Col>
+              </div>
+            </Col>
+          </Row>
+        </Grid>
+      </div>
     )
   }
 }
