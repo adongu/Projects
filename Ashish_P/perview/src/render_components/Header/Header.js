@@ -171,73 +171,110 @@ class Header extends React.Component {
       <Navbar collapseOnSelect
         className={`header__container ${this.state ? this.state.scrolled : '' }`}
       >
-        <Navbar.Header
-          // className="flexrow header__box"
-          >
-          <Navbar.Brand
-            className="header__logo"
-          >
-            <Link to="/">
-              <img
-                className="header__logoimg"
-                src="https://s3.amazonaws.com/perviewimages/logo.png"
-              alt="Header logo"/>
-            </Link>
-          </Navbar.Brand>
+        <Grid>
+          <Row>
+            <Col
+              xs={3}
+              xm={3}
+              md={2}
+              lg={2}
+              >
+              <Navbar.Header
+                // className="flexrow header__box"
+                >
+                  <Navbar.Brand
+                    className="header__logo"
+                  >
+                    <Link to="/">
+                      <img
+                        className="header__logoimg"
+                        src="https://s3.amazonaws.com/perviewimages/logo.png"
+                      alt="Header logo"/>
+                    </Link>
+                  </Navbar.Brand>
 
-          {this.props.currentUser ?
-            (<Navbar.Toggle />)
-          :(
-            <li className="header__authnav">
-              <SignInModalContainer
-                history={this.props.history}
-              />
-            </li>
-          )}
-        </Navbar.Header>
-        <Navbar.Collapse>
+                  {this.props.currentUser ?
+                    (<Navbar.Toggle />)
+                  :(
+                    <li className="header__authnav">
+                      <SignInModalContainer
+                        history={this.props.history}
+                      />
+                    </li>
+                  )}
+              </Navbar.Header>
+            </Col>
+          <Col
+            xs={10}
+            sm={10}
+          >
+          <Navbar.Collapse>
           <Nav
-            // className="header__authnav-box"
+            className="header__authnav-box"
           >
               {this.props.currentUser &&
-                <NavItem
-                  onClick={(e) => e.stopPropagation()}
-                  // className="header__search"
-                >
-                  <SearchPerviewBar
-                    selectItem={this.selectItem}
-                    results={this.props.perviewResults}
-                    fetchResults={this.props.fetchPerviewResults}
-                  />
-                </NavItem>
+                <Col
+                  xs={10}
+                  xm={10}
+                  md={4}
+                  lg={4}
+                  >
+                  <NavItem
+                    onClick={(e) => e.stopPropagation()}
+                    className="header__search"
+                  >
+                    <SearchPerviewBar
+                      selectItem={this.selectItem}
+                      results={this.props.perviewResults}
+                      fetchResults={this.props.fetchPerviewResults}
+                    />
+                  </NavItem>
+                </Col>
               }
 
               {this.props.currentUser &&
-                <NavItem
-                  // className="flexrow header__nav"
-                >
-                  {this.renderNavOptions()}
-                </NavItem>
+                <Col
+                  xs={12}
+                  xm={12}
+                  md={3}
+                  lg={3}
+                  >
+                  <NavItem
+                    // className="flexrow header__nav"
+                  >
+                    {this.renderNavOptions()}
+                  </NavItem>
+                </Col>
               }
               {this.props.currentUser &&
+                <Col
+                  xs={12}
+                  xm={12}
+                  md={2}
+                  lg={2}
+                >
                 <NavItem
                   // className="flexrow header__createperview-container"
                 >
                   {this.renderCreateButton()}
                 </NavItem>
+                </Col>
               }
-
-            {/* <NavItem
-              pullRight
-              // expanded={true}
-            > */}
 
               {this.props.currentUser &&
-                this.renderSignInModal()
+                <Col
+                  xm={12}
+                  md={2}
+                  lg={2}
+                >
+                 {this.renderSignInModal()}
+                </Col>
               }
-            {/* </NavItem> */}
           </Nav>
         </Navbar.Collapse>
+        </Col>
+      </Row>
+      </Grid>
       </Navbar>
     )
   }
