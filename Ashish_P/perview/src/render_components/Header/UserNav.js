@@ -30,7 +30,7 @@ class UserNav extends React.PureComponent {
 
   render () {
     return (
-      <ButtonToolbar>
+      <ButtonToolbar className="usernav__container">
         <DropdownButton
           bsStyle="default"
           title={

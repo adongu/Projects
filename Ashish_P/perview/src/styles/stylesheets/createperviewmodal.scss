@@ -24,6 +24,8 @@ $lines-to-show: 4;
 
   &btn{
     width: 100%;
+    display: flex;
+    justify-content: center;
     // margin: 16px 0;
     padding: 3px 0;
     font-size: 18px;

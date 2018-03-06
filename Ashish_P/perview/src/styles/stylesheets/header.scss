@@ -31,9 +31,10 @@ $headernavwidth: 195px;
   }
 
   &box {
+    max-width: 1440px;
     height: 60px;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     margin: auto;
   }
 

@@ -33,8 +33,6 @@ class Header extends React.Component {
     this.selectItem = this.selectItem.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
     this.renderNavOptions = this.renderNavOptions.bind(this);
-    this.renderCreateButton = this.renderCreateButton.bind(this);
-    this.renderHeaderNav = this.renderHeaderNav.bind(this);
   }
 
   componentWillMount() {
@@ -109,109 +107,59 @@ class Header extends React.Component {
     )
   }
 
-  renderCreateButton () {
-    return (
-      <CreatePerviewModalContainer
-        history={this.props.history}
-      />
-    )
-  }
-
-  renderSignInModal () {
-    if (!this.props.currentUser) {
-      return (
-        <SignInModalContainer
-          history={this.props.history}
-        />
-      )
-    } else {
-      return (
-        // <li
-        //   className="header__usernavphoto"
-        //   >
-            <UserNavContainer
-              imgUrl={this.state.imgUrl}
-              logOut={this.props.logOut}
-            />
-          // </li>
-        )
-    }
-  }
-
-  renderHeaderNav () {
-    return (
-      <div
-        // className="header__authnav-box"
-      >
-        <div
-          // onClick={(e) => e.stopPropagation()}
-          // className="header__search"
-        >
-          <SearchPerviewBar
-            selectItem={this.selectItem}
-            results={this.props.perviewResults}
-            fetchResults={this.props.fetchPerviewResults}
-          />
-        </div>
-
-        <div
-          // className="flexrow header__nav"
-        >
-          {this.renderNavOptions()}
-        </div>
-
-        <div
-          // className="flexrow header__createperview-container"
-        >
-          {this.renderCreateButton()}
-        </div>
-      </div>
-    )
-  }
-
   render() {
     return (
       <Grid className={`header__container ${this.state ? this.state.scrolled : '' }`}>
         <Row className="flexrow header__box">
-          <Col xs={7} sm={7} md={2} lg={2}>
-              <div className="header__logo">
-                <Link to="/">
-                  <img
-                    className="header__logoimg"
-                    src="https://s3.amazonaws.com/perviewimages/logo.png"
-                    alt="Header logo"/>
-                </Link>
-              </div>
+          <Col xs={7} sm={7} md={2} lg={2} className="header__logo">
+            <Link to="/">
+              <img
+                className="header__logoimg"
+                src="https://s3.amazonaws.com/perviewimages/logo.png"
+                alt="Header logo"
+              />
+            </Link>
           </Col>
-          <Col xs={5} sm={5} md={10} lg={10}
-            className="header__authnav-box"
-          >
-            <Col xsHidden smHidden md={4} lg={4}>
-              <div className="header__search">
-                <SearchPerviewBar
-                  selectItem={this.selectItem}
-                  results={this.props.perviewResults}
-                  fetchResults={this.props.fetchPerviewResults}
-                />
-              </div>
-            </Col>
+          {this.props.currentUser &&
+            <Col xs={5} sm={5} md={10} lg={10} className="header__authnav-box">
+              <Col xsHidden smHidden md={4} lg={4}>
+                <div className="header__search">
+                  <SearchPerviewBar
+                    selectItem={this.selectItem}
+                    results={this.props.perviewResults}
+                    fetchResults={this.props.fetchPerviewResults}
+                  />
+                </div>
+              </Col>
 
-            <Col xsHidden smHidden md={3} lg={3}>
-              {this.renderNavOptions()}
-            </Col>
+              <Col xsHidden smHidden md={3} lg={3}>
+                {this.renderNavOptions()}
+              </Col>
 
-            <Col xsHidden smHidden md={2} lg={2}>
-              <div
+              <Col xsHidden smHidden md={3} lg={3}
                 // className="flexrow header__createperview-container"
-              >
-                {this.renderCreateButton()}
-              </div>
-            </Col>
+                >
+                  <CreatePerviewModalContainer
+                    history={this.props.history}
+                  />
+              </Col>
 
-            <Col xs={12} sm={12} md={2} lg={2}>
-              {this.renderSignInModal()}
+              <Col xs={12} sm={12} md={1} lg={1}>
+                <UserNavContainer
+                  imgUrl={this.state.imgUrl}
+                  logOut={this.props.logOut}
+                />
+              </Col>
             </Col>
-          </Col>
+          }
+
+          {!this.props.currentUser &&
+            <Col xs={12} sm={12} md={2} lg={2}>
+              <SignInModalContainer
+                history={this.props.history}
+              />
+            </Col>
+          }
         </Row>
       </Grid>
     )
