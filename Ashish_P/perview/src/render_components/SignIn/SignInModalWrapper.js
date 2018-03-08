@@ -1,7 +1,7 @@
 import '../../styles/stylesheets/signin.css';
 import '../../styles/assets/background.png';
 import React from 'react';
-import { ButtonToolbar, Modal, Grid, Row, Col } from 'react-bootstrap';
+import { ButtonToolbar, Modal } from 'react-bootstrap';
 import SignInContainer from '../../containers/SignInContainer.js';
 
 class SignInModalWrapper extends React.Component{

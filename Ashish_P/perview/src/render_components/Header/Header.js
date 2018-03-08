@@ -5,6 +5,7 @@ import SearchPerviewBar from './SearchPerviewBar';
 import CreatePerviewModalContainer from '../../containers/CreatePerviewModalContainer';
 import SignInModalContainer from '../../containers/SignInModalContainer';
 import UserNavContainer from '../../containers/UserNavContainer';
+import HamburgerMenu from './Mobile/HamburgerMenu';
 import * as util from '../../actions/util_actions';
 import { Grid, Row, Col, MenuItem } from 'react-bootstrap';
 
@@ -154,12 +155,14 @@ class Header extends React.Component {
           }
 
           {!this.props.currentUser &&
-            <Col xs={12} sm={12} md={2} lg={2}>
-              <SignInModalContainer
-                history={this.props.history}
-              />
+            <Col xs={12} sm={12} md={1} lg={1}>
+              <SignInModalContainer history={this.props.history} />
             </Col>
           }
+
+          <Col xs={1} sm={1} mdHidden lgHidden>
+            <HamburgerMenu />
+          </Col>
         </Row>
       </Grid>
     )
