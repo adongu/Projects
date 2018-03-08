@@ -1,4 +1,4 @@
-import "../../styles/stylesheets/header.css";
+import "../../styles/stylesheets/Header/header.css";
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import SearchPerviewBar from './SearchPerviewBar';
