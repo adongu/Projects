@@ -114,7 +114,7 @@ class Header extends React.Component {
     return (
       <Grid className={`header__container ${this.state ? this.state.scrolled : '' }`}>
         <Row className="flexrow header__box">
-          <Col xs={7} sm={7} md={2} lg={2} className="header__logo">
+          <Col xs={10} sm={10} md={2} lg={2} className="header__logo">
             <Link to="/">
               <img
                 className="header__logoimg"
@@ -156,15 +156,15 @@ class Header extends React.Component {
             </Col>
           }
 
-          {!this.props.currentUser &&
+          {/* {!this.props.currentUser &&
             <Col xs={12} sm={12} md={1} lg={1}>
               <SignInModalContainer
                 history={this.props.history}
               />
             </Col>
-          }
+          } */}
 
-          <Col xs={1} sm={1} mdHidden lgHidden>
+          <Col xs={2} sm={2} mdHidden lgHidden>
             <HamburgerMenu
               history={this.props.history}
             />
