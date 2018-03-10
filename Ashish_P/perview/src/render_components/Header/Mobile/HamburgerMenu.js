@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 
 class HamburgerMenu extends Component {
   static propTypes = {
+    history: PropTypes.object.isRequired,
   }
 
   constructor(props) {
