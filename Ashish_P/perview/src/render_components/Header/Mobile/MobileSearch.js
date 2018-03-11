@@ -39,6 +39,7 @@ class MobileSearch extends Component {
                 selectItem={this.props.selectItem}
                 results={this.props.perviewResults}
                 fetchResults={this.props.fetchPerviewResults}
+                noSearchIcon={true}
               />
             </Row>
           </Grid>

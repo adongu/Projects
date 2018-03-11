@@ -147,6 +147,8 @@ class HamburgerMenu extends Component {
   }
 
   render() {
+    console.log('this.props', this.props)
+
     return (
       <div className="hamburger__container" onClick={this.handleHamburgerClick}>
         <span className="hamburger__button">

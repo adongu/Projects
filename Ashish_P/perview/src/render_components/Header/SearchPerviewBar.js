@@ -1,12 +1,15 @@
 import "../../styles/stylesheets/search.css";
 import { debounce } from 'lodash';
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import Autosuggest from 'react-autosuggest';
 import IsolatedScroll from 'react-isolated-scroll';
 import * as util from '../../actions/util_actions.js';
 
-class SearchItemBar extends React.Component {
+class SearchItemBar extends Component {
+  static propTypes = {
+    noSearchIcon: PropTypes.bool,
+  }
   constructor(props){
     super(props);
 
@@ -94,7 +97,7 @@ class SearchItemBar extends React.Component {
       renderSearchOrLoading = (
         <i className="fa fa-spinner fa-pulse fa-lg fa-fw"></i>
       )
-    } else {
+    } else if (!this.props.noSearchIcon) {
       renderSearchOrLoading = (
         <i className="fa fa-search search__btn-icon" aria-hidden="true"></i>
       )
