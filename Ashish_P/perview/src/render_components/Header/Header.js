@@ -135,7 +135,7 @@ class Header extends React.Component {
                 </div>
               </Col>
 
-              <Col xsHidden smHidden md={3} lg={3}>
+              <Col xsHidden smHidden md={4} lg={3}>
                 {this.renderNavOptions()}
               </Col>
 
@@ -169,6 +169,8 @@ class Header extends React.Component {
           >
             <HamburgerMenu
               history={this.props.history}
+              imgUrl={this.state.imgUrl}
+              logOut={this.props.logOut}
             />
           </Col>
         </Row>

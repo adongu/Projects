@@ -37,6 +37,18 @@ class HamburgerMenu extends Component {
     this.setState({ isOpen: !this.state.isOpen });
   }
 
+  handleLogout() {
+    this.props.logOut()
+    .then(() => {
+      this.props.history.replace({ pathname: '/home' });
+      // this.props.history.push('/signin');
+    })
+    .catch(() => {
+      this.props.history.replace({ pathname: '/home' });
+      // this.props.history.push('/signin');
+    })
+  }
+
   renderNavList() {
     const navOptions = [
       {
@@ -52,45 +64,70 @@ class HamburgerMenu extends Component {
       {
         path: '/settings',
         text: 'Settings',
-        icon: 'gears'
+        icon: 'gear'
       },
     ];
 
     return (
-      <Grid onClick={this.handleNavClick} className="hamburgernav__container">
+      <Grid onClick={this.handleNavClick}
+        className="hamburgernav__container"
+      >
+        <Row>
+          <Col
+            onClick={() => this.props.history.push('/home')}
+            // className="usernav__imgbox"
+          >
+            <img src={this.props.imgUrl} alt="User Icon"/>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col>
+            <p>Pages & Settings</p>
+          </Col>
+        </Row>
+
         {
           navOptions.map((option) => {
           // let currentPath = this.props.match.path;
           // let isActive = option.path === currentPath ? true : false;
-
-          return (
-              <Row
-                key={`hamburgernav-${option.text}`}
+            return (
+              <Link to={option.path}
+                // className={`flexrow header__navbox ${isActive ? "active" : ""}`}
               >
-                <Col>
-                  <Link to={option.path}
-                    // className={`flexrow header__navbox ${isActive ? "active" : ""}`}
-                  >
-                    <i className={`fa fa-${option.icon} fa-lg header__navicon`} aria-hidden="true"></i>
-                    <span
-                      // className="header__navtext"
-                    >
+                <Row
+                  key={`hamburgernav-${option.text}`}
+                >
+                    <Col xs={1} sm={1} mdHidden lgHidden>
+                      <span>
+                        <i className={`fa fa-${option.icon} fa-lg`} aria-hidden="true"></i>
+                      </span>
+                    </Col>
+                    <Col xs={9} sm={9} mdHidden lgHidden>
                       {option.text}
-                    </span>
-                  </Link>
-                </Col>
-              </Row>
+                    </Col>
+                  </Row>
+              </Link>
             )
           })
         }
+
+        <Row className="usernav__signout">
+          <Col xs={1} sm={1} mdHidden lgHidden>
+            <i className="fa fa-power-off usernav__option-icon" aria-hidden="true"></i>
+          </Col>
+          <Col xs={9} sm={9} mdHidden lgHidden>
+            <span className="usernav__option-text">Sign Out</span>
+          </Col>
+        </Row>
       </Grid>
     )
   }
 
   render() {
     return (
-      <div className="hamburger__container">
-        <span onClick={this.handleHamburgerClick} className="hamburger__button">
+      <div className="hamburger__container" onClick={this.handleHamburgerClick}>
+        <span className="hamburger__button">
           <i className="fa fa-bars fa-2x"></i>
         </span>
 

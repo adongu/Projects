@@ -40,10 +40,9 @@ $headernavwidth: 195px;
 
   /* logo */
   &logo {
-    // width: $logowidth;
-    // margin-right: 8px;
     transform: translateY(-3px);
-    // margin-right: auto;
+    // keeps nav buttons apart
+    margin-right: auto;
     margin-left: -15px;
     // -webkit-backface-visibility: hidden;
     // backface-visibility: hidden;
@@ -90,7 +89,6 @@ $headernavwidth: 195px;
   &nav {
     // width: 195px;
     height: 100%;
-    margin: auto 8px;
     justify-content: space-between;
     align-items: center;
   }
