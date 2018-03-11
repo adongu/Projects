@@ -147,7 +147,8 @@ $headernavwidth: 195px;
     margin: 0 8px;
   }
 }
-// hamburgernav to allow absolute of the header rather than the hamburger button
+// Allow absolute of the header rather than the button
+.mobilesearch,
 .hamburgernav {
   position: static;
 }

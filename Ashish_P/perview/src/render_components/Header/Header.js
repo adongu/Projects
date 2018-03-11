@@ -6,6 +6,7 @@ import CreatePerviewModalContainer from '../../containers/CreatePerviewModalCont
 import SignInModalContainer from '../../containers/SignInModalContainer';
 import UserNavContainer from '../../containers/UserNavContainer';
 import HamburgerMenu from './Mobile/HamburgerMenu';
+import MobileSearch from './Mobile/MobileSearch';
 import * as util from '../../actions/util_actions';
 import { Grid, Row, Col, MenuItem } from 'react-bootstrap';
 
@@ -17,6 +18,7 @@ class Header extends React.Component {
       userId: null,
       imgUrl: "https://www.juicedb.com/img/user/temp-user-128.jpg",
       scrolled: '',
+      showMobileSearch: false,
       navOptions: [
         {
           url: '/myperviews',
@@ -124,7 +126,7 @@ class Header extends React.Component {
             </Link>
           </Col>
           {this.props.currentUser &&
-            <Col xs={5} sm={5} md={10} lg={10} className="header__authnav-box">
+            <Col xsHidden smHidden md={10} lg={10} className="header__authnav-box">
               <Col xsHidden smHidden md={4} lg={4}>
                 <div className="header__search">
                   <SearchPerviewBar
@@ -157,22 +159,37 @@ class Header extends React.Component {
           }
 
           {!this.props.currentUser &&
-            <Col xsHidden smHidden md={2} lg={2}>
+            <Col xs={4} sm={4} md={2} lg={2}>
               <SignInModalContainer
                 history={this.props.history}
               />
             </Col>
           }
 
-          <Col xs={2} sm={2} mdHidden lgHidden
-            className="hamburgernav"
-          >
-            <HamburgerMenu
-              history={this.props.history}
-              imgUrl={this.state.imgUrl}
-              logOut={this.props.logOut}
-            />
-          </Col>
+          {this.props.currentUser &&
+            <Row>
+              <Col xs={2} sm={2} mdHidden lgHidden
+                className="mobilesearch"
+              >
+                <MobileSearch
+                  selectItem={this.selectItem}
+                  perviewResults={this.props.perviewResults}
+                  fetchPerviewResults={this.props.fetchPerviewResults}
+                />
+              </Col>
+
+              <Col xs={2} sm={2} mdHidden lgHidden
+                className="hamburgernav"
+              >
+                <HamburgerMenu
+                  history={this.props.history}
+                  imgUrl={this.state.imgUrl}
+                  logOut={this.props.logOut}
+                />
+              </Col>
+            </Row>
+          }
+
         </Row>
       </Grid>
     )

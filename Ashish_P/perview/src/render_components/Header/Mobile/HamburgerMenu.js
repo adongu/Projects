@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Grid, Row, Col } from 'react-bootstrap';
+import CreatePerviewModalContainer from '../../../containers/CreatePerviewModalContainer';
 import '../../../styles/stylesheets/Header/mobile.css';
 
 class HamburgerMenu extends Component {
@@ -23,6 +24,7 @@ class HamburgerMenu extends Component {
     this.handleNavClick = this.handleNavClick.bind(this)
     this.renderNavList = this.renderNavList.bind(this)
     this.handleHamburgerClick = this.handleHamburgerClick.bind(this)
+    this.handleLogout = this.handleLogout.bind(this)
   }
 
   handleNavClick(e) {
@@ -35,6 +37,18 @@ class HamburgerMenu extends Component {
     console.log('this.state.isopen', this.state.isOpen);
     // this.setState((_prevProps, prevState) => { isOpen: !prevState.isOpen });
     this.setState({ isOpen: !this.state.isOpen });
+  }
+
+  handleLogout() {
+    this.props.logOut()
+    .then(() => {
+      this.props.history.replace({ pathname: '/home' });
+      // this.props.history.push('/signin');
+    })
+    .catch(() => {
+      this.props.history.replace({ pathname: '/home' });
+      // this.props.history.push('/signin');
+    })
   }
 
   handleLogout() {
@@ -73,11 +87,16 @@ class HamburgerMenu extends Component {
         className="hamburgernav__container"
       >
         <Row>
-          <Col
-            onClick={() => this.props.history.push('/home')}
+          <Col xs={4} sm={4} mdHidden lgHidden
+            onClick={() => this.props.history.push('/')}
             // className="usernav__imgbox"
           >
-            <img src={this.props.imgUrl} alt="User Icon"/>
+              <img src={this.props.imgUrl} alt="User Icon"/>
+          </Col>
+          <Col xs={8} sm={8} mdHidden lgHidden>
+            <CreatePerviewModalContainer
+              history={this.props.history}
+            />
           </Col>
         </Row>
 
@@ -94,16 +113,16 @@ class HamburgerMenu extends Component {
             return (
               <Link to={option.path}
                 // className={`flexrow header__navbox ${isActive ? "active" : ""}`}
+                key={`hamburgernav-${option.text}`}
               >
                 <Row
-                  key={`hamburgernav-${option.text}`}
                 >
                     <Col xs={1} sm={1} mdHidden lgHidden>
                       <span>
                         <i className={`fa fa-${option.icon} fa-lg`} aria-hidden="true"></i>
                       </span>
                     </Col>
-                    <Col xs={9} sm={9} mdHidden lgHidden>
+                    <Col xs={10} sm={10} mdHidden lgHidden>
                       {option.text}
                     </Col>
                   </Row>
@@ -112,7 +131,10 @@ class HamburgerMenu extends Component {
           })
         }
 
-        <Row className="usernav__signout">
+        <Row
+          onClick={this.handleLogout}
+          className="usernav__signout"
+        >
           <Col xs={1} sm={1} mdHidden lgHidden>
             <i className="fa fa-power-off usernav__option-icon" aria-hidden="true"></i>
           </Col>
@@ -139,4 +161,4 @@ class HamburgerMenu extends Component {
   }
 }
 
-export default HamburgerMenu;
+export default withRouter(HamburgerMenu);
