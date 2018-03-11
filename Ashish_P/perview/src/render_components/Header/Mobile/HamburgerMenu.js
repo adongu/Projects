@@ -27,6 +27,13 @@ class HamburgerMenu extends Component {
     this.handleLogout = this.handleLogout.bind(this)
   }
 
+  shouldComponentUpdate(_nextProps, nextState) {
+    if (this.state.isOpen !== nextState.isOpen) {
+      return true;
+    }
+    return false;
+  }
+
   handleNavClick(e) {
     console.log("event.target", e.target.id)
     this.setState({ isOpen: false });

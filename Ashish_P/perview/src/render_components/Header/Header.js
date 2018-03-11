@@ -47,7 +47,7 @@ class Header extends React.Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    if (nextProps.currentUser) {
+    if (nextProps.currentUser && nextProps.currentUser !== this.props.currentUser) {
       let user = nextProps.currentUser;
       this.setState({
         fName: user.firstName,
@@ -59,6 +59,18 @@ class Header extends React.Component {
 
   componentWillUnmount(){
     window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state.scrolled !== nextState.scrolled) {
+      return true;
+    }
+
+    if (this.props.currentUser !== nextProps.currentUser) {
+      return true;
+    }
+
+    return false;
   }
 
   selectItem( imgUrl, name, price, itemId ) {
@@ -111,7 +123,7 @@ class Header extends React.Component {
   }
 
   render() {
-    console.log(this.props.history);
+    console.log(this.state);
 
     return (
       <Grid className={`header__container ${this.state ? this.state.scrolled : '' }`}>
