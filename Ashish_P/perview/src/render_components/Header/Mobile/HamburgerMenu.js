@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import { Grid, Row, Col } from 'react-bootstrap';
+import '../../../styles/stylesheets/Header/mobile.css';
 
 class HamburgerMenu extends Component {
   static propTypes = {
@@ -19,9 +21,20 @@ class HamburgerMenu extends Component {
     }
 
     this.handleNavClick = this.handleNavClick.bind(this)
+    this.renderNavList = this.renderNavList.bind(this)
+    this.handleHamburgerClick = this.handleHamburgerClick.bind(this)
   }
 
-  handleClick(e) {
+  handleNavClick(e) {
+    console.log("event.target", e.target.id)
+    this.setState({ isOpen: false });
+
+  }
+
+  handleHamburgerClick() {
+    console.log('this.state.isopen', this.state.isOpen);
+    // this.setState((_prevProps, prevState) => { isOpen: !prevState.isOpen });
+    this.setState({ isOpen: !this.state.isOpen });
   }
 
   renderNavList() {
@@ -41,44 +54,49 @@ class HamburgerMenu extends Component {
         text: 'Settings',
         icon: 'gears'
       },
-      {
-        path: '/settings',
-        text: 'Settings',
-        icon: 'gears'
-      },
     ];
 
     return (
-      <div className="flexrow header__nav">
+      <Grid onClick={this.handleNavClick} className="hamburgernav__container">
         {
           navOptions.map((option) => {
-          let currentPath = this.props.match.path;
-          let isActive = option.path === currentPath ? true : false;
+          // let currentPath = this.props.match.path;
+          // let isActive = option.path === currentPath ? true : false;
 
           return (
-              <Link to={option.path}
-                className={`flexrow header__navbox ${isActive ? "active" : ""}`}
-                key={`navoptions-${option.text}`}>
-                <i className={`fa fa-${option.icon} fa-lg header__navicon`} aria-hidden="true"></i>
-                <span className="header__navtext">{option.text}</span>
-              </Link>
+              <Row
+                key={`hamburgernav-${option.text}`}
+              >
+                <Col>
+                  <Link to={option.path}
+                    // className={`flexrow header__navbox ${isActive ? "active" : ""}`}
+                  >
+                    <i className={`fa fa-${option.icon} fa-lg header__navicon`} aria-hidden="true"></i>
+                    <span
+                      // className="header__navtext"
+                    >
+                      {option.text}
+                    </span>
+                  </Link>
+                </Col>
+              </Row>
             )
           })
         }
-      </div>
+      </Grid>
     )
   }
 
   render() {
     return (
       <div className="hamburger__container">
-        <span classNme="hamburger__button">
+        <span onClick={this.handleHamburgerClick} className="hamburger__button">
           <i className="fa fa-bars fa-2x"></i>
         </span>
 
-        <Grid onClick={this.handleClick}>
-          <Row id=""></Row>
-        </Grid>
+        {this.state.isOpen === true &&
+          this.renderNavList()
+        }
       </div>
     )
   }

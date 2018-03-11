@@ -147,7 +147,7 @@ class Header extends React.Component {
                   />
               </Col>
 
-              <Col xs={12} sm={12} md={1} lg={1}>
+              <Col xsHidden smHidden md={1} lg={1}>
                 <UserNavContainer
                   imgUrl={this.state.imgUrl}
                   logOut={this.props.logOut}
@@ -156,15 +156,17 @@ class Header extends React.Component {
             </Col>
           }
 
-          {/* {!this.props.currentUser &&
-            <Col xs={12} sm={12} md={1} lg={1}>
+          {!this.props.currentUser &&
+            <Col xsHidden smHidden md={2} lg={2}>
               <SignInModalContainer
                 history={this.props.history}
               />
             </Col>
-          } */}
+          }
 
-          <Col xs={2} sm={2} mdHidden lgHidden>
+          <Col xs={2} sm={2} mdHidden lgHidden
+            className="hamburgernav"
+          >
             <HamburgerMenu
               history={this.props.history}
             />
