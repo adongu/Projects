@@ -61,17 +61,17 @@ class Header extends React.Component {
     window.removeEventListener('scroll', this.handleScroll);
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    if (this.state.scrolled !== nextState.scrolled) {
-      return true;
-    }
-
-    if (this.props.currentUser !== nextProps.currentUser) {
-      return true;
-    }
-
-    return false;
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   if (this.state.scrolled !== nextState.scrolled) {
+  //     return true;
+  //   }
+  //
+  //   if (this.props.currentUser !== nextProps.currentUser) {
+  //     return true;
+  //   }
+  //
+  //   return false;
+  // }
 
   selectItem( imgUrl, name, price, itemId ) {
     if (itemId) {
