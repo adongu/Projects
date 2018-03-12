@@ -6,9 +6,9 @@ import "../../../styles/stylesheets/Header/header.css";
 
 class MobileSearch extends Component {
   static propTypes = {
-    fetchResults: PropTypes.func.isRequired,
+    fetchResults: PropTypes.func,
     selectItem: PropTypes.func.isRequired,
-    results: PropTypes.object.isRequired,
+    results: PropTypes.object,
   }
   constructor(props) {
     super(props);
@@ -40,7 +40,7 @@ class MobileSearch extends Component {
             className="mobilesearch__container"
           >
             <Row>
-              <Col xm={12} sm={12} mdHidden lgHidden>
+              <Col xs={12} sm={12} mdHidden lgHidden>
                 <SearchPerviewBar
                   selectItem={this.props.selectItem}
                   results={this.props.perviewResults}
