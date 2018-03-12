@@ -8,7 +8,7 @@ import UserNavContainer from '../../containers/UserNavContainer';
 import HamburgerMenu from './Mobile/HamburgerMenu';
 import MobileSearch from './Mobile/MobileSearch';
 import * as util from '../../actions/util_actions';
-import { Grid, Row, Col, MenuItem } from 'react-bootstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 class Header extends React.Component {
   constructor(props) {

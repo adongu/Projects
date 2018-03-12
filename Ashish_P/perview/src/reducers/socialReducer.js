@@ -70,7 +70,7 @@ const sessionReducer = (oldState = _nullSocial, action) => {
       });
     default:
       return merge(oldState, { errors: []});
-  };
+  }
 };
 
 

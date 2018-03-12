@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { Grid, Row, Col, Collapse } from 'react-bootstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
 import CreatePerviewModalContainer from '../../../containers/CreatePerviewModalContainer';
 import '../../../styles/stylesheets/Header/mobile.css';
 
@@ -17,7 +17,6 @@ class HamburgerMenu extends Component {
       paths: {
         home: "home",
         settings: "settings",
-
       }
     }
 
@@ -44,18 +43,6 @@ class HamburgerMenu extends Component {
     console.log('this.state.isopen', this.state.isOpen);
     // this.setState((_prevProps, prevState) => { isOpen: !prevState.isOpen });
     this.setState({ isOpen: !this.state.isOpen });
-  }
-
-  handleLogout() {
-    this.props.logOut()
-    .then(() => {
-      this.props.history.replace({ pathname: '/home' });
-      // this.props.history.push('/signin');
-    })
-    .catch(() => {
-      this.props.history.replace({ pathname: '/home' });
-      // this.props.history.push('/signin');
-    })
   }
 
   handleLogout() {

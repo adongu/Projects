@@ -5,6 +5,11 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import "../../../styles/stylesheets/Header/header.css";
 
 class MobileSearch extends Component {
+  static propTypes = {
+    fetchResults: PropTypes.func.isRequired,
+    selectItem: PropTypes.func.isRequired,
+    results: PropTypes.object.isRequired,
+  }
   constructor(props) {
     super(props);
 
@@ -35,12 +40,14 @@ class MobileSearch extends Component {
             className="mobilesearch__container"
           >
             <Row>
-              <SearchPerviewBar
-                selectItem={this.props.selectItem}
-                results={this.props.perviewResults}
-                fetchResults={this.props.fetchPerviewResults}
-                noSearchIcon={true}
-              />
+              <Col xm={12} sm={12} mdHidden lgHidden>
+                <SearchPerviewBar
+                  selectItem={this.props.selectItem}
+                  results={this.props.perviewResults}
+                  fetchResults={this.props.fetchPerviewResults}
+                  noSearchIcon={true}
+                />
+              </Col>
             </Row>
           </Grid>
         }
@@ -50,4 +57,4 @@ class MobileSearch extends Component {
   }
 }
 
-export default MobileSearch;
+export default withRouter(MobileSearch);

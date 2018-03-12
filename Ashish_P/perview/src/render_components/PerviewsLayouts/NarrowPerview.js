@@ -54,7 +54,7 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
 
   const renderPerview = (perview, { item, perviewUser }) => {
     if (item) {
-      let latestUpdatedTime = item.ts;
+      // let latestUpdatedTime = item.ts;
 
       return (
         <div className="flexcolumn narrowperviews__productbox">

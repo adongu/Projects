@@ -5,20 +5,6 @@ import HeaderContainer from '../containers/HeaderContainer';
 import Footer from '../render_components/Footer/Footer';
 import { updatePreviousPath } from '../actions/session_actions';
 
-// class ScrollToTop extends React.Component {
-//   componentDidUpdate(prevProps) {
-//     if (this.props.location !== prevProps.location) {
-//       window.scrollTo(0, 0);
-//     }
-//   }
-//
-//   render() {
-//     return this.props.children
-//   }
-// }
-// renders component if logged out, otherwise redirects to the root url
-// const Auth = ({component: Component, path, loggedIn, previousPath, updatePreviousPath, ...restProps }) => {
-
 class Auth extends Component {
   render () {
     const {
@@ -26,7 +12,7 @@ class Auth extends Component {
       path,
       loggedIn,
       previousPath,
-      ...restProps,
+      // ...restProps,
     } = this.props;
 
     if (!loggedIn) {
@@ -58,8 +44,6 @@ class Protected extends Component {
       component: Component,
       path,
       loggedIn,
-      previousPath,
-      ...restProps,
     } = this.props;
 
     if (loggedIn) {
