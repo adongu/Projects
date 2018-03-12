@@ -23,12 +23,12 @@ class MobileSearch extends Component {
   render() {
     return (
       <div>
-        <span
+        <div
           onClick={this.searchClick}
-          className="mobilesearhc__button"
+          className="mobilesearch__button"
         >
           <i className="fa fa-search search__btn-icon" aria-hidden="true"></i>
-        </span>
+        </div>
 
         {this.state.isOpen &&
           <Grid

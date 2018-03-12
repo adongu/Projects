@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Grid, Row, Col, Collapse } from 'react-bootstrap';
 import CreatePerviewModalContainer from '../../../containers/CreatePerviewModalContainer';
 import '../../../styles/stylesheets/Header/mobile.css';
 
@@ -27,20 +27,20 @@ class HamburgerMenu extends Component {
     this.handleLogout = this.handleLogout.bind(this)
   }
 
-  shouldComponentUpdate(_nextProps, nextState) {
-    if (this.state.isOpen !== nextState.isOpen) {
-      return true;
-    }
-    return false;
-  }
+  // shouldComponentUpdate(_nextProps, nextState) {
+  //   if (this.state.isOpen !== nextState.isOpen) {
+  //     return true;
+  //   }
+  //   return false;
+  // }
 
   handleNavClick(e) {
-    console.log("event.target", e.target.id)
-    this.setState({ isOpen: false });
+    // console.log("event.target", e.target.id)
+    this.setState((prevState, props) => ({ isOpen: false }));
 
   }
 
-  handleHamburgerClick() {
+  handleHamburgerClick(e) {
     console.log('this.state.isopen', this.state.isOpen);
     // this.setState((_prevProps, prevState) => { isOpen: !prevState.isOpen });
     this.setState({ isOpen: !this.state.isOpen });
@@ -91,7 +91,7 @@ class HamburgerMenu extends Component {
 
     return (
       <Grid onClick={this.handleNavClick}
-        className="hamburgernav__container"
+        className="hamburger__nav"
       >
         <Row>
           <Col xs={4} sm={4} mdHidden lgHidden
@@ -100,8 +100,12 @@ class HamburgerMenu extends Component {
           >
               <img src={this.props.imgUrl} alt="User Icon"/>
           </Col>
-          <Col xs={8} sm={8} mdHidden lgHidden>
+          <Col xs={8} sm={8} mdHidden lgHidden
+            onClick={this.handleNavClick}
+          >
             <CreatePerviewModalContainer
+              showModal={true}
+              closeHamburgerNav={this.handleNavClick}
               history={this.props.history}
             />
           </Col>
@@ -158,9 +162,13 @@ class HamburgerMenu extends Component {
 
     return (
       <div className="hamburger__container" onClick={this.handleHamburgerClick}>
-        <span className="hamburger__button">
-          <i className="fa fa-bars fa-2x"></i>
-        </span>
+        <Col xs={3} sm={3} className="hamburger__button">
+          {this.state.isOpen ? (
+            <i className="fa fa-close fa-2x"></i>
+          ):(
+            <i className="fa fa-bars fa-2x"></i>
+          )}
+        </Col>
 
         {this.state.isOpen === true &&
           this.renderNavList()

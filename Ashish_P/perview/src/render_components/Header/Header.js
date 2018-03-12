@@ -179,7 +179,7 @@ class Header extends React.Component {
           }
 
           {this.props.currentUser &&
-            <Row>
+            <div>
               <Col xs={2} sm={2} mdHidden lgHidden
                 className="mobilesearch"
               >
@@ -199,7 +199,7 @@ class Header extends React.Component {
                   logOut={this.props.logOut}
                 />
               </Col>
-            </Row>
+            </div>
           }
 
         </Row>

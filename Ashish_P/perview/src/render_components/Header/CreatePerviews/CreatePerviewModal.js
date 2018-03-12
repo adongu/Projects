@@ -58,9 +58,9 @@ class CreatePerviewModal extends React.Component {
     }
   }
 
-  showModal() {
+  showModal(e) {
     if (this.props.currentUser) {
-      this.setState({show: true});
+      this.setState((prevState, props) => ({ show: true }));
     }
   }
 
@@ -82,7 +82,8 @@ class CreatePerviewModal extends React.Component {
     });
   }
 
-  handleShowModalClick() {
+  handleShowModalClick(e) {
+    e.stopPropagation();
     if (this.props.currentUser) {
       this.showModal();
     } else {
@@ -90,6 +91,10 @@ class CreatePerviewModal extends React.Component {
         this.props.showLoginModal();
       }
     }
+    //
+    // if (this.props.closeHamburgerNav) {
+    //   this.props.closeHamburgerNav();
+    // }
   }
 
   renderReviewStars (ratings) {
@@ -238,6 +243,7 @@ class CreatePerviewModal extends React.Component {
   }
 
   render() {
+    console.log("this.state.show", this.state.show);
     return (
       <ButtonToolbar className="createperview__box">
         <button className="createperview__btn" onClick={this.handleShowModalClick}>
