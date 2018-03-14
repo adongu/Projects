@@ -256,7 +256,7 @@ class CreatePerviewModal extends React.Component {
       <ButtonToolbar className="createperview__box">
         <button className="createperview__btn" onClick={this.handleShowModalClick}>
           {this.props.icon ? (
-            <i className={`fa fa-${this.props.icon}`}></i>
+            <i className={`fa fa-pencil createperview__btn-icon`}></i>
           ):(
             <span>Create Perview</span>
           )}

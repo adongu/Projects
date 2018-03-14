@@ -178,13 +178,15 @@ class Header extends React.Component {
           }
           {/* Mobile menu */}
           {this.props.currentUser &&
-            <Col xs={6} sm={6} mdHidden lgHidden>
-              <Col xs={2} sm={2} mdHidden lgHidden
+            <Col xs={6} sm={6} mdHidden lgHidden
+              className="header__mobile"
+            >
+              <Col xs={4} sm={4} mdHidden lgHidden
                 className="mobile__userimage"
               >
                 <img src={this.state.imgUrl} alt="User Icon"/>
               </Col>
-              <Col xs={2} sm={2} mdHidden lgHidden
+              <Col xs={4} sm={4} mdHidden lgHidden
                 className="mobile__createperview"
               >
                 <CreatePerviewModalContainer
@@ -192,7 +194,7 @@ class Header extends React.Component {
                   icon={"pen"}
                 />
               </Col>
-              <Col xs={2} sm={2} mdHidden lgHidden
+              <Col xs={4} sm={4} mdHidden lgHidden
                 className="hamburgernav"
               >
                 <HamburgerMenu

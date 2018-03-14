@@ -150,6 +150,21 @@ $headernavwidth: 195px;
     width: 16%;
     margin: 0 8px;
   }
+
+  &mobile {
+    display: flex;
+    align-items: center;
+  }
+}
+
+// Mobile
+.mobile__{
+  &userimage img{
+    width: 24px;
+    height: 24px;
+    border-radius: 1em;
+    // overflow: hidden;
+  }
 }
 // Allow absolute of the header rather than the button
 .hamburgernav {

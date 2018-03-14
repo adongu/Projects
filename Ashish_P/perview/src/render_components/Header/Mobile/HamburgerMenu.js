@@ -81,29 +81,10 @@ class HamburgerMenu extends Component {
         className="hamburger__nav"
       >
         <Row>
-          <Col xs={4} sm={4} mdHidden lgHidden
-            onClick={() => this.props.history.push('/')}
-            // className="usernav__imgbox"
-          >
-              <img src={this.props.imgUrl} alt="User Icon"/>
-          </Col>
-          <Col xs={8} sm={8} mdHidden lgHidden
-            onClick={this.handleNavClick}
-          >
-            <CreatePerviewModalContainer
-              showModal={true}
-              closeHamburgerNav={this.handleNavClick}
-              history={this.props.history}
-            />
-          </Col>
-        </Row>
-
-        <Row>
           <Col>
             <p>Pages & Settings</p>
           </Col>
         </Row>
-
         {
           navOptions.map((option) => {
           // let currentPath = this.props.match.path;

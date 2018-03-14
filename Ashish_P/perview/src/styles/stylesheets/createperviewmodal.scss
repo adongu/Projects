@@ -32,13 +32,13 @@ $lines-to-show: 4;
     border-radius: 5px;
     color: white;
     background: #DAB559;
+    outline: none;
   }
 }
 /* search section */
 .createperview__{
   &box {
     width: 100%;
-    margin-bottom: 1em;
   }
 
   &search-container {

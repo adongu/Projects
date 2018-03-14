@@ -329,10 +329,10 @@ $lines-to-show: 4;
   //solicit perview creat perview wrapper
 
   &solicitcard {
+    width: 60%;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 60%;
 
     .suggestions {
       display: flex;
@@ -345,6 +345,7 @@ $lines-to-show: 4;
       color: white;
       background: #919ECB;
       border-radius: 5px;
+      margin-top: 8px;
       margin-left: -5px;
     }
 
