@@ -6,7 +6,6 @@ import CreatePerviewModalContainer from '../../containers/CreatePerviewModalCont
 import SignInModalContainer from '../../containers/SignInModalContainer';
 import UserNavContainer from '../../containers/UserNavContainer';
 import HamburgerMenu from './Mobile/HamburgerMenu';
-import MobileSearch from './Mobile/MobileSearch';
 import * as util from '../../actions/util_actions';
 import { Grid, Row, Col } from 'react-bootstrap';
 
@@ -128,7 +127,7 @@ class Header extends React.Component {
     return (
       <Grid className={`header__container ${this.state ? this.state.scrolled : '' }`}>
         <Row className="flexrow header__box">
-          <Col xs={10} sm={10} md={2} lg={2} className="header__logo">
+          <Col xs={6} sm={6} md={2} lg={2} className="header__logo">
             <Link to="/">
               <img
                 className="header__logoimg"
@@ -177,19 +176,22 @@ class Header extends React.Component {
               />
             </Col>
           }
-
+          {/* Mobile menu */}
           {this.props.currentUser &&
-            <div>
+            <Col xs={6} sm={6} mdHidden lgHidden>
               <Col xs={2} sm={2} mdHidden lgHidden
-                className="mobilesearch"
+                className="mobile__userimage"
               >
-                <MobileSearch
-                  selectItem={this.selectItem}
-                  perviewResults={this.props.perviewResults}
-                  fetchPerviewResults={this.props.fetchPerviewResults}
+                <img src={this.state.imgUrl} alt="User Icon"/>
+              </Col>
+              <Col xs={2} sm={2} mdHidden lgHidden
+                className="mobile__createperview"
+              >
+                <CreatePerviewModalContainer
+                  history={this.props.history}
+                  icon={"pen"}
                 />
               </Col>
-
               <Col xs={2} sm={2} mdHidden lgHidden
                 className="hamburgernav"
               >
@@ -199,21 +201,17 @@ class Header extends React.Component {
                   logOut={this.props.logOut}
                 />
               </Col>
-            </div>
+            </Col>
           }
         </Row>
 
         {this.props.currentUser &&
           <Row className="header__mobilesearch">
-            {/* <Col className="header__mobilesearch-box"> */}
-              {/* <div className="header__search"> */}
-                <SearchPerviewBar
-                  selectItem={this.selectItem}
-                  results={this.props.perviewResults}
-                  fetchResults={this.props.fetchPerviewResults}
-                />
-              {/* </div> */}
-            {/* </Col> */}
+            <SearchPerviewBar
+              selectItem={this.selectItem}
+              results={this.props.perviewResults}
+              fetchResults={this.props.fetchPerviewResults}
+            />
           </Row>
         }
       </Grid>

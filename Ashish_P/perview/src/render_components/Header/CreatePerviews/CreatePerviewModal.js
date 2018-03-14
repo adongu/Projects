@@ -1,5 +1,5 @@
 import "../../../styles/stylesheets/createperviewmodal.css";
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import { ButtonToolbar, Modal } from 'react-bootstrap';
 import SearchItemBar from "./SearchItemBar";
 // import {
@@ -7,6 +7,14 @@ import SearchItemBar from "./SearchItemBar";
 // } from '../../SharedComponents/PricePopOver';
 
 class CreatePerviewModal extends React.Component {
+  static propTypes = {
+    icon: PropTypes.string,
+  }
+
+  static defaultProps = {
+    icon: null,
+  };
+
   constructor(props) {
     super(props);
 
@@ -247,7 +255,11 @@ class CreatePerviewModal extends React.Component {
     return (
       <ButtonToolbar className="createperview__box">
         <button className="createperview__btn" onClick={this.handleShowModalClick}>
-          Create Perview
+          {this.props.icon ? (
+            <i className={`fa fa-${this.props.icon}`}></i>
+          ):(
+            <span>Create Perview</span>
+          )}
         </button>
 
         <Modal

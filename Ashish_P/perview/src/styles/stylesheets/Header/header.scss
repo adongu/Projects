@@ -152,7 +152,6 @@ $headernavwidth: 195px;
   }
 }
 // Allow absolute of the header rather than the button
-.mobilesearch,
 .hamburgernav {
   position: static;
 }
@@ -166,7 +165,6 @@ $headernavwidth: 195px;
 
     .header__mobilesearch {
       display: block;
-      height: 7%;
       width: 100%;
       position: fixed;
       background: white;
@@ -174,12 +172,9 @@ $headernavwidth: 195px;
       -moz-box-shadow:    0px 3px 5px rgba(100, 100, 100, 0.49);
       box-shadow:         0px 3px 5px rgba(100, 100, 100, 0.49);
       transition: ease 0.5s;
-      // bring to top of header;
-      // z-index: 11;
 
       .search__container {
         border-radius: 0;
-        height: 100%;
       }
     }
   }
