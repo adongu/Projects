@@ -201,8 +201,21 @@ class Header extends React.Component {
               </Col>
             </div>
           }
-
         </Row>
+
+        {this.props.currentUser &&
+          <Row className="header__mobilesearch">
+            {/* <Col className="header__mobilesearch-box"> */}
+              {/* <div className="header__search"> */}
+                <SearchPerviewBar
+                  selectItem={this.selectItem}
+                  results={this.props.perviewResults}
+                  fetchResults={this.props.fetchPerviewResults}
+                />
+              {/* </div> */}
+            {/* </Col> */}
+          </Row>
+        }
       </Grid>
     )
   }

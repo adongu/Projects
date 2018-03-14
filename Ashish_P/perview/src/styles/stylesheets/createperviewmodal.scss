@@ -38,6 +38,7 @@ $lines-to-show: 4;
 .createperview__{
   &box {
     width: 100%;
+    margin-bottom: 1em;
   }
 
   &search-container {
@@ -54,7 +55,8 @@ $lines-to-show: 4;
 
   &search-msg {
     margin: auto;
-    padding-bottom: 10px;
+    padding: 3px 10px;
+    border-top: 1px dashed dimgrey;
   }
 
   &search-background {
