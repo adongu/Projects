@@ -81,7 +81,7 @@ class HamburgerMenu extends Component {
         className="hamburger__nav"
       >
         <Row>
-          <Col>
+          <Col xs={12} sm={12}>
             <p>Pages & Settings</p>
           </Col>
         </Row>
@@ -130,7 +130,7 @@ class HamburgerMenu extends Component {
 
     return (
       <div className="hamburger__container" onClick={this.handleHamburgerClick}>
-        <Col xs={3} sm={3} className="hamburger__button">
+        <Col xs={12} sm={12} className="hamburger__button">
           {this.state.isOpen ? (
             <i className="fa fa-close fa-2x"></i>
           ):(

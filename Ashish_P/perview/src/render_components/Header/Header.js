@@ -127,7 +127,7 @@ class Header extends React.Component {
     return (
       <Grid className={`header__container ${this.state ? this.state.scrolled : '' }`}>
         <Row className="flexrow header__box">
-          <Col xs={6} sm={6} md={2} lg={2} className="header__logo">
+          <Col xs={6} sm={9} md={2} lg={2} className="header__logo">
             <Link to="/">
               <img
                 className="header__logoimg"
@@ -178,7 +178,7 @@ class Header extends React.Component {
           }
           {/* Mobile menu */}
           {this.props.currentUser &&
-            <Col xs={6} sm={6} mdHidden lgHidden
+            <Col xs={6} sm={3} mdHidden lgHidden
               className="header__mobile"
             >
               <Col xs={4} sm={4} mdHidden lgHidden
