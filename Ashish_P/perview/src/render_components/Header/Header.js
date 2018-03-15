@@ -170,7 +170,7 @@ class Header extends React.Component {
           }
 
           {!this.props.currentUser &&
-            <Col xs={4} sm={4} md={2} lg={2}>
+            <Col xs={6} sm={4} md={2} lg={2}>
               <SignInModalContainer
                 history={this.props.history}
               />
