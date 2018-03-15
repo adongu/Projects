@@ -165,6 +165,10 @@ $headernavwidth: 195px;
     border-radius: 1em;
     // overflow: hidden;
   }
+// prevent icon squishing
+  &createperview .createperview__box {
+    min-width: 24px;
+  }
 }
 // Allow absolute of the header rather than the button
 .hamburgernav {
