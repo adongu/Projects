@@ -80,9 +80,9 @@ class HamburgerMenu extends Component {
       <Grid onClick={this.handleNavClick}
         className="hamburger__nav"
       >
-        <Row>
+        <Row className="hamburger__header">
           <Col xs={12} sm={12}>
-            <p>Pages & Settings</p>
+            <span>Pages & Settings</span>
           </Col>
         </Row>
         {
@@ -95,6 +95,7 @@ class HamburgerMenu extends Component {
                 key={`hamburgernav-${option.text}`}
               >
                 <Row
+                  className="hamburger__options"
                 >
                     <Col xs={1} sm={1} mdHidden lgHidden>
                       <span>
@@ -112,7 +113,7 @@ class HamburgerMenu extends Component {
 
         <Row
           onClick={this.handleLogout}
-          className="usernav__signout"
+          className="hamburger__signout"
         >
           <Col xs={1} sm={1} mdHidden lgHidden>
             <i className="fa fa-power-off usernav__option-icon" aria-hidden="true"></i>
