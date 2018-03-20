@@ -3,6 +3,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import NavBarContainer from '../../containers/NavBarContainer.js';
 import ItemPerviewLayout from "../PerviewsLayouts/ItemPerviewLayout/ItemPerviewLayout";
+import { Grid, Row, Col } from 'react-bootstrap';
 
 class ItemPerviews extends React.Component {
   constructor (props) {

@@ -3,10 +3,7 @@ import { withRouter } from 'react-router-dom';
 import PerviewCard from '../PerviewCard/PerviewCard.js';
 import { Grid, Row, Col } from 'react-bootstrap';
 import "../../../styles/stylesheets/itemperviewlayout.css"
-
-// import {
-//   renderMoreInfoPopover
-// } from '../../SharedComponents/PricePopOver';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, history, toRenderUserProfile }) => {
   const renderItemSection = () => {
