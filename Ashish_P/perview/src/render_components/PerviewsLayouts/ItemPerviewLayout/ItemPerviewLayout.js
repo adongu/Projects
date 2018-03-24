@@ -3,21 +3,21 @@ import { withRouter } from 'react-router-dom';
 import PerviewCard from '../PerviewCard/PerviewCard.js';
 import { Grid, Row, Col } from 'react-bootstrap';
 import "../../../styles/stylesheets/itemperviewlayout.css"
-import { Grid, Row, Col } from 'react-bootstrap';
 
 const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, history, toRenderUserProfile }) => {
+
   const renderItemSection = () => {
     if (perviews && perviews.length > 0) {
       let item = perviews[0].itemDto;
 
       return (
-        <section className="flexcolumn itemperview__itemcontainer">
-          <div className="flexrow itemperview__itembox">
-            <div className="itemperview__itemimgbox">
+        // <Row className="flexcolumn itemperview__itemcontainer">
+          <Row className="flexrow itemperview__itembox">
+            <Col className="itemperview__itemimgbox">
               <img className="itemperview__itemimg" src={item.data.imageUrls.large.url} alt="Item"/>
-            </div>
+            </Col>
 
-            <div className="flexcolumn itemperview__iteminfobox">
+            <Col className="flexcolumn itemperview__iteminfobox">
               <div className="itemperview__itemname">{item.data.title}</div>
               <div className="flexcolumn itemperview__itemprice">
                 {`${item.data.listPrice.formattedAmount}`}
@@ -29,9 +29,9 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmar
                   Buy {!!(item.siteName) ? "on " + item.siteName : ""}
                 </a>
               </div>
-            </div>
-          </div>
-        </section>
+            </Col>
+          </Row>
+        // </Row>
       )
     }
   }
@@ -43,7 +43,12 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmar
         let item = perviews[0].itemDto;
 
         return (
-          <div className="flexcolumn itemperview__perviewbox" key={`item-${perview.itemDto.id}_Perview-${perview.id}`}>
+          <Col
+            className="flexcolumn itemperview__perviewbox"
+            key={`item-${perview.itemDto.id}_Perview-${perview.id}`}
+            sm={6}
+            md={3}
+          >
             <PerviewCard
               item = {item}
               currentUserId = {currentUserId}
@@ -57,24 +62,28 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmar
               history = {history}
               toRenderUserProfile = {toRenderUserProfile}
             />
-          </div>
+          </Col>
         )
       })
     }
   }
 
   return (
-    <Grid className="flexcolumn itemperview__layoutcontainer">
+    <Grid
+      // className="flexcolumn itemperview__layoutcontainer"
+      >
       {renderItemSection()}
-      <Row className="itemperview__perviewcontainer">
-        <Col
+      <Row
+        // className="itemperview__perviewcontainer"
+        >
+        {/* <Col
           xs={12}
           sm={12}
           md={12}
           className="itemperview__perviewcenterbox"
-          >
+          > */}
           {renderPerviews()}
-        </Col>
+        {/* </Col> */}
       </Row>
     </Grid>
   )
