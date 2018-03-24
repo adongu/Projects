@@ -102,7 +102,7 @@ class SignIn extends React.Component {
             </a>
           </p>
         </div>
-        
+
         <div className="signin__background">
         </div>
       </div>

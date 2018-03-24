@@ -115,7 +115,7 @@ class PerviewDetailModal extends React.Component {
                 {/* {renderMoreInfoPopover()} */}
               </div>
 
-              <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">
+              <a className="buy-btn" href={item.data.detailPageUrl} target="_blank" rel="noopener noreferrer">
                 Buy {!!(item.siteName) ? "on " + item.siteName : ""}
               </a>
             </div>

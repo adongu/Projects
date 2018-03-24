@@ -31,17 +31,22 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmar
                 {item.data.title}
               </Col>
 
+              <Row>
+                <Col
+                  sm={6}
+                  col-sm-push-6
+                  // className="itemperview__itembuy"
+                >
+                  <div className="flexcolumn itemperview__itemprice">
+                    {`${item.data.listPrice.formattedAmount}`}
+                    {/* {renderMoreInfoPopover()} */}
+                  </div>
 
-              <Col className="itemperview__itembuy">
-                <div className="flexcolumn itemperview__itemprice">
-                  {`${item.data.listPrice.formattedAmount}`}
-                  {/* {renderMoreInfoPopover()} */}
-                </div>
-
-                <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">
-                  Buy {!!(item.siteName) ? "on " + item.siteName : ""}
-                </a>
-              </Col>
+                  <a className="buy-btn" href={item.data.detailPageUrl} target="_blank" rel="noopener noreferrer">
+                    Buy {!!(item.siteName) ? "on " + item.siteName : ""}
+                  </a>
+                </Col>
+              </Row>
             </Col>
           </Row>
         // </Row>

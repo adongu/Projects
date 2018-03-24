@@ -71,7 +71,7 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
           <div className="flexrow narrowperviews__buybox">
             <span>{`${item.data.listPrice.formattedAmount}`}</span>
 
-            <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">
+            <a className="buy-btn" href={item.data.detailPageUrl} target="_blank" rel="noopener noreferrer">
               Buy {!!(item.siteName) ? "on " + item.siteName : ""}
             </a>
           </div>
