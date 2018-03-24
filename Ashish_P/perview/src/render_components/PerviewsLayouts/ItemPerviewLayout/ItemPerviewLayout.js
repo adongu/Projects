@@ -12,23 +12,36 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmar
 
       return (
         // <Row className="flexcolumn itemperview__itemcontainer">
-          <Row className="flexrow itemperview__itembox">
-            <Col className="itemperview__itemimgbox">
+          <Row
+            // className="flexrow itemperview__itembox"
+            >
+            <Col sm={12} md={6}
+            // className="itemperview__itemimgbox"
+            >
               <img className="itemperview__itemimg" src={item.data.imageUrls.large.url} alt="Item"/>
             </Col>
 
-            <Col className="flexcolumn itemperview__iteminfobox">
-              <div className="itemperview__itemname">{item.data.title}</div>
-              <div className="flexcolumn itemperview__itemprice">
-                {`${item.data.listPrice.formattedAmount}`}
-                {/* {renderMoreInfoPopover()} */}
-              </div>
+            <Col
+              sm={12} md={6}
+              // className="flexcolumn itemperview__iteminfobox"
+              >
+              <Col
+                // className="itemperview__itemname"
+              >
+                {item.data.title}
+              </Col>
 
-              <div className="itemperview__itembuy">
+
+              <Col className="itemperview__itembuy">
+                <div className="flexcolumn itemperview__itemprice">
+                  {`${item.data.listPrice.formattedAmount}`}
+                  {/* {renderMoreInfoPopover()} */}
+                </div>
+
                 <a className="buy-btn" href={item.data.detailPageUrl} target="_blank">
                   Buy {!!(item.siteName) ? "on " + item.siteName : ""}
                 </a>
-              </div>
+              </Col>
             </Col>
           </Row>
         // </Row>
