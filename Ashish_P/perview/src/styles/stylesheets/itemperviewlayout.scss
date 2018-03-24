@@ -23,10 +23,11 @@ $review-lines-to-show: 5;
   }
 
   &itembox {
-    width: 100%;
-    height: 250px;
-    margin-left: auto;
-    border-radius: 7px;
+    // width: 100%;
+    // height: 250px;
+    // margin-left: auto;
+    // border-radius: 7px;
+    padding-bottom: 20px;
   }
 // item img - left side
   &itemimgbox {
@@ -46,24 +47,27 @@ $review-lines-to-show: 5;
 
 // item info - right side
   &iteminfobox {
-    width: 70%;
-    padding: 20px 30px 50px 10px;
+    // width: 70%;
+    // padding: 20px 30px 50px 10px;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-between;
   }
 
   &itemname {
-    width: 100%;
-    padding-bottom: 10px;
-    color: #3F3F3F;
-    height: $title-font-size*$title-line-height*$title-lines-to-show; /* Fallback for non-webkit */
-    margin: 0 auto;
+    // width: 100%;
+    // padding-bottom: 10px;
+    // color: #3F3F3F;
+    // height: $title-font-size*$title-line-height*$title-lines-to-show; /* Fallback for non-webkit */
+    // margin: 0 auto;
     margin-bottom: 20px;
-    font-size: $title-font-size;
-    font-weight: 300;
-    line-height: $title-line-height;
-    -webkit-line-clamp: $title-lines-to-show;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    // font-size: $title-font-size;
+    // font-weight: 300;
+    // line-height: $title-line-height;
+    // -webkit-line-clamp: $title-lines-to-show;
+    // -webkit-box-orient: vertical;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
   }
 
   &itemprice {

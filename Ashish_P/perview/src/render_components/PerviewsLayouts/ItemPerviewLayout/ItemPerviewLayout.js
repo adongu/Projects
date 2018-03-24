@@ -13,40 +13,49 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmar
       return (
         // <Row className="flexcolumn itemperview__itemcontainer">
           <Row
-            // className="flexrow itemperview__itembox"
+            className="itemperview__itembox"
             >
-            <Col sm={12} md={6}
+            <Col sm={12} md={3}
             // className="itemperview__itemimgbox"
             >
               <img className="itemperview__itemimg" src={item.data.imageUrls.large.url} alt="Item"/>
             </Col>
 
             <Col
-              sm={12} md={6}
-              // className="flexcolumn itemperview__iteminfobox"
+              sm={12} md={5}
+              className="itemperview__iteminfobox"
               >
               <Col
-                // className="itemperview__itemname"
+                // sm={6}
+                // md={6}
+                className="itemperview__itemname"
+                sm={12}
               >
                 {item.data.title}
               </Col>
+              <Col xsHidden smHidden md={12} className="filler">
+              </Col>
 
-              <Row>
+              {/* <Row> */}
                 <Col
                   sm={6}
+                  md={6}
                   col-sm-push-6
                   // className="itemperview__itembuy"
                 >
-                  <div className="flexcolumn itemperview__itemprice">
+                  <Col
+                    // className="flexcolumn itemperview__itemprice"
+                  >
                     {`${item.data.listPrice.formattedAmount}`}
-                    {/* {renderMoreInfoPopover()} */}
-                  </div>
+                  </Col>
 
-                  <a className="buy-btn" href={item.data.detailPageUrl} target="_blank" rel="noopener noreferrer">
-                    Buy {!!(item.siteName) ? "on " + item.siteName : ""}
-                  </a>
+                  <Col>
+                    <a className="buy-btn" href={item.data.detailPageUrl} target="_blank" rel="noopener noreferrer">
+                      Buy {!!(item.siteName) ? "on " + item.siteName : ""}
+                    </a>
+                  </Col>
                 </Col>
-              </Row>
+              {/* </Row> */}
             </Col>
           </Row>
         // </Row>
