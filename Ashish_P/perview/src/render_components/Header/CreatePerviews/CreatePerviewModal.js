@@ -59,7 +59,7 @@ class CreatePerviewModal extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.itemResults !== this.props.itemResults) {
-      console.log('update new itemresults');
+      // console.log('update new itemresults');
       this.setState({
         itemResults: nextProps.itemResults
       })
@@ -251,7 +251,7 @@ class CreatePerviewModal extends React.Component {
   }
 
   render() {
-    console.log("this.state.show", this.state.show);
+    // console.log("this.state.show", this.state.show);
     return (
       <ButtonToolbar className="createperview__box">
         <button className="createperview__btn" onClick={this.handleShowModalClick}>

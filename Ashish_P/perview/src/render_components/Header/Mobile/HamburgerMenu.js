@@ -34,14 +34,11 @@ class HamburgerMenu extends Component {
   // }
 
   handleNavClick(e) {
-    // console.log("event.target", e.target.id)
     this.setState((prevState, props) => ({ isOpen: false }));
 
   }
 
   handleHamburgerClick(e) {
-    console.log('this.state.isopen', this.state.isOpen);
-    // this.setState((_prevProps, prevState) => { isOpen: !prevState.isOpen });
     this.setState({ isOpen: !this.state.isOpen });
   }
 
@@ -49,11 +46,9 @@ class HamburgerMenu extends Component {
     this.props.logOut()
     .then(() => {
       this.props.history.replace({ pathname: '/home' });
-      // this.props.history.push('/signin');
     })
     .catch(() => {
       this.props.history.replace({ pathname: '/home' });
-      // this.props.history.push('/signin');
     })
   }
 
@@ -127,7 +122,7 @@ class HamburgerMenu extends Component {
   }
 
   render() {
-    console.log('this.props', this.props)
+    // console.log('this.props', this.props)
 
     return (
       <div className="hamburger__container" onClick={this.handleHamburgerClick}>

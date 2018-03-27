@@ -122,7 +122,7 @@ class Header extends React.Component {
   }
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
 
     return (
       <Grid className={`header__container ${this.state ? this.state.scrolled : '' }`}>
