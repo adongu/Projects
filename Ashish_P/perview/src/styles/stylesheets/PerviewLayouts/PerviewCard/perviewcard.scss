@@ -135,10 +135,12 @@ $lines-to-show: 4;
     color: #3F3F3F;
     display: block; /* Fallback for non-webkit */
     display: -webkit-box;
-    height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
-    margin: 0 auto;
+    // height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
+    // margin: 0 auto;
+    padding: 0px 3px;
     font-size: $font-size;
     font-weight: 300;
+    letter-spacing: 0.002em;
     line-height: $line-height;
     -webkit-line-clamp: $lines-to-show;
     -webkit-box-orient: vertical;

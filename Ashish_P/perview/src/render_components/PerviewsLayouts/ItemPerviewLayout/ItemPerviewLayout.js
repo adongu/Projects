@@ -71,24 +71,26 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmar
 
         return (
           <Col
-            className="flexcolumn itemperview__perviewbox"
+            className="itemperview__itemcontainer"
             key={`item-${perview.itemDto.id}_Perview-${perview.id}`}
             sm={6}
-            md={3}
+            md={4}
           >
-            <PerviewCard
-              item = {item}
-              currentUserId = {currentUserId}
-              perviewUser = { user }
-              perview = {perview}
-              likers = {perview.likers}
-              bookmarkPerview = {bookmarkPerview}
-              unbookmarkPerview = {unbookmarkPerview}
-              likePerview = {likePerview}
-              unlikePerview = {unlikePerview}
-              history = {history}
-              toRenderUserProfile = {toRenderUserProfile}
-            />
+            <div className="flexcolumn itemperview__perviewbox">
+              <PerviewCard
+                item = {item}
+                currentUserId = {currentUserId}
+                perviewUser = { user }
+                perview = {perview}
+                likers = {perview.likers}
+                bookmarkPerview = {bookmarkPerview}
+                unbookmarkPerview = {unbookmarkPerview}
+                likePerview = {likePerview}
+                unlikePerview = {unlikePerview}
+                history = {history}
+                toRenderUserProfile = {toRenderUserProfile}
+              />
+            </div>
           </Col>
         )
       })
@@ -109,6 +111,9 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmar
           md={12}
           className="itemperview__perviewcenterbox"
           > */}
+          {renderPerviews()}
+          {renderPerviews()}
+          {renderPerviews()}
           {renderPerviews()}
         {/* </Col> */}
       </Row>
