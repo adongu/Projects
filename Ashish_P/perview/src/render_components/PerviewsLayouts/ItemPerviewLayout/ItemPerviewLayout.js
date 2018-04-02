@@ -15,8 +15,9 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmar
           <Row
             className="itemperview__itembox"
             >
-            <Col sm={12} md={3}
-            // className="itemperview__itemimgbox"
+            <Col
+              sm={12} md={3}
+              className="itemperview__itemimgbox"
             >
               <img className="itemperview__itemimg" src={item.data.imageUrls.large.url} alt="Item"/>
             </Col>
@@ -40,13 +41,13 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmar
                 <Col
                   sm={6}
                   md={6}
-                  col-sm-push-6
+                  // sm-push-6
                   // className="itemperview__itembuy"
                 >
                   <Col
                     // className="flexcolumn itemperview__itemprice"
                   >
-                    {`${item.data.listPrice.formattedAmount}`}
+                    {`${isNaN(item.data.listPrice.formattedAmount) ? "" : item.data.listPrice.formattedAmount}`}
                   </Col>
 
                   <Col>
