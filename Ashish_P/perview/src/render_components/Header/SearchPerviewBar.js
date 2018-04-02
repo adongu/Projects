@@ -209,6 +209,7 @@ class SearchItemBar extends Component {
             xs={12}
             sm={12}
             md={12}
+            lg={8}
             className="flexrow autosuggest__product"
           >
             <div className="autosuggest__product-left">
@@ -229,6 +230,7 @@ class SearchItemBar extends Component {
             xsHidden
             smHidden
             mdHidden
+            lg={4}
             className="autosuggest__friends"
           >
             <div className="autosuggest__friends-header">Perviewed by:</div>
