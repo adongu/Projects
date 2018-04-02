@@ -1,8 +1,9 @@
-import "../../styles/stylesheets/setting.css";
+import "../../styles/stylesheets/Settings/settings.css";
 import React from 'react';
 import NavBarContainer from '../../containers/NavBarContainer.js';
 import { withRouter } from 'react-router-dom';
 import * as util from '../../actions/util_actions.js';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 class Settings extends React.Component{
   constructor(props) {
@@ -49,7 +50,7 @@ class Settings extends React.Component{
 
   renderProfile (currentUser) {
     return (
-      <div className="flexrow settings__userbox">
+      <Col className="flexrow settings__userbox">
         <div className="settings__userimgcontainer">
           <div className="settings__userimgbox">
             <img className="settings__userimg" src={util.generateUserImageUrl(currentUser.facebookId, 'square')} alt="User" />
@@ -58,13 +59,13 @@ class Settings extends React.Component{
         <div className="settings__username">
           {currentUser.fullName}
         </div>
-      </div>
+      </Col>
     )
   }
 
   renderSocialNetworks (currentUser) {
     return (
-      <div className="settings__networks">
+      <Col className="settings__networks">
         <p className="settings__networks-header">
           Active Social Networks
         </p>
@@ -76,13 +77,13 @@ class Settings extends React.Component{
             Facebook
           </div>
         </div>
-      </div>
+      </Col>
     )
   }
 
   renderInviteUrl (currentUser) {
     return (
-      <div className="settings__invitebox">
+      <Col className="settings__invitebox">
         <p className="settings__invite-text">
           Share your Link to gain points!
         </p>
@@ -96,13 +97,13 @@ class Settings extends React.Component{
             {this.state.copySuccess}
           </span>
         </form>
-      </div>
+      </Col>
     )
   }
 
   renderTotalPoints (currentUser) {
     return (
-      <div className="settings__points">
+      <Col className="settings__points">
         <p className="settings__points-header">
           Total Earnings
         </p>
@@ -113,13 +114,13 @@ class Settings extends React.Component{
             {currentUser.points} points ({currentUser.earnings})
           </span>
         </div>
-      </div>
+      </Col>
     )
   }
 
   renderNumberPerviews (currentUser) {
     return (
-      <div className="settings__perviews">
+      <Col className="settings__perviews">
         <p className="settings__perviews-header">
           Total Perviews
         </p>
@@ -127,13 +128,13 @@ class Settings extends React.Component{
         <div className="settings__perviews-number">
           {currentUser.numPerviews}
         </div>
-      </div>
+      </Col>
     )
   }
 
   renderIsBetaUser (currentUser) {
     return (
-      <div className="settings__perviews">
+      <Col className="settings__perviews">
         <p className="settings__perviews-header">
           Beta Status
         </p>
@@ -141,44 +142,45 @@ class Settings extends React.Component{
         <div className="settings__perviews-number">
           {currentUser.beta}
         </div>
-      </div>
+      </Col>
     )
   }
-
 
   render() {
     if (this.state.currentUser) {
       let currentUser = this.state.currentUser;
 
       return(
-        <div className="settings__container">
+        <Grid className="settings__container">
           <NavBarContainer />
 
           <div className="flexcolumn settings__box">
-            <section className="flexrow settings__row-top">
+            <Row className="flexrow settings__row-top">
               {this.renderProfile(currentUser)}
 
               {this.renderSocialNetworks(currentUser)}
-            </section>
+            </Row>
 
-            <section className="flexrow settings__row-bottom">
+            <Row className="flexrow settings__row-bottom">
               {this.renderTotalPoints(currentUser)}
 
               {this.renderNumberPerviews(currentUser)}
-            </section>
+            </Row>
           </div>
-        </div>
+        </Grid>
       )
     } else {
       return(
-        <div className="settings__container">
+        <Grid className="settings__container">
           <NavBarContainer />
 
           No User Found :(
-        </div>
+        </Grid>
       )
     }
   }
+
+  return;
 }
 
 export default withRouter(Settings);
