@@ -4,29 +4,27 @@ $lines-to-show: 6;
 
 .settings__ {
   &container {
-    width: 100%;
-    max-width: 980px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+    // width: 100%;
+    // max-width: 980px;
+    // margin: auto;
+    // display: flex;
+    // flex-direction: column;
+    // flex-wrap: wrap;
     box-sizing: border-box;
   }
 
   &row-top,
   &row-bottom {
-    width: 100%;
+    // width: 100%;
   }
 
   &userbox,
   &points,
   &networks,
   &perviews {
-    width: 465px;
     height: 200px;
     margin: auto;
     display: block;
-    margin-right: 15px;
     margin-bottom: 20px;
     border: 1px #D6D6D6 solid;
     box-shadow: 0px 2px 2px 1px #EAEAEA;
@@ -49,8 +47,8 @@ $lines-to-show: 6;
   }
 
   &userimgbox {
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
     margin-right: 8px;
     border-radius: 50%;
     display: block;
@@ -212,6 +210,7 @@ $lines-to-show: 6;
     }
 
     &-number {
+      text-align: center;
       font-size: 2em;
     }
   }
