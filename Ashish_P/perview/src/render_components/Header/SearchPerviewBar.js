@@ -5,6 +5,7 @@ import { Link, withRouter } from 'react-router-dom';
 import Autosuggest from 'react-autosuggest';
 import IsolatedScroll from 'react-isolated-scroll';
 import * as util from '../../actions/util_actions.js';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 class SearchItemBar extends Component {
   static propTypes = {
@@ -102,6 +103,14 @@ class SearchItemBar extends Component {
         <i className="fa fa-search search__btn-icon" aria-hidden="true"></i>
       )
     }
+// @TODO: Add delete button for text on mobile
+    const renderCloseButton = () => {
+      return (
+        <span>
+          x
+        </span>
+      )
+    }
 
     return (
       <div className="search__inputContainer">
@@ -160,7 +169,6 @@ class SearchItemBar extends Component {
 
       return(
         <div className="flexrow headersearch__container">
-
           {truncatedPerviews.map((perview) => {
             let user = perview.userDto;
 
@@ -196,8 +204,13 @@ class SearchItemBar extends Component {
       let itemPrice = suggestion[0].itemDto.data.listPrice.formattedAmount;
 
       return (
-        <div className="flexrow autosuggest__item">
-          <div className="flexrow autosuggest__product">
+        <Row className="flexrow autosuggest__item">
+          <Col
+            xs={12}
+            sm={12}
+            md={12}
+            className="flexrow autosuggest__product"
+          >
             <div className="autosuggest__product-left">
               <img className="autosuggest__img" src={itemImageUrl} alt="product"/>
             </div>
@@ -210,9 +223,14 @@ class SearchItemBar extends Component {
                 {itemPrice}
               </div>
             </div>
-          </div>
+          </Col>
 
-          <div className="autosuggest__friends">
+          <Col
+            xsHidden
+            smHidden
+            mdHidden
+            className="autosuggest__friends"
+          >
             <div className="autosuggest__friends-header">Perviewed by:</div>
             <div>
               {this.renderSearchPerviewFriends(suggestion)}
@@ -220,8 +238,8 @@ class SearchItemBar extends Component {
             <div>
               {this.renderSeeAllLink(suggestion)}
             </div>
-          </div>
-        </div>
+          </Col>
+        </Row>
       );
     }
   }
@@ -256,7 +274,7 @@ class SearchItemBar extends Component {
 
     return (
       <div className="search__container headersearch__perview">
-        <div className="search__box">
+        <Grid className="search__box">
           <Autosuggest
             id="headersearch__container"
             theme={theme}
@@ -269,7 +287,7 @@ class SearchItemBar extends Component {
             renderSuggestionsContainer={this.renderSuggestionsContainer}
             inputProps={inputProps}
           />
-        </div>
+        </Grid>
       </div>
     )
   }
