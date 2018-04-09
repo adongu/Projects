@@ -36,8 +36,8 @@
     align-items: center;
     vertical-align: middle;
     display: block;
-    width: 41px;
-    height: 41px;
+    width: 23px;
+    height: 23px;
     overflow: hidden;
     border-radius: 50%;
     background: #D3D6DB;
@@ -68,6 +68,8 @@
     padding-top: 3px;
     padding-right: 18px;
     overflow: hidden;
+    // word-wrap: break-word;
+    // overflow: word-wrap;
     font-family: Roboto;
   }
 
@@ -139,6 +141,6 @@
 
 @media (max-width: 768px) {
   .perviewcomment__commentsbox {
-    max-height: 80px;
+    max-height: 86px;
   }
 }

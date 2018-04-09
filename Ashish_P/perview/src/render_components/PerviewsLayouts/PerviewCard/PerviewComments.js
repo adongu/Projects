@@ -1,5 +1,6 @@
 import '../../../styles/stylesheets/PerviewLayouts/PerviewCard/perviewcomments.css';
 import React from 'react';
+import * as util from '../../../actions/util_actions';
 
 // perview
 class PerviewComments extends React.Component{
@@ -7,7 +8,8 @@ class PerviewComments extends React.Component{
     super(props);
     this.state = {
       comments: [],
-      topLineMaxLength: 30,
+      // Needs to be updated depending on user image, 30 works best without userimage at 23px
+      topLineMaxLength: 15,
       newComment: '',
       addedComment: false,
       commentElementClass: 'perviewcomment__comments-container',
@@ -128,12 +130,12 @@ class PerviewComments extends React.Component{
     return (
       <div className="flexrow perviewcomment__review-user">
         <div className="flexrow perviewcomment__userbox">
-          {/* <div className="perviewcomment__userimgbox">
+          <div className="perviewcomment__userimgbox">
             <img className="perviewcomment__userimg"
               onClick={this.props.handleFriendClick(commenter.id)}
               src={util.generateUserImageUrl(commenter.facebookId, 'square')} alt="User"
             />
-          </div> */}
+          </div>
           <a
             onClick={this.props.handleFriendClick(commenter.id)}
             className="perviewcomment__username"
@@ -190,7 +192,8 @@ class PerviewComments extends React.Component{
     let commenterNameLength = comment.commenter.firstName.length;
     let maxTopCommentLength = this.state.topLineMaxLength - commenterNameLength;
 
-    commentArray.forEach((comment) => {
+    commentArray.forEach((comment, i) => {
+      console.log('topComment', topComment.length)
       if (topComment.length < maxTopCommentLength) {
         topComment += ` ${comment}`;
       } else {
