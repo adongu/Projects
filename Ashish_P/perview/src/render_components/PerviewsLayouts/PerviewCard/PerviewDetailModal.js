@@ -214,7 +214,7 @@ class PerviewDetailModal extends React.Component {
                 {this.props.toRenderPerviewCommentsView &&
                   <Col
                     xs={12} sm={12} md={5}
-                    // className={`perviewdetailmodal__socialbox${this.props.toRenderPerviewCommentsView ? '' : '-large'}`}
+                    className="perviewdetailmodal__socialbox"
                   >
                     {this.renderCommentSection(user, perview)}
                   </Col>

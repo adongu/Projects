@@ -207,7 +207,7 @@ class PerviewComments extends React.Component{
   renderAllComments () {
     return (
       <div
-        // className="divwrapper-fullwidth perviewcomment__commentsbox"
+        className="perviewcomment__commentsbox"
         id="comments__box"
       >
         {this.state.comments.map((comment) => {
@@ -237,17 +237,17 @@ class PerviewComments extends React.Component{
   render () {
     return (
       <div
-        // className="perviewcomment__container divwrapper-fullwidth"
+        className="perviewcomment__container"
       >
         <p
-          // className="perviewcomment__commentstitle"
+          className="perviewcomment__commentstitle"
         >
           Comments
         </p>
         {this.renderAllComments()}
 
         <div
-          // className="perviewcomment__socialactions"
+          className="perviewcomment__socialactions"
         >
           {this.renderSocialSection(this.props.perview)}
           {this.renderAddCommentForm()}

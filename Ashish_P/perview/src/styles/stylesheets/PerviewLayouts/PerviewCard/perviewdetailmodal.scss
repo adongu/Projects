@@ -27,7 +27,8 @@
   }
 
   &body {
-    width: 100%;
+    // width: 100%;
+
   }
 
   &perviewbox {
@@ -69,9 +70,10 @@
   }
 // item section
   &itembox {
-    width: 55%;
-    border-right: 1px solid #efefef;
-    padding: 8px;
+    // width: 55%;
+    // border-right: 1px solid #efefef;
+    // padding: 8px 0;
+    margin-bottom: 18px;
   }
 
   &moreinfo {
@@ -90,7 +92,7 @@
   }
 // detail and comment section
   &socialbox {
-    width: 43%;
+    // width: 43%;
   }
 
   &userbox {
