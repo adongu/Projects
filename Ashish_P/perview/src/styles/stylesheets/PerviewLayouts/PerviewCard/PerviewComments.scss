@@ -2,7 +2,7 @@
   &container {
     // display: flex;
     height: 100%;
-    overflow: hidden;
+    // overflow: hidden;
   }
 
   &commentsbox {
@@ -101,8 +101,7 @@
   }
 
   &socialactions {
-    height: 20%;
-    margin-top: auto;
+    // vertical-align: bottom;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

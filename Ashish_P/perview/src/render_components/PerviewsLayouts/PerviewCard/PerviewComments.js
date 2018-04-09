@@ -7,7 +7,7 @@ class PerviewComments extends React.Component{
     super(props);
     this.state = {
       comments: [],
-      topLineMaxLength: 37,
+      topLineMaxLength: 30,
       newComment: '',
       addedComment: false,
       commentElementClass: 'perviewcomment__comments-container',
