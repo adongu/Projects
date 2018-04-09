@@ -10,7 +10,7 @@
     // min-height: 180px;
     // height: 70%;
     overflow-y: scroll;
-    border-bottom: 1px solid #efefef;
+    // border-bottom: 1px solid #efefef;
     margin-bottom: 20px;
   }
 
@@ -107,6 +107,7 @@
     flex-direction: column;
     justify-content: space-between;
     padding-top: 12px;
+    border-top: 1px solid #efefef;
   }
 
   &form {

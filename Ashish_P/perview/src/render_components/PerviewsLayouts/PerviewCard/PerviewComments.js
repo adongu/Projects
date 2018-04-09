@@ -205,6 +205,14 @@ class PerviewComments extends React.Component{
   }
 
   renderAllComments () {
+    if (this.state.comments.length < 1) {
+      return (
+        <span>
+          Be the first one to leave a comment!
+        </span>
+      )
+    }
+
     return (
       <div
         className="perviewcomment__commentsbox"
@@ -242,7 +250,7 @@ class PerviewComments extends React.Component{
         <p
           className="perviewcomment__commentstitle"
         >
-          Comments
+          Comments:
         </p>
         {this.renderAllComments()}
 

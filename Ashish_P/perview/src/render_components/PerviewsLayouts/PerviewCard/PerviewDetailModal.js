@@ -218,7 +218,6 @@ class PerviewDetailModal extends React.Component {
                   >
                     {this.renderCommentSection(user, perview)}
                   </Col>
-
                 }
               </Row>
             </Grid>
