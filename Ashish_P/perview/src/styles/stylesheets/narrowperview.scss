@@ -210,7 +210,7 @@ $review-lines-to-show: 6;
     -webkit-line-clamp: $review-lines-to-show;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    text-overflow: ellipsis;
+    // text-overflow: ellipsis;
   }
 }
 

@@ -7,6 +7,7 @@ import PerviewComments from './PerviewComments';
 //   renderMoreInfoPopover
 // } from '../../SharedComponents/PricePopOver';
 import * as util from '../../../actions/util_actions';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 class PerviewDetailModal extends React.Component {
 
@@ -98,7 +99,9 @@ class PerviewDetailModal extends React.Component {
         )
       } else {
         return (
-          <div className="flexcolumn perviewdetailmodal__productbox divwrapper-fullwidth">
+          <div
+            // className="flexcolumn perviewdetailmodal__productbox divwrapper-fullwidth"
+          >
             <div className="narrowperviews__img">
               <Link to={`/item/${item.id}`}>
                 <img className="narrowperviews__productimg-photo" src={item.data.imageUrls.large.url} alt="product"/>
@@ -129,7 +132,9 @@ class PerviewDetailModal extends React.Component {
   renderDetailsSection (user, perview) {
     if(this.props.toRenderPerviewCommentsView || this.props.toRenderPerviewCardDetailsView) {
       return (
-        <div className="flexcolumn divwrapper-fullwidth">
+        <div
+          // className="flexcolumn divwrapper-fullwidth"
+        >
           <div className="flexrow perviewdetailmodal__userbox">
             <span className="perviewdetailmodal__userimgbox">
               <img className="perviewdetailmodal__userimg" onClick={this.props.handleFriendClick(user.id)} src={util.generateUserImageUrl(user.facebookId, 'square')} alt="User"/>
@@ -192,18 +197,31 @@ class PerviewDetailModal extends React.Component {
         >
           <Modal.Header className="perviewdetailmodal__header" closeButton></Modal.Header>
           <Modal.Body className="perviewdetailmodal__body">
-            <div
-              className="flexrow perviewdetailmodal__perviewbox"
+            <Grid
+              className="perviewdetailmodal__perviewbox"
             >
-              <div className={`${this.props.toRenderPerviewCommentsView ? 'perviewdetailmodal__itembox' : ''}`}>
-                {this.renderItemSection(itemDto)}
-                {this.renderDetailsSection(user, perview)}
-              </div>
-              <div className={`perviewdetailmodal__socialbox${this.props.toRenderPerviewCommentsView ? '' : '-large'}`}
+              <Row
               >
-                {this.renderCommentSection(user, perview)}
-              </div>
-            </div>
+                <Col
+                  xs={12} sm={12} md={7}
+                  className={`${this.props.toRenderPerviewCommentsView ? 'perviewdetailmodal__itembox' : ''}`}
+                >
+                  {this.renderItemSection(itemDto)}
+                  {this.renderDetailsSection(user, perview)}
+                </Col>
+
+
+                {this.props.toRenderPerviewCommentsView &&
+                  <Col
+                    xs={12} sm={12} md={5}
+                    // className={`perviewdetailmodal__socialbox${this.props.toRenderPerviewCommentsView ? '' : '-large'}`}
+                  >
+                    {this.renderCommentSection(user, perview)}
+                  </Col>
+
+                }
+              </Row>
+            </Grid>
           </Modal.Body>
         </Modal>
       </ButtonToolbar>

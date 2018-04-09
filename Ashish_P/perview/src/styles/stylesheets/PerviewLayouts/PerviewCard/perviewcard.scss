@@ -145,7 +145,7 @@ $lines-to-show: 4;
     -webkit-line-clamp: $lines-to-show;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    text-overflow: ellipsis;
+    // text-overflow: ellipsis;
   }
 
   &showmore {
