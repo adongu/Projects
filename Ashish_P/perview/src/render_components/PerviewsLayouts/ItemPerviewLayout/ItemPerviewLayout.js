@@ -113,9 +113,6 @@ const ItemPerviewLayout = ({ currentUserId, perviews, bookmarkPerview, unbookmar
           className="itemperview__perviewcenterbox"
           > */}
           {renderPerviews()}
-          {renderPerviews()}
-          {renderPerviews()}
-          {renderPerviews()}
         {/* </Col> */}
       </Row>
     </Grid>
