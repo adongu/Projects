@@ -51,8 +51,27 @@
     display: flex;
     justify-content: center;
     cursor: pointer;
+
+    // animation-name: zoomIn;
+    // animation-duration: 3s;
+
+    // :hover{
+    //   animation-name: zoomOut;
+    //   animation-duration: 3s;
+    //
+    // }
   }
 }
+
+// .hamburger__option-icon {
+//   animation-name: rollOut;
+//   animation-duration: 3s;
+//
+//   // &:hover {
+//     // animation-name: spin;
+//     // animation-duration: 3s;
+//   // }
+// }
 
 /* color-change Demo */
 
@@ -62,7 +81,7 @@
 //     -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
 //     animation-name: unicornTears;
 //     animation-duration: 4s;
-//     transition: background-color linear 0.1s;
+
 //     /* 7th step */
 //     // animation-iteration-count: infinite;
 //     /* Last Step */

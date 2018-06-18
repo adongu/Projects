@@ -105,7 +105,7 @@ class HamburgerMenu extends Component {
                       componentClass='span'
                     >
                       <span>
-                        <i className={`fa fa-${option.icon} fa-lg`} aria-hidden="true"></i>
+                        <i className={`fa fa-${option.icon} fa-lg hamburger__option-icon`} aria-hidden="true"></i>
                       </span>
                     </Col>
                     <Col
