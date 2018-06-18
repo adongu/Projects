@@ -91,7 +91,7 @@ class Header extends React.Component {
     const navOptions = [
       {
         path: '/myperviews',
-        text: 'My Perviews',
+        text: 'My Reviews',
         icon: 'star'
       },
       {

@@ -251,7 +251,8 @@ class SearchItemBar extends Component {
 
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
-      placeholder: 'Search Perview',
+      placeholder: 'Search',
+      // placeholder: 'Search Perview',
       value,
       onChange: this.onChange,
       type: 'search'

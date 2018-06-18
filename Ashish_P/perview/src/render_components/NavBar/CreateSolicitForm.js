@@ -156,6 +156,6 @@ class CreateSolicitForm extends React.Component {
     )
   }
 }
-//what is needed to create perview? I need to have rating, so should I have the rating at 0?
+//what is needed to Create Review? I need to have rating, so should I have the rating at 0?
 
 export default CreateSolicitForm;

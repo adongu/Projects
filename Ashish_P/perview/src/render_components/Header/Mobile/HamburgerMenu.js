@@ -56,7 +56,7 @@ class HamburgerMenu extends Component {
     const navOptions = [
       {
         path: '/myperviews',
-        text: 'My Perviews',
+        text: 'My Reviews',
         icon: 'star'
       },
       {
@@ -72,10 +72,12 @@ class HamburgerMenu extends Component {
     ];
 
     return (
-      <Grid onClick={this.handleNavClick}
+      <Grid
+        componentClass="nav"
+        onClick={this.handleNavClick}
         className="hamburger__nav"
       >
-        <Row className="hamburger__header">
+        <Row className="hamburger__header color-change">
           <Col
             // xs={6} sm={3}
             mdHidden lgHidden
@@ -88,15 +90,17 @@ class HamburgerMenu extends Component {
           // let currentPath = this.props.match.path;
           // let isActive = option.path === currentPath ? true : false;
             return (
-              <Link to={option.path}
-                // className={`flexrow header__navbox ${isActive ? "active" : ""}`}
+              <div
+                // to={option.path}
+                // className={`flexrow header__navbox ${isActive ? "active" : ""}`}'
+                className="color-change"
                 key={`hamburgernav-${option.text}`}
               >
                 <Row
                   className="hamburger__options"
                 >
                     <Col
-                      // xs={1} sm={1}
+                      xs={1} sm={1}
                       mdHidden lgHidden
                       componentClass='span'
                     >
@@ -112,17 +116,17 @@ class HamburgerMenu extends Component {
                       {option.text}
                     </Col>
                   </Row>
-              </Link>
+              </div>
             )
           })
         }
 
         <Row
           onClick={this.handleLogout}
-          className="hamburger__options"
+          className="hamburger__options color-change"
         >
           <Col
-            // xs={1} sm={1}
+            xs={1} sm={1}
             mdHidden lgHidden
           >
             <i className="fa fa-power-off usernav__option-icon" aria-hidden="true"></i>

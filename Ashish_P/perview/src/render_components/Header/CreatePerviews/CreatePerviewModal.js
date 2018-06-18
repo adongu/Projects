@@ -258,7 +258,7 @@ class CreatePerviewModal extends React.Component {
           {this.props.icon ? (
             <i className={`fa fa-pencil createperview__btn-icon`}></i>
           ):(
-            <span>Create Perview</span>
+            <span>Create Review</span>
           )}
         </button>
 
@@ -271,7 +271,7 @@ class CreatePerviewModal extends React.Component {
           <Modal.Header className="createperview__modalhead" closeButton>
 
           <div className="createperview__title">
-            Create Perview
+            Create Review
           </div>
 
           <div className="flexcolumn createperview__search-container">
