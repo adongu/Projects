@@ -6,7 +6,7 @@ const Footer = () => {
   // const disclaimer = "Disclaimer: CERTAIN CONTENT THAT APPEARS ON THIS SITE, COMES FROM AMAZON SERVICES LLC. THIS CONTENT IS PROVIDED ‘AS IS’ AND IS SUBJECT TO CHANGE OR REMOVAL AT ANY TIME.";
 
   return (
-    <div className="footer__container">
+    <footer className="footer__container">
 
       <div className="flexcolumn footer__box">
         {/* <span className="footer__disclaimer">
@@ -22,7 +22,7 @@ const Footer = () => {
           </Link>
         </div>
       </div>
-    </div>
+    </footer>
   )
 }
 

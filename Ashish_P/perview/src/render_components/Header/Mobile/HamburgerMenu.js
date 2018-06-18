@@ -76,8 +76,11 @@ class HamburgerMenu extends Component {
         className="hamburger__nav"
       >
         <Row className="hamburger__header">
-          <Col xs={12} sm={12}>
-            <span>Pages & Settings</span>
+          <Col
+            // xs={6} sm={3}
+            mdHidden lgHidden
+          >
+            Pages & Settings
           </Col>
         </Row>
         {
@@ -92,12 +95,20 @@ class HamburgerMenu extends Component {
                 <Row
                   className="hamburger__options"
                 >
-                    <Col xs={1} sm={1} mdHidden lgHidden>
+                    <Col
+                      // xs={1} sm={1}
+                      mdHidden lgHidden
+                      componentClass='span'
+                    >
                       <span>
                         <i className={`fa fa-${option.icon} fa-lg`} aria-hidden="true"></i>
                       </span>
                     </Col>
-                    <Col xs={10} sm={10} mdHidden lgHidden>
+                    <Col
+                      xs={5} sm={2}
+                      mdHidden lgHidden
+                      componentClass='span'
+                    >
                       {option.text}
                     </Col>
                   </Row>
@@ -108,12 +119,18 @@ class HamburgerMenu extends Component {
 
         <Row
           onClick={this.handleLogout}
-          className="hamburger__signout"
+          className="hamburger__options"
         >
-          <Col xs={1} sm={1} mdHidden lgHidden>
+          <Col
+            // xs={1} sm={1}
+            mdHidden lgHidden
+          >
             <i className="fa fa-power-off usernav__option-icon" aria-hidden="true"></i>
           </Col>
-          <Col xs={9} sm={9} mdHidden lgHidden>
+          <Col
+            xs={5} sm={2}
+            mdHidden lgHidden
+          >
             <span className="usernav__option-text">Sign Out</span>
           </Col>
         </Row>

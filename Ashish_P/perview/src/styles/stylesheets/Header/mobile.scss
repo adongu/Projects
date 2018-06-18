@@ -35,16 +35,19 @@
   }
 
   &header {
-    padding: 8px 0;
+    padding: 8px 12px 8px 0;
     font: 700 18px Roboto, Verdana;
     letter-spacing: 0.04em;
+    display: flex;
+    justify-content: center;
   }
 
-  &options,
-  &signout {
+  &options {
     padding: 8px 0;
     font: 400 15px Roboto, Verdana;
     letter-spacing: 0.02em;
+    display: flex;
+    justify-content: center;
   }
 }
 // keyframes fadein

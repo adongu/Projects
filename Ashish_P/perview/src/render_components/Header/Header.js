@@ -8,6 +8,7 @@ import UserNavContainer from '../../containers/UserNavContainer';
 import HamburgerMenu from './Mobile/HamburgerMenu';
 import * as util from '../../actions/util_actions';
 import { Grid, Row, Col } from 'react-bootstrap';
+import logo from '../../styles/assets/logo2.png';
 
 class Header extends React.Component {
   constructor(props) {
@@ -125,21 +126,31 @@ class Header extends React.Component {
     // console.log(this.state);
 
     return (
-      <Grid className={`header__container ${this.state ? this.state.scrolled : '' }`}>
+      <Grid
+        componentClass='header'
+        className={`header__container ${this.state ? this.state.scrolled : '' }`}
+      >
         <Row className="flexrow header__box">
-          <Col xs={6} sm={9} md={2} lg={2} className="header__logo">
-            <Link to="/">
+          <Col
+            xs={6} sm={9} md={2} lg={2}
+            className='header__logo animated rubberBand'
+          >
+            <Link to='/'>
               <img
                 className="header__logoimg"
-                src="https://s3.amazonaws.com/perviewimages/logo.png"
-                alt="Header logo"
+                // src="https://s3.amazonaws.com/perviewimages/logo.png"
+                src={logo}
+                alt='logo'
               />
             </Link>
           </Col>
           {this.props.currentUser &&
-            <Col xsHidden smHidden md={10} lg={10} className="header__authnav-box">
+            <Col
+              xsHidden smHidden md={10} lg={10}
+              className='header__authnav-box'
+            >
               <Col xsHidden smHidden md={4} lg={4}>
-                <div className="header__search">
+                <div className='header__search'>
                   <SearchPerviewBar
                     selectItem={this.selectItem}
                     results={this.props.perviewResults}
@@ -148,19 +159,24 @@ class Header extends React.Component {
                 </div>
               </Col>
 
-              <Col xsHidden smHidden md={4} lg={3}>
+              <Col
+                xsHidden smHidden md={4} lg={3}
+                componentClass='nav'
+              >
                 {this.renderNavOptions()}
               </Col>
 
               <Col xsHidden smHidden md={3} lg={3}
-                // className="flexrow header__createperview-container"
                 >
                   <CreatePerviewModalContainer
                     history={this.props.history}
                   />
               </Col>
 
-              <Col xsHidden smHidden md={1} lg={1}>
+              <Col
+                xsHidden smHidden md={1} lg={1}
+                componentClass='nav'
+              >
                 <UserNavContainer
                   imgUrl={this.state.imgUrl}
                   logOut={this.props.logOut}
