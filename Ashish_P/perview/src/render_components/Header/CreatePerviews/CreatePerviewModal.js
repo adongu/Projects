@@ -218,7 +218,7 @@ class CreatePerviewModal extends React.Component {
               <span className="createperview__needrating">
                 {
                   this.state.lastRating < 1
-                  ? 'Please select a rating bewtween 1 and 5 before submitting :)'
+                  ? 'Please select a rating between 1 and 5 before submitting :)'
                   : ''
                 }
               </span>
