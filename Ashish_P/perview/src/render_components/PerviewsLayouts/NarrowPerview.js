@@ -182,7 +182,7 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
 
   return (
     <Grid className="narrowperviews__container">
-      <Row>
+      <Row className="narrowperviews__section">
         {renderFeed()}
       </Row>
     </Grid>

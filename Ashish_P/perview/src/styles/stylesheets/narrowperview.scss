@@ -13,6 +13,10 @@ $review-lines-to-show: 6;
     margin: auto;
   }
 
+  &section {
+    width: 100%;
+  }
+
   &box {
     display: flex;
     align-items: center;
