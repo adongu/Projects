@@ -5,9 +5,9 @@ import moment from 'moment';
 import PerviewCard from './PerviewCard/PerviewCard.js';
 import { Grid, Row, Col } from 'react-bootstrap';
 
-// import {
-//   renderMoreInfoPopover
-// } from '../SharedComponents/PricePopOver';
+import {
+  renderMoreInfoPopover
+} from '../SharedComponents/PricePopOver';
 import * as util from '../../actions/util_actions.js';
 
 const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, bookmarkPerview, unbookmarkPerview, likePerview, unlikePerview, editPerview, deletePerview, showLoginModal, history, toRenderUserProfile }) => {
@@ -54,7 +54,7 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
 
   const renderPerview = (perview, { item, perviewUser }) => {
     if (item) {
-      // let latestUpdatedTime = item.ts;
+      let latestUpdatedTime = item.ts;
 
       return (
         <div className="flexcolumn narrowperviews__productbox">
@@ -76,7 +76,7 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
             </a>
           </div>
 
-          {/* {renderMoreInfoPopover(latestUpdatedTime)} */}
+          {renderMoreInfoPopover(latestUpdatedTime)}
         </div>
       )
     } else {

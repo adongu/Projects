@@ -2,9 +2,9 @@ import "../../../styles/stylesheets/createperviewmodal.css";
 import React, { Component, PropTypes } from 'react';
 import { ButtonToolbar, Modal } from 'react-bootstrap';
 import SearchItemBar from "./SearchItemBar";
-// import {
-//  renderMoreInfoPopover
-// } from '../../SharedComponents/PricePopOver';
+import {
+ renderMoreInfoPopover
+} from '../../SharedComponents/PricePopOver';
 
 class CreatePerviewModal extends React.Component {
   static propTypes = {
@@ -201,7 +201,7 @@ class CreatePerviewModal extends React.Component {
                     {this.state.price}
                   </div>
 
-                  {/* {renderMoreInfoPopover()} */}
+                  {renderMoreInfoPopover()}
                 </div>
               </div>
             </div>

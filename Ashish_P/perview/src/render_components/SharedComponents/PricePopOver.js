@@ -22,9 +22,9 @@ const overlayTrigger = (
     overlay={popoverClickRootClose}
     className="narrowperviews__moreinfo-popover"
   >
-    <a className="price__popover-icon">
+    <span className="price__popover-icon">
       <i className="fa fa-question-circle-o" aria-hidden="true"></i>
-    </a>
+    </span>
   </OverlayTrigger>
 )
 /*
