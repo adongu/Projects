@@ -158,11 +158,19 @@ class PerviewComments extends React.Component{
     return (
       <div className="perviewdetailmodal__socialbox">
         <span className="perviewdetailmodal__social-icon" onClick={this.props.handleSaveClick(perview)}>
-          <i className={`fa fa-bookmark perviewdetailmodal__social-bookmark ${perview.bookmarkedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
+          <i
+            className={`fa fa-bookmark perviewdetailmodal__social-bookmark ${perview.bookmarkedByLoggedInUser ? "active" : ""}`} aria-hidden="true"
+            title="bookmark"
+          >
+          </i>
         </span>
 
         <span className="perviewdetailmodal__social-icon" onClick={this.props.handleLikeClick(perview)}>
-          <i className={`fa fa-heart perviewdetailmodal__social-like ${perview.likedByLoggedInUser ? "active" : ""}`} aria-hidden="true"></i>
+          <i
+            className={`fa fa-heart perviewdetailmodal__social-like ${perview.likedByLoggedInUser ? "active" : ""}`}   aria-hidden="true"
+            title="like"
+          >
+          </i>
         </span>
       </div>
     )
