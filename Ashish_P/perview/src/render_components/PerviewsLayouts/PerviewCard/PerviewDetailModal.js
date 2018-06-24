@@ -177,7 +177,7 @@ class PerviewDetailModal extends React.Component {
 
     return (
       <ButtonToolbar>
-        <a className="perviewdetailmodal__modal-show" onClick={this.handleShowModalClick}>
+        <span className="perviewdetailmodal__modal-show" onClick={this.handleShowModalClick}>
           {this.props.toRenderPerviewCommentsView ?
             <span className="perviewcard__review-social-text">
               <i
@@ -187,7 +187,7 @@ class PerviewDetailModal extends React.Component {
               Comments
             </span>
             : '... more'}
-        </a>
+        </span>
 
         <Modal
           {...this.props}

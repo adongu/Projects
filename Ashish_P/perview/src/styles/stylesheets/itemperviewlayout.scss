@@ -38,25 +38,12 @@ $review-lines-to-show: 5;
   }
 
   &itemname {
-    // width: 100%;
-    // padding-bottom: 10px;
-    // color: #3F3F3F;
-    // height: $title-font-size*$title-line-height*$title-lines-to-show; /* Fallback for non-webkit */
-    // margin: 0 auto;
     margin-bottom: 20px;
-    // font-size: $title-font-size;
-    // font-weight: 300;
-    // line-height: $title-line-height;
-    // -webkit-line-clamp: $title-lines-to-show;
-    // -webkit-box-orient: vertical;
-    // overflow: hidden;
-    // text-overflow: ellipsis;
   }
 
   &itemprice {
     align-self: flex-start;
     white-space: normal;
-    // font-weight: bold;
     font-size: 15px;
   }
 
@@ -64,7 +51,6 @@ $review-lines-to-show: 5;
     align-self: flex-start;
     white-space: normal;
     font-weight: bold;
-    margin-top: -3px;
     font-size: 10px;
   }
 

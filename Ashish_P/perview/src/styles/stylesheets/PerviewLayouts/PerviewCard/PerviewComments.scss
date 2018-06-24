@@ -7,8 +7,7 @@
 
   &commentsbox {
     max-height: 290px;
-    // min-height: 180px;
-    // height: 70%;
+    min-height: 50px;
     overflow-y: scroll;
     // border-bottom: 1px solid #efefef;
     margin-bottom: 20px;
@@ -17,6 +16,7 @@
   &commentstitle {
     font-size: 16px;
     font-family: roboto, Aria;
+    margin-bottom: 16px;
   }
 
   &review-user {
@@ -143,6 +143,7 @@
 
 @media (max-width: 768px) {
   .perviewcomment__commentsbox {
+    min-height: 50px;
     max-height: 86px;
   }
 }
