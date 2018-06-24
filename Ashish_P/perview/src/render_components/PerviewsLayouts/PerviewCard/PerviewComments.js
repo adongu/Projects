@@ -163,6 +163,7 @@ class PerviewComments extends React.Component{
             title="bookmark"
           >
           </i>
+          Bookmark
         </span>
 
         <span className="perviewdetailmodal__social-icon" onClick={this.props.handleLikeClick(perview)}>
@@ -171,13 +172,14 @@ class PerviewComments extends React.Component{
             title="like"
           >
           </i>
+          Like
         </span>
       </div>
     )
   }
 
   renderDeleteButton (comment) {
-    // if (this.props.currentUserId === comment.commenter.id) {
+    if (this.props.currentUserId === comment.commenter.id) {
       return (
         <div
           onClick={this.handleDeleteComment(comment.id)}
@@ -189,7 +191,7 @@ class PerviewComments extends React.Component{
           </i>
         </div>
       )
-    // }
+    }
   }
 
   splitCommentObject (comment) {

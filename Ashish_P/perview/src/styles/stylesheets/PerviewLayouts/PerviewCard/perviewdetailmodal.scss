@@ -89,6 +89,9 @@
   &socialbox {
     position: relative;
     margin-top: auto;
+    display: flex;
+    justify-content: space-around;
+    cursor: pointer;
   }
 
   &userbox {

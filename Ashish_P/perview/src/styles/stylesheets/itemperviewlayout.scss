@@ -164,6 +164,8 @@ $review-lines-to-show: 5;
   }
 
   &socialbox {
+    display: flex;
+    justify-content: space-around;
   }
 
   &social-icon {
