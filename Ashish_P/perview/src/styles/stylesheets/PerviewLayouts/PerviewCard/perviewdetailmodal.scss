@@ -91,7 +91,6 @@
     margin-top: auto;
     display: flex;
     justify-content: space-around;
-    cursor: pointer;
   }
 
   &userbox {
@@ -147,6 +146,7 @@
 
   &social-icon {
     padding-right: 8px;
+    cursor: pointer;
   }
 
   &social-bookmark,

@@ -218,7 +218,7 @@ class PerviewComments extends React.Component{
   }
 
   renderAllComments () {
-    if (this.state.comments.length < 1) {
+    if (this.props.comments.length < 1) {
       return (
         <div className="perviewcomment__commentsbox">
           Be the first one to leave a comment!
@@ -231,7 +231,7 @@ class PerviewComments extends React.Component{
         className="perviewcomment__commentsbox"
         id="comments__box"
       >
-        {this.state.comments.map((comment) => {
+        {this.props.comments.map((comment) => {
           let commentObject = this.splitCommentObject(comment);
 
           return (
