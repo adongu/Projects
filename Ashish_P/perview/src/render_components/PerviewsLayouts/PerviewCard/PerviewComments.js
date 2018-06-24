@@ -210,9 +210,9 @@ class PerviewComments extends React.Component{
   renderAllComments () {
     if (this.state.comments.length < 1) {
       return (
-        <span className="perviewcomment__commentsbox">
+        <div className="perviewcomment__commentsbox">
           Be the first one to leave a comment!
-        </span>
+        </div>
       )
     }
 

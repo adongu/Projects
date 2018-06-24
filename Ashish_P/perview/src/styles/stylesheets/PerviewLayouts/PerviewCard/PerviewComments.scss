@@ -6,11 +6,10 @@
   }
 
   &commentsbox {
-    max-height: 290px;
+    height: 290px;
     min-height: 50px;
     overflow-y: scroll;
-    // border-bottom: 1px solid #efefef;
-    margin-bottom: 20px;
+    // margin-bottom: 20px;
   }
 
   &commentstitle {
@@ -121,7 +120,7 @@
   &newcomment{
     line-height: 21px;
     font-size: 14px;
-    font-family: Fira Sans;
+    font-family: Fira Sans, Verdana;
     flex-grow: 1;
     resize: none;
     flex-direction: column;
@@ -129,6 +128,8 @@
     padding: 0;
     max-height: 80px;
     font-size: inherit;
+    padding: 5px;
+    box-sizing: border-box;
   }
 
   &formtip {
@@ -141,9 +142,8 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .perviewcomment__commentsbox {
-    min-height: 50px;
     max-height: 86px;
   }
 }
