@@ -26,15 +26,17 @@ class PerviewComments extends React.Component{
 
   componentWillMount() {
     this.setState({
-      comments: this.props.perview.comments,
+      comments: this.props.comments || [],
     });
   }
-  //
 
   componentWillReceiveProps (nextProps) {
-    if (nextProps.perview.comments.length !== this.props.perview.comments.length) {
+    const thisComments = this.props.comments;
+    const nextComments = nextProps.comments;
+
+    if (thisComments && nextComments && nextComments.length !== thisComments.length) {
       this.setState({
-        comments: nextProps.perview.comments
+        comments: nextComments
       });
     }
   }
