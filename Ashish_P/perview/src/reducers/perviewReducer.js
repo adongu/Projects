@@ -208,8 +208,8 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
 
     /* COMMENTS */
     case CREATE_COMMENT:
-      const newStateAllPerviews = newState.allPerviews.perviews;
-      const newCommentedAllPerviews = Object.keys(newStateAllPerviews).map((perview) => {
+      let newStateAllPerviews = newState.allPerviews.perviews;
+      let newCommentedAllPerviews = Object.keys(newStateAllPerviews).map((perview) => {
         if (newStateAllPerviews[perview].id === action.perviewId && action.commentObject.comment) {
           return {...newStateAllPerviews[perview],
             comments: newStateAllPerviews[perview].comments ? newStateAllPerviews[perview].comments.concat(action.commentObject) : [action.commentObject],
@@ -219,7 +219,7 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
         return newStateAllPerviews[perview];
       });
 
-      const newNewState = {...newState,
+      let newNewState = {...newState,
         allPerviews: {
           ...newState.allPerviews,
           perviews: newCommentedAllPerviews,
@@ -230,28 +230,30 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
       return newNewState;
 
     case DELETE_COMMENT:
-      const filteredDeletedCommentPerviews = (perview, commentId, newState) => {
-        return perview[newState.comments].filter((comment) => {
-          return comment.id !== commentId;
-        })
-      }
+      newStateAllPerviews = newState.allPerviews.perviews;
+      newCommentedAllPerviews = Object.keys(newStateAllPerviews).map((perview) => {
+        if (newStateAllPerviews[perview].id === action.perviewId && action.commentId) {
+          const updatedComments = newStateAllPerviews[perview].comments.filter((comment) => {
+            return comment.id !== action.commentId
+          })
 
-      let allPerviewsWithDeletedComment = Object.keys(newState.allPerviews).map((perview) => {
-        if(perview.id === action.perviewId) {
-          return filteredDeletedCommentPerviews(perview, action.comment.id, newState);
-        } else {
-          return perview;
+          return {...newStateAllPerviews[perview],
+            comments: updatedComments,
+          };
         }
+
+        return newStateAllPerviews[perview];
       });
 
-      return Object.assign({}, newState, {
-        fetchingUpdate: false,
+      newNewState = {...newState,
         allPerviews: {
           ...newState.allPerviews,
-          perviews: allPerviewsWithDeletedComment,
+          perviews: newCommentedAllPerviews,
         },
         errors: []
-      });
+      };
+
+      return newNewState;
 
     /* Errors */
     case RECEIVE_ERRORS:

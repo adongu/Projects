@@ -94,12 +94,12 @@ class PerviewComments extends React.Component{
     // }
   }
 
-  handleDeleteComment (commentId) {
+  handleDeleteComment (perviewId, commentId) {
     return (e) => {
       e.preventDefault();
 
-      if (this.props.comment && this.props.perview.id) {
-        let commentObject = {'perviewId': this.props.perview.id, 'commentId': commentId}
+      if (perviewId && commentId) {
+        let commentObject = { perviewId, commentId }
 
         this.props.deleteComment(commentObject);
       }
@@ -187,7 +187,7 @@ class PerviewComments extends React.Component{
     if (this.props.currentUserId === comment.commenter.id) {
       return (
         <div
-          onClick={this.handleDeleteComment(comment.id)}
+          onClick={this.handleDeleteComment(this.props.perview.id, comment.id)}
           className="perviewcomment__delete"
         >
           <i
@@ -228,7 +228,11 @@ class PerviewComments extends React.Component{
   }
 
   renderAllComments () {
-    if (!this.props.comments || this.props.comments.length < 1) {
+    const {
+      comments,
+    } = this.props;
+
+    if (!comments || comments.length < 1) {
       return (
         <div className="perviewcomment__commentsbox">
           Be the first one to leave a comment!
@@ -241,7 +245,7 @@ class PerviewComments extends React.Component{
         className="perviewcomment__commentsbox"
         id="comments__box"
       >
-        {this.props.comments.map((comment) => {
+        {comments.map((comment) => {
           let commentObject = this.splitCommentObject(comment);
 
           return (
