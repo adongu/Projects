@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import LandingPage from "../render_components/LandingPage/LandingPage";
 import { fetchUser, fetchToken, showLoginModal, hideLoginModal } from '../actions/session_actions';
 import { fetchItemResults } from '../actions/search_item_actions';
-import { fetchLandingPerviews, clearErrors } from '../actions/perview_actions';
-import { createComment, deleteComment, likePerview, unlikePerview, bookmarkPerview, unbookmarkPerview } from '../actions/social_actions';
+import { fetchLandingPerviews, createComment, deleteComment, clearErrors } from '../actions/perview_actions';
+import { likePerview, unlikePerview, bookmarkPerview, unbookmarkPerview } from '../actions/social_actions';
 
 const mapStateToProps = ({ session, perview, findItem, social }, ownProps) => {
   return {

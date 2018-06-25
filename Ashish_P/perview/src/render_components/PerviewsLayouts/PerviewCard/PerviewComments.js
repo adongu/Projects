@@ -24,29 +24,31 @@ class PerviewComments extends React.Component{
     this.renderDeleteButton = this.renderDeleteButton.bind(this);
   }
 
-  componentWillMount() {
-    this.setState({
-      comments: this.props.comments || [],
-    });
-  }
+  // componentWillMount() {
+  //   this.setState({
+  //     comments: this.props.comments || [],
+  //   });
+  // }
 
-  componentWillReceiveProps (nextProps) {
-    const thisComments = this.props.comments;
-    const nextComments = nextProps.comments;
+  // componentWillReceiveProps (nextProps) {
+  //   const thisComments = this.props.comments;
+  //   const nextComments = nextProps.comments;
+  //
+  //   if (thisComments && nextComments && nextComments.length > thisComments.length) {
+      // this.setState({
+      //   comments: nextComments
+      // });
 
-    if (thisComments && nextComments && nextComments.length !== thisComments.length) {
-      this.setState({
-        comments: nextComments
-      });
-    }
-  }
+      // this.scrollToBottom('comments__box');
+  //   }
+  // }
 
-  componentDidUpdate() {
-    if (this.state.addedComment) {
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.comments && prevProps.comments.length < this.props.comments.length) {
       this.scrollToBottom('comments__box');
+      // this.setState({ addedComment: false });
     }
   }
-
   // scroll to end of comment box
   scrollToBottom(elementId) {
     let element = document.getElementById(elementId);
@@ -77,7 +79,7 @@ class PerviewComments extends React.Component{
   handleSubmit (e) {
     // return (e) => {
     e.preventDefault();
-    e.stopPropagation()
+    e.stopPropagation();
 
     if (this.props.createComment && this.props.perview.id && this.state.newComment.length > 0) {
       let commentObject = {'perviewId': this.props.perview.id, 'comment': this.state.newComment };
@@ -87,7 +89,7 @@ class PerviewComments extends React.Component{
           newComment: '',
           addedComment: true,
         });
-      }
+      };
     }
     // }
   }
@@ -95,7 +97,8 @@ class PerviewComments extends React.Component{
   handleDeleteComment (commentId) {
     return (e) => {
       e.preventDefault();
-      if (this.props.deleteComment && this.props.perview.id) {
+
+      if (this.props.comment && this.props.perview.id) {
         let commentObject = {'perviewId': this.props.perview.id, 'commentId': commentId}
 
         this.props.deleteComment(commentObject);
@@ -198,15 +201,20 @@ class PerviewComments extends React.Component{
 
   splitCommentObject (comment) {
     let topComment = "",
-        bottomComment = "";
+        bottomComment = "",
+        skipTopComment = false;
     let commentArray = comment.comment.split(" ");
 
     let commenterNameLength = comment.commenter.firstName.length;
     let maxTopCommentLength = this.state.topLineMaxLength - commenterNameLength;
 
+    if (commentArray[0].length > maxTopCommentLength) {
+      skipTopComment = true;
+    }
+
     commentArray.forEach((comment, i) => {
       console.log('topComment', topComment.length)
-      if (topComment.length < maxTopCommentLength) {
+      if (topComment.length < maxTopCommentLength && !skipTopComment) {
         topComment += ` ${comment}`;
       } else {
         bottomComment += ` ${comment}`;
@@ -220,7 +228,7 @@ class PerviewComments extends React.Component{
   }
 
   renderAllComments () {
-    if (this.props.comments.length < 1) {
+    if (!this.props.comments || this.props.comments.length < 1) {
       return (
         <div className="perviewcomment__commentsbox">
           Be the first one to leave a comment!

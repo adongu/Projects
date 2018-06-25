@@ -28,7 +28,7 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
     }
   }
 
-  const renderPeriviewCard = (perview, {item, perviewUser}) => (
+  const renderPerviewCard = (perview, {item, perviewUser}) => (
     <div className="flexcolumn narrowperviews__reviewbox">
       <PerviewCard
         item = {item}
@@ -155,7 +155,7 @@ const NarrowPerview = ({ currentUserId, perviews, createComment, deleteComment, 
             >
               <div className="flexcolumn narrowperviews__box">
                 {renderPerviewOrSolicit(perview, perviewObject)}
-                {renderPeriviewCard(perview, perviewObject)}
+                {renderPerviewCard(perview, perviewObject)}
 
                 <div
                   className={perview.solicit ? 'narrowperviews__solicitsbackground' : ''}

@@ -14,6 +14,8 @@ export const RECEIVE_FRIEND_PERVIEWS = 'RECEIVE_FRIEND_PERVIEWS';
 export const RECEIVE_SOLICIT_PERVIEWS = 'RECEIVE_SOLICIT_PERVIEWS';
 export const RECEIVE_NUM_PERVIEWS = 'RECEIVE_NUM_PERVIEWS';
 export const RECEIVE_CATEGORY_IDS = 'RECEIVE_CATEGORY_IDS';
+export const CREATE_COMMENT = 'CREATE_COMMENT';
+export const DELETE_COMMENT = 'DELETE_COMMENT';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
@@ -85,6 +87,18 @@ export const receiveNumPerviews = (numPerviews) => ({
 export const receiveCategoryIds = (categoryIds) => ({
   type: RECEIVE_CATEGORY_IDS,
   categoryIds
+});
+
+export const receiveComment = (perviewId, commentObject) => ({
+  type: CREATE_COMMENT,
+  perviewId,
+  commentObject
+});
+
+export const removeComment = (perviewId, commentId) => ({
+  type: DELETE_COMMENT,
+  perviewId,
+  commentId
 });
 
 const receiveErrors = (errors) => ({
@@ -239,3 +253,28 @@ export const fetchCategoryIds = () => dispatch => {
       return dispatch(receiveErrors(error))
     })
 };
+
+export const createComment = ({ perviewId = null, comment = '' }) => dispatch => {
+  // dispatch(fetchingUpdate());
+  return APIUtil.createComment(perviewId, comment)
+    .then(response => {
+      console.log('response', response.data);
+      return dispatch(receiveComment(perviewId, response.data))
+    })
+    .catch(error => {
+      // dispatch(finishUpdate());
+      return dispatch(receiveErrors(error));
+    })
+}
+
+export const deleteComment = ({ perviewId = null, commentId = null }) => dispatch => {
+  // dispatch(fetchingUpdate());
+  return APIUtil.deleteComment(perviewId, commentId)
+    .then(response => {
+      return dispatch(removeComment(perviewId, commentId))
+    })
+    .catch(error => {
+      // dispatch(finishUpdate());
+      return dispatch(receiveErrors(error));
+    })
+}

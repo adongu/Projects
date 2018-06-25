@@ -46,7 +46,7 @@ class PerviewDetailModal extends React.Component {
       });
     }
 
-    if(nextProps.perview.comments) {
+    if(this.props.perview.comments && nextProps.perview.comments) {
       if (nextProps.perview.comments.length !== this.props.perview.comments.length) {
         this.setState({
           toRenderPerviewCardDetailsView: nextProps.renderSolicitCommentsView,
@@ -153,17 +153,26 @@ class PerviewDetailModal extends React.Component {
   }
 
   renderCommentSection () {
+    const {
+      currentUserId,
+      perview,
+      handleSaveClick,
+      handleLikeClick,
+      handleFriendClick,
+      createComment,
+      deleteComment,
+    } = this.props;
     if (this.props.toRenderPerviewCommentsView) {
       return (
         <PerviewComments
-          currentUserId = {this.props.currentUserId}
-          perview = {this.props.perview}
-          comments = {this.state.comments}
-          handleSaveClick = {this.props.handleSaveClick}
-          handleLikeClick = {this.props.handleLikeClick}
-          handleFriendClick = {this.props.handleFriendClick}
-          createComment = {this.props.createComment}
-          deleteComment = {this.props.deleteComment}
+          currentUserId = {currentUserId}
+          perview = {perview}
+          comments = {perview.comments ? perview.comments : []}
+          handleSaveClick = {handleSaveClick}
+          handleLikeClick = {handleLikeClick}
+          handleFriendClick = {handleFriendClick}
+          createComment = {createComment}
+          deleteComment = {deleteComment}
         />
       )
     }

@@ -29,35 +29,35 @@ const sessionReducer = (oldState = _nullSocial, action) => {
         fetchingUpdate: true,
         errors: []
       });
-    case CREATE_COMMENT:
-      let commentedPerview = Object.keys(newState.allPerviews).filter((perview) => (
-        perview.id === action.perviewId
-      ))
-      commentedPerview.comments.push(action.perview);
-
-      let newAllPerviews = Object.keys(newState.allPerviews).map((perview) => {
-        return perview.id === action.perviewId ? commentedPerview : perview;
-      })
-
-      return Object.assign({}, newState, {
-        fetchingUpdate: false,
-        allPerviews: newAllPerviews,
-        errors: []
-      });
-    case DELETE_COMMENT:
-      let allPerviewsWithDeletedComment = Object.keys(newState.allPerviews).map((perview) => {
-        if(perview.id === action.perviewId) {
-          return deletedCommentPerview(perview, action.comment.id, newState);
-        } else {
-          return perview;
-        }
-      });
-
-      return Object.assign({}, newState, {
-        fetchingUpdate: false,
-        allPerviews: allPerviewsWithDeletedComment,
-        errors: []
-      });
+    // case CREATE_COMMENT:
+    //   let commentedPerview = Object.keys(newState.allPerviews).filter((perview) => (
+    //     perview.id === action.perviewId
+    //   ))
+    //   commentedPerview.comments.push(action.perview);
+    //
+    //   let newAllPerviews = Object.keys(newState.allPerviews).map((perview) => {
+    //     return perview.id === action.perviewId ? commentedPerview : perview;
+    //   })
+    //
+    //   return Object.assign({}, newState, {
+    //     fetchingUpdate: false,
+    //     allPerviews: newAllPerviews,
+    //     errors: []
+    //   });
+    // case DELETE_COMMENT:
+    //   let allPerviewsWithDeletedComment = Object.keys(newState.allPerviews).map((perview) => {
+    //     if(perview.id === action.perviewId) {
+    //       return deletedCommentPerview(perview, action.comment.id, newState);
+    //     } else {
+    //       return perview;
+    //     }
+    //   });
+    //
+    //   return Object.assign({}, newState, {
+    //     fetchingUpdate: false,
+    //     allPerviews: allPerviewsWithDeletedComment,
+    //     errors: []
+    //   });
     case FINISH_UPDATE:
       return Object.assign({}, oldState, {
         fetchingUpdate: false,

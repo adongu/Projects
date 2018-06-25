@@ -107,3 +107,23 @@ export const fetchNumPerviews = () => {
 export const fetchCategoryIds = () => {
   return axios('/api/item/category')
 }
+
+export const createComment = (perviewId, comment) => {
+  console.log(`util perviewId: ${perviewId} comment: ${comment}`);
+  return axios({
+    method: 'POST',
+    url: `/api/${perviewId}/comment`,
+    params: {
+      comment: comment
+    },
+    config
+  })
+};
+
+export const deleteComment = (perviewId, commentId) => {
+  return axios({
+    method: 'POST',
+    url: `/api/${perviewId}/comment/${commentId}/delete`,
+    config
+  })
+};

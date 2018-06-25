@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import NarrowPerview from '../render_components/PerviewsLayouts/NarrowPerview.js'
 import { showLoginModal } from '../actions/session_actions';
-import { editPerview, deletePerview, clearErrors } from '../actions/perview_actions';
-import { createComment, deleteComment } from '../actions/social_actions';
+import { editPerview, deletePerview, createComment, deleteComment, clearErrors } from '../actions/perview_actions';
+// import { createComment, deleteComment } from '../actions/social_actions';
 
 const mapStateToProps = ({ session, findItem, social }, ownProps) => {
   return {

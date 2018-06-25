@@ -1,5 +1,5 @@
 import { merge } from 'lodash';
-import { REQUEST_LOADING, RECEIVE_ITEM, RECEIVE_PERVIEW, RECEIVE_EDIT_PERVIEW, DELETE_PERVIEW, RECEIVE_LANDING_PERVIEWS, RECEIVE_ALL_PERVIEWS, RECEIVE_ITEM_PERVIEWS, RECEIVE_MY_PERVIEWS, RECEIVE_FAVORITE_PERVIEWS, RECEIVE_FRIEND_PERVIEWS, RECEIVE_SOLICIT_PERVIEWS, RECEIVE_CATEGORY_IDS, RECEIVE_NUM_PERVIEWS, RECEIVE_ERRORS } from '../actions/perview_actions';
+import { REQUEST_LOADING, RECEIVE_ITEM, RECEIVE_PERVIEW, RECEIVE_EDIT_PERVIEW, DELETE_PERVIEW, RECEIVE_LANDING_PERVIEWS, RECEIVE_ALL_PERVIEWS, RECEIVE_ITEM_PERVIEWS, RECEIVE_MY_PERVIEWS, RECEIVE_FAVORITE_PERVIEWS, RECEIVE_FRIEND_PERVIEWS, RECEIVE_SOLICIT_PERVIEWS, RECEIVE_CATEGORY_IDS, RECEIVE_NUM_PERVIEWS, CREATE_COMMENT, DELETE_COMMENT, RECEIVE_ERRORS } from '../actions/perview_actions';
 
 const _nullPerviews = Object.freeze({
   requestLoading: false,
@@ -59,7 +59,7 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
         newState.allPerviews.perviews.unshift(action.perviewObj);
         newState.myPerviews.perviews.unshift(action.perviewObj);
       }
-
+      console.log(action.perviewObj);
       return Object.assign({},
         newState,
         {
@@ -206,6 +206,54 @@ const perviewReducer = (oldState = _nullPerviews, action) => {
         errors: []
       });
 
+    /* COMMENTS */
+    case CREATE_COMMENT:
+      const newStateAllPerviews = newState.allPerviews.perviews;
+      const newCommentedAllPerviews = Object.keys(newStateAllPerviews).map((perview) => {
+        if (newStateAllPerviews[perview].id === action.perviewId && action.commentObject.comment) {
+          return {...newStateAllPerviews[perview],
+            comments: newStateAllPerviews[perview].comments ? newStateAllPerviews[perview].comments.concat(action.commentObject) : [action.commentObject],
+          };
+        }
+
+        return newStateAllPerviews[perview];
+      });
+
+      const newNewState = {...newState,
+        allPerviews: {
+          ...newState.allPerviews,
+          perviews: newCommentedAllPerviews,
+        },
+        errors: []
+      };
+
+      return newNewState;
+
+    case DELETE_COMMENT:
+      const filteredDeletedCommentPerviews = (perview, commentId, newState) => {
+        return perview[newState.comments].filter((comment) => {
+          return comment.id !== commentId;
+        })
+      }
+
+      let allPerviewsWithDeletedComment = Object.keys(newState.allPerviews).map((perview) => {
+        if(perview.id === action.perviewId) {
+          return filteredDeletedCommentPerviews(perview, action.comment.id, newState);
+        } else {
+          return perview;
+        }
+      });
+
+      return Object.assign({}, newState, {
+        fetchingUpdate: false,
+        allPerviews: {
+          ...newState.allPerviews,
+          perviews: allPerviewsWithDeletedComment,
+        },
+        errors: []
+      });
+
+    /* Errors */
     case RECEIVE_ERRORS:
       let errors = action.errors;
       return Object.assign({}, oldState, {
